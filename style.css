@@ -681,3 +681,66 @@ blockquote {
             margin-top: 0.5em;
             color: #777;
         }
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    padding: 40px 0;
+  }
+
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #3a3a3a;
+    top: 0;
+    bottom: 0;
+    left: 30px;
+    margin-left: -2px;
+  }
+
+  .timeline-event {
+    margin: 20px 0;
+    padding-left: 60px;
+    position: relative;
+  }
+
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 22px;
+    background-color: #d2b48c;
+    border: 2px solid #3a3a3a;
+    border-radius: 50%;
+    top: 0;
+  }
+
+  .timeline-event h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #d2b48c;
+  }
+
+  .timeline-event p {
+    margin: 5px 0 0;
+    color: #ccc;
+    font-size: 0.95em;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 600px) {
+    .timeline-event {
+      padding-left: 80px;
+    }
+
+    .timeline::after {
+      left: 40px;
+    }
+
+    .timeline-event::before {
+      left: 32px;
+    }
+  }
