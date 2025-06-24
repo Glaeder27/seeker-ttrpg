@@ -1,0 +1,150 @@
+html,
+        body {
+            font-family: montserrat, sans-serif !important;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            color: #f0f0f0;
+            overflow-y: auto;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* --- Headings --- */
+        h2 {
+            background-color: #434343 !important;
+            padding: 10px 10px 8px 12px !important;
+            margin: 40px 0px 20px 0px !important;
+            border-radius: 10px !important;
+            font-size: 2.5em !important;
+            text-transform: uppercase !important;
+            font-variant: small-caps !important;
+            font-family: montserrat, sans-serif !important;
+            color: #f0f0f0 !important;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            border-bottom: 1px solid #f0f0f036 !important;
+            padding-bottom: 5px !important;
+            margin-top: 30px !important;
+            margin-bottom: 15px !important;
+            font-size: 28px !important;
+            font-family: montserrat, sans-serif !important;
+            color: #f0f0f0 !important;
+            font-weight: 500;
+        }
+
+        h4 {
+            padding-bottom: 2px !important;
+            margin-bottom: 10px !important;
+            margin-top: 20px !important;
+            font-size: 22px !important;
+            font-family: montserrat, sans-serif !important;
+            color: #f0f0f0 !important;
+            font-weight: 500;
+        }
+
+        .main-heading-line {
+            display: block;
+            text-transform: uppercase;
+            font-variant: small-caps;
+        }
+
+        .sub-heading-line {
+            display: block;
+            font-size: 0.8em;
+            margin-top: 5px;
+            text-transform: capitalize;
+            font-variant: normal;
+            font-weight: normal;
+        }
+        
+        /* --- Text and Lists --- */
+        p, li {
+            line-height: 1.6 !important;
+            font-family: montserrat, sans-serif !important;
+            font-weight: 400;
+            color: #f0f0f0 !important;
+            font-size: 0.95rem;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-top: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+        
+        b, strong {
+            font-weight: bold !important;
+            color: #ffffff;
+        }
+
+        /* --- Table Styles --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            background-color: #3d3d3d;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #555555;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        
+        thead th {
+            background-color: #4a4a4a;
+            font-weight: bold;
+            font-size: 1.0em;
+            text-transform: uppercase;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #424242;
+        }
+
+        tbody tr:hover {
+            background-color: #505050;
+        }
+
+        /* --- Special Blocks --- */
+        .designer-note, .example-block, .quick-reference {
+            background-color: #3a3a3a;
+            border-left: 4px solid #777;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .designer-note p:first-child, .example-block p:first-child, .quick-reference p:first-child {
+            margin-top: 0;
+        }
+        .designer-note p:last-child, .example-block p:last-child, .quick-reference p:last-child {
+            margin-bottom: 0;
+        }
+        .designer-note strong, .example-block strong {
+            color: #ddd;
+            font-variant: small-caps;
+        }
+        
+        @media (max-width: 768px) {
+            h2 { font-size: 1.8em !important; padding: 8px 10px !important; }
+            h3 { font-size: 1.5em !important; }
+            h4 { font-size: 1.2em !important; }
+            .container { padding: 15px; }
+            th, td { padding: 8px 10px; font-size: 0.9em; }
+        }
