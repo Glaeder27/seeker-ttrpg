@@ -1,4 +1,4 @@
-html,
+        html,
         body {
             font-family: montserrat, sans-serif !important;
             margin: 0;
@@ -64,17 +64,19 @@ html,
             font-variant: normal;
             font-weight: normal;
         }
-        
+
         /* --- Text and Lists --- */
-        p, li {
+        p,
+        li {
             line-height: 1.6 !important;
             font-family: montserrat, sans-serif !important;
             font-weight: 400;
             color: #f0f0f0 !important;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        ul, ol {
+        ul,
+        ol {
             padding-left: 25px;
             margin-top: 0;
         }
@@ -82,8 +84,9 @@ html,
         li {
             margin-bottom: 8px;
         }
-        
-        b, strong {
+
+        b,
+        strong {
             font-weight: bold !important;
             color: #ffffff;
         }
@@ -100,13 +103,14 @@ html,
             overflow: hidden;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #555555;
             padding: 12px 15px;
             text-align: left;
-            font-size: 0.85em;
+            font-size: 0.85rem;
         }
-        
+
         thead th {
             background-color: #4a4a4a;
             font-weight: bold;
@@ -123,28 +127,359 @@ html,
         }
 
         /* --- Special Blocks --- */
-        .designer-note, .example-block, .quick-reference {
+        .designer-note,
+        .example-block,
+        .quick-reference {
             background-color: #3a3a3a;
             border-left: 4px solid #777;
             padding: 15px 20px;
             margin: 20px 0;
             border-radius: 0 8px 8px 0;
         }
-        .designer-note p:first-child, .example-block p:first-child, .quick-reference p:first-child {
+
+        .designer-note p:first-child,
+        .example-block p:first-child,
+        .quick-reference p:first-child {
             margin-top: 0;
         }
-        .designer-note p:last-child, .example-block p:last-child, .quick-reference p:last-child {
+
+        .designer-note p:last-child,
+        .example-block p:last-child,
+        .quick-reference p:last-child {
             margin-bottom: 0;
         }
-        .designer-note strong, .example-block strong {
+
+        .designer-note strong,
+        .example-block strong {
             color: #ddd;
             font-variant: small-caps;
         }
-        
+
         @media (max-width: 768px) {
-            h2 { font-size: 1.8em !important; padding: 8px 10px !important; }
-            h3 { font-size: 1.5em !important; }
-            h4 { font-size: 1.2em !important; }
-            .container { padding: 15px; }
-            th, td { padding: 8px 10px; font-size: 0.9em; }
+            h2 {
+                font-size: 1.8em !important;
+                padding: 8px 10px !important;
+            }
+
+            h3 {
+                font-size: 1.5em !important;
+            }
+
+            h4 {
+                font-size: 1.2em !important;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            th,
+            td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* --- TOOLTIP STYLES --- */
+        .hover-word {
+            cursor: help !important;
+            border-bottom: 1px dotted #f0f0f036 !important;
+            transition: border-bottom 0.2s ease-in-out;
+            padding-bottom: 1px !important;
+        }
+
+        .hover-word:hover {
+            border-bottom: 1px dotted #3fdada !important;
+            color: #3fdada;
+            /* Aggiunto: Cambia colore testo all'hover */
+        }
+
+        body .global-tooltip {
+            position: absolute !important;
+            background-color: #434343 !important;
+            color: #f0f0f0 !important;
+            padding: 10px 40px 10px 15px !important;
+            border-radius: 5px !important;
+            border: 1px solid #f0f0f0 !important;
+            box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.4) !important;
+            z-index: 1000 !important;
+            transition: opacity 0.3s ease-in-out !important;
+            max-width: 250px !important;
+            text-align: left !important;
+            font-size: 0.7em !important;
+            line-height: 1.4 !important;
+            font-family: montserrat, sans-serif !important;
+            display: block !important;
+        }
+
+        .tooltip-icon {
+            position: absolute !important;
+            top: 8px !important;
+            right: 8px !important;
+            width: 22px !important;
+            height: 22px !important;
+            color: #f0f0f0 !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .tooltip-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tooltip-content-wrapper {}
+
+        /* --- Success/Failure Columns Styles (Aggiornati) --- */
+        .outcome-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .outcome-box {
+            background-color: #484848;
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+            min-width: 250px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Aggiunto: Ombra al box */
+            border: 1px solid transparent;
+            /* Bordi iniziali trasparenti */
+            transition: border-color 0.3s ease-in-out;
+            /* Transizione per i bordi */
+        }
+
+        .outcome-box.success {
+            border-color: #25a55a;
+            /* Colore del bordo per il successo */
+        }
+
+        .outcome-box.failure {
+            border-color: #ce261a;
+            /* Colore del bordo per il fallimento */
+        }
+
+
+        .outcome-box p {
+            margin: 4px 0;
+            color: #f0f0f0;
+            font-family: montserrat, sans-serif;
+            line-height: 1.2;
+        }
+
+        .outcome-text-standard {
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+
+        .outcome-text-emphasized {
+            font-size: 1.4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #f0f0f0;
+            /* Aggiunto: Colore accento anche qui */
+        }
+
+        .action-dice-label {
+            font-weight: bold;
+            color: #f0f0f0;
+            /* Aggiunto: Colore accento per coerenza */
+        }
+
+        .outcome-text-highlight {
+            font-size: 1.4em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+        }
+
+        .success-color {
+            color: #25a55a !important;
+            /* Verde brillante per il successo */
+        }
+
+        .failure-color {
+            color: #ce261a !important;
+            /* Rosso vibrante per il fallimento */
+        }
+        .text-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: bottom;
+        }
+
+        dl {
+            margin-top: 15px !important;
+            margin-bottom: 15px !important;
+            padding-left: 20px !important;
+            color: #f0f0f0 !important;
+            font-family: montserrat, sans-serif !important;
+            line-height: 1.5 !important;
+            font-size: 0.9rem;
+        }
+
+        dt {
+            display: list-item !important;
+            list-style-type: none !important;
+            font-weight: bold !important;
+            margin-left: 0 !important;
+            margin-bottom: 5px !important;
+            color: #f0f0f0 !important;
+            font-size: 0.9rem;
+        }
+
+        dd {
+            margin-left: 20px !important;
+            margin-bottom: 10px !important;
+            color: #f0f0f0 !important;
+            font-weight: normal !important;
+            font-size: 0.9rem;
+        }
+
+        dl dd b,
+        dl dd strong {
+            font-weight: bold !important;
+            font-size: 0.9rem;
+        }
+        /* --- Collapsible Item Styles --- */
+        .collapsible-item {
+            background-color: #484848 !important;
+            border-radius: 10px !important;
+            margin-top: 25px !important;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Aggiunto: Ombra al box */
+        }
+
+        .collapsible-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 15px 20px !important;
+            cursor: pointer !important;
+            color: #f0f0f0 !important;
+            font-family: montserrat, sans-serif !important;
+            font-weight: bold !important;
+            font-size: 1.2em !important;
+            transition: background-color 0.2s ease-in-out;
+            /* Aggiunto: Transizione per hover */
+        }
+
+        .collapsible-header:hover {
+            background-color: #555555;
+            /* Aggiunto: Colore hover più chiaro */
+        }
+
+        .collapsible-title {
+            flex-grow: 1;
+        }
+
+        .collapsible-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            transition: transform 0.3s ease-in-out !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .collapsible-icon svg path {
+            fill: #f0f0f0 !important;
+        }
+
+        .collapsible-item.expanded .collapsible-icon {
+            transform: rotate(90deg) !important;
+        }
+
+        .collapsible-content {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out, padding 0.5s ease-in-out !important;
+            padding: 0 20px !important;
+            color: #f0f0f0 !important;
+            font-family: montserrat, sans-serif !important;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+
+        .collapsible-content.expanded-content {
+            padding: 15px 20px !important;
+            padding-top: 0 !important;
+        }
+
+        .collapsible-content ul {
+            list-style-type: disc !important;
+            margin-left: 20px !important;
+            padding-left: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        .collapsible-content li {
+            color: #f0f0f0 !important;
+            font-family: montserrat, sans-serif !important;
+            line-height: 1.6 !important;
+            margin-bottom: 10px !important;
+        }
+
+        .collapsible-content li b {
+            font-weight: bold !important;
+        }
+
+        /* --- Box Rule Styles --- */
+        .box-rule {
+            background-color: #484848 !important;
+            border-radius: 10px !important;
+            padding: 15px 20px !important;
+            margin-top: 25px !important;
+            color: #f0f0f0 !important;
+            position: relative !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Aggiunto: Ombra al box */
+        }
+
+        .box-rule h4 {
+            font-size: 1.3em !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
+            font-family: montserrat, sans-serif !important;
+            text-align: left !important;
+        }
+
+        .box-rule p {
+            font-size: 0.9em !important;
+            line-height: 1.5 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            font-family: montserrat, sans-serif !important;
+        }
+
+        .box-rule b,
+        .box-rule strong {
+            font-weight: bold !important;
+        }
+
+        .box-rule-icon {
+            position: absolute !important;
+            top: 10px !important;
+            right: 10px !important;
+            width: 28px !important;
+            height: 28px !important;
+            z-index: 10 !important;
+            display: block;
         }
