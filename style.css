@@ -104,13 +104,13 @@ html,
             border: 1px solid #555555;
             padding: 12px 15px;
             text-align: left;
-            font-size: 0.85rem;
+            font-size: 0.85em;
         }
         
         thead th {
             background-color: #4a4a4a;
             font-weight: bold;
-            font-size: 1.0em;
+            font-size: 0.9em;
             text-transform: uppercase;
         }
 
