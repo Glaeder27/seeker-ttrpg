@@ -666,3 +666,18 @@ tbody tr:hover {
         margin: 15px auto 15px auto; /* Adjusted margins for small screens */
     }
 }
+
+blockquote {
+            font-style: italic;
+            margin: 1.5em 0;
+            padding: 0.5em 1.5em;
+            border-left: 4px solid #ccaa00; /* Goldish yellow */
+            background-color: #fffbe6; /* Light yellow background */
+            color: #555;
+        }
+        blockquote footer {
+            font-size: 0.9em;
+            text-align: right;
+            margin-top: 0.5em;
+            color: #777;
+        }
