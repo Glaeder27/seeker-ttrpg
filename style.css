@@ -532,6 +532,7 @@ tbody tr:hover {
     border: 1px solid rgba(240, 240, 240, 0.21);
     margin: 20px auto; /* Shortened shorthand */
     transition: all 0.5s ease-out;
+    overflow: auto;
 }
 
 .aptitude-card h4 {
