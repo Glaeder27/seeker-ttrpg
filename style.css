@@ -534,6 +534,11 @@ tbody tr:hover {
     overflow: auto;
 }
 
+.aptitude-card .icon img {
+    width: 128px;
+    height: 128px;
+}
+
 .aptitude-card h4 {
     font-size: 1.4em;
     margin-top: 0;
