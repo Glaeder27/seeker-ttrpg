@@ -924,3 +924,89 @@ blockquote footer {
     display: flex;
     align-items: center;
 }
+
+/* Styles for the defense layer sections (re-purposed for stances) */
+.defense-layer-section {
+    margin-top: 25px;
+}
+
+.defense-section-header-with-icon {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.defense-symbol {
+    width: 128px;
+    height: 128px;
+    background-color: #393939;
+    border-radius: 10px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.defense-symbol img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.defense-header-text {
+    flex-grow: 1;
+}
+
+.defense-header-text p {
+    margin-top: 0 !important;
+}
+
+.defense-header-text h3 {
+    margin-top: 0 !important;
+}
+
+/* --- Turn Order Priority Specific Styles --- */
+.turn-order-list {
+    list-style: none;
+    /* Remove default numbering */
+    padding: 0;
+    counter-reset: turn-order-counter;
+    /* Initialize counter */
+}
+
+.turn-order-list li {
+    position: relative;
+    padding-left: 40px;
+    /* Space for the custom number */
+    margin-bottom: 8px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.turn-order-list li::before {
+    counter-increment: turn-order-counter;
+    content: counter(turn-order-counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #555;
+    /* Default circle background */
+    color: #f0f0f0;
+    /* Default number color */
+    font-weight: bold;
+    font-size: 0.9em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
