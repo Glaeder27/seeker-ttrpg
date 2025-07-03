@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
 :root {
     --bright-gold: #F6CB75;
@@ -16,6 +17,7 @@
     --default-font: 'Montserrat', sans-serif;
     --special-font: 'Georgia', serif;
     --handwritten-font: 'Great Vibes', cursive;
+    --title-font: 'Cinzel Decorative', serif;
 }
 
 html,
@@ -78,6 +80,54 @@ h4 {
     font-family: var(--default-font);
     color: var(--off-white);
     font-weight: 500;
+}
+
+h2.chapter  {
+  position: relative;
+  font-family: var(--title-font, 'Uncial Antiqua', 'Cinzel Decorative', serif);
+  font-size: 2.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-variant: small-caps;
+  color: var(--ancient-gold, #d6b879);
+  text-align: center;
+  margin: 60px auto 30px auto;
+  padding: 24px 40px;
+  max-width: 800px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(42, 30, 22, 0.9),
+    rgba(30, 21, 15, 0.95)
+  );
+  border: 3px double var(--ancient-gold, #d6b879);
+  border-radius: 12px;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    inset 0 0 12px rgba(255, 255, 220, 0.05);
+}
+
+h2.chapter::after {
+  content: "⸺ ✦ ⸺";
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2em;
+  letter-spacing: 0.3em;
+  color: var(--ancient-gold, #d6b879);
+}
+
+h2.chapter::first-letter {
+  color: var(--rust-red);
+  font-size: 1.4em;
+}
+
+h2.chapter::before {
+  content: "❧ ";
+  font-size: 1.2em;
+  margin-right: 6px;
+  color: var(--ancient-gold);
 }
 
 .main-heading-line {
