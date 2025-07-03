@@ -156,6 +156,24 @@ dl dd strong {
     font-size: 0.9rem;
 }
 
+a:link {
+    color: #F6CB75; 
+    font-weight: normal;
+}
+
+a:visited {
+    color: #C99C5E;
+}
+
+a:hover {
+    color: #F6CB75;
+    cursor: pointer;
+}
+
+a:active {
+    color: #C99C5E;
+}
+
 .example-text {
     color: #f0f0f0;
     font-family: montserrat, sans-serif;
