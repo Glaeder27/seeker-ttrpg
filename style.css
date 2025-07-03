@@ -1128,3 +1128,23 @@ blockquote footer {
       left: -10px;
     }
   }
+.infobox {
+  background-color: #f5f3ec;
+  border: 1px solid #d4c6a5;
+  padding: 1rem;
+  font-size: 0.9em;
+  width: 250px;
+}
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.infobox td {
+  vertical-align: top;
+  padding: 0.2em 0.3em;
+}
+.infobox h3 {
+  font-size: 1.1em;
+  border-bottom: 1px solid #cbbca0;
+  margin-top: 0;
+}
