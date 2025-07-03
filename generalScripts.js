@@ -118,19 +118,10 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        lastTarget = target;
         setTimeout(() => {
           target.scrollIntoView({ behavior: 'smooth' });
         }, 50);
       }
     });
-  });
-
-  window.addEventListener('resize', () => {
-    if (lastTarget) {
-      setTimeout(() => {
-        lastTarget.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
-    }
   });
 });
