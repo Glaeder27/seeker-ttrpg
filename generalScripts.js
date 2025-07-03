@@ -110,17 +110,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-let lastTarget = null;
-
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.toc a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        setTimeout(() => {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
+        target.scrollIntoView({ behavior: 'smooth' });
+
+        document.body.style.paddingRight = "1px";
+        requestAnimationFrame(() => {
+          document.body.style.paddingRight = "";
+        });
       }
     });
   });
