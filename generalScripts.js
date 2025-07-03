@@ -128,21 +128,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  const lightbox = document.getElementById("lightbox-overlay");
-  const img = document.getElementById("expandable-image");
-  const close = document.querySelector(".lightbox-close");
+  const thumbnail = document.getElementById('expandable-image');
+  const lightbox = document.getElementById('lightbox-overlay');
+  const closeBtn = document.getElementById('lightbox-close');
 
-  img.addEventListener('click', function () {
-    lightbox.classList.remove("lightbox-hidden");
+  thumbnail.addEventListener('click', function () {
+    lightbox.classList.remove('hidden');
   });
 
-  close.addEventListener('click', function () {
-    lightbox.classList.add("lightbox-hidden");
+  closeBtn.addEventListener('click', function () {
+    lightbox.classList.add('hidden');
   });
 
+  // Close lightbox if you click outside the image
   lightbox.addEventListener('click', function (e) {
     if (e.target === lightbox) {
-      lightbox.classList.add("lightbox-hidden");
+      lightbox.classList.add('hidden');
     }
   });
 });
