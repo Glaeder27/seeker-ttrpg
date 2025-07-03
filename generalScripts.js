@@ -1,72 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     let tooltipDefinitions = {}; // Inizializza l'oggetto vuoto
 
-    // --- TOOLTIP INITIALIZATION FUNCTION ---
-    // Define the function that sets up the tooltips
-    function initializeTooltips() {
-        const hoverWords = document.querySelectorAll('.tooltip');
-        const tooltip = document.createElement('div');
-        tooltip.classList.add('global-tooltip');
-
-        // --- AGGIUNTA ICONA LENTE D'INGRANDIMENTO ---
-        const tooltipIcon = document.createElement('div');
-        tooltipIcon.classList.add('tooltip-icon');
-        tooltipIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`;
-
-        const tooltipContentWrapper = document.createElement('div');
-        tooltipContentWrapper.classList.add('tooltip-content-wrapper');
-
-        tooltip.appendChild(tooltipIcon);
-        tooltip.appendChild(tooltipContentWrapper);
-        // --- FINE AGGIUNTA ICONA ---
-
-        document.body.appendChild(tooltip);
-
-        tooltip.style.opacity = '0';
-        tooltip.style.pointerEvents = 'none';
-        tooltip.style.visibility = 'hidden';
-        tooltip.style.display = 'block';
-
-        hoverWords.forEach(word => {
-            word.addEventListener('mouseenter', (event) => {
-                const tooltipKey = word.dataset.tooltipKey;
-                // Make sure tooltipDefinitions is available in this scope.
-                // Since it's declared with 'let' in the outer scope, it is.
-                const tooltipContent = tooltipDefinitions[tooltipKey];
-
-                tooltipContentWrapper.innerHTML = tooltipContent;
-
-                const wordRect = word.getBoundingClientRect();
-
-                // Misura le dimensioni del tooltip prima di posizionarlo
-                const tooltipWidth = tooltip.offsetWidth; // This might be 0 if display is 'none' initially, but you set it to 'block'
-                const tooltipHeight = tooltip.offsetHeight;
-
-                let tooltipLeft = wordRect.left;
-                let tooltipTop = wordRect.bottom + 10;
-
-                tooltip.style.left = tooltipLeft + 'px';
-                tooltip.style.top = tooltipTop + 'px';
-
-                tooltip.style.visibility = 'visible';
-                tooltip.style.opacity = '1';
-                tooltip.style.pointerEvents = 'auto';
-            });
-
-            word.addEventListener('mouseleave', () => {
-                tooltip.style.opacity = '0';
-                tooltip.style.pointerEvents = 'none';
-                setTimeout(() => {
-                    if (tooltip.style.opacity === '0') {
-                        tooltip.style.visibility = 'hidden';
-                    }
-                }, 300);
-            });
-        });
-    }
-    // --- END TOOLTIP INITIALIZATION FUNCTION ---
-
-
     // --- FETCH TOOLTIP DEFINITIONS FROM GITHUB ---
     const definitionsUrl = 'https://glaeder27.github.io/seeker-ttrpg/tooltipDefinitions.json';
 
@@ -89,20 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     // --- END FETCH TOOLTIP DEFINITIONS ---
 
-    // Collapsible list logic (this part doesn't depend on tooltipDefinitions, so it can run immediately)
+    // Collapsible list logic
     const collapsibleItems = document.querySelectorAll('.collapsible-item');
     collapsibleItems.forEach(item => {
         const header = item.querySelector('.collapsible-header');
         const content = item.querySelector('.collapsible-content');
-        const icon = header.querySelector('.collapsible-icon'); // Assuming you have an icon for this too
-
         content.style.height = '0px';
 
         header.addEventListener('click', () => {
             item.classList.toggle('expanded');
-            if (icon) { // Toggle icon rotation if icon exists
-                icon.classList.toggle('expanded-icon');
-            }
             if (item.classList.contains('expanded')) {
                 content.style.height = content.scrollHeight + 'px';
                 content.classList.add('expanded-content');
@@ -117,11 +46,89 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (item.classList.contains('expanded')) {
                     content.style.height = 'auto';
                 }
-                content.removeEventListener('transitionend', handler, { once: true }); // Add { once: true } here as well
+                content.removeEventListener('transitionend', handler);
             });
         });
     });
 
-    // You might have another collapsible logic for .collapsible-overlap here,
-    // which also runs immediately as it doesn't depend on tooltipDefinitions.
+    // Pop-up/Tooltip logic
+    const hoverWords = document.querySelectorAll('.hover-word');
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('global-tooltip');
+
+    // --- AGGIUNTA ICONA LENTE D'INGRANDIMENTO ---
+    // 1. Crea il contenitore per l'icona
+    const tooltipIcon = document.createElement('div');
+    tooltipIcon.classList.add('tooltip-icon');
+    tooltipIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`;
+
+    // 3. Crea un wrapper per il contenuto testuale
+    const tooltipContentWrapper = document.createElement('div');
+    tooltipContentWrapper.classList.add('tooltip-content-wrapper');
+
+    // 4. Appendi l'icona e il wrapper del contenuto al div principale del tooltip
+    tooltip.appendChild(tooltipIcon);
+    tooltip.appendChild(tooltipContentWrapper);
+    // --- FINE AGGIUNTA ICONA ---
+
+    document.body.appendChild(tooltip);
+
+    // Inizializza il tooltip come nascosto non appena viene creato
+    tooltip.style.opacity = '0';
+    tooltip.style.pointerEvents = 'none';
+    tooltip.style.visibility = 'hidden';
+    tooltip.style.display = 'block'; /* Mantiene display:block per misurazioni accurate */
+
+
+    hoverWords.forEach(word => {
+        word.addEventListener('mouseenter', (event) => {
+            const tooltipKey = word.dataset.tooltipKey;
+            const tooltipContent = tooltipDefinitions[tooltipKey];
+
+            // Inserisci il contenuto nel wrapper, non nel div principale del tooltip
+            tooltipContentWrapper.innerHTML = tooltipContent;
+
+            const wordRect = word.getBoundingClientRect();
+
+            // Misura le dimensioni del tooltip prima di posizionarlo
+            const tooltipWidth = tooltip.offsetWidth;
+            const tooltipHeight = tooltip.offsetHeight;
+
+            // Calcola la posizione (semplificata, sotto e allineato a sinistra)
+            let tooltipLeft = wordRect.left;
+            let tooltipTop = wordRect.bottom + 10; // 10px sotto la parola
+
+            // Applica la posizione
+            tooltip.style.left = tooltipLeft + 'px';
+            tooltip.style.top = tooltipTop + 'px';
+
+            // Rendi il tooltip visibile
+            tooltip.style.visibility = 'visible';
+            tooltip.style.opacity = '1';
+            tooltip.style.pointerEvents = 'auto';
+        });
+
+        word.addEventListener('mouseleave', () => {
+            // Nascondi il tooltip
+            tooltip.style.opacity = '0';
+            tooltip.style.pointerEvents = 'none';
+            // Completa la transizione e poi nascondi completamente
+            setTimeout(() => {
+                if (tooltip.style.opacity === '0') {
+                    tooltip.style.visibility = 'hidden';
+                }
+            }, 300);
+        });
+    });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.toc a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 });
