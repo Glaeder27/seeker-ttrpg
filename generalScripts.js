@@ -111,26 +111,17 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
-
-  tocLinks.forEach(function (anchor) {
+  document.querySelectorAll('.toc a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
-
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
 
-        // 🪄 Force layout refresh by toggling a visual layout property
-        const container = document.querySelector('.main-wrapper'); // or your outermost div
-        if (container) {
-          setTimeout(() => {
-            container.style.gap = '49px'; // temporarily change gap
-            setTimeout(() => {
-              container.style.gap = '50px'; // restore original value
-            }, 50); // small delay
-          }, 400); // enough time for scroll animation to finish
-        }
+        document.body.style.paddingRight = "1px";
+        requestAnimationFrame(() => {
+          document.body.style.paddingRight = "";
+        });
       }
     });
   });
