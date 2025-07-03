@@ -1187,6 +1187,7 @@ blockquote footer {
     padding: 1rem;
     font-size: 0.9em;
     width: 250px;
+    border-radius: 10px;
 }
 
 .infobox table {
