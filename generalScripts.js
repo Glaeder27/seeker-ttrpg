@@ -110,14 +110,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+let lastTarget = null;
+
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.toc a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        lastTarget = target;
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
       }
     });
+  });
+
+  window.addEventListener('resize', () => {
+    if (lastTarget) {
+      setTimeout(() => {
+        lastTarget.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+    }
   });
 });
