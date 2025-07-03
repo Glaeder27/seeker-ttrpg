@@ -762,6 +762,7 @@ blockquote footer {
     margin-bottom: 1em;
     text-indent: 1em;
     color:#1c1a16;
+    font-family: var(--handwritten-font);
 }
 
 .blockquote-medieval p:first-of-type::first-letter {
