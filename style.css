@@ -186,7 +186,7 @@ td {
 
 td:nth-child(n+2) {
     /* Target CXP, SXP, EXP columns */
-    text-align: center;
+    text-align: left;
 }
 
 thead th {
