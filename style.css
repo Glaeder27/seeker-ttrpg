@@ -26,6 +26,7 @@ body {
     background: transparent;
     color: var(--off-white);
     overflow: hidden !important;
+    min-height: 100%;
 }
 
 body::-webkit-scrollbar {
