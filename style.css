@@ -769,7 +769,7 @@ blockquote footer {
     font-size: 4em;
     line-height: 1;
     float: left;
-    margin-right: 0.1em;
+    margin-right: -0.1em;
     color: var(--rust-red);
     padding-top: 0.05em;
 }
