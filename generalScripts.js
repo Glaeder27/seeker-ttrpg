@@ -126,3 +126,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const lightbox = document.getElementById("lightbox-overlay");
+  const img = document.getElementById("expandable-image");
+  const close = document.querySelector(".lightbox-close");
+
+  img.addEventListener('click', function () {
+    lightbox.classList.remove("lightbox-hidden");
+  });
+
+  close.addEventListener('click', function () {
+    lightbox.classList.add("lightbox-hidden");
+  });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      lightbox.classList.add("lightbox-hidden");
+    }
+  });
+});
