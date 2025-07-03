@@ -1227,7 +1227,7 @@ blockquote footer {
 }
 
 .infobox {
-    background-color: rgba( var(--ancient-gold), 0.1);
+    background-color: rgba(var(--ancient-gold-rgb), 0.1);
     border: 1px solid #d4c6a5;
     padding: 1rem;
     font-size: 0.9em;
