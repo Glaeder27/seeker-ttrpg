@@ -1,6 +1,7 @@
 {
-    "actionDiceDefinition": "These dice represent a character's <b>competence</b>, attributes, trained abilities, and any benefits derived from equipment or external assistance. They are rolled to determine the <b>success or failure</b> of an action.",
-    "riskDiceDefinition": "These dice signify the inherent difficulty of an action, its intrinsic danger, environmental threats, or the character's haste or fatigue. They are rolled to ascertain the <b>consequences</b> of an action.",
-    "movementTagDefinition": "This tag is assigned to abilities that involve changing position or manipulating physical space. Rules often interact with this tag to restrict or modify movement effects.",
-    "consumableTagDefinition": "This tag is assigned to items that are used up or expended upon activation or after a certain number of uses. Once consumed, their effect is typically gone."
+    "actionDice": "These dice represent a character's <b>competence</b>, attributes, trained abilities, and any benefits derived from equipment or external assistance. They are rolled to determine the <b>success or failure</b> of an action.",
+    "riskDice": "These dice signify the inherent difficulty of an action, its intrinsic danger, environmental threats, or the character's haste or fatigue. They are rolled to ascertain the <b>consequences</b> of an action.",
+    "tagMovement": "This tag is assigned to abilities that involve changing position or manipulating physical space. Rules often interact with this tag to restrict or modify movement effects.",
+    "tagConsumable": "This tag is assigned to items that are used up or expended upon activation or after a certain number of uses. Once consumed, their effect is typically gone.",
+    "pillarsOfPlay": "The three pillars—Combat, Social, and Exploration—are the core areas of character growth. Advancing in a pillar unlocks abilities related to that theme."
 }
