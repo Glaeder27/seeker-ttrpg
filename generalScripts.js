@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.fonts.ready.then(function () {
   const headerOffset = 80;
 
   document.querySelectorAll('.toc a[href^="#"]').forEach(function (anchor) {
