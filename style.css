@@ -157,7 +157,7 @@ dl dd strong {
 }
 
 a:link {
-    color: #F6CB75; 
+    color: #F6CB75;
     font-weight: normal;
 }
 
@@ -766,6 +766,70 @@ blockquote footer {
     color: #777;
 }
 
+/* --- Your 15th-Century Style (with a class name) --- */
+.blockquote-medieval {
+    background-color: #f8f5ed; /* A light parchment-like background */
+    border-left: 5px solid #a88a6d; /* A subtle border resembling a manuscript edge */
+    margin: 2em 0;
+    padding: 1.5em 2em;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    font-family: 'Georgia', serif; /* A classic, readable serif font */
+    line-height: 1.6; /* Comfortable reading line height */
+    color: #3f3f3f; /* Dark, but not harsh black text */
+    position: relative; /* Needed for potential decorative elements */
+}
+
+/* Style for the "body" of the quote within the medieval style */
+.blockquote-medieval p {
+    font-size: 1.15em; /* Slightly larger text for the main quote */
+    margin-bottom: 1em; /* Space between quote paragraphs if multiple */
+    text-indent: 1em; /* Indent the first line of paragraphs like older texts */
+}
+
+/* Decorative initial letter (optional, for the very first letter of the quote) */
+.blockquote-medieval p:first-of-type::first-letter {
+    font-family: 'Old English Text MT', 'UnifrakturMaguntia', serif; /* A Blackletter/Fraktur font if available */
+    font-size: 4em; /* Large initial letter */
+    line-height: 1;
+    float: left; /* Make it float to the left of the text */
+    margin-right: 0.1em;
+    color: #6d3215; /* A dark, rich red or brown for the initial */
+    padding-top: 0.05em; /* Adjust for vertical alignment */
+}
+
+/* Style for the "signature" of the writer within the medieval style */
+.blockquote-medieval footer {
+    text-align: right; /* Align signature to the right */
+    font-family: 'Cursive', 'Brush Script MT', handwriting; /* A more ornate, script-like font for the signature */
+    font-size: 0.95em; /* Slightly smaller than the body text */
+    font-style: italic; /* Italicize the signature */
+    color: #5a5a5a; /* Slightly lighter color for the signature */
+    margin-top: 1em; /* Space above the signature */
+}
+
+/* Optional: Add a quote icon or decorative element for the medieval style */
+.blockquote-medieval::before {
+    content: "\201C"; /* Left double quotation mark */
+    font-family: 'Georgia', serif;
+    font-size: 5em; /* Large quote mark */
+    color: rgba(0, 0, 0, 0.1); /* Faded, subtle quote mark */
+    position: absolute;
+    top: 0.1em;
+    left: 0.05em;
+    z-index: -1; /* Place it behind the text */
+}
+
+.blockquote-medieval::after {
+    content: "\201D"; /* Right double quotation mark */
+    font-family: 'Georgia', serif;
+    font-size: 5em;
+    color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: -0.2em; /* Adjust position */
+    right: 0.05em;
+    z-index: -1;
+}
+
 .timeline-container {
     display: flex;
     gap: 20px;
@@ -1028,6 +1092,7 @@ blockquote footer {
     font-size: 0.9em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .timeline-container {
     display: flex;
     gap: 20px;
@@ -1035,34 +1100,34 @@ blockquote footer {
     margin: auto;
     padding: 40px 20px;
     color: #e0d7c2;
-  }
+}
 
-  .timeline-nav {
+.timeline-nav {
     flex: 0 0 100px;
     position: sticky;
     top: 100px;
-  }
+}
 
-  .timeline-nav ul {
+.timeline-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .timeline-nav li {
+.timeline-nav li {
     margin: 8px 0;
     font-size: 0.9em;
     cursor: pointer;
     color: #d2b48c;
-  }
+}
 
-  .timeline {
+.timeline {
     flex-grow: 1;
     position: relative;
     padding-left: 40px;
-  }
+}
 
-  .timeline::before {
+.timeline::before {
     content: '';
     position: absolute;
     width: 4px;
@@ -1070,16 +1135,16 @@ blockquote footer {
     top: 0;
     bottom: 0;
     left: 12px;
-  }
+}
 
-  .timeline-event {
+.timeline-event {
     position: relative;
     margin-bottom: 30px;
     padding-left: 40px;
     transition: background 0.3s ease;
-  }
+}
 
-  .timeline-event::before {
+.timeline-event::before {
     content: attr(data-icon);
     position: absolute;
     left: -4px;
@@ -1094,75 +1159,79 @@ blockquote footer {
     border-radius: 50%;
     line-height: 20px;
     font-weight: bold;
-  }
+}
 
-  .timeline-event h3 {
+.timeline-event h3 {
     margin: 0;
     font-size: 1.1em;
     color: #f0e6c4;
     cursor: pointer;
-  }
+}
 
-  .timeline-event p {
+.timeline-event p {
     margin: 5px 0 0;
     font-size: 0.95em;
     color: #c4b99b;
     line-height: 1.5;
     display: none;
     transition: opacity 0.3s ease;
-  }
+}
 
-  .timeline-event.expanded p {
+.timeline-event.expanded p {
     display: block;
-  }
+}
 
-  .timeline-event:hover {
+.timeline-event:hover {
     background-color: rgba(255, 255, 255, 0.03);
     padding-left: 42px;
-  }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .timeline-container {
-      flex-direction: column;
+        flex-direction: column;
     }
 
     .timeline-nav {
-      display: none;
+        display: none;
     }
 
     .timeline {
-      padding-left: 20px;
+        padding-left: 20px;
     }
 
     .timeline::before {
-      left: 0;
+        left: 0;
     }
 
     .timeline-event {
-      padding-left: 30px;
+        padding-left: 30px;
     }
 
     .timeline-event::before {
-      left: -10px;
+        left: -10px;
     }
-  }
+}
+
 .infobox {
-  background-color: #f5f3ec;
-  border: 1px solid #d4c6a5;
-  padding: 1rem;
-  font-size: 0.9em;
-  width: 250px;
+    background-color: #f5f3ec;
+    border: 1px solid #d4c6a5;
+    padding: 1rem;
+    font-size: 0.9em;
+    width: 250px;
 }
+
 .infobox table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
+
 .infobox td {
-  vertical-align: top;
-  padding: 0.2em 0.3em;
+    vertical-align: top;
+    padding: 0.2em 0.3em;
 }
+
 .infobox h3 {
-  font-size: 1.1em;
-  border-bottom: 1px solid #cbbca0;
-  margin-top: 0;
+    font-size: 1.1em;
+    border-bottom: 1px solid #cbbca0;
+    margin-top: 0;
 }
