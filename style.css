@@ -110,20 +110,42 @@ h2.chapter {
   border-right: 6px solid var(--ancient-gold, #d6b879);
   background: rgba(var(--burnt-copper-rgb), 0.05);
   border-radius: 10px;
-  border-image: url("https://www.transparenttextures.com/patterns/stucco.png") 30 round;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
   text-align: center;
 }
 
+h2.chapter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
+  border-radius: 10px 0 0 10px;
+}
+
 h2.chapter::after {
-  content: "⸺ ✦ ⸺";
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
+  border-radius: 0 10px 10px 0;
+}
+
+.chapter-ornament {
   display: block;
   text-align: center;
   margin-top: 10px;
   font-size: 0.6em;
   letter-spacing: 0.3em;
   color: var(--ancient-gold, #d6b879);
+  position: relative;
+  z-index: 1;
 }
 
 .main-heading-line {
