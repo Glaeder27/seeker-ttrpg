@@ -1,23 +1,33 @@
-/* --- Base Styles --- */
+:root {
+    --bright-gold: #F6CB75;
+    --ancient-gold: #D4B55A;
+    --pale-copper: #C99C5E;
+    --pale-beige: #C6BCA9;
+    --burnt-copper: #A07C44;
+    --deep-charcoal: #161718;
+    --brown-charcoal: #3D2E23;
+    --rust-red: #8A3C30;
+    --faded-jade: #7E9E85;
+    --warm-stone: #6B6B61;
+    --off-white: #F0F0F0;
+}
+
 html,
 body {
     font-family: montserrat, sans-serif;
     margin: 0;
     padding: 0;
     background: transparent;
-    color: #f0f0f0;
+    color: var(--off-white);
     overflow: hidden !important;
-    /* Mantenuto per la rimozione della scrollbar */
 }
 
-/* Scrollbar hiding for WebKit browsers */
 body::-webkit-scrollbar {
     display: none;
     width: 0px;
     background: transparent;
 }
 
-/* Scrollbar hiding for Firefox */
 html {
     scrollbar-width: none;
 }
@@ -28,9 +38,8 @@ html {
     margin: 0 auto;
 }
 
-/* --- Headings --- */
 h2 {
-    background-color: #434343;
+    background-color: var(--warm-stone);
     padding: 10px 10px 8px 12px;
     margin: 40px 0px 20px 0px;
     border-radius: 10px;
@@ -38,19 +47,19 @@ h2 {
     text-transform: uppercase;
     font-variant: small-caps;
     font-family: montserrat, sans-serif;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-weight: 500;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 h3 {
-    border-bottom: 1px solid rgba(212, 181, 90, 0.5);
+    border-bottom: 1px solid var(--ancient-gold);
     padding-bottom: 5px;
     margin-top: 30px;
     margin-bottom: 15px;
     font-size: 28px;
     font-family: montserrat, sans-serif;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-weight: 500;
 }
 
@@ -60,7 +69,7 @@ h4 {
     margin-top: 20px;
     font-size: 22px;
     font-family: montserrat, sans-serif;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-weight: 500;
 }
 
@@ -79,13 +88,12 @@ h4 {
     font-weight: normal;
 }
 
-/* --- Text and Lists --- */
 p,
 li {
     line-height: 1.6;
     font-family: montserrat, sans-serif;
     font-weight: 400;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-size: 0.9rem;
 }
 
@@ -97,20 +105,11 @@ ol {
 
 ul {
     list-style-type: disc !important;
-    /* Mantenuto per specificità */
     margin-left: 20px !important;
-    /* Mantenuto per specificità */
     padding-left: 0 !important;
-    /* Mantenuto per specificità */
     margin-top: 0 !important;
-    /* Mantenuto per specificità */
     margin-bottom: 0 !important;
-    /* Mantenuto per specificità */
 }
-
-/* Ho rimosso ul .examples perché ul da solo dovrebbe bastare per lo stile della lista.
-   Se hai bisogno di ul.examples per uno stile diverso, riaggiungilo,
-   ma senza !important se ul ha già le regole desiderate. */
 
 li {
     margin-bottom: 8px;
@@ -126,7 +125,7 @@ dl {
     margin-top: 15px;
     margin-bottom: 15px;
     padding-left: 20px;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-family: montserrat, sans-serif;
     line-height: 1.5;
     font-size: 0.9rem;
@@ -138,14 +137,14 @@ dt {
     font-weight: bold;
     margin-left: 0;
     margin-bottom: 5px;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-size: 0.9rem;
 }
 
 dd {
     margin-left: 20px;
     margin-bottom: 10px;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-weight: normal;
     font-size: 0.9rem;
 }
@@ -175,14 +174,13 @@ a:active {
 }
 
 .example-text {
-    color: #f0f0f0;
+    color: var(--off-white);
     font-family: montserrat, sans-serif;
     line-height: 1.6;
     margin-bottom: 10px;
     font-size: 0.9em;
 }
 
-/* --- Table Styles --- */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -203,7 +201,7 @@ td {
 }
 
 td:nth-child(n+2) {
-    /* Target CXP, SXP, EXP columns */
+    /* Target CXP, SXP, EXP columns, mantenuto left per il momento*/
     text-align: left;
 }
 
@@ -222,7 +220,6 @@ tbody tr:hover {
     background-color: #505050;
 }
 
-/* --- Special Blocks --- */
 .designer-note,
 .example-block,
 .quick-reference {
@@ -251,7 +248,6 @@ tbody tr:hover {
     font-variant: small-caps;
 }
 
-/* --- TOOLTIP STYLES --- */
 .tooltip {
     position: relative;
     display: inline-block;
@@ -274,10 +270,10 @@ tbody tr:hover {
 .global-tooltip {
     position: absolute;
     background-color: #434343;
-    color: #f0f0f0;
+    color: var(--off-white);
     padding: 10px 40px 10px 15px;
     border-radius: 5px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid var(--off-white);
     box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.4);
     z-index: 1000;
     transition: opacity 0.3s ease-in-out;
@@ -298,7 +294,7 @@ tbody tr:hover {
     right: 8px;
     width: 22px;
     height: 22px;
-    color: #f0f0f0;
+    color: var(--off-white);
     z-index: 1001;
     display: flex;
     align-items: center;
@@ -318,7 +314,7 @@ tbody tr:hover {
     visibility: hidden;
     width: 280px;
     background-color: #2a2a2a;
-    color: #f0f0f0;
+    color: var(--off-white);
     text-align: left;
     border: 1px solid #555;
     border-radius: 6px;
@@ -340,7 +336,6 @@ tbody tr:hover {
     opacity: 1;
 }
 
-/* --- Outcome/Columns Styles --- */
 .outcome-container {
     display: flex;
     gap: 20px;
@@ -366,16 +361,16 @@ tbody tr:hover {
 }
 
 .outcome-box.success {
-    border-color: #25a55a;
+    border-color: var(--faded-jade);
 }
 
 .outcome-box.failure {
-    border-color: #ce261a;
+    border-color: var(--rust-red);
 }
 
 .outcome-box p {
     margin: 4px 0;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-family: montserrat, sans-serif;
     line-height: 1.2;
 }
@@ -389,12 +384,12 @@ tbody tr:hover {
     font-size: 1.4em;
     font-weight: bold;
     text-transform: uppercase;
-    color: #f0f0f0;
+    color: var(--off-white);
 }
 
 .action-dice-label {
     font-weight: bold;
-    color: #f0f0f0;
+    color: var(--off-white);
 }
 
 .outcome-text-highlight {
@@ -406,11 +401,11 @@ tbody tr:hover {
 }
 
 .success-color {
-    color: #25a55a !important;
+    color: var(--faded-jade) !important;
 }
 
 .failure-color {
-    color: #ce261a !important;
+    color: var(--rust-red) !important;
 }
 
 .text-icon {
@@ -419,7 +414,6 @@ tbody tr:hover {
     vertical-align: bottom;
 }
 
-/* --- Collapsible Item Styles --- */
 .collapsible-item {
     background-color: #484848;
     border-radius: 10px;
@@ -436,7 +430,7 @@ tbody tr:hover {
     align-items: center;
     padding: 15px 20px;
     cursor: pointer;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-family: montserrat, sans-serif;
     font-weight: bold;
     font-size: 1.2em;
@@ -462,7 +456,7 @@ tbody tr:hover {
 }
 
 .collapsible-icon svg path {
-    fill: #f0f0f0;
+    fill: var(--off-white);
 }
 
 .collapsible-item.expanded .collapsible-icon {
@@ -474,7 +468,7 @@ tbody tr:hover {
     overflow: hidden;
     transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
     padding: 0 20px;
-    color: #f0f0f0;
+    color: var(--off-white);
     font-family: montserrat, sans-serif;
     box-sizing: border-box;
     font-size: 0.9rem;
@@ -494,7 +488,7 @@ tbody tr:hover {
 }
 
 .collapsible-content li {
-    color: #f0f0f0;
+    color: var(--off-white);
     font-family: montserrat, sans-serif;
     line-height: 1.6;
     margin-bottom: 10px;
@@ -504,13 +498,12 @@ tbody tr:hover {
     font-weight: bold;
 }
 
-/* --- Box Rule Styles --- */
 .box-rule {
     background-color: #484848;
     border-radius: 10px;
     padding: 15px 20px;
     margin-top: 25px;
-    color: #f0f0f0;
+    color: var(--off-white);
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -546,7 +539,6 @@ tbody tr:hover {
     display: block;
 }
 
-/* --- Custom Grid Styles for Aptitudes --- */
 .aptitude-grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -569,11 +561,10 @@ tbody tr:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    color: #f0f0f0;
+    color: var(--off-white);
     width: 100%;
     box-sizing: border-box;
     flex-grow: 1;
-    /* Keep this for equal card height */
 }
 
 .aptitude-card:hover .icon {
@@ -585,16 +576,13 @@ tbody tr:hover {
     height: 128px;
     background-color: #555;
     border-radius: 8px;
-    /* margin-bottom: 15px; */
-    /* Commented out as margin: 20px auto seems to override it */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2.5em;
-    color: #f0f0f0;
+    color: var(--off-white);
     border: 1px solid rgba(240, 240, 240, 0.21);
     margin: 20px auto;
-    /* Shortened shorthand */
     transition: all 0.5s ease-out;
     overflow: auto;
 }
@@ -608,13 +596,11 @@ tbody tr:hover {
     font-size: 1.4em;
     margin-top: 0;
     margin-bottom: 10px;
-    /* This was !important, but now it's just 10px, check if you need !important back */
-    color: #f0f0f0;
+    color: var(--off-white);
     border-bottom: none;
     text-transform: uppercase;
     text-align: center;
     margin: 0 auto !important;
-    /* Mantenuto !important perché hai `margin: 0px auto 0px auto !important;` */
 }
 
 .aptitude-card p {
@@ -631,12 +617,9 @@ tbody tr:hover {
 
 .aptitude-category-title {
     font-size: 1.3em !important;
-    /* Mantenuto !important */
     margin-bottom: -20px !important;
-    /* Mantenuto !important */
-    color: #f0f0f0;
+    color: var(--off-white);
     border-bottom: none !important;
-    /* Mantenuto !important */
     padding-bottom: 5px;
     width: 100%;
     grid-column: 1 / -1;
@@ -646,7 +629,7 @@ tbody tr:hover {
 .aptitude-category-description {
     line-height: 1.6;
     margin-bottom: 0px;
-    color: #f0f0f0;
+    color: var(--off-white);
     grid-column: 1 / -1;
 }
 
@@ -671,7 +654,7 @@ tbody tr:hover {
     flex-direction: column;
     align-items: flex-start;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #f0f0f0;
+    color: var(--off-white);
 }
 
 .polarity-block .polarity-icon-wrapper img {
@@ -685,15 +668,11 @@ tbody tr:hover {
     flex-grow: 1;
 }
 
-/* New style for the description wrapper (UNCHANGED, but essential for card height) */
-/* Questa regola era posizionata in un punto strano, l'ho spostata vicino a .aptitude-card */
 .aptitude-card .aptitude-description-container {
     flex-grow: 1;
     margin-bottom: 10px;
 }
 
-
-/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     h2 {
         font-size: 1.8em;
@@ -720,25 +699,20 @@ tbody tr:hover {
 
     .aptitude-grid-container {
         grid-template-columns: 1fr;
-        /* Una colonna per schermi piccoli */
     }
 
     .polarity-block {
         flex-direction: column;
-        /* Impila icona e testo su schermi piccoli */
         align-items: center;
-        /* Centra gli elementi impilati */
         padding-left: 0;
     }
 
     .polarity-block .polarity-icon-wrapper {
         margin: 0 auto 15px auto;
-        /* Centra l'icona e aggiungi spazio sotto */
     }
 
     .aptitude-card .icon {
         margin: 15px auto 15px auto;
-        /* Adjusted margins for small screens */
     }
 
     .tooltip .tooltiptext {
@@ -753,9 +727,7 @@ blockquote {
     margin: 1.5em 0;
     padding: 0.5em 1.5em;
     border-left: 4px solid #ccaa00;
-    /* Goldish yellow */
     background-color: #fffbe6;
-    /* Light yellow background */
     color: #555;
 }
 
@@ -766,66 +738,63 @@ blockquote footer {
     color: #777;
 }
 
-/* --- Your 15th-Century Style (with a class name) --- */
 .blockquote-medieval {
-    background-color: #f8f5ed; /* A light parchment-like background */
-    border-left: 5px solid #a88a6d; /* A subtle border resembling a manuscript edge */
+    background-color: #f8f5ed;
+    border-left: 5px solid #a88a6d;
     margin: 2em 0;
     padding: 1.5em 2em;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    font-family: 'Georgia', serif; /* A classic, readable serif font */
-    line-height: 1.6; /* Comfortable reading line height */
-    color: #3f3f3f; /* Dark, but not harsh black text */
-    position: relative; /* Needed for potential decorative elements */
-}
-
-/* Style for the "body" of the quote within the medieval style */
-.blockquote-medieval p {
-    font-size: 1.15em; /* Slightly larger text for the main quote */
-    margin-bottom: 1em; /* Space between quote paragraphs if multiple */
-    text-indent: 1em; /* Indent the first line of paragraphs like older texts */
-}
-
-/* Decorative initial letter (optional, for the very first letter of the quote) */
-.blockquote-medieval p:first-of-type::first-letter {
-    font-family: 'Old English Text MT', 'UnifrakturMaguntia', serif; /* A Blackletter/Fraktur font if available */
-    font-size: 4em; /* Large initial letter */
-    line-height: 1;
-    float: left; /* Make it float to the left of the text */
-    margin-right: 0.1em;
-    color: #6d3215; /* A dark, rich red or brown for the initial */
-    padding-top: 0.05em; /* Adjust for vertical alignment */
-}
-
-/* Style for the "signature" of the writer within the medieval style */
-.blockquote-medieval footer {
-    text-align: right; /* Align signature to the right */
-    font-family: 'Cursive', 'Brush Script MT', handwriting; /* A more ornate, script-like font for the signature */
-    font-size: 0.95em; /* Slightly smaller than the body text */
-    font-style: italic; /* Italicize the signature */
-    color: #5a5a5a; /* Slightly lighter color for the signature */
-    margin-top: 1em; /* Space above the signature */
-}
-
-/* Optional: Add a quote icon or decorative element for the medieval style */
-.blockquote-medieval::before {
-    content: "\201C"; /* Left double quotation mark */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     font-family: 'Georgia', serif;
-    font-size: 5em; /* Large quote mark */
-    color: rgba(0, 0, 0, 0.1); /* Faded, subtle quote mark */
-    position: absolute;
-    top: 0.1em;
-    left: 0.05em;
-    z-index: -1; /* Place it behind the text */
+    line-height: 1.6;
+    color: #3f3f3f;
+    position: relative;
+    border-radius: 0 5px 5px 0;
 }
 
-.blockquote-medieval::after {
-    content: "\201D"; /* Right double quotation mark */
+.blockquote-medieval p {
+    font-size: 1.15em;
+    margin-bottom: 1em;
+    text-indent: 1em;
+    color:#1c1a16;
+}
+
+.blockquote-medieval p:first-of-type::first-letter {
+    font-family: 'Old English Text MT', 'UnifrakturMaguntia', serif;
+    font-size: 4em;
+    line-height: 1;
+    float: left;
+    margin-right: 0.1em;
+    color: #6d3215;
+    padding-top: 0.05em;
+}
+
+.blockquote-medieval footer {
+    text-align: right;
+    font-family: 'Cursive', 'Brush Script MT', handwriting;
+    font-size: 0.95em;
+    font-style: italic;
+    color: #5a5a5a;
+    margin-top: 1em;
+}
+
+.blockquote-medieval::before {
+    content: "\201C";
     font-family: 'Georgia', serif;
     font-size: 5em;
     color: rgba(0, 0, 0, 0.1);
     position: absolute;
-    bottom: -0.2em; /* Adjust position */
+    top: 0.1em;
+    left: 0.05em;
+    z-index: -1;
+}
+
+.blockquote-medieval::after {
+    content: "\201D";
+    font-family: 'Georgia', serif;
+    font-size: 5em;
+    color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: -0.2em;
     right: 0.05em;
     z-index: -1;
 }
@@ -949,19 +918,15 @@ blockquote footer {
     }
 }
 
-/* Responsive grid for smaller screens */
 @media (max-width: 600px) {
     .advancement-grid {
         grid-template-columns: 1fr;
-        /* 1 column on small screens */
     }
 }
 
-/* --- Advancement Grid --- */
 .advancement-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* 2 columns */
     gap: 15px;
     padding: 15px 0;
 }
@@ -977,7 +942,6 @@ blockquote footer {
     text-align: center;
     border: 1px solid #555;
     min-height: 120px;
-    /* Ensure items have a consistent height */
     transition: background-color 0.2s, transform 0.2s;
 }
 
@@ -1007,7 +971,6 @@ blockquote footer {
     align-items: center;
 }
 
-/* Styles for the defense layer sections (re-purposed for stances) */
 .defense-layer-section {
     margin-top: 25px;
 }
@@ -1052,19 +1015,15 @@ blockquote footer {
     margin-top: 0 !important;
 }
 
-/* --- Turn Order Priority Specific Styles --- */
 .turn-order-list {
     list-style: none;
-    /* Remove default numbering */
     padding: 0;
     counter-reset: turn-order-counter;
-    /* Initialize counter */
 }
 
 .turn-order-list li {
     position: relative;
     padding-left: 40px;
-    /* Space for the custom number */
     margin-bottom: 8px;
     font-size: 1rem;
     display: flex;
@@ -1085,9 +1044,7 @@ blockquote footer {
     height: 28px;
     border-radius: 50%;
     background-color: #555;
-    /* Default circle background */
-    color: #f0f0f0;
-    /* Default number color */
+    color: var(--off-white);
     font-weight: bold;
     font-size: 0.9em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
