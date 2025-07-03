@@ -770,7 +770,7 @@ blockquote footer {
     font-size: 4em;
     line-height: 1;
     float: left;
-    margin-right: 0em;
+    margin-right: 0.1em;
     color: var(--rust-red);
     padding-top: 0.05em;
 }
@@ -1198,4 +1198,49 @@ blockquote footer {
     font-size: 1.1em;
     border-bottom: 1px solid #cbbca0;
     margin-top: 0;
+}
+
+.seeker-title {
+  text-align: center;
+  margin: 2rem 0 3rem 0;
+  font-family: 'IM Fell English', 'EB Garamond', Georgia, serif;
+  color: #2c1c0d;
+}
+
+.seeker-title .title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.8rem;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.seeker-title .title-container h1 {
+  margin: 0;
+  font-size: inherit;
+  background: linear-gradient(to right, #4d3a1b, #8b6f3f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.seeker-title .title-icon {
+  font-size: 2rem;
+  color: #6c5136;
+  transform: rotate(90deg);
+}
+
+.seeker-title .title-icon.flipped {
+  transform: rotate(-90deg);
+}
+
+.seeker-title .subtitle {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #5b4431;
+  letter-spacing: 0.03em;
 }
