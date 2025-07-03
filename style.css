@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 :root {
     --bright-gold: #F6CB75;
     --ancient-gold: #D4B55A;
@@ -13,6 +15,7 @@
 
     --default-font: 'Montserrat', sans-serif;
     --special-font: 'Georgia', serif;
+    --handwritten-font: 'Great Vibes', cursive;
 }
 
 html,
@@ -747,7 +750,7 @@ blockquote footer {
     margin: 2em 0;
     padding: 1.5em 2em;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: var(--special-font);
+    font-family: var(--handwritten-font);
     line-height: 1.6;
     color: #3f3f3f;
     position: relative;
@@ -767,13 +770,13 @@ blockquote footer {
     line-height: 1;
     float: left;
     margin-right: 0.1em;
-    color: #6d3215;
+    color: var(--rust-red);
     padding-top: 0.05em;
 }
 
 .blockquote-medieval footer {
     text-align: right;
-    font-family: 'Cursive', 'Brush Script MT', handwriting;
+    font-family: var(--special-font);
     font-size: 0.95em;
     font-style: italic;
     color: #5a5a5a;
