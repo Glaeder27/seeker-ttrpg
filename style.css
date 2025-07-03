@@ -1248,3 +1248,7 @@ blockquote footer {
   color: var(--burnt-copper);
   letter-spacing: 0.03em;
 }
+
+.page-lore {
+    padding: 50px 0 0 0;
+}
