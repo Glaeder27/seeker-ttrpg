@@ -10,11 +10,14 @@
     --faded-jade: #7E9E85;
     --warm-stone: #6B6B61;
     --off-white: #F0F0F0;
+
+    --default-font: 'Montserrat', sans-serif;
+    --special-font: 'Georgia', serif;
 }
 
 html,
 body {
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     margin: 0;
     padding: 0;
     background: transparent;
@@ -46,7 +49,7 @@ h2 {
     font-size: 2.5em;
     text-transform: uppercase;
     font-variant: small-caps;
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     color: var(--off-white);
     font-weight: 500;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -58,7 +61,7 @@ h3 {
     margin-top: 30px;
     margin-bottom: 15px;
     font-size: 28px;
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     color: var(--off-white);
     font-weight: 500;
 }
@@ -68,7 +71,7 @@ h4 {
     margin-bottom: 10px;
     margin-top: 20px;
     font-size: 22px;
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     color: var(--off-white);
     font-weight: 500;
 }
@@ -90,8 +93,8 @@ h4 {
 
 p,
 li {
-    line-height: 1.6;
-    font-family: montserrat, sans-serif;
+    line-height: 1.8;
+    font-family: var(--default-font);
     font-weight: 400;
     color: var(--off-white);
     font-size: 0.9rem;
@@ -118,7 +121,7 @@ li {
 b,
 strong {
     font-weight: bold;
-    color: #ffffff;
+    color: var(--off-white);
 }
 
 dl {
@@ -126,7 +129,7 @@ dl {
     margin-bottom: 15px;
     padding-left: 20px;
     color: var(--off-white);
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     line-height: 1.5;
     font-size: 0.9rem;
 }
@@ -156,26 +159,26 @@ dl dd strong {
 }
 
 a:link {
-    color: #F6CB75;
+    color: var(--ancient-gold);
     font-weight: normal;
 }
 
 a:visited {
-    color: #C99C5E;
+    color: var(--burnt-copper);
 }
 
 a:hover {
-    color: #F6CB75;
+    color: var(--bright-gold);
     cursor: pointer;
 }
 
 a:active {
-    color: #C99C5E;
+    color: var(--pale-copper);
 }
 
 .example-text {
     color: var(--off-white);
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     line-height: 1.6;
     margin-bottom: 10px;
     font-size: 0.9em;
@@ -263,8 +266,8 @@ tbody tr:hover {
 }
 
 .tooltip-trigger:hover {
-    border-bottom: 1px dotted #3fdada;
-    color: #3fdada;
+    border-bottom: 1px dotted var(--bright-gold);
+    color: var(--bright-gold);
 }
 
 .global-tooltip {
@@ -281,7 +284,7 @@ tbody tr:hover {
     text-align: left;
     font-size: 0.7em;
     line-height: 1.4;
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     display: block;
     opacity: 0;
     pointer-events: none;
@@ -371,7 +374,7 @@ tbody tr:hover {
 .outcome-box p {
     margin: 4px 0;
     color: var(--off-white);
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     line-height: 1.2;
 }
 
@@ -431,7 +434,7 @@ tbody tr:hover {
     padding: 15px 20px;
     cursor: pointer;
     color: var(--off-white);
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     font-weight: bold;
     font-size: 1.2em;
     transition: background-color 0.2s ease-in-out;
@@ -469,7 +472,7 @@ tbody tr:hover {
     transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
     padding: 0 20px;
     color: var(--off-white);
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     box-sizing: border-box;
     font-size: 0.9rem;
 }
@@ -489,7 +492,7 @@ tbody tr:hover {
 
 .collapsible-content li {
     color: var(--off-white);
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     line-height: 1.6;
     margin-bottom: 10px;
 }
@@ -512,7 +515,7 @@ tbody tr:hover {
     font-size: 1.3em;
     margin-top: 0;
     margin-bottom: 10px;
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
     text-align: left;
 }
 
@@ -521,7 +524,7 @@ tbody tr:hover {
     line-height: 1.5;
     margin-top: 0;
     margin-bottom: 0;
-    font-family: montserrat, sans-serif;
+    font-family: var(--default-font);
 }
 
 .box-rule b,
@@ -744,7 +747,7 @@ blockquote footer {
     margin: 2em 0;
     padding: 1.5em 2em;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'Georgia', serif;
+    font-family: var(--special-font);
     line-height: 1.6;
     color: #3f3f3f;
     position: relative;
@@ -779,7 +782,7 @@ blockquote footer {
 
 .blockquote-medieval::before {
     content: "\201C";
-    font-family: 'Georgia', serif;
+    font-family: var(--special-font);
     font-size: 5em;
     color: rgba(0, 0, 0, 0.1);
     position: absolute;
@@ -790,7 +793,7 @@ blockquote footer {
 
 .blockquote-medieval::after {
     content: "\201D";
-    font-family: 'Georgia', serif;
+    font-family: var(--special-font);
     font-size: 5em;
     color: rgba(0, 0, 0, 0.1);
     position: absolute;
