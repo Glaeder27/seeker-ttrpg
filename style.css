@@ -14,17 +14,17 @@
     --warm-stone: #6B6B61;
     --off-white: #F0F0F0;
 
-    --bright-gold-rgb: rgb(246, 203, 117);
-    --ancient-gold-rgb: rgb(212, 181, 90);
-    --pale-copper-rgb: rgb(201, 156, 94);
-    --pale-beige-rgb: rgb(198, 188, 169);
-    --burnt-copper-rgb: rgb(160, 124, 68);
-    --deep-charcoal-rgb: rgb(22, 23, 24);
-    --brown-charcoal-rgb: rgb(61, 46, 35);
-    --rust-red-rgb: rgb(138, 60, 48);
-    --faded-jade-rgb: rgb(126, 158, 133);
-    --warm-stone-rgb: rgb(107, 107, 97);
-    --off-white-rgb: rgb(240, 240, 240);
+    --bright-gold-rgb: 246, 203, 117;
+    --ancient-gold-rgb: 212, 181, 90;
+    --pale-copper-rgb: 201, 156, 94;
+    --pale-beige-rgb: 198, 188, 169;
+    --burnt-copper-rgb: 160, 124, 68;
+    --deep-charcoal-rgb: 22, 23, 24;
+    --brown-charcoal-rgb: 61, 46, 35;
+    --rust-red-rgb: 138, 60, 48;
+    --faded-jade-rgb: 126, 158, 133;
+    --warm-stone-rgb: 107, 107, 97;
+    --off-white-rgb: 240, 240, 240;
 
     --default-font: 'Montserrat', sans-serif;
     --special-font: 'Georgia', serif;
