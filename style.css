@@ -1218,6 +1218,7 @@ blockquote footer {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   position: relative;
+  scroll-margin-top: 80px;
 }
 
 .seeker-title .title-container h1 {

@@ -110,24 +110,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-document.fonts.ready.then(function () {
-  const headerOffset = 80;
-
+document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.toc a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-
-      const targetID = this.getAttribute('href');
-      const targetElement = document.querySelector(targetID);
-
-      if (targetElement) {
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
