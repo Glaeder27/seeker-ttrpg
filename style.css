@@ -14,6 +14,18 @@
     --warm-stone: #6B6B61;
     --off-white: #F0F0F0;
 
+    --bright-gold-rgb: rgb(246, 203, 117);
+    --ancient-gold-rgb: rgb(212, 181, 90);
+    --pale-copper-rgb: rgb(201, 156, 94);
+    --pale-beige-rgb: rgb(198, 188, 169);
+    --burnt-copper-rgb: rgb(160, 124, 68);
+    --deep-charcoal-rgb: rgb(22, 23, 24);
+    --brown-charcoal-rgb: rgb(61, 46, 35);
+    --rust-red-rgb: rgb(138, 60, 48);
+    --faded-jade-rgb: rgb(126, 158, 133);
+    --warm-stone-rgb: rgb(107, 107, 97);
+    --off-white-rgb: rgb(240, 240, 240);
+
     --default-font: 'Montserrat', sans-serif;
     --special-font: 'Georgia', serif;
     --handwritten-font: 'Great Vibes', cursive;
@@ -96,7 +108,7 @@ h2.chapter {
   margin: 60px 0 30px 0;
   border-left: 6px solid var(--ancient-gold, #d6b879);
   border-right: 6px solid var(--ancient-gold, #d6b879);
-  background: rgba(var(--burnt-copper), 0.15);
+  background: rgba(var(--burnt-copper-rgb), 0.15);
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
