@@ -1037,6 +1037,87 @@ blockquote footer {
   outline: none;
 }
 
+.collapsible-contents {
+  border: 2px solid var(--ancient-gold);
+  border-radius: 0.5rem;
+  background: var(--parchment-bg, #f7f1e1);
+  font-family: 'UnifrakturMaguntia', serif;
+  max-width: 280px;
+  user-select: none;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+.collapsible-contents summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--burnt-copper);
+  padding: 0.5rem 1rem;
+  list-style: none;
+  outline-offset: 4px;
+  outline-color: transparent;
+  transition: outline-color 0.3s ease;
+  position: relative;
+}
+
+.collapsible-contents summary:hover,
+.collapsible-contents summary:focus {
+  outline-color: var(--burnt-copper);
+}
+
+.collapsible-contents summary::-webkit-details-marker {
+  display: none; /* remove default arrow */
+}
+
+.collapsible-contents summary::before {
+  content: "▸"; /* right-pointing arrow */
+  display: inline-block;
+  margin-right: 0.75rem;
+  color: var(--rust-red);
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.collapsible-contents[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.collapsible-contents ul {
+  margin: 0 1.25rem 1rem 2rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.collapsible-contents li {
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+.collapsible-contents li::before {
+  content: "➤";
+  position: absolute;
+  left: -1.2rem;
+  color: var(--rust-red);
+  font-size: 1rem;
+  top: 0.15rem;
+  transition: color 0.3s ease;
+}
+
+.collapsible-contents a {
+  text-decoration: none;
+  color: var(--dark-ink);
+  font-weight: 600;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.collapsible-contents a:hover,
+.collapsible-contents a:focus {
+  color: var(--burnt-copper);
+  outline: none;
+}
+
 /*=============================================
 =                  TIMELINE                   =
 =============================================*/
