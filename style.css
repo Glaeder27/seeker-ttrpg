@@ -59,6 +59,7 @@ html {
     margin: 0 auto;
 }
 
+/* Headings */
 h2 {
     background-color: var(--warm-stone);
     padding: 10px 10px 8px 12px;
@@ -187,6 +188,7 @@ h2.section::after {
     font-weight: normal;
 }
 
+/* Body Text */
 p,
 li {
     line-height: 1.8;
@@ -280,6 +282,8 @@ a:active {
     font-size: 0.9em;
 }
 
+/* Tables */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -319,6 +323,8 @@ tbody tr:hover {
     background-color: #505050;
 }
 
+/* Notes */
+
 .designer-note,
 .example-block,
 .quick-reference {
@@ -346,6 +352,8 @@ tbody tr:hover {
     color: #ddd;
     font-variant: small-caps;
 }
+
+/* Tooltips */ 
 
 .tooltip {
     position: relative;
@@ -1280,7 +1288,7 @@ blockquote footer {
   font-family: var(--default-font, 'EB Garamond', serif);
   background: var(--dark-parchment, #2c2016);
   color: var(--off-white, #f4f1ec);
-  border: 2px solid var(--ancient-gold, #d6b879);
+  border: 1px solid rgba(var(--ancient-gold-rgb), 0.3);
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
