@@ -1181,17 +1181,17 @@ blockquote footer {
 =============================================*/
 
 .infobox {
-    float: right;
-    margin: 0 0 20px 20px;
-    width: 300px;
-    font-family: var(--default-font, 'EB Garamond', serif);
-    background: var(--dark-parchment, #2c2016);
-    color: var(--off-white, #f4f1ec);
-    border: 1px solid rgba(var(--ancient-gold-rgb), 0.3);
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+  flex: 0 0 300px;
+  max-width: 100%;
+  font-family: var(--default-font, 'EB Garamond', serif);
+  background: var(--dark-parchment, #2c2016);
+  color: var(--off-white, #f4f1ec);
+  border: 1px solid rgba(var(--ancient-gold-rgb), 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin: 0;
 }
 
 .infobox-image {
