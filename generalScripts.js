@@ -110,14 +110,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.collapsible-contents a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.collapsible-header');
+  const content = document.getElementById('contents-list');
+
+  header.addEventListener('click', () => {
+    const expanded = header.getAttribute('aria-expanded') === 'true';
+    header.setAttribute('aria-expanded', !expanded);
+    if (expanded) {
+      content.hidden = true;
+    } else {
+      content.hidden = false;
+      content.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  header.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+      header.click();
+    }
   });
 });
