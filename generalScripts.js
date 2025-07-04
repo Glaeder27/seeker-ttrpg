@@ -153,15 +153,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const topButtons = document.querySelectorAll('.scroll-top-btn');
-
-  topButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+document.querySelectorAll('.back-to-top').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
