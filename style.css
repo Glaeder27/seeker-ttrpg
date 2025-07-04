@@ -94,7 +94,7 @@ h4 {
     font-weight: 500;
 }
 
-h2.chapter {
+h2.section {
   position: relative;
   font-family: var(--default-font);
   font-size: 2.2em;
@@ -113,7 +113,7 @@ h2.chapter {
   text-align: center;
 }
 
-h2.chapter::before {
+h2.section::before {
   content: "";
   position: absolute;
   top: 0;
@@ -124,7 +124,7 @@ h2.chapter::before {
   border-radius: 10px 0 0 10px;
 }
 
-h2.chapter::after {
+h2.section::after {
   content: "";
   position: absolute;
   top: 0;
@@ -135,7 +135,7 @@ h2.chapter::after {
   border-radius: 0 10px 10px 0;
 }
 
-.chapter-ornament {
+.section-ornament {
   display: block;
   text-align: center;
   margin-top: 10px;
@@ -144,6 +144,29 @@ h2.chapter::after {
   color: var(--ancient-gold, #d6b879);
   position: relative;
   z-index: 1;
+}
+
+.section-wrapper {
+  text-align: center;
+  margin: 60px auto 30px auto;
+  max-width: 800px;
+  position: relative;
+}
+
+.section-number {
+  font-size: 1em;
+  font-weight: 600;
+  background-color: var(--burnt-copper, #a86b32);
+  color: var(--off-white, #f4f1ec);
+  display: inline-block;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  font-family: var(--default-font, 'EB Garamond', serif);
+  letter-spacing: 0.1em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .main-heading-line {
