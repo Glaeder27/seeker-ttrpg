@@ -116,11 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   toggleBtn.addEventListener('click', () => {
     const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-    toggleBtn.setAttribute('aria-expanded', String(!expanded));
-    if (expanded) {
-      contentsList.hidden = true;
-    } else {
-      contentsList.hidden = false;
-    }
+    toggleBtn.setAttribute('aria-expanded', !expanded);
+    contentsList.hidden = expanded;
+  });
+
+  const contentsLinks = document.querySelectorAll('#contents-list a[href^="#"]');
+  contentsLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        history.pushState(null, '', '#' + targetId);
+      }
+    });
   });
 });
