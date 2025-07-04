@@ -137,3 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+function collapseInfobox() {
+  document.querySelectorAll('.infobox-section').forEach(section => {
+    section.removeAttribute('open');
+  });
+}
