@@ -127,3 +127,13 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.infobox details').forEach(det => {
+    det.addEventListener('toggle', () => {
+      if (det.open) {
+        // scroll into view when a section opens
+        det.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+});
