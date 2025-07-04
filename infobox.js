@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+  });
 
     const definitionsUrl = 'https://glaeder27.github.io/seeker-ttrpg/tooltipDefinitions.json';
 
@@ -76,53 +77,28 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error loading tooltip definitions:', error);
         });
 
-    const collapsibleItems = document.querySelectorAll('.collapsible-item');
-    collapsibleItems.forEach(item => {
-        const header = item.querySelector('.collapsible-header');
-        const content = item.querySelector('.collapsible-content');
-        const icon = header.querySelector('.collapsible-icon');
-
-        content.style.height = '0px';
-
-        header.addEventListener('click', () => {
-            item.classList.toggle('expanded');
-            if (icon) {
-                icon.classList.toggle('expanded-icon');
-            }
-            if (item.classList.contains('expanded')) {
-                content.style.height = content.scrollHeight + 'px';
-                content.classList.add('expanded-content');
-            } else {
-                content.style.height = content.offsetHeight + 'px';
-                requestAnimationFrame(() => {
-                    content.style.height = '0px';
-                });
-                content.classList.remove('expanded-content');
-            }
-            content.addEventListener('transitionend', function handler() {
-                if (item.classList.contains('expanded')) {
-                    content.style.height = 'auto';
-                }
-                content.removeEventListener('transitionend', handler, { once: true });
-            });
-        });
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.infobox details').forEach(det => {
+    det.addEventListener('toggle', () => {
+      if (det.open) {
+        // scroll into view when a section opens
+        det.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
-
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.toc a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+  const toggleBtn = document.getElementById('toggle-infobox');
 
-        document.body.style.paddingRight = "1px";
-        requestAnimationFrame(() => {
-          document.body.style.paddingRight = "";
-        });
-      }
+  toggleBtn.addEventListener('click', () => {
+    const details = document.querySelectorAll('.infobox details');
+    const allOpen = Array.from(details).every(d => d.open);
+
+    details.forEach(d => {
+      d.open = !allOpen;
     });
+
+    toggleBtn.textContent = allOpen ? 'Expand All' : 'Collapse All';
   });
 });
