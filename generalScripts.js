@@ -138,12 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-function collapseInfobox() {
-  document.querySelectorAll('.infobox-section').forEach(section => {
-    section.removeAttribute('open');
-  });
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   const toggleBtn = document.getElementById('toggle-infobox');
 
