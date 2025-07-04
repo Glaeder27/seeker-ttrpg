@@ -874,7 +874,7 @@ blockquote footer {
 
 .blockquote-medieval {
     background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
-    background-color: rgba(var(--dark-paper-rgb), 0.5);
+    background-color: rgba(var(--dark-paper-rgb), 0.7);
     background-repeat: repeat;
     border-left: 0;
     margin: 2em 0;
@@ -885,6 +885,16 @@ blockquote footer {
     color: #3f3f3f;
     position: relative;
     border-radius: 0;
+}
+
+.blockquote-medieval,
+.blockquote-medieval {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 12px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--brown-charcoal), var(--burnt-copper));
 }
 
 .blockquote-medieval p {
@@ -913,7 +923,7 @@ blockquote footer {
     font-family: var(--special-font);
     font-size: 0.95em;
     font-style: italic;
-    color: #5a5a5a;
+    color: black;
     margin-top: 1em;
 }
 
@@ -1231,11 +1241,6 @@ blockquote footer {
     color: var(--ancient-gold, #d6b879);
     padding: 5px !important;
     position: relative;
-
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
 details[open]>.infobox-section::after {
@@ -1245,6 +1250,11 @@ details[open]>.infobox-section::after {
 .infobox details {
     margin-bottom: 8px;
     padding: 0;
+
+        user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .infobox details:last-of-type {
@@ -1260,6 +1270,7 @@ details[open]>.infobox-section::after {
     overflow-wrap: break-word;
     font-size: 0.9em;
     margin: 6px 0 0 0;
+    cursor: default
 }
 
 .infobox-table-wrapper {
