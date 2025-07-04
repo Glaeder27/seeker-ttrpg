@@ -1223,8 +1223,9 @@ blockquote footer {
 =============================================*/
 
 .infobox {
-    flex: 0 0 300px;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
     font-family: var(--default-font, 'EB Garamond', serif);
     background: var(--dark-parchment, #2c2016);
     color: var(--off-white, #f4f1ec);
