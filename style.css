@@ -1292,13 +1292,18 @@ details[open]>.infobox-section::after {
 .infobox-collapse-button {
   background: var(--warm-stone);
   color: var(--ancient-gold);
-  font-family: var(--title-font);
-  padding: 6px 12px;
+  font-family: var(--default-font);
+  padding: 6px 20px;
   border: 1px solid var(--ancient-gold);
   border-radius: 6px;
   margin: 8px auto 12px auto;
   display: block;
   cursor: pointer;
+}
+
+infobox-collapse-button:hover {
+  background: var(--ancient-gold);
+  color: var(--warm-stone);
 }
 
 details[open] .infobox-table {

@@ -143,3 +143,18 @@ function collapseInfobox() {
     section.removeAttribute('open');
   });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleBtn = document.getElementById('toggle-infobox');
+
+  toggleBtn.addEventListener('click', () => {
+    const details = document.querySelectorAll('.infobox details');
+    const allOpen = Array.from(details).every(d => d.open);
+
+    details.forEach(d => {
+      d.open = !allOpen;
+    });
+
+    toggleBtn.textContent = allOpen ? 'Expand All' : 'Collapse All';
+  });
+});
