@@ -19,6 +19,7 @@
     --warm-stone: #6B6B61;
     --off-white: #F0F0F0;
     --dark-paper: #938663;
+    --light-brown: #916339;
 
     /* RGB Color Palette */
     --bright-gold-rgb: 246, 203, 117;
@@ -875,7 +876,7 @@ blockquote footer {
 
 .blockquote-medieval {
     background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
-    background-color: rgba(var(--dark-paper-rgb), 0.7);
+    background-color: rgba(var(--dark-paper-rgb), 0.9);
     background-repeat: repeat;
     border-left: 0;
     margin: 2em 0;
@@ -887,6 +888,7 @@ blockquote footer {
     position: relative;
     border-radius: 0;
     position: relative;
+    border-radius: 12px;
 }
 
 .blockquote-medieval p {
@@ -927,7 +929,7 @@ blockquote footer {
   left: 0;
   width: 10px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
+  background: linear-gradient(to bottom, var(--light-brown), var(--brown-charcoal));
   border-radius: 10px 0 0 10px;
   z-index: 0;
 }
@@ -939,7 +941,7 @@ blockquote footer {
   right: 0;
   width: 10px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
+  background: linear-gradient(to bottom, var(--light-brown), var(--brown-charcoal));
   border-radius: 0 10px 10px 0;
   z-index: 0;
 }
