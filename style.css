@@ -869,7 +869,8 @@ blockquote footer {
     font-size: 0.9em;
     text-align: right;
     margin-top: 0.5em;
-    color: #777;
+    color: black;
+    z-index: 2;
 }
 
 .blockquote-medieval {
@@ -885,6 +886,7 @@ blockquote footer {
     color: #3f3f3f;
     position: relative;
     border-radius: 0;
+    position: relative;
 }
 
 .blockquote-medieval p {
@@ -895,6 +897,7 @@ blockquote footer {
     color: var(--deep-charcoal);
     font-family: var(--handwritten-font);
     line-height: 1;
+    z-index: 2;
 }
 
 .blockquote-medieval p:first-of-type::first-letter {
@@ -917,25 +920,50 @@ blockquote footer {
     margin-top: 1em;
 }
 
-.blockquote-medieval::before,
-.blockquote-medieval::after {
-    content: "\201C";
-    font-family: var(--special-font);
-    font-size: 5em;
-    color: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    z-index: -1;
-}
-
 .blockquote-medieval::before {
-    top: 0.1em;
-    left: 0.05em;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
+  border-radius: 10px 0 0 10px;
+  z-index: 0;
 }
 
 .blockquote-medieval::after {
-    content: "\201D";
-    bottom: -0.2em;
-    right: 0.05em;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
+  border-radius: 0 10px 10px 0;
+  z-index: 0;
+}
+
+.blockquote-medieval .quote-start,
+.blockquote-medieval .quote-end {
+  font-family: var(--special-font, 'Cinzel Decorative', serif);
+  font-size: 4em;
+  color: rgba(0, 0, 0, 0.08);
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blockquote-medieval .quote-start {
+  top: -0.4em;
+  left: -0.2em;
+  content: "❝";
+}
+
+.blockquote-medieval .quote-end {
+  bottom: -0.4em;
+  right: -0.2em;
+  content: "❞";
 }
 
 
