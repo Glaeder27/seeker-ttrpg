@@ -154,19 +154,19 @@ h2.section::after {
 }
 
 .section-number {
-  font-size: 1em;
-  font-weight: 600;
+  font-size: 0.85em;
+  font-weight: 500;
   background-color: var(--burnt-copper, #a86b32);
   color: var(--off-white, #f4f1ec);
   display: inline-block;
-  padding: 6px 14px;
+  padding: 4px 12px;
   margin-bottom: 10px;
   border-radius: 12px;
   text-transform: uppercase;
   font-variant: small-caps;
   font-family: var(--default-font, 'EB Garamond', serif);
   letter-spacing: 0.1em;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .main-heading-line {
