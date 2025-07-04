@@ -1313,6 +1313,7 @@ details[open]>.infobox-section::after {
     vertical-align: top;
     word-wrap: break-word;
     white-space: normal;
+    font-size: 0.85em;
 }
 
 .infobox-table th {
