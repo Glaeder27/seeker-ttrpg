@@ -18,7 +18,7 @@
     --faded-jade: #7E9E85;
     --warm-stone: #6B6B61;
     --off-white: #F0F0F0;
-    --dark-paper: ##938663;
+    --dark-paper: #938663;
 
     /* RGB Color Palette */
     --bright-gold-rgb: 246, 203, 117;
@@ -32,6 +32,7 @@
     --faded-jade-rgb: 126, 158, 133;
     --warm-stone-rgb: 107, 107, 97;
     --off-white-rgb: 240, 240, 240;
+    --dark-paper: 147, 134, 99;
 
     /* Font Families */
     --default-font: 'Montserrat', sans-serif;
@@ -873,7 +874,7 @@ blockquote footer {
 
 .blockquote-medieval {
     background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
-    background-color: var(--dark-paper);
+    background-color: rgba(var(--dark-paper-rgb), 0.5);
     background-repeat: repeat;
     border-left: 0;
     margin: 2em 0;
