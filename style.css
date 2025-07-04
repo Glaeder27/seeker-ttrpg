@@ -185,6 +185,7 @@ h2.section::after {
     margin: 60px auto 30px auto;
     max-width: 800px;
     position: relative;
+    padding-top: 2rem;
 }
 
 .section-number {
