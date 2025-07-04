@@ -226,31 +226,6 @@ h2.section::after {
 =                 BUTTONS                     =
 =============================================*/
 
-.back-to-top {
-  text-align: right;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-}
-
-.back-to-top a {
-  font-size: 0.85em;
-  font-family: var(--default-font, serif);
-  text-transform: uppercase;
-  color: var(--ancient-gold, #d6b879);
-  text-decoration: none;
-  border: 1px solid var(--ancient-gold, #d6b879);
-  padding: 4px 8px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.back-to-top a:hover {
-  background-color: var(--ancient-gold, #d6b879);
-  color: var(--dark-parchment, #2c2016);
-  cursor: pointer;
-}
-
 /*=============================================
 =                 BODY TEXT                   =
 =============================================*/
