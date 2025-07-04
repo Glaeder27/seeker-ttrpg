@@ -152,3 +152,16 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleBtn.textContent = allOpen ? 'Expand All' : 'Collapse All';
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const topButtons = document.querySelectorAll('.scroll-top-btn');
+
+  topButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+});
