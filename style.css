@@ -82,9 +82,9 @@ html {
     align-items: flex-start;
 }
 
-.page-lore > div {
-  flex: 1 1 600px;
-  min-width: 0;
+.page-lore>div {
+    flex: 1 1 600px;
+    min-width: 0;
 }
 
 /*=============================================
@@ -903,21 +903,20 @@ blockquote footer {
 }
 
 .blockquote-medieval p:first-of-type::first-letter {
-  font-family: 'Old English Text MT', 'UnifrakturMaguntia', serif;
-  font-size: 2.5em;
-  line-height: 1;
-  float: left;
-  margin-right: 0.2em;
-  padding-top: 0.05em;
-  margin-top: -0.2em;
+    font-family: 'Old English Text MT', 'UnifrakturMaguntia', serif;
+    font-size: 2.5em;
+    line-height: 1.2;
+    display: inline-block;
+    margin-right: 0.2em;
+    padding-top: 0.05em;
+    vertical-align: top;
+    margin-top: 0.05em;
 
-  background: linear-gradient(to bottom, var(--rust-red), var(--ancient-gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* For Firefox (limited support) */
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(to bottom, var(--rust-red), var(--burnt-copper));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .blockquote-medieval footer {
@@ -930,49 +929,49 @@ blockquote footer {
 }
 
 .blockquote-medieval::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--light-brown), var(--brown-charcoal));
-  border-radius: 10px 0 0 10px;
-  z-index: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--light-brown), var(--brown-charcoal));
+    border-radius: 10px 0 0 10px;
+    z-index: 0;
 }
 
 .blockquote-medieval::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 10px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--light-brown), var(--brown-charcoal));
-  border-radius: 0 10px 10px 0;
-  z-index: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--light-brown), var(--brown-charcoal));
+    border-radius: 0 10px 10px 0;
+    z-index: 0;
 }
 
 .blockquote-medieval .quote-start,
 .blockquote-medieval .quote-end {
-  font-family: var(--special-font, 'Cinzel Decorative', serif);
-  font-size: 4em;
-  color: rgba(0, 0, 0, 0.08);
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
+    font-family: var(--special-font, 'Cinzel Decorative', serif);
+    font-size: 4em;
+    color: rgba(0, 0, 0, 0.08);
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .blockquote-medieval .quote-start {
-  top: -0.4em;
-  left: -0.2em;
-  content: "❝";
+    top: -0.4em;
+    left: -0.2em;
+    content: "❝";
 }
 
 .blockquote-medieval .quote-end {
-  bottom: -0.4em;
-  right: -0.2em;
-  content: "❞";
+    bottom: -0.4em;
+    right: -0.2em;
+    content: "❞";
 }
 
 
@@ -1220,17 +1219,17 @@ blockquote footer {
 =============================================*/
 
 .infobox {
-  flex: 0 0 300px;
-  max-width: 100%;
-  font-family: var(--default-font, 'EB Garamond', serif);
-  background: var(--dark-parchment, #2c2016);
-  color: var(--off-white, #f4f1ec);
-  border: 1px solid rgba(var(--ancient-gold-rgb), 0.3);
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  margin: 0;
+    flex: 0 0 300px;
+    max-width: 100%;
+    font-family: var(--default-font, 'EB Garamond', serif);
+    background: var(--dark-parchment, #2c2016);
+    color: var(--off-white, #f4f1ec);
+    border: 1px solid rgba(var(--ancient-gold-rgb), 0.3);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    margin: 0;
 }
 
 .infobox-image {
@@ -1278,7 +1277,7 @@ details[open]>.infobox-section::after {
     margin-bottom: 8px;
     padding: 0;
 
-        user-select: none;
+    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -1301,7 +1300,7 @@ details[open]>.infobox-section::after {
 }
 
 .infobox-table-wrapper {
-  overflow-x: auto;
+    overflow-x: auto;
 }
 
 .infobox-table th,
@@ -1329,20 +1328,20 @@ details[open]>.infobox-section::after {
 }
 
 .infobox-collapse-button {
-  background: var(--warm-stone);
-  color: var(--ancient-gold);
-  font-family: var(--default-font);
-  padding: 6px 20px;
-  border: 1px solid var(--ancient-gold);
-  border-radius: 6px;
-  margin: 8px auto 12px auto;
-  display: block;
-  cursor: pointer;
+    background: var(--warm-stone);
+    color: var(--ancient-gold);
+    font-family: var(--default-font);
+    padding: 6px 20px;
+    border: 1px solid var(--ancient-gold);
+    border-radius: 6px;
+    margin: 8px auto 12px auto;
+    display: block;
+    cursor: pointer;
 }
 
 infobox-collapse-button:hover {
-  background: var(--ancient-gold);
-  color: var(--warm-stone);
+    background: var(--ancient-gold);
+    color: var(--warm-stone);
 }
 
 details[open] .infobox-table {
