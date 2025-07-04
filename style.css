@@ -185,7 +185,7 @@ h2.section::after {
     margin: 60px auto 30px auto;
     max-width: 800px;
     position: relative;
-    padding-top: 2rem;
+    padding-top: 0;
 }
 
 .section-number {
@@ -197,7 +197,7 @@ h2.section::after {
     font-weight: 500;
     background-color: var(--burnt-copper, #a86b32);
     color: var(--off-white, #f4f1ec);
-    padding: 4px 12px;
+    padding: 4px 30px;
     border-radius: 2px;
     text-transform: uppercase;
     font-variant: small-caps;
