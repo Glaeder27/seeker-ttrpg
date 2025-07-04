@@ -1330,20 +1330,26 @@ details[open] .infobox-table{animation:fadeIn .3s ease;}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 .infobox details {
-  padding: 8px 12px;
+margin-bottom: 0;
+  padding: 4px 12px;
 }
 
 .infobox-table {
   width: 100%;
   border-collapse: collapse;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   font-size: 0.9em;
   margin-top: 4px;
+  margin-bottom: 0;
 }
 
 .infobox-table th,
 .infobox-table td {
   padding: 6px 10px;
   vertical-align: top;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .infobox-section {
@@ -1352,6 +1358,17 @@ details[open] .infobox-table{animation:fadeIn .3s ease;}
 
 .infobox details:not(:last-child) {
   margin-bottom: 8px;
+}
+
+.infobox details:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 400px) {
+  .infobox {
+    width: 100%;
+  }
 }
 
 .seeker-title {
