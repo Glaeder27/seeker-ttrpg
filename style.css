@@ -76,15 +76,14 @@ html {
 
 .page-lore {
     padding: 50px 10px 0 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: flex-start;
 }
 
 .page-lore>div {
-    flex: 1 1 600px;
     min-width: 0;
+}
+
+.page-infobox {
+    padding: 25px 10px 0 10px;
 }
 
 /*=============================================
