@@ -1273,75 +1273,83 @@ blockquote footer {
     }
 }
 
-.infobox{
-  float:right;
-  margin:0 0 20px 20px;
-  width:300px;
-  font-family:var(--default-font,'EB Garamond',serif);
-  background:var(--dark-parchment,#2c2016);
-  color:var(--off-white,#f4f1ec);
-  border:2px solid var(--ancient-gold,#d6b879);
-  border-radius:8px;
-  box-shadow:0 4px 10px rgba(0,0,0,.3);
-  overflow:hidden;
+.infobox {
+  float: right;
+  margin: 0 0 20px 20px;
+  width: 300px;
+  font-family: var(--default-font, 'EB Garamond', serif);
+  background: var(--dark-parchment, #2c2016);
+  color: var(--off-white, #f4f1ec);
+  border: 2px solid var(--ancient-gold, #d6b879);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.infobox-image{width:100%;display:block;border-bottom:2px solid var(--ancient-gold,#d6b879);}
-
-.infobox-title{
-  text-align:center;
-  font-family:var(--title-font,'Cinzel Decorative',serif);
-  font-size:1.4em;
-  padding:12px 10px;
-  background:var(--warm-stone,#3b2a1e);
-  color:var(--ancient-gold,#d6b879);
-  font-variant:small-caps;
-  border-bottom:2px solid var(--ancient-gold,#d6b879);
-  margin:0;
+.infobox-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 0.8rem;
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  filter: sepia(0.15) contrast(1.1);
+  border: 2px solid var(--ancient-gold, #d6b879);
+  background-color: var(--parchment, #f8f1e0);
 }
 
-.infobox-section{
-  padding:8px 10px;
-  font-weight:600;
-  cursor:pointer;
-  background:rgba(255,255,255,0.05);
-  color:var(--ancient-gold,#d6b879);
-  position:relative;
+.infobox-title {
+  text-align: center;
+  font-family: var(--title-font, 'Cinzel Decorative', serif);
+  font-size: 1.4em;
+  padding: 12px 10px;
+  background: var(--warm-stone, #3b2a1e);
+  color: var(--ancient-gold, #d6b879);
+  font-variant: small-caps;
+  border-bottom: 2px solid var(--ancient-gold, #d6b879);
+  margin: 0;
 }
 
-.infobox-section::after{
-  content:"▶";
-  font-size:0.7em;
-  position:absolute;
-  right:12px;
-  transition:transform .2s;
+.infobox-section {
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ancient-gold, #d6b879);
+  position: relative;
 }
 
-details[open]>.infobox-section::after{transform:rotate(90deg);}
+.infobox-section::after {
+  content: "▶";
+  font-size: 0.7em;
+  position: absolute;
+  right: 12px;
+  transition: transform 0.2s;
+}
 
-.infobox-table{width:100%;border-collapse:collapse;font-size:.9em;}
-.infobox-table th,
-.infobox-table td{padding:6px 10px;vertical-align:top;}
-.infobox-table th{width:40%;font-weight:600;color:var(--ancient-gold,#d6b879);text-align:left;}
-.infobox-table td{color:var(--off-white,#f4f1ec);}
-.infobox-table tr:not(:last-child){border-bottom:1px solid rgba(255,255,255,.1);}
-
-details[open] .infobox-table{animation:fadeIn .3s ease;}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+details[open] > .infobox-section::after {
+  transform: rotate(90deg);
+}
 
 .infobox details {
-margin-bottom: 0;
-  padding: 4px 12px;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.infobox details:last-of-type {
+  margin-bottom: 0;
 }
 
 .infobox-table {
   width: 100%;
+  table-layout: fixed; /* prevents overflow */
   border-collapse: collapse;
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 0.9em;
-  margin-top: 4px;
-  margin-bottom: 0;
+  margin: 6px 0 0 0;
 }
 
 .infobox-table th,
@@ -1352,17 +1360,33 @@ margin-bottom: 0;
   white-space: normal;
 }
 
-.infobox-section {
-  padding: 10px 12px;
+.infobox-table th {
+  width: 40%;
+  font-weight: 600;
+  color: var(--ancient-gold, #d6b879);
+  text-align: left;
 }
 
-.infobox details:not(:last-child) {
-  margin-bottom: 8px;
+.infobox-table td {
+  color: var(--off-white, #f4f1ec);
 }
 
-.infobox details:last-of-type {
-  margin-bottom: 0;
-  padding-bottom: 0;
+.infobox-table tr:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animation for open tables */
+details[open] .infobox-table {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 400px) {
