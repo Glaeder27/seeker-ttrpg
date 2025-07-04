@@ -1248,28 +1248,61 @@ blockquote footer {
 }
 
 .infobox {
-    background-color: rgba(var(--ancient-gold-rgb), 0.05);
-    border: 1px solid var(--ancient-gold);
-    padding: 1rem;
-    font-size: 0.9em;
-    width: 250px;
-    border-radius: 10px;
+  float: right;
+  margin: 0 0 20px 20px;
+  width: 300px;
+  font-family: var(--default-font, 'EB Garamond', serif);
+  background-color: var(--dark-parchment, #2c2016);
+  color: var(--off-white, #f4f1ec);
+  border: 2px solid var(--ancient-gold, #d6b879);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.infobox table {
-    width: 100%;
-    border-collapse: collapse;
+.infobox-image {
+  width: 100%;
+  display: block;
+  border-bottom: 2px solid var(--ancient-gold, #d6b879);
 }
 
-.infobox td {
-    vertical-align: top;
-    padding: 0.5em 0.8em;
+.infobox-title {
+  text-align: center;
+  font-family: var(--title-font, 'Cinzel Decorative', serif);
+  font-size: 1.4em;
+  padding: 12px 10px;
+  background-color: var(--warm-stone, #3b2a1e);
+  border-bottom: 2px solid var(--ancient-gold, #d6b879);
+  color: var(--ancient-gold, #d6b879);
+  font-variant: small-caps;
 }
 
-.infobox h3 {
-    font-size: 1.1em;
-    border-bottom: 1px solid #cbbca0;
-    margin-top: 0;
+.infobox-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infobox-table th,
+.infobox-table td {
+  padding: 8px 10px;
+  vertical-align: top;
+  font-size: 0.95em;
+}
+
+.infobox-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ancient-gold, #d6b879);
+  width: 40%;
+}
+
+.infobox-table td {
+  text-align: left;
+  color: var(--off-white, #f4f1ec);
+}
+
+.infobox-table tr:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .seeker-title {
