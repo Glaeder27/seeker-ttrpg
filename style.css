@@ -1,7 +1,12 @@
+/*=============================================
+=            IMPORTS & VARIABLES            =
+=============================================*/
+
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
 :root {
+    /* Color Palette */
     --bright-gold: #F6CB75;
     --ancient-gold: #D4B55A;
     --pale-copper: #C99C5E;
@@ -14,6 +19,7 @@
     --warm-stone: #6B6B61;
     --off-white: #F0F0F0;
 
+    /* RGB Color Palette */
     --bright-gold-rgb: 246, 203, 117;
     --ancient-gold-rgb: 212, 181, 90;
     --pale-copper-rgb: 201, 156, 94;
@@ -26,11 +32,17 @@
     --warm-stone-rgb: 107, 107, 97;
     --off-white-rgb: 240, 240, 240;
 
+    /* Font Families */
     --default-font: 'Montserrat', sans-serif;
     --special-font: 'Georgia', serif;
     --handwritten-font: 'Great Vibes', cursive;
     --title-font: 'Cinzel Decorative', serif;
 }
+
+
+/*=============================================
+=            GENERAL BODY & LAYOUT            =
+=============================================*/
 
 html,
 body {
@@ -59,7 +71,15 @@ html {
     margin: 0 auto;
 }
 
-/* Headings */
+.page-lore {
+    padding: 50px 0 0 0;
+}
+
+
+/*=============================================
+=                  HEADINGS                   =
+=============================================*/
+
 h2 {
     background-color: var(--warm-stone);
     padding: 10px 10px 8px 12px;
@@ -95,6 +115,11 @@ h4 {
     font-weight: 500;
 }
 
+
+/*=============================================
+=               SECTION HEADINGS              =
+=============================================*/
+
 h2.section {
   position: relative;
   font-family: var(--default-font);
@@ -114,25 +139,23 @@ h2.section {
   text-align: center;
 }
 
-h2.section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
-  border-radius: 10px 0 0 10px;
-}
-
+h2.section::before,
 h2.section::after {
   content: "";
   position: absolute;
   top: 0;
-  right: 0;
   width: 12px;
   height: 100%;
   background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
+}
+
+h2.section::before {
+  left: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+h2.section::after {
+  right: 0;
   border-radius: 0 10px 10px 0;
 }
 
@@ -188,7 +211,11 @@ h2.section::after {
     font-weight: normal;
 }
 
-/* Body Text */
+
+/*=============================================
+=                 BODY TEXT                   =
+=============================================*/
+
 p,
 li {
     line-height: 1.8;
@@ -256,6 +283,25 @@ dl dd strong {
     font-size: 0.9rem;
 }
 
+.example-text {
+    color: var(--off-white);
+    font-family: var(--default-font);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.text-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: bottom;
+}
+
+
+/*=============================================
+=                   LINKS                     =
+=============================================*/
+
 a:link {
     color: var(--ancient-gold);
     font-weight: normal;
@@ -274,15 +320,10 @@ a:active {
     color: var(--pale-copper);
 }
 
-.example-text {
-    color: var(--off-white);
-    font-family: var(--default-font);
-    line-height: 1.6;
-    margin-bottom: 10px;
-    font-size: 0.9em;
-}
 
-/* Tables */
+/*=============================================
+=                   TABLES                    =
+=============================================*/
 
 table {
     width: 100%;
@@ -304,7 +345,6 @@ td {
 }
 
 td:nth-child(n+2) {
-    /* Target CXP, SXP, EXP columns, mantenuto left per il momento*/
     text-align: left;
 }
 
@@ -323,7 +363,10 @@ tbody tr:hover {
     background-color: #505050;
 }
 
-/* Notes */
+
+/*=============================================
+=               NOTE BLOCKS                   =
+=============================================*/
 
 .designer-note,
 .example-block,
@@ -353,7 +396,10 @@ tbody tr:hover {
     font-variant: small-caps;
 }
 
-/* Tooltips */ 
+
+/*=============================================
+=                 TOOLTIPS                    =
+=============================================*/
 
 .tooltip {
     position: relative;
@@ -413,10 +459,6 @@ tbody tr:hover {
     height: 100%;
 }
 
-.tooltip-content-wrapper {
-    /* No specific styles needed here based on provided CSS */
-}
-
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 280px;
@@ -442,6 +484,11 @@ tbody tr:hover {
     visibility: visible;
     opacity: 1;
 }
+
+
+/*=============================================
+=              OUTCOME BOXES                  =
+=============================================*/
 
 .outcome-container {
     display: flex;
@@ -515,11 +562,10 @@ tbody tr:hover {
     color: var(--rust-red) !important;
 }
 
-.text-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    vertical-align: bottom;
-}
+
+/*=============================================
+=             COLLAPSIBLE ITEMS               =
+=============================================*/
 
 .collapsible-item {
     background-color: #484848;
@@ -605,6 +651,11 @@ tbody tr:hover {
     font-weight: bold;
 }
 
+
+/*=============================================
+=                RULE BOXES                   =
+=============================================*/
+
 .box-rule {
     background-color: #484848;
     border-radius: 10px;
@@ -645,6 +696,11 @@ tbody tr:hover {
     z-index: 10;
     display: block;
 }
+
+
+/*=============================================
+=               APTITUDE GRID                 =
+=============================================*/
 
 .aptitude-grid-container {
     display: grid;
@@ -740,6 +796,16 @@ tbody tr:hover {
     grid-column: 1 / -1;
 }
 
+.aptitude-card .aptitude-description-container {
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+
+/*=============================================
+=              POLARITY BLOCKS                =
+=============================================*/
+
 .polarity-block {
     display: flex;
     align-items: flex-start;
@@ -775,59 +841,10 @@ tbody tr:hover {
     flex-grow: 1;
 }
 
-.aptitude-card .aptitude-description-container {
-    flex-grow: 1;
-    margin-bottom: 10px;
-}
 
-@media (max-width: 768px) {
-    h2 {
-        font-size: 1.8em;
-        padding: 8px 10px;
-    }
-
-    h3 {
-        font-size: 1.5em;
-    }
-
-    h4 {
-        font-size: 1.2em;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    th,
-    td {
-        padding: 8px 10px;
-        font-size: 0.9em;
-    }
-
-    .aptitude-grid-container {
-        grid-template-columns: 1fr;
-    }
-
-    .polarity-block {
-        flex-direction: column;
-        align-items: center;
-        padding-left: 0;
-    }
-
-    .polarity-block .polarity-icon-wrapper {
-        margin: 0 auto 15px auto;
-    }
-
-    .aptitude-card .icon {
-        margin: 15px auto 15px auto;
-    }
-
-    .tooltip .tooltiptext {
-        width: 220px;
-        margin-left: -110px;
-    }
-
-}
+/*=============================================
+=               BLOCKQUOTES                   =
+=============================================*/
 
 blockquote {
     font-style: italic;
@@ -866,7 +883,6 @@ blockquote footer {
     color: var(--deep-charcoal);
     font-family: var(--handwritten-font);
     line-height: 1;
-
 }
 
 .blockquote-medieval p:first-of-type::first-letter {
@@ -889,27 +905,31 @@ blockquote footer {
     margin-top: 1em;
 }
 
-.blockquote-medieval::before {
+.blockquote-medieval::before,
+.blockquote-medieval::after {
     content: "\201C";
     font-family: var(--special-font);
     font-size: 5em;
     color: rgba(0, 0, 0, 0.1);
     position: absolute;
+    z-index: -1;
+}
+
+.blockquote-medieval::before {
     top: 0.1em;
     left: 0.05em;
-    z-index: -1;
 }
 
 .blockquote-medieval::after {
     content: "\201D";
-    font-family: var(--special-font);
-    font-size: 5em;
-    color: rgba(0, 0, 0, 0.1);
-    position: absolute;
     bottom: -0.2em;
     right: 0.05em;
-    z-index: -1;
 }
+
+
+/*=============================================
+=                  TIMELINE                   =
+=============================================*/
 
 .timeline-container {
     display: flex;
@@ -1004,37 +1024,10 @@ blockquote footer {
     padding-left: 42px;
 }
 
-@media (max-width: 768px) {
-    .timeline-container {
-        flex-direction: column;
-    }
 
-    .timeline-nav {
-        display: none;
-    }
-
-    .timeline {
-        padding-left: 20px;
-    }
-
-    .timeline::before {
-        left: 0;
-    }
-
-    .timeline-event {
-        padding-left: 30px;
-    }
-
-    .timeline-event::before {
-        left: -10px;
-    }
-}
-
-@media (max-width: 600px) {
-    .advancement-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/*=============================================
+=              ADVANCEMENT GRID               =
+=============================================*/
 
 .advancement-grid {
     display: grid;
@@ -1083,6 +1076,11 @@ blockquote footer {
     align-items: center;
 }
 
+
+/*=============================================
+=              DEFENSE SECTION                =
+=============================================*/
+
 .defense-layer-section {
     margin-top: 25px;
 }
@@ -1127,6 +1125,11 @@ blockquote footer {
     margin-top: 0 !important;
 }
 
+
+/*=============================================
+=               TURN ORDER LIST               =
+=============================================*/
+
 .turn-order-list {
     list-style: none;
     padding: 0;
@@ -1162,124 +1165,10 @@ blockquote footer {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.timeline-container {
-    display: flex;
-    gap: 20px;
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-    color: #e0d7c2;
-}
 
-.timeline-nav {
-    flex: 0 0 100px;
-    position: sticky;
-    top: 100px;
-}
-
-.timeline-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.timeline-nav li {
-    margin: 8px 0;
-    font-size: 0.9em;
-    cursor: pointer;
-    color: #d2b48c;
-}
-
-.timeline {
-    flex-grow: 1;
-    position: relative;
-    padding-left: 40px;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    background-color: #3a3a3a;
-    top: 0;
-    bottom: 0;
-    left: 12px;
-}
-
-.timeline-event {
-    position: relative;
-    margin-bottom: 30px;
-    padding-left: 40px;
-    transition: background 0.3s ease;
-}
-
-.timeline-event::before {
-    content: attr(data-icon);
-    position: absolute;
-    left: -4px;
-    top: 0;
-    background-color: #1c1a16;
-    color: #d2b48c;
-    font-size: 1.2em;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-    border: 2px solid #d2b48c;
-    border-radius: 50%;
-    line-height: 20px;
-    font-weight: bold;
-}
-
-.timeline-event h3 {
-    margin: 0;
-    font-size: 1.1em;
-    color: #f0e6c4;
-    cursor: pointer;
-}
-
-.timeline-event p {
-    margin: 5px 0 0;
-    font-size: 0.95em;
-    color: #c4b99b;
-    line-height: 1.5;
-    display: none;
-    transition: opacity 0.3s ease;
-}
-
-.timeline-event.expanded p {
-    display: block;
-}
-
-.timeline-event:hover {
-    background-color: rgba(255, 255, 255, 0.03);
-    padding-left: 42px;
-}
-
-@media (max-width: 768px) {
-    .timeline-container {
-        flex-direction: column;
-    }
-
-    .timeline-nav {
-        display: none;
-    }
-
-    .timeline {
-        padding-left: 20px;
-    }
-
-    .timeline::before {
-        left: 0;
-    }
-
-    .timeline-event {
-        padding-left: 30px;
-    }
-
-    .timeline-event::before {
-        left: -10px;
-    }
-}
+/*=============================================
+=                   INFOBOX                   =
+=============================================*/
 
 .infobox {
   float: right;
@@ -1330,6 +1219,11 @@ blockquote footer {
   color: var(--ancient-gold, #d6b879);
   padding: 5px !important;
   position: relative;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 details[open] > .infobox-section::after {
@@ -1379,7 +1273,6 @@ details[open] > .infobox-section::after {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Animation for open tables */
 details[open] .infobox-table {
   animation: fadeIn 0.3s ease;
 }
@@ -1393,11 +1286,10 @@ details[open] .infobox-table {
   }
 }
 
-@media (max-width: 400px) {
-  .infobox {
-    width: 100%;
-  }
-}
+
+/*=============================================
+=                 SEEKER TITLE                =
+=============================================*/
 
 .seeker-title {
   text-align: center;
@@ -1446,6 +1338,91 @@ details[open] .infobox-table {
   letter-spacing: 0.03em;
 }
 
-.page-lore {
-    padding: 50px 0 0 0;
+
+/*=============================================
+=              MEDIA QUERIES                  =
+=============================================*/
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8em;
+        padding: 8px 10px;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    th,
+    td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    .aptitude-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .polarity-block {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0;
+    }
+
+    .polarity-block .polarity-icon-wrapper {
+        margin: 0 auto 15px auto;
+    }
+
+    .aptitude-card .icon {
+        margin: 15px auto 15px auto;
+    }
+
+    .tooltip .tooltiptext {
+        width: 220px;
+        margin-left: -110px;
+    }
+
+    .timeline-container {
+        flex-direction: column;
+    }
+
+    .timeline-nav {
+        display: none;
+    }
+
+    .timeline {
+        padding-left: 20px;
+    }
+
+    .timeline::before {
+        left: 0;
+    }
+
+    .timeline-event {
+        padding-left: 30px;
+    }
+
+    .timeline-event::before {
+        left: -10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .advancement-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+  .infobox {
+    width: 100%;
+  }
 }
