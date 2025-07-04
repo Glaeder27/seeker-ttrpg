@@ -117,11 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
-
-        document.body.style.paddingRight = "1px";
-        requestAnimationFrame(() => {
-          document.body.style.paddingRight = "";
-        });
       }
     });
   });
