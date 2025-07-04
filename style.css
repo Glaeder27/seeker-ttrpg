@@ -1473,13 +1473,13 @@ details[open]>.infobox-section::after {
 }
 
 .infobox-collapse-button {
-    background: var(--warm-stone);
+    background: var(--brown-charcoal);
     color: var(--ancient-gold);
     font-family: var(--default-font);
-    padding: 6px 20px;
+    padding: 6px 30px;
     border: 1px solid var(--ancient-gold);
     border-radius: 6px;
-    margin: 8px auto 12px auto;
+    margin: 15px auto 2px auto;
     display: block;
     cursor: pointer;
 }
