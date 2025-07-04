@@ -903,14 +903,21 @@ blockquote footer {
 }
 
 .blockquote-medieval p:first-of-type::first-letter {
-    font-family: 'Old English Text MT', 'UnifrakturMaguntia', serif;
-    font-size: 2.5em;
-    line-height: 1;
-    float: left;
-    margin-right: 0.2em;
-    color: var(--rust-red);
-    padding-top: 0.05em;
-    margin-top: -0.2em;
+  font-family: 'Old English Text MT', 'UnifrakturMaguntia', serif;
+  font-size: 2.5em;
+  line-height: 1;
+  float: left;
+  margin-right: 0.2em;
+  padding-top: 0.05em;
+  margin-top: -0.2em;
+
+  background: linear-gradient(to bottom, var(--rust-red), var(--ancient-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* For Firefox (limited support) */
+  background-clip: text;
+  color: transparent;
 }
 
 .blockquote-medieval footer {
