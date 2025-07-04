@@ -111,24 +111,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.collapsible-header');
-  const content = document.getElementById('contents-list');
+  const toggleBtn = document.getElementById('contents-toggle');
+  const contentsList = document.getElementById('contents-list');
 
-  header.addEventListener('click', () => {
-    const expanded = header.getAttribute('aria-expanded') === 'true';
-    header.setAttribute('aria-expanded', !expanded);
+  toggleBtn.addEventListener('click', () => {
+    const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    toggleBtn.setAttribute('aria-expanded', String(!expanded));
     if (expanded) {
-      content.hidden = true;
+      contentsList.hidden = true;
     } else {
-      content.hidden = false;
-      content.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-
-  header.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      header.click();
+      contentsList.hidden = false;
     }
   });
 });
