@@ -1282,6 +1282,7 @@ blockquote footer {
   color: var(--off-white, #f4f1ec);
   border: 2px solid var(--ancient-gold, #d6b879);
   border-radius: 8px;
+  padding: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
@@ -1293,11 +1294,12 @@ blockquote footer {
   margin-bottom: 0.8rem;
   border-radius: 4px;
   padding: 4px;
+  border: 2px solid var(--ancient-gold, #d6b879);
+  background-color: var(--parchment, #f8f1e0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   object-fit: cover;
   filter: sepia(0.15) contrast(1.1);
-  border: 2px solid var(--ancient-gold, #d6b879);
-  background-color: var(--parchment, #f8f1e0);
+  box-sizing: border-box;
 }
 
 .infobox-title {
@@ -1318,15 +1320,8 @@ blockquote footer {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.05);
   color: var(--ancient-gold, #d6b879);
+  padding: 5px !important;
   position: relative;
-}
-
-.infobox-section::after {
-  content: "▶";
-  font-size: 0.7em;
-  position: absolute;
-  right: 12px;
-  transition: transform 0.2s;
 }
 
 details[open] > .infobox-section::after {
@@ -1344,8 +1339,9 @@ details[open] > .infobox-section::after {
 
 .infobox-table {
   width: 100%;
-  table-layout: fixed; /* prevents overflow */
+  table-layout: fixed;
   border-collapse: collapse;
+  border-radius: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 0.9em;
