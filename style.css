@@ -74,7 +74,7 @@ html {
 }
 
 .page-lore {
-    padding: 50px 0 0 0;
+    padding: 50px 10px 0 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -1283,6 +1283,7 @@ details[open]>.infobox-section::after {
 
 .infobox-table td {
     color: var(--off-white, #f4f1ec);
+    font-weight: normal;
 }
 
 .infobox-table tr:not(:last-child) {
