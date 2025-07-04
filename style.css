@@ -939,7 +939,7 @@ blockquote footer {
     left: 0;
     width: 10px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--light-brown), var(--brown-charcoal));
+    background: linear-gradient(to bottom, var(--rust-red), var(--brown-charcoal));
     border-radius: 10px 0 0 10px;
     z-index: 0;
 }
@@ -978,6 +978,64 @@ blockquote footer {
     content: "❞";
 }
 
+/*=============================================
+=                  CONTENTS                   =
+=============================================*/
+
+.contents {
+  border: 2px solid var(--ancient-gold);
+  padding: 1rem 1.25rem;
+  background: var(--parchment-bg, #f7f1e1);
+  border-radius: 0.5rem;
+  font-family: 'UnifrakturMaguntia', serif;
+  user-select: none;
+  max-width: 280px;
+}
+
+.contents h3 {
+  margin-top: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--burnt-copper);
+  border-bottom: 2px solid var(--burnt-copper);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.contents ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.contents li {
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+.contents li::before {
+  content: "➤";
+  position: absolute;
+  left: -1.2rem;
+  color: var(--rust-red);
+  font-size: 1rem;
+  top: 0.15rem;
+  transition: color 0.3s ease;
+}
+
+.contents a {
+  text-decoration: none;
+  color: var(--dark-ink);
+  font-weight: 600;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.contents a:hover,
+.contents a:focus {
+  color: var(--burnt-copper);
+  outline: none;
+}
 
 /*=============================================
 =                  TIMELINE                   =
