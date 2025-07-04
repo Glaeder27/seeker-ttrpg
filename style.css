@@ -916,7 +916,7 @@ blockquote footer {
     vertical-align: bottom;
     margin-top: 0.05em;
 
-    background: linear-gradient(to bottom, var(--rust-red), var(--burnt-copper));
+    background: linear-gradient(to bottom, #8A3C30, #3D2E23);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
