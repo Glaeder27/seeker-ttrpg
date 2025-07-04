@@ -982,68 +982,27 @@ blockquote footer {
 =                  CONTENTS                   =
 =============================================*/
 
-.contents {
-  border: 2px solid var(--ancient-gold);
-  padding: 1rem 1.25rem;
-  background: var(--parchment-bg, #f7f1e1);
-  border-radius: 0.5rem;
-  font-family: 'UnifrakturMaguntia', serif;
+.section.collapsible-header {
+  cursor: pointer;
   user-select: none;
-  max-width: 280px;
-}
-
-.contents h3 {
-  margin-top: 0;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--burnt-copper);
-  border-bottom: 2px solid var(--burnt-copper);
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
-}
-
-.contents ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.contents li {
-  margin-bottom: 0.6rem;
   position: relative;
-}
-
-.contents li::before {
-  content: "➤";
-  position: absolute;
-  left: -1.2rem;
-  color: var(--rust-red);
-  font-size: 1rem;
-  top: 0.15rem;
-  transition: color 0.3s ease;
-}
-
-.contents a {
-  text-decoration: none;
-  color: var(--dark-ink);
+  padding-right: 30px;
+  font-family: var(--default-font);
+  font-size: 2.2em;
+  line-height: 1.2;
   font-weight: 600;
-  transition: color 0.3s ease;
-  cursor: pointer;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  color: var(--ancient-gold, #d6b879);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  background: rgba(var(--burnt-copper-rgb), 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  text-align: center;
 }
 
-.contents a:hover,
-.contents a:focus {
-  color: var(--burnt-copper);
-  outline: none;
-}
-
-.collapsible-header {
-  cursor: pointer;
-  user-select: none;
-  outline-offset: 4px;
-}
-
-.collapsible-header::after {
+.section.collapsible-header::after {
   content: "▸";
   position: absolute;
   right: 15px;
@@ -1052,24 +1011,16 @@ blockquote footer {
   font-size: 1.2em;
   color: var(--ancient-gold, #d6b879);
   transition: transform 0.3s ease;
+  pointer-events: none;
 }
 
-.collapsible-header[aria-expanded="true"]::after {
+.section.collapsible-header[aria-expanded="true"]::after {
   transform: translateY(-50%) rotate(90deg);
 }
 
 .collapsible-content {
-  max-width: 800px;
-  margin: 0 auto 30px auto;
-  padding: 0 12px 10px 12px;
-  background: rgba(var(--burnt-copper-rgb), 0.05);
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-family: var(--default-font);
-  font-size: 1em;
-  line-height: 1.4;
-  letter-spacing: 0.5px;
+  margin-top: 0.5em;
+  padding-left: 1em;
 }
 
 .collapsible-content ul {
