@@ -1376,10 +1376,10 @@ details[open] .infobox-table {
 }
 
 .seeker-title .title-container {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     font-size: 2.8rem;
     line-height: 1;
     letter-spacing: 0.05em;
