@@ -863,8 +863,10 @@ blockquote footer {
 }
 
 .blockquote-medieval {
+    background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
     background-color: #f8f5ed;
-    border-left: 5px solid #a88a6d;
+    background-repeat: repeat;
+    border-left: 6px solid var(--ancient-gold);
     margin: 2em 0;
     padding: 1.5em 2em;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
