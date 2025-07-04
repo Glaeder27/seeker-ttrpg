@@ -887,16 +887,6 @@ blockquote footer {
     border-radius: 0;
 }
 
-.blockquote-medieval,
-.blockquote-medieval {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 12px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--brown-charcoal), var(--burnt-copper));
-}
-
 .blockquote-medieval p {
     font-size: 3em;
     margin-bottom: 0;
