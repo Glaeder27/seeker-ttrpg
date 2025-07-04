@@ -1326,6 +1326,30 @@ details[open]>.infobox-section::after{transform:rotate(90deg);}
 details[open] .infobox-table{animation:fadeIn .3s ease;}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+.infobox details {
+  padding: 8px 12px;
+}
+
+.infobox-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+.infobox-table th,
+.infobox-table td {
+  padding: 6px 10px;
+  vertical-align: top;
+}
+
+.infobox-section {
+  padding: 10px 12px;
+}
+
+.infobox details:not(:last-child) {
+  margin-bottom: 8px;
+}
 
 .seeker-title {
   text-align: center;
