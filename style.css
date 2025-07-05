@@ -1354,7 +1354,7 @@ blockquote footer {
 
 .infobox {
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
     box-sizing: border-box;
     font-family: var(--default-font, 'EB Garamond', serif);
     background: var(--dark-parchment, #2c2016);
