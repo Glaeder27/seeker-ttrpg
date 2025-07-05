@@ -54,8 +54,7 @@ body {
     padding: 0;
     background: transparent;
     color: var(--off-white);
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden !important;
     min-height: 100%;
 }
 
@@ -104,20 +103,8 @@ html {
     max-width: 20%;
     min-width: 180px;
     padding-top: 30px;
-    align-self: flex-start;
     position: sticky;
-    overflow-y: auto;
-    max-height: calc(100vh - 2rem);
     top: 20px;
-}
-
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color, #999);
-    border-radius: 3px;
 }
 
 /*=============================================
@@ -1114,12 +1101,6 @@ blockquote footer {
 .contents-content ul li a:focus {
     text-decoration: underline;
     outline: none;
-}
-
-.contents-content a.active {
-  font-weight: bold;
-  text-decoration: underline;
-  color: var(--accent-color);
 }
 
 /*=============================================
