@@ -74,37 +74,15 @@ html {
     margin: 0 auto;
 }
 
-.page-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 0 2vw;
-    max-width: 100%;
-}
-
-.sidebar {
-    flex: 0 0 20%;
-    max-width: 20%;
-    min-width: 220px;
-    padding-top: 40px;
-}
-
-.page-main {
-    flex: 1 1 60%;
-    max-width: 60%;
-    min-width: 400px;
+.page-lore {
     padding: 50px 1.5rem 0 1.5rem;
 }
 
-.page-main>div {
+.page-lore>div {
     min-width: 0;
 }
 
 .page-infobox {
-    flex: 0 0 20%;
-    max-width: 20%;
-    min-width: 220px;
     padding: 25px 10px 0 10px;
 }
 
@@ -1636,34 +1614,5 @@ details[open] .infobox-table {
 @media (max-width: 400px) {
     .infobox {
         width: 100%;
-    }
-}
-
-/* Responsive: stack vertically on smaller screens */
-@media screen and (max-width: 960px) {
-    .page-container {
-        flex-direction: column;
-    }
-
-    .sidebar,
-    .page-infobox,
-    .page-lore {
-        max-width: 100%;
-        width: 100%;
-        order: initial;
-    }
-
-    .sidebar {
-        order: 1;
-        padding: 20px 0;
-    }
-
-    .page-lore {
-        order: 2;
-    }
-
-    .page-infobox {
-        order: 3;
-        padding-top: 10px;
     }
 }
