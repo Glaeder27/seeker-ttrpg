@@ -1103,6 +1103,12 @@ blockquote footer {
     outline: none;
 }
 
+.contents-content a.active {
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--accent-color);
+}
+
 /*=============================================
 =                  TIMELINE                   =
 =============================================*/
