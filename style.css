@@ -983,22 +983,22 @@ blockquote footer {
 =============================================*/
 
 .contents-collapsible {
-  position: relative;
-  max-width: 800px;
-  margin: 60px auto 30px auto;
-  background: rgba(var(--burnt-copper-rgb), 0.05);
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  user-select: none;
-  font-family: var(--default-font);
-  font-weight: 600;
-  font-variant: small-caps;
-  text-transform: uppercase;
-  color: var(--ancient-gold, #d6b879);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-  letter-spacing: 1px;
-  padding: 30px 50px 10px 12px; /* room for arrow on right */
+    position: relative;
+    max-width: 800px;
+    margin: 60px auto 30px auto;
+    background: rgba(var(--burnt-copper-rgb), 0.05);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    user-select: none;
+    font-family: var(--default-font);
+    font-weight: 600;
+    font-variant: small-caps;
+    text-transform: uppercase;
+    color: var(--ancient-gold, #d6b879);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    letter-spacing: 1px;
+    padding: 10px 50px;
 }
 
 .contents-collapsible::before,
@@ -1013,6 +1013,10 @@ blockquote footer {
   z-index: 1;
 }
 
+.contents-collapsible::before {
+    left: 0;
+}
+
 .contents-collapsible::after {
   right: 0;
   border-radius: 0 10px 10px 0;
@@ -1021,8 +1025,8 @@ blockquote footer {
 
 .contents-header {
   position: relative;
-  z-index: 2; /* above gradient bars */
-  font-size: 2.2em;
+  z-index: 2;
+  font-size: 1em;
   line-height: 1.2;
 }
 
@@ -1039,7 +1043,7 @@ blockquote footer {
 
 .toggle-arrow {
   position: absolute;
-  right: 16px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%) rotate(0deg);
   font-size: 1.6em;
