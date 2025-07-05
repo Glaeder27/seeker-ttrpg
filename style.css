@@ -1551,6 +1551,72 @@ details[open] .infobox-table {
 }
 
 /*=============================================
+=              RULE BOXES                     =
+=============================================*/
+
+.rule-options-minimal {
+  margin: 2rem 0 1rem 0;
+  padding: 0.5rem 1rem;
+  background: rgba(var(--burnt-copper-rgb), 0.05);
+  border-radius: 6px;
+}
+
+.toggle-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.rule-switch {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-family: var(--default-font);
+}
+
+.rule-switch input {
+  display: none;
+}
+
+.rule-switch .slider {
+  width: 36px;
+  height: 20px;
+  background-color: rgba(var(--burnt-copper-rgb), 0.3);
+  border-radius: 10px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.rule-switch .slider::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 2px;
+  background-color: var(--off-white);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.rule-switch input:checked + .slider {
+  background-color: var(--ancient-gold);
+}
+
+.rule-switch input:checked + .slider::after {
+  transform: translateX(16px);
+}
+
+.rule-switch .label {
+  color: var(--off-white);
+}
+
+/*=============================================
 =              MEDIA QUERIES                  =
 =============================================*/
 
