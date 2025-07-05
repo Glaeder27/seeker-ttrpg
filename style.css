@@ -1599,7 +1599,7 @@ details[open] .infobox-table {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 390px) {
     .only-mobile {
         display: block;
     }
