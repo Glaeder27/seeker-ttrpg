@@ -86,16 +86,18 @@ html {
 
 .page-infobox {
     padding: 25px 10px 0 10px;
+    margin: 0 auto;
 }
 
 .page-columns {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 100%;
+    width: 80%;
     gap: 20px;
     padding: 1rem 2vw;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .sidebar {
@@ -1352,7 +1354,7 @@ blockquote footer {
 
 .infobox {
     width: 100%;
-    max-width: 100%;
+    max-width: 450px;
     box-sizing: border-box;
     font-family: var(--default-font, 'EB Garamond', serif);
     background: var(--dark-parchment, #2c2016);
@@ -1362,7 +1364,7 @@ blockquote footer {
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .infobox-image {
