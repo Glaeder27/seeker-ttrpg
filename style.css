@@ -982,6 +982,13 @@ blockquote footer {
 =                  CONTENTS                   =
 =============================================*/
 
+.contents-wrapper {
+    margin: 60px auto 30px auto;
+    max-width: 800px;
+    position: relative;
+    padding-top: 0;
+}
+
 .contents-collapsible {
     position: relative;
     max-width: 800px;
