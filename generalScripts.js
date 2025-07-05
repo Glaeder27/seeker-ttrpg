@@ -1,3 +1,5 @@
+// Tooltip Logic
+
 document.addEventListener('DOMContentLoaded', function () {
     let tooltipDefinitions = {};
 
@@ -60,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const definitionsUrl = 'https://glaeder27.github.io/seeker-ttrpg/tooltipDefinitions.json';
 
+    // Definition Fetch Logic
     fetch(definitionsUrl)
         .then(response => {
             if (!response.ok) {
@@ -69,12 +72,14 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(data => {
             tooltipDefinitions = data; 
-            // console.log('Tooltip definitions loaded:', tooltipDefinitions); // Per debug
+            // console.log('Tooltip definitions loaded:', tooltipDefinitions); // Use for debugging
             initializeTooltips();
         })
         .catch(error => {
             console.error('Error loading tooltip definitions:', error);
         });
+
+// Collapsible Logic
 
     const collapsibleItems = document.querySelectorAll('.collapsible-item');
     collapsibleItems.forEach(item => {
@@ -110,6 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+// Content Toggle Logic - TO BE DELETED (?)
+
 document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('contents-toggle');
   const contentsList = document.getElementById('contents-list');
@@ -133,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Scroll to Anchor logic - TO BE DELETED
 
 document.addEventListener("DOMContentLoaded", () => {
   const sections = Array.from(document.querySelectorAll("h2.section[id]"));
@@ -171,4 +180,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("scroll", onScroll);
   updateScrollSpy();
+});
+
+// Rule Visibility Logic
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggles = document.querySelectorAll('.rule-switch input[data-rule]');
+  toggles.forEach(cb => {
+    const key = 'rule-' + cb.dataset.rule;
+    if (localStorage.getItem(key) === 'false') cb.checked = false;
+    updateVisibility(cb.dataset.rule, cb.checked);
+  });
+
+  toggles.forEach(cb => cb.addEventListener('change', e => {
+    const rule = e.target.dataset.rule;
+    const on   = e.target.checked;
+    localStorage.setItem('rule-' + rule, on);
+    updateVisibility(rule, on);
+  }));
+
+  function updateVisibility(rule, on) {
+    document.querySelectorAll('.rule-' + rule).forEach(el => {
+      el.style.display = on ? '' : 'none';
+    });
+  }
 });
