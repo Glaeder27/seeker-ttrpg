@@ -103,8 +103,20 @@ html {
     max-width: 20%;
     min-width: 180px;
     padding-top: 30px;
+    align-self: flex-start;
     position: sticky;
+    overflow-y: auto;
+    max-height: calc(100vh - 2rem);
     top: 20px;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color, #999);
+    border-radius: 3px;
 }
 
 /*=============================================
