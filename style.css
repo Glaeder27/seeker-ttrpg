@@ -54,7 +54,8 @@ body {
     padding: 0;
     background: transparent;
     color: var(--off-white);
-    overflow: hidden !important;
+    overflow-x: hidden;
+    overflow-y: auto;
     min-height: 100%;
 }
 
