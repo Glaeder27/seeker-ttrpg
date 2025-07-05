@@ -135,26 +135,40 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll("h2.section[id]");
-  const navLinks = document.querySelectorAll(".contents-content a");
+  const sections = Array.from(document.querySelectorAll("h2.section[id]"));
+  const navLinks = Array.from(document.querySelectorAll(".contents-content a"));
+
+  let lastKnownScrollY = 0;
+  let ticking = false;
+
+  function updateScrollSpy() {
+    let currentSectionId = "";
+
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.3) {
+        currentSectionId = section.id;
+      } else {
+        break;
+      }
+    }
+
+    for (const link of navLinks) {
+      const targetId = link.getAttribute("href").slice(1);
+      link.classList.toggle("active", targetId === currentSectionId);
+    }
+
+    ticking = false;
+  }
 
   function onScroll() {
-    let currentSectionId = "";
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      if (sectionTop < window.innerHeight * 0.3) {
-        currentSectionId = section.id;
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.classList.toggle(
-        "active",
-        link.getAttribute("href").slice(1) === currentSectionId
-      );
-    });
+    lastKnownScrollY = window.scrollY;
+    if (!ticking) {
+      requestAnimationFrame(updateScrollSpy);
+      ticking = true;
+    }
   }
 
   document.addEventListener("scroll", onScroll);
-  onScroll();
+  updateScrollSpy();
 });
