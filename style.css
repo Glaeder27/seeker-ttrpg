@@ -75,7 +75,10 @@ html {
 }
 
 .page-lore {
-    padding: 50px 1.5rem 0 1.5rem;
+    flex: 1 1 80%;
+    max-width: 80%;
+    padding-bottom: 100px;
+    min-width: 400px;
 }
 
 .page-lore>div {
@@ -84,6 +87,24 @@ html {
 
 .page-infobox {
     padding: 25px 10px 0 10px;
+}
+
+.page-columns {
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+    gap: 20px;
+    padding-left: 2vw;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    min-width: 180px;
+    padding-top: 30px;
+    position: sticky;
+    top: 30px;
 }
 
 /*=============================================
@@ -1614,5 +1635,28 @@ details[open] .infobox-table {
 @media (max-width: 400px) {
     .infobox {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .page-columns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .sidebar,
+    .page-lore {
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+    }
+
+    .sidebar {
+        order: 1;
+        padding: 20px 0;
+    }
+
+    .page-lore {
+        order: 2;
     }
 }
