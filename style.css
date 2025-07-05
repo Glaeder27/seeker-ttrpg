@@ -367,43 +367,57 @@ a:active {
 =============================================*/
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    background-color: #3d3d3d;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-th,
-td {
-    border: 1px solid #555555;
-    padding: 12px 15px;
-    text-align: left;
-    font-size: 0.85rem;
-}
-
-td:nth-child(n+2) {
-    text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background-color: rgba(var(--burnt-copper-rgb), 0.06);
+  border: 1px solid rgba(var(--ancient-gold-rgb), 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  font-family: var(--default-font);
+  font-size: 0.85rem;
+  color: var(--off-white);
 }
 
 thead th {
-    background-color: #4a4a4a;
-    font-weight: bold;
-    font-size: 0.9em;
-    text-transform: uppercase;
+  background-color: rgba(var(--burnt-copper-rgb), 0.2);
+  color: var(--off-white);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: top;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #424242;
+  background-color: rgba(255, 255, 255, 0.025);
 }
 
 tbody tr:hover {
-    background-color: #505050;
+  background-color: rgba(var(--ancient-gold-rgb), 0.08);
 }
 
+td:nth-child(n+2),
+th:nth-child(n+2) {
+  text-align: left;
+}
+
+td:first-child {
+  font-weight: 600;
+  color: var(--ancient-gold);
+  border-top-left-radius: 6px;
+}
+thead th:last-child {
+  border-top-right-radius: 6px;
+}
 
 /*=============================================
 =               NOTE BLOCKS                   =
