@@ -1688,6 +1688,7 @@ details[open] .infobox-table {
 
 .rule-switch .label {
   color: var(--off-white);
+  text-transform: uppercase;
 }
 
 .rule-tag {
@@ -1731,7 +1732,7 @@ details[open] .infobox-table {
 }
 
 .rule-options-label {
-    font-variant: small-caps;
+    text-transform: uppercase;
     font-size: 0.85rem;
     color: #aaa;
     margin-bottom: 0.5rem;
