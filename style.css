@@ -540,6 +540,11 @@ thead th:last-child {
     opacity: 1;
 }
 
+.rule-tag.tooltip {
+    cursor: help;
+    text-decoration: none;
+    margin-left: 8px;
+}
 
 /*=============================================
 =              OUTCOME BOXES                  =

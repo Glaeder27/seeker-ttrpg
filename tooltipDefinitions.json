@@ -3,5 +3,8 @@
     "riskDice": "These dice signify the inherent difficulty of an action, its intrinsic danger, environmental threats, or the character's haste or fatigue. They are rolled to ascertain the <b>consequences</b> of an action.",
     "tagMovement": "This tag is assigned to abilities that involve changing position or manipulating physical space. Rules often interact with this tag to restrict or modify movement effects.",
     "tagConsumable": "This tag is assigned to items that are used up or expended upon activation or after a certain number of uses. Once consumed, their effect is typically gone.",
-    "pillarsOfPlay": "The three pillars—Combat, Social, and Exploration—are the core areas of character growth. Advancing in a pillar unlocks abilities related to that theme."
+    "pillarsOfPlay": "The three pillars—Combat, Social, and Exploration—are the core areas of character growth. Advancing in a pillar unlocks abilities related to that theme.",
+    "optional-rule": "An optional rule you may choose to enable for narrative or mechanical flavor.",
+    "variant-rule": "A suggested variation on core mechanics, replacing or modifying the base rule.",
+    "experimental-rule": "A playtest feature under development, subject to change in future editions."
 }
