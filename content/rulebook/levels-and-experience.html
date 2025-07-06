@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Level & Experience – Seeker Rulebook</title>
+    <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience and advancement rules for Seeker TTRPG.">
+    <!--Custom CSS for the EXP Chapter-->
+    <style>
+        .xp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .xp-card {
+            background: var(--background-grey-1), #3b3b3b;
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+        }
+
+        .xp-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: .5rem;
+        }
+
+        .xp-title {
+            margin: .2rem 0 .4rem 0;
+            font-size: .9rem;
+            text-transform: uppercase;
+        }
+
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .adv-col {
+            background: var(--background-grey-1), #3b3b3b;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .35);
+        }
+
+        .adv-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: .6rem;
+        }
+
+        .adv-header h4 {
+            margin: 0;
+            font-size: .9rem;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-columns">
+        <main class="page-lore">
+            <header class="seeker-title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Level & Experience</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">Progression through the Three Pillars of Play</p>
+            </header>
+
+            <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
+            <section class="rule-options-box">
+                <div class="rule-options-label">Rule Options</div>
+
+                <div class="toggle-bar">
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="hybrid" checked />
+                        <span class="slider"></span>
+                        <span class="label">Hybrid Perks</span>
+                        <span class="rule-tag optional tooltip" data-tooltip-key="optional-rule">
+                            Optional
+                        </span>
+                    </label>
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="polarity" />
+                        <span class="slider"></span>
+                        <span class="label">Polarity Evolution</span>
+                        <span class="rule-tag variant tooltip" data-tooltip-key="variant-rule">
+                            Variant
+                        </span>
+                    </label>
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="experimental" />
+                        <span class="slider"></span>
+                        <span class="label">Ancestral Synergies</span>
+                        <span class="rule-tag experimental tooltip" data-tooltip-key="experimental-rule">
+                            Experimental
+                        </span>
+                    </label>
+
+                </div>
+            </section>
+            <p>In Seeker, growth is not linear—it is lived. Your character does not simply accumulate a universal XP
+                number until they “ding.” Instead, they grow through action and specialization, gaining power in the
+                areas where they take risks and make impact.</p>
+
+            <!-- Section I -->
+            <div class="section-wrapper">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="pillars">
+                    The Three Pillars
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>Experience is divided into <strong>three distinct Pillars</strong>, each representing a core axis of
+                gameplay. These Pillars progress independently. You don’t level up in general—you level up in what you
+                do.</strong>:</p>
+            <!-- START: THREE PILLARS GRID -->
+            <div class="xp-grid">
+                <!-- Combat -->
+                <div class="xp-card">
+                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="CXP icon" class="xp-icon">
+                    <h3 class="xp-title">Combat XP&nbsp;(CXP)</h3>
+                    <p>Earned by battles, tactics, and surviving danger.</p>
+                </div>
+
+                <!-- Social -->
+                <div class="xp-card">
+                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="SXP icon" class="xp-icon">
+                    <h3 class="xp-title">Social XP&nbsp;(SXP)</h3>
+                    <p>Gained through persuasion, diplomacy, and relationships.</p>
+                </div>
+
+                <!-- Exploration -->
+                <div class="xp-card">
+                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="EXP icon" class="xp-icon">
+                    <h3 class="xp-title">Exploration XP&nbsp;(EXP)</h3>
+                    <p>Awarded for discovery, lore, travel, and investigation.</p>
+                </div>
+            </div>
+            <!-- END: THREE PILLARS GRID -->
+            <h3>Independent Progression</h3>
+            <p>Each Pillar has its own XP track and its own Level. A character may be a renowned explorer (Level 4 in
+                EXP) but still be a novice in combat (Level 1 in CXP). This reflects how Seekers naturally evolve based
+                on their decisions, environment, and playstyle.</p>
+            <p>You grow where you invest. The world responds in kind.</p>
+
+            <!-- Section II -->
+            <div class="section-wrapper">
+                <div class="section-number">Section II</div>
+                <h2 class="section" id="earning">
+                    Earning XP
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>At the end of each session, or after major milestones, the GM awards 0–3 XP in each pillar. Use this
+                sample breakdown as guidance:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event / Action</th>
+                        <th>CXP</th>
+                        <th>SXP</th>
+                        <th>EXP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Defeated a powerful enemy</td>
+                        <td>+2</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Resolved conflict through diplomacy</td>
+                        <td>—</td>
+                        <td>+2</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Explored an unstable zone</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>+2</td>
+                    </tr>
+                    <tr>
+                        <td>Protected others during battle</td>
+                        <td>+1</td>
+                        <td>+1</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Decoded ancient language</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>+1</td>
+                    </tr>
+                    <tr>
+                        <td>Built alliance with key NPC</td>
+                        <td>—</td>
+                        <td>+1</td>
+                        <td>+1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <blockquote class="blockquote-medieval">
+                <p>Actions, not archetypes, define what you become.</p>
+                <footer>— Seeker Codex, vol. III</footer>
+            </blockquote>
+
+            <!-- Section III -->
+            <div class="section-wrapper">
+                <div class="section-number">Section III</div>
+                <h2 class="section" id="levels">
+                    From XP to Levels
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <ul>
+                <li><strong>5 XP = 1 Level</strong> in that pillar.</li>
+                <li><strong>Level 10</strong> is the campaign cap per pillar.</li>
+                <li>Characters often grow asymmetrically (e.g., Combat 3, Social 1, Exploration 4).</li>
+            </ul>
+            <p>Every new level unlocks an <strong>Advancement</strong>—a choice from that pillar’s menu.</p>
+
+            <!-- Section IV -->
+            <div class="section-wrapper">
+                <div class="section-number">Section IV</div>
+                <h2 class="section" id="advancements">
+                    Advancement Menus
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+
+            <!-- START: ADVANCEMENT GRID -->
+            <div class="adv-grid">
+                <!-- Combat Column -->
+                <div class="adv-col">
+                    <div class="adv-header">
+                        <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" class="xp-icon" alt="CXP">
+                        <h4>Combat</h4>
+                    </div>
+                    <ul>
+                        <li>+1 Strength, Agility, or Vigor (max 5)</li>
+                        <li>New attack, maneuver, or defense skill</li>
+                        <li>+1 Health or +1 Armor Capacity</li>
+                        <li>Perk: <em>Cleave</em>, <em>Iron Hide</em>, etc.</li>
+                    </ul>
+                </div>
+
+                <!-- Social Column -->
+                <div class="adv-col">
+                    <div class="adv-header">
+                        <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" class="xp-icon" alt="SXP">
+                        <h4>Social</h4>
+                    </div>
+                    <ul>
+                        <li>+1 Charisma, Insight, or Willpower (max 5)</li>
+                        <li>New support, deception, or influence skill</li>
+                        <li>Perk: <em>Silver Tongue</em>, <em>Bold Resolve</em></li>
+                        <li>Gain / upgrade a Reputation tag</li>
+                    </ul>
+                </div>
+
+                <!-- Exploration Column -->
+                <div class="adv-col">
+                    <div class="adv-header">
+                        <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" class="xp-icon" alt="EXP">
+                        <h4>Exploration</h4>
+                    </div>
+                    <ul>
+                        <li>+1 Perception, Intellect, or Adaptability (max 5)</li>
+                        <li>New utility, information, or movement skill</li>
+                        <li>Perk: <em>Trap Master</em>, <em>Field Scholar</em></li>
+                        <li>Lore edge or regional mastery</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- END: ADVANCEMENT GRID -->
+
+            <!-- Section V -->
+            <div class="section-wrapper">
+                <div class="section-number">Section V</div>
+                <h2 class="section" id="capstones">
+                    Capstone Abilities
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>When you reach <strong>Level 10</strong> in a pillar, gain a once-per-session <strong>Capstone
+                    Ability</strong> tied to that domain:</p>
+            <ul>
+                <li><strong>Combat 10:</strong> Once per round, treat one Attack skill as a Maneuver too.</li>
+                <li><strong>Social 10:</strong> Turn one hostile NPC neutral (if a valid argument exists).</li>
+                <li><strong>Exploration 10:</strong> Automatically succeed one major discovery or lore test.</li>
+            </ul>
+
+            <!-- Section VI -->
+            <div class="section-wrapper">
+                <div class="section-number">Section VI</div>
+                <h2 class="section" id="hybrid">
+                    Hybrid Perks (Optional)
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>Characters with <strong>Level 3</strong> in one pillar and <strong>Level 2</strong> in another may
+                instead select a Hybrid Perk. These fuse multiple disciplines:</p>
+            <ul>
+                <li><strong>Battle Leader:</strong> Combat 3 + Social 2</li>
+                <li><strong>Pathfinder’s Intuition:</strong> Exploration 4 + Combat 2</li>
+                <li><strong>Silver-Eyed Scout:</strong> Exploration 2 + Social 3</li>
+            </ul>
+
+            <!-- Section VII -->
+            <div class="section-wrapper">
+                <div class="section-number">Section VII</div>
+                <h2 class="section" id="respec">
+                    Respec & Retraining
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>Characters evolve. After a major narrative event (months of study, a crisis of faith, etc.), the GM may
+                allow a character to trade one advancement for another in the same tier.</p>
+
+            <!-- Section VIII -->
+            <div class="section-wrapper">
+                <div class="section-number">Section VIII</div>
+                <h2 class="section" id="design-notes">
+                    Design Notes
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <ul>
+                <li><strong>Actions define growth:</strong> Fight, explore, or parley to grow in that area.</li>
+                <li><strong>No dead levels:</strong> Each advancement is a real, mechanical gain.</li>
+                <li><strong>Versatility:</strong> Specialize deeply or spread out—it’s your story.</li>
+                <li><strong>Story-first design:</strong> Milestones, setbacks, and downtime all contribute.</li>
+            </ul>
+
+            <div class="footer-note">
+                <p><em>Last updated: July 1498 by Seeker Rulewrights</em></p>
+            </div>
+        </main>
+    </div>
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+</body>
+
+</html>
