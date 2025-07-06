@@ -274,11 +274,11 @@ ol {
 }
 
 ul {
-    list-style-type: none !important;
-    margin-left: 20px !important;
-    padding-left: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    list-style-type: none;
+    margin-left: 20px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 li {
