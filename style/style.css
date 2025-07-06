@@ -339,6 +339,15 @@ dl dd strong {
     vertical-align: bottom;
 }
 
+ul li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--ancient-gold);
+    font-size: 0.9em;
+    line-height: 1;
+}
+
 
 /*=============================================
 =                   LINKS                     =

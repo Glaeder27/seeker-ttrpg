@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Experience and advancement rules for Seeker TTRPG.">
-    
+
     <!--Custom CSS for the EXP Chapter-->
     <style>
         .xp-grid {
@@ -28,7 +28,7 @@
         .xp-icon {
             width: 40px;
             height: 40px;
-            margin-bottom: .5rem;
+            margin-bottom: .2rem;
         }
 
         .xp-title {
@@ -37,33 +37,45 @@
             text-transform: uppercase;
         }
 
-        .adv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+        .advancement-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: nowrap;
         }
 
-        .adv-col {
+        .advancement-col {
+            flex: 1 1 30%;
             background: var(--background-grey-1), #3b3b3b;
+            border: 1px solid var(--deep-charcoal);
             border-radius: 8px;
-            padding: 1rem 1.2rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, .35);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            padding: .5rem;
         }
 
-        .adv-header {
+        .advancement-header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: .6rem;
-            margin-bottom: .6rem;
+            gap: 8px;
+            margin-bottom: 12px;
+            min-height: auto;
+            text-align: center;
+            padding: .3rem;
         }
 
-        .adv-header h4 {
+        .advancement-header h4 {
             margin: 0;
             font-size: .9rem;
             text-transform: uppercase;
             line-height: 1.3;
+        }
+
+        .advancement-col:hover {
+            border-color: var(--bright-gold);
+            transform: translateY(-2px);
+            transition: all 0.2s ease-in-out;
         }
     </style>
 </head>
@@ -134,21 +146,24 @@
             <div class="xp-grid">
                 <!-- Combat -->
                 <div class="xp-card">
-                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="CXP icon" class="xp-icon">
+                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="CXP icon"
+                        class="xp-icon">
                     <h3 class="xp-title">Combat XP&nbsp;(CXP)</h3>
                     <p>Earned by battles, tactics, and surviving danger.</p>
                 </div>
 
                 <!-- Social -->
                 <div class="xp-card">
-                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="SXP icon" class="xp-icon">
+                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="SXP icon"
+                        class="xp-icon">
                     <h3 class="xp-title">Social XP&nbsp;(SXP)</h3>
                     <p>Gained through persuasion, diplomacy, and relationships.</p>
                 </div>
 
                 <!-- Exploration -->
                 <div class="xp-card">
-                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="EXP icon" class="xp-icon">
+                    <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" alt="EXP icon"
+                        class="xp-icon">
                     <h3 class="xp-title">Exploration XP&nbsp;(EXP)</h3>
                     <p>Awarded for discovery, lore, travel, and investigation.</p>
                 </div>
@@ -250,11 +265,13 @@
             </div>
 
             <!-- START: ADVANCEMENT GRID -->
-            <div class="adv-grid">
+            <div class="advancement-grid">
                 <!-- Combat Column -->
-                <div class="adv-col">
-                    <div class="adv-header">
-                        <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" class="xp-icon" alt="CXP">
+                <div class="advancement-col">
+                    <div class="advancement-header">
+                        <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/placeholder-icon-1.png"
+                            class="xp-icon" alt="CXP">
+
                         <h4>Combat</h4>
                     </div>
                     <ul>
@@ -266,9 +283,10 @@
                 </div>
 
                 <!-- Social Column -->
-                <div class="adv-col">
-                    <div class="adv-header">
-                        <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" class="xp-icon" alt="SXP">
+                <div class="advancement-col">
+                    <div class="advancement-header">
+                        <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/placeholder-icon-1.png"
+                            class="xp-icon" alt="SXP">
                         <h4>Social</h4>
                     </div>
                     <ul>
@@ -280,9 +298,10 @@
                 </div>
 
                 <!-- Exploration Column -->
-                <div class="adv-col">
-                    <div class="adv-header">
-                        <img src="https://icons.veryicon.com/png/o/miscellaneous/40px/image-104.png" class="xp-icon" alt="EXP">
+                <div class="advancement-col">
+                    <div class="advancement-header">
+                        <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/placeholder-icon-1.png"
+                            class="xp-icon" alt="EXP">
                         <h4>Exploration</h4>
                     </div>
                     <ul>
