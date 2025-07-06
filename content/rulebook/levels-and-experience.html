@@ -38,11 +38,10 @@
         }
 
         .advancement-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 24px;
-            margin-top: 20px;
-            flex-wrap: nowrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
         }
 
         .advancement-col {
@@ -73,8 +72,7 @@
         }
 
         .advancement-col:hover {
-            border-color: var(--bright-gold);
-            transform: translateY(-2px);
+            background: #494949;
             transition: all 0.2s ease-in-out;
         }
     </style>
