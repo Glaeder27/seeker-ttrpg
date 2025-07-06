@@ -274,7 +274,7 @@ ol {
 }
 
 ul {
-    list-style-type: disc !important;
+    list-style-type: none !important;
     margin-left: 20px !important;
     padding-left: 0 !important;
     margin-top: 0 !important;
