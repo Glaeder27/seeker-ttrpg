@@ -75,13 +75,13 @@ html {
     margin: 0 auto;
 }
 
-.page-lore {
+.page-lore, .page-main {
     flex: 1;
     width: 100%;
     min-width: 0;
 }
 
-.page-lore>div {
+.page-lore>div, .page-main>div {
     min-width: 0;
 }
 
@@ -267,49 +267,27 @@ li {
     font-size: 0.9rem;
 }
 
-ul,
-ol {
-    padding-left: 25px;
-    margin-top: 0;
-}
-
-ul {
-    list-style-type: none;
-    margin-left: 20px;
-    padding-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-li {
-    position: relative;
-    margin-bottom: 8px;
-    line-height: 1.8;
-    font-family: var(--default-font);
-    font-weight: 400;
-    color: var(--off-white);
-    font-size: 0.9rem;
-}
-
-
-ul li::before {
-    position: absolute;
-    left: 0;
-    top: 0.2em;
-    color: var(--ancient-gold);
-    font-size: 0.8em;
-    line-height: 1;
-}
-
-.page-lore .ul {
-    content: "✦";
-}
-
 b,
 strong {
     font-weight: bold;
     color: var(--off-white);
 }
+
+.example-text {
+    color: var(--off-white);
+    font-family: var(--default-font);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.text-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: bottom;
+}
+
+/* Definitions */
 
 dl {
     margin-top: 15px;
@@ -345,18 +323,63 @@ dl dd strong {
     font-size: 0.9rem;
 }
 
-.example-text {
-    color: var(--off-white);
-    font-family: var(--default-font);
-    line-height: 1.6;
-    margin-bottom: 10px;
-    font-size: 0.9em;
+/* Lists */
+
+ul,
+ol {
+    padding-left: 25px;
+    margin-top: 0;
 }
 
-.text-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    vertical-align: bottom;
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+li {
+    position: relative;
+    margin-bottom: 8px;
+    line-height: 1.8;
+    font-family: var(--default-font);
+    font-weight: 400;
+    color: var(--off-white);
+    font-size: 0.9rem;
+}
+
+.page-lore ul li,
+.page-main ul li {
+    position: relative;
+    padding-left: 1.4em;
+}
+
+ul li::before {
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    color: var(--ancient-gold);
+    font-size: 0.8em;
+    line-height: 1;
+}
+
+.page-lore ul,
+.page-main ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.page-lore ul li::before,
+.page-main ul li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    color: var(--ancient-gold);
+    font-size: 0.8em;
+    line-height: 1;
 }
 
 
@@ -1840,7 +1863,8 @@ details[open] .infobox-table {
     }
 
     .sidebar,
-    .page-lore {
+    .page-lore,
+    .page-main {
         max-width: 100%;
         width: 100%;
         padding: 0;
@@ -1851,7 +1875,8 @@ details[open] .infobox-table {
         padding: 20px 0;
     }
 
-    .page-lore {
+    .page-lore,
+    .page-main {
         order: 2;
     }
 }
