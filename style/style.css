@@ -282,7 +282,27 @@ ul {
 }
 
 li {
+    position: relative;
     margin-bottom: 8px;
+    line-height: 1.8;
+    font-family: var(--default-font);
+    font-weight: 400;
+    color: var(--off-white);
+    font-size: 0.9rem;
+}
+
+
+ul li::before {
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    color: var(--ancient-gold);
+    font-size: 0.8em;
+    line-height: 1;
+}
+
+.page-lore .ul {
+    content: "✦";
 }
 
 b,
@@ -337,15 +357,6 @@ dl dd strong {
     width: 1.5rem;
     height: 1.5rem;
     vertical-align: bottom;
-}
-
-ul li::before {
-    content: "✦";
-    position: absolute;
-    left: 0;
-    color: var(--ancient-gold);
-    font-size: 0.9em;
-    line-height: 1;
 }
 
 
