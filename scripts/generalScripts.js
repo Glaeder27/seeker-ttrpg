@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    const definitionsUrl = 'https://glaeder27.github.io/seeker-ttrpg/tooltipDefinitions.json';
+    const definitionsUrl = 'https://glaeder27.github.io/seeker-ttrpg/data/tooltipDefinitions.json';
 
     // Definition Fetch Logic
     fetch(definitionsUrl)

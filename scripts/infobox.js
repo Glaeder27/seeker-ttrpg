@@ -1,6 +1,6 @@
 (() => {
 
-    const DEFINITIONS_URL = 'https://glaeder27.github.io/seeker-ttrpg/tooltipDefinitions.json';
+    const DEFINITIONS_URL = 'https://glaeder27.github.io/seeker-ttrpg/data/tooltipDefinitions.json';
     let tooltipDefinitions = {};
 
     const tooltip = document.createElement('div');
