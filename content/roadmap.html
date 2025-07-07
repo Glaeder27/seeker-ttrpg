@@ -124,6 +124,10 @@
             font-size: 1.4rem;
             line-height: 1;
             margin: auto;
+            width: 42px;
+            height: 42px;
+            display: block;
+            object-fit: contain;
         }
 
         .roadmap-category {
@@ -135,10 +139,13 @@
         }
 
         .roadmap-title {
+            text-align: center;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
+            margin: 0 0 0.4rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
             color: var(--off-white, #efefef);
-            margin: 0;
         }
 
         .roadmap-description {
@@ -159,23 +166,6 @@
             align-items: center;
             margin-bottom: 0.6rem;
             width: 100%;
-        }
-
-        .roadmap-icon {
-            width: 42px;
-            height: 42px;
-            display: block;
-            object-fit: contain;
-        }
-
-        .roadmap-title {
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0 0 0.4rem 0;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            color: var(--off-white, #efefef);
         }
 
         .roadmap-meta {
@@ -259,7 +249,7 @@
 
                 <!-- Card 3 -->
                 <div class="roadmap-card" data-title="Interactive Map" data-category="Website" data-status="planned"
-                    data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg">
+                    data-bg="">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Interactive&nbsp;Map</h3>
                     <div class="roadmap-meta">
@@ -272,7 +262,7 @@
 
                 <!-- Card 4 -->
                 <div class="roadmap-card" data-title="Combat Polarity Overhaul" data-category="Game System"
-                    data-status="released" data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg">
+                    data-status="released" data-bg="">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Polarity&nbsp;Combat</h3>
                     <div class="roadmap-meta">
@@ -285,7 +275,7 @@
 
                 <!-- Card 5 -->
                 <div class="roadmap-card" data-title="Downtime" data-category="Game System"
-                    data-status="planned" data-bg="img">
+                    data-status="planned" data-bg="">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Downtime</h3>
                     <div class="roadmap-meta">
@@ -297,7 +287,7 @@
 
                 <!-- Card 6 -->
                 <div class="roadmap-card" data-title="Shipboard Adventures" data-category="Game System"
-                    data-status="planned" data-bg="img">
+                    data-status="planned" data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/images/shipwreck-off-a-rocky-coast-1614-adam-willeart.webp">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Shipboard Adventures</h3>
                     <div class="roadmap-meta">
@@ -307,20 +297,29 @@
                     <p class="roadmap-description">Dedicated mechanics for naval travel, ship encounters, and sea rituals.</p>
                 </div>
 
-
-
-                <!-- Card Template
-                <div class="roadmap-card" data-title="Title" data-category="Category"
-                    data-status="status" data-bg="img">
+                <!-- Card 7 -->
+                <div class="roadmap-card" data-title="Factions" data-category="Lore & Setting"
+                    data-status="progress" data-bg="">
                     <div class="roadmap-icon-wrapper"></div>
-                    <h3 class="roadmap-title">Title</h3>
+                    <h3 class="roadmap-title">Factions</h3>
                     <div class="roadmap-meta">
-                        <div class="roadmap-category">Category</div>
-                        <span class="rule-tag state-released">Status</span>
+                        <div class="roadmap-category">Lore & Setting</div>
+                        <span class="rule-tag state-progress">In Progress</span>
                     </div>
-                    <p class="roadmap-description">Description</p>
+                    <p class="roadmap-description">Hidden cults, native clans, arcane orders, and esoteric lodges.</p>
                 </div>
-                -->
+
+                <!-- Card 7 -->
+                <div class="roadmap-card" data-title="Dark Mode & Accessibility Improvements" data-category="Website"
+                    data-status="progress" data-bg="">
+                    <div class="roadmap-icon-wrapper"></div>
+                    <h3 class="roadmap-title">Light Mode & Accessibility Improvements</h3>
+                    <div class="roadmap-meta">
+                        <div class="roadmap-category">Website</div>
+                        <span class="rule-tag state-progress">In Progress</span>
+                    </div>
+                    <p class="roadmap-description">Improved UI readability and mobile performance.</p>
+                </div>
 
             </div>
         </main>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seeker Rulebook Sidebar</title>
+  <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css" />
+  <style>
+    .sidebar-wrapper {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .sidebar-block {
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .sidebar-block h3 {
+      font-size: 1rem;
+      color: var(--bright-gold, #e6c87c);
+      margin-bottom: 0.5rem;
+      font-family: var(--default-font);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .sidebar-link {
+      display: block;
+      margin: 0.35rem 0;
+      color: var(--off-white, #eee);
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+
+    /* Archives carousel */
+    .archives-carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: .75rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0.25rem 0;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .archives-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .archive-item {
+      flex: 0 0 auto;
+      max-width: 300px;
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: .75rem;
+      border-radius: 6px;
+      scroll-snap-align: start;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: #ccc;
+      position: relative;
+      font-style: italic;
+    }
+
+    .archive-author {
+      text-align: right;
+      font-size: 0.7rem;
+      color: #aaa;
+      margin-top: 0.4rem;
+      font-style: normal;
+    }
+
+    /* Glossary */
+    .glossary-input {
+      width: 100%;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--brown-charcoal, #3D2E23);
+      border-radius: 4px;
+      background: var(--background-grey-2, #2c2c2c);
+      color: var(--off-white);
+      margin-bottom: 0.6rem;
+      font-size: 0.85rem;
+      box-sizing: border-box;
+    }
+
+    .glossary-result {
+      font-size: 0.8rem;
+      color: #ddd;
+      line-height: 1.4;
+    }
+
+    .glossary-result a {
+      color: var(--bright-gold);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar-wrapper">
+    <!-- Block 1: Player & GM Resources -->
+    <div class="sidebar-block">
+      <h3>Player & GM Resources</h3>
+      <a class="sidebar-link" href="#">Character Sheet (PDF)</a>
+      <a class="sidebar-link" href="#">Quickstart Rules</a>
+    </div>
+
+    <!-- Block 2: Quick Glossary Search -->
+    <div class="sidebar-block">
+      <h3>Quick Glossary</h3>
+      <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+      <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+    </div>
+  </aside>
+
+  <!-- Block 3: From the Archives Carousel -->
+  <div class="sidebar-block">
+    <h3>From the Archives</h3>
+    <div class="archives-carousel">
+      <div class="archive-item">
+        "They did not fear our steel, but the smoke that rose from southern ruins."
+        <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+      </div>
+      <div class="archive-item">
+        "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+        <div class="archive-author">— Journal of Captain J. Strode</div>
+      </div>
+      <div class="archive-item">
+        "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+        <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+      </div>
+      <div class="archive-item">
+        "The stone idols breathe. Some say they dream. Pray they never awaken."
+        <div class="archive-author">— Codex Margin Note, unknown author</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple glossary lookup
+    const glossary = {
+      "Strength": {
+        definition: "A measure of physical might; used for melee attacks and lifting objects.",
+        link: "https://daniloaversa.wixstudio.com/seeker-rpg/rules/attributes"
+      },
+      "Polarity": {
+        definition: "The arcane resonance that defines how a spell aligns with cosmic forces.",
+        link: "https://daniloaversa.wixstudio.com/seeker-rpg/rules/magic"
+      },
+      "Seeker": {
+        definition: "An explorer sanctioned to uncover, retrieve, or silence arcane phenomena in the New World.",
+        link: "https://daniloaversa.wixstudio.com/seeker-rpg/rules/core-concepts"
+      }
+      // Add more terms as needed
+    };
+
+    const carousel = document.querySelector('.archives-carousel');
+    const archiveItems = document.querySelectorAll('.archive-item');
+    let scrollIndex = 0;
+    let intervalId;
+
+    function startCarousel() {
+      intervalId = setInterval(() => {
+        scrollIndex = (scrollIndex + 1) % archiveItems.length;
+        carousel.scrollTo({
+          left: archiveItems[scrollIndex].offsetLeft,
+          behavior: 'smooth'
+        });
+      }, 8000);
+    }
+
+    function stopCarousel() {
+      clearInterval(intervalId);
+    }
+
+    carousel.addEventListener('mouseenter', stopCarousel);
+    carousel.addEventListener('mouseleave', startCarousel);
+
+    // Start initially
+    startCarousel();
+
+    const input = document.getElementById('glossary-search');
+    const result = document.getElementById('glossary-result');
+
+    input.addEventListener('input', () => {
+      const term = input.value.trim();
+      if (glossary[term]) {
+        const { definition, link } = glossary[term];
+        result.innerHTML = `${definition} <a href="${link}" target="_top">[Read More]</a>`;
+      } else if (term.length > 0) {
+        result.textContent = 'No entry found.';
+      } else {
+        result.textContent = 'Type a term to see its definition.';
+      }
+    });
+  </script>
+</body>
+
+</html>
