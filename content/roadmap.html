@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Roadmap – Seeker TTRPG</title>
+    <title>Roadmap – Seeker TTRPG</title>
     <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -97,11 +97,11 @@
             background-repeat: no-repeat;
             overflow: hidden;
             background-blend-mode: overlay;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, .6);
         }
 
         .roadmap-card:hover {
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, .5);
             border-color: var(--burnt-copper, #A07C44);
         }
 
@@ -138,7 +138,7 @@
         .roadmap-modal {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.75);
+            /* background: rgba(0, 0, 0, .75); Not an iframe anymore, check how to make this work */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -289,7 +289,7 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="roadmap-card" data-title="Bestiary Expansion" data-category="Game System"
+                <div class="roadmap-card" style="background-position: top center;" data-title="Bestiary Expansion" data-category="Game System"
                     data-status="progress"
                     data-bg="https://s3.grandcanvas.com/storage-grandcanvas/files/users/287/images/medium/pac_887098951.jpg"
                     data-description="New monsters inspired by Mesoamerican and Iberian folklore: the Black Llorona, Tezcatlipoca’s Hounds, and the Obsidian Wardens. Includes art and narrative hooks.">
@@ -382,10 +382,10 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const iconMap = {
-                "Game System": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/placeholder.svg",
-                "Lore": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/placeholder.svg",
-                "Website": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/placeholder.svg",
-                "Bestiary": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/placeholder.svg"
+                "Game System": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg",
+                "Lore": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_lore.svg",
+                "Website": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_website.svg",
+                "Bestiary": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_bestiary.svg"
             };
 
             document.querySelectorAll('.roadmap-card').forEach(card => {
