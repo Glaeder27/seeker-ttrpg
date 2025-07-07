@@ -10,6 +10,13 @@
     <!-- ─────────────── ROADMAP STYLES ─────────────── -->
     <style>
         /* ── Tag style from your site ─────────────────── */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
         .rule-tag {
             display: inline-block;
             font-size: 0.65rem;
@@ -134,69 +141,16 @@
             margin: 0;
         }
 
-        /* ── Modal ───────────────────────────────────── */
-        .roadmap-modal {
-            position: fixed;
-            inset: 0;
-            /* background: rgba(0, 0, 0, .75); Not an iframe anymore, check how to make this work */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-
-            visibility: hidden;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .roadmap-modal.show {
-            visibility: visible;
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .roadmap-modal-content {
-            background: var(--background-grey-2, #2c2c2c);
-            border: 1px solid var(--ancient-gold, #c6a664);
-            border-radius: 10px;
-            padding: 1.7rem 2rem;
-            width: 92%;
-            max-width: 520px;
-            color: var(--off-white, #efefef);
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.55);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: var(--bright-gold, #e6c87c);
-            line-height: 1;
-        }
-
-        .modal-title {
-            margin-top: 0;
-            margin-bottom: 0.35rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .modal-category {
-            font-size: 0.8rem;
-            color: var(--bright-gold, #e6c87c);
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .modal-description {
-            line-height: 1.6;
+        .roadmap-description {
+            margin-top: 0.8rem;
             font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--off-white, #efefef);
+            display: none;
+        }
+
+        .roadmap-card.expanded .roadmap-description {
+            display: block;
         }
 
         .roadmap-icon-wrapper {
@@ -278,141 +232,121 @@
 
                 <!-- Card 1 -->
                 <div class="roadmap-card" data-title="Crafting System" data-category="Game System" data-status="planned"
-                    data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg"
-                    data-description="A complete system for forging arcane items, potions, and relics. Includes risk mechanics, rare ingredients, and unpredictable outcomes.">
+                    data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Crafting</h3>
                     <div class="roadmap-meta">
                         <div class="roadmap-category">Game&nbsp;System</div>
                         <span class="rule-tag state-planned">Planned</span>
                     </div>
+                    <p class="roadmap-description">A complete system for forging arcane items, potions, and relics.
+                        Includes risk mechanics, rare ingredients, and unpredictable outcomes.</p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="roadmap-card" style="background-position: top center;" data-title="Bestiary Expansion" data-category="Game System"
-                    data-status="progress"
-                    data-bg="https://s3.grandcanvas.com/storage-grandcanvas/files/users/287/images/medium/pac_887098951.jpg"
-                    data-description="New monsters inspired by Mesoamerican and Iberian folklore: the Black Llorona, Tezcatlipoca’s Hounds, and the Obsidian Wardens. Includes art and narrative hooks.">
+                <div class="roadmap-card" style="background-position: top center;" data-title="Bestiary Expansion"
+                    data-category="Bestiary" data-status="progress"
+                    data-bg="https://s3.grandcanvas.com/storage-grandcanvas/files/users/287/images/medium/pac_887098951.jpg">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Bestiary</h3>
                     <div class="roadmap-meta">
                         <div class="roadmap-category">Lore&nbsp;&amp;&nbsp;Setting</div>
                         <span class="rule-tag state-progress">In&nbsp;Progress</span>
                     </div>
+                    <p class="roadmap-description">New monsters inspired by Mesoamerican and Iberian folklore: the Black
+                        Llorona, Tezcatlipoca’s Hounds, and the Obsidian Wardens. Includes art and narrative hooks.</p>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="roadmap-card" data-title="Interactive Map" data-category="Website" data-status="planned"
-                    data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg"
-                    data-description="A zoomable map of the New World with layers for arcane ruins, colonies, and unstable zones. Clickable markers linking to wiki entries.">
+                    data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Interactive&nbsp;Map</h3>
                     <div class="roadmap-meta">
                         <div class="roadmap-category">Website</div>
                         <span class="rule-tag state-planned">Planned</span>
                     </div>
+                    <p class="roadmap-description">A zoomable map of the New World with layers for arcane ruins,
+                        colonies, and unstable zones. Clickable markers linking to wiki entries.</p>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="roadmap-card" data-title="Combat Polarity Overhaul" data-category="Game System"
-                    data-status="released" data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg"
-                    data-description="A full redesign of synergy between Attacks and Maneuvers: new stances and bonuses based on arcane alignment.">
+                    data-status="released" data-bg="https://glaeder27.github.io/seeker-ttrpg/assets/bg/crafting-bg.jpg">
                     <div class="roadmap-icon-wrapper"></div>
                     <h3 class="roadmap-title">Polarity&nbsp;Combat</h3>
                     <div class="roadmap-meta">
                         <div class="roadmap-category">Game&nbsp;System</div>
                         <span class="rule-tag state-released">Released</span>
                     </div>
+                    <p class="roadmap-description">A full redesign of synergy between Attacks and Maneuvers: new stances
+                        and bonuses based on arcane alignment.</p>
                 </div>
 
             </div>
-            <!-- ─────────────── /Roadmap Grid ─────────────── -->
-
         </main>
-    </div>
-
-    <!-- ─────────────── Modal Popup ─────────────── -->
-    <div id="roadmap-modal" class="roadmap-modal">
-        <div class="roadmap-modal-content">
-            <span class="modal-close">&times;</span>
-            <h3 class="modal-title"></h3>
-            <div class="modal-category"></div>
-            <p class="modal-description"></p>
-        </div>
     </div>
 
     <!-- ─────────────── Roadmap Script ─────────────── -->
     <script>
-        /* ----- Modal interaction ----- */
-        const modal = document.getElementById('roadmap-modal');
-        const modalTitle = modal.querySelector('.modal-title');
-        const modalCat = modal.querySelector('.modal-category');
-        const modalDesc = modal.querySelector('.modal-description');
-
-        document.querySelectorAll('.roadmap-card').forEach(card => {
-            card.addEventListener('click', () => {
-                modalTitle.textContent = card.dataset.title;
-                modalCat.textContent = `${card.dataset.category} · ${card.dataset.status.replace('-', ' ')}`;
-                modalDesc.textContent = card.dataset.description;
-                modal.classList.add('show');
-            });
-        });
-
-        const closeModal = () => modal.classList.remove('show');
-        modal.querySelector('.modal-close').addEventListener('click', closeModal);
-        window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-
-        /* ----- Filtering ----- */
-        const catFilter = document.getElementById('filter-category');
-        const statusFilter = document.getElementById('filter-status');
-
-        function applyFilters() {
-            const catVal = catFilter.value;
-            const statusVal = statusFilter.value;
-
-            document.querySelectorAll('.roadmap-card').forEach(card => {
-                const matchCat = (catVal === 'all') || (card.dataset.category === catVal);
-                const matchStatus = (statusVal === 'all') || (card.dataset.status === statusVal);
-                card.style.display = (matchCat && matchStatus) ? 'block' : 'none';
-            });
-        }
-
-        catFilter.addEventListener('change', applyFilters);
-        statusFilter.addEventListener('change', applyFilters);
-
         document.addEventListener('DOMContentLoaded', () => {
             const iconMap = {
                 "Game System": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg",
-                "Lore": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_lore.svg",
+                "Lore & Setting": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_lore.svg",
                 "Website": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_website.svg",
                 "Bestiary": "https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_bestiary.svg"
             };
 
+            // Apply icons and background
             document.querySelectorAll('.roadmap-card').forEach(card => {
                 const category = card.dataset.category?.trim();
                 const bg = card.dataset.bg;
 
-                // Controlla il valore di category con console.log
-                console.log("Category:", category);
-
-                const iconUrl = iconMap[category] || "https://glaeder27.github.io/seeker-ttrpg/assets/icons/png/placeholder-icon-1.png";
-
-                // Set icon
                 const iconWrapper = card.querySelector('.roadmap-icon-wrapper');
                 const img = document.createElement('img');
-                img.src = iconUrl;
+                img.src = iconMap[category] || "https://glaeder27.github.io/seeker-ttrpg/assets/icons/png/placeholder-icon-1.png";
                 img.alt = '';
                 img.role = 'presentation';
                 img.className = 'roadmap-icon';
                 iconWrapper.appendChild(img);
 
-                // Set individual background
                 if (bg) {
                     card.style.backgroundImage = `url('${bg}')`;
                 }
+
+                // Toggle description
+                card.addEventListener('click', () => {
+                    const wasOpen = card.classList.contains('expanded');
+                    document.querySelectorAll('.roadmap-card.expanded').forEach(c => c.classList.remove('expanded'));
+
+                    if (!wasOpen) {
+                        card.classList.add('expanded');
+                        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+
             });
+
+            // Filters
+            const catFilter = document.getElementById('filter-category');
+            const statusFilter = document.getElementById('filter-status');
+
+            function applyFilters() {
+                const catVal = catFilter.value;
+                const statusVal = statusFilter.value;
+
+                document.querySelectorAll('.roadmap-card').forEach(card => {
+                    const matchCat = (catVal === 'all') || (card.dataset.category === catVal);
+                    const matchStatus = (statusVal === 'all') || (card.dataset.status === statusVal);
+                    card.style.display = (matchCat && matchStatus) ? 'block' : 'none';
+                });
+            }
+
+            catFilter.addEventListener('change', applyFilters);
+            statusFilter.addEventListener('change', applyFilters);
         });
     </script>
+
 </body>
 
 </html>
