@@ -177,6 +177,7 @@
       // Add more terms as needed
     };
 
+    // Glossary search logic
     const input = document.getElementById('glossary-search');
     const result = document.getElementById('glossary-result');
 
@@ -190,33 +191,34 @@
       } else {
         result.textContent = 'Type a term to see its definition.';
       }
-
-
-      const archiveItems = document.querySelectorAll('.archives-carousel-fade .archive-item');
-      let currentIndex = 0;
-      let archiveHovered = false;
-
-      const showItem = (index) => {
-        archiveItems.forEach((item, i) => {
-          item.classList.toggle('show', i === index);
-        });
-      };
-
-      const archiveBlock = document.querySelector('.archives-carousel-fade');
-
-      archiveBlock.addEventListener('mouseenter', () => archiveHovered = true);
-      archiveBlock.addEventListener('mouseleave', () => archiveHovered = false);
-
-      setInterval(() => {
-        if (!archiveHovered) {
-          currentIndex = (currentIndex + 1) % archiveItems.length;
-          showItem(currentIndex);
-        }
-      }, 8000);
-
-      showItem(currentIndex);
     });
+
+    // Archives carousel fade logic (runs once on load)
+    const archiveItems = document.querySelectorAll('.archives-carousel-fade .archive-item');
+    let currentIndex = 0;
+    let archiveHovered = false;
+
+    const showItem = (index) => {
+      archiveItems.forEach((item, i) => {
+        item.classList.toggle('show', i === index);
+      });
+    };
+
+    const archiveBlock = document.querySelector('.archives-carousel-fade');
+
+    archiveBlock.addEventListener('mouseenter', () => archiveHovered = true);
+    archiveBlock.addEventListener('mouseleave', () => archiveHovered = false);
+
+    setInterval(() => {
+      if (!archiveHovered) {
+        currentIndex = (currentIndex + 1) % archiveItems.length;
+        showItem(currentIndex);
+      }
+    }, 8000);
+
+    showItem(currentIndex);
   </script>
+
 </body>
 
 </html>
