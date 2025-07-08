@@ -1,0 +1,14 @@
+{
+  "Strength": {
+    "definition": "A measure of physical might; used for melee attacks and lifting objects.",
+    "link": "https://daniloaversa.wixstudio.com/seeker-rpg/rules/attributes"
+  },
+  "Polarity": {
+    "definition": "The arcane resonance that defines how a spell aligns with cosmic forces.",
+    "link": "https://daniloaversa.wixstudio.com/seeker-rpg/rules/magic"
+  },
+  "Seeker": {
+    "definition": "An explorer sanctioned to uncover, retrieve, or silence arcane phenomena in the New World.",
+    "link": "https://daniloaversa.wixstudio.com/seeker-rpg/rules/core-concepts"
+  }
+}
