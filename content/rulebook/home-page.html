@@ -113,9 +113,15 @@
             min-height: 225px;
         }
 
-        .unavailable {
+        .rules-card[data-status="planned"] {
             border: 1px solid var(--deep-charcoal, #161718);
-            background-color: rgba(0, 0, 0, .3);
+            background-color: rgba(0, 0, 0, .015);
+            background-image: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(255, 255, 255, 0.03) 10px,
+                    transparent 10px,
+                    transparent 20px);
+            backdrop-filter: grayscale(30%);
         }
 
         .rules-card:hover {
@@ -198,8 +204,15 @@
             font-size: .9rem;
             line-height: 1.6;
             color: var(--off-white, #ececec);
-            font-family: var(--default-font, 'Montserrat', serif);;
+            font-family: var(--default-font, 'Montserrat', serif);
+            ;
             text-align: left;
+        }
+
+        a.rules-card-link:not([href]),
+        a.rules-card-link[href=""] {
+            cursor: default;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -248,7 +261,8 @@
                 pyramid, or choosing between the will of the Queen and the survival of the world.</p>
             <p class="section-description">In the end, Seeker is not just a game of conquest or survival. It is a
                 question:</p>
-            <p class="section-description" style="text-align: center; font-size: 1.2rem;"><strong>Will you change the New World — <em>or will it change
+            <p class="section-description" style="text-align: center; font-size: 1.2rem;"><strong>Will you change the
+                    New World — <em>or will it change
                         you?</em></strong></p>
         </section>
 
@@ -308,8 +322,9 @@
                     </div>
                 </a>
 
-                <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rules" target="_top" class="rules-card-link">
-                    <div class="rules-card unavailable" data-title="Skills & Masteries" data-category="Lore" data-status="progress">
+                <a href="" target="_top" class="rules-card-link">
+                    <div class="rules-card unavailable" data-title="Skills & Masteries" data-category="Lore"
+                        data-status="planned">
                         <div class="rules-icon-wrapper">
                             <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
                                 class="rules-icon">
@@ -324,7 +339,7 @@
                     </div>
                 </a>
 
-                <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rules" target="_top" class="rules-card-link">
+                <a href="" target="_top" class="rules-card-link">
                     <div class="rules-card unavailable" data-title="Travel & Exploration" data-category="System"
                         data-status="planned">
                         <div class="rules-icon-wrapper">
@@ -341,7 +356,7 @@
                     </div>
                 </a>
 
-                <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rules" target="_top" class="rules-card-link">
+                <a href="" target="_top" class="rules-card-link">
                     <div class="rules-card unavailable" data-title="Social Interactions" data-category="System"
                         data-status="planned">
                         <div class="rules-icon-wrapper">
@@ -401,8 +416,9 @@
                     </div>
                 </a>
 
-                <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rules" target="_top" class="rules-card-link">
-                    <div class="rules-card unavailable" data-title="Anomalies" data-category="Occult" data-status="planned">
+                <a href="" target="_top" class="rules-card-link">
+                    <div class="rules-card unavailable" data-title="Anomalies" data-category="Occult"
+                        data-status="planned">
                         <div class="rules-icon-wrapper">
                             <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
                                 class="rules-icon">
@@ -417,8 +433,9 @@
                     </div>
                 </a>
 
-                <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rules" target="_top" class="rules-card-link">
-                    <div class="rules-card unavailable" data-title="Factions" data-category="Lore" data-status="planned">
+                <a href="" target="_top" class="rules-card-link">
+                    <div class="rules-card unavailable" data-title="Factions" data-category="Lore"
+                        data-status="planned">
                         <div class="rules-icon-wrapper">
                             <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
                                 class="rules-icon">
@@ -433,8 +450,9 @@
                     </div>
                 </a>
 
-                <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rules" target="_top" class="rules-card-link">
-                    <div class="rules-card unavailable" data-title="Bestiary" data-category="Lore" data-status="planned">
+                <a href="" target="_top" class="rules-card-link">
+                    <div class="rules-card unavailable" data-title="Bestiary" data-category="Lore"
+                        data-status="planned">
                         <div class="rules-icon-wrapper">
                             <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
                                 class="rules-icon">
@@ -449,8 +467,9 @@
                     </div>
                 </a>
 
-                <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rules" target="_top" class="rules-card-link">
-                    <div class="rules-card unavailable" data-title="Glossary" data-category="System" data-status="planned">
+                <a href="" target="_top" class="rules-card-link">
+                    <div class="rules-card unavailable" data-title="Glossary" data-category="System"
+                        data-status="planned">
                         <div class="rules-icon-wrapper">
                             <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
                                 class="rules-icon">
