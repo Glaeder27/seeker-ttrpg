@@ -1663,6 +1663,11 @@ details[open] .infobox-table {
     transform: rotate(0deg); /* Rimuove la rotazione laterale */
   }
 
+  .seeker-title .title-icon.flipped {
+    font-size: 1.4rem;
+    transform: rotate(-180deg);
+}
+
   .seeker-title .title-icon.top {
     order: -1; /* sopra al titolo */
   }
