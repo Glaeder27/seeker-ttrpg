@@ -211,15 +211,10 @@ h2.section::after {
 }
 
 .section-wrapper {
-    text-align: center;
     margin: 60px auto 30px auto;
     max-width: 800px;
     position: relative;
     padding-top: 0;
-}
-
-.section-wrapper p {
-    text-align: left;
 }
 
 .section-number {
