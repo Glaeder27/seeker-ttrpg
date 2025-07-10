@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twin Coil System</title>
+  <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
+  <style>
+    table td {
+      vertical-align: middle;
+    }
+    table td img {
+      height: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-main">
+
+    <header class="seeker-title">
+      <div class="title-container">
+        <span class="title-icon">🜍</span>
+        <h1>Twin Coil System</h1>
+        <span class="title-icon flipped">🜍</span>
+      </div>
+      <p class="subtitle">A modular dice-resolution engine for dynamic and narrative-driven tabletop play</p>
+    </header>
+
+    <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
+            <section class="rule-options-box">
+                <div class="rule-options-label">Rule Options</div>
+
+                <div class="toggle-bar">
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="hybrid" checked />
+                        <span class="slider"></span>
+                        <span class="label">Hybrid Perks</span>
+                        <span class="rule-tag optional tooltip" data-tooltip-key="optional-rule">
+                            Optional
+                        </span>
+                    </label>
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="polarity" />
+                        <span class="slider"></span>
+                        <span class="label">Polarity Evolution</span>
+                        <span class="rule-tag variant tooltip" data-tooltip-key="variant-rule">
+                            Variant
+                        </span>
+                    </label>
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="experimental" />
+                        <span class="slider"></span>
+                        <span class="label">Ancestral Synergies</span>
+                        <span class="rule-tag experimental tooltip" data-tooltip-key="experimental-rule">
+                            Experimental
+                        </span>
+                    </label>
+
+                </div>
+            </section>
+
+    <section class="section-wrapper">
+      <div class="section-number">Section IV</div>
+      <h2 class="section" id="twin-coil">
+        Core Concept
+        <span class="section-ornament">⸺ ✦ ⸺</span>
+      </h2>
+
+      <p>The <strong>Twin Coil System</strong> is a lightweight, modular dice‑resolution mechanic that produces
+        <strong>non‑binary outcomes</strong> by balancing a character’s <strong>intent</strong> against the
+        <strong>risk</strong> inherent in the world.
+      </p>
+
+      <p>Every roll intertwines two opposing forces:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Coil</th>
+            <th>Dice Type</th>
+            <th>What it Represents</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Active Coil</strong></td>
+            <td><strong>Action Dice</strong></td>
+            <td>The effort, skill, or will a character invests to achieve a goal.</td>
+          </tr>
+          <tr>
+            <td><strong>Passive Coil</strong></td>
+            <td><strong>Risk Dice</strong></td>
+            <td>The danger, resistance, or chaos that might disrupt the action.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>These forces <strong>do not cancel each other</strong>; they combine to generate richly textured results.</p>
+
+
+
+      <h2 class="section" id="twin-coil">Dice Structure</h2>
+
+      <p>In the Twin Coil System, all actions are resolved using standard six-sided dice (d6). These are divided into
+        two distinct pools: <strong>Action Dice</strong>, representing the character’s proactive effort, and
+        <strong>Risk Dice</strong>, representing external threats and complications.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Die</th>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center">d6</td>
+            <td style="text-align: center"><img src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg"></td>
+            <td><strong>Action Dice</strong></td>
+            <td>Rolled by the player; measure competence and intent.</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">d6</td>
+            <td style="text-align: center"><img src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg"></td>
+            <td><strong>Risk Dice</strong></td>
+            <td>Rolled by the GM (or procedure); measure external danger.</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <h3>Rolling the Dice</h3>
+
+      <p>To resolve an action, the player and GM each build their respective dice pools. The number of dice reflects
+        both the character's capability and the environmental risk.</p>
+
+      <ol>
+        <li><strong>Build the Pools</strong><br />
+          • The player rolls a number of <strong>Action Dice</strong> equal to their relevant attribute, skill, or
+          trait.<br />
+          • The GM rolls a number of <strong>Risk Dice</strong> equal to the situation’s threat level.</li>
+        <li><strong>Roll Simultaneously.</strong> </li>
+        <li><strong>Interpret Results:</strong>
+          <ul>
+            <li><strong>Action Die</strong> shows <strong>5 or 6 → Success</strong>. </li>
+            <li><strong>Risk Die</strong> shows <strong>6 → Complication</strong>.</li>
+          </ul>
+        </li>
+      </ol>
+
+      <blockquote>
+        <p>Successes and Complications are <strong>independent</strong>. A roll may succeed <em>and</em> spawn
+          complications.</p>
+      </blockquote>
+
+
+
+      <h2 class="section" id="twin-coil">Success Probabilities (Action Dice)</h2>
+
+      <blockquote>
+        <h3>🎓 Tips for GMs</h3>
+
+        <ul>
+          <li><strong>Embrace the curve</strong>: Even a single Action Die can succeed—use that to create tension or
+            hope in underdog moments.</li>
+          <li><strong>Narrate the odds</strong>: Let players know when a high roll is lucky or when they’re relying on
+            raw talent over skill.</li>
+          <li><strong>Gate rolls wisely</strong>: If an action is implausible, don't call for a roll. Describe failure,
+            or ask for another approach.</li>
+          <li><strong>Balance with Risk</strong>: If a weak character attempts something bold, raise the Risk rather
+            than denying the roll.</li>
+          <li><strong>Highlight scaling</strong>: Use the Action Dice curve to reward growth and cleverness in building
+            dice pools.</li>
+        </ul>
+      </blockquote>
+
+      <p>Understanding the likelihood of success is key to assessing the effectiveness of character actions. The table
+        below shows the probability of rolling at least one success (5–6) based on the number of Action Dice rolled.</p>
+
+      <blockquote>
+        <p><strong>Design Note:</strong> While a 33% success chance might seem high for a character with only 1 Action
+          Die—especially in a trait where they’re considered weak—this is intentional. The goal of the system is not to
+          deny success outright, but to <strong>generate interesting and potentially dangerous situations</strong>. For
+          example, a character with STR 1 attempting to bash down a door might succeed one time out of three. That’s
+          still plausible for a wiry or under-equipped person making a desperate push. However, the <strong>GM retains
+            narrative authority</strong>: if the action is simply implausible (e.g., a child trying to smash through a
+          fortress gate), no roll is made—it’s an automatic failure. But if the action is conceivable, the GM can allow
+          the roll while adding extra <strong>Risk Dice</strong> to reflect the high probability of things going wrong.
+        </p>
+      </blockquote>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Action Dice</th>
+            <th>≥1 Success (5‑6)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>33.3 %</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>55.6 %</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>70.4 %</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>80.2 %</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>87.0 %</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>91.3 %</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>94.0 %</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>95.9 %</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>97.1 %</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>97.9 %</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <h2 class="section" id="twin-coil"> Complication Probabilities (Risk Dice)</h2>
+
+      <blockquote>
+        <h3>Tips for GMs</h3>
+
+        <ul>
+          <li><strong>Set expectations clearly</strong>: Let players know that complications aren't just
+            failures—they're story seeds.</li>
+          <li><strong>Use Risk Dice liberally</strong>: Especially when you want tension, pacing, or unpredictability.
+          </li>
+          <li><strong>Tie complications to consequences</strong>: Make sure they feel meaningful, not just punishing.
+          </li>
+          <li><strong>Don’t roll for the impossible</strong>: If an action is simply out of reach for the character,
+            don’t roll—just describe the failure.</li>
+          <li><strong>Reward creativity</strong>: If players find clever ways to reduce Risk Dice (e.g. planning, gear,
+            time), let them.</li>
+        </ul>
+      </blockquote>
+
+      <p>The GM assigns Risk Dice to represent the potential for unintended consequences during an action. These
+        complications are independent from the action's success and reflect how precarious, unstable, or dangerous the
+        situation is.</p>
+
+      <h3>How Many Risk Dice Should the GM Use?</h3>
+
+      <p>When determining how many Risk Dice to assign, the GM should consider several narrative and mechanical factors:
+      </p>
+
+      <p><strong>Key Variables to Evaluate:</strong>
+        - <strong>Environmental Danger</strong>
+        - <strong>Attention and Exposure</strong>
+        - <strong>Complexity and Precision</strong>
+        - <strong>Supernatural Interference</strong>
+        - <strong>Speed or Desperation</strong></p>
+
+      <p><strong>Probabilistic Guidelines:</strong>
+        - Use <strong>1 Risk Die</strong> ~17%
+        - Use <strong>2 Risk Dice</strong> ~30%
+        - Use <strong>3 Risk Dice</strong> 40–45%
+        - Use <strong>4–5 Risk Dice</strong> 50–60%
+        - Use <strong>6+ Risk Dice</strong> for extreme danger</p>
+
+      <p><strong>Narrative Shortcut:</strong> If you can easily imagine what might go wrong and why it’s likely, add
+        Risk Dice.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Risk Dice</th>
+            <th>≥1 Complication (6)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>16.7 %</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>30.6 %</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>42.1 %</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>51.8 %</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>59.8 %</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>66.5 %</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>72.2 %</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>77.0 %</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>81.0 %</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>84.3 %</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <h2 class="section" id="twin-coil">Outcome Matrix</h2>
+
+      <p>The Twin Coil System allows for rich narrative possibilities by moving beyond simple pass/fail mechanics. Each
+        action can result in one of four core outcomes:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Action Dice</th>
+            <th>Risk Dice</th>
+            <th>Outcome</th>
+            <th>Narrative Guidance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>✘</td>
+            <td>✘</td>
+            <td><strong>Simple Failure</strong></td>
+            <td>The attempt fails cleanly.</td>
+          </tr>
+          <tr>
+            <td>✘</td>
+            <td>✔</td>
+            <td><strong>Failure + Complication</strong></td>
+            <td>The attempt fails <em>and</em> a new problem emerges.</td>
+          </tr>
+          <tr>
+            <td>✔</td>
+            <td>✘</td>
+            <td><strong>Clean Success</strong></td>
+            <td>The attempt succeeds with no downside.</td>
+          </tr>
+          <tr>
+            <td>✔</td>
+            <td>✔</td>
+            <td><strong>Success + Complication</strong></td>
+            <td>The attempt succeeds, but something else goes wrong.</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <h2 class="section" id="twin-coil">Narrative Examples</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Action Dice</th>
+            <th>Risk Dice</th>
+            <th>Example Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quietly pick a lock</td>
+            <td>3</td>
+            <td>2</td>
+            <td>Success + Complication</td>
+          </tr>
+          <tr>
+            <td>Scale a wet cliff</td>
+            <td>4</td>
+            <td>3</td>
+            <td>Failure + Complication</td>
+          </tr>
+          <tr>
+            <td>Throw a punch</td>
+            <td>5</td>
+            <td>0</td>
+            <td>Clean Success</td>
+          </tr>
+          <tr>
+            <td>Cast magic</td>
+            <td>4</td>
+            <td>4</td>
+            <td>Success + Complication</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <h2 class="section" id="twin-coil">Optional Extensions</h2>
+
+      <h3>1. Degrees of Success</h3>
+
+      <p>1 → Basic, 2 → Strong, 3+ → Critical</p>
+
+      <h3>2. Degrees of Complication</h3>
+
+      <p>1 → Minor, 2 → Serious, 3+ → Catastrophic</p>
+
+      <h3>3. Push Mechanic</h3>
+
+      <p>Reroll 1 Action Die by adding 1 Risk Die or spending a resource</p>
+
+
+
+      <h2 class="section" id="twin-coil">Design Notes</h2>
+
+      <ul>
+        <li>Clear success scaling (1–5 Dice)</li>
+        <li>Modular risk control for GMs</li>
+        <li>Standard d6s only</li>
+        <li>No canceling—clean outcomes</li>
+      </ul>
+
+
+
+      <h2 class="section" id="twin-coil">Attribution</h2>
+
+      <p>The Twin Coil System (Action/Risk Dice edition) is offered under an open license. Feel free to adapt, modify, and reuse. Attribution appreciated but not required.</p>
+      <p><em>Designed by Danilo Aversa · v1.1 · Licensed CC BY 4.0</em></p>
+
+    </section>
+  </div>
+  <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+</body>
+
+</html>
