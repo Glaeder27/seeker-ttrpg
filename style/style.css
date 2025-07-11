@@ -145,7 +145,7 @@ h3 {
     font-weight: 500;
 }
 
-.h3-tagged {
+h3.tagged {
   display: flex;
   justify-content: space-between;
   align-items: center;
