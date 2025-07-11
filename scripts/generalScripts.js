@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Rule Visibility Logic
 
 document.addEventListener('DOMContentLoaded', () => {
-  const toggles = document.querySelectorAll('.rule-switch input[data-rule]');
+  const toggles = document.querySelectorAll('.rule-switch input[data-rule]');  
   toggles.forEach(cb => {
     const key = 'rule-' + cb.dataset.rule;
     if (localStorage.getItem(key) === 'false') cb.checked = false;
