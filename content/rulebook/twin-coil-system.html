@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- PAGE-SPECIFIC STYLES -->
   <style>
     table td {
       vertical-align: middle;
@@ -51,7 +52,7 @@
       visibility: hidden;
       overflow: hidden;
       transition:
-        max-height 0.4s ease,
+        max-height .4s ease,
         opacity 0.3s ease,
         visibility 0.3s ease;
       padding: 0 1.25rem;
@@ -88,8 +89,12 @@
 
     li .no-bullet {
       list-style: none;
-      padding-left: 0;
-      margin-left: 0;
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    .no-bullet::before {
+      display: none;
     }
 
     blockquote h3 {
@@ -200,6 +205,23 @@
     .grid-cell.bottom-right {
       grid-column: 4;
       grid-row: 4;
+    }
+
+    .grid-corner-image {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 0;
+  width: 90%;
+  height: 90%;
+}
+
+    .grid-corner-image img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
     }
 
     /* ── VSC EDITING ─────────────── */
@@ -342,16 +364,16 @@
           </tbody>
         </table>
 
-        <h3>Rolling the Dice</h3>
+        <h3>2.1 • Rolling the Dice</h3>
 
         <p>To resolve an action, the player and GM each build their respective dice pools. The number of dice reflects
           both the character's capability and the environmental risk.</p>
 
         <ol>
           <li><strong>Build the Pools</strong><br />
-            • The player rolls a number of <strong>Action Dice</strong> equal to their relevant attribute, skill, or
+            The player rolls a number of <strong>Action Dice</strong> equal to their relevant attribute, skill, or
             trait.<br />
-            • The GM rolls a number of <strong>Risk Dice</strong> equal to the situation’s threat level.</li>
+            The GM rolls a number of <strong>Risk Dice</strong> equal to the situation’s threat level.</li>
           <li><strong>Roll Simultaneously.</strong> </li>
           <li><strong>Interpret Results:</strong>
             <ul>
@@ -379,12 +401,15 @@
           <span class="section-ornament">⸺ ✦ ⸺</span>
         </h2>
 
-        <p style="margin-bottom: -1em;">The Twin Coil System allows for rich narrative possibilities by moving beyond
+        <p>The Twin Coil System allows for rich narrative possibilities by moving beyond
           simple pass/fail mechanics.
           Each
           action can result in one of four core outcomes:</p>
 
         <div class="grid-2x2-axes">
+          <div class="grid-corner-image">
+            <img src="https://static.wixstatic.com/shapes/e40a82_61453ca4c440439e82a29dd648ff7c02.svg" alt="Icon" />
+          </div>
           <div class="axis-label y-axis"
             style="color: var(--faded-jade, #7E9E85); font-size: 1.2em; text-transform: uppercase;">Action Dice</div>
           <div class="axis-label x-axis" strong
@@ -413,15 +438,41 @@
           </div>
         </div>
 
+        <p style="margin-top: 2em">
+  These four outcomes — <strong>Failure</strong>, <strong>Success</strong>, <strong>Failure + Complication</strong>, and <strong>Success + Complication</strong> — form the narrative backbone of the Twin Coil System. They encourage GMs and players alike to think beyond binary results and to embrace the full spectrum of possibility: from clean victories to risky gambles that pay off with a price. By decoupling success from safety, the system ensures that <em>every roll matters</em>, even — and especially — when things go sideways.
+</p>
 
-        <h3 class="section" id="twin-coil">Narrative Examples</h3>
+
+
+        <h3 class="section" id="twin-coil">3.1 • Narrative Examples</h3>
+        <div class="section-text">
+  <p>
+    The <strong>Twin Coil System</strong> thrives on ambiguity, tension, and narrative richness. Every roll blends
+    <strong>intent</strong> and <strong>danger</strong>, creating outcomes that go beyond simple success or failure.
+    Below are sample scenarios that show how different combinations of <em>Action Dice</em> and <em>Risk Dice</em>
+    can shape the unfolding story.
+  </p>
+  <p>
+    Each entry includes:
+  </p>
+  <ul>
+    <li>The <strong>setup</strong> (what the character is trying to do)</li>
+    <li>The number of <strong>dice rolled</strong></li>
+    <li>The mechanical <strong>outcome</strong></li>
+    <li>A <strong>narrative description</strong> illustrating how that outcome might look in play</li>
+  </ul>
+  <p>
+    Use these as inspiration to guide your own interpretations, whether you're the GM setting the scene or the
+    player describing your character’s triumphs — and their missteps.
+  </p>
+</div>
 
         <table class="narrative-table">
           <thead>
             <tr>
-              <th>Scenario</th>
-              <th>Action Dice</th>
-              <th>Risk Dice</th>
+              <th style="text-align: left;">Scenario</th>
+              <th style="text-align: center;">Action Dice</th>
+              <th style="text-align: center;">Risk Dice</th>
               <th>Outcome</th>
               <th></th>
             </tr>
@@ -429,8 +480,8 @@
           <tbody>
             <tr class="narrative-toggle">
               <td>Quietly pick a lock</td>
-              <td>3</td>
-              <td>2</td>
+              <td style="text-align: center;">3</td>
+              <td style="text-align: center;">2</td>
               <td>Success + Complication</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -446,8 +497,8 @@
 
             <tr class="narrative-toggle">
               <td>Scale a wet cliff</td>
-              <td>4</td>
-              <td>3</td>
+              <td style="text-align: center;">4</td>
+              <td style="text-align: center;">3</td>
               <td>Failure + Complication</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -464,8 +515,8 @@
 
             <tr class="narrative-toggle">
               <td>Throw a punch</td>
-              <td>5</td>
-              <td>0</td>
+              <td style="text-align: center;">5</td>
+              <td style="text-align: center;">0</td>
               <td>Success</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -480,8 +531,8 @@
 
             <tr class="narrative-toggle">
               <td>Cast magic</td>
-              <td>4</td>
-              <td>4</td>
+              <td style="text-align: center;">4</td>
+              <td style="text-align: center;">4</td>
               <td>Success + Complication</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -497,8 +548,8 @@
 
             <tr class="narrative-toggle">
               <td>Negotiate with a noble</td>
-              <td>3</td>
-              <td>2</td>
+              <td style="text-align: center;">3</td>
+              <td style="text-align: center;">2</td>
               <td>Failure + Complication</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -513,8 +564,8 @@
 
             <tr class="narrative-toggle">
               <td>Disarm a magical trap</td>
-              <td>5</td>
-              <td>3</td>
+              <td style="text-align: center;">5</td>
+              <td style="text-align: center;">3</td>
               <td>Success</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -529,8 +580,8 @@
 
             <tr class="narrative-toggle">
               <td>Interrupt a ritual in extremis</td>
-              <td>4</td>
-              <td>5</td>
+              <td style="text-align: center;">4</td>
+              <td style="text-align: center;">5</td>
               <td>Success + Complication</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -547,8 +598,8 @@
 
             <tr class="narrative-toggle">
               <td>Fire a crossbow in heavy rain</td>
-              <td>2</td>
-              <td>3</td>
+              <td style="text-align: center;">2</td>
+              <td style="text-align: center;">3</td>
               <td>Failure</td>
               <td class="toggle-icon">▸</td>
             </tr>
@@ -563,6 +614,17 @@
           </tbody>
         </table>
 
+        <div class="section-text">
+  <p>
+    These narrative examples illustrate how the Twin Coil System fuses intent and risk to drive the story forward — whether characters succeed, falter, or carry the weight of unforeseen consequences.
+    Let each example guide you in crafting dynamic scenes where even triumphs have a price, and failures open new doors to drama.
+  </p>
+  <p>
+    Ready to apply it in your own game? Mix and match scenarios, scale Risk Dice to fit tension, and remember: <em>the most memorable moments often come when success and complication collide.</em>
+  </p>
+</div>
+
+
       </section>
 
       <section class="section-wrapper">
@@ -571,7 +633,18 @@
           Probabilities
           <span class="section-ornament">⸺ ✦ ⸺</span>
         </h2>
+        <div class="section-text">
+  <p>
+    Understanding the odds behind the Twin Coil System helps players and GMs alike make informed decisions, build tension, and pace the fiction effectively.
+    Whether you're banking on a lone Action Die in a desperate move or bracing for consequences with a high Risk pool, knowing the math adds clarity to the chaos.
+  </p>
+  <p>
+    The following tables break down the chances of success and complication based on the number of dice rolled. Use them to gauge difficulty, spotlight dramatic moments, or guide mechanical balance during play.
+  </p>
+</div>
+
         <h3>Success Probabilities (Action Dice)</h3>
+<p><strong style="color:var(--ancient-gold, #D4B55A)">The Role of Uncertainty.</strong> Probability in the Twin Coil System is not a simulation of physics — it's a generator of narrative tension. A 33% chance of success isn’t a gamble: it’s an opening. Even low odds can deliver satisfying moments, especially when they’re unexpected. A wiry rogue bashing down a door or a novice spellcaster pulling off a desperate enchantment isn’t “unrealistic” — it’s dramatic. The system is tuned to favor this kind of tension. Whether the dice bring triumph or trouble, what matters is how the outcome shapes the story.</p>
 
         <blockquote>
           <h3>Tips for GMs</h3>
@@ -805,14 +878,19 @@
 
   <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
 
-  <!-- Toggle Narrative Examples logic -->
   <script>
+    // Narrative Examples toggle logic
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.narrative-toggle').forEach(row => {
         row.addEventListener('click', () => {
           row.classList.toggle('expanded');
         });
       });
+
+      // VSC Live Preview
+      if (location.protocol === 'file:' || location.hostname === 'localhost') {
+        document.documentElement.setAttribute('data-env', 'vsc');
+      }
     });
   </script>
 </body>
