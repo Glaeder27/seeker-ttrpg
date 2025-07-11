@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-env="vsc">
 
 <head>
   <meta charset="UTF-8">
@@ -19,17 +19,200 @@
       vertical-align: middle;
     }
 
-    .dice-symbol {
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-}
+    .narrative-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-li .no-bullet {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-}
+    .narrative-table th,
+    .narrative-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 0px solid var(--ancient-gold, #D4B55A);
+      vertical-align: middle;
+    }
+
+    .toggle-icon {
+      cursor: pointer;
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+      user-select: none;
+      text-align: center;
+      color: var(--text-muted);
+      width: 2rem;
+    }
+
+    .narrative-toggle.expanded .toggle-icon {
+      transform: rotate(90deg);
+    }
+
+    .narrative-row .narrative-content {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      padding: 0 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 200;
+      font-family: var(--default-font, "Georgia", serif);
+      line-height: 1.6;
+      color: var(--off-white, #F0F0F0);
+      background: var(--background-grey-1);
+      border-top: 1px solid var(--ancient-gold, #D4B55A);
+    }
+
+    .narrative-toggle.expanded+.narrative-row .narrative-content {
+      max-height: 500px;
+      opacity: 1;
+      visibility: visible;
+      padding: 1rem 1.25rem;
+    }
+
+    .narrative-toggle {
+      cursor: pointer;
+    }
+
+    .narrative-row td {
+      padding: 0;
+      line-height: 0;
+    }
+
+    .dice-symbol {
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    li .no-bullet {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    blockquote h3 {
+      border-bottom: none;
+      font-size: 1.3em;
+      color: var(--ancient-gold, #D4B55A);
+    }
+
+    .grid-2x2-axes {
+      display: grid;
+      grid-template-columns: auto .15fr 1fr 1fr;
+      grid-template-rows: auto .2fr 1fr 1fr;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 1.5rem;
+      gap: 1px;
+      background-color: none;
+    }
+
+    .axis-label,
+    .grid-label,
+    .grid-cell {
+      background: var(--background-grey-1);
+      color: var(--off-white);
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .axis-label {
+      background: none;
+      color: var(--off-white);
+      font-weight: bold;
+      writing-mode: vertical-rl;
+      grid-row: 2 / span 2;
+    }
+
+    .x-axis {
+      writing-mode: horizontal-tb;
+      grid-column: 3 / span 3;
+      grid-row: 1;
+      background: rgba(var(--rust-red-rgb, rgb(138, 60, 48)), .2);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .y-axis {
+      background: rgba(var(--faded-jade-rgb, rgb(138, 60, 48)), .2);
+      color: var(--text-muted);
+      font-weight: bold;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column: 1;
+      grid-row: 3 / span 3;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .grid-label {
+      background: var(--deep-charcoal);
+      font-weight: bold;
+    }
+
+    .grid-label.top-left {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    .grid-label.top-right {
+      grid-column: 4;
+      grid-row: 2;
+    }
+
+    .grid-label.left-top {
+      grid-column: 2;
+      grid-row: 3;
+    }
+
+    .grid-label.left-bottom {
+      grid-column: 2;
+      grid-row: 4;
+    }
+
+    .grid-cell {
+      flex-direction: column;
+      line-height: 1.2rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .grid-cell.top-left {
+      grid-column: 3;
+      grid-row: 3;
+    }
+
+    .grid-cell.top-right {
+      grid-column: 4;
+      grid-row: 3;
+    }
+
+    .grid-cell.bottom-left {
+      grid-column: 3;
+      grid-row: 4;
+    }
+
+    .grid-cell.bottom-right {
+      grid-column: 4;
+      grid-row: 4;
+    }
+
+    /* ── VSC EDITING ─────────────── */
+    html[data-env="vsc"] .page-columns {
+      outline: 1px dashed green;
+    }
+
+    html[data-env="vsc"] {
+      background-color: rgba(48, 48, 48, 1);
+      overflow: scroll !important;
+    }
+
+    /* ────────────────────────────── */
   </style>
 </head>
 
@@ -119,8 +302,9 @@ li .no-bullet {
         </table>
 
         <p>These forces <strong>do not cancel each other</strong>; they combine to generate richly textured results.</p>
-
-        <div class="section-number">Section I</div>
+      </section>
+      <section class="section-wrapper">
+        <div class="section-number">Section II</div>
         <h2 class="section" id="twin-coil">
           Dice Structure
           <span class="section-ornament">⸺ ✦ ⸺</span>
@@ -172,8 +356,12 @@ li .no-bullet {
           <li><strong>Interpret Results:</strong>
             <ul>
               <li class="dice-symbol no-bullet"><img
-                  src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg"> shows <strong>5 or 6 → Success</strong>. </li>
-              <li><strong>Risk Die</strong> shows <strong>6 → Complication</strong>.</li>
+                  src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg"> shows <strong>5
+                  or 6</strong> → <strong style="color: var(--faded-jade, #7E9E85)">Success</strong></li>
+              <li class="dice-symbol no-bullet"><img
+                  src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg"> shows
+                <strong>6</strong> → <strong style="color: var(--rust-red, #8A3C30)">Complication</strong>
+              </li>
             </ul>
           </li>
         </ol>
@@ -182,7 +370,202 @@ li .no-bullet {
           <p>Successes and Complications are <strong>independent</strong>. A roll may succeed <em>and</em> spawn
             complications.</p>
         </blockquote>
+      </section>
 
+      <section class="section-wrapper">
+        <div class="section-number">Section III</div>
+        <h2 class="section" id="twin-coil">
+          Outcome Matrix
+          <span class="section-ornament">⸺ ✦ ⸺</span>
+        </h2>
+
+        <p style="margin-bottom: -1em;">The Twin Coil System allows for rich narrative possibilities by moving beyond
+          simple pass/fail mechanics.
+          Each
+          action can result in one of four core outcomes:</p>
+
+        <div class="grid-2x2-axes">
+          <div class="axis-label y-axis"
+            style="color: var(--faded-jade, #7E9E85); font-size: 1.2em; text-transform: uppercase;">Action Dice</div>
+          <div class="axis-label x-axis" strong
+            style="color: var(--rust-red, #8A3C30); font-size: 1.2em; text-transform: uppercase;">Risk Dice</div>
+
+          <div class="grid-label top-left" style="color: #D4B55A">✘</div>
+          <div class="grid-label top-right" style="color: #D4B55A">✔</div>
+          <div class="grid-label left-top" style="color: #D4B55A">✘</div>
+          <div class="grid-label left-bottom" style="color: #D4B55A">✔</div>
+
+          <div class="grid-cell top-left">
+            <strong style="text-transform: uppercase; margin-bottom: -.8em;">Failure</strong><br>
+            The attempt fails cleanly.
+          </div>
+          <div class="grid-cell top-right">
+            <strong style="text-transform: uppercase; margin-bottom: -.8em;">Failure + Complication</strong><br>
+            The attempt fails <em><strong>and</strong></em> a new problem emerges.
+          </div>
+          <div class="grid-cell bottom-left">
+            <strong style="text-transform: uppercase; margin-bottom: -.8em;">Success</strong><br>
+            The attempt succeeds with no downside.
+          </div>
+          <div class="grid-cell bottom-right">
+            <strong style="text-transform: uppercase; margin-bottom: -.8em;">Success + Complication</strong><br>
+            The attempt succeeds, <em><strong>but</strong></em> something else goes wrong.
+          </div>
+        </div>
+
+
+        <h3 class="section" id="twin-coil">Narrative Examples</h3>
+
+        <table class="narrative-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Action Dice</th>
+              <th>Risk Dice</th>
+              <th>Outcome</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="narrative-toggle">
+              <td>Quietly pick a lock</td>
+              <td>3</td>
+              <td>2</td>
+              <td>Success + Complication</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  You deftly pick the lock in seconds — the mechanism clicks open with practiced ease. But as you pocket
+                  your tools, one slips from your grasp and clatters to the stone floor. Down the corridor, you hear the
+                  echo of footsteps speeding up.
+                </div>
+              </td>
+            </tr>
+
+            <tr class="narrative-toggle">
+              <td>Scale a wet cliff</td>
+              <td>4</td>
+              <td>3</td>
+              <td>Failure + Complication</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  Your hands scrabble for a grip, but the moss-slick stone gives way. You fall a few feet onto a ledge —
+                  bruised but alive. Unfortunately, your fall dislodges loose shale that cascades noisily down the
+                  cliff,
+                  drawing the attention of a patrol below.
+                </div>
+              </td>
+            </tr>
+
+            <tr class="narrative-toggle">
+              <td>Throw a punch</td>
+              <td>5</td>
+              <td>0</td>
+              <td>Success</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  You lunge forward and land your fist squarely on the guard’s jaw. He crumples silently to the ground,
+                  unconscious. The corridor remains still.
+                </div>
+              </td>
+            </tr>
+
+            <tr class="narrative-toggle">
+              <td>Cast magic</td>
+              <td>4</td>
+              <td>4</td>
+              <td>Success + Complication</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  The runes flare and the barrier shatters — the spell works exactly as intended. But arcane feedback
+                  lashes out, scorching your arm and singing the map you carried in your satchel. The air smells of
+                  ozone.
+                </div>
+              </td>
+            </tr>
+
+            <tr class="narrative-toggle">
+              <td>Negotiate with a noble</td>
+              <td>3</td>
+              <td>2</td>
+              <td>Failure + Complication</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  You plead your case eloquently, but the noble is unmoved. Worse, your mention of the Queen’s name
+                  offends him—he orders you out of his hall and spreads word that you're not to be trusted.
+                </div>
+              </td>
+            </tr>
+
+            <tr class="narrative-toggle">
+              <td>Disarm a magical trap</td>
+              <td>5</td>
+              <td>3</td>
+              <td>Success</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  You trace the sigils perfectly, twisting the final glyph counterclockwise. The runes dim with a sigh,
+                  and the arcane web dissipates. The trap is neutralized — no alarms, no backlash.
+                </div>
+              </td>
+            </tr>
+
+            <tr class="narrative-toggle">
+              <td>Interrupt a ritual in extremis</td>
+              <td>4</td>
+              <td>5</td>
+              <td>Success + Complication</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  You disrupt the ritual just before the final chant is uttered. The circle collapses inward, the
+                  cultist
+                  screams — but a wave of dark energy surges outward. One of your companions collapses, possessed or
+                  worse.
+                </div>
+              </td>
+            </tr>
+
+            <tr class="narrative-toggle">
+              <td>Fire a crossbow in heavy rain</td>
+              <td>2</td>
+              <td>3</td>
+              <td>Failure</td>
+              <td class="toggle-icon">▸</td>
+            </tr>
+            <tr class="narrative-row">
+              <td colspan="5">
+                <div class="narrative-content">
+                  You aim through the downpour, struggling to see your target. The bolt flies wide and clinks off the
+                  stone. No one sees you — but your chance is lost.
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+      <section class="section-wrapper">
         <div class="section-number">Section III</div>
         <h2 class="section" id="twin-coil">
           Probabilities
@@ -378,92 +761,6 @@ li .no-bullet {
           </tbody>
         </table>
 
-        <div class="section-number">Section IV</div>
-        <h2 class="section" id="twin-coil">
-          Outcome Matrix
-          <span class="section-ornament">⸺ ✦ ⸺</span>
-        </h2>
-
-        <p>The Twin Coil System allows for rich narrative possibilities by moving beyond simple pass/fail mechanics.
-          Each
-          action can result in one of four core outcomes:</p>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Action Dice</th>
-              <th>Risk Dice</th>
-              <th>Outcome</th>
-              <th>Narrative Guidance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>✘</td>
-              <td>✘</td>
-              <td><strong>Simple Failure</strong></td>
-              <td>The attempt fails cleanly.</td>
-            </tr>
-            <tr>
-              <td>✘</td>
-              <td>✔</td>
-              <td><strong>Failure + Complication</strong></td>
-              <td>The attempt fails <em>and</em> a new problem emerges.</td>
-            </tr>
-            <tr>
-              <td>✔</td>
-              <td>✘</td>
-              <td><strong>Clean Success</strong></td>
-              <td>The attempt succeeds with no downside.</td>
-            </tr>
-            <tr>
-              <td>✔</td>
-              <td>✔</td>
-              <td><strong>Success + Complication</strong></td>
-              <td>The attempt succeeds, but something else goes wrong.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="section" id="twin-coil">Narrative Examples</h3>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Scenario</th>
-              <th>Action Dice</th>
-              <th>Risk Dice</th>
-              <th>Example Outcome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Quietly pick a lock</td>
-              <td>3</td>
-              <td>2</td>
-              <td>Success + Complication</td>
-            </tr>
-            <tr>
-              <td>Scale a wet cliff</td>
-              <td>4</td>
-              <td>3</td>
-              <td>Failure + Complication</td>
-            </tr>
-            <tr>
-              <td>Throw a punch</td>
-              <td>5</td>
-              <td>0</td>
-              <td>Clean Success</td>
-            </tr>
-            <tr>
-              <td>Cast magic</td>
-              <td>4</td>
-              <td>4</td>
-              <td>Success + Complication</td>
-            </tr>
-          </tbody>
-        </table>
-
         <div class="section-number rule-optional">Section V</div>
         <h2 class="section" id="twin-coil">
           Extensions
@@ -505,7 +802,19 @@ li .no-bullet {
       </section>
     </div>
   </div>
+
   <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+
+  <!-- Toggle Narrative Examples logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.narrative-toggle').forEach(row => {
+        row.addEventListener('click', () => {
+          row.classList.toggle('expanded');
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
