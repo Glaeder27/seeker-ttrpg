@@ -986,7 +986,6 @@ thead th:last-child {
 =============================================*/
 
 blockquote {
-    font-style: italic;
     margin: 1.5em 0;
     padding: 0.5em 1.5em;
     border-left: 4px solid var(--ancient-gold, #D4B55A);
