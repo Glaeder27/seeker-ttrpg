@@ -991,6 +991,7 @@ blockquote {
     border-left: 4px solid var(--ancient-gold, #D4B55A);
     background-color: var(--background-grey-1, #3B3B3B);
     color: var(--off-white, #F0F0F0);
+    font-size: .9rem;
 }
 
 blockquote footer {
