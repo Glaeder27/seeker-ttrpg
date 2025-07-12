@@ -265,7 +265,7 @@ h2.section::after {
 =============================================*/
 
 .centered {
-    text-align: center;
+    text-align: center !important;
 }
 
 /*=============================================
