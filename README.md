@@ -1,54 +1,73 @@
-# seeker-css
-# ✅ Seeker TTRPG Development Checklist
+# Seeker — Development Roadmap
 
-## Core Systems — Completed or Solid Drafts
-
-- [x] Character Creation  
-- [x] Aptitudes, Polarities, and Tags  
-- [x] Skill System (Active Skills, Imprints, Masteries)  
-- [x] Travel & Exploration System  
-- [x] Inventory & Gear (Carry Capacity, Equipment Slots)  
-- [x] Talisman Rules  
-- [x] Potions & Toxicity System  
-- [x] Experience and Level Progression (Combat, Social, Exploration XP)  
-- [x] Damage System (Hemorrhage, Contusion, Decay, Exposure, Despair)  
-- [x] Monster Rules & Weak Points  
-- [x] Crafting Framework (Thread-based, early)  
-- [x] Passive Skill System (Masteries)
+## ✅ Core System (Complete)
+- [x] Core mechanics (Action & Risk Dice)
+- [x] Outcome Matrix
+- [x] Narrative Examples (with expandable UI)
+- [x] Complication & Success probabilities
+- [x] Risk Dice benchmarks & GM guidelines
+- [x] Optional extensions (Degrees of Success, Push, etc.)
+- [x] TL;DR reference panel (collapsible)
 
 ---
 
-## Core Systems — Partially Implemented / To Finalize
+## 🔨 Foundations in Progress
 
-- [ ] Core Resolution Mechanics (Rolls, success/fail, Risk Dice)  
-- [ ] Combat Structure (Initiative, actions, movement, Guard)  
-- [ ] Conditions & Status Effects (Bleeding, Poisoned, Hexed, etc.)  
-- [ ] Sanity / Madness System (Despair effects, Talisman strain)  
-- [ ] Alchemy & Potion Crafting (Recipes, essences, brew rules)  
-- [ ] General Crafting Rules (Materials, upgrades, rituals)  
-- [ ] Advanced Talisman Upgrades (Growth, corruption, traits)  
-- [ ] Polarity Growth / Specialization (Bonds, resonance, perks)
+### ⚙️ Core Rulebook Structure
+- [ ] Chapter I: Introduction
+- [ ] Chapter II: Character Creation
+- [x] Chapter III: The Mutable World (in HTML)
+- [ ] Chapter IV: Exploration & Hexcrawl
+- [ ] Chapter V: Conflict & Combat
+- [ ] Chapter VI: Magic & Occult Powers
+- [ ] Chapter VII: Factions, Faiths & Forces
+- [ ] Chapter VIII: Running the Game
 
----
-
-## Gameplay & Campaign Systems — To Design
-
-- [ ] Downtime & Recovery (Resting, healing, crafting, training)  
-- [ ] Faction & Reputation System (Alliances, region access)  
-- [ ] Ritual Magic & Forbidden Knowledge (High-risk, high-reward)  
-- [ ] GM Principles & Adventure Building (Scene structure, prep tools)  
-- [ ] Random Tables & Generators (Events, mutations, travel)  
-- [ ] Region & Biome Rules (Travel effects, items, enemies)  
-- [ ] Conditions & Ailments Reference (Duration, effects, cure)
+### 🌍 Worldbuilding Content
+- [ ] Occult Atlas of the New World
+- [ ] Secret Archive of Fallen Seekers
+- [ ] Esoteric Laws & Forbidden Factions
+- [ ] Mythical Glossary (Entities, Powers, Symbols)
+- [ ] Renaissance-style “fake” historical documents
 
 ---
 
-## Book, Player, & GM Tools — To Add
+## 🖥️ Digital Infrastructure
 
-- [ ] Player Character Sheet (Printable version)  
-- [ ] Quick Reference Sheets (Damage types, XP, travel actions)  
-- [ ] GM Tables (Encounters, tags, loot hooks)  
-- [ ] Example Characters (Pre-gens or class kits)  
-- [ ] Sample Monsters (Stat blocks using current rules)  
-- [ ] Sample Loot Tables (Tagged items, potion drops)  
-- [ ] Setting Codex (Timeline, factions, maps, key events)
+### 🌐 Seeker Lore Wiki
+- [x] Two-column HTML layout (content + infobox)
+- [x] Collapsible contents list
+- [x] Styled with medieval-inspired CSS
+- [x] Custom infobox sections (geography, politics, arcana, fauna)
+- [ ] Procedural hex map pages
+- [ ] Dynamic generator tools (ruins, magic, events)
+
+### 💡 Web Features
+- [ ] Interactive Roadmap (with icons & popups)
+- [ ] Custom dice roller
+- [ ] Online character builder / sheet
+- [ ] Digital reference compendium
+
+---
+
+## 🎲 Gameplay & Testing
+
+- [ ] Sample characters & pre-gen sheets
+- [ ] Starter adventure (PDF + HTML)
+- [ ] GM tools & encounter tables
+- [ ] Alpha playtest package
+- [ ] Feedback form & changelog
+
+---
+
+## ✨ Stretch Goals & Future Features
+
+- [ ] Faction reputation system
+- [ ] Arcane corruption tracker
+- [ ] Digital faction tracker / campaign map
+- [ ] Print-friendly version
+- [ ] Illustrated bestiary
+
+---
+
+_Updated: {{today’s date}}_
