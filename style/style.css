@@ -1806,7 +1806,7 @@ details[open] .infobox-table {
     letter-spacing: 0.5px;
 }
 
-li .no-bullet {
+.no-bullet {
     list-style: none;
     padding-left: 0 !important;
     margin-left: 0 !important;
