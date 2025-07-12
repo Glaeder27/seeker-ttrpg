@@ -90,7 +90,8 @@
             display: inline;
             align-items: center;
             gap: 0.4em;
-            height: 2em;
+            height: 1.5em;
+            vertical-align: middle;
         }
 
         /* ── VSC EDITING ─────────────── */
@@ -119,30 +120,55 @@
                 <ul class="no-bullet">
                     <li class="no-bullet"><strong class="tldr-title">1 • Roll Action vs Risk Dice</strong>
                         <div style="margin-left: 1em;">Use <strong style="color: var(--faded-jade)">Action</strong>
-                            (<img class="dice-symbol"
-                                src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">)
+                            <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
                             Dice to
                             determine success.<br>
-                            Use <strong style="color: var(--rust-red)">Risk</strong> (R) Dice to determine
-                            complications.</div>
+                            Use <strong style="color: var(--rust-red)">Risk</strong> <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                            Dice to determine
+                            complications.
+                        </div>
+                    </li>
+
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">2 • How to
+                            Roll</strong>
+                        <div style="margin-left: 1em;">
+                            Roll a number of <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
+                            equal to the relevant trait or skill modifier for your character.<br>
+                            <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                            are assigned by the GM based on the situation’s danger, urgency, or instability.<br>
+                            Rolling Risk Dice can be done by the GM or the player — decide as a group what feels more
+                            natural.
+                        </div>
                     </li>
                     <li class="no-bullet" style="margin-top: 1.5em;">
-                        <strong class="tldr-title">2 • Resolution</strong>
+                        <strong class="tldr-title">3 • Resolution</strong>
                         <ul class="no-bullet">
-                            <li style="margin-left: 0em;"><strong>2a • Success</strong><br>
-                                <div style="margin-left: 0em;">Any <strong style="color: var(--faded-jade)">A</strong>
-                                    showing 5–6 =
+                            <li style="margin-left: 0em;"><strong>3a • Success</strong><br>
+                                <div style="margin-left: 0em;">Any <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
+                                    showing <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_389a7bf1834a49af98da012901c22a73.svg">
+                                    <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_842debeb781d4dc1a8cc355b84336ee0.svg">
+                                    =
                                     success. <br><u>One is enough.</u></div>
                             </li>
 
-                            <li style="margin-left: 0em;"><strong>2b • Complication</strong><br>
-                                <div style="margin-left: 0em;">Any <strong style="color: var(--rust-red)">R</strong>
-                                    showing 6 =
+                            <li style="margin-left: 0em;"><strong>3b • Complication</strong><br>
+                                <div style="margin-left: 0em;">Any <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                                    showing <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_2b1a2ff3bfcd4df399f120d341f0ec65.svg">
+                                    =
                                     complication. <u>They can happen even on success.</u><br>
                             </li>
                         </ul>
                     </li>
-                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">3 • When
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">4 • When
                             to Roll</strong>
                         <div style="margin-left: 1em;">Roll only if both <em>failure</em> and <em>complication</em>
                             are
@@ -151,23 +177,30 @@
                         </div>
                     </li>
 
-                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">4 • Risk
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">5 • Risk
                             Dice Benchmarks</strong>
-                        <span class="risk-badge risk-1" style="margin-left: 1em; --risk-color: #D79A44;"></span>1 RD
+                        <span class="risk-badge risk-1" style="margin-left: 1em; --risk-color: #D79A44;"></span>1 <img
+                            class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                         → mild risk
                         (~17%)<br>
-                        <span class="risk-badge risk-2" style="margin-left: 1em; --risk-color: #E57845;"></span>2 RD
+                        <span class="risk-badge risk-2" style="margin-left: 1em; --risk-color: #E57845;"></span>2 <img
+                            class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                         →
                         meaningful risk (~30%)<br>
-                        <span class="risk-badge risk-3" style="margin-left: 1em; --risk-color: #E6463F;"></span>3 RD
+                        <span class="risk-badge risk-3" style="margin-left: 1em; --risk-color: #E6463F;"></span>3 <img
+                            class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                         → serious
                         risk (~45%)<br>
                         <span class="risk-badge risk-4" style="margin-left: 1em; --risk-color: #B11210;"></span>4+
-                        RD →
+                        <img class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg"> →
                         high/catastrophic risk
                     </li>
 
-                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">5 •
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">6 •
                             Optional Rules</strong>
                         <ul class="no-bullet">
                             <li style="margin-left: 1em;"><strong>Degrees of Success:</strong> 1 = basic, 2 =
@@ -176,17 +209,23 @@
                             <li style="margin-left: 1em;"><strong>Degrees of Complication:</strong> 1 = minor, 2 =
                                 serious, 3+ =
                                 catastrophic</li>
-                            <li style="margin-left: 1em;"><strong>Push:</strong> Reroll 1 AD by spending a resource
+                            <li style="margin-left: 1em;"><strong>Push:</strong> Reroll 1 <img class="dice-symbol"
+                                    src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
+                                by spending a resource
                                 or adding 1
-                                RD</li>
+                                <img class="dice-symbol"
+                                    src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                            </li>
                         </ul>
                     </li>
 
-                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">6 • GM
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">7 • GM
                             Tips</strong>
                         <ul>
                             <li>Gate rolls wisely.</li>
-                            <li>Use Risk to build tension.</li>
+                            <li>Use <img class="dice-symbol"
+                                    src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                                to build tension.</li>
                             <li>Make complications meaningful.</li>
                             <li>Let the fiction lead.</li>
                         </ul>
