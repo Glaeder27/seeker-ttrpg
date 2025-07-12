@@ -852,6 +852,13 @@ thead th:last-child {
     display: block;
 }
 
+.dice-symbol {
+    display: inline;
+    align-items: center;
+    gap: 0.4em;
+    height: 1.5em;
+    vertical-align: middle;
+}
 
 /*=============================================
 =               APTITUDE GRID                 =
