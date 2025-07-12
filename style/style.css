@@ -1839,7 +1839,7 @@ details[open] .infobox-table {
 .sidebar-block h3 {
     font-size: 1rem;
     color: var(--bright-gold, #e6c87c);
-    margin-bottom: 0.5rem;
+    margin: 0 0 .5rem 0;
     font-family: var(--default-font);
     text-transform: uppercase;
     letter-spacing: 0.04em;
