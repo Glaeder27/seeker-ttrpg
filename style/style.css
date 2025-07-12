@@ -860,6 +860,22 @@ thead th:last-child {
     vertical-align: middle;
 }
 
+.dice-symbol-big {
+    display: inline;
+    align-items: center;
+    gap: 0.4em;
+    height: 2.5em;
+    vertical-align: middle;
+}
+
+.dice-symbol-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    height: 2.5em;
+    vertical-align: middle;
+}
+
 /*=============================================
 =               APTITUDE GRID                 =
 =============================================*/
