@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-env="vsc">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twin Coil System</title>
+  <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
+  <style>
+    .risk-badge {
+      background: var(--background-grey-1, #1c1c1c);
+      border: 1px solid var(--border-color, #444);
+      border-left: 0.5rem solid var(--risk-color);
+      border-radius: 0.5rem;
+      padding: 0;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+        li .no-bullet {
+      list-style: none;
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    .no-bullet::before {
+      display: none;
+    }
+
+    /* ── VSC EDITING ─────────────── */
+    html[data-env="vsc"] .page-columns {
+      outline: 1px dashed green;
+    }
+
+    html[data-env="vsc"] {
+      background-color: rgba(48, 48, 48, 1);
+      overflow: scroll !important;
+    }
+
+    /* ────────────────────────────── */
+  </style>
+</head>
+
+<aside class="sidebar-wrapper">
+  <h3 class="section">TL;DR — The Twin Coil System</h3>
+
+  <ul class="no-bullet">
+    <li><strong>Roll Action vs Risk Dice:</strong><br>
+      Use <strong>Action Dice</strong> (AD) to determine success.<br>
+      Use <strong>Risk Dice</strong> (RD) to determine complications.
+    </li>
+
+    <li><strong>Success:</strong><br>
+      Any AD showing 5–6 = success. One is enough.<br>
+      More = better, if using <em>Degrees of Success</em> (optional).
+    </li>
+
+    <li><strong>Complication:</strong><br>
+      Any RD showing 5–6 = complication. They can happen even on success.<br>
+      More = worse, if using <em>Degrees of Complication</em> (optional).
+    </li>
+
+    <li><strong>When to Roll:</strong><br>
+      Roll only if both <em>failure</em> and <em>complication</em> are interesting.<br>
+      Don’t roll for impossible or trivial actions — just narrate.
+    </li>
+
+    <li><strong>Risk Dice Benchmarks:</strong><br>
+      <span class="risk-badge risk-1" style="--risk-color: #D79A44;">1 RD</span> = mild risk (~17%)<br>
+      <span class="risk-badge risk-2" style="--risk-color: #E57845;">2 RD</span> = meaningful risk (~30%)<br>
+      <span class="risk-badge risk-3" style="--risk-color: #E6463F;">3 RD</span> = serious risk (~45%)<br>
+      <span class="risk-badge risk-4" style="--risk-color: #B11210;">4+ RD</span> = high/catastrophic risk
+    </li>
+
+    <li><strong>Optional Rules:</strong>
+      <ul class="no-bullet">
+        <li><strong>Degrees of Success:</strong> 1 = basic, 2 = strong, 3+ = critical</li>
+        <li><strong>Degrees of Complication:</strong> 1 = minor, 2 = serious, 3+ = catastrophic</li>
+        <li><strong>Push:</strong> Reroll 1 AD by spending a resource or adding 1 RD</li>
+      </ul>
+    </li>
+
+    <li><strong>GM Tips:</strong><br>
+      Gate rolls wisely. Use Risk to build tension. Make complications meaningful. Let the fiction lead.
+    </li>
+  </ul>
+  <!-- Block 1: Player & GM Resources -->
+    <div class="sidebar-block">
+      <h3>Player & GM Resources</h3>
+      <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+      <a class="sidebar-link" href="#">Quickstart Rules</a>
+    </div>
+
+    <!-- Block 2: Quick Glossary Search -->
+    <div class="sidebar-block">
+      <h3>Quick Glossary</h3>
+      <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+      <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+    </div>
+
+    <!-- Block 3: From the Archives Carousel -->
+    <div class="sidebar-block">
+      <h3>From the Archives</h3>
+      <div class="archives-carousel-fade">
+        <div class="archive-item show">
+          "They did not fear our steel, but the smoke that rose from southern ruins."
+          <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+        </div>
+        <div class="archive-item">
+          "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+          <div class="archive-author">— Journal of Captain J. Strode</div>
+        </div>
+        <div class="archive-item">
+          "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+          <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+        </div>
+        <div class="archive-item">
+          "The stone idols breathe. Some say they dream. Pray they never awaken."
+          <div class="archive-author">— Codex Margin Note, unknown author</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+<script src="https://glaeder27.github.io/seeker-ttrpg/scripts/sidebar.js"></script>
+
+</body>
+
+</html>
+</aside>
