@@ -2,281 +2,656 @@
 <html lang="en" data-env="vsc">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aptitudes</title>
-  <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptitudes</title>
+    <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- PAGE-SPECIFIC STYLES -->
-  <style>
-    .aptitude-grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 0px;
-      padding-bottom: 20px;
-    }
+    <!-- PAGE-SPECIFIC STYLES -->
+    <style>
+        .aptitude-grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .5em;
+            margin-top: 1em;
+            padding-bottom: 1em;
+            align-items: start;
+        }
 
-    .aptitude-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      position: relative;
-    }
+        .aptitude-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+        }
 
-    .aptitude-card {
-      background-color: #484848;
-      border-radius: 10px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      color: var(--off-white);
-      width: 100%;
-      box-sizing: border-box;
-      flex-grow: 1;
-    }
+        .aptitude-card {
+            background-color: #484848;
+            border-radius: 10px;
+            padding: .3em 1em 1em 1em;
+            display: flex;
+            flex-direction: column;
+            color: var(--off-white);
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
 
-    .aptitude-card:hover .icon {
-      transform: scale(1.1);
-    }
+        .aptitude-description-container {
+            flex-grow: 1;
+        }
 
-    .aptitude-card .icon {
-      width: 128px;
-      height: 128px;
-      background-color: #555;
-      border-radius: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2.5em;
-      color: var(--off-white);
-      border: 1px solid rgba(240, 240, 240, 0.21);
-      margin: 20px auto;
-      transition: all 0.5s ease-out;
-      overflow: auto;
-    }
+        .aptitude-top-combat {
+            min-height: 290px;
+        }
+        .aptitude-top-exploration {
+            min-height: 330px;
+        }
+        .aptitude-top-social {
+            min-height: 380px;
+        }
 
-    .aptitude-card .icon img {
-      width: 128px;
-      height: 128px;
-    }
+        .aptitude-bottom {
+            padding-top: 1rem;
+        }
 
-    .aptitude-card h4 {
-      font-size: 1.4em;
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: var(--off-white);
-      border-bottom: none;
-      text-transform: uppercase;
-      text-align: center;
-      margin: 0 auto !important;
-    }
+        .aptitude-card:hover .icon {
+            transform: scale(1.1);
+        }
 
-    .aptitude-card p {
-      font-size: 0.85em;
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
+        .aptitude-card .icon {
+            width: 128px;
+            height: 128px;
+            border-radius: 8px;
+            background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
+            padding: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            transition: all 0.5s ease-out;
+        }
 
-    .aptitude-card .tags {
-      font-size: 0.8em;
-      color: #ccc;
-      margin-top: auto;
-    }
+        .icon-inner {
+            width: 100%;
+            height: 100%;
+            background-color: #383838;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-    .aptitude-category-title {
-      font-size: 1.3em !important;
-      margin-bottom: -20px !important;
-      color: var(--off-white);
-      border-bottom: none !important;
-      padding-bottom: 5px;
-      width: 100%;
-      grid-column: 1 / -1;
-      text-transform: uppercase;
-    }
+        .icon-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    .aptitude-category-description {
-      line-height: 1.6;
-      margin-bottom: 0px;
-      color: var(--off-white);
-      grid-column: 1 / -1;
-    }
+        .aptitude-card .icon img {
+            width: 128px;
+            height: 128px;
+        }
 
-    .aptitude-card .aptitude-description-container {
-      flex-grow: 1;
-      margin-bottom: 10px;
-    }
+        .aptitude-card h4 {
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--off-white);
+            border-bottom: none;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0 auto !important;
+        }
 
-    /* ── VSC EDITING ─────────────── */
-    html[data-env="vsc"] .page-columns {
-      outline: 1px dashed green;
-    }
+        .aptitude-card p {
+            font-size: 0.85em;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
 
-    html[data-env="vsc"] {
-      background-color: rgba(48, 48, 48, 1);
-      overflow: scroll !important;
-      max-width: 940px;
-    }
+        .aptitude-card .tags {
+            font-size: 0.8em;
+            color: #ccc;
+            margin-top: auto;
+        }
 
-    /* ────────────────────────────── */
-  </style>
+        .aptitude-category-title {
+            font-size: 1.3em !important;
+            margin-bottom: -20px !important;
+            color: var(--off-white);
+            border-bottom: none !important;
+            padding-bottom: 5px;
+            width: 100%;
+            grid-column: 1 / -1;
+            text-transform: uppercase;
+        }
+
+        .aptitude-category-description {
+            line-height: 1.6;
+            margin-bottom: 0px;
+            color: var(--off-white);
+            grid-column: 1 / -1;
+        }
+
+        .aptitude-card .aptitude-description-container {
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+
+        .aptitude-what {
+            font-weight: normal;
+            color: #bbb;
+            margin-bottom: 0.3rem;
+        }
+
+        .aptitude-used {
+            font-weight: 500;
+            color: #eee;
+        }
+
+        .aptitude-collapsible summary {
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            color: #ddd;
+
+        }
+
+        .aptitude-collapsible summary {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #ddd;
+            position: relative;
+            padding-right: 1.5rem;
+            user-select: none;
+        }
+
+        .aptitude-collapsible summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .aptitude-collapsible summary::after {
+            content: '›';
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease;
+        }
+
+        .aptitude-collapsible[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .aptitude-collapsible[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .aptitude-collapsible p {
+            margin: 0.4rem 0 0 0;
+            padding-left: 0.5rem;
+            color: #aaa;
+            font-size: 0.8rem;
+            user-select: none;
+        }
+
+        /* ── VSC EDITING ─────────────── */
+        html[data-env="vsc"] .page-columns {
+            outline: 1px dashed green;
+        }
+
+        html[data-env="vsc"] {
+            background-color: rgba(48, 48, 48, 1);
+            overflow: scroll !important;
+            max-width: 940px;
+        }
+
+        /* ────────────────────────────── */
+    </style>
 </head>
 
 <body>
 
-  <div class="page-columns">
-    <div class="page-lore">
+    <div class="page-columns">
+        <div class="page-lore">
 
-      <header class="seeker-title">
-        <div class="title-container">
-          <span class="title-icon">🜍</span>
-          <h1>Aptitudes</h1>
-          <span class="title-icon flipped">🜍</span>
+            <header class="seeker-title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Aptitudes</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">A Seeker's true compass</p>
+            </header>
+
+            <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
+            <section class="rule-options-box">
+                <div class="rule-options-label">Rule Options</div>
+
+                <div class="toggle-bar">
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="degrees-of-success" checked />
+                        <span class="slider"></span>
+                        <span class="label">Degrees of Success</span>
+                        <span class="rule-tag optional tooltip" data-tooltip-key="optional-rule">
+                            Optional
+                        </span>
+                    </label>
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="point-buy" />
+                        <span class="slider"></span>
+                        <span class="label">Distribution: Point Buy</span>
+                        <span class="rule-tag variant tooltip" data-tooltip-key="variant-rule">
+                            Variant
+                        </span>
+                    </label>
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="polarity" />
+                        <span class="slider"></span>
+                        <span class="label">Polarity</span>
+                        <span class="rule-tag experimental tooltip" data-tooltip-key="experimental-rule">
+                            Experimental
+                        </span>
+                    </label>
+
+                </div>
+            </section>
+
+            <!-- ─────────────── MAIN CONTENT ─────────────── -->
+
+            <section class="section-wrapper">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="aptitudes">
+                    Core Concept
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p>In Seeker, every meaningful action a character takes — whether leaping over a chasm, resisting an
+                    ancient curse, or negotiating with a wary native tribe — is rooted in one of their core Aptitudes.
+                </p>
+
+                <p>Aptitudes represent the essential physical, mental, and social capabilities of a Seeker. Rather than
+                    relying on long lists of predefined skills, Seeker distills character ability into nine core
+                    attributes, each one reflecting a broad aspect of how a character interacts with the world.</p>
+
+                <p>Each action, challenge, or conflict in the game is framed through one or more Aptitudes. Whether a
+                    character excels through brute Force, clever improvisation, or careful observation, their Aptitudes
+                    define how they attempt to shape their surroundings — and how well they are likely to succeed.</p>
+
+                <p>This chapter explains what the Aptitudes are, how they are used during play, how characters select
+                    their values at creation, and how they interact with the core resolution system.</p>
+            </section>
+            <section class="section-wrapper">
+                <div class="section-number">Section II</div>
+                <h2 class="section" id="aptitudes">
+                    The Nine Aptitudes
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p>The following section breaks down each of the nine Aptitudes individually, offering guidance on when
+                    to apply them in play and how they shape a Seeker’s approach to challenges. Grouped into
+                    <strong>Combat</strong>, <strong>Exploration</strong>, and <strong>Social</strong> categories, these
+                    traits define the core capacities of every adventurer — from raw strength and sharp wit to charm,
+                    intuition, and adaptability.</p>
+
+
+                <h3>Combat Aptitudes</h3>
+                <p class="aptitude-category-description">These aptitudes reflect your character's physical prowess,
+                    ability to engage in direct conflict, and resilience in dangerous situations. They are crucial
+                    for
+                    overcoming physical challenges and confronting threats head-on.</p>
+
+                <div class="aptitude-grid-container">
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-combat">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_e0078b3b518f46beb99ff50d4336685e~mv2.webp"
+                                        alt="Strength"></div>
+                            </div>
+                            <h4>Strength</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Raw physical power, brute force, and the capacity to lift, shove, strike, or break through obstacles using over&shy;whelm&shy;ing strength and effort.</p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Weak</u> (1), <u>Mighty</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Breaking down doors, lifting rubble,
+                                    shoving obstacles, grappling enemies, wielding heavy weapons.</p>
+                            </details>
+                        </div>
+                    </div>
+
+
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-combat">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_f6826a077a9c4e40a2c7302207c3cbb8~mv2.webp"
+                                        alt="+"></div>
+                            </div>
+                            <h4>Agility</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Quick reflexes, balance, speed, coordination, and precise control over fine motor movements — especially under pressure or in dynamic environments.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Clumsy</u> (1), <u>Swift</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Dodging attacks, sneaking past enemies, climbing walls, leaping over gaps, or
+                                    making quick precise movements under pressure.</p>
+                            </details>
+                        </div>
+                    </div>
+
+
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-combat">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_6ff7c4d64af644e387b7350aec109252~mv2.webp"
+                                        alt="Vigor"></div>
+                            </div>
+                            <h4>Vigor</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Stamina, resilience, and physical durability — the ability to endure pain, resist harm, and keep going despite exhaustion, illness, or injury.</p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Frail</u> (1), <u>Resilient</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Withstanding poison or illness,
+                                    enduring harsh climates, resisting fatigue, or pushing the body through pain and
+                                    exhaustion.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Exploration Aptitudes</h3>
+                <p class="aptitude-category-description">These aptitudes define your character's capacity for discovery,
+            problem-solving, and interacting with the environment. They are essential for navigating unknown
+            territories,
+            understanding ancient lore, and utilizing resources effectively.</p>
+
+                <div class="aptitude-grid-container">
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-exploration">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_7cd2d3c2064e462392d9195b0fc80d20~mv2.webp"
+                                        alt="Perception"></div>
+                            </div>
+                            <h4>Perception</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Awareness, observation skills, and the ability to notice details, detect hidden dangers, or sense subtle changes in the environment.</p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Distracted</u> (1), <u>Vigilant</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Spotting traps, noticing ambushes, reading hidden expressions, navigating in darkness or fog, reacting to sudden sounds or movement.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-exploration">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_09e759af8f6c471db2f82bb923085fc9~mv2.webp"
+                                        alt="Intellect"></div>
+                            </div>
+                            <h4>Intellect</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Logic, memory, reasoning, and the capacity to analyze information, solve problems, and un&shy;der&shy;stand complex or abstract concepts.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Dull</u> (1), <u>Brilliant</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Deciphering ancient texts, recalling lore, solving puzzles, analyzing magical effects, planning tactics, or identifying weaknesses.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-exploration">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_37ddab5030984b9d88e6700ff7987c9c~mv2.webp"
+                                        alt="Adaptability"></div>
+                            </div>
+                            <h4>Adaptability</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Improvisation, creativity under pressure, and the ability to react quickly and re&shy;source&shy;fully to un&shy;ex&shy;pect&shy;ed situations or unfamiliar tools.</p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Rigid</u> (1), <u>Versatile</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Using improvised weapons, jury-rigging equipment, reacting to environmental hazards, disarming traps without proper tools, or surviving in unfamiliar terrain.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Social Aptitudes</h3>
+                <p class="aptitude-category-description">These aptitudes govern your character's ability to navigate complex
+            social landscapes, influence others, and understand the intricate dynamics of interpersonal relationships.
+            They are vital for diplomacy, deception, and leadership.</p>
+
+                <div class="aptitude-grid-container">
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-social">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_f5a492c58a7b4475af796667a2d3d286~mv2.webp"
+                                        alt="Charisma"></div>
+                            </div>
+                            <h4>Charisma</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Presence, personal magnetism, and the ability to influence others through charm, confidence, or emotional appeal — whether inspiring trust, com&shy;mand&shy;ing respect, or bending a crowd to your will.</p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Uncouth</u> (1), <u>Magnetic</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Persuading skeptical NPCs, giving stirring speeches, deceiving others with charm, leading a group under pressure, or diffusing tension through charisma alone.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-social">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_7650a457568e44a286ed7bd3535fac1f~mv2.webp"
+                                        alt="Insight"></div>
+                            </div>
+                            <h4>Insight</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Empathy, intuition, and social sensitivity — the ability to interpret tone, read subtle cues in body language, discern hidden motives, and grasp emotional un&shy;der&shy;cur&shy;rents in con&shy;ver&shy;sa&shy;tions and situations.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><b>Tags:</b> <u>Naive</u> (1), <u>Discerning</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Empathy, emotional perception, and the ability to interpret subtle cues — whether reading someone’s mood, spotting a lie, or understanding hidden motives and emotional undercurrents.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="aptitude-card">
+                        <div class="aptitude-top-social">
+                            <div class="icon">
+                                <div class="icon-inner"><img class="shadowed"
+                                        src="https://static.wixstatic.com/media/e40a82_9707a745898842788e52d6bf7c621d61~mv2.webp"
+                                        alt="Willpower"></div>
+                            </div>
+                            <h4>Willpower</h4>
+                            <div class="aptitude-description-container">
+                                <p class="aptitude-what">Mental fortitude, discipline, and inner resolve — the strength to resist fear, withstand stress, endure ma&shy;nip&shy;u&shy;la&shy;tion, or remain focused under o&shy;ver&shy;whelm&shy;ing pressure.</p>
+                            </div>
+                        </div>
+                        <div class="aptitude-bottom">
+                            <p class="tags"><p class="tags"><b>Tags:</b> <u>Volatile</u> (1), <u>Stoic</u> (5)</p>
+                            <details class="aptitude-collapsible">
+                                <summary><strong>Used for:</strong></summary>
+                                <p>Resisting magical influence, pushing through fear, keeping composure under threat, refusing coercion, or maintaining clarity in chaotic or stressful situations.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="section-wrapper">
+    <div class="section-number">Section III</div>
+    <h2 class="section" id="aptitudes">
+        Assigning Scores
+        <span class="section-ornament">⸺ ✦ ⸺</span>
+    </h2>
+    <p>
+        At <strong>character creation</strong>, players must determine their Seeker’s starting Aptitudes. There are
+        <em>no modifiers</em> from race, background, or class: all characters begin with the <strong>same opportunities</strong>
+        to shape their strengths. Two <strong>optional methods</strong> are provided for assigning Aptitude scores,
+        each offering a different approach to building a <em>balanced</em> and <em>unique</em> explorer.
+    </p>
+
+    <h3>Method 1: Point Buy</h3>
+    <p>
+        In the <strong>Point Buy</strong> method, all Aptitudes start at a baseline of <strong>1</strong>. Players then
+        have <strong>6 additional points</strong> to distribute freely among the nine Aptitudes, allowing them to
+        customize their character’s strengths according to their concept.
+    </p>
+    <p>
+        No Aptitude may be raised above <strong>3</strong> during character creation, ensuring a <em>balanced distribution</em>
+        of abilities. The total sum of all Aptitude scores will therefore be <strong>15</strong>, representing a capable
+        but not overpowered Seeker.
+    </p>
+    <p>
+        This method offers <em>fine control</em> and supports specific character concepts, encouraging players to focus on
+        one or two areas of expertise while maintaining overall versatility.
+    </p>
+
+    <h3>Method 2: Pyramid Build</h3>
+    <p>
+        The <strong>Pyramid Build</strong> method provides a more structured approach to Aptitude assignment. Players allocate
+        their scores as follows:
+    </p>
+    <ol>
+        <li><strong>One</strong> Aptitude at <strong>3</strong></li>
+        <li><strong>Four</strong> Aptitudes at <strong>2</strong></li>
+        <li><strong>Four</strong> Aptitudes at <strong>1</strong></li>
+    </ol>
+    <p>
+        Like the Point Buy method, the total sum of Aptitude scores equals <strong>15</strong>, but Pyramid Build encourages a clear
+        <em>peak</em> in one area of strength, with moderate and modest values elsewhere. This leads to characters with
+        <em>distinctive specialties</em> balanced by adequate competence in other fields.
+    </p>
+
+    <blockquote>
+          <p>Both methods aim to balance <strong>narrative flexibility</strong> with <strong>mechanical clarity</strong>. Game Masters are encouraged to
+        allow one or both options during character creation, or to offer additional points in high-powered campaigns
+        to fit their desired tone and challenge level.
+          </p>
+        </blockquote>
+</section>
+
+<section class="section-wrapper">
+  <div class="section-number">Section IV</div>
+  <h2 class="section" id="using-aptitudes">
+    Using Aptitudes in Play
+    <span class="section-ornament">⸺ ✦ ⸺</span>
+  </h2>
+
+  <p>
+    In <em>Seeker</em>, Aptitudes serve as the foundation for nearly every action a character attempts, shaping both the narrative and mechanical resolution. When a player declares an action, the Game Master (GM) determines which Aptitude(s) best represent the character’s effort in that moment.
+  </p>
+
+  <p>
+    The core mechanic for resolving actions is the <strong>Twin Coil System</strong>, which relies on rolling Action Dice and Risk Dice. Aptitude scores directly influence the number of Action Dice a character rolls, representing their skill and capability in that area.
+  </p>
+
+  <h3>Determining Aptitudes for an Action</h3>
+  <p>
+    When a character attempts a task, the GM identifies the primary Aptitude that governs the action. For example:
+  </p>
+  <ul>
+    <li><strong>Breaking down a door</strong> calls for <em>Strength</em>.</li>
+    <li><strong>Climbing a cliff</strong> involves <em>Agility</em>.</li>
+    <li><strong>Noticing a hidden trap</strong> uses <em>Perception</em>.</li>
+    <li><strong>Negotiating a delicate alliance</strong> requires <em>Charisma</em>.</li>
+  </ul>
+
+  <p>
+    Some complex tasks may involve multiple Aptitudes. In these cases, the GM may call for multiple rolls or allow the player to choose which Aptitude to apply, depending on the situation.
+  </p>
+
+  <h3>Rolling the Dice</h3>
+  <p>
+    The number of <strong>Action Dice</strong> rolled equals the character’s Aptitude score for the relevant attribute. Each die showing a 5 or 6 counts as a success. Successes allow the character to overcome the challenge.
+  </p>
+  <p>
+    <strong>Risk Dice</strong> represent potential complications or consequences and are assigned by the GM based on the difficulty or danger involved. Any 6 on a Risk Die triggers a complication, regardless of success or failure.
+  </p>
+
+  <h3>Polarity and Aptitudes</h3>
+  <p>
+    If the <strong>Polarity</strong> system is in use, the player also rolls their Polarity Die alongside the Action Dice. If the action aligns with the character’s Polarity (e.g., using Force to break down a door), the Polarity Die behaves like an Action Die. If the action contradicts the Polarity, it acts as a Risk Die.
+  </p>
+  <p>
+    This mechanic adds narrative depth by rewarding characters who act in ways consistent with their chosen style, while increasing risk when they stray from it.
+  </p>
+
+  <h3>Interpreting Results</h3>
+  <p>
+    The number of successes on Action Dice determines the degree of success, from barely succeeding to spectacular feats. The presence of complications from Risk Dice introduces tension and narrative twists, even in success.
+  </p>
+
+  <h3>Examples</h3>
+  <p>
+    <strong>Example 1:</strong> A character with Strength 2 tries to break down a heavy wooden door. They roll 2 Action Dice. The GM assigns 1 Risk Die due to the door’s solid construction. If they roll one or more successes on Action Dice without a Risk Die 6, the door breaks down cleanly. If a Risk Die shows a 6, perhaps the door breaks but causes noise, alerting nearby enemies.
+  </p>
+  <p>
+    <strong>Example 2:</strong> A character with Perception 3 attempts to spot a hidden trap. They roll 3 Action Dice, with 1 Risk Die assigned for the trap’s subtle design. Success reveals the trap in time; a Risk Die 6 might mean they notice the trap but trigger a secondary alarm.
+  </p>
+
+  <h3>Summary</h3>
+  <p>
+    Aptitudes in <em>Seeker</em> provide a versatile and intuitive framework for action resolution, tightly integrated with the Twin Coil System. They focus gameplay on core character strengths, streamlining decision-making while preserving rich narrative potential.
+  </p>
+</section>
+
+
+
         </div>
-        <p class="subtitle">A modular dice-resolution engine for dynamic and narrative-driven tabletop play</p>
-      </header>
-
-      <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
-      <section class="rule-options-box">
-        <div class="rule-options-label">Rule Options</div>
-
-        <div class="toggle-bar">
-
-          <label class="rule-switch">
-            <input type="checkbox" data-rule="degrees-of-success" checked />
-            <span class="slider"></span>
-            <span class="label">Degrees of Success</span>
-            <span class="rule-tag optional tooltip" data-tooltip-key="optional-rule">
-              Optional
-            </span>
-          </label>
-
-          <label class="rule-switch">
-            <input type="checkbox" data-rule="degrees-of-complication" checked />
-            <span class="slider"></span>
-            <span class="label">Degrees of Complication</span>
-            <span class="rule-tag optional tooltip" data-tooltip-key="optional-rule">
-              Optional
-            </span>
-          </label>
-
-          <label class="rule-switch">
-            <input type="checkbox" data-rule="push-roll" />
-            <span class="slider"></span>
-            <span class="label">Push Roll</span>
-            <span class="rule-tag experimental tooltip" data-tooltip-key="experimental-rule">
-              Experimental
-            </span>
-          </label>
-
-        </div>
-      </section>
-
-      <!-- ─────────────── MAIN CONTENT ─────────────── -->
-
-      <div class="section-wrapper">
-        <h1>Aptitudes</h1>
-        <p>In <em>Seeker</em>, every meaningful action a character takes — whether leaping over a chasm, resisting an
-          ancient curse, or negotiating with a wary native tribe — is rooted in one of their core
-          <strong>Aptitudes</strong>.
-        </p>
-        <p>Aptitudes represent the essential physical, mental, and social capabilities of a Seeker. Rather than relying
-          on long lists of predefined skills, <em>Seeker</em> distills character ability into <strong>nine core
-            attributes</strong>, each one reflecting a broad aspect of how a character interacts with the world.</p>
-        <p>Each action, challenge, or conflict in the game is framed through one or more Aptitudes. Whether a character
-          excels through brute Force, clever improvisation, or careful observation, their Aptitudes define how they
-          attempt to shape their surroundings — and how well they are likely to succeed.</p>
-      </div>
-
-      <div class="section-wrapper">
-        <h2>The Nine Aptitudes</h2>
-        <p>Aptitudes are grouped into three thematic categories. Each time a character performs an action with uncertain
-          or meaningful consequences, the GM selects the most relevant Aptitude based on what the character is doing and
-          <em>how</em> they’re doing it.
-        </p>
-
-        <h3>⚔️ Combat Aptitudes</h3>
-        <h4>Strength</h4>
-        <p>Raw physical power, explosive force, and physical dominance.</p>
-        <ul>
-          <li>Breaking, smashing, pushing, or lifting heavy objects</li>
-          <li>Grappling or overpowering an opponent</li>
-          <li>Wielding large or powerful weapons</li>
-        </ul>
-
-        <h4>Agility</h4>
-        <p>Speed, reflexes, balance, and physical finesse.</p>
-        <ul>
-          <li>Dodging attacks or hazards</li>
-          <li>Moving stealthily, jumping, climbing</li>
-          <li>Performing quick, precise motions under pressure</li>
-        </ul>
-
-        <h4>Vigor</h4>
-        <p>Endurance, stamina, and resistance to fatigue or harm.</p>
-        <ul>
-          <li>Resisting disease, poison, or prolonged hardship</li>
-          <li>Pushing the body beyond normal limits</li>
-          <li>Enduring pain, harsh weather, or exhaustion</li>
-        </ul>
-
-        <h3>🤍 Exploration Aptitudes</h3>
-        <h4>Perception</h4>
-        <p>Awareness of surroundings, sensory focus, and vigilance.</p>
-        <ul>
-          <li>Noticing hidden objects, traps, or movement</li>
-          <li>Detecting lies or subtle changes in environment</li>
-          <li>Spotting weaknesses or important details</li>
-        </ul>
-
-        <h4>Intellect</h4>
-        <p>Logic, memory, theoretical knowledge, and learning.</p>
-        <ul>
-          <li>Deciphering codes, symbols, or languages</li>
-          <li>Recalling lore, past events, or academic knowledge</li>
-          <li>Analyzing puzzles, problems, or strategies</li>
-        </ul>
-
-        <h4>Adaptability</h4>
-        <p>Improvisation, ingenuity, and creative thinking under pressure.</p>
-        <ul>
-          <li>Solving problems using unconventional means</li>
-          <li>Bluffing, adapting to a new culture, or mimicking behavior</li>
-          <li>Making snap judgments with limited information</li>
-        </ul>
-
-        <h3>🎭 Social Aptitudes</h3>
-        <h4>Charisma</h4>
-        <p>Presence, charm, and the power to lead or persuade.</p>
-        <ul>
-          <li>Charming, inspiring, intimidating, or influencing others</li>
-          <li>Performing or speaking on behalf of a group</li>
-          <li>Gaining favor, followers, or negotiating terms</li>
-        </ul>
-
-        <h4>Insight</h4>
-        <p>Empathy, reading others, and understanding intentions.</p>
-        <ul>
-          <li>Gauging lies, emotional instability, or hidden motives</li>
-          <li>Understanding group dynamics or personal motivations</li>
-          <li>Predicting emotional or social responses</li>
-        </ul>
-
-        <h4>Willpower</h4>
-        <p>Mental fortitude, resolve, and resistance to influence.</p>
-        <ul>
-          <li>Resisting fear, magic, or emotional control</li>
-          <li>Maintaining focus under stress</li>
-          <li>Fighting temptation, addiction, or corruption</li>
-        </ul>
-      </div>
-
     </div>
-  </div>
 
-  <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
 
 </body>
 
