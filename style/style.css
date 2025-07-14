@@ -365,7 +365,7 @@ dl dd strong {
 }
 
 .highlight {
-    color: var(--ancient-gold-), #D4B55A;
+    color: var(--ancient-gold, #D4B55A);
 }
 
 /* Lists */
