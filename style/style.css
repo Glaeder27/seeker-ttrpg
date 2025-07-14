@@ -54,11 +54,19 @@
         html[data-env="vsc"] .page-columns {
             outline: 1px dashed green;
         }
-
         html[data-env="vsc"] {
             background-color: rgba(48, 48, 48, 1);
             overflow: scroll !important;
             max-width: 940px;
+        }
+        html[data-env="vsc-940"] .page-columns {
+            outline: 1px dashed green;
+        }
+        html[data-env="vsc-940"] {
+            background-color: rgba(48, 48, 48, 1);
+            overflow: scroll !important;
+            max-width: 940px;
+            width: 940px;
         }
 
 html,
