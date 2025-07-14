@@ -356,6 +356,10 @@ dl dd strong {
     font-size: 0.9rem;
 }
 
+.highlight {
+    color: var(--ancient-gold-), #D4B55A;
+}
+
 /* Lists */
 
 ul,
