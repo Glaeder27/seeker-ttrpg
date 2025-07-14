@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-env="vsc">
+<html lang="en" data-env="">
 
 <head>
     <meta charset="UTF-8">
@@ -94,6 +94,121 @@
             vertical-align: middle;
         }
 
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5em;
+            margin-top: 1em;
+        }
+
+        .aptitude-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5em;
+            background: #393939;
+            padding: 0.4em 0.6em;
+            border-radius: 6px;
+        }
+
+        .aptitude-row label {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            font-weight: 500;
+            color: var(--off-white);
+        }
+
+        .aptitude-icon {
+            width: 24px;
+            height: 24px;
+            filter: brightness(1.3);
+        }
+
+        .aptitude-row input[type="number"] {
+            -webkit-appearance: none;
+            background: #222;
+            color: #eee;
+            width: 45px;
+            padding: 0.2em;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid var(--ancient-gold);
+            font-weight: bold;
+        }
+
+        .aptitude-value {
+            min-width: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--off-white);
+        }
+
+        .aptitude-row input[type=number]::-webkit-inner-spin-button,
+        .aptitude-row input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .aptitude-value.maxed {
+            color: var(--ancient-gold);
+            font-weight: bold;
+        }
+
+        .calculator-footer {
+            margin-top: 1em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            align-items: center;
+        }
+
+        .calculator-buttons {
+            display: flex;
+            align-items: center;
+            gap: .25em;
+        }
+
+        .calculator-buttons button {
+            background-color: var(--burnt-copper);
+            border: none;
+            border-radius: 4px;
+            color: var(--off-white);
+            font-size: 1em;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator-buttons button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+
+        .calculator-buttons button:hover:not(:disabled) {
+            background-color: var(--ancient-gold);
+        }
+
+        #reset-button,
+        #copy-button {
+            background-color: var(--burnt-copper);
+            color: #fff;
+            border: none;
+            padding: 0.4em 1em;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #reset-button:hover,
+        #copy-button:hover {
+            background-color: var(--ancient-gold);
+            color: #222;
+        }
+
         /* ── VSC EDITING ─────────────── */
         html[data-env="vsc"] .page-columns {
             outline: 1px dashed green;
@@ -130,9 +245,22 @@
         <li class="no-bullet" style="margin-top: 1.5em;">
           <strong class="tldr-title">The Nine Aptitudes</strong>
           <div style="margin-left: 1em;">
-            <strong>Combat:</strong> Strength, Agility, Vigor<br>
-            <strong>Exploration:</strong> Perception, Intellect, Adaptability<br>
-            <strong>Social:</strong> Charisma, Insight, Willpower
+            <strong style="color: var(--ancient-gold); text-transform: uppercase;">Combat</strong><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_7e1d9de23f2645b988a5d5e3c22c8231.svg" alt="Strength Icon" class="dice-symbol"> <strong>Strength</strong>: <em style="color:#a1a1a1">physical power and brute force.</em><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_ce3f5a9ea70f4af5a634742be8d043ad.svg" alt="Agility Icon" class="dice-symbol"> <strong>Agility</strong>: <em style="color:#a1a1a1">reflexes, speed, and coordination.</em><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg" alt="Vigor Icon" class="dice-symbol"> <strong>Vigor</strong>: <em style="color:#a1a1a1">stamina and resistance to harm.</em><br><br>
+
+<strong style="color: var(--ancient-gold); text-transform: uppercase;">Exploration</strong><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_d8b41b7bd36a4230929131bc44276eb7.svg" alt="Perception Icon" class="dice-symbol"> <strong>Perception</strong>: <em style="color:#a1a1a1">awareness and ability to notice details.</em><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_81b63b524d76464eaf071b4f5cd9ab87.svg" alt="Intellect Icon" class="dice-symbol"> <strong>Intellect</strong>: <em style="color:#a1a1a1">logic, reasoning, and problem-solving.</em><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_cba6d08d5b93403798c6ddc1418d2c4f.svg" alt="Adaptability Icon" class="dice-symbol"> <strong>Adaptability</strong>: <em style="color:#a1a1a1">improvisation and creative response.</em><br><br>
+
+<strong style="color: var(--ancient-gold); text-transform: uppercase;">Social</strong><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_57fbbea322f14072915fe83908e360df.svg" alt="Charisma Icon" class="dice-symbol"> <strong>Charisma</strong>: <em style="color:#a1a1a1">presence, persuasion, and charm.</em><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_6da737fa86b1492cb32a571f1f2f8e62.svg" alt="Insight Icon" class="dice-symbol"> <strong>Insight</strong>: <em style="color:#a1a1a1">emotional perception and reading intentions.</em><br>
+<img src="https://static.wixstatic.com/shapes/e40a82_70b95ae668b245ccb152aa17228996ad.svg" alt="Willpower Icon" class="dice-symbol"> <strong>Willpower</strong>: <em style="color:#a1a1a1">mental fortitude and self-control.</em>
+
+
           </div>
         </li>
 
@@ -148,7 +276,7 @@
           <strong class="tldr-title">Assigning Scores</strong>
           <div style="margin-left: 1em;">
             During character creation, use either <strong>Point Buy</strong> (start at 1, distribute 6 extra points)
-            or <strong>Pyramid</strong> (3, 2, 2, 2, 2, 1, 1, 1, 1).<br>
+            or <strong>Pyramid</strong> (3, 2, 2, 2, 1, 1, 1, 1, 1).<br>
             Total score: <strong>15</strong>
           </div>
         </li>
@@ -156,7 +284,8 @@
         <li class="no-bullet" style="margin-top: 1.5em;">
           <strong class="tldr-title">Using Aptitudes</strong>
           <div style="margin-left: 1em;">
-            When attempting something risky, roll <strong>Action Dice</strong> equal to the relevant Aptitude.<br>
+            When attempting something risky, roll <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg" alt="Action Dice" title="Action Dice"> equal to the relevant Aptitude.<br>
             Higher Aptitude = more dice = more chances of success.
           </div>
         </li>
@@ -171,6 +300,113 @@
         </li>
       </ul>
     </div>
+  </div>
+
+  <div class="sidebar-block">
+    <h3>Point Buy Calculator</h3>
+    <!-- POINT BUY CALCULATOR -->
+                <p class="calculator-description">Distribute <strong>6 points</strong> among your Aptitudes. No
+                    Aptitude may exceed <strong>3</strong>. All start at <strong>1</strong>.</p>
+                <div class="calculator">
+                    <div class="aptitude-row" data-aptitude="Strength">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_7e1d9de23f2645b988a5d5e3c22c8231.svg"
+                            class="aptitude-icon" alt="Strength">
+                        <span class="aptitude-label">Strength</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Agility">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_ce3f5a9ea70f4af5a634742be8d043ad.svg"
+                            class="aptitude-icon" alt="Agility">
+                        <span class="aptitude-label">Agility</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Vigor">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg"
+                            class="aptitude-icon" alt="Vigor">
+                        <span class="aptitude-label">Vigor</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Perception">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_d8b41b7bd36a4230929131bc44276eb7.svg"
+                            class="aptitude-icon" alt="Perception">
+                        <span class="aptitude-label">Perception</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Insight">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_6da737fa86b1492cb32a571f1f2f8e62.svg"
+                            class="aptitude-icon" alt="Insight">
+                        <span class="aptitude-label">Insight</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Adaptability">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_cba6d08d5b93403798c6ddc1418d2c4f.svg"
+                            class="aptitude-icon" alt="Adaptability">
+                        <span class="aptitude-label">Adaptability</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Willpower">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_70b95ae668b245ccb152aa17228996ad.svg"
+                            class="aptitude-icon" alt="Willpower">
+                        <span class="aptitude-label">Willpower</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Intellect">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_81b63b524d76464eaf071b4f5cd9ab87.svg"
+                            class="aptitude-icon" alt="Intellect">
+                        <span class="aptitude-label">Intellect</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="aptitude-row" data-aptitude="Charisma">
+                        <img src="https://static.wixstatic.com/shapes/e40a82_57fbbea322f14072915fe83908e360df.svg"
+                            class="aptitude-icon" alt="Charisma">
+                        <span class="aptitude-label">Charisma</span>
+                        <div class="calculator-buttons">
+                            <button class="minus-btn">-</button>
+                            <span class="aptitude-value">1</span>
+                            <button class="plus-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="calculator-footer">
+                    <p><strong>Points used:</strong> <span id="point-used">0</span>/6 <span id="point-warning"></span>
+                    </p>
+                    <button id="reset-button">Reset</button>
+                    <button id="copy-button">Copy Results</button>
+                </div>
   </div>
 
   <div class="sidebar-block">
@@ -207,6 +443,111 @@
 
     <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/sidebar.js"></script>
     <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+
+        <script>
+        const rows = document.querySelectorAll('.aptitude-row');
+        const resetBtn = document.getElementById('reset-button');
+        const copyBtn = document.getElementById('copy-button');
+        const maxPoints = 6;
+        const minValue = 1;
+        const maxValue = 3;
+
+        function getTotalPointsUsed() {
+            let total = 0;
+            rows.forEach(row => {
+                const val = parseInt(row.querySelector('.aptitude-value').textContent);
+                total += val - minValue;
+            });
+            return total;
+        }
+
+        function updateDisplay() {
+            const totalUsed = getTotalPointsUsed();
+            const remaining = maxPoints - totalUsed;
+
+            // Aggiorna punti rimanenti nel DOM
+            const remainingDisplay = document.getElementById('remaining-points');
+            if (remainingDisplay) remainingDisplay.textContent = remaining;
+
+            // Disabilita i + se non ci sono punti rimanenti
+            rows.forEach(row => {
+                const valSpan = row.querySelector('.aptitude-value');
+                const plusBtn = row.querySelector('.plus-btn');
+                const minusBtn = row.querySelector('.minus-btn');
+                const val = parseInt(valSpan.textContent);
+
+                plusBtn.disabled = val >= maxValue || remaining <= 0;
+                minusBtn.disabled = val <= minValue;
+            });
+        }
+
+        rows.forEach(row => {
+            const plusBtn = row.querySelector('.plus-btn');
+            const minusBtn = row.querySelector('.minus-btn');
+            const valSpan = row.querySelector('.aptitude-value');
+
+            plusBtn.addEventListener('click', () => {
+                let val = parseInt(valSpan.textContent);
+                const totalUsed = getTotalPointsUsed();
+
+                if (val < maxValue && totalUsed < maxPoints) {
+                    val++;
+                    valSpan.textContent = val;
+                    updateDisplay();
+                }
+            });
+
+            minusBtn.addEventListener('click', () => {
+                let val = parseInt(valSpan.textContent);
+                if (val > minValue) {
+                    val--;
+                    valSpan.textContent = val;
+                    updateDisplay();
+                }
+            });
+        });
+
+        resetBtn.addEventListener('click', () => {
+            rows.forEach(row => {
+                row.querySelector('.aptitude-value').textContent = minValue;
+            });
+            updateDisplay();
+        });
+
+        copyBtn.addEventListener('click', () => {
+            let result = "Aptitude Scores:\n";
+            rows.forEach(row => {
+                const label = row.getAttribute('data-aptitude');
+                const val = row.querySelector('.aptitude-value').textContent;
+                result += `• ${label}: ${val}\n`;
+            });
+            navigator.clipboard.writeText(result);
+            copyBtn.textContent = "Copied!";
+            setTimeout(() => copyBtn.textContent = "Copy Build", 1500);
+        });
+
+        updateDisplay();
+
+        function updateMaxedAptitudes() {
+            const values = document.querySelectorAll('.aptitude-value');
+            values.forEach(span => {
+                if (parseInt(span.textContent, 10) === 3) {
+                    span.classList.add('maxed');
+                } else {
+                    span.classList.remove('maxed');
+                }
+            });
+        }
+
+        updateMaxedAptitudes();
+
+        document.querySelectorAll('.plus-btn, .minus-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                updateMaxedAptitudes();
+            });
+        });
+
+    </script>
 
 </body>
 

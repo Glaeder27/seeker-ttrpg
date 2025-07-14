@@ -321,17 +321,48 @@
             flex-direction: column;
             align-items: center;
             margin: 1em 0;
-            gap: 0.4em;
+            gap: .5em;
         }
 
         .pyramid-row {
             display: flex;
             justify-content: center;
-            gap: 0.4em;
+            gap: 0.5em;
+        }
+
+        .pyramid-selector {
+            max-width: 320px;
+            margin: 1em auto 2em;
+            font-family: var(--default-font), serif;
+            color: var(--text-color, #eee);
+            user-select: none;
+            text-align: center;
+        }
+
+        .pyramid-selector .calculator-description {
+            font-size: 0.85rem;
+            margin-bottom: 0.75em;
+            color: var(--muted-text, #aaa);
+        }
+
+        .pyramid-top {
+            justify-content: center;
+        }
+
+        .pyramid-mid {
+            justify-content: center;
+        }
+
+        .pyramid-bottom {
+            justify-content: center;
+        }
+
+        .pyramid-block-outer {
+            background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
         }
 
         .pyramid-block {
-            background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
+            background-color: var(--background-grey-1), #fff;
             color: #fff;
             font-weight: bold;
             font-family: var(--default-font);
@@ -341,8 +372,271 @@
             justify-content: center;
             align-items: center;
             border-radius: 6px;
+            cursor: pointer;
+            position: relative;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            user-select: none;
         }
+
+        .pyramid-block.selected {
+            background-color: var(--ancient-gold, #D4B55A);
+            color: #111;
+            border-color: var(--ancient-gold, #D4B55A);
+        }
+
+        .pyramid-note {
+            font-size: 0.85em;
+            color: var(--text-muted, #aaa);
+            margin-top: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        .pyramid-counter {
+            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color, #666);
+            padding: 0.8em 1em;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            color: var(--text-color, #ddd);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+
+        .pyramid-counter span {
+            font-weight: bold;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        #reset-pyramid {
+            background-color: transparent;
+            border: 1px solid var(--ancient-gold, #D4B55A);
+            color: var(--ancient-gold, #D4B55A);
+            font-size: 0.85em;
+            padding: 0.4em 0.8em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #reset-pyramid:hover {
+            background-color: var(--ancient-gold, #D4B55A);
+            color: #111;
+        }
+
+        .pyramid-block {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5em;
+            height: 2.5em;
+            font-weight: bold;
+            border: 2px solid var(--border-color, #888);
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+        }
+
+        .pyramid-block.selected {
+            background-color: var(--ancient-gold, #D4B55A);
+            color: #111;
+            border-color: var(--ancient-gold, #D4B55A);
+        }
+
+        /* Hover highlight */
+        .pyramid-block:hover:not(.assigned) {
+            background-color: rgba(212, 181, 90, 0.35);
+            border-color: var(--bright-gold, #D4B55A);
+        }
+
+        /* Assigned block style */
+        .pyramid-block.assigned {
+            background-color: var(--background-grey-1, #888);
+            color: #222;
+            cursor: pointer;
+            border-color: var(--ancient-gold, #d4b55a);
+        }
+
+        /* Icon inside assigned block */
+        .pyramid-block img {
+            width: 26px;
+            height: 26px;
+            vertical-align: middle;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        /* Hide the number if assigned (since icon shows) */
+        .pyramid-block.assigned span {
+            display: none;
+        }
+
+        /* Controls below pyramid */
+        .pyramid-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--text-color, #eee);
+        }
+
+        .pyramid-controls button {
+            background-color: var(--ancient-gold, #d4b55a);
+            border: none;
+            color: #222;
+            padding: 0.3em 0.8em;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: var(--default-font), serif;
+        }
+
+        .pyramid-controls button:hover {
+            background-color: var(--ancient-gold, #d4b55a);
+        }
+
+        /* ───── Popup Styles ───── */
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            padding: 1.5em;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90vw;
+            max-height: 90vh;
+            height: 90vw;
+            overflow-y: auto;
+            text-align: center;
+            color: #eee;
+            display: none;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE e Edge */
+            pointer-events: none;
+        }
+
+        .popup::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
+        }
+
+        .popup.show {
+            display: block;
+            pointer-events: auto;
+        }
+
+        .popup-content {
+            background: #1f1f1f;
+            border-radius: 12px;
+            padding: 1.2em 1.6em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            max-width: 90vw;
+            box-shadow: 0 0 15px rgba(212, 181, 90, 0.6);
+            text-align: center;
+            font-family: var(--default-font), serif;
+            color: var(--text-color, #eee);
+        }
+
+        .popup-content h4 {
+            margin: 0 0 0.6em 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--ancient-gold, #d4b55a);
+        }
+
+        .popup-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8em;
+            justify-content: center;
+            margin-bottom: 1em;
+        }
+
+        .popup-option {
+            border: 2px solid transparent;
+            padding: 6px;
+            margin: 4px;
+            background: #222;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+            filter: grayscale(0);
+        }
+
+        .popup-option.current {
+            border-color: var(--ancient-gold);
+            background-color: rgba(212, 181, 90, 0.15);
+            filter: none;
+        }
+
+        .popup-option:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            filter: grayscale(1);
+            border-color: transparent;
+            background-color: #111;
+        }
+
+        .popup-option img {
+            width: 28px;
+            height: 28px;
+            pointer-events: none;
+        }
+
+        .popup-option:hover {
+            background-color: var(--ancient-gold, #d4b55a);
+            border-color: #f0de88;
+        }
+
+        #popup-cancel {
+            background: transparent;
+            border: none;
+            color: var(--ancient-gold, #d4b55a);
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: var(--default-font), serif;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 0.3em 0.6em;
+        }
+
+        #popup-cancel:hover {
+            color: #f0de88;
+            text-decoration: underline;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 400px) {
+            .pyramid-block {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .popup-content {
+                width: 280px;
+            }
+        }
+
 
 
         /* ── VSC EDITING ─────────────── */
@@ -867,24 +1161,79 @@
                     their scores following the shape of a pyramid:
                 </p>
 
-                <div class="pyramid-container">
-                    <div class="pyramid-row pyramid-top">
-                        <div class="pyramid-block">3</div>
+                <!-- Pyramid Selector Start -->
+                <div class="pyramid-selector" style="position: relative">
+                    <p class="calculator-description">Click a box to assign Aptitudes. Each Aptitude can only be used
+                        once.</p>
+                    <div class="pyramid-container">
+                        <div class="pyramid-row pyramid-top">
+                            <div class="pyramid-block" data-value="3"></div>
+                        </div>
+                        <div class="pyramid-row pyramid-mid">
+                            <div class="pyramid-block" data-value="2"></div>
+                            <div class="pyramid-block" data-value="2"></div>
+                            <div class="pyramid-block" data-value="2"></div>
+                        </div>
+                        <div class="pyramid-row pyramid-bottom">
+                            <div class="pyramid-block" data-value="1"></div>
+                            <div class="pyramid-block" data-value="1"></div>
+                            <div class="pyramid-block" data-value="1"></div>
+                            <div class="pyramid-block" data-value="1"></div>
+                            <div class="pyramid-block" data-value="1"></div>
+                        </div>
                     </div>
-                    <div class="pyramid-row pyramid-mid">
-                        <div class="pyramid-block">2</div>
-                        <div class="pyramid-block">2</div>
-                        <div class="pyramid-block">2</div>
-                    </div>
-                    <div class="pyramid-row pyramid-bottom">
-                        <div class="pyramid-block">1</div>
-                        <div class="pyramid-block">1</div>
-                        <div class="pyramid-block">1</div>
-                        <div class="pyramid-block">1</div>
-                        <div class="pyramid-block">1</div>
+
+                    <div id="aptitude-popup" class="popup">
+                    <div class="popup-content">
+                        <h4>Assign Aptitude</h4>
+                        <div class="popup-options">
+                            <button class="popup-option" data-aptitude="Strength" title="Strength">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_7e1d9de23f2645b988a5d5e3c22c8231.svg"
+                                    alt="Strength">
+                            </button>
+                            <button class="popup-option" data-aptitude="Agility" title="Agility">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_ce3f5a9ea70f4af5a634742be8d043ad.svg"
+                                    alt="Agility">
+                            </button>
+                            <button class="popup-option" data-aptitude="Vigor" title="Vigor">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg"
+                                    alt="Vigor">
+                            </button>
+                            <button class="popup-option" data-aptitude="Perception" title="Perception">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_d8b41b7bd36a4230929131bc44276eb7.svg"
+                                    alt="Perception">
+                            </button>
+                            <button class="popup-option" data-aptitude="Insight" title="Insight">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_6da737fa86b1492cb32a571f1f2f8e62.svg"
+                                    alt="Insight">
+                            </button>
+                            <button class="popup-option" data-aptitude="Adaptability" title="Adaptability">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_cba6d08d5b93403798c6ddc1418d2c4f.svg"
+                                    alt="Adaptability">
+                            </button>
+                            <button class="popup-option" data-aptitude="Willpower" title="Willpower">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_70b95ae668b245ccb152aa17228996ad.svg"
+                                    alt="Willpower">
+                            </button>
+                            <button class="popup-option" data-aptitude="Intellect" title=">Intellect">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_81b63b524d76464eaf071b4f5cd9ab87.svg"
+                                    alt="Intellect">
+                            </button>
+                            <button class="popup-option" data-aptitude="Charisma" title="Charisma">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_57fbbea322f14072915fe83908e360df.svg"
+                                    alt="Charisma">
+                            </button>
+                        </div>
+                        <button id="popup-cancel">Cancel</button>
                     </div>
                 </div>
 
+                    <div class="pyramid-controls">
+                        <p><strong>Assigned:</strong> <span id="assigned-count">0</span> / 9</p>
+                        <button id="reset-pyramid">Reset Pyramid</button>
+                    </div>
+                </div>
+                <!-- Pyramid Calculator End -->
                 <ul class="pyramid-list">
                     <li>
                         <strong>Primary Strength:</strong> Choose <strong>1 Aptitude</strong> to assign a score of
@@ -1042,6 +1391,87 @@
     <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pyramidBlocks = document.querySelectorAll('.pyramid-block');
+            const popup = document.getElementById('aptitude-popup');
+            const popupOptions = document.querySelectorAll('.popup-option');
+            const popupCancel = document.getElementById('popup-cancel');
+            const assignedCount = document.getElementById('assigned-count');
+            const resetPyramid = document.getElementById('reset-pyramid');
+
+            let selectedBlock = null;
+            const assignedAptitudes = new Set();
+
+            function updatePopupOptions() {
+                const currentAptitude = selectedBlock.dataset.aptitude || null;
+
+                popupOptions.forEach(option => {
+                    const aptitude = option.dataset.aptitude;
+                    if (aptitude === currentAptitude) {
+                        option.disabled = false;
+                        option.classList.add('current');
+                    } else if (assignedAptitudes.has(aptitude)) {
+                        option.disabled = true;
+                        option.classList.remove('current');
+                    } else {
+                        option.disabled = false;
+                        option.classList.remove('current');
+                    }
+                });
+            }
+
+            pyramidBlocks.forEach(block => {
+                block.addEventListener('click', () => {
+                    selectedBlock = block;
+                    popup.classList.add('show');
+                    updatePopupOptions();
+                });
+            });
+
+            popupOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const newAptitude = option.dataset.aptitude;
+                    const oldAptitude = selectedBlock.dataset.aptitude;
+
+                    if (assignedAptitudes.has(newAptitude) && newAptitude !== oldAptitude) return;
+
+                    if (oldAptitude) {
+                        assignedAptitudes.delete(oldAptitude);
+                    }
+
+                    const img = option.querySelector('img').cloneNode(true);
+                    img.classList.add('assigned-icon');
+
+                    selectedBlock.innerHTML = '';
+                    selectedBlock.appendChild(img);
+                    selectedBlock.classList.add('assigned');
+                    selectedBlock.dataset.aptitude = newAptitude;
+
+                    assignedAptitudes.add(newAptitude);
+                    assignedCount.textContent = assignedAptitudes.size;
+
+                    popup.classList.remove('show');
+                    selectedBlock = null;
+                });
+            });
+
+            popupCancel.addEventListener('click', () => {
+                popup.classList.remove('show');
+                selectedBlock = null;
+            });
+
+            resetPyramid.addEventListener('click', () => {
+                pyramidBlocks.forEach(block => {
+                    block.innerHTML = '';
+                    block.classList.remove('assigned');
+                    delete block.dataset.aptitude;
+                });
+                assignedAptitudes.clear();
+                assignedCount.textContent = '0';
+            });
+        });
+
+        // Point Buy Calculator
         const rows = document.querySelectorAll('.aptitude-row');
         const resetBtn = document.getElementById('reset-button');
         const copyBtn = document.getElementById('copy-button');
