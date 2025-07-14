@@ -58,6 +58,7 @@
         html[data-env="vsc"] {
             background-color: rgba(48, 48, 48, 1);
             overflow: scroll !important;
+            max-width: 940px;
         }
 
 html,
