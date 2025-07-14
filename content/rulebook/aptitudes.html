@@ -308,6 +308,7 @@
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
+            font-family: var(--default-font);
         }
 
         #reset-button:hover,
@@ -348,13 +349,39 @@
         .pyramid-top {
             justify-content: center;
         }
+        .pyramid-top::after{
+            content: "+3";
+  position: auto;
+  font-weight: bold;
+  color: var(--ancient-gold, #d4b55a);
+  font-size: 1.2rem;
+  pointer-events: none;
+        }
 
         .pyramid-mid {
             justify-content: center;
         }
 
+        .pyramid-mid::after{
+            content: "+2";
+  position: auto;
+  font-weight: bold;
+  color: var(--ancient-gold, #d4b55a);
+  font-size: 1.1rem;
+  pointer-events: none;
+        }
+
         .pyramid-bottom {
             justify-content: center;
+        }
+
+        .pyramid-bottom::after{
+            content: "+1";
+  position: auto;
+  font-weight: bold;
+  color: var(--ancient-gold, #d4b55a);
+  font-size: 1rem;
+  pointer-events: none;
         }
 
         .pyramid-block-outer {
@@ -413,9 +440,9 @@
         }
 
         #reset-pyramid {
-            background-color: transparent;
-            border: 1px solid var(--ancient-gold, #D4B55A);
-            color: var(--ancient-gold, #D4B55A);
+            background-color: var(--burnt-copper);
+            color: #fff;
+            border: none;
             font-size: 0.85em;
             padding: 0.4em 0.8em;
             border-radius: 6px;
@@ -674,8 +701,8 @@
 
                 <div class="toggle-bar">
 
-                    <label class="rule-switch">
-                        <input type="checkbox" data-rule="polarity" />
+                    <label class="rule-switch" style="cursor: not-allowed;">
+                        <input type="checkbox" data-rule="polarity" disabled style="cursor: not-allowed;" />
                         <span class="slider"></span>
                         <span class="label">Polarity</span>
                         <span class="rule-tag experimental tooltip" data-tooltip-key="experimental-rule">
@@ -1163,23 +1190,23 @@
 
                 <!-- Pyramid Selector Start -->
                 <div class="pyramid-selector" style="position: relative">
-                    <p class="calculator-description">Click a box to assign Aptitudes. Each Aptitude can only be used
+                    <p class="calculator-description">Click a box to assign Aptitudes.<br>Each Aptitude can only be used
                         once.</p>
                     <div class="pyramid-container">
                         <div class="pyramid-row pyramid-top">
-                            <div class="pyramid-block" data-value="3"></div>
+                            <div class="pyramid-block" data-value="3" title="+3"></div>
                         </div>
                         <div class="pyramid-row pyramid-mid">
-                            <div class="pyramid-block" data-value="2"></div>
-                            <div class="pyramid-block" data-value="2"></div>
-                            <div class="pyramid-block" data-value="2"></div>
+                            <div class="pyramid-block" data-value="2" title="+2"></div>
+                            <div class="pyramid-block" data-value="2" title="+2"></div>
+                            <div class="pyramid-block" data-value="2" title="+2"></div>
                         </div>
                         <div class="pyramid-row pyramid-bottom">
-                            <div class="pyramid-block" data-value="1"></div>
-                            <div class="pyramid-block" data-value="1"></div>
-                            <div class="pyramid-block" data-value="1"></div>
-                            <div class="pyramid-block" data-value="1"></div>
-                            <div class="pyramid-block" data-value="1"></div>
+                            <div class="pyramid-block" data-value="1" title="+1"></div>
+                            <div class="pyramid-block" data-value="1" title="+1"></div>
+                            <div class="pyramid-block" data-value="1" title="+1"></div>
+                            <div class="pyramid-block" data-value="1" title="+1"></div>
+                            <div class="pyramid-block" data-value="1" title="+1"></div>
                         </div>
                     </div>
 
@@ -1230,7 +1257,7 @@
 
                     <div class="pyramid-controls">
                         <p><strong>Assigned:</strong> <span id="assigned-count">0</span> / 9</p>
-                        <button id="reset-pyramid">Reset Pyramid</button>
+                        <button id="reset-pyramid">Reset</button>
                     </div>
                 </div>
                 <!-- Pyramid Calculator End -->
@@ -1446,6 +1473,8 @@
                     selectedBlock.appendChild(img);
                     selectedBlock.classList.add('assigned');
                     selectedBlock.dataset.aptitude = newAptitude;
+
+                    selectedBlock.setAttribute('title', `${newAptitude} +${selectedBlock.dataset.value}`);
 
                     assignedAptitudes.add(newAptitude);
                     assignedCount.textContent = assignedAptitudes.size;
