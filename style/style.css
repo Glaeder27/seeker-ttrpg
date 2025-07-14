@@ -50,6 +50,16 @@
 =            GENERAL BODY & LAYOUT            =
 =============================================*/
 
+        /* ── VSC EDITING ─────────────── */
+        html[data-env="vsc"] .page-columns {
+            outline: 1px dashed green;
+        }
+
+        html[data-env="vsc"] {
+            background-color: rgba(48, 48, 48, 1);
+            overflow: scroll !important;
+        }
+
 html,
 body {
     font-family: var(--default-font);
