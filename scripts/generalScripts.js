@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let tooltipDefinitions = {};
 
     function initializeTooltips() {
-        const hoverWords = document.querySelectorAll('.tooltip');
+        const hoverWords = document.querySelectorAll('.tooltip-trigger');
         const tooltip = document.createElement('div');
         tooltip.classList.add('global-tooltip');
 
