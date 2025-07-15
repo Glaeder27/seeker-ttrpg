@@ -1783,25 +1783,28 @@ details[open] .infobox-table {
 }
 
 .rule-highlight-box {
-    background-color: var(--light-highlight, #fff8e1);
-    border-left: 4px solid var(--ancient-gold, #D4B55A);
+    background-color: var(--highlight-bg, #fff9e528);
+    border-left: 5px solid var(--ancient-gold, #D4B55A);
+    border-right: 5px solid var(--ancient-gold, #D4B55A);
     padding: 1rem 1.5rem;
     margin: 2rem 0;
     border-radius: 0.5rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
 }
 
 .rule-highlight-box h4 {
     margin-top: 0;
     font-size: 1.1rem;
-    color: var(--text-color, #222);
 }
 
 .centered-equation {
     text-align: center;
     font-size: 1.25rem;
-    color: var(--heading-color, #000);
     margin: 1rem 0;
+    padding: 1em;
+    background: var(--background-grey-1);
+    border-radius: 1em;
 }
 
 /*=============================================

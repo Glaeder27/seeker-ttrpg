@@ -489,6 +489,25 @@
                         </blockquote>
                     </div>
                 </div>
+
+                <div class="rule-highlight-box">
+                    <h4>Calculating Your Health</h4>
+                    <p>
+                        For playtesting purposes, your character’s starting <img class="defense-inline-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
+                            alt="Health" title="Health"> is equal to:
+                    </p>
+                    <p class="centered-equation">
+                        <strong><img class="defense-inline-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
+                                alt="Health" title="Health"> Health = 2 × <img class="defense-inline-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg"
+                                alt="Vigor" title="Vigor" style="height: 1.5em;"> Vigor</strong>
+                    </p>
+                    <p>
+                        This value may be modified by Masteries, Items, or Talents as development progresses.
+                    </p>
+                </div>
             </section>
 
             <!-- Section III -->
@@ -527,14 +546,15 @@
                 </div>
 
                 <div class="damage-step-block guard-step">
-                    <h4>1. Check <span class="defense-tag">Guard</span> First</h4>
+                    <h4>1. Check <span class="defense-tag" style="color: #A89D60">Guard</span> First</h4>
                     <ul>
                         <li>If your current <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg"
                                 alt="Guard" title="Guard"> is greater than 0, the incoming damage is applied to
                             <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg"
-                                alt="Guard" title="Guard"> first.</li>
+                                alt="Guard" title="Guard"> first.
+                        </li>
                         <li>If <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg"
                                 alt="Guard" title="Guard"> absorbs all the damage, the process ends.</li>
@@ -546,21 +566,24 @@
                                 alt="Armor" title="Armor">.</li>
                         <li>If your <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg"
-                                alt="Guard" title="Guard"> is 0, you are considered <u>Off-Guard</u>, and <img class="defense-inline-symbol"
+                                alt="Guard" title="Guard"> is 0, you are considered <u>Off-Guard</u>, and <img
+                                class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg"
                                 alt="Guard" title="Guard"> is skipped entirely.</li>
                     </ul>
                 </div>
 
                 <div class="damage-step-block armor-step">
-                    <h4>2. Apply Damage to <span class="defense-tag">Armor</span></h4>
+                    <h4>2. Apply Damage to <span class="defense-tag" style="color: #7F7F7F">Armor</span></h4>
                     <ul>
                         <li>If any damage remains after <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg"
-                                alt="Guard" title="Guard"> (or if you were <u>Off-Guard</u>), it is applied to your current
+                                alt="Guard" title="Guard"> (or if you were <u>Off-Guard</u>), it is applied to your
+                            current
                             <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_2a4c1f79fd6d478ab23fb5fcd55b6b1d.svg"
-                                alt="Armor" title="Armor">.</li>
+                                alt="Armor" title="Armor">.
+                        </li>
                         <li>If <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_2a4c1f79fd6d478ab23fb5fcd55b6b1d.svg"
                                 alt="Armor" title="Armor"> absorbs all the remaining damage, the process ends.</li>
@@ -568,8 +591,8 @@
                                 src="https://static.wixstatic.com/shapes/e40a82_2a4c1f79fd6d478ab23fb5fcd55b6b1d.svg"
                                 alt="Armor" title="Armor">, subtract what you can and pass the <em>overflow
                                 damage</em> to <img class="defense-inline-symbol"
-                                    src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
-                                    alt="Health" title="Health">.</li>
+                                src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
+                                alt="Health" title="Health">.</li>
                         <li>Some types of damage may bypass <img class="defense-inline-symbol"
                                 src="https://static.wixstatic.com/shapes/e40a82_2a4c1f79fd6d478ab23fb5fcd55b6b1d.svg"
                                 alt="Armor" title="Armor"> partially or completely.</li>
@@ -577,15 +600,16 @@
                 </div>
 
                 <div class="damage-step-block health-step">
-                    <h4>3. Apply Damage to <span class="defense-tag">Health</span></h4>
+                    <h4>3. Apply Damage to <span class="defense-tag" style="color: #A33D3D">Health</span></h4>
                     <ul>
-                        <li>Any damage that remains after Armor is applied directly to your <img class="defense-inline-symbol"
-                                    src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
-                                    alt="Health" title="Health">.</li>
+                        <li>Any damage that remains after Armor is applied directly to your <img
+                                class="defense-inline-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
+                                alt="Health" title="Health">.</li>
                         <li>This represents serious injury, lasting harm, or physical trauma.</li>
                         <li>If your <img class="defense-inline-symbol"
-                                    src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
-                                    alt="Health" title="Health"> reaches 0, your character dies.</li>
+                                src="https://static.wixstatic.com/shapes/e40a82_4a190806c2f142a8b0f1597000c3357e.svg"
+                                alt="Health" title="Health"> reaches 0, your character dies.</li>
                     </ul>
                 </div>
     </div>
