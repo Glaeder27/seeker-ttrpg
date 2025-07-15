@@ -51,31 +51,35 @@
 =            GENERAL BODY & LAYOUT            =
 =============================================*/
 
-        /* ── VSC EDITING ─────────────── */
-        html[data-env="vsc"] .page-columns {
-            outline: 1px dashed green;
-        }
-        html[data-env="vsc"] {
-            background-color: rgba(48, 48, 48, 1);
-            overflow: scroll !important;
-            max-width: 940px;
-        }
-        html[data-env="vsc-940"] .page-columns {
-            outline: 1px dashed green;
-        }
-        html[data-env="vsc-940"] {
-            background-color: rgba(48, 48, 48, 1);
-            overflow: scroll !important;
-            max-width: 940px;
-            width: 940px;
-        }
-        html[data-env="vsc-mobile"] {
-            background-color: rgba(48, 48, 48, 1);
-            overflow: scroll !important;
-            max-width: 390px;
-            width: 390px;
-            border: 1px dashed blue;
-        }
+/* ── VSC EDITING ─────────────── */
+html[data-env="vsc"] .page-columns {
+    outline: 1px dashed green;
+}
+
+html[data-env="vsc"] {
+    background-color: rgba(48, 48, 48, 1);
+    overflow: scroll !important;
+    max-width: 940px;
+}
+
+html[data-env="vsc-940"] .page-columns {
+    outline: 1px dashed green;
+}
+
+html[data-env="vsc-940"] {
+    background-color: rgba(48, 48, 48, 1);
+    overflow: scroll !important;
+    max-width: 940px;
+    width: 940px;
+}
+
+html[data-env="vsc-mobile"] {
+    background-color: rgba(48, 48, 48, 1);
+    overflow: scroll !important;
+    max-width: 390px;
+    width: 390px;
+    border: 1px dashed blue;
+}
 
 html,
 body {
@@ -300,7 +304,7 @@ h2.section::after {
 =============================================*/
 
 .shadowed {
-  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
 }
 
 /*=============================================
@@ -1627,29 +1631,29 @@ details[open] .infobox-table {
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: 1.8rem;
-        gap: 0.3rem;
+        font-size: clamp(1rem, 10vw, 3rem);
+        padding: 0 200px;
+        gap: .1rem;
     }
 
     .seeker-title .title-icon {
-        font-size: 1.4rem;
+        font-size: 3rem;
         transform: rotate(0deg);
-        /* Rimuove la rotazione laterale */
+        margin: -1em 0 -.2em 0;
     }
 
     .seeker-title .title-icon.flipped {
-        font-size: 1.4rem;
+        font-size: 3rem;
         transform: rotate(-180deg);
+        margin: -.2em 0 .1em 0;
     }
 
     .seeker-title .title-icon.top {
         order: -1;
-        /* sopra al titolo */
     }
 
     .seeker-title .title-icon.bottom {
         order: 1;
-        /* sotto al titolo */
     }
 }
 
