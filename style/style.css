@@ -69,14 +69,12 @@
             max-width: 940px;
             width: 940px;
         }
-        html[data-env="vsc-mobile"] .page-columns {
-            outline: 1px dashed blue;
-        }
         html[data-env="vsc-mobile"] {
             background-color: rgba(48, 48, 48, 1);
             overflow: scroll !important;
             max-width: 390px;
             width: 390px;
+            border: 1px dashed blue;
         }
 
 html,
