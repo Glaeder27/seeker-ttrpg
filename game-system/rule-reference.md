@@ -220,3 +220,72 @@ Expand your knowledge, adaptability, and resourcefulness in uncharted territorie
 
 ### Capstone Levels
 When you reach Level 10 in a Track, gain a once-in-a-lifetime Capstone Ability tied to that domain.
+
+# Guard, Armor & Health
+In Seeker, your character’s ability to endure wounds, hardship, and the dangers of exploration is represented by a layered health system. Rather than relying on a single pool of hit points, the game divides incoming harm across three distinct defensive layers: Guard, Armor, and Health.
+
+Each layer reflects a different kind of resilience—tactical readiness, physical protection, and raw vitality. When your character suffers harm, that damage flows through these layers in a specific order, with each one absorbing part of the impact before the next is affected.
+
+At the heart of Seeker's system are two fundamental concepts:
+
+Damage: The universal measure of harm inflicted upon your character—whether from a sword strike, a fiery spell, or a crushing fall.
+Depletion: When a defensive layer absorbs damage, its current value is reduced. If the incoming damage exceeds what remains in that layer, the layer is depleted, and any leftover harm (called overflow damage) carries over to the next layer.
+This layered structure adds both narrative clarity and tactical depth. It rewards smart decision-making, preparation, and risk management—making every point of damage matter.
+
+## The Three Layers of Defense
+### Guard
+Guard (Guard) represents your character’s moment-to-moment combat readiness—the ability to deflect, parry, dodge, or anticipate harm before it hits. It is a temporary, tactical layer of defense that reflects alertness and active engagement.
+
+- How It Works
+Guard is a numeric value that starts at 0 at the beginning of combat, unless modified by specific Masteries or effects. Certain Skills allow you to gain Guard during your turn. When you suffer damage, Guard is checked first. If your Guard value is greater than 0, that damage is absorbed by Guard before affecting other defenses.
+
+- When It Applies
+Guard only protects you while it has value. If your Guard is at 0, you are considered Off-Guard, and damage bypasses this layer entirely. Guard is usually lost at the moment it absorbs damage, and does not persist outside of combat unless explicitly stated.
+
+- How to Interact With It
+Many Skills and Masteries grant Guard as a result of defensive actions or successful rolls. Some enemies may attempt to remove or bypass your Guard through surprise, distraction, or overwhelming force. Guard cannot be repaired or healed—it must be regained through actions.
+
+### Armor
+Armor
+Armor (Armor) represents your character’s physical protection—gear, plating, clothing, or magical shielding designed to reduce harm. Unlike Guard, Armor is not tactical or reactive; it is enduring and passive, forming the solid middle layer between your readiness and your body.
+
+- How It Works
+Armor is a numeric value granted by your equipment, magical protections, or certain Masteries. When damage bypasses Guard—or if you are Off-Guard—Armor is the next layer to absorb it. Damage reduces your current Armor value. Once it reaches 0, Armor is considered depleted and can no longer offer protection until it is repaired.
+
+- When It Applies
+Armor applies whenever damage reaches it. It does not require activation or management in combat. However, not all types of damage are effective against Armor. Certain effects (e.g., disease, fire, psychic attacks) may ignore or partially bypass it.
+
+- How to Interact With It
+Armor can be enhanced or altered through equipment choices, magical items, and Masteries. After being depleted, it must be repaired—usually as part of a downtime Activity. Some enemies may target your Armor directly, attempting to destroy or weaken it before reaching your Health.
+
+### Health
+Health (Health) is the final and most vital layer of defense: it represents your character’s stamina, vitality, and physical integrity. Once this layer is harmed, you are no longer resisting damage—you are truly being wounded.
+
+- How It Works
+Health is a fixed value based on your Vigor Aptitude, Masteries, and level-up choices. Damage only affects Health once both Guard and Armor have been depleted. When your Health reaches 0, your character dies.
+
+- When It Applies
+Health is only affected by damage that passes through Guard and Armor, or by specific effects that bypass those layers (such as poison, internal injuries, or magical corruption). Because it reflects lasting harm, Health does not recover automatically after combat.
+
+- How to Interact With It
+Health can be restored through healing effects, medical skills, magical items, or resting during downtime. Some Talents or rare effects may allow you to delay or mitigate lethal blows, but in most cases, damage to Health is serious and persistent.
+
+## Flow of Damage
+When your character suffers any amount of damage, that harm flows through your layers of defense in a specific order. Each layer tries to absorb the damage; if it cannot fully do so, the remaining damage continues to the next. Follow this sequence:
+
+1. Check Guard First
+- If your current Guard is greater than 0, the incoming damage is applied to Guard first.
+- If Guard absorbs all the damage, the process ends.
+If the damage exceeds your Guard, subtract what you can and pass the overflow damage to Armor.
+- If your Guard is 0, you are considered Off-Guard, and Guard is skipped entirely.
+
+2. Apply Damage to Armor
+- If any damage remains after Guard (or if you were Off-Guard), it is applied to your current Armor.
+- If Armor absorbs all the remaining damage, the process ends.
+- If the damage exceeds your Armor, subtract what you can and pass the overflow damage to Health.
+- Some types of damage may bypass Armor partially or completely.
+
+3. Apply Damage to Health
+- Any damage that remains after Armor is applied directly to your Health.
+- This represents serious injury, lasting harm, or physical trauma.
+- If your Health reaches 0, your character dies.
