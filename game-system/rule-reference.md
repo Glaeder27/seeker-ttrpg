@@ -15,7 +15,9 @@ In the end, Seeker is not just a game of conquest or survival. It is a question:
 
 Will you change the New World — or will it change you?
 
-# Dice Engine - Twin Coil System
+---
+
+# 🎲 Dice Engine - Twin Coil System
 ## Core Concept
 
 The Twin Coil System is a lightweight, modular dice‑resolution mechanic that produces non‑binary outcomes by balancing a character’s intent against the risk inherent in the world.
@@ -61,7 +63,68 @@ These four outcomes — Failure, Success, Failure + Complication, and Success + 
 
 By decoupling success from safety, the system ensures that every roll matters, even — and especially — when things go sideways.
 
-# Seeker's Ability Scores: Aptitudes
+---
+
+# 📌 Tag System
+## Core Concept
+Tags are mechanical keywords that define how elements in Seeker interact with each other. Whenever you see a tag—such as <u>Attack</u>, <u>Fire</u>, or <u>Movement</u>—you can think of it as a signal that the associated action, effect, or item belongs to a specific mechanical category.
+
+Tags do not describe flavor or story; they describe how something works within the rules. This allows the system to remain modular, consistent, and easy to expand without rewriting interactions for every individual case.
+
+If a Talent boosts all <u>Fire</u> effects, it applies to anything tagged with <u>Fire</u>, regardless of whether it’s a spell, a trap, or a potion.
+If a Maneuver requires an <u>Attack</u> action, you can only use it with abilities or items that have the <u>Attack</u> tag.
+
+Tags allow for powerful synergy, player creativity, and future-proof design.
+
+Each tag represents a **mechanical identity**. Some examples:
+
+| Tag           | What It Means                                                   |
+|---------------|------------------------------------------------------------------|
+| <u>Attack</u>   | This effect is an offensive action that targets an enemy.       |
+| <u>Defense</u>  | This effect improves protection or resistance.                  |
+| <u>Strike</u>   | This is a close-range physical attack.                          |
+| <u>Fire</u>     | The effect involves or causes fire damage or ignition.          |
+| <u>Movement</u> | The action causes or modifies displacement (dashing, teleport). |
+| <u>Ranged</u>   | This effect occurs at a distance or requires line of sight.     |
+| <u>Support</u>  | The effect aids or empowers allies.                             |
+
+You can find tags on:
+- Abilities  
+- Items  
+- Talents  
+- Augmentations  
+- Conditions  
+- Effects  
+- Maneuvers  
+
+### Why Tags Matter
+
+Tags make the game engine both **simple to learn** and **deep to master**:
+
+- They reduce ambiguity by clearly defining how mechanics behave.
+- They enable conditional effects (e.g., “If this is a <u>Movement</u> ability…”).
+- They open the door to synergy (e.g., “All <u>Fire</u> effects deal +1 damage.”).
+- They make it easier to balance and design content.
+
+Without tags, you'd have to explain every mechanical interaction in full.  
+With tags, you just define how the tag works, and any mechanic that references it becomes immediately clear.
+
+### Tag-Based Interactions
+
+Here are common examples of how tags enable cross-content interactions:
+
+| Interaction Type | Example                                                        |
+|------------------|----------------------------------------------------------------|
+| Restriction       | “Can only be used with <u>Strike</u> abilities.”               |
+| Enhancement       | “Your <u>Support</u> effects grant +1D6 Healing.”              |
+| Triggering        | “When you use a <u>Movement</u> action, gain +1 Defense.”      |
+| Modification      | “Reduce the Risk of all <u>Fire</u> effects by 1.”             |
+| Combo Enabler     | “Follow up any <u>Attack</u> with a <u>Movement</u> action for free.” |
+
+
+---
+
+# 📊 Seeker's Ability Scores: Aptitudes
 
 In Seeker, every meaningful action a character takes — whether leaping over a chasm, resisting an ancient curse, or negotiating with a wary native tribe — is rooted in one of their core Aptitudes.
 
@@ -158,7 +221,9 @@ This mechanic adds narrative depth by rewarding characters who act in ways consi
 ### Interpreting Results
 The number of successes on Action Dice determines the degree of success, from barely succeeding to spectacular feats. The presence of complications from Risk Dice introduces tension and narrative twists, even in success.
 
-# Character Level and Experience
+---
+
+# 📈 Character Level and Experience
 ## Core Concept
 
 In Seeker, growth is not linear—it is lived. Your character does not simply accumulate a universal XP number until they “ding.” Instead, they grow through action and specialization, gaining power in the areas where they take risks and make impact.
@@ -221,7 +286,9 @@ Expand your knowledge, adaptability, and resourcefulness in uncharted territorie
 ### Capstone Levels
 When you reach Level 10 in a Track, gain a once-in-a-lifetime Capstone Ability tied to that domain.
 
-# Guard, Armor & Health
+---
+
+# ❤ Guard, Armor & Health
 In Seeker, your character’s ability to endure wounds, hardship, and the dangers of exploration is represented by a layered health system. Rather than relying on a single pool of hit points, the game divides incoming harm across three distinct defensive layers: Guard, Armor, and Health.
 
 Each layer reflects a different kind of resilience—tactical readiness, physical protection, and raw vitality. When your character suffers harm, that damage flows through these layers in a specific order, with each one absorbing part of the impact before the next is affected.
