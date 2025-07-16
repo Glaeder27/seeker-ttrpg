@@ -24,6 +24,12 @@
     --light-brown: #916339;
     --background-grey-1: #3b3b3b;
     --hover-grey-1: #494949;
+    --aggressive: #8B3A3A;
+    --defensive: #4A5E6A;
+    --evasive: #667054;
+    --inquisitive: #B89B4B;
+    --balanced: #5E7A78;
+    --mystic: #735A84;
 
     /* RGB Color Palette */
     --bright-gold-rgb: 246, 203, 117;

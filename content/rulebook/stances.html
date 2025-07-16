@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" data-env="vsc-940">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stances – Seeker Rulebook</title>
+    <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Initiative rules for Seeker TTRPG.">
+
+    <!--Custom CSS for the Stances Chapter-->
+    <style>
+       .stance-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: .1em;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+            border: 1px solid #555;
+            border-radius: 0.5rem;
+            background-color: #2b2b2b;
+            padding: 1.75rem;
+        }
+
+        .stance-icon {
+            background: var(--background-grey-1, #484848);
+            border-radius: 8px;
+            padding: .5em;
+        }
+
+        .stance-icon-outer {
+            display: inline-block;
+            background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .stance-icon img {
+            width: 128px;
+            height: auto;
+            display: block;
+        }
+
+        .stance-inline-symbol {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.2em;
+            vertical-align: middle;
+        }
+
+        .stance-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .stance-content h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .stance-intro h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+
+        .stance-content h4 {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+        .collapsible-item {
+            margin-top: 5px;
+        }
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 15px;
+            font-size: 1em;
+        }
+        .collapsible-content.expanded-content {
+            padding: 0 20px;
+            padding-top: 0;
+        }
+        .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2px 6px;
+            margin-left: 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            vertical-align: middle;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-columns">
+        <main class="page-lore">
+            <header class="seeker-title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Turns & Stances</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">Progression through the Three Tracks of Play</p>
+            </header>
+
+            <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
+            <section class="rule-options-box">
+                <div class="rule-options-label">Rule Options</div>
+                <div class="toggle-bar">
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="" disabled />
+                        <span class="slider"></span>
+                        <span class="label">Creating Your Own Tags</span>
+                        <span class="rule-tag experimental tooltip" data-tooltip-key="experimental">
+                            Experimental
+                        </span>
+                    </label>
+                </div>
+
+            </section>
+
+            <!-- Section I -->
+            <section class="section-wrapper">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="Tags">
+                    Core Concept
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p>In Seeker, combat is not governed by random initiative rolls or rigid turn orders. Instead, each
+                    round begins with a deliberate choice: the Stance.</p>
+                <p>A Stance represents a character’s tactical posture — their mindset and readiness in the face of
+                    conflict. It dictates how fast they act, what kind of skills they can use, and how effectively they
+                    can respond to threats.</p>
+                <p>Each Stance is more than a mechanical category: it reflects the character's immediate priorities,
+                    whether it's charging into battle, defending allies, repositioning, observing the field, or
+                    channeling arcane forces. Committing to a Stance means embracing both its advantages and its
+                    limitations.</p>
+            </section>
+
+            <!-- Section II -->
+
+             <section class="section-wrapper">
+                <div class="section-number">Section II</div>
+                <h2 class="section" id="Tags">
+                    Base Stances
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                    <!-- Stance Overview -->
+<div class="section-wrapper">
+    <h3>What Are Stances?</h3>
+    <p>
+        At the beginning of each combat round, every character selects a <strong>Stance</strong>. A Stance defines your posture in the conflict — whether you're striking first, playing defensively, or focusing on magic, positioning, or observation.
+    </p>
+    <p>
+        Your chosen Stance determines:
+    </p>
+    <ul>
+        <li><strong>How many Actions</strong> you receive this round</li>
+        <li><strong>Which Tags</strong> your Skills must have to be usable</li>
+        <li><strong>Your position in the turn order</strong>, based on stance priority</li>
+    </ul>
+    <p>
+        Each Stance supports a different combat role. Choose one that aligns with your intentions for the round — offense, defense, movement, support, magic, or versatility.
+    </p>
+</div>
+
+            <!-- Aggressive Stance --> 
+<div class="stance-wrapper">
+    <div class="stance-header">
+        <div class="stance-icon-outer">
+            <div class="stance-icon">
+                <img src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg" 
+                     alt="Aggressive Stance Icon" width="128" height="128">
+            </div>
+        </div>
+        <div class="stance-intro">
+            <h3>Aggressive Stance</h3>
+            <p>
+                The stance of the warrior who strikes first and hard, aiming to overwhelm opponents with relentless offense. This posture embodies direct confrontation, power, and high-impact tactics.
+            </p>
+        </div>
+    </div>
+    <div class="stance-content">
+        <h4>Actions & Allowed Tags</h4>
+        <p>
+            <strong>Actions:</strong> 8 Actions per round<br>
+            <strong>Allowed Tags:</strong> <span class="tag">Attack</span>, <span class="tag">Maneuver</span><br>
+            <strong>Action Dice:</strong> All 8 Actions may be committed as Action Dice toward <u>Attack</u> or <u>Maneuver</u> skill checks. Use them to declare attacks, contest enemy defenses, or escalate during clashes.
+        </p>
+
+        <div class="collapsible-item">
+            <div class="collapsible-header">
+                <strong>Tactical Notes</strong>
+                <div class="collapsible-icon">▸</div>
+            </div>
+            <div class="collapsible-content">
+                <p>
+                    The Aggressive Stance is best used when you want to seize initiative and apply immediate pressure on your foes. It favors players who prefer to dictate the pace of combat, aiming to disable or eliminate high-priority targets early. 
+                </p>
+                <p>
+                    In a system where attacks are only avoided through active defense, this stance shines when used against foes who are out of position, low on Action Dice, or locked in slower postures. With 8 Actions at your disposal, you can launch powerful opening strikes, escalate when challenged, and keep your enemies off-balance with relentless offense.
+                </p>
+            </div>
+        </div>
+
+        <div class="collapsible-item">
+            <div class="collapsible-header">
+                <strong>Strengths</strong>
+                <div class="collapsible-icon">▸</div>
+            </div>
+            <div class="collapsible-content">
+                <p>These are the main strengths of this stance:</p>
+                <ul>
+                    <li>Highest priority in turn order, allowing you to act before most opponents</li>
+                    <li>Full access to 8 Action Dice for offensive skill checks and escalation</li>
+                    <li>Excellent for burst damage and disrupting enemy strategies before they can react</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="collapsible-item">
+            <div class="collapsible-header">
+                <strong>Limitations</strong>
+                <div class="collapsible-icon">▸</div>
+            </div>
+            <div class="collapsible-content">
+                <p>These are the key limitations and trade-offs to consider:</p>
+                <ul>
+                    <li>No access to <u>Defense</u> or <u>Support</u> tags — if attacked, you cannot actively defend</li>
+                    <li>Vulnerable to counterattacks, especially if initiative advantage is lost</li>
+                    <li>Relies on eliminating threats quickly before retaliation becomes dangerous</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="collapsible-item">
+            <div class="collapsible-header">
+                <strong>Synergies</strong>
+                <div class="collapsible-icon">▸</div>
+            </div>
+            <div class="collapsible-content">
+                <p>These synergies help maximize the stance’s effectiveness:</p>
+                <ul>
+                    <li>Works well with high-impact or escalating <u>Attack</u> skills that force opponents to spend resources early</li>
+                    <li>Pairs effectively with allies in <u>Defensive</u> or <u>Support</u> Stances who can cover your vulnerabilities</li>
+                    <li>Ideal for characters with high <strong>Strength</strong>, <strong>Agility</strong>, or <strong>Intellect</strong> focused on offensive Aptitudes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+             </section>
+
+            <!-- Section III -->
+            <section class="section-wrapper">
+                <div class="section-number">Section III</div>
+                <h2 class="section" id="Tags">
+                    Initiative Order
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p>At the beginning of every combat round, all participants — both PCs and NPCs — simultaneously choose
+                    a Stance. This decision isn't made lightly: it sets the rhythm for everything that follows.
+                <p>Your chosen Stance determines:</p>
+                <ul>
+                    <li>Your initiative priority — who acts before whom</li>
+
+                    <li>Which Tags you can use — what kinds of skills are available to you this round</li>
+
+                    <li>How many Actions you can spend — and on which types of abilities</li>
+
+                    <li>Whether you can defend yourself actively — some Stances leave you vulnerable</li>
+                </ul>
+                <p>This system replaces traditional initiative rolls with a tactical layer that rewards foresight,
+                    coordination, and risk assessment. Choosing a fast stance lets you strike first, but often
+                    sacrifices stance. Choosing a slow or reactive stance allows you to observe, support, or shield
+                    others — but it might mean taking the first blow.</p>
+
+                <p>Rather than reacting to chance, players must anticipate threats, read the battlefield, and commit to
+                    a course of action before the first move is even made.</p>
+                <h3>Making It Flow — Running Stances Smoothly</h3>
+                <p>While the Stance system offers deep tactical choices, it can feel slower than traditional initiative
+                    rolls — especially during a group’s first few sessions. To keep the pace tight and engaging, Seeker
+                    encourages the use of quick physical tools and a clear round structure. Below are two techniques
+                    that make Stance-based rounds smoother and more immersive.</p>
+
+                <h4>Stance Cards</h4>
+                <p>Each player receives a set of Stance Cards, one for each of the six core stances (Aggressive,
+                    Defensive, Evasive, Balanced, Mystic, Inquisitive). These cards are included in official Seeker
+                    materials, but can also be easily printed or written on index cards.</p>
+
+                <p>At the beginning of each round, after the GM announces “Choose your Stance,” all players place their
+                    selected card face-down on the table. Once everyone is ready, the GM signals to reveal all cards
+                    simultaneously. The round then proceeds according to the declared stances.</p>
+
+                <p>This method adds a tactile and visual element to the system, making the moment of choice feel
+                    deliberate and dramatic — while also preventing players from metagaming based on others’ decisions.
+                </p>
+
+                <h4>Calling Initiative</h4>
+                <p>After all Stances are revealed, there's no need to calculate who goes first. The GM simply calls out
+                    each Stance in priority order, following the established list (Aggressive → Evasive → Balanced →
+                    Mystic → Defensive → Inquisitive).</p>
+                <p>When the GM says, for example, “Aggressive Stance!”, all characters who chose Aggressive act in any
+                    agreed order (see Turn Order Resolution for tie-breaking options). Once they’ve finished, the GM
+                    calls “Evasive Stance!”, and so on, until all turns are complete.</p>
+
+                <p>This approach eliminates unnecessary sorting or comparison between characters and keeps the focus on
+                    action. It also gives the GM a natural rhythm for guiding the flow of combat.</p>
+            </section>
+            <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+</body>
+
+</html>
