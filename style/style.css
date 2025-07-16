@@ -1656,13 +1656,11 @@ details[open] .infobox-table {
     .seeker-title .title-icon {
         font-size: 3rem;
         transform: rotate(0deg);
-        margin: -1em 0 -.2em 0;
+        margin: -1em 0 0 0;
     }
 
     .seeker-title .title-icon.flipped {
-        font-size: 3rem;
-        transform: rotate(-180deg);
-        margin: -.2em 0 .1em 0;
+        display: none;
     }
 
     .seeker-title .title-icon.top {
