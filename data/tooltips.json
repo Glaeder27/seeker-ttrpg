@@ -6,5 +6,8 @@
     "pillarsOfPlay": "The three pillars—Combat, Social, and Exploration—are the core areas of character growth. Advancing in a pillar unlocks abilities related to that theme.",
     "optional-rule": "An optional rule you may choose to enable for narrative or mechanical flavor.",
     "variant-rule": "A suggested variation on core mechanics, replacing or modifying the base rule.",
-    "experimental-rule": "A playtest feature under development, subject to change in future editions."
+    "experimental-rule": "A playtest feature under development, subject to change in future editions.",
+    "optional": "An optional rule you may choose to enable for narrative or mechanical flavor.",
+    "variant": "A suggested variation on core mechanics, replacing or modifying the base rule.",
+    "experimental": "A playtest feature under development, subject to change in future editions."
 }

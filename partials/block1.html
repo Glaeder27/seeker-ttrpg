@@ -99,6 +99,68 @@
         .collapsible-content li::before {
             top: 0.3em !important;
         }
+
+        .turn-order-block {
+            text-align: center;
+            max-width: 940px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            font-family: var(--default-font, sans-serif);
+        }
+
+        .turn-order-row {
+            display: flex;
+            max-width: 390px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .turn-step {
+            aspect-ratio: 1;
+            width: 100px;
+            padding: 1rem;
+            background: var(--background-grey-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1em;
+        }
+
+        .turn-step img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            margin: 0.25rem 0;
+            color: var(--off-white, #f0f0f0);
+        }
+        
+        .turn-step-block.aggressive-stance > h4{
+            color: #8B3A3A;
+        }
+        .turn-step-block.defensive-stance > h4{
+            color: #4A5E6A;
+        }
+        .turn-step-block.evasive-stance > h4{
+            color: #667054;
+        }
+        .turn-step-block.balanced-stance > h4{
+            color: #B89B4B;
+        }
+        .turn-step-block.inquisitive-stance > h4{
+            color: #5E7A78;
+        }
+        .turn-step-block.mystic-stance > h4{
+            color: #735A84;
+        }
     </style>
 </head>
 
@@ -134,7 +196,7 @@
             <!-- Section I -->
             <section class="section-wrapper">
                 <div class="section-number">Section I</div>
-                <h2 class="section" id="Tags">
+                <h2 class="section" id="Stances">
                     Core Concept
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
@@ -153,8 +215,8 @@
 
             <section class="section-wrapper">
                 <div class="section-number">Section II</div>
-                <h2 class="section" id="Tags">
-                    Base Stances
+                <h2 class="section" id="Stances">
+                    Basic Stances
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
                 <!-- Stance Overview -->
@@ -719,13 +781,40 @@
     </div>
 </div>
 
+<!-- Basic vs. Specialized Stances -->
+<div class="section-wrapper">
+    <h3>Basic and Specialized Stances</h3>
+    <p>
+        The six Stances listed below — <strong>Aggressive</strong>, <strong>Defensive</strong>, <strong>Evasive</strong>, 
+        <strong>Inquisitive</strong>, <strong>Balanced</strong>, and <strong>Mystic</strong> — are known as <strong>Basic Stances</strong>. 
+        These are universally available to all characters at all times and form the foundation of Seeker's stance-based initiative system.
+    </p>
+    <p>
+        As your character grows and learns new <strong>Skills</strong> and <strong>Masteries</strong>, they may gain access to 
+        <strong>Specialized Stances</strong>: highly focused combat postures that offer unique tactical advantages, expanded tag access, 
+        or special turn order rules.
+    </p>
+    <p>
+        Each Specialized Stance clearly defines:
+    </p>
+    <ul>
+        <li>Its <strong>granted Actions</strong> and <strong>allowed Tags</strong></li>
+        <li>Any <strong>unique rules or restrictions</strong> it applies</li>
+        <li>Its <strong>turn order priority</strong> — for example, <em>Berserk</em> may act <strong>before all other Stances</strong>, 
+            while <em>Ambush</em> may act <strong>before Aggressive</strong> but after Berserk</li>
+    </ul>
+    <p>
+        Refer to the description of each specific Skill or Mastery to learn how to unlock and use these powerful alternate Stances.
+    </p>
+</div>
+
 
             </section>
 
             <!-- Section III -->
             <section class="section-wrapper">
                 <div class="section-number">Section III</div>
-                <h2 class="section" id="Tags">
+                <h2 class="section" id="Stances">
                     Initiative Order
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
@@ -748,6 +837,7 @@
 
                 <p>Rather than reacting to chance, players must anticipate threats, read the battlefield, and commit to
                     a course of action before the first move is even made.</p>
+
                 <h3>Making It Flow — Running Stances Smoothly</h3>
                 <p>While the Stance system offers deep tactical choices, it can feel slower than traditional initiative
                     rolls — especially during a group’s first few sessions. To keep the pace tight and engaging, Seeker
@@ -777,7 +867,72 @@
 
                 <p>This approach eliminates unnecessary sorting or comparison between characters and keeps the focus on
                     action. It also gives the GM a natural rhythm for guiding the flow of combat.</p>
-            </section>
+                    
+                <h3>Resolving Turns</h3>
+    <p>
+        Once all characters have declared their Stance, the GM resolves turns by calling each Stance in a fixed priority order.
+        Multiple characters in the same Stance act together when it’s called.
+    </p>
+
+    <div class="turn-order-block">
+        <div class="turn-order-row">
+            <div class="turn-step aggressive-step">
+                <img src="https://static.wixstatic.com/shapes/e40a82_e2bc9c16e30a44d88fb148d20c69cecb.svg" alt="Aggressive Icon">
+            </div>
+            <div class="arrow">→</div>
+            <div class="turn-step evasive-step">
+                <img src="https://static.wixstatic.com/shapes/e40a82_9ad2bb0108154a46947aff68516f720c.svg" alt="Evasive Icon">
+            </div>
+            <div class="arrow">→</div>
+            <div class="turn-step balanced-step">
+                <img src="https://static.wixstatic.com/shapes/e40a82_aed00d602cfb46eabb365eba8b47cc58.svg" alt="Balanced Icon">
+            </div>
+            <div class="arrow">→</div>
+            <div class="turn-step mystic-step">
+                <img src="https://static.wixstatic.com/shapes/e40a82_be9b3570f82d444e95f7ea739638cbed.svg" alt="Mystic Icon">
+            </div>
+            <div class="arrow">→</div>
+            <div class="turn-step defensive-step">
+                <img src="https://static.wixstatic.com/shapes/e40a82_5367b73cfbb04fc8af954d94e7e12088.svg" alt="Defensive Icon">
+            </div>
+            <div class="arrow">→</div>
+            <div class="turn-step inquisitive-step">
+                <img src="https://static.wixstatic.com/shapes/e40a82_b8af3702ecbe41f5a8dc0c16bd4be7fd.svg" alt="Inquisitive Icon">
+            </div>
+        </div>
+    </div>
+
+    <div class="turn-step-block aggressive-stance">
+        <h4>1. Aggressive</h4>
+        <p>All characters in <strong>Aggressive Stance</strong> act first. When the GM calls "Aggressive Stance!", those players take their turns before others.</p>
+    </div>
+
+    <div class="turn-step-block evasive-stance">
+        <h4>2. Evasive</h4>
+        <p>Next, the GM calls "Evasive Stance!", and all characters who chose Evasive act now.</p>
+    </div>
+
+    <div class="turn-step-block balanced-stance">
+        <h4>3. Balanced</h4>
+        <p>Then comes "Balanced Stance!". This is the midpoint, allowing players a flexible response if the situation shifted.</p>
+    </div>
+
+    <div class="turn-step-block mystic-stance">
+        <h4>4. Mystic</h4>
+        <p>Next in order, "Mystic Stance!" gives spellcasters a reserved moment to weave arcane rituals.</p>
+    </div>
+
+    <div class="turn-step-block defensive-stance">
+        <h4>5. Defensive</h4>
+        <p>"Defensive Stance!" is called next—guardians and protectors step up after spells have been cast.</p>
+    </div>
+
+    <div class="turn-step-block inquisitive-stance">
+        <h4>6. Inquisitive</h4>
+        <p>Finally, "Inquisitive Stance!" finishes the round. Scouts, tacticians, and investigators act last, using fresh information.</p>
+    </div>
+</section>
+
             <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
 </body>
 
