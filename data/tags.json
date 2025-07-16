@@ -3,32 +3,32 @@
   {
     "name": "Combat",
     "definition": "Insert category description",
-    "color": "#c92a2a"
+    "color": "#a35e4e"
   },
   {
     "name": "Social",
     "definition": "Insert category description",
-    "color": "#1971c2"
+    "color": "#a87c7c"
   },
   {
     "name": "Exploration",
     "definition": "Insert category description",
-    "color": "#2f9e44"
+    "color": "#7e8b63"
   },
   {
     "name": "Magic",
     "definition": "Insert category description",
-    "color": "#9c36b5"
+    "color": "#6b5d8c"
   },
   {
     "name": "Meta",
     "definition": "Insert category description",
-    "color": "#f59f00"
+    "color": "#8a8a86"
   },
   {
     "name": "Utility",
     "definition": "Insert category description",
-    "color": "#495057"
+    "color": "#b6a78c"
   }
 ],
 
