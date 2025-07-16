@@ -295,8 +295,13 @@ h2.section::after {
 =                 POSITIONS                   =
 =============================================*/
 
-.centered {
+.centered,
+.center-align {
     text-align: center !important;
+}
+
+.left-align {
+    text-align: left !important;
 }
 
 /*=============================================
