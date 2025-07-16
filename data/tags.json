@@ -1,4 +1,31 @@
-{
+{ 
+  "categories": [
+    {
+    "name": "Combat",
+    "definition": "Insert category description"
+    },
+    {
+    "name": "Social",
+    "definition": "Insert category description"
+    },
+    {
+    "name": "Exploration",
+    "definition": "Insert category description"
+    },
+    {
+    "name": "Magic",
+    "definition": "Insert category description"
+    },
+    {
+    "name": "Meta",
+    "definition": "Insert category description"
+    },
+    {
+    "name": "Utility",
+    "definition": "Insert category description"
+    }
+  ],
+
   "tags": [
     {
       "name": "Attack",
