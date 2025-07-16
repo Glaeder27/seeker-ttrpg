@@ -2065,4 +2065,8 @@ details[open] .infobox-table {
         height: auto;
         display: block;
     }
+
+    h2.section {
+        font-size: 1.5rem;
+    }
 }
