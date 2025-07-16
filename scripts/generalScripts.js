@@ -67,11 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const tooltipIcon = document.createElement("div");
     tooltipIcon.classList.add("tooltip-icon");
     tooltipIcon.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>`;
-
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5L0 80C0 53.5 21.5 32 48 32l149.5 0c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>`;
     const tooltipContentWrapper = document.createElement("div");
     tooltipContentWrapper.classList.add("tooltip-content-wrapper");
 
@@ -90,9 +87,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const tagKey = tag.textContent.trim();
         const tagData = tagDefinitions[tagKey];
 
-        tooltipContentWrapper.innerHTML = tagData && tagData.definition
-          ? `<strong>${tagKey}</strong><br>${tagData.definition}`
-          : `No description available for <strong>${tagKey}</strong>.`;
+        tooltipContentWrapper.innerHTML =
+          tagData && tagData.definition
+            ? `<strong>${tagKey}</strong><br>${tagData.definition}`
+            : `No description available for <strong>${tagKey}</strong>.`;
 
         const tagRect = tag.getBoundingClientRect();
 
@@ -119,7 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- Fetch tooltip definitions ---
   fetch("https://glaeder27.github.io/seeker-ttrpg/data/tooltips.json")
     .then((response) => {
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
     })
     .then((data) => {
@@ -133,7 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- Fetch tag definitions ---
   fetch("https://glaeder27.github.io/seeker-ttrpg/data/tags.json")
     .then((response) => {
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
     })
     .then((data) => {
@@ -174,15 +174,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         content.classList.remove("expanded-content");
       }
-      content.addEventListener(
-        "transitionend",
-        function handler() {
-          if (item.classList.contains("expanded")) {
-            content.style.height = "auto";
-          }
-          content.removeEventListener("transitionend", handler, { once: true });
+      content.addEventListener("transitionend", function handler() {
+        if (item.classList.contains("expanded")) {
+          content.style.height = "auto";
         }
-      );
+        content.removeEventListener("transitionend", handler, { once: true });
+      });
     });
   });
 
