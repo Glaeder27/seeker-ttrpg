@@ -1,4 +1,4 @@
-// Glossary search logic with "Did you mean" suggestion
+// Glossary search logic with clickable suggestions
 const input = document.getElementById("glossary-search");
 const result = document.getElementById("glossary-result");
 
@@ -35,38 +35,48 @@ fetch("https://glaeder27.github.io/seeker-ttrpg/data/glossary.json")
     result.textContent = "Failed to load glossary data.";
   });
 
-input.addEventListener("input", () => {
-  const term = input.value.trim().toLowerCase();
-
-  const keys = Object.keys(glossary);
-  const key = keys.find((k) => k.toLowerCase() === term);
+// Funzione di ricerca (in modo che possiamo riutilizzarla)
+function performSearch(term) {
+  const key = Object.keys(glossary).find((k) => k.toLowerCase() === term.toLowerCase());
 
   if (key) {
     const { definition, link } = glossary[key];
     result.innerHTML = `${definition} <a href="${link}" target="_top">[Read More]</a>`;
   } else if (term.length > 0) {
-    // Try to suggest a similar term
+    // Suggerisci una parola simile
     let closestMatch = null;
     let smallestDistance = Infinity;
 
-    keys.forEach((k) => {
+    for (const k of Object.keys(glossary)) {
       const distance = levenshtein(term, k.toLowerCase());
       if (distance < smallestDistance) {
         smallestDistance = distance;
         closestMatch = k;
       }
-    });
+    }
 
-    if (smallestDistance <= 3) {
-      result.innerHTML = `No result found. Did you mean: <strong>${closestMatch}</strong>?`;
+    if (smallestDistance <= 3 && closestMatch) {
+      result.innerHTML = `No result found. Did you mean: <a href="#" class="suggested-term">${closestMatch}</a>?`;
+
+      // Rende cliccabile il suggerimento
+      const suggestionLink = result.querySelector(".suggested-term");
+      suggestionLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        input.value = closestMatch;
+        performSearch(closestMatch); // Ripeti la ricerca con il termine corretto
+      });
     } else {
       result.textContent = "No result found.";
     }
   } else {
     result.textContent = "Type a term to see its definition.";
   }
-});
+}
 
+// Ascolta i cambiamenti nell'input
+input.addEventListener("input", () => {
+  performSearch(input.value.trim());
+});
 
 // Archives carousel fade logic (runs once on load)
 const archiveItems = document.querySelectorAll(
