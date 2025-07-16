@@ -87,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeTagTooltips() {
     const tagElements = document.querySelectorAll(".tag");
+
+    // Crea il tooltip globale
     const tooltip = document.createElement("div");
     tooltip.classList.add("global-tooltip");
 
@@ -149,22 +151,24 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(tagsUrl)
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      return response.json();
+      return response.json(); // <- questa era la parte mancante
     })
     .then((data) => {
       if (data.tags && Array.isArray(data.tags)) {
+        // Indicizza i tag per nome
         data.tags.forEach((entry) => {
           tagDefinitions[entry.name] = entry;
         });
         initializeTagTooltips();
       } else {
-        console.error("No tags found in the JSON structure.");
+        console.error("No tags array found in the JSON structure.");
       }
     })
     .catch((error) => {
       console.error("Error loading tag definitions:", error);
     });
 });
+
 
   // Collapsible Logic
 
