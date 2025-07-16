@@ -3,15 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Guard, Armor & Health – Seeker Rulebook</title>
+    <title>Tags – Seeker Rulebook</title>
     <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hit points, damage, and resilience rules for Seeker TTRPG.">
+    <meta name="description" content="Tag rules for Seeker TTRPG.">
 
-    <!--Custom CSS for the Health Chapter-->
+    <!--Custom CSS for the Tags Chapter-->
     <style>
         #tag-glossary {
             padding: 1rem;
+            margin-top: -2rem;
         }
 
         .tag-category {
@@ -78,98 +79,256 @@
             <!-- Section I -->
             <section class="section-wrapper">
                 <div class="section-number">Section I</div>
-                <h2 class="section" id="Health">
+                <h2 class="section" id="Tags">
                     Core Concept
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
-                <p>Tags are mechanical keywords that define how elements in Seeker interact with each other. Whenever you see a tag—such as <span class="tag">Attack</span>, <span class="tag">Fire</span>, or <span class="tag">Movement</span>—you can think of it as a signal that the associated action, effect, or item belongs to a specific mechanical category.</p>
+                <p>Tags are mechanical keywords that define how elements in Seeker interact with each other. Whenever
+                    you see a tag—such as <span class="tag">Attack</span>, <span class="tag">Fire</span>, or <span
+                        class="tag">Movement</span>—you can think of it as a signal that the associated action, effect,
+                    or item belongs to a specific mechanical category.</p>
 
-<p>Tags do not describe flavor or story; they describe how something works within the rules. This allows the system to remain modular, consistent, and easy to expand without rewriting interactions for every individual case.</p>
+                <p>Tags do not describe flavor or story; they describe how something works within the rules. This allows
+                    the system to remain modular, consistent, and easy to expand without rewriting interactions for
+                    every individual case.</p>
 
-<p>If a Talent boosts all <span class="tag">Fire</span>, it applies to anything tagged with <span class="tag">Fire</span>, regardless of whether it’s a spell, a trap, or a potion.<br>
-If a Maneuver requires an <span class="tag">Attack</span> action, you can only use it with abilities or items that have the <span class="tag">Attack</span> tag.</p>
+                <p>If a Mastery boosts all <span class="tag">Fire</span>, it applies to anything tagged with <span
+                        class="tag">Fire</span>, regardless of whether it’s a spell, a trap, or a potion.
+                    If a Maneuver requires an <span class="tag">Attack</span> action, you can only use it with abilities
+                    or items that have the <span class="tag">Attack</span> tag.</p>
 
-<p>Tags allow for powerful synergy, player creativity, and future-proof design.</p>
+                <p>Tags allow for powerful synergy, player creativity, and future-proof design.</p>
 
-                <!-- Section III -->
-            <section class="section-wrapper">
-                <div class="section-number">Section III</div>
-                <h2 class="section" id="Health">
-                    Tag Glossary
-                    <span class="section-ornament">⸺ ✦ ⸺</span>
-                </h2>
-                <p>In Seeker</p>
+                <!-- Section II -->
+                <section class="section-wrapper">
+                    <div class="section-number">Section II</div>
+                    <h2 class="section" id="Tags">
+                        Tag Mechanics
+                        <span class="section-ornament">⸺ ✦ ⸺</span>
+                    </h2>
+                    <p>Every tag in Seeker carries a mechanical meaning that tells you how it behaves in the game
+                        system. Think of tags as function labels: when a rule or effect refers to a tag, it's referring
+                        to everything that carries that function.</p>
+                    <h4>Where Tags Are Found</h4>
+                    <p>Tags aren’t limited to Skills. They are a universal descriptor found across the entire game
+                        engine.</p>
+                    <p>You can find tags on:</p>
+                    <ul>
+                        <li><strong class="highlight">Skills</strong> — Each action a character can perform has one or
+                            more tags that determine what
+                            bonuses or synergies apply.</li>
 
-    <div id="tag-glossary"></div>
-    <script>
-        async function loadTagGlossary() {
-            try {
-                const response = await fetch('https://glaeder27.github.io/seeker-ttrpg/data/tags.json'); // percorso al tuo file JSON
-                const data = await response.json();
+                        <li><strong class="highlight">Items</strong> — Some weapons, potions, or artifacts carry tags
+                            that affect how they interact with
+                            abilities or conditions (e.g., a <u>Fire</u> grenade).</li>
 
-                const glossaryContainer = document.getElementById('tag-glossary');
-                glossaryContainer.innerHTML = ''; // pulizia
+                        <li><strong class="highlight">Masteries</strong> — Many Masteries grant bonuses to specific tags
+                            (“+1 to <u>Strike</u> damage”) or
+                            allow you to use a tag in new ways.</li>
 
-                // Raggruppa per categoria
-                const grouped = {};
-                data.tags.forEach(tag => {
-                    if (!tag.visibility) return; // ignora i tag nascosti
-                    if (!grouped[tag.category]) grouped[tag.category] = [];
-                    grouped[tag.category].push(tag);
+                        <li><strong class="highlight">Augmentations</strong> — These are add-ons to Skills that require
+                            specific tags to function (“Can
+                            only augment <u>Ranged</u> abilities”).</li>
+
+                        <li><strong class="highlight">Afflictions</strong> — Some status effects are tagged, so they can
+                            be targeted or resisted as a group
+                            (e.g., <u>Poisoned</u> might be a <u>Debuff</u>).</li>
+
+                        <li><strong class="highlight">Effects</strong> — Persistent effects like auras, wards, and traps
+                            can carry tags that determine who
+                            they affect or how they trigger.</li>
+                    </ul>
+                    <p>This universal system keeps interactions consistent and predictable.</p>
+                    <h3>How Tags are Used</h3>
+                    <p>Tags make the Seeker game engine both simple to learn and deep to master. Here's why they matter:
+
+                    <h4>1 | To Clarify Rules</h4>
+                    <p>Instead of listing every exception, a tag communicates what something is and how it works. If an
+                        ability has the <u>Movement</u> tag, you instantly know it can interact with any mechanics that
+                        care about movement—even if it’s magical, physical, or supernatural.</p>
+
+                    <h4>2 | To Enable Conditional Logic</h4>
+                    <p>You can design talents, items, and effects that only apply under specific circumstances—without
+                        hardcoding them to individual abilities. For example, a Talent that improves “all <u>Fire</u>
+                        effects” applies to spells, traps, and weapons alike.</p>
+
+                    <h4>3 | To Power Synergy</h4>
+                    <p>A player who specializes in <u>Support</u> can build a character that boosts allies with any
+                        ability tagged that way—no matter the source. This fosters creativity and flexible builds.</p>
+
+                    <h4>4 | To Simplify Game Design</h4>
+                    <p>Instead of rewriting how every new ability interacts with the system, you define how a tag
+                        works—and let the engine do the rest. This makes the game easier to expand and balance.</p>
+
+                    <blockquote>Without tags, every mechanical interaction would need to be explained in full.
+                        With tags, you just define what a tag does—once—and let it ripple throughout the ruleset.
+                    </blockquote>
+
+                    <h3>Tag Based Interactions</h3>
+                    <p>Tags are not just descriptors — they are interaction points that unlock a wide range of dynamic
+                        effects, conditional rules, and synergies between disparate game elements. By tagging abilities,
+                        items, effects, and conditions with consistent mechanical identifiers, the system allows
+                        designers and players to build conditional logic into the game in a simple, elegant way.
+                        This makes tags one of the most powerful tools in the game engine.</p>
+                    <p>Here are some of the most common ways tags are used to shape gameplay:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="left-align" style="min-width: 120px;">Interaction</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Restriction</strong></td>
+                                <td><span style="color: var(--text-muted)">Can only be used with <span
+                                            class="tag">Strike</span> abilities.</span><br><br>Tags help constrain how
+                                    and when effects can be used. This is essential for maintaining balance, guiding
+                                    player expectations, and enabling meaningful specialization. If an ability only
+                                    applies to <u>Ranged</u> effects, that rules out melee, support, or area-based
+                                    abilities without requiring lengthy explanations.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Enhancement</strong></td>
+                                <td><span style="color: var(--text-muted)">Your <span class="tag">Support</span> effects
+                                        grant +1 Healing.</span><br><br>Tags enable modular scaling and improvements. A
+                                    character that focuses on healing or buffing allies can benefit from any effect that
+                                    carries the <u>Support</u> tag — regardless of its source. This allows players to
+                                    customize their build around themes or tactical roles.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Triggering</strong></td>
+                                <td><span style="color: var(--text-muted)">When you use a <span
+                                            class="tag">Movement</span> action, gain +1 Guard.</span><br><br>Tags make
+                                    it easy to detect and respond to events during play. If a rule or talent cares about
+                                    <u>Fire</u>, <u>Attack</u>, or <u>Reaction</u> tags, the moment such an effect is
+                                    triggered, the condition is satisfied. This enables both reactive mechanics (like
+                                    traps or counterattacks) and combo-building strategies.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Modification</strong></td>
+                                <td><span style="color: var(--text-muted)">Reduce the Risk of all <span
+                                            class="tag">Fire</span> effects by 1.</span><br><br>Tags allow selective
+                                    tuning of game mechanics without needing to redefine individual abilities. Designers
+                                    can reduce, amplify, or reshape entire groups of effects through their shared tag,
+                                    making balancing both simpler and more coherent.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Combo Enabler</strong></td>
+                                <td><span style="color: var(--text-muted)">Follow up any <span class="tag">Attack</span>
+                                        with a <span class="tag">Movement</span> action for free.</span><br><br>Tags
+                                    define combo triggers and allow players to chain abilities together in fluid and
+                                    creative ways. Rather than forcing a linear combo system, the game encourages
+                                    emergent play by letting players find natural synergies between tags. This supports
+                                    both tactical depth and narrative flavor.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p> essence, tags act as universal rule hooks. Any mechanic can reference a tag to determine when it
+                        applies, to what it applies, or what it does. The result is a system that is not only flexible,
+                        but also highly readable and extensible — both for players and game designers.</p>
+
+                    <!-- Section III -->
+                    <section class="section-wrapper">
+                        <div class="section-number">Section III</div>
+                        <h2 class="section" id="Tags">
+                            Tag Glossary
+                            <span class="section-ornament">⸺ ✦ ⸺</span>
+                        </h2>
+                        <p>Below is a reference list of all tags currently defined in Seeker. Each tag represents a
+                            specific mechanical identity used across abilities, items, conditions, talents, and other
+                            effects. Understanding how each tag functions will help you interpret interactions, identify
+                            synergies, and design characters or content with greater precision.</p>
+
+                        <p> If an ability, item, or effect includes a tag, it means that all rules and mechanics that
+                            reference that tag apply.
+                            For example, if a rule boosts all <span class="tag">Fire</span> effects, it affects every
+                            ability, trap, or
+                            condition that carries the <span class="tag">Fire</span> tag—regardless of its source.</p>
+
+                        <p> Tags are listed by category, along with a short definition and a few practical examples to
+                            illustrate how they’re used in play.</p>
+
+                        <div id="tag-glossary"></div>
+                        <script>
+    async function loadTagGlossary() {
+        try {
+            const response = await fetch('https://glaeder27.github.io/seeker-ttrpg/data/tags.json');
+            const data = await response.json();
+
+            const glossaryContainer = document.getElementById('tag-glossary');
+            glossaryContainer.innerHTML = ''; // pulizia
+
+            // Raggruppa i tag per categoria
+            const grouped = {};
+            data.tags.forEach(tag => {
+                if (!tag.visibility) return;
+                if (!grouped[tag.category]) grouped[tag.category] = [];
+                grouped[tag.category].push(tag);
+            });
+
+            // Crea sezioni per ciascuna categoria
+            for (const [category, tags] of Object.entries(grouped)) {
+                const section = document.createElement('section');
+                section.classList.add('tag-category');
+
+                const header = document.createElement('h2');
+                header.classList.add('table'); // se vuoi una classe specifica
+                header.textContent = category;
+                section.appendChild(header);
+
+                // Trova la definizione della categoria (se esiste)
+                const categoryObj = data.categories.find(c => c.name === category);
+                if (categoryObj && categoryObj.definition) {
+                    const categoryDescription = document.createElement('p');
+                    categoryDescription.classList.add('category-definition'); // opzionale
+                    categoryDescription.textContent = categoryObj.definition;
+                    section.appendChild(categoryDescription);
+                }
+
+                const table = document.createElement('table');
+                table.classList.add('tag-table');
+
+                const thead = document.createElement('thead');
+                thead.innerHTML = `
+                    <tr>
+                      <th style="width: 20%; text-align: left;">Tag</th>
+                      <th style="width: 80%;">Definition</th>
+                    </tr>`;
+                table.appendChild(thead);
+
+                const tbody = document.createElement('tbody');
+
+                tags.forEach(tag => {
+                    const row = document.createElement('tr');
+
+                    const nameCell = document.createElement('td');
+                    nameCell.innerHTML = `<u style="font-weight: normal;">${tag.name}</u>`;
+                    row.appendChild(nameCell);
+
+                    const defCell = document.createElement('td');
+                    defCell.textContent = tag.definition;
+                    row.appendChild(defCell);
+
+                    tbody.appendChild(row);
                 });
 
-                // Per ogni categoria, crea una sezione
-                for (const [category, tags] of Object.entries(grouped)) {
-                    const section = document.createElement('section');
-                    section.classList.add('tag-category');
-
-                    const header = document.createElement('h2');
-                    header.textContent = category;
-                    section.appendChild(header);
-
-                    const table = document.createElement('table');
-                    table.classList.add('tag-table');
-
-                    const thead = document.createElement('thead');
-                    thead.innerHTML = `
-        <tr>
-          <th>Tag</th>
-          <th>Definition</th>
-        </tr>`;
-                    table.appendChild(thead);
-
-                    const tbody = document.createElement('tbody');
-
-                    tags.forEach(tag => {
-                        const row = document.createElement('tr');
-
-                        const nameCell = document.createElement('td');
-                        nameCell.innerHTML = `<u>${tag.name}</u>`;
-                        row.appendChild(nameCell);
-
-                        const defCell = document.createElement('td');
-                        defCell.textContent = tag.definition;
-                        row.appendChild(defCell);
-
-                        tbody.appendChild(row);
-                    });
-
-                    table.appendChild(tbody);
-                    section.appendChild(table);
-                    glossaryContainer.appendChild(section);
-                }
-            } catch (error) {
-                console.error('Failed to load tag glossary:', error);
-                document.getElementById('tag-glossary').textContent =
-                    'Error loading glossary.';
+                table.appendChild(tbody);
+                section.appendChild(table);
+                glossaryContainer.appendChild(section);
             }
+        } catch (error) {
+            console.error('Failed to load tag glossary:', error);
+            document.getElementById('tag-glossary').textContent =
+                'Error loading glossary.';
         }
+    }
 
-        // Esegui al caricamento della pagina
-        document.addEventListener('DOMContentLoaded', loadTagGlossary);
-    </script>
+    document.addEventListener('DOMContentLoaded', loadTagGlossary);
+</script>
 
-    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+<script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
 </body>
 
 </html>
