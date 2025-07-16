@@ -650,7 +650,12 @@ thead th:last-child {
     text-decoration: underline;
     text-decoration-color: var(--ancient-gold, #D4B55A);
     text-decoration-style: solid;
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
+}
+
+.tag:hover {
+    color: var(--ancient-gold, #D4B55A);
+    cursor: default;
 }
 
 .rule-tag.tooltip {

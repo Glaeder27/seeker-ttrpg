@@ -19,9 +19,17 @@
         }
 
         .tag-category h2 {
-            font-size: 1.5rem;
-            border-bottom: 1px solid var(--border-color, #ccc);
+            font-size: 1.8rem;
             padding-bottom: 0.25rem;
+            background-color: var(--background-grey-1);
+            padding: 10px 10px 8px 12px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-variant: small-caps;
+            font-family: var(--default-font);
+            color: var(--ancient-gold);
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .tag-table {
@@ -33,16 +41,66 @@
         .tag-table th,
         .tag-table td {
             padding: 0.5rem;
-            border: 1px solid var(--border-color, #ccc);
             vertical-align: top;
         }
     </style>
 </head>
 
 <body>
+
+    <div class="page-columns">
+        <main class="page-lore">
+            <header class="seeker-title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Tag System</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">Progression through the Three Tracks of Play</p>
+            </header>
+
+            <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
+            <section class="rule-options-box">
+                <div class="rule-options-label">Rule Options</div>
+                <div class="toggle-bar">
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="" disabled />
+                        <span class="slider"></span>
+                        <span class="label">Creating Your Own Tags</span>
+                        <span class="rule-tag experimental tooltip" data-tooltip-key="experimental">
+                            Experimental
+                        </span>
+                    </label>
+                </div>
+
+            </section>
+
+            <!-- Section I -->
+            <section class="section-wrapper">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="Health">
+                    Core Concept
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p>Tags are mechanical keywords that define how elements in Seeker interact with each other. Whenever you see a tag—such as <span class="tag">Attack</span>, <span class="tag">Fire</span>, or <span class="tag">Movement</span>—you can think of it as a signal that the associated action, effect, or item belongs to a specific mechanical category.</p>
+
+<p>Tags do not describe flavor or story; they describe how something works within the rules. This allows the system to remain modular, consistent, and easy to expand without rewriting interactions for every individual case.</p>
+
+<p>If a Talent boosts all <span class="tag">Fire</span>, it applies to anything tagged with <span class="tag">Fire</span>, regardless of whether it’s a spell, a trap, or a potion.<br>
+If a Maneuver requires an <span class="tag">Attack</span> action, you can only use it with abilities or items that have the <span class="tag">Attack</span> tag.</p>
+
+<p>Tags allow for powerful synergy, player creativity, and future-proof design.</p>
+
+                <!-- Section III -->
+            <section class="section-wrapper">
+                <div class="section-number">Section III</div>
+                <h2 class="section" id="Health">
+                    Tag Glossary
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p>In Seeker</p>
+
     <div id="tag-glossary"></div>
-
-
     <script>
         async function loadTagGlossary() {
             try {
@@ -77,7 +135,6 @@
         <tr>
           <th>Tag</th>
           <th>Definition</th>
-          <th>Examples</th>
         </tr>`;
                     table.appendChild(thead);
 
@@ -93,10 +150,6 @@
                         const defCell = document.createElement('td');
                         defCell.textContent = tag.definition;
                         row.appendChild(defCell);
-
-                        const exCell = document.createElement('td');
-                        exCell.textContent = (tag.examples || []).join(', ');
-                        row.appendChild(exCell);
 
                         tbody.appendChild(row);
                     });
@@ -115,6 +168,8 @@
         // Esegui al caricamento della pagina
         document.addEventListener('DOMContentLoaded', loadTagGlossary);
     </script>
+
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
 </body>
 
 </html>
