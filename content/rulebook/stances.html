@@ -10,7 +10,7 @@
 
     <!--Custom CSS for the Stances Chapter-->
     <style>
-       .stance-wrapper {
+        .stance-wrapper {
             display: flex;
             flex-direction: column;
             gap: .1em;
@@ -71,9 +71,11 @@
             font-size: 1.2rem;
             color: var(--ancient-gold, #D4B55A);
         }
+
         .collapsible-item {
             margin-top: 5px;
         }
+
         .collapsible-header {
             display: flex;
             justify-content: space-between;
@@ -81,23 +83,32 @@
             padding: 6px 15px;
             font-size: 1em;
         }
+
         .collapsible-content.expanded-content {
             padding: 0 20px;
             padding-top: 0;
         }
-        .tag {
-            display: inline-block;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 2px 6px;
-            margin-left: 0.5rem;
-            border-radius: 5px;
-            font-weight: 600;
-            vertical-align: middle;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-decoration: none;
+
+        .collapsible-content ul {
+            list-style-type: none;
+            margin-bottom: 10px;
         }
+        .collapsible-content li::before {
+            top: 0.3em !important;
+        }
+        .tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 6px;
+    margin-left: 0.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    vertical-align: middle;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
     </style>
 </head>
 
@@ -150,119 +161,237 @@
 
             <!-- Section II -->
 
-             <section class="section-wrapper">
+            <section class="section-wrapper">
                 <div class="section-number">Section II</div>
                 <h2 class="section" id="Tags">
                     Base Stances
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
-                    <!-- Stance Overview -->
-<div class="section-wrapper">
-    <h3>What Are Stances?</h3>
-    <p>
-        At the beginning of each combat round, every character selects a <strong>Stance</strong>. A Stance defines your posture in the conflict — whether you're striking first, playing defensively, or focusing on magic, positioning, or observation.
-    </p>
-    <p>
-        Your chosen Stance determines:
-    </p>
-    <ul>
-        <li><strong>How many Actions</strong> you receive this round</li>
-        <li><strong>Which Tags</strong> your Skills must have to be usable</li>
-        <li><strong>Your position in the turn order</strong>, based on stance priority</li>
-    </ul>
-    <p>
-        Each Stance supports a different combat role. Choose one that aligns with your intentions for the round — offense, defense, movement, support, magic, or versatility.
-    </p>
-</div>
+                <!-- Stance Overview -->
+                <div class="section-wrapper">
+                    <h3>What Are Stances?</h3>
+                    <p>
+                        At the beginning of each combat round, every character selects a <strong>Stance</strong>. A
+                        Stance defines your posture in the conflict — whether you're striking first, playing
+                        defensively, or focusing on magic, positioning, or observation.
+                    </p>
+                    <p>
+                        Your chosen Stance determines:
+                    </p>
+                    <ul>
+                        <li><strong>How many Actions</strong> you receive this round</li>
+                        <li><strong>Which Tags</strong> your Skills must have to be usable</li>
+                        <li><strong>Your position in the turn order</strong>, based on stance priority</li>
+                    </ul>
+                    <p>
+                        Each Stance supports a different combat role. Choose one that aligns with your intentions for
+                        the round — offense, defense, movement, support, magic, or versatility.
+                    </p>
+                </div>
 
-            <!-- Aggressive Stance --> 
-<div class="stance-wrapper">
-    <div class="stance-header">
-        <div class="stance-icon-outer">
-            <div class="stance-icon">
-                <img src="https://static.wixstatic.com/shapes/e40a82_d1c72f7eb363488797e078910c513b33.svg" 
-                     alt="Aggressive Stance Icon" width="128" height="128">
-            </div>
-        </div>
-        <div class="stance-intro">
-            <h3>Aggressive Stance</h3>
-            <p>
-                The stance of the warrior who strikes first and hard, aiming to overwhelm opponents with relentless offense. This posture embodies direct confrontation, power, and high-impact tactics.
-            </p>
-        </div>
-    </div>
-    <div class="stance-content">
-        <h4>Actions & Allowed Tags</h4>
-        <p>
-            <strong>Actions:</strong> 8 Actions per round<br>
-            <strong>Allowed Tags:</strong> <span class="tag">Attack</span>, <span class="tag">Maneuver</span><br>
-            <strong>Action Dice:</strong> All 8 Actions may be committed as Action Dice toward <u>Attack</u> or <u>Maneuver</u> skill checks. Use them to declare attacks, contest enemy defenses, or escalate during clashes.
-        </p>
+                <!-- Aggressive Stance -->
+                <div class="stance-wrapper">
+                    <div class="stance-header">
+                        <div class="stance-icon-outer">
+                            <div class="stance-icon">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_e2bc9c16e30a44d88fb148d20c69cecb.svg"
+                                    alt="Aggressive Stance Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="stance-intro">
+                            <h3>Aggressive Stance</h3>
+                            <p>
+                                The stance of the warrior who strikes first and hard, aiming to overwhelm opponents with
+                                relentless offense. This posture embodies direct confrontation, power, and high-impact
+                                tactics.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stance-content">
+                        <h4>Actions & Allowed Tags</h4>
+                        <p>
+                            <strong>Actions:</strong> 8 Actions per round<br>
+                            <strong>Allowed Tags:</strong> <span class="tag">Attack</span>, <span
+                                class="tag">Maneuver</span><br>
+                        </p>
 
-        <div class="collapsible-item">
-            <div class="collapsible-header">
-                <strong>Tactical Notes</strong>
-                <div class="collapsible-icon">▸</div>
-            </div>
-            <div class="collapsible-content">
-                <p>
-                    The Aggressive Stance is best used when you want to seize initiative and apply immediate pressure on your foes. It favors players who prefer to dictate the pace of combat, aiming to disable or eliminate high-priority targets early. 
-                </p>
-                <p>
-                    In a system where attacks are only avoided through active defense, this stance shines when used against foes who are out of position, low on Action Dice, or locked in slower postures. With 8 Actions at your disposal, you can launch powerful opening strikes, escalate when challenged, and keep your enemies off-balance with relentless offense.
-                </p>
-            </div>
-        </div>
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Tactical Notes</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>
+                                    The Aggressive Stance is best used when you want to seize initiative and apply
+                                    immediate pressure on your foes. It favors players who prefer to dictate the pace of
+                                    combat, aiming to disable or eliminate high-priority targets early.
+                                </p>
+                                <p>
+                                    In a system where attacks are only avoided through active defense, this stance
+                                    shines when used against foes who are out of position, low on Action Dice, or locked
+                                    in slower postures. With 8 Actions at your disposal, you can launch powerful opening
+                                    strikes, escalate when challenged, and keep your enemies off-balance with relentless
+                                    offense.
+                                </p>
+                            </div>
+                        </div>
 
-        <div class="collapsible-item">
-            <div class="collapsible-header">
-                <strong>Strengths</strong>
-                <div class="collapsible-icon">▸</div>
-            </div>
-            <div class="collapsible-content">
-                <p>These are the main strengths of this stance:</p>
-                <ul>
-                    <li>Highest priority in turn order, allowing you to act before most opponents</li>
-                    <li>Full access to 8 Action Dice for offensive skill checks and escalation</li>
-                    <li>Excellent for burst damage and disrupting enemy strategies before they can react</li>
-                </ul>
-            </div>
-        </div>
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Strengths</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the main strengths of this stance:</p>
+                                <ul>
+                                    <li>Highest priority in turn order, allowing you to act before most opponents</li>
+                                    <li>Full access to 8 Action Dice for offensive skill checks and escalation</li>
+                                    <li>Excellent for burst damage and disrupting enemy strategies before they can react
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-        <div class="collapsible-item">
-            <div class="collapsible-header">
-                <strong>Limitations</strong>
-                <div class="collapsible-icon">▸</div>
-            </div>
-            <div class="collapsible-content">
-                <p>These are the key limitations and trade-offs to consider:</p>
-                <ul>
-                    <li>No access to <u>Defense</u> or <u>Support</u> tags — if attacked, you cannot actively defend</li>
-                    <li>Vulnerable to counterattacks, especially if initiative advantage is lost</li>
-                    <li>Relies on eliminating threats quickly before retaliation becomes dangerous</li>
-                </ul>
-            </div>
-        </div>
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Limitations</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the key limitations and trade-offs to consider:</p>
+                                <ul>
+                                    <li>No access to <span class="tag">Defense</span> or <span class="tag">Support</span> tags — if attacked, you cannot
+                                        actively defend</li>
+                                    <li>Vulnerable to counterattacks, especially if initiative advantage is lost</li>
+                                    <li>Relies on eliminating threats quickly before retaliation becomes dangerous</li>
+                                </ul>
+                            </div>
+                        </div>
 
-        <div class="collapsible-item">
-            <div class="collapsible-header">
-                <strong>Synergies</strong>
-                <div class="collapsible-icon">▸</div>
-            </div>
-            <div class="collapsible-content">
-                <p>These synergies help maximize the stance’s effectiveness:</p>
-                <ul>
-                    <li>Works well with high-impact or escalating <u>Attack</u> skills that force opponents to spend resources early</li>
-                    <li>Pairs effectively with allies in <u>Defensive</u> or <u>Support</u> Stances who can cover your vulnerabilities</li>
-                    <li>Ideal for characters with high <strong>Strength</strong>, <strong>Agility</strong>, or <strong>Intellect</strong> focused on offensive Aptitudes</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Synergies</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These synergies help maximize the stance’s effectiveness:</p>
+                                <ul>
+                                    <li>Works well with high-impact or escalating <span class="tag">Attack</span> skills that force
+                                        opponents to spend resources early</li>
+                                    <li>Pairs effectively with allies in <span class="tag">Defensive</span> or <span class="tag">Support</span> Stances who
+                                        can cover your vulnerabilities</li>
+                                    <li>Ideal for characters with high <strong>Strength</strong>,
+                                        <strong>Agility</strong>, or <strong>Intellect</strong> focused on offensive
+                                        Aptitudes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Defensive Stance -->
+                <div class="stance-wrapper">
+                    <div class="stance-header">
+                        <div class="stance-icon-outer">
+                            <div class="stance-icon">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_5367b73cfbb04fc8af954d94e7e12088.svg"
+                                    alt="Defensive Stance Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="stance-intro">
+                            <h3>Defensive Stance</h3>
+                            <p>
+                                The stance of guardians and tacticians. Defensive Stance centers on protecting yourself
+                                and your allies, resisting enemy blows, and creating windows of safety during chaotic
+                                encounters.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stance-content">
+                        <h4>Actions & Allowed Tags</h4>
+                        <p>
+                            <strong>Actions:</strong> 8 Actions per round<br>
+                            <strong>Allowed Tags:</strong> <span class="tag">Defense</span>, <span
+                                class="tag">Support</span><br>
+                        </p>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Tactical Notes</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>
+                                    Defensive Stance is ideal for players who want to absorb aggression, counter enemy
+                                    momentum, and control the tempo of the fight by denying opponents easy openings. In
+                                    a system where defense requires deliberate investment, this stance is often the
+                                    difference between survival and defeat.
+                                </p>
+                                <p>
+                                    It allows full access to <span class="tag">Defense</span> skills for intercepting or nullifying
+                                    incoming attacks and <span class="tag">Support</span> skills for healing, shielding, or granting
+                                    advantages to allies. Whether you're standing your ground or anchoring your team,
+                                    this stance provides both durability and utility.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Strengths</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the main strengths of this stance:</p>
+                                <ul>
+                                    <li>Grants full access to active defense, crucial for surviving strong enemy attacks
+                                    </li>
+                                    <li>Supports escalation in defensive contests to hold the line when it matters most
+                                    </li>
+                                    <li>Allows the use of powerful <span class="tag">Support</span> skills to heal or protect teammates
+                                        mid-battle</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Limitations</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the key limitations and trade-offs to consider:</p>
+                                <ul>
+                                    <li>No access to <span class="tag">Attack</span> or <span class="tag">Maneuver</span> tags — you cannot initiate direct
+                                        offensive actions</li>
+                                    <li>Lower priority in turn order makes you react rather than lead</li>
+                                    <li>May feel passive if no allies require support and no attacks target you</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <strong>Synergies</strong>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These synergies help maximize the stance’s effectiveness:</p>
+                                <ul>
+                                    <li>Excellent for tank-style characters who can draw aggression and hold ground</li>
+                                    <li>Pairs naturally with <span class="tag">Aggressive</span> and <span class="tag">Mystic</span> allies by covering
+                                        their weaknesses</li>
+                                    <li>Well-suited for characters with high <strong>Vigor</strong>,
+                                        <strong>Willpower</strong>, or <strong>Insight</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-             </section>
+
+            </section>
 
             <!-- Section III -->
             <section class="section-wrapper">
