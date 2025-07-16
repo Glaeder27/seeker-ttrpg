@@ -1,30 +1,36 @@
 { 
   "categories": [
-    {
+  {
     "name": "Combat",
-    "definition": "Insert category description"
-    },
-    {
+    "definition": "Insert category description",
+    "color": "#c92a2a"
+  },
+  {
     "name": "Social",
-    "definition": "Insert category description"
-    },
-    {
+    "definition": "Insert category description",
+    "color": "#1971c2"
+  },
+  {
     "name": "Exploration",
-    "definition": "Insert category description"
-    },
-    {
+    "definition": "Insert category description",
+    "color": "#2f9e44"
+  },
+  {
     "name": "Magic",
-    "definition": "Insert category description"
-    },
-    {
+    "definition": "Insert category description",
+    "color": "#9c36b5"
+  },
+  {
     "name": "Meta",
-    "definition": "Insert category description"
-    },
-    {
+    "definition": "Insert category description",
+    "color": "#f59f00"
+  },
+  {
     "name": "Utility",
-    "definition": "Insert category description"
-    }
-  ],
+    "definition": "Insert category description",
+    "color": "#495057"
+  }
+],
 
   "tags": [
     {
