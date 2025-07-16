@@ -646,6 +646,11 @@ thead th:last-child {
 }
 
 /* ───────── Tag + Tooltip Trigger Style ───────── */
+.tag {
+    text-decoration: underline;
+    text-decoration-color: var(--ancient-gold, #D4B55A);
+}
+
 .rule-tag.tooltip {
     cursor: help;
     background-color: #2e2e2e;
