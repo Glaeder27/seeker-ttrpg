@@ -649,6 +649,8 @@ thead th:last-child {
 .tag {
     text-decoration: underline;
     text-decoration-color: var(--ancient-gold, #D4B55A);
+    text-decoration-style: solid;
+    text-underline-offset: 2px;
 }
 
 .rule-tag.tooltip {
