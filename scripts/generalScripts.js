@@ -1,10 +1,12 @@
-// Tooltip Logic
+let tooltipDefinitions = {};
+let tagDefinitions = {};
 
 document.addEventListener("DOMContentLoaded", function () {
-  let tooltipDefinitions = {};
-
+  // --- Tooltip Logic ---
   function initializeTooltips() {
     const hoverWords = document.querySelectorAll(".tooltip");
+    if (!hoverWords.length) return;
+
     const tooltip = document.createElement("div");
     tooltip.classList.add("global-tooltip");
 
@@ -26,22 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
     tooltip.style.display = "block";
 
     hoverWords.forEach((word) => {
-      word.addEventListener("mouseenter", (event) => {
+      word.addEventListener("mouseenter", () => {
         const tooltipKey = word.dataset.tooltipKey;
         const tooltipContent = tooltipDefinitions[tooltipKey];
 
-        tooltipContentWrapper.innerHTML = tooltipContent;
+        tooltipContentWrapper.innerHTML = tooltipContent || "";
 
         const wordRect = word.getBoundingClientRect();
 
-        const tooltipWidth = tooltip.offsetWidth;
-        const tooltipHeight = tooltip.offsetHeight;
-
-        let tooltipLeft = wordRect.left;
-        let tooltipTop = wordRect.bottom + 10;
-
-        tooltip.style.left = tooltipLeft + "px";
-        tooltip.style.top = tooltipTop + "px";
+        tooltip.style.left = wordRect.left + "px";
+        tooltip.style.top = wordRect.bottom + 10 + "px";
 
         tooltip.style.visibility = "visible";
         tooltip.style.opacity = "1";
@@ -60,36 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const definitionsUrl =
-    "https://glaeder27.github.io/seeker-ttrpg/data/tooltips.json";
-
-  // Definition Fetch Logic
-  fetch(definitionsUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      tooltipDefinitions = data;
-      // console.log('Tooltip definitions loaded:', tooltipDefinitions); // Use for debugging
-      initializeTooltips();
-    })
-    .catch((error) => {
-      console.error("Error loading tooltip definitions:", error);
-    });
-
-// Tags Logic
-
-document.addEventListener("DOMContentLoaded", function () {
-  let tagDefinitions = {};
-
+  // --- Tag Tooltips Logic ---
   function initializeTagTooltips() {
     const tagElements = document.querySelectorAll(".tag");
-    if (!tagElements.length) return;  // Se non ci sono tag esce
+    if (!tagElements.length) return;
 
-    // Crea tooltip container una sola volta
     const tooltip = document.createElement("div");
     tooltip.classList.add("global-tooltip");
 
@@ -109,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.appendChild(tooltip);
 
-    // Nascondi inizialmente
     tooltip.style.opacity = "0";
     tooltip.style.pointerEvents = "none";
     tooltip.style.visibility = "hidden";
@@ -120,11 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const tagKey = tag.textContent.trim();
         const tagData = tagDefinitions[tagKey];
 
-        if (tagData && tagData.definition) {
-          tooltipContentWrapper.innerHTML = `<strong>${tagKey}</strong><br>${tagData.definition}`;
-        } else {
-          tooltipContentWrapper.innerHTML = `No description available for <strong>${tagKey}</strong>.`;
-        }
+        tooltipContentWrapper.innerHTML = tagData && tagData.definition
+          ? `<strong>${tagKey}</strong><br>${tagData.definition}`
+          : `No description available for <strong>${tagKey}</strong>.`;
 
         const tagRect = tag.getBoundingClientRect();
 
@@ -148,9 +116,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const tagsUrl = "https://glaeder27.github.io/seeker-ttrpg/data/tags.json";
+  // --- Fetch tooltip definitions ---
+  fetch("https://glaeder27.github.io/seeker-ttrpg/data/tooltips.json")
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      return response.json();
+    })
+    .then((data) => {
+      tooltipDefinitions = data;
+      initializeTooltips();
+    })
+    .catch((error) => {
+      console.error("Error loading tooltip definitions:", error);
+    });
 
-  fetch(tagsUrl)
+  // --- Fetch tag definitions ---
+  fetch("https://glaeder27.github.io/seeker-ttrpg/data/tags.json")
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
@@ -168,11 +149,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Error loading tag definitions:", error);
     });
-});
 
-
-  // Collapsible Logic
-
+  // --- Collapsible Logic ---
   const collapsibleItems = document.querySelectorAll(".collapsible-item");
   collapsibleItems.forEach((item) => {
     const header = item.querySelector(".collapsible-header");
@@ -196,19 +174,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         content.classList.remove("expanded-content");
       }
-      content.addEventListener("transitionend", function handler() {
-        if (item.classList.contains("expanded")) {
-          content.style.height = "auto";
+      content.addEventListener(
+        "transitionend",
+        function handler() {
+          if (item.classList.contains("expanded")) {
+            content.style.height = "auto";
+          }
+          content.removeEventListener("transitionend", handler, { once: true });
         }
-        content.removeEventListener("transitionend", handler, { once: true });
-      });
+      );
     });
   });
-});
 
-// Rule Visibility Logic
-
-document.addEventListener("DOMContentLoaded", () => {
+  // --- Rule Visibility Logic ---
   const toggles = document.querySelectorAll(".rule-switch input[data-rule]");
   toggles.forEach((cb) => {
     const key = "rule-" + cb.dataset.rule;
