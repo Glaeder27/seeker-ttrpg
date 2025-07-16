@@ -2015,6 +2015,22 @@ details[open] .infobox-table {
     .only-mobile {
         display: block;
     }
+
+    .defense-header {
+        display: block;
+    }
+
+    .defense-icon-outer {
+        float: left;
+        margin: 0 1rem 1rem 0;
+        width: 96px;
+    }
+
+    .defense-icon img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }
 
 @media (max-width: 600px) {
@@ -2051,5 +2067,24 @@ details[open] .infobox-table {
     .page-lore,
     .page-main {
         order: 2;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .defense-header {
+        display: block;
+    }
+
+    .defense-icon-outer {
+        float: left;
+        margin: 0 1rem 1rem 0;
+        width: 96px;
+    }
+
+    .defense-icon img {
+        width: 100%;
+        height: auto;
+        display: block;
     }
 }
