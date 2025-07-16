@@ -97,9 +97,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tooltip.style.borderColor = color;
 
-        tooltipContentWrapper.innerHTML = tagData && tagData.definition
-          ? `<strong>${tagKey}</strong><br>${tagData.definition}`
-          : `No description available for <strong>${tagKey}</strong>.`;
+        tooltipContentWrapper.innerHTML =
+          tagData && tagData.definition
+            ? `<strong>${tagKey}</strong><br>${tagData.definition}`
+            : `No description available for <strong>${tagKey}</strong>.`;
 
         const tagRect = tag.getBoundingClientRect();
         tooltip.style.left = `${tagRect.left}px`;
@@ -156,6 +157,19 @@ document.addEventListener("DOMContentLoaded", function () {
           categoryColors[entry.name] = entry.color || "#D4B55A";
         });
       }
+
+      // Applica dinamicamente colore e bordo alle .tag
+      document.querySelectorAll(".tag").forEach((tag) => {
+        const tagName = tag.textContent.trim();
+        const tagData = tagDefinitions[tagName];
+        const category = tagData?.category;
+        const color = categoryColors[category];
+
+        if (color) {
+          tag.style.borderColor = color;
+          tag.style.color = color;
+        }
+      });
 
       initializeTagTooltips();
     })
