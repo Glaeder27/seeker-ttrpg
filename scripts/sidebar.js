@@ -1,8 +1,26 @@
-// Glossary search logic
+// Glossary search logic with "Did you mean" suggestion
 const input = document.getElementById("glossary-search");
 const result = document.getElementById("glossary-result");
 
 let glossary = {};
+
+// Levenshtein distance function
+function levenshtein(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, () => []);
+  for (let i = 0; i <= a.length; i++) dp[i][0] = i;
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+      );
+    }
+  }
+  return dp[a.length][b.length];
+}
 
 fetch("https://glaeder27.github.io/seeker-ttrpg/data/glossary.json")
   .then((response) => {
@@ -20,17 +38,35 @@ fetch("https://glaeder27.github.io/seeker-ttrpg/data/glossary.json")
 input.addEventListener("input", () => {
   const term = input.value.trim().toLowerCase();
 
-  const key = Object.keys(glossary).find((k) => k.toLowerCase() === term);
+  const keys = Object.keys(glossary);
+  const key = keys.find((k) => k.toLowerCase() === term);
 
   if (key) {
     const { definition, link } = glossary[key];
     result.innerHTML = `${definition} <a href="${link}" target="_top">[Read More]</a>`;
   } else if (term.length > 0) {
-    result.textContent = "No entry found.";
+    // Try to suggest a similar term
+    let closestMatch = null;
+    let smallestDistance = Infinity;
+
+    keys.forEach((k) => {
+      const distance = levenshtein(term, k.toLowerCase());
+      if (distance < smallestDistance) {
+        smallestDistance = distance;
+        closestMatch = k;
+      }
+    });
+
+    if (smallestDistance <= 3) {
+      result.innerHTML = `No result found. Did you mean: <strong>${closestMatch}</strong>?`;
+    } else {
+      result.textContent = "No result found.";
+    }
   } else {
     result.textContent = "Type a term to see its definition.";
   }
 });
+
 
 // Archives carousel fade logic (runs once on load)
 const archiveItems = document.querySelectorAll(
