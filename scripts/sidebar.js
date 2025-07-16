@@ -58,3 +58,41 @@ setInterval(() => {
 }, 8000);
 
 showItem(currentIndex);
+
+// "From the Archives" Content
+
+async function loadArchives() {
+  try {
+    const response = await fetch('https://glaeder27.github.io/seeker-ttrpg/data/archives.json'); // metti qui il path corretto
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+
+    const container = document.querySelector('.archives-carousel-fade');
+    container.innerHTML = ''; // svuota contenuto attuale
+
+    data.archives.forEach(archive => {
+      const item = document.createElement('div');
+      item.classList.add('archive-item');
+
+      const quote = document.createElement('p');
+      quote.textContent = `"${archive.quote}"`;
+
+      const author = document.createElement('div');
+      author.classList.add('archive-author');
+      author.textContent = `— ${archive.author}`;
+
+      item.appendChild(quote);
+      item.appendChild(author);
+      container.appendChild(item);
+    });
+
+    if (container.firstChild) {
+      container.firstChild.classList.add('show');
+    }
+
+  } catch (error) {
+    console.error('Failed to load archives:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadArchives);
