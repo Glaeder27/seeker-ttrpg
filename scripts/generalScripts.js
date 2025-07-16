@@ -87,8 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeTagTooltips() {
     const tagElements = document.querySelectorAll(".tag");
+    if (!tagElements.length) return;  // Se non ci sono tag esce
 
-    // Crea il tooltip globale
+    // Crea tooltip container una sola volta
     const tooltip = document.createElement("div");
     tooltip.classList.add("global-tooltip");
 
@@ -105,8 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     tooltip.appendChild(tooltipIcon);
     tooltip.appendChild(tooltipContentWrapper);
+
     document.body.appendChild(tooltip);
 
+    // Nascondi inizialmente
     tooltip.style.opacity = "0";
     tooltip.style.pointerEvents = "none";
     tooltip.style.visibility = "hidden";
@@ -118,14 +121,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const tagData = tagDefinitions[tagKey];
 
         if (tagData && tagData.definition) {
-          tooltipContentWrapper.innerHTML = `
-            <strong>${tagKey}</strong><br>
-            ${tagData.definition}`;
+          tooltipContentWrapper.innerHTML = `<strong>${tagKey}</strong><br>${tagData.definition}`;
         } else {
           tooltipContentWrapper.innerHTML = `No description available for <strong>${tagKey}</strong>.`;
         }
 
         const tagRect = tag.getBoundingClientRect();
+
         tooltip.style.left = `${tagRect.left}px`;
         tooltip.style.top = `${tagRect.bottom + 10}px`;
 
@@ -151,17 +153,16 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(tagsUrl)
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      return response.json(); // <- questa era la parte mancante
+      return response.json();
     })
     .then((data) => {
       if (data.tags && Array.isArray(data.tags)) {
-        // Indicizza i tag per nome
         data.tags.forEach((entry) => {
           tagDefinitions[entry.name] = entry;
         });
         initializeTagTooltips();
       } else {
-        console.error("No tags array found in the JSON structure.");
+        console.error("No tags found in the JSON structure.");
       }
     })
     .catch((error) => {
