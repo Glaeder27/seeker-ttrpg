@@ -13,9 +13,9 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow-y: auto !important;
       background-color: rgba(48, 48, 48, 1);
       font-family: Arial, sans-serif;
+      overflow: auto !important;
     }
 
     .container {
@@ -28,18 +28,17 @@
     .left-column,
     .right-column {
       box-sizing: border-box;
+      height: 1000vh !important;
     }
 
     .left-column {
       flex: 0 1 70%;
       max-width: 940px;
-      height: 2000px; /* o auto se vuoi scrollbar */
     }
 
     .right-column {
       flex: 0 1 30%;
       max-width: 400px;
-      height: 2000px;
     }
 
     iframe {
