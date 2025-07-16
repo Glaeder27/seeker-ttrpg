@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-env="vsc-940">
+<html lang="en" data-env="wix">
 
 <head>
     <meta charset="UTF-8">
@@ -74,6 +74,8 @@
 
         .collapsible-item {
             margin-top: 5px;
+            background-color: var(--background-grey-1);
+            box-shadow: none;
         }
 
         .collapsible-header {
@@ -81,7 +83,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 6px 15px;
-            font-size: 1em;
+            font-size: .9em;
+            font-weight: 500;
         }
 
         .collapsible-content.expanded-content {
@@ -93,22 +96,126 @@
             list-style-type: none;
             margin-bottom: 10px;
         }
+
         .collapsible-content li::before {
             top: 0.3em !important;
         }
-        .tag {
-    display: inline-block;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 2px 6px;
-    margin-left: 0.5rem;
-    border-radius: 5px;
-    font-weight: 600;
-    vertical-align: middle;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-decoration: none;
-}
+
+        .turn-order-block {
+            text-align: center;
+            max-width: 940px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            font-family: var(--default-font, sans-serif);
+        }
+
+        .turn-order-row {
+            display: flex;
+            max-width: 100%;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-direction: row;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+
+        .turn-step {
+            aspect-ratio: 1;
+            width: 100%;
+            max-width: 100px;
+            padding: .4rem;
+            background: var(--background-grey-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+            flex-shrink: 1;
+            border: 1px solid var(--ancient-gold, #D4B55A);
+        }
+
+
+        .turn-step img {
+            width: 100%;
+            height: auto;
+            max-width: 100px;
+            border-radius: 1em;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 390px) {
+            .turn-order-row {
+                flex-direction: column;
+                flex-wrap: nowrap;
+                gap: 0.5rem;
+                max-width: 100%;
+            }
+
+            .turn-step {
+                max-width: 70vw;
+                width: 100%;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+
+
+        .arrow {
+            font-size: 2rem;
+            margin: 0.25rem 0;
+            color: var(--off-white, #f0f0f0);
+        }
+
+        .turn-step-block.aggressive-stance>h4 {
+            color: #8B3A3A;
+        }
+
+        .turn-step-block.defensive-stance>h4 {
+            color: #4A5E6A;
+        }
+
+        .turn-step-block.evasive-stance>h4 {
+            color: #667054;
+        }
+
+        .turn-step-block.balanced-stance>h4 {
+            color: #B89B4B;
+        }
+
+        .turn-step-block.inquisitive-stance>h4 {
+            color: #5E7A78;
+        }
+
+        .turn-step-block.mystic-stance>h4 {
+            color: #735A84;
+        }
+
+        .turn-step-block.aggressive-stance,
+        .turn-step-block.defensive-stance,
+        .turn-step-block.evasive-stance,
+        .turn-step-block.balanced-stance,
+        .turn-step-block.inquisitive-stance,
+        .turn-step-block.mystic-stance {
+            /* border: 1px solid var(--ancient-gold, #D4B55A); */
+            border-radius: .8em;
+            margin: 0 0 1rem 0;
+            padding: .1rem 1.2rem;
+        }
+
+        .turn-step.highlighted,
+        .turn-step-block.highlighted {
+            background-color: var(--highlight-bg, #fff9e528);
+            transition: background-color 0.2s ease;
+        }
     </style>
 </head>
 
@@ -129,10 +236,10 @@
             <section class="rule-options-box">
                 <div class="rule-options-label">Rule Options</div>
                 <div class="toggle-bar">
-                    <label class="rule-switch">
+                    <label class="rule-switch" style="cursor: not-allowed">
                         <input type="checkbox" data-rule="" disabled />
                         <span class="slider"></span>
-                        <span class="label">Creating Your Own Tags</span>
+                        <span class="label">Switching Stance</span>
                         <span class="rule-tag experimental tooltip" data-tooltip-key="experimental">
                             Experimental
                         </span>
@@ -144,7 +251,7 @@
             <!-- Section I -->
             <section class="section-wrapper">
                 <div class="section-number">Section I</div>
-                <h2 class="section" id="Tags">
+                <h2 class="section" id="Stances">
                     Core Concept
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
@@ -163,8 +270,8 @@
 
             <section class="section-wrapper">
                 <div class="section-number">Section II</div>
-                <h2 class="section" id="Tags">
-                    Base Stances
+                <h2 class="section" id="Stances">
+                    Basic Stances
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
                 <!-- Stance Overview -->
@@ -217,7 +324,7 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Tactical Notes</strong>
+                                <span>Tactical Notes</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
@@ -238,7 +345,7 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Strengths</strong>
+                                <span>Strengths</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
@@ -254,13 +361,14 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Limitations</strong>
+                                <span>Limitations</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
                                 <p>These are the key limitations and trade-offs to consider:</p>
                                 <ul>
-                                    <li>No access to <span class="tag">Defense</span> or <span class="tag">Support</span> tags — if attacked, you cannot
+                                    <li>No access to <span class="tag">Defense</span> or <span
+                                            class="tag">Support</span> tags — if attacked, you cannot
                                         actively defend</li>
                                     <li>Vulnerable to counterattacks, especially if initiative advantage is lost</li>
                                     <li>Relies on eliminating threats quickly before retaliation becomes dangerous</li>
@@ -270,19 +378,22 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Synergies</strong>
+                                <span>Synergies</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
                                 <p>These synergies help maximize the stance’s effectiveness:</p>
                                 <ul>
-                                    <li>Works well with high-impact or escalating <span class="tag">Attack</span> skills that force
+                                    <li>Works well with high-impact or escalating <span class="tag">Attack</span> skills
+                                        that force
                                         opponents to spend resources early</li>
-                                    <li>Pairs effectively with allies in <span class="tag">Defensive</span> or <span class="tag">Support</span> Stances who
+                                    <li>Pairs effectively with allies in <span class="tag">Defensive</span> or <span
+                                            class="tag">Support</span> Stances who
                                         can cover your vulnerabilities</li>
                                     <li>Ideal for characters with high <strong>Strength</strong>,
                                         <strong>Agility</strong>, or <strong>Intellect</strong> focused on offensive
-                                        Aptitudes</li>
+                                        Aptitudes
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -317,7 +428,7 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Tactical Notes</strong>
+                                <span>Tactical Notes</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
@@ -328,8 +439,10 @@
                                     difference between survival and defeat.
                                 </p>
                                 <p>
-                                    It allows full access to <span class="tag">Defense</span> skills for intercepting or nullifying
-                                    incoming attacks and <span class="tag">Support</span> skills for healing, shielding, or granting
+                                    It allows full access to <span class="tag">Defense</span> skills for intercepting or
+                                    nullifying
+                                    incoming attacks and <span class="tag">Support</span> skills for healing, shielding,
+                                    or granting
                                     advantages to allies. Whether you're standing your ground or anchoring your team,
                                     this stance provides both durability and utility.
                                 </p>
@@ -338,7 +451,7 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Strengths</strong>
+                                <span>Strengths</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
@@ -348,7 +461,8 @@
                                     </li>
                                     <li>Supports escalation in defensive contests to hold the line when it matters most
                                     </li>
-                                    <li>Allows the use of powerful <span class="tag">Support</span> skills to heal or protect teammates
+                                    <li>Allows the use of powerful <span class="tag">Support</span> skills to heal or
+                                        protect teammates
                                         mid-battle</li>
                                 </ul>
                             </div>
@@ -356,13 +470,14 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Limitations</strong>
+                                <span>Limitations</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
                                 <p>These are the key limitations and trade-offs to consider:</p>
                                 <ul>
-                                    <li>No access to <span class="tag">Attack</span> or <span class="tag">Maneuver</span> tags — you cannot initiate direct
+                                    <li>No access to <span class="tag">Attack</span> or <span
+                                            class="tag">Maneuver</span> tags — you cannot initiate direct
                                         offensive actions</li>
                                     <li>Lower priority in turn order makes you react rather than lead</li>
                                     <li>May feel passive if no allies require support and no attacks target you</li>
@@ -372,23 +487,451 @@
 
                         <div class="collapsible-item">
                             <div class="collapsible-header">
-                                <strong>Synergies</strong>
+                                <span>Synergies</span>
                                 <div class="collapsible-icon">▸</div>
                             </div>
                             <div class="collapsible-content">
                                 <p>These synergies help maximize the stance’s effectiveness:</p>
                                 <ul>
                                     <li>Excellent for tank-style characters who can draw aggression and hold ground</li>
-                                    <li>Pairs naturally with <span class="tag">Aggressive</span> and <span class="tag">Mystic</span> allies by covering
+                                    <li>Pairs naturally with <span class="tag">Aggressive</span> and <span
+                                            class="tag">Mystic</span> allies by covering
                                         their weaknesses</li>
                                     <li>Well-suited for characters with high <strong>Vigor</strong>,
-                                        <strong>Willpower</strong>, or <strong>Insight</strong></li>
+                                        <strong>Willpower</strong>, or <strong>Insight</strong>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Evasive Stance -->
+                <div class="stance-wrapper">
+                    <div class="stance-header">
+                        <div class="stance-icon-outer">
+                            <div class="stance-icon">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_9ad2bb0108154a46947aff68516f720c.svg"
+                                    alt="Evasive Stance Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="stance-intro">
+                            <h3>Evasive Stance</h3>
+                            <p>
+                                The stance of nimble combatants who prioritize mobility and avoidance. Evasive Stance is
+                                about dodging danger, repositioning strategically, and frustrating enemy attacks through
+                                agility and clever movement.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stance-content">
+                        <h4>Actions & Allowed Tags</h4>
+                        <p>
+                            <strong>Actions:</strong> 4 Actions per round<br>
+                            <strong>Allowed Tags:</strong> <span class="tag">Movement</span>, <span
+                                class="tag">Evasion</span>, <span class="tag">Defense</span><br>
+                        </p>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Tactical Notes</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>
+                                    Evasive Stance excels at staying out of harm’s way, slipping past enemy lines, and
+                                    forcing foes to waste actions trying to pin you down. It is ideal for characters who
+                                    rely on agility and cunning to survive and create openings.
+                                </p>
+                                <p>
+                                    With fewer Actions than Aggressive or Defensive stances, careful planning is needed.
+                                    Balancing between movement, defensive responses, and positioning can turn the tide
+                                    by controlling the battlefield’s flow.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Strengths</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the main strengths of this stance:</p>
+                                <ul>
+                                    <li>Allows active defense with fewer Actions, making you harder to hit</li>
+                                    <li>Enables quick repositioning and tactical retreats or flanking</li>
+                                    <li>Good synergy with hit-and-run or guerrilla tactics</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Limitations</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the key limitations and trade-offs to consider:</p>
+                                <ul>
+                                    <li>Fewer Actions overall limits the number of skills used per turn</li>
+                                    <li>Lower turn order priority than Aggressive stance</li>
+                                    <li>Limited offensive options; mainly defensive and movement-focused</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Synergies</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These synergies help maximize the stance’s effectiveness:</p>
+                                <ul>
+                                    <li>Pairs well with allies in Aggressive or Defensive stances who hold ground</li>
+                                    <li>Ideal for characters with high <strong>Agility</strong> or
+                                        <strong>Adaptability</strong>
+                                    </li>
+                                    <li>Combines effectively with skills focused on hit-and-run tactics and disruption
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inquisitive Stance -->
+                <div class="stance-wrapper">
+                    <div class="stance-header">
+                        <div class="stance-icon-outer">
+                            <div class="stance-icon">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_b8af3702ecbe41f5a8dc0c16bd4be7fd.svg"
+                                    alt="Inquisitive Stance Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="stance-intro">
+                            <h3>Inquisitive Stance</h3>
+                            <p>
+                                The stance of the tactician, the scout, the scholar on the battlefield. Inquisitive
+                                Stance is about understanding the battlefield and exploiting information—detecting enemy
+                                weaknesses, predicting their moves, or leveraging terrain and opportunity.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stance-content">
+                        <h4>Actions & Allowed Tags</h4>
+                        <p>
+                            <strong>Actions:</strong> 4 Actions per round<br>
+                            <strong>Allowed Tags:</strong> <span class="tag">Information</span>, <span
+                                class="tag">Insight</span>, <span class="tag">Utility</span><br>
+                        </p>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Tactical Notes</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>
+                                    The Inquisitive Stance thrives in battles where knowledge is power. You may not hit
+                                    the hardest or defend the strongest, but you shift the tides of conflict through
+                                    clever play—learning what your enemies fear, triggering traps, uncovering hidden
+                                    weaknesses, or tracking shifting battlefield conditions.
+                                </p>
+                                <p>
+                                    Especially effective in the early rounds of combat or in complex set-piece
+                                    encounters, this stance rewards strategic minds who play the long game and enable
+                                    their allies through subtle, high-impact actions.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Strengths</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the main strengths of this stance:</p>
+                                <ul>
+                                    <li>Grants access to powerful non-combat utility and investigative actions during
+                                        combat</li>
+                                    <li>Enables the discovery of enemy vulnerabilities or tactical terrain advantages
+                                    </li>
+                                    <li>Supports allies indirectly by revealing useful information or disrupting enemy
+                                        plans</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Limitations</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the key limitations and trade-offs to consider:</p>
+                                <ul>
+                                    <li>Lowest priority in turn order: you always act last unless otherwise modified
+                                    </li>
+                                    <li>Cannot use <u>Attack</u>, <u>Defense</u>, or <u>Movement</u> tags</li>
+                                    <li>May struggle in direct confrontations where quick reactions or force are
+                                        required</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Synergies</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These synergies help maximize the stance’s effectiveness:</p>
+                                <ul>
+                                    <li>Pairs well with Support-oriented allies who can protect you while you gather
+                                        intelligence</li>
+                                    <li>Ideal for characters with high <strong>Intellect</strong>,
+                                        <strong>Insight</strong>, or <strong>Perception</strong>
+                                    </li>
+                                    <li>Shines in investigative scenarios, trap-laden dungeons, or layered encounters
+                                        where knowledge reshapes outcomes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Balanced Stance -->
+                <div class="stance-wrapper">
+                    <div class="stance-header">
+                        <div class="stance-icon-outer">
+                            <div class="stance-icon">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_aed00d602cfb46eabb365eba8b47cc58.svg"
+                                    alt="Balanced Stance Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="stance-intro">
+                            <h3>Balanced Stance</h3>
+                            <p>
+                                The stance of the adaptable and cautious. Balanced Stance grants you flexibility in your
+                                actions, allowing you to respond to developing threats without overcommitting to a
+                                single strategy. It favors those who thrive in uncertainty.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stance-content">
+                        <h4>Actions & Allowed Tags</h4>
+                        <p>
+                            <strong>Actions:</strong> 8 Actions per round<br>
+                            <strong>Allowed Tags:</strong> All Tags are allowed<br>
+                        </p>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Tactical Notes</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>
+                                    Balanced Stance is the ideal choice when you're uncertain about how a combat round
+                                    will unfold. It grants you access to all skill types, which makes it a versatile
+                                    fallback in unpredictable scenarios or multi-layered encounters.
+                                </p>
+                                <p>
+                                    Its drawback is the inefficiency in combat specialization: using <u>Attack</u> or
+                                    <u>Defense</u> skills costs more Actions, making it less suited for direct duels or
+                                    intensive confrontations. Still, its broad utility makes it a powerful stance for
+                                    improvisational play and mixed strategies.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Strengths</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the main strengths of this stance:</p>
+                                <ul>
+                                    <li>Allows the use of <em>any</em> Skill Tag — no restrictions</li>
+                                    <li>Ideal when anticipating the need to adapt quickly to shifting threats</li>
+                                    <li>Maintains mid-level priority in turn order, acting after Aggressive and Evasive
+                                        characters</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Limitations</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the key limitations and trade-offs to consider:</p>
+                                <ul>
+                                    <li><u>Attack</u> and <u>Defense</u> skills cost +1 Action to use</li>
+                                    <li>Less effective for characters who rely on burst damage or tight defenses</li>
+                                    <li>May underperform if not leveraged creatively or tactically</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Synergies</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These synergies help maximize the stance’s effectiveness:</p>
+                                <ul>
+                                    <li>Ideal for characters with a wide variety of skills or flexible builds</li>
+                                    <li>Great for reading the battlefield before committing to a specialized stance next
+                                        round</li>
+                                    <li>Pairs well with allies who can cover specific roles while you remain reactive
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mystic Stance -->
+                <div class="stance-wrapper">
+                    <div class="stance-header">
+                        <div class="stance-icon-outer">
+                            <div class="stance-icon">
+                                <img src="https://static.wixstatic.com/shapes/e40a82_be9b3570f82d444e95f7ea739638cbed.svg"
+                                    alt="Mystic Stance Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="stance-intro">
+                            <h3>Mystic Stance</h3>
+                            <p>
+                                The stance of channeling, incantation, and arcane precision. Mystic Stance is ideal for
+                                those who weave spells and shape reality, favoring deliberate control over brute force
+                                or rapid movement.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stance-content">
+                        <h4>Actions & Allowed Tags</h4>
+                        <p>
+                            <strong>Actions:</strong> 8 Actions per round<br>
+                            <strong>Allowed Tags:</strong> <span class="tag">Spell</span>, <span
+                                class="tag">Magic</span><br>
+                        </p>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Tactical Notes</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>
+                                    Mystic Stance is tailored for magical characters who need time and stability to
+                                    unleash their full power. It enables high-cost spells, complex effects, and support
+                                    rituals that can turn the tide of battle.
+                                </p>
+                                <p>
+                                    Its limitations lie in mobility and defense — this stance does not allow reactions
+                                    to physical attacks or hasty repositioning. Careful planning and allies that can
+                                    protect you are essential.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Strengths</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the main strengths of this stance:</p>
+                                <ul>
+                                    <li>Enables access to complex or multi-action <u>Spell</u> and <u>Magic</u> skills
+                                    </li>
+                                    <li>Supports battlefield control, environmental manipulation, and powerful arcane
+                                        effects</li>
+                                    <li>Great for characters focused on <strong>Intellect</strong> or
+                                        <strong>Willpower</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Limitations</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These are the key limitations and trade-offs to consider:</p>
+                                <ul>
+                                    <li>Cannot use <u>Defense</u>, <u>Attack</u>, or <u>Movement</u> skills while in
+                                        this stance</li>
+                                    <li>Low initiative priority; may act after faster or more aggressive enemies</li>
+                                    <li>Vulnerable to disruption if targeted early or caught out of position</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-item">
+                            <div class="collapsible-header">
+                                <span>Synergies</span>
+                                <div class="collapsible-icon">▸</div>
+                            </div>
+                            <div class="collapsible-content">
+                                <p>These synergies help maximize the stance’s effectiveness:</p>
+                                <ul>
+                                    <li>Best when paired with allies in <u>Defensive</u> or <u>Evasive</u> stances who
+                                        can shield you</li>
+                                    <li>Highly effective when given preparation time or allowed to control terrain and
+                                        flow</li>
+                                    <li>Ideal for rituals, buffs, curses, enchantments, or any magic that rewards
+                                        patience</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic vs. Specialized Stances -->
+                <div class="section-wrapper">
+                    <h3>Basic and Specialized Stances</h3>
+                    <p>
+                        The six Stances listed below — <strong>Aggressive</strong>, <strong>Defensive</strong>,
+                        <strong>Evasive</strong>,
+                        <strong>Inquisitive</strong>, <strong>Balanced</strong>, and <strong>Mystic</strong> — are known
+                        as <strong>Basic Stances</strong>.
+                        These are universally available to all characters at all times and form the foundation of
+                        Seeker's stance-based initiative system.
+                    </p>
+                    <p>
+                        As your character grows and learns new <strong>Skills</strong> and <strong>Masteries</strong>,
+                        they may gain access to
+                        <strong>Specialized Stances</strong>: highly focused combat postures that offer unique tactical
+                        advantages, expanded tag access,
+                        or special turn order rules.
+                    </p>
+                    <p>
+                        Each Specialized Stance clearly defines:
+                    </p>
+                    <ul>
+                        <li>Its <strong>granted Actions</strong> and <strong>allowed Tags</strong></li>
+                        <li>Any <strong>unique rules or restrictions</strong> it applies</li>
+                        <li>Its <strong>turn order priority</strong> — for example, <em>Berserk</em> may act
+                            <strong>before all other Stances</strong>,
+                            while <em>Ambush</em> may act <strong>before Aggressive</strong> but after Berserk
+                        </li>
+                    </ul>
+                    <p>
+                        Refer to the description of each specific Skill or Mastery to learn how to unlock and use these
+                        powerful alternate Stances.
+                    </p>
+                </div>
 
 
             </section>
@@ -396,7 +939,7 @@
             <!-- Section III -->
             <section class="section-wrapper">
                 <div class="section-number">Section III</div>
-                <h2 class="section" id="Tags">
+                <h2 class="section" id="Stances">
                     Initiative Order
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
@@ -419,6 +962,150 @@
 
                 <p>Rather than reacting to chance, players must anticipate threats, read the battlefield, and commit to
                     a course of action before the first move is even made.</p>
+
+                <h3>Resolving Turns</h3>
+                <p>
+                    Once all characters have declared their Stance, the GM resolves turns by calling each Stance in a
+                    fixed priority order.
+                    Multiple characters in the same Stance act together when it’s called.
+                </p>
+
+                <div class="turn-order-block">
+                    <div class="turn-order-row">
+                        <div class="turn-step aggressive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_e2bc9c16e30a44d88fb148d20c69cecb.svg"
+                                alt="Aggressive Icon" title="Aggressive Stance">
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="turn-step evasive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_9ad2bb0108154a46947aff68516f720c.svg"
+                                alt="Evasive Icon" title="Evasive Stance">
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="turn-step balanced-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_aed00d602cfb46eabb365eba8b47cc58.svg"
+                                alt="Balanced Icon" title="Balanced Stance">
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="turn-step mystic-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_be9b3570f82d444e95f7ea739638cbed.svg"
+                                alt="Mystic Icon" title="Mystic Stance">
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="turn-step defensive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_5367b73cfbb04fc8af954d94e7e12088.svg"
+                                alt="Defensive Icon" title="Defensive Stance">
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="turn-step inquisitive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_b8af3702ecbe41f5a8dc0c16bd4be7fd.svg"
+                                alt="Inquisitive Icon" title="Inquisitive Stance">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="turn-step-block aggressive-stance">
+                    <h4>1. Aggressive</h4>
+                    <p>
+                        Characters in <strong>Aggressive Stance</strong> act first in the round. This stance reflects a
+                        mindset focused on seizing the initiative, launching decisive and overwhelming attacks to
+                        disrupt enemy plans before they can react. When the GM calls "Aggressive Stance!", these players
+                        take their turns with priority, aiming to shape the battlefield through bold and direct action.
+                    </p>
+                </div>
+
+                <div class="turn-step-block evasive-stance">
+                    <h4>2. Evasive</h4>
+                    <p>
+                        Next up are the characters in <strong>Evasive Stance</strong>. This stance emphasizes agility
+                        and avoidance, allowing these players to reposition, evade incoming threats, or counterattack
+                        with precision. When "Evasive Stance!" is called, they respond quickly to shifting
+                        circumstances, aiming to maintain control through flexibility and swift reactions.
+                    </p>
+                </div>
+
+                <div class="turn-step-block balanced-stance">
+                    <h4>3. Balanced</h4>
+                    <p>
+                        The <strong>Balanced Stance</strong> represents a steady, adaptable approach, combining offense,
+                        defense, and utility. Acting in the middle of the round, these characters adjust their tactics
+                        based on the flow of combat, ready to support allies, respond to threats, or press an advantage
+                        as the situation demands.
+                    </p>
+                </div>
+
+                <div class="turn-step-block mystic-stance">
+                    <h4>4. Mystic</h4>
+                    <p>
+                        The <strong>Mystic Stance</strong> grants spellcasters and arcane users their moment to weave
+                        magic into the battle. Acting after more physical stances, mystics carefully time their rituals
+                        and enchantments, influencing the battlefield with powerful effects, protections, or
+                        manipulations when the opportunity arises.
+                    </p>
+                </div>
+
+                <div class="turn-step-block defensive-stance">
+                    <h4>5. Defensive</h4>
+                    <p>
+                        Guardians and protectors in the <strong>Defensive Stance</strong> act next. This stance
+                        prioritizes shielding allies, absorbing blows, and holding positions. Defenders react with
+                        precision to enemy attacks, setting up protective measures and ensuring the team’s safety as the
+                        round progresses.
+                    </p>
+                </div>
+
+                <div class="turn-step-block inquisitive-stance">
+                    <h4>6. Inquisitive</h4>
+                    <p>
+                        Finally, the <strong>Inquisitive Stance</strong> concludes the round. Characters who rely on
+                        observation, investigation, and tactical insight act last, using fresh information gathered
+                        during the round to make informed decisions, exploit openings, or uncover hidden truths before
+                        the next turn cycle begins.
+                    </p>
+                </div>
+
+                <div class="turn-step-block tie-resolution">
+                    <h4>Tiebreakers Within the Same Stance</h4>
+                    <p>
+                        Sometimes, multiple characters will act within the same Stance. In these cases, it's up to the
+                        group (or GM) to determine the order in which they act. Below are a few recommended
+                        approaches—choose the one that fits your group's pace and tone best:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <strong>Declared Intent:</strong> Ask players to briefly state what their characters intend
+                            to do. Let the GM choose who acts first based on narrative flow, momentum, or relevance.
+                            This is the default method recommended for most scenes.
+                        </li>
+                        <li>
+                            <strong>Highest Relevant Aptitude:</strong> The character with the highest relevant Aptitude
+                            (e.g. <strong>Agility</strong> for combat maneuvers, <strong>Insight</strong> for
+                            negotiation) takes the lead.
+                        </li>
+                        <li>
+                            <strong>Die Roll-Off:</strong> Each player rolls a d6. The highest roll goes first. Ties can
+                            be rerolled.
+                        </li>
+                        <li>
+                            <strong>Fixed Party Order:</strong> The group agrees on a consistent clockwise or
+                            seating-based order for players in the same Stance. Fast and frictionless.
+                        </li>
+                        <li>
+                            <strong>GM Fiat:</strong> For scenes with high tension or narrative weight, the GM can
+                            dictate the most cinematic or tactically appropriate sequence.
+                        </li>
+                    </ul>
+
+                    <p><em>
+                            As always, consistency helps. Once your group agrees on a method, stick to it unless a
+                            situation clearly calls for improvisation.
+                        </em></p>
+                </div>
+
+
+
+
                 <h3>Making It Flow — Running Stances Smoothly</h3>
                 <p>While the Stance system offers deep tactical choices, it can feel slower than traditional initiative
                     rolls — especially during a group’s first few sessions. To keep the pace tight and engaging, Seeker
@@ -448,7 +1135,40 @@
 
                 <p>This approach eliminates unnecessary sorting or comparison between characters and keeps the focus on
                     action. It also gives the GM a natural rhythm for guiding the flow of combat.</p>
+
             </section>
+
+            <script>
+                const steps = ['aggressive', 'defensive', 'evasive', 'balanced', 'inquisitive', 'mystic'];
+
+                steps.forEach(step => {
+                    const icon = document.querySelector('.turn-step.' + step + '-step');
+                    const block = document.querySelector('.turn-step-block.' + step + '-stance');
+
+                    if (icon && block) {
+                        icon.addEventListener('mouseenter', () => {
+                            icon.classList.add('highlighted');
+                            block.classList.add('highlighted');
+                        });
+
+                        icon.addEventListener('mouseleave', () => {
+                            icon.classList.remove('highlighted');
+                            block.classList.remove('highlighted');
+                        });
+
+                        block.addEventListener('mouseenter', () => {
+                            icon.classList.add('highlighted');
+                            block.classList.add('highlighted');
+                        });
+
+                        block.addEventListener('mouseleave', () => {
+                            icon.classList.remove('highlighted');
+                            block.classList.remove('highlighted');
+                        });
+                    }
+                });
+            </script>
+
             <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
 </body>
 
