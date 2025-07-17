@@ -27,7 +27,8 @@
     /* Backgrounds */
     --background-site: #1e1e1e;
     --background-dark-1: #1e1e1e;
-    --background-dark-2: #3b3b3b;
+    --background-dark-2: #292929;
+    --background-dark-3: #3b3b3b;
 
     /* Hovers */
     --hover-light-1: rgba(255, 255, 255, 0.1);
@@ -93,6 +94,7 @@ body {
     overflow: auto;
     color: var(--off-white);
     scrollbar-width: none;
+    cursor: url('../assets/cursor/cursor_main.webp'), auto;
 }
 
 p {
@@ -396,10 +398,6 @@ a:active {
     -webkit-user-select: none;
 }
 
-.feature-card:hover {
-    transform: scale(1.02);
-}
-
 .card-content {
     position: absolute;
     inset: 0;
@@ -486,6 +484,86 @@ a:active {
 .carousel-arrow.hidden {
     opacity: 0 !important;
     pointer-events: none !important;
+}
+
+/* ── GRID MENU ─────────────── */
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  background: transparent;
+}
+
+.menu-cell {
+  position: relative;
+  display: flex;
+  min-height: 200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-evenly;
+  padding: 1.5rem 1rem 2rem;
+  background-color: var(--background-dark-2);
+  border-top: 2px solid var(--ancient-gold);
+  border-bottom: 2px solid var(--ancient-gold);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  user-select: none;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, .2))
+}
+
+.menu-cell:hover,
+.menu-cell:focus-visible {
+  background-color: var(--background-dark-3);
+  outline: none;
+}
+
+.menu-cell .symbol {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+.menu-cell:hover .symbol,
+.menu-cell:focus-visible .symbol {
+  opacity: 1;
+}
+
+.menu-cell:hover .symbol {
+    transform: translateX(-50%) scale(1.1);
+}
+
+.menu-cell .text-content {
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+}
+
+.menu-cell h4 {
+  font-size: .9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 5rem 0 0.25rem 0;
+  user-select: text;
+}
+
+.menu-cell p {
+  font-size: 0.875rem;
+  margin: 0;
+  user-select: text;
+  opacity: 0.85;
 }
 
 /* ── VSC EDITING ─────────────── */
