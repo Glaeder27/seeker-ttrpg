@@ -244,6 +244,29 @@ a:active {
   padding: 1rem;
 }
 
+/* Stains */
+.banner-stain-top,
+.banner-stain-bottom {
+  background-image: url('../assets/images/banners/banner-stain.svg');
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.banner-stain-top {
+  top: 0;
+  transform: rotate(180deg);
+}
+.banner-stain-bottom {
+  bottom: 0;
+  transform: rotate(0deg);
+}
+
 /* ── VSC EDITING ─────────────── */
 
 html[data-env="vsc-mobile"] {
