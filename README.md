@@ -1,4 +1,5 @@
 # Seeker — Development Roadmap
+https://glaeder27.github.io/seeker-ttrpg/
 
 ## ✅ Core System (Complete)
 - [x] Core mechanics (Action & Risk Dice)
