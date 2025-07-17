@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-env="vsc">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Coil System</title>
+    <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
+    <style>
+        .risk-badge {
+            border: 1px solid var(--border-color, #444);
+            border-left: 0.25rem solid var(--risk-color);
+            border-radius: 0;
+            padding: 0;
+            margin-right: 1rem;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        li {
+            list-style-type: none;
+            padding-left: 1.2em;
+            position: relative;
+        }
+
+        li::before {
+            content: "◆";
+            /* or ✦ ✧ ♦ ◊ ◆ ◇ ❖ */
+            position: absolute;
+            left: 0;
+            top: 0.4em !important;
+            color: var(--ancient-gold);
+            font-size: 1em;
+            line-height: 1;
+        }
+
+        li::before {
+            content: "◆";
+            /* or ✦ ✧ ♦ ◊ ◆ ◇ ❖ */
+            position: absolute;
+            left: 0;
+            top: 0.4em !important;
+            color: var(--ancient-gold);
+            font-size: 1em;
+            line-height: 1;
+        }
+
+        .collapsible-header {
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            overflow: visible;
+        }
+
+        .collapsible-header:hover {
+            background: transparent !important;
+        }
+
+        .collapsible-header::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background-color: rgba(255, 255, 255, .05);
+            border-radius: 8px;
+            z-index: 0;
+            transition: background 0.3s ease;
+            opacity: 0;
+        }
+
+        .collapsible-header:hover::before {
+            opacity: 1;
+        }
+
+        .collapsible-content {
+            margin-top: 1em;
+        }
+
+        .tldr-title {
+            display: block;
+            text-transform: uppercase;
+            background-color: rgba(var(--ancient-gold-rgb, 212, 181, 90), .2);
+            padding: 0.5em 1.2em;
+            margin: 0 -0.5em .5em -0.5em;
+        }
+
+        .dice-symbol {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.5em;
+            vertical-align: middle;
+        }
+
+        /* ── VSC EDITING ─────────────── */
+        html[data-env="vsc"] .page-columns {
+            outline: 1px dashed green;
+        }
+
+        html[data-env="vsc"] {
+            background-color: rgba(48, 48, 48, 1);
+            overflow: scroll !important;
+        }
+
+        /* ────────────────────────────── */
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar-wrapper">
+        <div class="sidebar-block collapsible-item">
+            <div class="collapsible-header" style="padding: 0">
+                <h3 class="section">TL;DR — The Twin Coil System</h3>
+                <span class="collapsible-icon">▸</span>
+            </div>
+
+            <div class="collapsible-content" style="padding: 0 5px">
+                <ul class="no-bullet">
+                    <li class="no-bullet"><strong class="tldr-title">1 • Roll Action vs Risk Dice</strong>
+                        <div style="margin-left: 1em;">Use <strong style="color: var(--faded-jade)">Action</strong>
+                            <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
+                            Dice to
+                            determine success.<br>
+                            Use <strong style="color: var(--rust-red)">Risk</strong> <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                            Dice to determine
+                            complications.
+                        </div>
+                    </li>
+
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">2 • How to
+                            Roll</strong>
+                        <div style="margin-left: 1em;">
+                            Roll a number of <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
+                            equal to the relevant trait or skill modifier for your character.<br>
+                            <img class="dice-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                            are assigned by the GM based on the situation’s danger, urgency, or instability.<br>
+                            Rolling Risk Dice can be done by the GM or the player — decide as a group what feels more
+                            natural.
+                        </div>
+                    </li>
+                    <li class="no-bullet" style="margin-top: 1.5em;">
+                        <strong class="tldr-title">3 • Resolution</strong>
+                        <ul class="no-bullet">
+                            <li style="margin-left: 0em;"><strong>3a • Success</strong><br>
+                                <div style="margin-left: 0em;">Any <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
+                                    showing <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_389a7bf1834a49af98da012901c22a73.svg">
+                                    <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_842debeb781d4dc1a8cc355b84336ee0.svg">
+                                    =
+                                    success. <br><u>One is enough.</u></div>
+                            </li>
+
+                            <li style="margin-left: 0em;"><strong>3b • Complication</strong><br>
+                                <div style="margin-left: 0em;">Any <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                                    showing <img class="dice-symbol"
+                                        src="https://static.wixstatic.com/shapes/e40a82_2b1a2ff3bfcd4df399f120d341f0ec65.svg">
+                                    =
+                                    complication. <u>They can happen even on success.</u><br>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">4 • When
+                            to Roll</strong>
+                        <div style="margin-left: 1em;">Roll only if both <em>failure</em> and <em>complication</em>
+                            are
+                            interesting.<br>
+                            <u>Don’t roll for impossible or trivial actions</u> — just narrate.
+                        </div>
+                    </li>
+
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">5 • Risk
+                            Dice Benchmarks</strong>
+                        <span class="risk-badge risk-1" style="margin-left: 1em; --risk-color: #D79A44;"></span>1 <img
+                            class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                        → mild risk
+                        (~17%)<br>
+                        <span class="risk-badge risk-2" style="margin-left: 1em; --risk-color: #E57845;"></span>2 <img
+                            class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                        →
+                        meaningful risk (~30%)<br>
+                        <span class="risk-badge risk-3" style="margin-left: 1em; --risk-color: #E6463F;"></span>3 <img
+                            class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                        → serious
+                        risk (~45%)<br>
+                        <span class="risk-badge risk-4" style="margin-left: 1em; --risk-color: #B11210;"></span>4+
+                        <img class="dice-symbol"
+                            src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg"> →
+                        high/catastrophic risk
+                    </li>
+
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">6 •
+                            Optional Rules</strong>
+                        <ul class="no-bullet">
+                            <li style="margin-left: 1em;"><strong>Degrees of Success:</strong> 1 = basic, 2 =
+                                strong, 3+ =
+                                critical</li>
+                            <li style="margin-left: 1em;"><strong>Degrees of Complication:</strong> 1 = minor, 2 =
+                                serious, 3+ =
+                                catastrophic</li>
+                            <li style="margin-left: 1em;"><strong>Push:</strong> Reroll 1 <img class="dice-symbol"
+                                    src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
+                                by spending a resource
+                                or adding 1
+                                <img class="dice-symbol"
+                                    src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">7 • GM
+                            Tips</strong>
+                        <ul>
+                            <li>Gate rolls wisely.</li>
+                            <li>Use <img class="dice-symbol"
+                                    src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
+                                to build tension.</li>
+                            <li>Make complications meaningful.</li>
+                            <li>Let the fiction lead.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Block 1: Player & GM Resources -->
+        <div class="sidebar-block">
+            <h3>Player & GM Resources</h3>
+            <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+            <a class="sidebar-link" href="#">Quickstart Rules</a>
+        </div>
+
+        <!-- Block 2: Quick Glossary Search -->
+        <div class="sidebar-block">
+            <h3>Quick Glossary</h3>
+            <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+            <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+        </div>
+
+        <!-- Block 3: From the Archives Carousel -->
+        <div class="sidebar-block">
+            <h3>From the Archives</h3>
+            <div class="archives-carousel-fade">
+                <div class="archive-item show">
+                    "They did not fear our steel, but the smoke that rose from southern ruins."
+                    <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                </div>
+                <div class="archive-item">
+                    "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                    <div class="archive-author">— Journal of Captain J. Strode</div>
+                </div>
+                <div class="archive-item">
+                    "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                    <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                </div>
+                <div class="archive-item">
+                    "The stone idols breathe. Some say they dream. Pray they never awaken."
+                    <div class="archive-author">— Codex Margin Note, unknown author</div>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/sidebar.js"></script>
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+
+</body>
+
+</html>

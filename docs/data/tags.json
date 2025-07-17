@@ -1,0 +1,301 @@
+{ 
+  "categories": [
+  {
+    "name": "Combat",
+    "definition": "Insert category description",
+    "color": "#a35e4e"
+  },
+  {
+    "name": "Social",
+    "definition": "Insert category description",
+    "color": "#a87c7c"
+  },
+  {
+    "name": "Exploration",
+    "definition": "Insert category description",
+    "color": "#7e8b63"
+  },
+  {
+    "name": "Magic",
+    "definition": "Insert category description",
+    "color": "#6b5d8c"
+  },
+  {
+    "name": "Meta",
+    "definition": "Insert category description",
+    "color": "#8a8a86"
+  },
+  {
+    "name": "Utility",
+    "definition": "Insert category description",
+    "color": "#b6a78c"
+  }
+],
+
+  "tags": [
+    {
+      "name": "Attack",
+      "category": "Combat",
+      "definition": "A direct offensive action intended to harm a target.",
+      "visibility": true,
+      "interactions": [
+        "Can trigger Maneuvers",
+        "Affected by talents that boost damage"
+      ],
+      "examples": ["Sword Slash", "Pistol Shot"],
+      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+    },
+    {
+      "name": "Strike",
+      "category": "Combat",
+      "definition": "A close-range melee attack. Must be within reach.",
+      "visibility": true,
+      "interactions": [
+        "Often used in melee-focused abilities",
+        "Can be blocked or parried"
+      ],
+      "examples": ["Spear Thrust", "Uppercut"],
+      "notes": ""
+    },
+    {
+      "name": "Ranged",
+      "category": "Combat",
+      "definition": "An attack made from a distance, often requiring line of sight.",
+      "visibility": true,
+      "interactions": [
+        "Affected by cover",
+        "Triggers Opportunity Attacks when used too close"
+      ],
+      "examples": ["Arrow Shot", "Throwing Knife"],
+      "notes": ""
+    },
+    {
+      "name": "Area",
+      "category": "Combat",
+      "definition": "Affects multiple targets within a defined space.",
+      "visibility": true,
+      "interactions": [
+        "Can trigger collateral effects",
+        "Modified by AoE talents"
+      ],
+      "examples": ["Fireball", "Shockwave"],
+      "notes": ""
+    },
+    {
+      "name": "Defense",
+      "category": "Combat",
+      "definition": "Enhances your resistance, armor, or ability to avoid harm.",
+      "visibility": true,
+      "interactions": [
+        "Stacks with cover",
+        "May reduce incoming damage"
+      ],
+      "examples": ["Shield Stance", "Stoneform"],
+      "notes": ""
+    },
+    {
+      "name": "Reaction",
+      "category": "Combat",
+      "definition": "Can be used outside your turn in response to a trigger.",
+      "visibility": true,
+      "interactions": [
+        "Usually limited to once per round",
+        "Requires a specific trigger"
+      ],
+      "examples": ["Counterattack", "Dodge Roll"],
+      "notes": ""
+    },
+    {
+      "name": "Fire",
+      "category": "Elemental",
+      "definition": "Causes fire damage or ignition. May interact with flammable materials.",
+      "visibility": true,
+      "interactions": [
+        "Affected by Fire Resistance",
+        "Can ignite enemies or terrain"
+      ],
+      "examples": ["Flameburst", "Molotov"],
+      "notes": ""
+    },
+    {
+      "name": "Cold",
+      "category": "Elemental",
+      "definition": "Causes chilling, freezing, or slowing effects.",
+      "visibility": true,
+      "interactions": [
+        "Can reduce enemy Movement",
+        "Affected by Cold Resistance"
+      ],
+      "examples": ["Frostbite", "Ice Lance"],
+      "notes": ""
+    },
+    {
+      "name": "Lightning",
+      "category": "Elemental",
+      "definition": "Delivers electric shocks; may chain to other targets.",
+      "visibility": true,
+      "interactions": [
+        "Can overload mechanical enemies",
+        "Often bypasses armor"
+      ],
+      "examples": ["Chain Spark", "Storm Jolt"],
+      "notes": ""
+    },
+    {
+      "name": "Poison",
+      "category": "Elemental",
+      "definition": "Applies toxic effects that deal damage over time.",
+      "visibility": true,
+      "interactions": [
+        "Stacks with other poisons",
+        "Affected by Constitution and Detox talents"
+      ],
+      "examples": ["Venom Blade", "Toxic Mist"],
+      "notes": ""
+    },
+    {
+      "name": "Arcane",
+      "category": "Magic",
+      "definition": "Relates to magic derived from study, runes, or eldritch sources.",
+      "visibility": true,
+      "interactions": [
+        "Affected by Arcane Amplification",
+        "Often interacts with glyphs or rituals"
+      ],
+      "examples": ["Mana Bolt", "Rune Trap"],
+      "notes": ""
+    },
+    {
+      "name": "Divine",
+      "category": "Magic",
+      "definition": "Relates to sacred power, faith, or blessings.",
+      "visibility": true,
+      "interactions": [
+        "Affected by Willpower",
+        "Often heals or repels Undead"
+      ],
+      "examples": ["Blessing", "Holy Smite"],
+      "notes": ""
+    },
+    {
+      "name": "Movement",
+      "category": "Utility",
+      "definition": "Changes your position (dash, teleport, disengage).",
+      "visibility": true,
+      "interactions": [
+        "Triggers reaction from enemies",
+        "Can be enhanced by potions"
+      ],
+      "examples": ["Phase Step", "Vault"],
+      "notes": ""
+    },
+    {
+      "name": "Support",
+      "category": "Utility",
+      "definition": "Assists allies through buffs, healing, or tactical coordination.",
+      "visibility": true,
+      "interactions": [
+        "Can increase Action Dice of allies",
+        "Triggers synergy with Leadership talents"
+      ],
+      "examples": ["Inspire", "Bandage"],
+      "notes": ""
+    },
+    {
+      "name": "Debuff",
+      "category": "Utility",
+      "definition": "Applies penalties or hindrances to enemies.",
+      "visibility": true,
+      "interactions": [
+        "Reduces Aptitudes or imposes Conditions",
+        "Can stack with other effects"
+      ],
+      "examples": ["Weaken", "Blinding Dust"],
+      "notes": ""
+    },
+    {
+      "name": "Control",
+      "category": "Utility",
+      "definition": "Alters battlefield conditions or restricts enemy actions.",
+      "visibility": true,
+      "interactions": [
+        "Creates zones, barriers, or area effects",
+        "Limits enemy choices"
+      ],
+      "examples": ["Wall of Ice", "Choke Cloud"],
+      "notes": ""
+    },
+    {
+      "name": "Summon",
+      "category": "Utility",
+      "definition": "Creates creatures or constructs to fight or assist you.",
+      "visibility": true,
+      "interactions": [
+        "Summons act on your turn or autonomously",
+        "May require maintenance or control"
+      ],
+      "examples": ["Spirit Beast", "Animated Turret"],
+      "notes": ""
+    },
+    {
+      "name": "Ongoing",
+      "category": "Meta",
+      "definition": "The effect lasts over multiple turns or requires upkeep.",
+      "visibility": true,
+      "interactions": [
+        "Can be dispelled or expire",
+        "May require concentration or cost"
+      ],
+      "examples": ["Burning", "Poisoned"],
+      "notes": ""
+    },
+    {
+      "name": "Instant",
+      "category": "Meta",
+      "definition": "The effect resolves immediately, with no duration.",
+      "visibility": true,
+      "interactions": [
+        "Does not persist",
+        "Cannot be interrupted"
+      ],
+      "examples": ["Quick Shot", "First Aid"],
+      "notes": ""
+    },
+    {
+      "name": "Passive",
+      "category": "Meta",
+      "definition": "Always active; does not require activation.",
+      "visibility": true,
+      "interactions": [
+        "Always applies when relevant",
+        "May be suppressed by effects"
+      ],
+      "examples": ["Keen Senses", "Battle Hardened"],
+      "notes": ""
+    },
+    {
+      "name": "Triggered",
+      "category": "Meta",
+      "definition": "Activates only when a specific condition is met.",
+      "visibility": true,
+      "interactions": [
+        "Must specify a clear trigger",
+        "Can be part of a chain reaction"
+      ],
+      "examples": ["Backlash", "Quick Reflex"],
+      "notes": ""
+    },
+    {
+      "name": "Risky",
+      "category": "Meta",
+      "definition": "Involves a higher number of Risk Dice or increased danger.",
+      "visibility": true,
+      "interactions": [
+        "Increases chance of complications",
+        "Often has higher reward"
+      ],
+      "examples": ["Berserker Charge", "Explosive Shot"],
+      "notes": ""
+    }
+  ]
+}

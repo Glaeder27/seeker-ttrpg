@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en" data-env="vsc-mobile">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Level & Experience – Seeker Rulebook</title>
+    <link rel="stylesheet" href="https://glaeder27.github.io/seeker-ttrpg/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience and advancement rules for Seeker TTRPG.">
+
+    <!--Custom CSS for the EXP Chapter-->
+    <style>
+        .xp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .xp-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        .xp-card {
+            background: #484848;
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+        }
+
+        .xp-card:hover {
+            background-color: rgba(59, 59, 59, 0.85);
+            transform: scale(1.05);
+        }
+
+        .xp-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: .2rem;
+        }
+
+        .xp-title {
+            margin: .2rem 0 .4rem 0;
+            font-size: .9rem;
+            text-transform: uppercase;
+        }
+
+        .advancement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .advancement-col {
+            flex: 1 1 30%;
+            background: var(--background-grey-1), #3b3b3b;
+            border: 1px solid var(--deep-charcoal);
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            padding: .5rem;
+        }
+
+        .advancement-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            min-height: auto;
+            text-align: center;
+            padding: .3rem;
+        }
+
+        .advancement-header h4 {
+            margin: 0;
+            font-size: .9rem;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .advancement-col:hover {
+            background: #494949;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .xp-table {
+            margin: 0;
+        }
+
+        /* OVERRIDES */
+        .collapsible-header {
+            border-radius: 8px;
+        }
+
+        .collapsible-header:hover {
+            border-radius: 8px;
+        }
+
+        .collapsible-item {
+            background: #3b3b3b;
+            box-shadow: none;
+        }
+
+        .collapsible-icon {
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .collapsible-content.expanded-content {
+            padding: 0;
+        }
+
+        .collapsible-content {
+            transition: opacity 0.3s ease-in-out, max-height 0.5s ease-in-out;
+        }
+
+        .xp-table td:first-child {
+            color: var(--off-white, #f0f0f0);
+            font-weight: 400;
+        }
+
+        .xp-table th:first-child {
+            text-align: left;
+        }
+
+        .xp-table td {
+            color: var(--ancient-gold, #D4B55A);
+            font-weight: 600;
+        }
+
+        .advancement-list {
+            text-align: left;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .advancement-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        .advancement-boost {
+            color: var(--ancient-gold, #D4B55A);
+            font-weight: bold;
+        }
+
+        .adv-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .adv-card {
+            background: #484848;
+            border: 1px solid #444;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            min-width: 300px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .adv-title {
+            font-size: 1.25rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .adv-icon {
+            width: 48px;
+            height: 48px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .advancement-option {
+            border: 1px solid #555;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background-color: #2b2b2b;
+            display: block;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: .9rem;
+        }
+
+        .advancement-option:hover {
+            border-color: var(--ancient-gold, #D4B55A);
+            background-color: var(--background-grey-1, #484848);
+        }
+
+        .apt-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: middle;
+        }
+
+        .advancement-boost {
+            font-weight: bold;
+            color: #d4b55a;
+        }
+
+        .adv-subtitle {
+            font-size: .9rem;
+            color: var(--text-muted, #bbbbbb);
+            margin: 0.5em 0 1em;
+            line-height: 1.5;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-columns">
+        <main class="page-lore">
+            <header class="seeker-title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Level & Experience</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">Progression through the Three Tracks of Play</p>
+            </header>
+
+            <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
+            <section class="rule-options-box">
+                <div class="rule-options-label">Rule Options</div>
+
+                <div class="toggle-bar">
+
+                    <label class="rule-switch">
+                        <input type="checkbox" data-rule="xp-loss" checked />
+                        <span class="slider"></span>
+                        <span class="label">XP Loss</span>
+                        <span class="rule-tag optional tooltip" data-tooltip-key="optional-rule">
+                            Optional
+                        </span>
+                    </label>
+
+                    <label class="rule-switch" style="cursor: not-allowed;">
+                        <input type="checkbox" disabled data-rule="gritty-leveling" style="cursor: not-allowed;" />
+                        <span class="slider"></span>
+                        <span class="label">Gritty Leveling</span>
+                        <span class="rule-tag experimental tooltip" data-tooltip-key="experimental-rule">
+                            Experimental
+                        </span>
+                    </label>
+
+                    <label class="rule-switch" style="cursor: not-allowed;">
+                        <input type="checkbox" disabled data-rule="experimental" style="cursor: not-allowed;" />
+                        <span class="slider"></span>
+                        <span class="label">Epic Campaigns</span>
+                        <span class="rule-tag experimental tooltip" data-tooltip-key="experimental-rule">
+                            Experimental
+                        </span>
+                    </label>
+
+                </div>
+            </section>
+            <!-- Section I -->
+            <div class="section-wrapper">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="Tracks">
+                    Core Concept
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>In Seeker, growth is not linear—it is lived. Your character does not simply accumulate a universal XP
+                number until they “ding.” Instead, they grow through action and specialization, gaining power in the
+                areas where they take risks and make impact.</p>
+            <p>Experience is divided into <strong>three distinct Tracks</strong>, each representing a core axis of
+                gameplay. These Tracks progress independently. You don’t level up in general—you level up in what you
+                do.</strong>:</p>
+            <!-- START: THREE TRACKS GRID -->
+            <div class="xp-grid">
+                <!-- Combat -->
+                <div class="xp-card">
+                    <img src="https://static.wixstatic.com/shapes/e40a82_74fa6857d47846daae5961eae3b49c2e.svg"
+                        alt="CXP icon" class="xp-icon">
+                    <h3 class="xp-title">Combat XP&nbsp;(<strong class="highlight">CXP</strong>)</h3>
+                    <p>Earned by battles, tactics, and surviving danger.</p>
+                </div>
+
+                <!-- Social -->
+                <div class="xp-card">
+                    <img src="https://static.wixstatic.com/shapes/e40a82_755ab1971b9d4d0a9987def711bbd6e5.svg"
+                        alt="SXP icon" class="xp-icon">
+                    <h3 class="xp-title">Social XP&nbsp;(<strong class="highlight">SXP</strong>)</h3>
+                    <p>Gained through persuasion, diplomacy, and relationships.</p>
+                </div>
+
+                <!-- Exploration -->
+                <div class="xp-card">
+                    <img src="https://static.wixstatic.com/shapes/e40a82_b5adb8850fbc4454988c07110cab632c.svg"
+                        alt="EXP icon" class="xp-icon">
+                    <h3 class="xp-title">Exploration XP&nbsp;(<strong class="highlight">EXP</strong>)</h3>
+                    <p>Awarded for discovery, lore, travel, and investigation.</p>
+                </div>
+            </div>
+            <!-- END: THREE TRACKS GRID -->
+            <h4>Independent Progression</h4>
+            <p>Each of the three Tracks—Combat, Social, and Exploration—has its own XP track and levels up
+                independently. Your character does not grow in all things at once, but in the domains where they act,
+                take risks, and make their mark.</p>
+            <p>A Seeker might be a veteran of lost frontiers (Exploration Level 4) yet untested in war (Combat Level 1).
+                This asymmetry reflects a natural evolution shaped by choices, encounters, and personal focus—not by a
+                rigid class or leveling path.</p>
+
+            <!-- Section II -->
+            <div class="section-wrapper">
+                <div class="section-number">Section II</div>
+                <h2 class="section" id="earning">
+                    Earning XP
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>At the end of each gaming session, or upon reaching significant narrative milestones (such as completing
+                a major quest, overcoming a difficult challenge, or achieving a personal character goal), the Game
+                Master (GM) evaluates the players’ actions and contributions. The GM then awards Experience Points (XP)
+                individually in each of the three Tracks — Combat, Social, and Exploration — reflecting the specific
+                areas where the characters made meaningful impact.</p>
+
+            <p>XP awards typically range from 0 to 3 points per Track per session or milestone, depending on the
+                importance, difficulty, and relevance of the actions taken. For example: a daring battle might merit
+                full XP in Combat, while minor skirmishes earn fewer points. Similarly, successful negotiations or
+                insightful discoveries grant XP in the Social or Exploration Tracks respectively.</p>
+
+            <p>This flexible system allows the GM to tailor rewards based on the story’s flow and the players’ focus,
+                encouraging characters to develop along the lines of their choices and playstyle rather than through
+                arbitrary point accrual. It is important to note that XP awards are cumulative and independent for each
+                Track, supporting asymmetrical character growth.</p>
+
+            <p>Use the sample breakdown tables below as a guideline to help calibrate your XP distribution consistently
+                and fairly.</p>
+
+            <section class="collapsible-item">
+                <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                    aria-controls="combat-table">
+                    <span class="collapsible-title">Combat & Warfare</span>
+                    <span class="collapsible-icon" aria-hidden="true">▸</span>
+                </header>
+                <div id="combat-table" class="collapsible-content">
+                    <table class="xp-table">
+                        <thead>
+                            <tr>
+                                <th>Event / Action</th>
+                                <th>CXP</th>
+                                <th>SXP</th>
+                                <th>EXP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Defeated a dangerous enemy</td>
+                                <td>+2</td>
+                                <td>—</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Survived overwhelming odds</td>
+                                <td>+2</td>
+                                <td>—</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Used terrain or tactics creatively</td>
+                                <td>+1</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Spared an enemy for a moral reason</td>
+                                <td>—</td>
+                                <td>+1</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Defended a vulnerable NPC during combat</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Defeated an enemy using non-lethal tactics</td>
+                                <td>—</td>
+                                <td>+2</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Led a squad or group into battle successfully</td>
+                                <td>+2</td>
+                                <td>+1</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="collapsible-item">
+                <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                    aria-controls="social-table">
+                    <span class="collapsible-title">Social Leverage & Diplomacy</span>
+                    <span class="collapsible-icon" aria-hidden="true">▸</span>
+                </header>
+                <div id="social-table" class="collapsible-content">
+                    <table class="xp-table">
+                        <thead>
+                            <tr>
+                                <th>Event / Action</th>
+                                <th>CXP</th>
+                                <th>SXP</th>
+                                <th>EXP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Resolved a conflict through diplomacy</td>
+                                <td>—</td>
+                                <td>+2</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Convinced a powerful NPC to help</td>
+                                <td>—</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Built rapport with an enemy or outsider</td>
+                                <td>—</td>
+                                <td>+2</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Led a faction negotiation or political deal</td>
+                                <td>—</td>
+                                <td>+2</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Sacrificed personal gain for another</td>
+                                <td>—</td>
+                                <td>+1</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Manipulated a social situation for gain</td>
+                                <td>—</td>
+                                <td>+2</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Earned or lost a Reputation tag</td>
+                                <td>—</td>
+                                <td>+1</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="collapsible-item">
+                <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                    aria-controls="exploration-table">
+                    <span class="collapsible-title">Exploration & Survival</span>
+                    <span class="collapsible-icon" aria-hidden="true">▸</span>
+                </header>
+                <div id="exploration-table" class="collapsible-content">
+                    <table class="xp-table">
+                        <thead>
+                            <tr>
+                                <th>Event / Action</th>
+                                <th>CXP</th>
+                                <th>SXP</th>
+                                <th>EXP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Explored a forgotten ruin or dungeon</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+2</td>
+                            </tr>
+                            <tr>
+                                <td>Mapped a previously unknown area</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Survived an extreme weather or hazard</td>
+                                <td>+1</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Guided a group through dangerous terrain</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Identified and countered a natural threat</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+2</td>
+                            </tr>
+                            <tr>
+                                <td>Scouted or tracked a hidden target</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="collapsible-item">
+                <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                    aria-controls="knowledge-table">
+                    <span class="collapsible-title">Knowledge & Discovery</span>
+                    <span class="collapsible-icon" aria-hidden="true">▸</span>
+                </header>
+                <div id="knowledge-table" class="collapsible-content">
+                    <table class="xp-table">
+                        <thead>
+                            <tr>
+                                <th>Event / Action</th>
+                                <th>CXP</th>
+                                <th>SXP</th>
+                                <th>EXP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Decoded an ancient text or cipher</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Uncovered lore tied to the setting</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+2</td>
+                            </tr>
+                            <tr>
+                                <td>Discovered a new magical phenomenon</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+2</td>
+                            </tr>
+                            <tr>
+                                <td>Studied a monster, artifact or relic</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Learned or taught a rare technique</td>
+                                <td>—</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="collapsible-item">
+                <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                    aria-controls="rituals-table">
+                    <span class="collapsible-title">Crafting, Rituals & Preparation</span>
+                    <span class="collapsible-icon" aria-hidden="true">▸</span>
+                </header>
+                <div id="rituals-table" class="collapsible-content">
+                    <table class="xp-table">
+                        <thead>
+                            <tr>
+                                <th>Event / Action</th>
+                                <th>CXP</th>
+                                <th>SXP</th>
+                                <th>EXP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Completed a complex magical ritual</td>
+                                <td>—</td>
+                                <td>+1</td>
+                                <td>+2</td>
+                            </tr>
+                            <tr>
+                                <td>Crafted a useful item or tool</td>
+                                <td>+1</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Designed traps, defenses or fortifications</td>
+                                <td>+1</td>
+                                <td>—</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Trained a companion, animal, or cohort</td>
+                                <td>—</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Prepared a strategy or plan for a mission</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="collapsible-item">
+                <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                    aria-controls="hybrid-table">
+                    <span class="collapsible-title">Multidimensional & Hybrid Events</span>
+                    <span class="collapsible-icon" aria-hidden="true">▸</span>
+                </header>
+                <div id="hybrid-table" class="collapsible-content">
+                    <table class="xp-table">
+                        <thead>
+                            <tr>
+                                <th>Event / Action</th>
+                                <th>CXP</th>
+                                <th>SXP</th>
+                                <th>EXP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Turned a losing battle into an alliance</td>
+                                <td>+1</td>
+                                <td>+2</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Used forbidden knowledge to change the outcome</td>
+                                <td>+1</td>
+                                <td>—</td>
+                                <td>+2</td>
+                            </tr>
+                            <tr>
+                                <td>Resolved a mission with all three Tracks</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Chose to act against personal gain for greater good</td>
+                                <td>—</td>
+                                <td>+2</td>
+                                <td>+1</td>
+                            </tr>
+                            <tr>
+                                <td>Completed a story arc related to Polarity</td>
+                                <td>—</td>
+                                <td>+2</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <!-- Section III -->
+            <div class="section-wrapper">
+                <div class="section-number">Section III</div>
+                <h2 class="section" id="levels">
+                    From XP to Levels
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>Each Track—Combat, Social, or Exploration—has its own XP progression. Every 5 XP earned in a given Track
+                results in a Level Up within that domain. Progress is tracked separately for each Track, reflecting a
+                character’s specific areas of activity.</p>
+
+            <h4>Maximum Level Cap</h4>
+            <p>The maximum Level a character can reach in any single Track is Level 10. This represents the pinnacle of
+                skill and influence within that domain, and typically marks the end point for progression in that area
+                during the campaign.</p>
+            <h4>Asymmetrical Growth</h4>
+            <p>Characters in Seeker are meant to grow unevenly, based on the actions they take and the situations they
+                prioritize. It’s common to see characters with highly divergent progression—for example, Level 4 in
+                Exploration, Level 3 in Combat, and Level 1 in Social. This asymmetry reflects organic, choice-driven
+                development rather than forced balance.</p>
+            <!-- Section IV -->
+            <div class="section-wrapper">
+                <div class="section-number">Section IV</div>
+                <h2 class="section" id="advancements">
+                    Advancements
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <p>Every new Level gained in a Track grants an Advancement—a player-chosen benefit from that Track’s menu.
+                Advancements may include Aptitude increases, new abilities, combat maneuvers, exploration skills, social
+                tools, or unique perks tied to the character’s growth. Each Advancement represents a tangible, thematic
+                evolution of the Seeker’s capabilities.</p>
+            <p>Every new level unlocks an <strong>Advancement</strong>—a choice from that Track’s menu.</p>
+
+            <div class="adv-grid">
+
+                <!-- Combat Track -->
+                <div class="adv-card">
+                    <img src="https://static.wixstatic.com/shapes/e40a82_74fa6857d47846daae5961eae3b49c2e.svg"
+                        alt="Combat Icon" class="adv-icon">
+                    <h3 class="adv-title highlight">Combat Track</h3>
+                    <p class="adv-subtitle">
+                        Strengthen your martial prowess and battlefield resilience. Leveling up in the Combat Track
+                        empowers you with raw might, tactical skills, and the capacity to survive—and triumph—in violent
+                        encounters.
+                    </p>
+
+                    <div class="advancement-option">
+                        <span class="advancement-boost">+1</span>
+                        <img src="https://static.wixstatic.com/shapes/e40a82_7e1d9de23f2645b988a5d5e3c22c8231.svg"
+                            class="apt-icon" alt="Strength">
+                        <strong>Strength</strong>,
+                        <img src="https://static.wixstatic.com/shapes/e40a82_ce3f5a9ea70f4af5a634742be8d043ad.svg"
+                            class="apt-icon" alt="Agility">
+                        <strong>Agility</strong>, or
+                        <img src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg"
+                            class="apt-icon" alt="Vigor">
+                        <strong>Vigor</strong>
+                    </div>
+
+                    <div class="advancement-option">
+                        Gain <span class="advancement-boost">1</span> new <u>Attack,</u> <u>Maneuver,</u> or
+                        <u>Defense</u> <strong>Skill</strong>
+                    </div>
+
+                    <div class="advancement-option">
+                        <span class="advancement-boost">+2</span> <strong>Health</strong>
+                    </div>
+
+                    <div class="advancement-option">
+                        Unlock <span class="advancement-boost">1</span> new <u>Combat</u> <strong>Mastery</strong>
+                    </div>
+                </div>
+
+                <!-- Social Track -->
+                <div class="adv-card">
+                    <img src="https://static.wixstatic.com/shapes/e40a82_755ab1971b9d4d0a9987def711bbd6e5.svg"
+                        alt="Social Icon" class="adv-icon">
+                    <h3 class="adv-title highlight">Social Track</h3>
+                    <p class="adv-subtitle">
+                        Hone your influence, empathy, and ability to shape hearts and minds. Leveling up in the Social
+                        Track enhances your capacity to manipulate, inspire, or connect with others—whether in courtly
+                        intrigue or desperate negotiations.
+                    </p>
+
+                    <div class="advancement-option">
+                        <span class="advancement-boost">+1</span>
+                        <img src="https://static.wixstatic.com/shapes/e40a82_57fbbea322f14072915fe83908e360df.svg"
+                            class="apt-icon" alt="Charisma">
+                        <strong>Charisma</strong>,
+                        <img src="https://static.wixstatic.com/shapes/e40a82_6da737fa86b1492cb32a571f1f2f8e62.svg"
+                            class="apt-icon" alt="Insight">
+                        <strong>Insight</strong>, or
+                        <img src="https://static.wixstatic.com/shapes/e40a82_70b95ae668b245ccb152aa17228996ad.svg"
+                            class="apt-icon" alt="Willpower">
+                        <strong>Willpower</strong>
+                    </div>
+
+                    <div class="advancement-option">
+                        Gain <span class="advancement-boost">1</span> new <u>Support</u>, <u>Deception</u>, or
+                        <u>Influence</u> <strong>Skill</strong>
+                    </div>
+
+                    <div class="advancement-option">
+                        Unlock <span class="advancement-boost">1</span> new <u>Social</u> <strong>Mastery</strong>
+                    </div>
+                </div>
+
+                <!-- Exploration Track -->
+                <div class="adv-card">
+                    <img src="https://static.wixstatic.com/shapes/e40a82_b5adb8850fbc4454988c07110cab632c.svg"
+                        alt="Exploration Icon" class="adv-icon">
+                    <h3 class="adv-title highlight">Exploration Track</h3>
+                    <p class="adv-subtitle">
+                        Expand your knowledge, adaptability, and resourcefulness in uncharted territories. The
+                        Exploration Track improves your capacity to uncover secrets, survive the unknown, and master the
+                        mutable world.
+                    </p>
+
+                    <div class="advancement-option">
+                        <span class="advancement-boost">+1</span>
+                        <img src="https://static.wixstatic.com/shapes/e40a82_d8b41b7bd36a4230929131bc44276eb7.svg"
+                            class="apt-icon" alt="Perception">
+                        <strong>Perception</strong>,
+                        <img src="https://static.wixstatic.com/shapes/e40a82_81b63b524d76464eaf071b4f5cd9ab87.svg"
+                            class="apt-icon" alt="Intellect">
+                        <strong>Intellect</strong>, or
+                        <img src="https://static.wixstatic.com/shapes/e40a82_cba6d08d5b93403798c6ddc1418d2c4f.svg"
+                            class="apt-icon" alt="Adaptability">
+                        <strong>Adaptability</strong>
+                    </div>
+
+                    <div class="advancement-option">
+                        Gain <span class="advancement-boost">1</span> new <u>Utility</u>, <u>Information</u>, or
+                        <u>Movement</u> <strong>Skill</strong>
+                    </div>
+
+                    <div class="advancement-option">
+                        Unlock <span class="advancement-boost">1</span> new <u>Exploration</u> <strong>Mastery</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- END: ADVANCEMENT GRID -->
+            <h3>Capstone Levels</h3>
+            <p>When you reach <strong>Level 10</strong> in a Track, gain a once-in-a-lifetime <strong>Capstone
+                    Ability</strong> tied to that domain.</p>
+
+            <!-- Section VII -->
+            <div class="section-wrapper">
+                <div class="section-number">Section VII</div>
+                <h2 class="section" id="respec">
+                    Respec & Retraining
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+            <section class="rules-section">
+                <p><strong>Characters evolve.</strong> After a major narrative event (months of study, a crisis of
+                    faith, etc.), the GM may allow a character to trade one advancement for another in the same tier.
+                </p>
+
+                <p>This process—known as <em>retraining</em>—represents deliberate change, whether prompted by spiritual
+                    revelation, physical hardship, or shifting loyalties. It’s not casual or frequent, but it reflects
+                    the dynamic nature of Seekers as they respond to the world.</p>
+
+                <h3>When to Allow Retraining</h3>
+                <p><strong>Respec is a narrative milestone, not a transactional mechanic.</strong> It should feel
+                    earned. Some examples include:</p>
+                <ul>
+                    <li>The character has spent weeks studying with a new mentor or tradition.</li>
+                    <li>A traumatic event changes the character’s beliefs or fighting style.</li>
+                    <li>The group enters a new region that demands different aptitudes.</li>
+                    <li>The character voluntarily retires a philosophy, faction, or role.</li>
+                </ul>
+                <p>Retraining should not happen during short rests or between minor scenes. The change should be
+                    justified through roleplay and integrated into the story.</p>
+
+                <h3>What Can Be Retrained</h3>
+                <p>Players may trade <strong>one advancement for another of the same type</strong>, within the same
+                    <strong>Track</strong> and <strong>Tier</strong>. For example:</p>
+                <ul>
+                    <li>Swap a Social Skill like <u>Support</u> for another like <u>Influence</u>.</li>
+                    <li>Replace a Combat Mastery with a different one.</li>
+                    <li>Exchange +1 to an Aptitude for +1 to another within that Track.</li>
+                </ul>
+
+                <blockquote class="rules-note">
+                    <strong>Important:</strong> Players cannot respec across Tracks (e.g., trading a Combat Skill for a
+                    Social Skill), nor change their total XP.
+                </blockquote>
+
+                <h4>GM Guidance</h4>
+                <p>As GM, you are the final judge of when a retraining opportunity is appropriate. Use it to:</p>
+                <ul>
+                    <li>Reflect character growth or internal conflict.</li>
+                    <li>Reinforce consequences of major narrative beats.</li>
+                    <li>Keep players engaged if they regret a previous build choice.</li>
+                </ul>
+                <p><em>Optional:</em> Consider requiring a short side quest, cost, or ritual to mark the
+                    transition—especially if the change affects faction ties or magical philosophies.</p>
+            </section>
+
+            <div class="rule-xp-loss">
+                <!-- Section VII -->
+            <div class="section-wrapper">
+                <div class="section-number">Section VIII</div>
+                <h2 class="section" id="respec">
+                    Optional Rules
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+            </div>
+          <h3 class="tagged">XP Loss <span class="rule-tag optional tooltip"
+              data-tooltip-key="optional-rule">
+              Optional
+            </span></h3>
+            <section class="rules-section">
+
+  <p>In rare circumstances, a Seeker may suffer <strong>XP Loss</strong>—a symbolic and mechanical setback that marks failure, trauma, or a radical turning point.</p>
+
+  <p>XP Loss is always GM-approved and driven by narrative. It may represent the loss of knowledge, social standing, or physical prowess, rather than literal memory loss.</p>
+
+  <h4>When XP Loss Might Apply</h4>
+<p>While XP Loss is an optional rule, it can be a powerful narrative tool to represent moments of downfall, trauma, or transformation. These are not minor setbacks—they mark turning points in a character's journey, when something is truly lost, broken, or left behind.</p>
+<ul>
+  <li>The character is <strong>defeated, captured, or maimed</strong> during a critical scene, leaving lasting scars.</li>
+  <li>A betrayal or catastrophic failure causes the character to <strong>lose confidence or reputation</strong> among allies and factions.</li>
+  <li>The character is <strong>excommunicated from a faction</strong> or <strong>abandons their code</strong>, severing ties with a foundational belief.</li>
+  <li>A magical curse or mind-altering experience <strong>rewrites their capabilities</strong>, fragmenting memory or skill.</li>
+</ul>
+
+
+  <h4>How XP Loss Works</h4>
+  <ul>
+    <p>The player loses <strong>1–3 XP</strong> in a specific <strong>Track</strong> (Combat, Social, or Exploration).</p>
+    <p>XP Loss cannot cause a character to drop below their current Level.
+  </ul>
+
+  <blockquote class="rules-note">
+    <p>XP Loss is not meant to punish, but to mark the weight of consequence and transformation in a mutable world.</p>
+  </blockquote>
+</section>
+
+
+            </div>
+
+        </main>
+    </div>
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+</body>
+
+</html>
