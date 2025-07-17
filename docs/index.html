@@ -72,8 +72,7 @@
       width: 100%;
       height: auto;
       margin-bottom: 1rem;
-      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1))
-              drop-shadow(0 0 16px rgba(0, 0, 0, 0.8));
+      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.8));
     }
 
     .overlay-symbol-1 {
@@ -90,7 +89,7 @@
       transform: translate(-50%, -50%);
       z-index: 0;
       pointer-events: none;
-      }
+    }
 
     /* Overrides */
     .banner-mask::before {
@@ -119,7 +118,10 @@
       });
   </script>
 
-  <!-- MAIN CONTENT ─────────────── -->
+  <!-- ────────────────────────────────────────────────────────── -->
+  <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+  <!-- ────────────────────────────────────────────────────────── -->
+   
   <!-- Banner -->
   <div class="banner-parallax" style="background-image: url('assets/images/banners/home-page.webp');"
     alt="Conquista de México por Cortés - Conquest of Mexico by Cortés">
@@ -142,42 +144,188 @@
     </div>
   </div>
 
-  <!-- What is Seeker? -->
-  <!-- Hero Banner -->
-  <section class="central-column">
+  <!-- ── What is Seeker? ───────────────────────────────────────────── -->
+  <main class="central-column">
 
-        <header class="title">
-            <div class="title-container">
-                <span class="title-icon">🜍</span>
-                <h1>What is Seeker?</h1>
-                <span class="title-icon flipped">🜍</span>
-            </div>
-            <p class="subtitle">A TTRPG of Occult Discovery</p>
-        </header>
-
-        <blockquote class="clean" style="margin-top: -.5rem;">
-          <p>“There are truths buried beneath the roots of the New World—truths not meant to be unearthed. Yet we, the Seekers, were sent to dig anyway.”</p>
-          <p class="blockquote-clean-author">— Christophorus Columbus</p>
-        </blockquote>
-
-        <div class="overlay-symbol-1"></div>
-
-        <div class="intro-text">
-          <p>
-            <strong>Seeker</strong> is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines.
-            As a <em>Seeker/Buscador</em>—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them.
-          </p>
-          <p>
-            Your path is unbound by class, shaped instead by your choices across three converging domains: <strong>Combat</strong>, <strong>Exploration</strong>, and <strong>Social Intrigue</strong>.
-            Discoveries alter your capabilities as much as they shift the world around you—each relic uncovered, ruin explored, or alliance forged deepens your mark on the map and the myths it carries.
-          </p>
-          <p>
-            You won’t find rigid roles or linear quests. Instead, <strong>Seeker</strong> offers an open structure where personal ambition, factional conflict, and arcane mystery collide.
-            Magic is dangerous and alive. Maps are incomplete lies. The world changes based on your presence—sometimes subtly, sometimes catastrophically.
-          </p>
-          <p><em>This is not a tale of simple heroes and villains. It is the record of those who sought… and what they found.</em></p>
+    <section name="">
+      <header class="title">
+        <div class="title-container">
+          <span class="title-icon">🜍</span>
+          <h1>What is Seeker?</h1>
+          <span class="title-icon flipped">🜍</span>
         </div>
-  </section>
+        <p class="subtitle">A TTRPG of Occult Discovery</p>
+      </header>
+
+      <blockquote class="clean" style="margin-top: -.5rem;">
+        <p>“There are truths buried beneath the roots of the New World—truths not meant to be unearthed. Yet we, the
+          Seekers, were sent to dig anyway.”</p>
+        <p class="blockquote-clean-author">— Christophorus Columbus</p>
+      </blockquote>
+
+      <div class="overlay-symbol-1"></div>
+
+      <div class="intro-text">
+        <p>
+          <strong>Seeker</strong> is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial
+          ambition awakens forgotten entities and fractured ley‑lines.
+          As a <em>Seeker/Buscador</em>—explorer, scholar, heretic—you cross an ocean into lands that observe you as
+          intently as you chart them.
+        </p>
+        <p>
+          Your path is unbound by class, shaped instead by your choices across three converging domains:
+          <strong>Combat</strong>, <strong>Exploration</strong>, and <strong>Social Intrigue</strong>.
+          Discoveries alter your capabilities as much as they shift the world around you—each relic uncovered, ruin
+          explored, or alliance forged deepens your mark on the map and the myths it carries.
+        </p>
+        <p>
+          You won’t find rigid roles or linear quests. Instead, <strong>Seeker</strong> offers an open structure where
+          personal ambition, factional conflict, and arcane mystery collide.
+          Magic is dangerous and alive. Maps are incomplete lies. The world changes based on your presence—sometimes
+          subtly, sometimes catastrophically.
+        </p>
+        <p><em>This is not a tale of simple heroes and villains. It is the record of those who sought… and what they
+            found.</em></p>
+      </div>
+    </section>
+
+    <!-- ── Feature Carousel ───────────────────────────────────────────── -->
+    <section name="feature-carousel">
+      <div class="carousel-wrapper">
+        <button class="carousel-arrow left" aria-label="Scroll Left">‹</button>
+        <div class="carousel-track">
+          <div class="feature-card"
+            style="background-image: url('assets/images/webp/allegory-of-the-transience-of-life.webp');">
+            <div class="card-content">
+              <h3>Mortality & Mystery</h3>
+              <p class="card-description short">A world shaped by death, myth, and memory.</p>
+              <p class="card-description full">Explore an age where each discovery blurs the line between science and
+                superstition. Every expedition is haunted by the transience of life.</p>
+            </div>
+          </div>
+          <div class="feature-card"
+            style="background-image: url('assets/images/webp/concilio-di-trento-caprarola.webp');">
+            <div class="card-content">
+              <h3>Occult Powers</h3>
+              <p class="card-description short">Magic is real—and watching you.</p>
+              <p class="card-description full">Wield ancient rites, forbidden artifacts, and pacts with entities beyond
+                comprehension. Power has a price.</p>
+            </div>
+          </div>
+          <div class="feature-card" style="background-image: url('assets/images/webp/isabel-cattolica.webp');">
+            <div class="card-content">
+              <h3>Factions & Faith</h3>
+              <p class="card-description short">Politics, religion, heresy, war.</p>
+              <p class="card-description full">Navigate shifting alliances and ideological zeal in a world where faith
+                and
+                empire are indivisible forces.</p>
+            </div>
+          </div>
+          <div class="feature-card"
+            style="background-image: url('assets/images/webp/the-battle-of-las-navas-de-tolosa.webp');">
+            <div class="card-content">
+              <h3>Tactical Combat</h3>
+              <p class="card-description short">Stance-based action & dangerous foes.</p>
+              <p class="card-description full">Seeker uses an initiative system based on tactical stance selection.
+                Every
+                action carries risk—and narrative consequence.</p>
+            </div>
+          </div>
+          <div class="feature-card"
+            style="background-image: url('assets/images/webp/the-imprisonment-of-guatimocin-by-the-troops-of-hernan-cortes.webp');">
+            <div class="card-content">
+              <h3>Colonial Conflict</h3>
+              <p class="card-description short">Power, resistance, and historical fracture.</p>
+              <p class="card-description full">Play within a speculative colonial world deeply influenced by Indigenous
+                resilience, cultural collapse, and forbidden awakenings.</p>
+            </div>
+          </div>
+          <div class="feature-card" style="background-image: url('assets/images/webp/vasco-da-gama.webp');">
+            <div class="card-content">
+              <h3>Exploration</h3>
+              <p class="card-description short">Unknown lands, impossible maps.</p>
+              <p class="card-description full">The New World is alive—your presence alters its geography, mood, and
+                meaning. The map is never complete.</p>
+            </div>
+          </div>
+          <div class="feature-card" style="background-image: url('assets/images/webp/vitruvian-man.webp');">
+            <div class="card-content">
+              <h3>Unclassed Characters</h3>
+              <p class="card-description short">No fixed roles. Only choices.</p>
+              <p class="card-description full">Shape your Seeker through discoveries, alliances, and risk-taking.
+                Abandon
+                classes for emergent identity.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-arrow right" aria-label="Scroll Right">›</button>
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  // ── Carousel Script ─────────────────────────────────────────────
+const track = document.querySelector('.carousel-track');
+let isDown = false;
+let startX = 0;
+let scrollStart = 0;
+let animationFrame;
+
+track.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.clientX;
+  scrollStart = track.scrollLeft;
+  track.classList.add('active');
+  document.body.style.userSelect = 'none';
+});
+
+track.addEventListener('mouseup', () => {
+  isDown = false;
+  track.classList.remove('active');
+  document.body.style.userSelect = '';
+  if (animationFrame) cancelAnimationFrame(animationFrame);
+});
+
+track.addEventListener('mouseleave', () => {
+  if (isDown) {
+    isDown = false;
+    track.classList.remove('active');
+    document.body.style.userSelect = '';
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+  }
+});
+
+track.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const walk = e.clientX - startX;
+
+  if (animationFrame) cancelAnimationFrame(animationFrame);
+
+  animationFrame = requestAnimationFrame(() => {
+    track.scrollLeft = scrollStart - walk;
+  });
+});
+
+</script>
+
+
 </body>
 
 </html>
