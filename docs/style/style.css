@@ -5,7 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Great+Vibes&family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    /* Color Palette */
+    /* ── COLOR PALETTE ─────────────── */
+
+    /* Main */
     --bright-gold: #F6CB75;
     --ancient-gold: #D4B55A;
     --pale-copper: #C99C5E;
@@ -23,6 +25,8 @@
     --light-brown: #916339;
     --background-grey-1: #3b3b3b;
     --hover-grey-1: #494949;
+
+    /* Stances */
     --aggressive: #8B3A3A;
     --defensive: #4A5E6A;
     --evasive: #667054;
@@ -30,7 +34,7 @@
     --balanced: #5E7A78;
     --mystic: #735A84;
 
-    /* RGB Color Palette */
+    /* RGB Color Conversions */
     --bright-gold-rgb: 246, 203, 117;
     --ancient-gold-rgb: 212, 181, 90;
     --pale-copper-rgb: 201, 156, 94;
@@ -44,7 +48,7 @@
     --off-white-rgb: 240, 240, 240;
     --dark-paper-rgb: 147, 134, 99;
 
-    /* Font Families */
+    /* ── FONTS ─────────────── */
     --default-font: 'Montserrat', sans-serif;
     --special-font: 'Georgia', serif;
     --handwritten-font: 'Great Vibes', cursive;
@@ -53,8 +57,67 @@
 
 
 /*=============================================
-=            GENERAL BODY & LAYOUT            =
+=                    MAIN                     =
 =============================================*/
+
+/* ── GENERAL ─────────────── */
+html,
+body {
+    font-family: var(--default-font);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: rgba(48, 48, 48, 1);
+    overflow: auto;
+    color: var(--off-white);
+    scrollbar-width: none;
+}
+
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+}
+.page>div {
+    min-width: 0;
+}
+.page-infobox {
+    padding: 25px 10px 0 10px;
+    margin: 0 auto;
+}
+.page-columns {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 80%;
+    gap: 20px;
+    padding: 1rem 2vw;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+/* ── SIDEBAR ─────────────── */
+
+.sidebar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    min-width: 180px;
+    padding-top: 30px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    z-index: 1;
+}
+
+/* ── NAVBAR ─────────────── */
 
 .main-navbar {
   display: flex;
@@ -92,26 +155,6 @@
 }
 
 /* ── VSC EDITING ─────────────── */
-html[data-env="vsc"] .page-columns {
-    outline: 1px dashed green;
-}
-
-html[data-env="vsc"] {
-    background-color: rgba(48, 48, 48, 1);
-    overflow: scroll !important;
-    max-width: 940px;
-}
-
-html[data-env="vsc-940"] .page-columns {
-    outline: 1px dashed green;
-}
-
-html[data-env="vsc-940"] {
-    background-color: rgba(48, 48, 48, 1);
-    overflow: scroll !important;
-    max-width: 940px;
-    width: 940px;
-}
 
 html[data-env="vsc-mobile"] {
     background-color: rgba(48, 48, 48, 1);
@@ -121,72 +164,10 @@ html[data-env="vsc-mobile"] {
     border: 1px dashed blue;
 }
 
-html,
-body {
-    font-family: var(--default-font);
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    color: var(--off-white);
-    overflow: hidden !important;
-    min-height: 100%;
-}
-
 body::-webkit-scrollbar {
     display: none;
     width: 0px;
     background: transparent;
-}
-
-html {
-    scrollbar-width: none;
-}
-
-.container {
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.page-lore,
-.page-main {
-    flex: 1;
-    width: 100%;
-    min-width: 0;
-}
-
-.page-lore>div,
-.page-main>div {
-    min-width: 0;
-}
-
-.page-infobox {
-    padding: 25px 10px 0 10px;
-    margin: 0 auto;
-}
-
-.page-columns {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 80%;
-    gap: 20px;
-    padding: 1rem 2vw;
-    box-sizing: border-box;
-    margin: 0 auto;
-}
-
-.sidebar {
-    flex: 0 0 20%;
-    max-width: 20%;
-    min-width: 180px;
-    padding-top: 30px;
-    position: sticky;
-    top: 20px;
-    align-self: flex-start;
-    max-height: calc(100vh - 4rem);
-    overflow-y: auto;
-    z-index: 1;
 }
 
 /*=============================================
