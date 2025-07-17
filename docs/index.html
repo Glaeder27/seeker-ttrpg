@@ -74,13 +74,11 @@
       filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.8));
     }
 
-    .overlay-symbol-1 {
+    .overlay-symbol {
       position: absolute;
       top: 55%;
-      left: 20%;
       width: 500px;
       height: 500px;
-      background-image: url('assets/icons/svg/alchemy-1.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
@@ -91,7 +89,23 @@
       pointer-events: none;
     }
 
-    #what-is-seeker:hover .overlay-symbol-1 {
+    .overlay-symbol.l {
+      left: 20%;
+    }
+    .overlay-symbol.r {
+      right: -35%;
+    }
+
+    .overlay-symbol.var-1 {
+      background-image: url('assets/icons/svg/alchemy-1.svg');
+    }
+    .overlay-symbol.var-2 {
+      background-image: url('assets/icons/svg/alchemy-2.svg');
+    }
+
+
+    #what-is-seeker:hover .overlay-symbol.var-1,
+    #the-new-world:hover .overlay-symbol.var-2 {
       opacity: 0.1;
     }
 
@@ -148,9 +162,9 @@
     </div>
   </div>
 
-  <!-- ── What is Seeker? ───────────────────────────────────────────── -->
   <main>
 
+    <!-- ── What is Seeker? ───────────────────────────────────────────── -->
     <section id="what-is-seeker" class="central-column">
       <header class="title">
         <div class="title-container">
@@ -168,7 +182,7 @@
       </blockquote>
 
       <div class="intro-text">
-        <div class="overlay-symbol-1"></div>
+        <div class="overlay-symbol l var-1"></div>
         <p>
           <strong>Seeker</strong> is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial
           ambition awakens forgotten entities and fractured ley‑lines.
@@ -199,32 +213,54 @@
       <div class="carousel-wrapper">
         <button class="carousel-arrow left" aria-label="Scroll Left">‹</button>
         <div class="carousel-track">
+          <!--Classless Progression-->
+          <div class="feature-card-wrapper">
+          <div class="feature-card" style="background-image: url('assets/images/webp/vitruvian-man.webp');">
+            <div class="card-content">
+              <p class="card-description full">No fixed classes — build your character freely through Skill and Mastery
+                choices.</p>
+              <h3>Classless Progression</h3>
+              <p class="card-description short">Forge your path with freeform character growth.</p>
+            </div>
+          </div>
+          </div>
+          <!--Historical Fantasy-->
+          <div class="feature-card-wrapper">
           <div class="feature-card"
             style="background-image: url('assets/images/webp/allegory-of-the-transience-of-life.webp');">
             <div class="card-content">
               <p class="card-description full">Explore an age where each discovery blurs the line between science and
                 superstition. Every expedition is haunted by the transience of life.</p>
-              <h3>Mortality & Mystery</h3>
+              <h3>Historical Fantasy</h3>
               <p class="card-description short">A world shaped by death, myth, and memory.</p>
             </div>
           </div>
+          </div>
+          <!--Customizable Abilities -->
+          <div class="feature-card-wrapper">
           <div class="feature-card"
-            style="background-image: url('assets/images/webp/concilio-di-trento-caprarola.webp');">
+            style="background-image: url('assets/images/webp/the-imprisonment-of-guatimocin-by-the-troops-of-hernan-cortes.webp');">
             <div class="card-content">
-              <p class="card-description full">Wield ancient rites, forbidden artifacts, and pacts with entities beyond
-                comprehension. Power has a price.</p>
-              <h3>Occult Powers</h3>
-              <p class="card-description short">Magic is real—and watching you.</p>
+              <p class="card-description full">Unlock and reshape talents, rituals, and skills through in-world
+                discoveries and choices.</p>
+              <h3>Customizable Abilities</h3>
+              <p class="card-description short">Shape your powers through discovery and choice.</p>
             </div>
           </div>
-          <div class="feature-card" style="background-image: url('assets/images/webp/isabel-cattolica.webp');">
+          </div>
+          <!--Three-Way Leveling -->
+          <div class="feature-card-wrapper">
+          <div class="feature-card" style="background-image: url('assets/images/webp/vasco-da-gama.webp');">
             <div class="card-content">
-              <p class="card-description full">Navigate shifting alliances and ideological zeal in a world where faith
-                and empire are indivisible forces.</p>
-              <h3>Factions & Faith</h3>
-              <p class="card-description short">Politics, religion, heresy, war.</p>
+              <p class="card-description full">Level across three intertwined tracks: Combat, Exploration, and Social.
+              </p>
+              <h3>Three-Way Leveling</h3>
+              <p class="card-description short">Ascend through battle, discovery, and influence.</p>
             </div>
           </div>
+          </div>
+          <!--Tactical Combat -->
+          <div class="feature-card-wrapper">
           <div class="feature-card"
             style="background-image: url('assets/images/webp/the-battle-of-las-navas-de-tolosa.webp');">
             <div class="card-content">
@@ -234,36 +270,116 @@
               <p class="card-description short">Stance-based action & dangerous foes.</p>
             </div>
           </div>
+          </div>
+          <!--Occult Powers -->
+          <div class="feature-card-wrapper">
           <div class="feature-card"
-            style="background-image: url('assets/images/webp/the-imprisonment-of-guatimocin-by-the-troops-of-hernan-cortes.webp');">
+            style="background-image: url('assets/images/webp/concilio-di-trento-caprarola.webp');">
             <div class="card-content">
-              <p class="card-description full">Play within a speculative colonial world deeply influenced by Indigenous
-                resilience, cultural collapse, and forbidden awakenings.</p>
-              <h3>Colonial Conflict</h3>
-              <p class="card-description short">Power, resistance, and historical fracture.</p>
+              <p class="card-description full">Wield ancient rites, forbidden artifacts, and pacts with entities beyond
+                comprehension. Power has a price.</p>
+              <h3>Occult Powers</h3>
+              <p class="card-description short">Magic is real — and it's watching your every move.</p>
             </div>
           </div>
-          <div class="feature-card" style="background-image: url('assets/images/webp/vasco-da-gama.webp');">
-            <div class="card-content">
-              <p class="card-description full">The New World is alive—your presence alters its geography, mood, and
-                meaning. The map is never complete.</p>
-              <h3>Exploration</h3>
-              <p class="card-description short">Unknown lands, impossible maps.</p>
-            </div>
           </div>
-          <div class="feature-card" style="background-image: url('assets/images/webp/vitruvian-man.webp');">
+          <!--Factions & Faith -->
+          <div class="feature-card-wrapper">
+          <div class="feature-card" style="background-image: url('assets/images/webp/isabel-cattolica.webp');">
             <div class="card-content">
-              <p class="card-description full">Shape your Seeker through discoveries, alliances, and risk-taking.
-                Abandon
-                classes for emergent identity.</p>
-              <h3>Unclassed Characters</h3>
-              <p class="card-description short">No fixed roles. Only choices.</p>
+              <p class="card-description full">Navigate shifting alliances and ideological zeal in a world where faith
+                and empire are indivisible forces.</p>
+              <h3>Factions & Faith</h3>
+              <p class="card-description short">Politics, religion, heresy, and the endless war for power.</p>
             </div>
           </div>
         </div>
+          </div>
         <button class="carousel-arrow right" aria-label="Scroll Right">›</button>
       </div>
     </section>
+
+    <div class="spacer small-medium"></div>
+
+    <!-- ── The New World ───────────────────────────────────────────── -->
+    <section id="the-new-world" class="central-column">
+      <header class="title">
+        <div class="title-container">
+          <span class="title-icon">🜭</span>
+          <h1>The New World</h1>
+          <span class="title-icon flipped">🜭</span>
+        </div>
+        <p class="subtitle">The map is drawn, but the world resists</p>
+      </header>
+
+      <blockquote class="clean" style="margin-top: -.5rem;">
+        <p>“There are lands across the sea where the air is heavy with spirits, and the ground bleeds when broken. We
+          came seeking gold and found a mirror — one that shows us what we truly are.”</p>
+        <p class="blockquote-clean-author">— Fray Bartolomé de las Casas,<br> <em>Apócrifos del Nuevo Mundo</em></p>
+      </blockquote>
+
+      <div class="intro-text">
+        <div class="overlay-symbol r var-2"></div>
+        <p>
+          Beyond the endless waters lies a continent unlike any whispered of in European courts—a land where ancient
+          powers shape the earth, where spirits speak in storms, and where the bones of dead gods rise from jungle soil.
+        </p>
+        <p>
+          Empires sail westward, hungry for gold, glory, and dominion. But the New World is no empty stage. It is alive,
+          aware, and watching.</p>
+
+        <p>In Seeker, you are the sharp edge of conquest and curiosity—explorers, heretics, outcasts, and occultists who
+          chart the unknown. The arcane mingles with the political, the sacred with the monstrous. Every step forward
+          risks unmaking your body, your mind, or your soul.</p>
+        </p>
+        <p style="color: var(--pale-beige)">You are not just discovering a world.<br>
+          <em>You are being discovered in return.</em>
+        </p>
+      </div>
+    </section>
+
+    <div class="spacer small-medium"></div>
+
+    <!-- Banner 2-->
+  <div class="banner-parallax" style="background-image: url('assets/images/banners/home-page.webp');"
+    alt="Conquista de México por Cortés - Conquest of Mexico by Cortés">
+    <span class="banner-stain-top"></span>
+    <span class="banner-stain-bottom"></span>
+
+    <div class="banner-mask">
+      <div class="logo-container">
+        <img src="assets/icons/png/seeker-logo.png" alt="Seeker Logo" class="logo">
+      </div>
+      <div class="site-title-wrapper">
+        <div class="title-container">
+          <img src="assets/images/svg/seeker-title.svg" alt="Seeker Title">
+        </div>
+        <p class="site-subtitle">
+          Explore a haunted New World in the Age of Discovery,
+          where supernatural entities awaken with conquest.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </main>
 
 

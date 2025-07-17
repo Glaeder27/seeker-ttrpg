@@ -351,6 +351,7 @@ a:active {
     position: relative;
     overflow: visible;
     max-width: 1000px;
+    padding: 0 50px;
 }
 
 .carousel-track {
@@ -371,13 +372,20 @@ a:active {
     display: none;
 }
 
+.feature-card-wrapper {
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
+  display: inline-block;
+}
+
 .feature-card {
     display: flex;
     position: relative;
     flex: 0 0 250px;
     height: 350px;
+    width: 250px;
     border-radius: 1rem;
-    border: 2px solid var(--ancient-gold);
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -389,21 +397,24 @@ a:active {
 }
 
 .feature-card:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .card-content {
     position: absolute;
     inset: 0;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent 100%);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent 100%);
+    background-color: rgba(0, 0, 0, 0);
     color: white;
-    transition: background 0.4s ease;
+    transition: background 0.4s ease-in-out;
     box-sizing: border-box;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.feature-card:hover .card-content {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .card-content h3 {
@@ -417,34 +428,20 @@ a:active {
 .card-description.short {
     font-size: 0.9rem;
     text-align: center;
+    padding: 0 1rem;
 }
 
 .card-description.full {
     opacity: 0;
     visibility: hidden;
     position: relative;
-    padding: 0.5rem 0.75rem;
+    padding: 1.5rem 1.75rem;
     min-height: 160px;
     font-size: 0.9rem;
     text-align: center;
     z-index: 1;
     box-sizing: border-box;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-
-    left: 0;
-    right: 0;
-}
-
-.card-description.full::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: -1;
-  border-radius: 0.25rem;
 }
 
 .feature-card:hover .card-description.full {
@@ -474,11 +471,11 @@ a:active {
 }
 
 .carousel-arrow.left {
-    left: -40px;
+    left: 0;
 }
 
 .carousel-arrow.right {
-    right: -40px;
+    right: 0;
 }
 
 .carousel-wrapper:hover .carousel-arrow {
