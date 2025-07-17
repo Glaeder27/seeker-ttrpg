@@ -219,6 +219,31 @@ a:active {
   font-weight: bold;
 }
 
+/* ── BANNERS ─────────────── */
+
+.banner-parallax {
+  position: relative;
+  height: 300px; /* Mask */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax */
+  background-repeat: no-repeat;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-mask {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4); /* Overlay */
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
 /* ── VSC EDITING ─────────────── */
 
 html[data-env="vsc-mobile"] {
