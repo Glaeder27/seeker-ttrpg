@@ -25,6 +25,7 @@
     --light-brown: #916339;
 
     /* Backgrounds */
+    --background-site: #1e1e1e;
     --background-dark-1: #1e1e1e;
     --background-dark-2: #3b3b3b;
 
@@ -72,7 +73,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: rgba(48, 48, 48, 1);
+    background-color: var(--background-site, #1E1E1E);
     overflow: auto;
     color: var(--off-white);
     scrollbar-width: none;
@@ -202,6 +203,7 @@ a:active {
     text-transform: uppercase;
     padding: 1rem 1rem;
     background: transparent;
+    font-size: .8em;
 }
 
 .navbar-links li {
@@ -249,8 +251,8 @@ a:active {
 .banner-stain-bottom {
   background-image: url('../assets/images/banners/banner-stain.svg');
   background-repeat: repeat-x;
-  background-size: contain;
-  height: 80px;
+  background-size: cover;
+  height: 60px;
   width: 100%;
   position: absolute;
   left: 0;
