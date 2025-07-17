@@ -10,3 +10,19 @@
     <li><a href="downloads.html">About</a></li>
   </ul>
 </nav>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const path = window.location.pathname;
+    const currentPage = path === "/" || path === "/seeker-ttrpg/" ? "index.html" : path.split("/").pop();
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+      const href = link.getAttribute("href");
+      if (
+        href.includes(currentPage) ||
+        (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
+      ) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
