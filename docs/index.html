@@ -75,6 +75,23 @@
       filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1))
               drop-shadow(0 0 16px rgba(0, 0, 0, 0.8));
     }
+
+    .overlay-symbol-1 {
+      position: absolute;
+      top: 65%;
+      left: 20%;
+      width: 500px;
+      height: 500px;
+      background-image: url('assets/icons/svg/alchemy-1.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.05;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+      }
+
     /* Overrides */
     .banner-mask::before {
       content: '';
@@ -129,8 +146,6 @@
   <!-- Hero Banner -->
   <section class="central-column">
 
-        <div class="intro-overlay-symbol"></div>
-
         <header class="title">
             <div class="title-container">
                 <span class="title-icon">🜍</span>
@@ -144,6 +159,8 @@
           <p>“There are truths buried beneath the roots of the New World—truths not meant to be unearthed. Yet we, the Seekers, were sent to dig anyway.”</p>
           <p class="blockquote-clean-author">— Christophorus Columbus</p>
         </blockquote>
+
+        <div class="overlay-symbol-1"></div>
 
         <div class="intro-text">
           <p>
