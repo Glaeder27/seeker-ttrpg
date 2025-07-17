@@ -394,13 +394,16 @@ a:active {
 
 .card-content {
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    inset: 0;
     padding: 1rem;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 30%, transparent 100%);
     color: white;
     transition: background 0.4s ease;
     box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-content h3 {
@@ -408,18 +411,40 @@ a:active {
     font-family: var(--font-antique);
     color: var(--ancient-gold, #D4B55A);
     text-align: center;
+    margin-bottom: 0.25rem;
 }
 
-.card-description {
+.card-description.short {
     font-size: 0.9rem;
-    margin-top: 0.5rem;
     text-align: center;
 }
 
 .card-description.full {
     opacity: 0;
     visibility: hidden;
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    min-height: 160px;
+    font-size: 0.9rem;
+    text-align: center;
+    z-index: 1;
+    box-sizing: border-box;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    left: 0;
+    right: 0;
+}
+
+.card-description.full::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+  border-radius: 0.25rem;
 }
 
 .feature-card:hover .card-description.full {
@@ -457,8 +482,8 @@ a:active {
 }
 
 .carousel-wrapper:hover .carousel-arrow {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .carousel-arrow.hidden {
