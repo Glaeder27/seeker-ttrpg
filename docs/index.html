@@ -64,7 +64,6 @@
       z-index: 2;
       width: clamp(150px, calc(10vh + 25vw), 550px);
       margin-bottom: 1rem;
-
     }
 
     .title-container img {
@@ -77,7 +76,7 @@
 
     .overlay-symbol-1 {
       position: absolute;
-      top: 65%;
+      top: 45%;
       left: 20%;
       width: 500px;
       height: 500px;
@@ -89,6 +88,10 @@
       transform: translate(-50%, -50%);
       z-index: 0;
       pointer-events: none;
+    }
+
+    .overlay-symbol-1.intro-text:hover {
+      opacity: 1;
     }
 
     /* Overrides */
@@ -121,7 +124,7 @@
   <!-- ────────────────────────────────────────────────────────── -->
   <!-- MAIN CONTENT ───────────────────────────────────────────── -->
   <!-- ────────────────────────────────────────────────────────── -->
-   
+
   <!-- Banner -->
   <div class="banner-parallax" style="background-image: url('assets/images/banners/home-page.webp');"
     alt="Conquista de México por Cortés - Conquest of Mexico by Cortés">
@@ -145,9 +148,9 @@
   </div>
 
   <!-- ── What is Seeker? ───────────────────────────────────────────── -->
-  <main class="central-column">
+  <main>
 
-    <section name="">
+    <section class="central-column">
       <header class="title">
         <div class="title-container">
           <span class="title-icon">🜍</span>
@@ -163,9 +166,8 @@
         <p class="blockquote-clean-author">— Christophorus Columbus</p>
       </blockquote>
 
-      <div class="overlay-symbol-1"></div>
-
       <div class="intro-text">
+        <div class="overlay-symbol-1"></div>
         <p>
           <strong>Seeker</strong> is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial
           ambition awakens forgotten entities and fractured ley‑lines.
@@ -189,72 +191,72 @@
       </div>
     </section>
 
+    <div class="spacer small-medium"></div>
+
     <!-- ── Feature Carousel ───────────────────────────────────────────── -->
-    <section name="feature-carousel">
+    <section class="central-column">
       <div class="carousel-wrapper">
         <button class="carousel-arrow left" aria-label="Scroll Left">‹</button>
         <div class="carousel-track">
           <div class="feature-card"
             style="background-image: url('assets/images/webp/allegory-of-the-transience-of-life.webp');">
             <div class="card-content">
-              <h3>Mortality & Mystery</h3>
-              <p class="card-description short">A world shaped by death, myth, and memory.</p>
               <p class="card-description full">Explore an age where each discovery blurs the line between science and
                 superstition. Every expedition is haunted by the transience of life.</p>
+              <h3>Mortality & Mystery</h3>
+              <p class="card-description short">A world shaped by death, myth, and memory.</p>
             </div>
           </div>
           <div class="feature-card"
             style="background-image: url('assets/images/webp/concilio-di-trento-caprarola.webp');">
             <div class="card-content">
-              <h3>Occult Powers</h3>
-              <p class="card-description short">Magic is real—and watching you.</p>
               <p class="card-description full">Wield ancient rites, forbidden artifacts, and pacts with entities beyond
                 comprehension. Power has a price.</p>
+              <h3>Occult Powers</h3>
+              <p class="card-description short">Magic is real—and watching you.</p>
             </div>
           </div>
           <div class="feature-card" style="background-image: url('assets/images/webp/isabel-cattolica.webp');">
             <div class="card-content">
+              <p class="card-description full">Navigate shifting alliances and ideological zeal in a world where faith
+                and empire are indivisible forces.</p>
               <h3>Factions & Faith</h3>
               <p class="card-description short">Politics, religion, heresy, war.</p>
-              <p class="card-description full">Navigate shifting alliances and ideological zeal in a world where faith
-                and
-                empire are indivisible forces.</p>
             </div>
           </div>
           <div class="feature-card"
             style="background-image: url('assets/images/webp/the-battle-of-las-navas-de-tolosa.webp');">
             <div class="card-content">
+              <p class="card-description full">Seeker uses an initiative system based on tactical stance selection.
+                Every action carries risk—and narrative consequence.</p>
               <h3>Tactical Combat</h3>
               <p class="card-description short">Stance-based action & dangerous foes.</p>
-              <p class="card-description full">Seeker uses an initiative system based on tactical stance selection.
-                Every
-                action carries risk—and narrative consequence.</p>
             </div>
           </div>
           <div class="feature-card"
             style="background-image: url('assets/images/webp/the-imprisonment-of-guatimocin-by-the-troops-of-hernan-cortes.webp');">
             <div class="card-content">
-              <h3>Colonial Conflict</h3>
-              <p class="card-description short">Power, resistance, and historical fracture.</p>
               <p class="card-description full">Play within a speculative colonial world deeply influenced by Indigenous
                 resilience, cultural collapse, and forbidden awakenings.</p>
+              <h3>Colonial Conflict</h3>
+              <p class="card-description short">Power, resistance, and historical fracture.</p>
             </div>
           </div>
           <div class="feature-card" style="background-image: url('assets/images/webp/vasco-da-gama.webp');">
             <div class="card-content">
-              <h3>Exploration</h3>
-              <p class="card-description short">Unknown lands, impossible maps.</p>
               <p class="card-description full">The New World is alive—your presence alters its geography, mood, and
                 meaning. The map is never complete.</p>
+              <h3>Exploration</h3>
+              <p class="card-description short">Unknown lands, impossible maps.</p>
             </div>
           </div>
           <div class="feature-card" style="background-image: url('assets/images/webp/vitruvian-man.webp');">
             <div class="card-content">
-              <h3>Unclassed Characters</h3>
-              <p class="card-description short">No fixed roles. Only choices.</p>
               <p class="card-description full">Shape your Seeker through discoveries, alliances, and risk-taking.
                 Abandon
                 classes for emergent identity.</p>
+              <h3>Unclassed Characters</h3>
+              <p class="card-description short">No fixed roles. Only choices.</p>
             </div>
           </div>
         </div>
@@ -279,51 +281,72 @@
 
 
 
-<script>
-  // ── Carousel Script ─────────────────────────────────────────────
-const track = document.querySelector('.carousel-track');
-let isDown = false;
-let startX = 0;
-let scrollStart = 0;
-let animationFrame;
+  <script>
+    // ── Carousel Script ─────────────────────────────────────────────
+    document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".carousel-track");
+  const leftArrow = document.querySelector(".carousel-arrow.left");
+  const rightArrow = document.querySelector(".carousel-arrow.right");
 
-track.addEventListener('mousedown', (e) => {
-  isDown = true;
-  startX = e.clientX;
-  scrollStart = track.scrollLeft;
-  track.classList.add('active');
-  document.body.style.userSelect = 'none';
-});
+  // ─── Drag-to-scroll ─────────────────────────────────────
+  let isDown = false;
+  let startX = 0;
+  let scrollStart = 0;
+  let animationFrame;
 
-track.addEventListener('mouseup', () => {
-  isDown = false;
-  track.classList.remove('active');
-  document.body.style.userSelect = '';
-  if (animationFrame) cancelAnimationFrame(animationFrame);
-});
+  track.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.clientX;
+    scrollStart = track.scrollLeft;
+    track.classList.add("active");
+    document.body.style.userSelect = "none";
+  });
 
-track.addEventListener('mouseleave', () => {
-  if (isDown) {
+  track.addEventListener("mouseup", () => {
     isDown = false;
-    track.classList.remove('active');
-    document.body.style.userSelect = '';
+    track.classList.remove("active");
+    document.body.style.userSelect = "";
     if (animationFrame) cancelAnimationFrame(animationFrame);
-  }
-});
+  });
 
-track.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const walk = e.clientX - startX;
+  track.addEventListener("mouseleave", () => {
+    if (isDown) {
+      isDown = false;
+      track.classList.remove("active");
+      document.body.style.userSelect = "";
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    }
+  });
 
-  if (animationFrame) cancelAnimationFrame(animationFrame);
+  track.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const walk = e.clientX - startX;
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    animationFrame = requestAnimationFrame(() => {
+      track.scrollLeft = scrollStart - walk;
+    });
+  });
 
-  animationFrame = requestAnimationFrame(() => {
-    track.scrollLeft = scrollStart - walk;
+  // ─── Arrow controls ─────────────────────────────────────
+  const scrollAmount = 300; // px per click
+
+  leftArrow.addEventListener("click", () => {
+    track.scrollBy({
+      left: -scrollAmount,
+      behavior: "smooth",
+    });
+  });
+
+  rightArrow.addEventListener("click", () => {
+    track.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth",
+    });
   });
 });
 
-</script>
+  </script>
 
 
 </body>
