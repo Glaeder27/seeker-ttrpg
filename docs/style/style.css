@@ -223,9 +223,9 @@ a:active {
 
 .banner-parallax {
   position: relative;
-  height: 300px; /* Mask */
+  height: 500px; /* Mask */
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;;
   background-attachment: fixed; /* Parallax */
   background-repeat: no-repeat;
   width: 100%;
