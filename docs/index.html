@@ -76,7 +76,7 @@
 
     .overlay-symbol-1 {
       position: absolute;
-      top: 45%;
+      top: 55%;
       left: 20%;
       width: 500px;
       height: 500px;
@@ -85,13 +85,14 @@
       background-position: center;
       background-size: contain;
       opacity: 0.05;
+      transition: opacity 0.4s ease-in-out;
       transform: translate(-50%, -50%);
       z-index: 0;
       pointer-events: none;
     }
 
-    .overlay-symbol-1.intro-text:hover {
-      opacity: 1;
+    #what-is-seeker:hover .overlay-symbol-1 {
+      opacity: 0.1;
     }
 
     /* Overrides */
@@ -150,7 +151,7 @@
   <!-- ── What is Seeker? ───────────────────────────────────────────── -->
   <main>
 
-    <section class="central-column">
+    <section id="what-is-seeker" class="central-column">
       <header class="title">
         <div class="title-container">
           <span class="title-icon">🜍</span>
@@ -284,67 +285,89 @@
   <script>
     // ── Carousel Script ─────────────────────────────────────────────
     document.addEventListener("DOMContentLoaded", function () {
-  const track = document.querySelector(".carousel-track");
-  const leftArrow = document.querySelector(".carousel-arrow.left");
-  const rightArrow = document.querySelector(".carousel-arrow.right");
+      const track = document.querySelector(".carousel-track");
+      const wrapper = document.querySelector(".carousel-wrapper");
+      const leftArrow = document.querySelector(".carousel-arrow.left");
+      const rightArrow = document.querySelector(".carousel-arrow.right");
 
-  // ─── Drag-to-scroll ─────────────────────────────────────
-  let isDown = false;
-  let startX = 0;
-  let scrollStart = 0;
-  let animationFrame;
+      let isDown = false;
+      let startX = 0;
+      let scrollStart = 0;
+      let animationFrame;
 
-  track.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startX = e.clientX;
-    scrollStart = track.scrollLeft;
-    track.classList.add("active");
-    document.body.style.userSelect = "none";
-  });
+      function updateArrows() {
+        const scrollLeft = track.scrollLeft;
+        const maxScroll = track.scrollWidth - track.clientWidth;
 
-  track.addEventListener("mouseup", () => {
-    isDown = false;
-    track.classList.remove("active");
-    document.body.style.userSelect = "";
-    if (animationFrame) cancelAnimationFrame(animationFrame);
-  });
+        if (scrollLeft <= 0) {
+          leftArrow.classList.add("hidden");
+        } else {
+          leftArrow.classList.remove("hidden");
+        }
 
-  track.addEventListener("mouseleave", () => {
-    if (isDown) {
-      isDown = false;
-      track.classList.remove("active");
-      document.body.style.userSelect = "";
-      if (animationFrame) cancelAnimationFrame(animationFrame);
-    }
-  });
+        if (scrollLeft >= maxScroll - 1) {
+          rightArrow.classList.add("hidden");
+        } else {
+          rightArrow.classList.remove("hidden");
+        }
+      }
 
-  track.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const walk = e.clientX - startX;
-    if (animationFrame) cancelAnimationFrame(animationFrame);
-    animationFrame = requestAnimationFrame(() => {
-      track.scrollLeft = scrollStart - walk;
+      // ── Drag ───────────────────────
+      track.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.clientX;
+        scrollStart = track.scrollLeft;
+        track.classList.add("active");
+        document.body.style.userSelect = "none";
+      });
+
+      track.addEventListener("mouseup", () => {
+        isDown = false;
+        track.classList.remove("active");
+        document.body.style.userSelect = "";
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        updateArrows();
+      });
+
+      track.addEventListener("mouseleave", () => {
+        if (isDown) {
+          isDown = false;
+          track.classList.remove("active");
+          document.body.style.userSelect = "";
+          if (animationFrame) cancelAnimationFrame(animationFrame);
+          updateArrows();
+        }
+      });
+
+      track.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const walk = e.clientX - startX;
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        animationFrame = requestAnimationFrame(() => {
+          track.scrollLeft = scrollStart - walk;
+          updateArrows();
+        });
+      });
+
+      // ── Arrows ───────────────────────
+      const scrollAmount = 300;
+
+      leftArrow.addEventListener("click", () => {
+        track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+
+      rightArrow.addEventListener("click", () => {
+        track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+
+      // ─ Update arrows on scroll
+      track.addEventListener("scroll", updateArrows);
+      window.addEventListener("resize", updateArrows);
+
+      // Initial check
+      updateArrows();
     });
-  });
-
-  // ─── Arrow controls ─────────────────────────────────────
-  const scrollAmount = 300; // px per click
-
-  leftArrow.addEventListener("click", () => {
-    track.scrollBy({
-      left: -scrollAmount,
-      behavior: "smooth",
-    });
-  });
-
-  rightArrow.addEventListener("click", () => {
-    track.scrollBy({
-      left: scrollAmount,
-      behavior: "smooth",
-    });
-  });
-});
 
   </script>
 
