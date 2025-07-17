@@ -23,8 +23,13 @@
     --text-muted: #bbbbbb;
     --dark-paper: #938663;
     --light-brown: #916339;
-    --background-grey-1: #3b3b3b;
-    --hover-grey-1: #494949;
+
+    /* Backgrounds */
+    --background-dark-1: #1e1e1e;
+    --background-dark-2: #3b3b3b;
+
+    /* Hovers */
+    --hover-light-1: rgba(255, 255, 255, 0.1);
 
     /* Stances */
     --aggressive: #8B3A3A;
@@ -49,12 +54,12 @@
     --dark-paper-rgb: 147, 134, 99;
 
     /* ── FONTS ─────────────── */
-    --default-font: 'Montserrat', sans-serif;
-    --special-font: 'Georgia', serif;
-    --handwritten-font: 'Great Vibes', cursive;
-    --title-font: 'Cinzel Decorative', serif;
+    --font-default: 'Arial';
+    --font-main: 'Montserrat', sans-serif;
+    --font-special: 'Georgia', serif;
+    --font-handwritten: 'Great Vibes', cursive;
+    --font-title: 'Cinzel Decorative', serif;
 }
-
 
 /*=============================================
 =                    MAIN                     =
@@ -84,13 +89,16 @@ body {
     width: 100%;
     min-width: 0;
 }
+
 .page>div {
     min-width: 0;
 }
+
 .page-infobox {
     padding: 25px 10px 0 10px;
     margin: 0 auto;
 }
+
 .page-columns {
     display: flex;
     flex-direction: row;
@@ -100,6 +108,52 @@ body {
     padding: 1rem 2vw;
     box-sizing: border-box;
     margin: 0 auto;
+}
+
+/* ── LISTS ─────────────── */
+
+ul,
+ol {
+    padding-left: 25px;
+    margin-top: 0;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+li {
+    position: relative;
+    margin-bottom: 8px;
+    line-height: 1.8;
+    font-family: var(--default-font);
+    font-weight: 400;
+    color: var(--off-white);
+    font-size: 0.9rem;
+}
+
+/* ── LINKS ─────────────── */
+
+a:link {
+    color: var(--ancient-gold);
+    font-weight: normal;
+}
+
+a:visited {
+    color: var(--burnt-copper);
+}
+
+a:hover {
+    color: var(--bright-gold);
+    cursor: pointer;
+}
+
+a:active {
+    color: var(--pale-copper);
 }
 
 /* ── SIDEBAR ─────────────── */
@@ -120,38 +174,49 @@ body {
 /* ── NAVBAR ─────────────── */
 
 .main-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--background-dark, #1e1e1e);
-  color: white;
-  padding: 1rem 2rem;
-  font-family: var(--font-main, sans-serif);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-dark-1, #1E1E1E);
+    padding: .1rem 20vh 0rem 2vh;
+    font-family: var(--font-main, sans-serif);
+    position: static;
 }
 
-.navbar-logo a {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
+.navbar-logo {
+    padding: .5rem;
 }
 
 .navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    gap: .2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-links a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.2s ease;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    padding: 1rem 1rem;
+    background: transparent;
+}
+
+.navbar-links li {
+    margin-bottom: 0;
 }
 
 .navbar-links a:hover {
-  color: var(--accent-color, #ffa500);
+    color: var(--accent-color, var(--bright-gold, #F6CB75));
+    background-color: var(--hover-light-1);
+}
+
+.nav-link.active {
+  color: gold;
+  background-color: rgba(255, 215, 0, 0.1);
+  font-weight: bold;
 }
 
 /* ── VSC EDITING ─────────────── */
@@ -406,32 +471,6 @@ dl dd strong {
     color: var(--ancient-gold, #D4B55A);
 }
 
-/* Lists */
-
-ul,
-ol {
-    padding-left: 25px;
-    margin-top: 0;
-}
-
-ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    padding-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-li {
-    position: relative;
-    margin-bottom: 8px;
-    line-height: 1.8;
-    font-family: var(--default-font);
-    font-weight: 400;
-    color: var(--off-white);
-    font-size: 0.9rem;
-}
-
 .page-lore ul li,
 .page-main ul li {
     position: relative;
@@ -464,29 +503,6 @@ ul li::before {
     color: var(--ancient-gold);
     font-size: 0.9em;
     line-height: 1;
-}
-
-
-/*=============================================
-=                   LINKS                     =
-=============================================*/
-
-a:link {
-    color: var(--ancient-gold);
-    font-weight: normal;
-}
-
-a:visited {
-    color: var(--burnt-copper);
-}
-
-a:hover {
-    color: var(--bright-gold);
-    cursor: pointer;
-}
-
-a:active {
-    color: var(--pale-copper);
 }
 
 

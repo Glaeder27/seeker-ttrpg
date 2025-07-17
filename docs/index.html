@@ -1,76 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-env="github">
 
 <head>
+  <!-- Charset -->
   <meta charset="UTF-8" />
-  <title>Layout Sim WIX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seeker TTRPG – [Titolo Pagina]</title>
+
+  <meta name="description" content="Seeker è un gioco di ruolo ambientato in un 1492 distopico, tra esplorazione, magia e misteri nascosti del Nuovo Mondo." />
+
+  <meta name="author" content="Alonso de Luna" />
+
+  <!-- Favicon (opzionale) -->
+  <link rel="icon" href="assets/icons/ico/favicon.ico" type="image/ico" />
+
+  <!-- Open Graph per link preview -->
+  <meta property="og:title" content="Seeker TTRPG" />
+  <meta property="og:description" content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+  <meta property="og:image" content="assets/preview.png" />
+  <meta property="og:url" content="https://glaeder27.github.io/seeker-ttrpg/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- IE Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <link rel="stylesheet" href="style/style.css">
   <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: rgba(48, 48, 48, 1);
-      font-family: Arial, sans-serif;
-      overflow: auto !important;
-    }
 
-    .container {
-      max-width: 1340px;
-      margin: 80px auto 0 auto;
-      display: flex;
-      gap: 100px;
-    }
-
-    .left-column,
-    .right-column {
-      box-sizing: border-box;
-      height: 1000vh !important;
-    }
-
-    .left-column {
-      flex: 0 1 70%;
-      max-width: 940px;
-    }
-
-    .right-column {
-      flex: 0 1 30%;
-      max-width: 400px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background-color: transparent;
-      outline: 1px dashed green;
-    }
   </style>
 </head>
 
 <body>
   <!-- NAVBAR -->
   <div id="navbar-top"></div>
-<script>
-  fetch("navbar.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("navbar-top").innerHTML = html;
-    });
-</script>
+  <script>
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-top").innerHTML = html;
+      });
+  </script>
 
-  <div class="container">
-    <div class="left-column">
-      <iframe src="partials/block1.html" title="Left Content Preview"></iframe>
-    </div>
-    <div class="right-column">
-      <iframe src="partials/block2.html" title="Right Content Preview"></iframe>
-    </div>
-  </div>
+  <!-- MAIN CONTENT ─────────────── -->
+
+
 </body>
 
 </html>
