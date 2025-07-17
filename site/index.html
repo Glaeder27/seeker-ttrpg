@@ -55,7 +55,7 @@
   <!-- NAVBAR -->
   <div id="navbar-top"></div>
 <script>
-  fetch("content/navbar.html")
+  fetch("navbar.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("navbar-top").innerHTML = html;
@@ -64,10 +64,10 @@
 
   <div class="container">
     <div class="left-column">
-      <iframe src="partials/block1.html" title="Left Content Preview"></iframe>
+      <iframe src="../partials/block1.html" title="Left Content Preview"></iframe>
     </div>
     <div class="right-column">
-      <iframe src="partials/block2.html" title="Right Content Preview"></iframe>
+      <iframe src="../partials/block2.html" title="Right Content Preview"></iframe>
     </div>
   </div>
 </body>
