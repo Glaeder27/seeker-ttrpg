@@ -4,8 +4,10 @@ let categoryColors = {};
 
 // ── Fade-in on load ──
 document.addEventListener("DOMContentLoaded", () => {
-  // Rimuove la classe preload da <html> per attivare il fade-in tramite CSS
-  document.documentElement.classList.remove("preload");
+  requestAnimationFrame(() => {
+    console.log("Removing preload class");
+    document.documentElement.classList.remove("preload");
+  });
 
   // ── Tooltip Logic ──
   function initializeTooltips() {
