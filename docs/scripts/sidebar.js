@@ -22,7 +22,7 @@ function levenshtein(a, b) {
   return dp[a.length][b.length];
 }
 
-fetch("https://glaeder27.github.io/seeker-ttrpg/data/glossary.json")
+fetch("../data/glossary.json")
   .then((response) => {
     if (!response.ok) throw new Error("Network response was not OK");
     return response.json();
@@ -109,7 +109,7 @@ showItem(currentIndex);
 
 async function loadArchives() {
   try {
-    const response = await fetch('https://glaeder27.github.io/seeker-ttrpg/data/archives.json'); // metti qui il path corretto
+    const response = await fetch('../data/archives.json'); // metti qui il path corretto
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
 

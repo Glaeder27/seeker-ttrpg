@@ -97,7 +97,7 @@
 
 .dual-column {
     display: grid;
-    grid-template-columns: 1fr minmax(200px, 1000px) 400px;
+    grid-template-columns: minmax(0px, 200px) minmax(200px, 1000px) 400px;
     gap: 10px;
 
     justify-content: center;
