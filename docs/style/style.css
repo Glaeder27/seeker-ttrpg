@@ -140,6 +140,12 @@ body {
     color: var(--off-white);
     scrollbar-width: none;
     cursor: url('../assets/cursor/cursor_main.webp'), auto;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 @media (max-width: 767px) {
@@ -857,6 +863,27 @@ h4 {
     letter-spacing: 0.05em;
     position: relative;
     scroll-margin-top: 80px;
+}
+
+.title .title-container-sidebar {
+
+    display: inline-flex;
+    justify-content: left;
+    gap: 1.5rem;
+    font-size: 2.8rem;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    position: relative;
+    scroll-margin-top: 80px;
+}
+
+.title .title-container-sidebar h1 {
+    background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
+    padding: 10px 0;
+    font-weight: 100;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media (max-width: 767px) {

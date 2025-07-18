@@ -22,7 +22,7 @@ function levenshtein(a, b) {
   return dp[a.length][b.length];
 }
 
-fetch("../data/glossary.json")
+fetch("data/glossary.json")
   .then((response) => {
     if (!response.ok) throw new Error("Network response was not OK");
     return response.json();
@@ -79,37 +79,9 @@ input.addEventListener("input", () => {
 });
 
 // Archives carousel fade logic (runs once on load)
-const archiveItems = document.querySelectorAll(
-  ".archives-carousel-fade .archive-item"
-);
-let currentIndex = 0;
-let archiveHovered = false;
-
-const showItem = (index) => {
-  archiveItems.forEach((item, i) => {
-    item.classList.toggle("show", i === index);
-  });
-};
-
-const archiveBlock = document.querySelector(".archives-carousel-fade");
-
-archiveBlock.addEventListener("mouseenter", () => (archiveHovered = true));
-archiveBlock.addEventListener("mouseleave", () => (archiveHovered = false));
-
-setInterval(() => {
-  if (!archiveHovered) {
-    currentIndex = (currentIndex + 1) % archiveItems.length;
-    showItem(currentIndex);
-  }
-}, 8000);
-
-showItem(currentIndex);
-
-// "From the Archives" Content
-
 async function loadArchives() {
   try {
-    const response = await fetch('../data/archives.json'); // metti qui il path corretto
+    const response = await fetch('data/archives.json'); // metti qui il path corretto
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
 
@@ -132,13 +104,38 @@ async function loadArchives() {
       container.appendChild(item);
     });
 
-    if (container.firstChild) {
-      container.firstChild.classList.add('show');
-    }
+    initCarousel();
 
   } catch (error) {
     console.error('Failed to load archives:', error);
   }
 }
 
+function initCarousel() {
+  const archiveItems = document.querySelectorAll(".archives-carousel-fade .archive-item");
+  let currentIndex = 0;
+  let archiveHovered = false;
+
+  const showItem = (index) => {
+    archiveItems.forEach((item, i) => {
+      item.classList.toggle("show", i === index);
+    });
+  };
+
+  const archiveBlock = document.querySelector(".archives-carousel-fade");
+
+  archiveBlock.addEventListener("mouseenter", () => archiveHovered = true);
+  archiveBlock.addEventListener("mouseleave", () => archiveHovered = false);
+
+  setInterval(() => {
+    if (!archiveHovered) {
+      currentIndex = (currentIndex + 1) % archiveItems.length;
+      showItem(currentIndex);
+    }
+  }, 8000);
+
+  showItem(currentIndex);
+}
+
 document.addEventListener('DOMContentLoaded', loadArchives);
+
