@@ -129,6 +129,24 @@
 }
 
 /* ── GENERAL ─────────────── */
+/* Preload */
+html.preload body {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+html:not(.preload) body {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+body.fade-out {
+  opacity: 0 !important;
+  transition: opacity 0.5s ease !important;
+}
+
+/* Core */
+
 html,
 body {
     font-family: var(--font-default);
@@ -140,12 +158,11 @@ body {
     color: var(--off-white);
     scrollbar-width: none;
     cursor: url('../assets/cursor/cursor_main.webp'), auto;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease-in-out;
     opacity: 1;
 }
 body.fade-out {
   opacity: 0;
-  transition: opacity 0.5s ease;
 }
 
 @media (max-width: 767px) {
@@ -278,7 +295,7 @@ a:active {
     font-family: var(--font-main, sans-serif);
     position: fixed;
     height: 60px;
-    z-index: 9999;
+    z-index: 999;
 }
 
 .navbar-logo {
@@ -450,6 +467,7 @@ a:active {
     height: clamp(150px, calc(10vh + 30vw), 550px);
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
     margin-bottom: 3rem;
+    z-index: 999;
 }
 
 @media (max-width: 767px) {

@@ -4,7 +4,7 @@ let categoryColors = {};
 
 // ── Fade-in on load ──
 document.addEventListener("DOMContentLoaded", () => {
-  // Rimuove preload per attivare il fade-in
+  // Rimuove la classe preload da <html> per attivare il fade-in tramite CSS
   document.documentElement.classList.remove("preload");
 
   // ── Tooltip Logic ──
@@ -194,12 +194,16 @@ document.addEventListener("DOMContentLoaded", () => {
         content.classList.remove("expanded-content");
       }
 
-      content.addEventListener("transitionend", function handler() {
-        if (item.classList.contains("expanded")) {
-          content.style.height = "auto";
-        }
-        content.removeEventListener("transitionend", handler, { once: true });
-      });
+      content.addEventListener(
+        "transitionend",
+        function handler() {
+          if (item.classList.contains("expanded")) {
+            content.style.height = "auto";
+          }
+          content.removeEventListener("transitionend", handler, { once: true });
+        },
+        { once: true }
+      );
     });
   });
 
