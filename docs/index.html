@@ -134,6 +134,7 @@
         document.getElementById("navbar-top").innerHTML = html;
       });
   </script>
+  
 
   <!-- ────────────────────────────────────────────────────────── -->
   <!-- MAIN CONTENT ───────────────────────────────────────────── -->
@@ -208,7 +209,7 @@
     <div class="spacer small-medium"></div>
 
     <!-- ── Feature Carousel ───────────────────────────────────────────── -->
-    <section class="central-column">
+    <section class="full-width">
       <div class="carousel-wrapper">
         <button class="carousel-arrow left" aria-label="Scroll Left">‹</button>
         <div class="carousel-track">
@@ -458,6 +459,16 @@
 
       </div>
     </section>
+
+  <!-- FOOTER -->
+  <div id="footer-bottom"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer-bottom").innerHTML = html;
+      });
+  </script>
 
   </main>
 

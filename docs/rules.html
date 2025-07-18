@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" data-env="github">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG</title>
+
+    <meta name="description"
+        content="Seeker è un gioco di ruolo ambientato in un 1492 distopico, tra esplorazione, magia e misteri nascosti del Nuovo Mondo." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="assets/preview.png" />
+    <meta property="og:url" content="https://glaeder27.github.io/seeker-ttrpg/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        /* Specific Styles */
+        .rule-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: 2px 6px;
+            margin: .9rem 0 0 0;
+            border-radius: 3px;
+            font-weight: 600;
+            vertical-align: middle;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--off-white);
+        }
+
+        .rule-tag.state-planned {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--off-white);
+        }
+
+        .rule-tag.state-progress {
+            background-color: rgba(var(--ancient-gold-rgb, 198, 166, 100), 0.15);
+            color: var(--ancient-gold, #c6a664);
+        }
+
+        .rule-tag.state-released {
+            background-color: rgba(0, 200, 120, 0.15);
+            color: #64ffb4;
+            border-color: rgba(0, 200, 120, 0.3);
+        }
+
+        /* ── Filters UI ───────────────────────────────── */
+        .rules-filters-wrapper {
+            background-color: rgba(var(--ancient-gold-rgb), 0.08);
+            margin: 0 -2vw;
+            padding: 1rem 2vw;
+            box-sizing: border-box;
+        }
+
+        .rules-filters {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        .rules-filters label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--off-white, #efefef);
+        }
+
+        .rules-filters select {
+            background: var(--background-grey-2, #2c2c2c);
+            color: var(--off-white, #efefef);
+            border: 1px solid var(--ancient-gold, #c6a664);
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-family: var(--font-main, serif);
+            font-size: 0.85rem;
+        }
+
+        /* ── Grid & card ──────────────────────────────── */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            align-items: start;
+            text-align: center;
+        }
+
+        .rules-card {
+            border: 1px solid var(--brown-charcoal, #3D2E23);
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, .6);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 225px;
+        }
+
+        .rules-card[data-status="planned"] {
+            border: 1px solid var(--deep-charcoal, #161718);
+            background-color: rgba(0, 0, 0, .015);
+            background-image: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(255, 255, 255, 0.03) 10px,
+                    transparent 10px,
+                    transparent 20px);
+            backdrop-filter: grayscale(30%);
+        }
+
+        .rules-card:hover {
+            background-color: rgba(0, 0, 0, .5);
+            border-color: var(--burnt-copper, #A07C44);
+        }
+
+        .rules-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .rules-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+            text-align: center;
+        }
+
+        .rules-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            margin: auto;
+            width: 42px;
+            height: 42px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .rules-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--bright-gold, #e6c87c);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .rules-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--off-white, #efefef);
+            margin: 0;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .rules-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            width: 100%;
+        }
+
+        .rules-meta {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--bright-gold, #e6c87c);
+            margin-top: .2rem;
+        }
+
+        .section-description {
+            font-size: .9rem;
+            line-height: 1.6;
+            color: var(--off-white, #ececec);
+            font-family: var(--font-main, 'Montserrat', serif);
+            ;
+            text-align: left;
+        }
+
+        a.rules-card-link:not([href]),
+        a.rules-card-link[href=""] {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* Overrides */
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script>
+        fetch("navbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("navbar-top").innerHTML = html;
+            });
+    </script>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+
+    <main class="dual-column">
+        <div class="left-column">
+            <!-- Hero Banner -->
+            <header class="title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Seeker Rulebook</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">A complete guide to the occult, colonial, and arcane framework of Seeker</p>
+            </header>
+
+            <!-- What is Seeker -->
+            <section class="section-wrapper">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="about">
+                    What is Seeker?
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p class="section-description" style="margin-top: 1.5rem;">
+                    Seeker is a tabletop roleplaying game of forbidden power, colonial secrets, and arcane exploration.
+                    Set
+                    in an alternate 1492, it reimagines the Age of Discovery as the moment the world brushed against the
+                    unfathomable — and tore open the veil that held it back.</p>
+                <p class="section-description">Players become Seekers and Buscadores, agents of the crowns of England
+                    and
+                    Castile, secretly entrusted by Henry VII and Queen Isabella to uncover the truth behind the New
+                    World’s
+                    terrifying wonders. What was meant to be a path to gold and dominion has become a plunge into the
+                    unknown. The jungles are alive with energies not of this earth. Temples bleed. Sacrifices awaken
+                    forces
+                    that defy reason. And beneath it all, something ancient watches, waiting.</p>
+                <p class="section-description">Magic in Seeker is not a tool — it is a curse, a temptation, a weapon.
+                    European empires seek to harness it. The native powers wield it with brutal ritual. The Church
+                    demands
+                    its annihilation. In this fractured theatre, the Seekers walk a tightrope between discovery and
+                    damnation.</p>
+                <p class="section-description">Unlike other TTRPGs, Seeker is built on total character freedom. There
+                    are no
+                    classes or rigid roles: every explorer grows uniquely, unlocking talents through three evolving
+                    paths —
+                    Combat, Exploration, and Social. Characters customize abilities using an intuitive tag-based
+                    augmentation system, allowing for deep mechanical creativity and unexpected synergy.</p>
+                <p class="section-description">Seeker blends tactical combat, investigative tension, and narrative
+                    consequence. A character weak in battle may become a vital negotiator, a mystic scholar, or a
+                    saboteur.
+                    But every expedition carries a price — and those who enter the New World seldom return untouched.
+                </p>
+                <p class="section-description">A mission might be simple: destroy a temple before the ritual completes.
+                    But
+                    a campaign might reach toward darker ends: silencing Montezuma, decoding the secrets of a sunken
+                    pyramid, or choosing between the will of the Queen and the survival of the world.</p>
+                <p class="section-description">In the end, Seeker is not just a game of conquest or survival. It is a
+                    question:</p>
+                <p class="section-description" style="text-align: center; font-size: 1.2rem;"><strong>Will you change
+                        the
+                        New World — <em>or will it change
+                            you?</em></strong></p>
+            </section>
+
+            <!-- Learn to Play -->
+            <section class="section-wrapper">
+                <div class="section-number">Section II</div>
+                <h2 class="section" id="learn">
+                    Learn to Play
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <div class="rules-grid">
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Core Concepts" data-category="Basics"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <h3 class="rules-title">Core Concepts</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Basics</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">How a session works.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rulebook/twin-coil-system" target="_top"
+                        class="rules-card-link">
+                        <div class="rules-card" data-title="Dice Engine" data-category="System" data-status="released">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Dice Engine</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Basics</div>
+                                <span class="rule-tag state-released">Released</span>
+                            </div>
+                            <p class="rules-description">When to roll and how to interpret results.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rulebook/aptitudes" target="_top"
+                        class="rules-card-link">
+                        <div class="rules-card" data-title="Characters" data-category="Progression"
+                            data-status="released">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Character Features</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Characters</div>
+                                <span class="rule-tag state-released">Released</span>
+                            </div>
+                            <p class="rules-description">Aptitudes, Polarity, and character growth.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Skills & Masteries" data-category="Lore"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Skills & Masteries</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Characters</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rules for characters' special abilities.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Travel & Exploration" data-category="System"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Travel & Exploration</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">System</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rules for navigating and discovering the New World.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Social Interactions" data-category="System"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Social Interactions</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">System</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rules for interacting (peacefully!) with NPCs.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Explore Rules -->
+            <section class="section-wrapper">
+                <div class="section-number">Section III</div>
+                <h2 class="section" id="explore">
+                    Explore the Rules
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <div class="rules-grid">
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Afflictions" data-category="System"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Afflictions</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">System</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rules for ailments and negative conditions.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Combat" data-category="System"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Combat</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">System</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Actions, turn orders, and tactical maneuvers.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Anomalies" data-category="Occult"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Anomalies</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Occult</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rituals, ancient gods, and forgotten powers.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Factions" data-category="Lore"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Factions</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Lore</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Power, conflict, and influence across factions.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Bestiary" data-category="Lore"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Bestiary</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Lore</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Mythological ceatures and aberrations of the unknown.</p>
+                        </div>
+                    </a>
+
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Glossary" data-category="System"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
+                            </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Glossary</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">System</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Terms, quick references, and symbols.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="version-box">
+                    <strong>Version:</strong> Alpha 0.9 &middot; Last updated: July 2025
+                </div>
+            </section>
+        </div>
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">Character Sheet (PDF)</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+
+                <!-- Block 2: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+
+                <!-- Block 3: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    </main>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+     <script src="../scripts/sidebar.js"></script>
+     <script src="../scripts/core.js"></script>
+
+
+</body>
+
+</html>
