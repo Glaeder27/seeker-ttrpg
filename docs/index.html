@@ -9,7 +9,7 @@
   <title>Seeker TTRPG</title>
 
   <meta name="description"
-    content="Seeker è un gioco di ruolo ambientato in un 1492 distopico, tra esplorazione, magia e misteri nascosti del Nuovo Mondo." />
+    content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
 
   <meta name="author" content="Alonso de Luna" />
 
@@ -21,7 +21,7 @@
   <meta property="og:description"
     content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
   <meta property="og:image" content="assets/preview.png" />
-  <meta property="og:url" content="https://glaeder27.github.io/seeker-ttrpg/" />
+  <meta property="og:url" content="https://www.seekerttrpg.com" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter Card preview -->
@@ -64,9 +64,10 @@
       z-index: 2;
       width: clamp(150px, calc(10vh + 25vw), 550px);
       margin-bottom: 1rem;
-      }
-      @media (max-width: 767px) {
-        .title-container {
+    }
+
+    @media (max-width: 767px) {
+      .title-container {
         width: 85vw;
       }
     }
@@ -459,15 +460,15 @@
       </div>
     </section>
 
-  <!-- FOOTER -->
-  <div id="footer-bottom"></div>
-  <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("footer-bottom").innerHTML = html;
-      });
-  </script>
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+      fetch("footer.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("footer-bottom").innerHTML = html;
+        });
+    </script>
 
   </main>
 
