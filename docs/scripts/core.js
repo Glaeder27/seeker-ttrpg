@@ -173,11 +173,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((err) => console.error("Error loading tag definitions:", err));
 
   // ── Collapsible Logic ──
-  const collapsibleItems = document.querySelectorAll(".collapsible-item");
+  const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
   collapsibleItems.forEach((item) => {
-    const header = item.querySelector(".collapsible-header");
-    const content = item.querySelector(".collapsible-content");
-    const icon = header.querySelector(".collapsible-icon");
+    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
+  const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
+  const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
 
     content.style.height = "0px";
 

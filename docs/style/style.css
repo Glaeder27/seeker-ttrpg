@@ -110,19 +110,50 @@
     grid-column: 2;
     width: 100%;
 }
+
 .right-column {
   position: sticky;
   top: 5rem;
   align-self: start;
+  height: calc(100vh - 5rem);
+  overflow-y: auto;
+
+  /* Scrollbar custom */
+  scrollbar-width: thin;
+  scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
-    @media (max-width: 900px) {
+
+/* Scrollbar WebKit */
+.right-column::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.right-column::-webkit-scrollbar-track {
+  background: #eee;
+  border-radius: 4px;
+}
+
+.right-column::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+  border: 2px solid #eee;
+}
+
+/* Hover sul pollice */
+.right-column::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+@media (max-width: 900px) {
     .dual-column {
         display: block;
     }
+
     .left-column,
     .right-column {
         width: 100%;
     }
+
     .right-column {
         margin-top: 2rem;
     }
@@ -131,18 +162,18 @@
 /* ── GENERAL ─────────────── */
 /* Preload */
 html.preload body {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 html:not(.preload) body {
-  opacity: 1;
-  transition: opacity 0.5s ease;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 body.fade-out {
-  opacity: 0 !important;
-  transition: opacity 0.5s ease !important;
+    opacity: 0 !important;
+    transition: opacity 0.5s ease !important;
 }
 
 /* Core */
@@ -161,8 +192,9 @@ body {
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
 }
+
 body.fade-out {
-  opacity: 0;
+    opacity: 0;
 }
 
 @media (max-width: 767px) {
@@ -1240,7 +1272,7 @@ tbody tr:hover {
 
 td:nth-child(n+2),
 th:nth-child(n+2) {
-    text-align: left;
+    text-align: center;
 }
 
 td:first-child {
@@ -1599,6 +1631,111 @@ thead th:last-child {
     font-weight: bold;
 }
 
+/* Sidebar */
+.collapsible-item-sb {
+    background-color: #484848;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.collapsible-header-sb {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    overflow: visible;
+    display: flex;
+    align-items: flex-end;
+}
+
+.collapsible-header-sb:hover {
+    background: transparent !important;
+}
+
+.collapsible-header-sb::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background-color: rgba(255, 255, 255, .05);
+    border-radius: 8px;
+    z-index: 0;
+    transition: background 0.3s ease;
+    opacity: 0;
+}
+
+.collapsible-header-sb:hover::before {
+    opacity: 1;
+}
+
+.collapsible-content-sb {
+    margin-top: 1em;
+}
+
+.collapsible-title-sb {
+    flex-grow: 1;
+}
+
+.collapsible-icon-sb {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.collapsible-icon-sb svg path {
+    fill: var(--off-white);
+}
+
+.collapsible-item-sb.expanded .collapsible-icon-sb {
+    transform: rotate(90deg);
+}
+
+.collapsible-content-sb {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    padding: 0 20px;
+    color: var(--off-white);
+    font-family: var(--font-main);
+    box-sizing: border-box;
+    font-size: 0.9rem;
+}
+
+.collapsible-content-sb.expanded-content-sb {
+    padding: 15px 20px;
+    padding-top: 0;
+}
+
+.collapsible-content-sb ul {
+    list-style-type: none;
+
+}
+
+.collapsible-content-sb li {
+    color: var(--off-white);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+.collapsible-content-sb li::before {
+    content: "◆";
+    color: var(--ancient-gold, #D4B55A);
+    left: -1.5em;
+    top: 0.5em;
+}
+
+.collapsible-content-sb li b {
+    font-weight: bold;
+}
 
 /*=============================================
 =                RULE BOXES                   =
@@ -2451,23 +2588,26 @@ details[open] .infobox-table {
     margin: 1rem 0 2rem 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
-
 .rule-options-label {
     text-transform: uppercase;
     font-size: 0.85rem;
     color: #aaa;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     letter-spacing: 0.5px;
 }
 
 .no-bullet {
-    list-style: none;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
-.no-bullet::before {
-    display: none;
+.no-bullet > li {
+  list-style: none;
+}
+
+.no-bullet > li::before {
+  content: none;
 }
 
 .rule-highlight-box {

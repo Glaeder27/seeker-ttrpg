@@ -71,10 +71,10 @@
             padding: 0 1.25rem;
             font-size: 0.85rem;
             font-weight: 200;
-            font-family: var(--default-font, "Georgia", serif);
+            font-family: var(--font-main, "Georgia", serif);
             line-height: 1.6;
             color: var(--off-white, #F0F0F0);
-            background: var(--background-grey-1);
+            background: var(--background-dark-1);
             border-top: 1px solid var(--ancient-gold, #D4B55A);
         }
 
@@ -124,12 +124,13 @@
         .axis-label,
         .grid-label,
         .grid-cell {
-            background: var(--background-grey-1);
+            background: var(--background-dark-2);
             color: var(--off-white);
             padding: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: var(--font-main);
         }
 
         .axis-label {
@@ -239,7 +240,7 @@
         }
 
         .risk-badge {
-            background: var(--background-grey-1, #1c1c1c);
+            background: var(--background-dark-1, #1c1c1c);
             border: 1px solid var(--border-color, #444);
             border-left: 0.5rem solid var(--risk-color);
             border-radius: 0.5rem;
@@ -280,29 +281,6 @@
             font-size: 0.8rem;
             color: var(--text-muted, #888);
             line-height: 1.4;
-        }
-
-        .collapsible-icon {
-            margin-left: auto;
-            font-size: 1rem;
-            color: var(--text-muted, #888);
-            transition: transform 0.3s ease;
-        }
-
-        .collapsible-icon.expanded-icon {
-            transform: rotate(90deg);
-        }
-
-        .collapsible-content {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
-            padding: 0 1rem;
-            color: var(--text-muted, #bbb);
-            font-size: 0.85rem;
-            font-family: var(--default-font, Georgia, serif);
-            transition: all 0.3s ease;
         }
 
         .expanded .collapsible-content {
@@ -353,7 +331,8 @@
             </header>
 
             <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
-            <section class="rule-options-box">
+            <section class="section-wrapper">
+            <div class="rule-options-box">
                 <div class="rule-options-label">Rule Options</div>
 
                 <div class="toggle-bar">
@@ -386,6 +365,7 @@
                     </label>
 
                 </div>
+            </div>
             </section>
 
             <!-- ─────────────── MAIN CONTENT ─────────────── -->
@@ -1329,18 +1309,27 @@
 
             </section>
         </div>
+
         <div class="right-column">
             <aside class="sidebar-wrapper">
-                <div class="sidebar-block collapsible-item">
-                    <div class="collapsible-header" style="padding: 0">
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
                         <h3 class="section">TL;DR — The Twin Coil System</h3>
-                        <span class="collapsible-icon">▸</span>
+                        <span class="collapsible-icon-sb">▸</span>
                     </div>
 
-                    <div class="collapsible-content" style="padding: 0 5px">
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
                         <ul class="no-bullet">
                             <li class="no-bullet"><strong class="tldr-title">1 • Roll Action vs Risk Dice</strong>
-                                <div style="margin-left: 1em;">Use <strong
+                                <div>Use <strong
                                         style="color: var(--faded-jade)">Action</strong>
                                     <img class="dice-symbol"
                                         src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
@@ -1355,7 +1344,7 @@
 
                             <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">2 • How to
                                     Roll</strong>
-                                <div style="margin-left: 1em;">
+                                <div>
                                     Roll a number of <img class="dice-symbol"
                                         src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
                                     equal to the relevant trait or skill modifier for your character.<br>
@@ -1370,8 +1359,8 @@
                             <li class="no-bullet" style="margin-top: 1.5em;">
                                 <strong class="tldr-title">3 • Resolution</strong>
                                 <ul class="no-bullet">
-                                    <li style="margin-left: 0em;"><strong>3a • Success</strong><br>
-                                        <div style="margin-left: 0em;">Any <img class="dice-symbol"
+                                    <li><strong>3a • Success</strong><br>
+                                        <div>Any <img class="dice-symbol"
                                                 src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
                                             showing <img class="dice-symbol"
                                                 src="https://static.wixstatic.com/shapes/e40a82_389a7bf1834a49af98da012901c22a73.svg">
@@ -1382,8 +1371,8 @@
                                         </div>
                                     </li>
 
-                                    <li style="margin-left: 0em;"><strong>3b • Complication</strong><br>
-                                        <div style="margin-left: 0em;">Any <img class="dice-symbol"
+                                    <li><strong>3b • Complication</strong><br>
+                                        <div>Any <img class="dice-symbol"
                                                 src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                                             showing <img class="dice-symbol"
                                                 src="https://static.wixstatic.com/shapes/e40a82_2b1a2ff3bfcd4df399f120d341f0ec65.svg">
@@ -1394,7 +1383,7 @@
                             </li>
                             <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">4 • When
                                     to Roll</strong>
-                                <div style="margin-left: 1em;">Roll only if both <em>failure</em> and
+                                <div>Roll only if both <em>failure</em> and
                                     <em>complication</em>
                                     are
                                     interesting.<br>
@@ -1403,24 +1392,24 @@
                             </li>
 
                             <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">5 • Risk
-                                    Dice Benchmarks</strong>
+                                    Dice Benchmarks</strong><br>
                                 <span class="risk-badge risk-1"
-                                    style="margin-left: 1em; --risk-color: #D79A44;"></span>1 <img class="dice-symbol"
+                                    style="--risk-color: #D79A44; margin-right: .4em"></span>1 <img class="dice-symbol"
                                     src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                                 → mild risk
                                 (~17%)<br>
                                 <span class="risk-badge risk-2"
-                                    style="margin-left: 1em; --risk-color: #E57845;"></span>2 <img class="dice-symbol"
+                                    style="--risk-color: #E57845; margin-right: .4em"></span>2 <img class="dice-symbol"
                                     src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                                 →
                                 meaningful risk (~30%)<br>
                                 <span class="risk-badge risk-3"
-                                    style="margin-left: 1em; --risk-color: #E6463F;"></span>3 <img class="dice-symbol"
+                                    style="--risk-color: #E6463F; margin-right: .4em"></span>3 <img class="dice-symbol"
                                     src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                                 → serious
                                 risk (~45%)<br>
                                 <span class="risk-badge risk-4"
-                                    style="margin-left: 1em; --risk-color: #B11210;"></span>4+
+                                    style="--risk-color: #B11210; margin-right: .4em"></span>4+
                                 <img class="dice-symbol"
                                     src="https://static.wixstatic.com/shapes/e40a82_4bd42a2ea65e4d368d04be01540789d9.svg">
                                 →
@@ -1430,14 +1419,14 @@
                             <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">6 •
                                     Optional Rules</strong>
                                 <ul class="no-bullet">
-                                    <li style="margin-left: 1em;"><strong>Degrees of Success:</strong> 1 = basic, 2 =
+                                    <li><strong>Degrees of Success:</strong> 1 = basic, 2 =
                                         strong, 3+ =
                                         critical</li>
-                                    <li style="margin-left: 1em;"><strong>Degrees of Complication:</strong> 1 = minor, 2
+                                    <li><strong>Degrees of Complication:</strong> 1 = minor, 2
                                         =
                                         serious, 3+ =
                                         catastrophic</li>
-                                    <li style="margin-left: 1em;"><strong>Push:</strong> Reroll 1 <img
+                                    <li><strong>Push:</strong> Reroll 1 <img
                                             class="dice-symbol"
                                             src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
                                         by spending a resource
@@ -1462,21 +1451,14 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Block 1: Player & GM Resources -->
+                <!-- Block 3: Player & GM Resources -->
                 <div class="sidebar-block">
                     <h3>Player & GM Resources</h3>
                     <a class="sidebar-link" href="#">GM Cheat Sheet</a>
                     <a class="sidebar-link" href="#">Quickstart Rules</a>
                 </div>
 
-                <!-- Block 2: Quick Glossary Search -->
-                <div class="sidebar-block">
-                    <h3>Quick Glossary</h3>
-                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
-                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
-                </div>
-
-                <!-- Block 3: From the Archives Carousel -->
+                <!-- Block 4: From the Archives Carousel -->
                 <div class="sidebar-block">
                     <h3>From the Archives</h3>
                     <div class="archives-carousel-fade">
