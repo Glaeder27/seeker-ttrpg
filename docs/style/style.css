@@ -95,7 +95,13 @@ body {
     color: var(--off-white);
     scrollbar-width: none;
     cursor: url('../assets/cursor/cursor_main.webp'), auto;
-}
+    }
+    @media (max-width: 767px) {
+        html,
+        body {
+        overflow-x: hidden;
+    }
+ }
 
 p {
     line-height: 1.6;
@@ -278,11 +284,16 @@ a:active {
     /* Mask */
     background-size: cover;
     background-position: center bottom;
-    ;
     background-attachment: fixed;
     /* Parallax */
     background-repeat: no-repeat;
     width: 100%;
+    }
+    @media (max-width: 767px) {
+        .banner-parallax {
+            height: 650px;
+            background-position: left;
+        }
 }
 
 .banner-mask {
@@ -296,6 +307,41 @@ a:active {
     color: white;
     text-align: center;
     padding: 1rem;
+    }
+    @media (max-width: 767px) {
+    .banner-mask {
+        display: flex;
+        flex-direction: column;
+        }
+}
+
+.banner-mask::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 0;
+    pointer-events: none;
+    }
+    @media (max-width: 767px) {
+        .banner-mask::before {
+            display: none;
+        }
+        .site-title-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 220px;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+            pointer-events: none;
+            margin-bottom: .2rem;
+        }
 }
 
 /* Stains */
@@ -320,6 +366,14 @@ a:active {
 .banner-stain-bottom {
     bottom: 0;
     transform: rotate(0deg);
+    }
+    @media (max-width: 767px) {
+        .banner-stain-top {
+            top: -10px;
+        }
+        .banner-stain-bottom {
+            bottom: -2px;
+        }
 }
 
 /* Seeker Logo */
@@ -329,6 +383,14 @@ a:active {
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
     margin-bottom: 3rem;
 }
+    @media (max-width: 767px) {
+    .logo-container {
+            z-index: 0;
+            height: clamp(350px, 30vh + 10vw, 450px);
+            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
+            margin: -3rem 0 2rem;
+        }
+    }
 
 .logo-container img.logo {
     height: 110%;
@@ -501,11 +563,11 @@ a:active {
   min-height: 200px;
   flex-direction: column;
   align-items: center;
-  justify-content:space-evenly;
-  padding: 1.5rem 1rem 2rem;
+  justify-content:space-between;
+  padding: 3.5rem 1rem 0;
   background-color: var(--background-dark-2);
-  border-top: 2px solid var(--ancient-gold);
-  border-bottom: 2px solid var(--ancient-gold);
+  border-top: 5px solid var(--ancient-gold);
+  border-bottom: 5px solid var(--ancient-gold);
   border-radius: 0.5rem;
   cursor: pointer;
   text-decoration: none;
@@ -514,7 +576,7 @@ a:active {
     background-color 0.3s ease,
     border-color 0.3s ease;
   user-select: none;
-  filter: drop-shadow(0 0 15px rgba(0, 0, 0, .2))
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, .2))
 }
 
 .menu-cell:hover,
@@ -525,13 +587,15 @@ a:active {
 
 .menu-cell .symbol {
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
   height: 80px;
   opacity: 0.25;
-  transition: opacity 0.3s ease;
+  transition: 
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
   pointer-events: none;
   user-select: none;
 }
@@ -560,6 +624,82 @@ a:active {
 }
 
 .menu-cell p {
+  font-size: 0.875rem;
+  margin: 0;
+  user-select: text;
+  opacity: 0.85;
+}
+
+.menu-2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  background: transparent;
+}
+
+.menu-2-cell {
+  position: relative;
+  display: flex;
+  min-height: 200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
+  padding: 3.5rem 1rem 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  user-select: none;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, .2))
+}
+
+.menu-2-cell:hover,
+.menu-2-cell:focus-visible {
+  outline: none;
+}
+
+.menu-2-cell .symbol {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  opacity: 0.25;
+  transition: 
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+  pointer-events: none;
+  user-select: none;
+}
+
+.menu-2-cell:hover .symbol,
+.menu-2-cell:focus-visible .symbol {
+  opacity: 1;
+}
+
+.menu-2-cell:hover .symbol {
+    transform: translateX(-50%) scale(1.1);
+}
+
+.menu-2-cell .text-content {
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+}
+
+.menu-2-cell h4 {
+  font-size: .9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 5rem 0 0.25rem 0;
+  user-select: text;
+}
+
+.menu-2-cell p {
   font-size: 0.875rem;
   margin: 0;
   user-select: text;
@@ -653,6 +793,12 @@ h4 {
     letter-spacing: 0.05em;
     position: relative;
     scroll-margin-top: 80px;
+    }
+    @media (max-width: 767px) {
+        .title-container img {
+            max-width: 750px !important;
+            width: 85vw !important;
+        }
 }
 
 .title .title-container h1 {
@@ -664,6 +810,11 @@ h4 {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 767px) {
+        .title .title-container h1 {
+            width: 360px;
+    }
 }
 
 .title .title-icon {
@@ -674,6 +825,10 @@ h4 {
 
 .title .title-icon.flipped {
     transform: rotate(-90deg);
+}
+
+.title .title-icon.notflipped {
+    transform: rotate(0deg);
 }
 
 .title .subtitle {
@@ -1576,6 +1731,11 @@ blockquote.clean {
 
 blockquote.clean p {
     font-size: 1.2rem;
+    }
+    @media (max-width: 767px) {
+        blockquote.clean p {
+            font-size: .9rem;
+    }
 }
 
 .blockquote-clean-author {

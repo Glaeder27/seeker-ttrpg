@@ -64,6 +64,11 @@
       z-index: 2;
       width: clamp(150px, calc(10vh + 25vw), 550px);
       margin-bottom: 1rem;
+      }
+      @media (max-width: 767px) {
+        .title-container {
+        width: 85vw;
+      }
     }
 
     .title-container img {
@@ -92,6 +97,7 @@
     .overlay-symbol.l {
       left: 20%;
     }
+
     .overlay-symbol.r {
       right: -35%;
     }
@@ -99,9 +105,11 @@
     .overlay-symbol.var-1 {
       background-image: url('assets/icons/svg/alchemy-1.svg');
     }
+
     .overlay-symbol.var-2 {
       background-image: url('assets/icons/svg/alchemy-2.svg');
     }
+
     .overlay-symbol.var-3 {
       background-image: url('assets/icons/svg/alchemy-9.svg');
     }
@@ -113,18 +121,6 @@
     }
 
     /* Overrides */
-    .banner-mask::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      width: 100%;
-      height: 250px;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 0;
-      pointer-events: none;
-    }
   </style>
 </head>
 
@@ -184,7 +180,7 @@
         <p class="blockquote-clean-author">— Christophorus Columbus</p>
       </blockquote>
 
-      <div class="intro-text">
+      <div>
         <div class="overlay-symbol l var-1"></div>
         <p>
           <strong>Seeker</strong> is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial
@@ -218,86 +214,88 @@
         <div class="carousel-track">
           <!--Classless Progression-->
           <div class="feature-card-wrapper">
-          <div class="feature-card" style="background-image: url('assets/images/webp/vitruvian-man.webp');">
-            <div class="card-content">
-              <p class="card-description full">No fixed classes — build your character freely through Skill and Mastery
-                choices.</p>
-              <h3>Classless Progression</h3>
-              <p class="card-description short">Forge your path with freeform character growth.</p>
+            <div class="feature-card" style="background-image: url('assets/images/webp/vitruvian-man.webp');">
+              <div class="card-content">
+                <p class="card-description full">No fixed classes — build your character freely through Skill and
+                  Mastery
+                  choices.</p>
+                <h3>Classless Progression</h3>
+                <p class="card-description short">Forge your path with freeform character growth.</p>
+              </div>
             </div>
-          </div>
           </div>
           <!--Historical Fantasy-->
           <div class="feature-card-wrapper">
-          <div class="feature-card"
-            style="background-image: url('assets/images/webp/allegory-of-the-transience-of-life.webp');">
-            <div class="card-content">
-              <p class="card-description full">Explore an age where each discovery blurs the line between science and
-                superstition. Every expedition is haunted by the transience of life.</p>
-              <h3>Historical Fantasy</h3>
-              <p class="card-description short">A world shaped by death, myth, and memory.</p>
+            <div class="feature-card"
+              style="background-image: url('assets/images/webp/allegory-of-the-transience-of-life.webp');">
+              <div class="card-content">
+                <p class="card-description full">Explore an age where each discovery blurs the line between science and
+                  superstition. Every expedition is haunted by the transience of life.</p>
+                <h3>Historical Fantasy</h3>
+                <p class="card-description short">A world shaped by death, myth, and memory.</p>
+              </div>
             </div>
-          </div>
           </div>
           <!--Customizable Abilities -->
           <div class="feature-card-wrapper">
-          <div class="feature-card"
-            style="background-image: url('assets/images/webp/the-imprisonment-of-guatimocin-by-the-troops-of-hernan-cortes.webp');">
-            <div class="card-content">
-              <p class="card-description full">Unlock and reshape talents, rituals, and skills through in-world
-                discoveries and choices.</p>
-              <h3>Customizable Abilities</h3>
-              <p class="card-description short">Shape your powers through discovery and choice.</p>
+            <div class="feature-card"
+              style="background-image: url('assets/images/webp/the-imprisonment-of-guatimocin-by-the-troops-of-hernan-cortes.webp');">
+              <div class="card-content">
+                <p class="card-description full">Unlock and reshape talents, rituals, and skills through in-world
+                  discoveries and choices.</p>
+                <h3>Customizable Abilities</h3>
+                <p class="card-description short">Shape your powers through discovery and choice.</p>
+              </div>
             </div>
-          </div>
           </div>
           <!--Three-Way Leveling -->
           <div class="feature-card-wrapper">
-          <div class="feature-card" style="background-image: url('assets/images/webp/vasco-da-gama.webp');">
-            <div class="card-content">
-              <p class="card-description full">Level across three intertwined tracks: Combat, Exploration, and Social.
-              </p>
-              <h3>Three-Way Leveling</h3>
-              <p class="card-description short">Ascend through battle, discovery, and influence.</p>
+            <div class="feature-card" style="background-image: url('assets/images/webp/vasco-da-gama.webp');">
+              <div class="card-content">
+                <p class="card-description full">Level across three intertwined tracks: Combat, Exploration, and Social.
+                </p>
+                <h3>Three-Way Leveling</h3>
+                <p class="card-description short">Ascend through battle, discovery, and influence.</p>
+              </div>
             </div>
-          </div>
           </div>
           <!--Tactical Combat -->
           <div class="feature-card-wrapper">
-          <div class="feature-card"
-            style="background-image: url('assets/images/webp/the-battle-of-las-navas-de-tolosa.webp');">
-            <div class="card-content">
-              <p class="card-description full">Seeker uses an initiative system based on tactical stance selection.
-                Every action carries risk—and narrative consequence.</p>
-              <h3>Tactical Combat</h3>
-              <p class="card-description short">Stance-based action & dangerous foes.</p>
+            <div class="feature-card"
+              style="background-image: url('assets/images/webp/the-battle-of-las-navas-de-tolosa.webp');">
+              <div class="card-content">
+                <p class="card-description full">Seeker uses an initiative system based on tactical stance selection.
+                  Every action carries risk—and narrative consequence.</p>
+                <h3>Tactical Combat</h3>
+                <p class="card-description short">Stance-based action & dangerous foes.</p>
+              </div>
             </div>
-          </div>
           </div>
           <!--Occult Powers -->
           <div class="feature-card-wrapper">
-          <div class="feature-card"
-            style="background-image: url('assets/images/webp/concilio-di-trento-caprarola.webp');">
-            <div class="card-content">
-              <p class="card-description full">Wield ancient rites, forbidden artifacts, and pacts with entities beyond
-                comprehension. Power has a price.</p>
-              <h3>Occult Powers</h3>
-              <p class="card-description short">Magic is real — and it's watching your every move.</p>
+            <div class="feature-card"
+              style="background-image: url('assets/images/webp/concilio-di-trento-caprarola.webp');">
+              <div class="card-content">
+                <p class="card-description full">Wield ancient rites, forbidden artifacts, and pacts with entities
+                  beyond
+                  comprehension. Power has a price.</p>
+                <h3>Occult Powers</h3>
+                <p class="card-description short">Magic is real — and it's watching your every move.</p>
+              </div>
             </div>
-          </div>
           </div>
           <!--Factions & Faith -->
           <div class="feature-card-wrapper">
-          <div class="feature-card" style="background-image: url('assets/images/webp/isabel-cattolica.webp');">
-            <div class="card-content">
-              <p class="card-description full">Navigate shifting alliances and ideological zeal in a world where faith
-                and empire are indivisible forces.</p>
-              <h3>Factions & Faith</h3>
-              <p class="card-description short">Politics, religion, heresy, and the endless war for power.</p>
+            <div class="feature-card" style="background-image: url('assets/images/webp/isabel-cattolica.webp');">
+              <div class="card-content">
+                <p class="card-description full">Navigate shifting alliances and ideological zeal in a world where faith
+                  and empire are indivisible forces.</p>
+                <h3>Factions & Faith</h3>
+                <p class="card-description short">Politics, religion, heresy, and the endless war for power.</p>
+              </div>
             </div>
           </div>
         </div>
-          </div>
         <button class="carousel-arrow right" aria-label="Scroll Right">›</button>
       </div>
     </section>
@@ -321,7 +319,7 @@
         <p class="blockquote-clean-author">— Fray Bartolomé de las Casas,<br> <em>Apócrifos del Nuevo Mundo</em></p>
       </blockquote>
 
-      <div class="intro-text">
+      <div>
         <div class="overlay-symbol r var-2"></div>
         <p>
           Beyond the endless waters lies a continent unlike any whispered of in European courts—a land where ancient
@@ -344,15 +342,15 @@
     <div class="spacer small-medium"></div>
 
     <!-- Banner 2-->
-  <div class="banner-parallax" style="background-image: url('assets/images/banners/cantino-planisphere.jpg');"
-    alt="Conquista de México por Cortés - Conquest of Mexico by Cortés">
-    <span class="banner-stain-top"></span>
-    <span class="banner-stain-bottom"></span>
-  </div>
+    <div class="banner-parallax" style="background-image: url('assets/images/banners/cantino-planisphere.jpg');"
+      alt="Cantino Planisphere">
+      <span class="banner-stain-top"></span>
+      <span class="banner-stain-bottom"></span>
+    </div>
 
-  <div class="spacer small-medium"></div>
+    <div class="spacer small-medium"></div>
 
-  <!-- ── The New World ───────────────────────────────────────────── -->
+    <!-- ── The New World ───────────────────────────────────────────── -->
     <section id="getting-started" class="central-column">
       <header class="title">
         <div class="title-container">
@@ -366,85 +364,109 @@
       <blockquote class="clean" style="margin-top: -.5rem;">
         <p>“Every Seeker begins unproven—armed with only a map, a question, and the will to trespass the unknown.”
 
-</p>
+        </p>
         <p class="blockquote-clean-author">— Amerigo Vespucci</p>
       </blockquote>
 
-      <div class="intro-text">
+      <div>
         <div class="overlay-symbol l var-3"></div>
 
         <div class="menu-grid">
-  <a href="/start-here" class="menu-cell" tabindex="0" role="button">
-    <img class="symbol" src="assets/icons/svg/alchemy-5.svg" alt="Alchemical symbol decoration" />
-    <div class="text-content">
-      <h4>Start Here</h4>
-      <p>A walkthrough of how to begin playing Seeker</p>
-    </div>
-  </a>
-  <a href="/character-creation" class="menu-cell" tabindex="0" role="button">
-    <img class="symbol" src="assets/icons/svg/alchemy-6.svg" alt="Alchemical symbol decoration" />
-    <div class="text-content">
-      <h4>Create Character</h4>
-      <p>Build a unique explorer with customizable skills</p>
-    </div>
-  </a>
-  <a href="/rules-overview" class="menu-cell" tabindex="0" role="button">
-    <img class="symbol" src="assets/icons/svg/alchemy-7.svg" alt="Alchemical symbol decoration" />
-    <div class="text-content">
-      <h4>Rules Overview</h4>
-      <p>How the dice, actions, and resolution work</p>
-    </div>
-  </a>
-  <a href="/lore-overview" class="menu-cell" tabindex="0" role="button">
-    <img class="symbol" src="assets/icons/svg/alchemy-8.svg" alt="Alchemical symbol decoration" />
-    <div class="text-content">
-      <h4>Lore Overview</h4>
-      <p>Learn how arcane forces shape the New World</p>
-    </div>
-  </a>
-</div>
+          <a href="/start-here" class="menu-cell" tabindex="0" role="button">
+            <img class="symbol" src="assets/icons/svg/alchemy-5.svg" alt="Alchemical symbol decoration" />
+            <div class="text-content">
+              <h4>Start Here</h4>
+              <p>A walkthrough of how to begin playing Seeker</p>
+            </div>
+          </a>
+          <a href="/character-creation" class="menu-cell" tabindex="0" role="button">
+            <img class="symbol" src="assets/icons/svg/alchemy-6.svg" alt="Alchemical symbol decoration" />
+            <div class="text-content">
+              <h4>Create Character</h4>
+              <p>Build a unique explorer with customizable skills</p>
+            </div>
+          </a>
+          <a href="/rules-overview" class="menu-cell" tabindex="0" role="button">
+            <img class="symbol" src="assets/icons/svg/alchemy-7.svg" alt="Alchemical symbol decoration" />
+            <div class="text-content">
+              <h4>Rules Overview</h4>
+              <p>How the dice, actions, and resolution work</p>
+            </div>
+          </a>
+          <a href="/lore-overview" class="menu-cell" tabindex="0" role="button">
+            <img class="symbol" src="assets/icons/svg/alchemy-8.svg" alt="Alchemical symbol decoration" />
+            <div class="text-content">
+              <h4>Lore Overview</h4>
+              <p>Learn how arcane forces shape the New World</p>
+            </div>
+          </a>
+        </div>
 
       </div>
     </section>
 
+    <div class="spacer large"></div>
+
+    <!-- Banner 3-->
+    <div class="banner-parallax"
+      style="background-image: url('assets/images/banners/la-gran-tenochtitlan.jpg'); background-position: top;"
+      alt="La Gran Tenochtitlan (murales)">
+      <span class="banner-stain-top"></span>
+      <span class="banner-stain-bottom"></span>
+    </div>
+
     <div class="spacer small-medium"></div>
 
+    <!-- ── Join the Expedition ───────────────────────────────────────────── -->
+    <section id="join-the-expedition" class="central-column">
+      <header class="title">
+        <div class="title-container">
+          <span class="title-icon notflipped">☽</span>
+          <h1>Getting Started</h1>
+          <span class="title-icon notflipped">☾</span>
+        </div>
+        <p class="subtitle">The veil has lifted — but the path is uncharted.<br>
+          Become a Seeker, and help uncover the secrets of a New World.</p>
+      </header>
 
+      <div>
+        <div class="overlay-symbol l var-4"></div>
 
+        <div class="menu-2-grid">
+          <a href="/start-here" class="menu-2-cell" tabindex="0" role="button">
+            <img class="symbol" src="assets/icons/svg/alchemy-4.svg" alt="Alchemical symbol decoration" />
+            <div class="text-content">
+              <h4>Newsletter</h4>
+              <p>Subscribe to the Codex</p>
+            </div>
+          </a>
+          <a href="/character-creation" class="menu-2-cell" tabindex="0" role="button">
+            <img class="symbol" src="assets/icons/svg/alchemy-3.svg" alt="Alchemical symbol decoration" />
+            <div class="text-content">
+              <h4>Discord</h4>
+              <p>Enter the Encampment</p>
+            </div>
+          </a>
+          <a href="/rules-overview" class="menu-2-cell" tabindex="0" role="button">
+            <img class="symbol" src="assets/icons/svg/alchemy-2.svg" alt="Alchemical symbol decoration" />
+            <div class="text-content">
+              <h4>Playtest</h4>
+              <p>Become a Playtester</p>
+            </div>
+          </a>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </div>
+    </section>
 
   </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <!-- ────────────────────────────────────────────────────────── -->
+  <!-- SCRIPTS ────────────────────────────────────────────────── -->
+  <!-- ────────────────────────────────────────────────────────── -->
 
   <script>
+
     // ── Carousel Script ─────────────────────────────────────────────
     document.addEventListener("DOMContentLoaded", function () {
       const track = document.querySelector(".carousel-track");
@@ -532,8 +554,6 @@
     });
 
   </script>
-
-
 </body>
 
 </html>
