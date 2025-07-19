@@ -30,7 +30,7 @@
     <!-- IE Compatibility -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
     <style>
         /* Specific Styles */
         
@@ -41,7 +41,7 @@
     <!-- NAVBAR -->
     <div id="navbar-top"></div>
     <script>
-        fetch("navbar.html")
+        fetch("/navbar.html")
             .then(res => res.text())
             .then(html => {
                 document.getElementById("navbar-top").innerHTML = html;
@@ -1222,7 +1222,7 @@
     <!-- FOOTER -->
     <div id="footer-bottom"></div>
     <script>
-        fetch("footer.html")
+        fetch("/footer.html")
             .then(res => res.text())
             .then(html => {
                 document.getElementById("footer-bottom").innerHTML = html;
@@ -1234,8 +1234,8 @@
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- SCRIPTS ────────────────────────────────────────────────── -->
     <!-- ────────────────────────────────────────────────────────── -->
-    <script src="scripts/sidebar.js"></script>
-    <script src="scripts/core.js"></script>
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
 
     <script>
         // Narrative Examples toggle logic
