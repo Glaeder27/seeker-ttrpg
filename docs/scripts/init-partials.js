@@ -1,60 +1,51 @@
 // init-partials.js
 
 function initPartialContent() {
-  // ── Collapsible Logic ──
-  const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
-  collapsibleItems.forEach((item) => {
-    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
-    const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
-    const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
+  // ── Sidebar collapsible logic ──
+  document.querySelectorAll('.collapsible-item').forEach((item) => {
+    const header = item.querySelector('.collapsible-header');
+    const content = item.querySelector('.collapsible-content');
 
     if (!header || !content) return;
 
-    // Rimuovi listener precedenti per evitare duplicazioni
-    const newHeader = header.cloneNode(true);
-    header.parentNode.replaceChild(newHeader, header);
+    // Rimuovo eventuali event listener duplicati (per sicurezza)
+    header.replaceWith(header.cloneNode(true));
+    const newHeader = item.querySelector('.collapsible-header');
 
-    newHeader.addEventListener("click", () => {
-      item.classList.toggle("expanded");
-      if (icon) icon.classList.toggle("expanded-icon");
-
-      if (item.classList.contains("expanded")) {
-        content.style.height = content.scrollHeight + "px";
-        content.classList.add("expanded-content");
-      } else {
-        content.style.height = content.offsetHeight + "px";
-        requestAnimationFrame(() => {
-          content.style.height = "0px";
-        });
-        content.classList.remove("expanded-content");
-      }
-
-      content.addEventListener("transitionend", function handler() {
-        if (item.classList.contains("expanded")) {
-          content.style.height = "auto";
+    newHeader.addEventListener('click', () => {
+      const isExpanded = item.classList.contains('expanded');
+      document.querySelectorAll('.collapsible-item.expanded').forEach((other) => {
+        if (other !== item) {
+          other.classList.remove('expanded');
+          other.querySelector('.collapsible-content').style.maxHeight = null;
         }
-        content.removeEventListener("transitionend", handler, { once: true });
-      }, { once: true });
+      });
+
+      item.classList.toggle('expanded');
+      if (isExpanded) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
     });
   });
 
-  // ── Tooltip e Tag Tooltip ──
-  // Queste funzioni sono definite in core.js e gestiscono il binding globale
-  if (typeof initializeTooltips === "function") initializeTooltips();
-  if (typeof initializeTagTooltips === "function") initializeTagTooltips();
-
   // ── Narrative Toggle ──
-  document.querySelectorAll('.narrative-toggle').forEach(row => {
-    const newRow = row.cloneNode(true);
-    row.parentNode.replaceChild(newRow, row);
+  document.querySelectorAll('.narrative-toggle').forEach((row) => {
+    // Rimuovo eventuali event listener duplicati
+    row.replaceWith(row.cloneNode(true));
+    const newRow = document.querySelector('.narrative-toggle');
 
     newRow.addEventListener('click', () => {
       newRow.classList.toggle('expanded');
     });
   });
-}
 
-// Chiama initPartialContent anche al caricamento pagina per setup iniziale
-document.addEventListener("DOMContentLoaded", () => {
-  initPartialContent();
-});
+  // ── Inizializza tooltip e tag tooltip definiti in core.js ──
+  if (typeof initializeTooltips === "function") {
+    initializeTooltips();
+  }
+  if (typeof initializeTagTooltips === "function") {
+    initializeTagTooltips();
+  }
+}
