@@ -273,9 +273,13 @@ document.addEventListener("DOMContentLoaded", () => {
           document.body.appendChild(newScript);
         });
 
-        if (push) history.pushState({ href }, "", href);
-        window.scrollTo(0, 0);
+        if (push) {
+          const newUrl = `/rules.html?load=${encodeURIComponent(href)}`;
+          history.pushState({ href }, "", newUrl);
+        }
+
         initPartialContent();
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.error("Error loading partial:", error);
@@ -284,16 +288,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  const path = window.location.pathname;
-  const basePage = "/rules.html";
-
-  // Carica partial se siamo su un URL /rules/ diverso dalla pagina base
-  if (path.startsWith("/rules/") && path !== basePage && mainColumn) {
-    // Imposta URL a pagina base ma tiene traccia del partial
-    history.replaceState({ href: path }, "", basePage);
-    loadPartial(path, false);
+  // 1. Carica contenuto se presente in ?load=
+  const params = new URLSearchParams(window.location.search);
+  const toLoad = params.get("load");
+  if (toLoad && mainColumn) {
+    loadPartial(toLoad, false);
   }
 
+  // 2. Listener click per link con data-partial
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[data-partial]");
     if (!link) return;
@@ -308,6 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
+  // 3. Popstate per gestire indietro/avanti
   window.addEventListener("popstate", (event) => {
     if (event.state?.href) {
       loadPartial(event.state.href, false);
