@@ -1,3 +1,5 @@
+// core.js v2.0 2025-07-19T22:16:00Z
+
 let tooltipDefinitions = {};
 let tagDefinitions = {};
 let categoryColors = {};
