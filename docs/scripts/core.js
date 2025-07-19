@@ -1,4 +1,4 @@
-// core.js v1.5 2025-07-19T18:15:00Z
+// core.js v1.6 2025-07-19T18:45:00Z
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
@@ -122,7 +122,7 @@ function initializeTagTooltips() {
   });
 }
 
-// --- Collapsible Logic ---
+// --- Collapsible Content Logic ---
 function initializeCollapsibles() {
   const collapsibleItems = document.querySelectorAll(".collapsible-item");
   collapsibleItems.forEach((item) => {
@@ -157,7 +157,7 @@ function initializeCollapsibles() {
   });
 }
 
-// --- Rule Visibility Logic ---
+// --- Rule Toggle Logic ---
 function initializeRuleVisibilityToggles() {
   const toggles = document.querySelectorAll(".rule-switch input[data-rule]");
   toggles.forEach((cb) => {
@@ -182,16 +182,16 @@ function initializeRuleVisibilityToggles() {
   }
 }
 
-// --- Narrative Toggles ---
+// --- Narrative Toggle Logic ---
 function initializeNarrativeToggles() {
-  document.querySelectorAll('.narrative-toggle').forEach(row => {
-    row.addEventListener('click', () => {
-      row.classList.toggle('expanded');
+  document.querySelectorAll(".narrative-toggle").forEach((row) => {
+    row.addEventListener("click", () => {
+      row.classList.toggle("expanded");
     });
   });
 }
 
-// --- Init for all dynamic components ---
+// --- Initialize all dynamic elements in loaded content ---
 function initPartialContent() {
   initializeCollapsibles();
   initializeNarrativeToggles();
@@ -201,7 +201,7 @@ function initPartialContent() {
   window.scrollTo(0, 0);
 }
 
-// --- Load tooltip data ---
+// --- Load tooltips data ---
 fetch("/data/tooltips.json")
   .then((res) => res.json())
   .then((data) => {
@@ -210,7 +210,7 @@ fetch("/data/tooltips.json")
   })
   .catch((err) => console.error("Error loading tooltip definitions:", err));
 
-// --- Load tag data ---
+// --- Load tags data ---
 fetch("/data/tags.json")
   .then((res) => res.json())
   .then((data) => {
@@ -283,19 +283,18 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         console.error("Error loading partial:", error);
-        document.querySelector(".page-lore").innerHTML =
-          "<p>Could not load content.</p>";
+        mainColumn.innerHTML = "<p>Could not load content.</p>";
       });
   }
 
-  // 1. Carica contenuto se presente in ?load=
+  // Load initial content from ?load= param
   const params = new URLSearchParams(window.location.search);
   const toLoad = params.get("load");
   if (toLoad && mainColumn) {
     loadPartial(toLoad, false);
   }
 
-  // 2. Listener click per link con data-partial
+  // Handle click on links with data-partial attribute
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[data-partial]");
     if (!link) return;
@@ -310,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // 3. Popstate per gestire indietro/avanti
+  // Handle browser back/forward navigation
   window.addEventListener("popstate", (event) => {
     if (event.state?.href) {
       loadPartial(event.state.href, false);
