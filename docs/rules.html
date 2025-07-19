@@ -572,46 +572,6 @@
     <!-- ────────────────────────────────────────────────────────── -->
     <script src="scripts/core.js"></script>
     <script src="scripts/sidebar.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const mainColumn = document.querySelector("#main-content"); // <-- cambia col tuo ID reale
-            const links = document.querySelectorAll('a[data-partial]');
-
-            // Carica e inserisce il contenuto del file nella colonna
-            function loadPartial(href, push = true) {
-                fetch(href)
-                    .then(response => {
-                        if (!response.ok) throw new Error("File not found");
-                        return response.text();
-                    })
-                    .then(html => {
-                        mainColumn.innerHTML = html;
-                        initPartialContent(); // <-- inizializza i tooltip, collapsible, toggle ecc.
-                        if (push) history.pushState({ href }, "", href);
-                        window.scrollTo(0, 0);
-                    })
-                    .catch(err => {
-                        mainColumn.innerHTML = "<p>Could not load content.</p>";
-                    });
-            }
-
-            // Intercetta i click
-            links.forEach(link => {
-                link.addEventListener("click", event => {
-                    event.preventDefault();
-                    const href = link.getAttribute("href");
-                    loadPartial(href);
-                });
-            });
-
-            // Permette navigazione con pulsanti Avanti/Indietro
-            window.addEventListener("popstate", event => {
-                if (event.state?.href) {
-                    loadPartial(event.state.href, false);
-                }
-            });
-        });
-    </script>
 
 </body>
 
