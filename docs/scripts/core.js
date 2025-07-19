@@ -1,4 +1,4 @@
-// core.js
+// core.js v1 19/07/11:51
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
