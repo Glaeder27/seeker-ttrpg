@@ -1593,6 +1593,7 @@ thead th:last-child {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
 }
 
 .collapsible-icon svg path {

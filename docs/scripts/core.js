@@ -1,4 +1,4 @@
-// core.js v1.3 2025-07-19T23:40:00Z
+// core.js v1.4 2025-07-19T23:59:00Z
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
@@ -182,7 +182,7 @@ function initializeRuleVisibilityToggles() {
   }
 }
 
-// --- Stub: Narrative Toggles ---
+// --- Narrative Toggles ---
 function initializeNarrativeToggles() {
   document.querySelectorAll('.narrative-toggle').forEach(row => {
     row.addEventListener('click', () => {
@@ -191,7 +191,7 @@ function initializeNarrativeToggles() {
   });
 }
 
-// --- Init per tutti i componenti dinamici ---
+// --- Init for all dynamic components ---
 function initPartialContent() {
   initializeCollapsibles();
   initializeNarrativeToggles();
@@ -277,15 +277,20 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo(0, 0);
         initPartialContent();
       })
-      .catch(error => {
-      console.error('Error loading partial:', error);
-      document.querySelector('.page-lore').innerHTML = '<p>Could not load content.</p>';
+      .catch((error) => {
+        console.error("Error loading partial:", error);
+        document.querySelector(".page-lore").innerHTML =
+          "<p>Could not load content.</p>";
       });
   }
 
   const path = window.location.pathname;
-  if (path.startsWith("/partials/") && mainColumn) {
-    history.replaceState({ href: path }, "", "/rules.html");
+  const basePage = "/rules.html";
+
+  // Carica partial se siamo su un URL /rules/ diverso dalla pagina base
+  if (path.startsWith("/rules/") && path !== basePage && mainColumn) {
+    // Imposta URL a pagina base ma tiene traccia del partial
+    history.replaceState({ href: path }, "", basePage);
     loadPartial(path, false);
   }
 
