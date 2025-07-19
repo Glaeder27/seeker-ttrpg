@@ -1,4 +1,4 @@
-// core.js v1.4 2025-07-19T23:59:00Z
+// core.js v1.5 2025-07-19T18:15:00Z
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
