@@ -2,6 +2,12 @@ let tooltipDefinitions = {};
 let tagDefinitions = {};
 let categoryColors = {};
 
+function handlePageShow() {
+  document.documentElement.classList.remove("preload");
+  document.body.classList.remove("fade-out");
+}
+window.addEventListener("pageshow", handlePageShow);
+
 // ── Fade-in on load ──
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => {
@@ -256,3 +262,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
   });
 });
+
+function handlePageShow() {
+  document.documentElement.classList.remove("preload");
+  document.body.classList.remove("fade-out");
+}
+
+window.addEventListener("pageshow", handlePageShow);
