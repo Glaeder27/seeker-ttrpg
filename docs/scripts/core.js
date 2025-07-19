@@ -179,11 +179,17 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((err) => console.error("Error loading tag definitions:", err));
 
   // ── Collapsible Logic ──
-  const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
+  const collapsibleItems = document.querySelectorAll(
+    ".collapsible-item, .collapsible-item-sb"
+  );
   collapsibleItems.forEach((item) => {
-    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
-  const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
-  const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
+    const header = item.querySelector(
+      ".collapsible-header, .collapsible-header-sb"
+    );
+    const content = item.querySelector(
+      ".collapsible-content, .collapsible-content-sb"
+    );
+    const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
 
     content.style.height = "0px";
 
@@ -250,7 +256,8 @@ document.addEventListener("DOMContentLoaded", () => {
       href.startsWith("mailto:") ||
       href.startsWith("tel:") ||
       link.target === "_blank" ||
-      (link.hostname && link.hostname !== window.location.hostname)
+      (link.hostname && link.hostname !== window.location.hostname) ||
+      link.hasAttribute("data-partial")
     )
       return;
 
