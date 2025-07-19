@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ── Fetch tooltip definitions ──
-  fetch("data/tooltips.json")
+  fetch("/data/tooltips.json")
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       return res.json();
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((err) => console.error("Error loading tooltip definitions:", err));
 
   // ── Fetch tag definitions + category colors ──
-  fetch("data/tags.json")
+  fetch("/data/tags.json")
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       return res.json();
