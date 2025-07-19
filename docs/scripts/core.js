@@ -277,8 +277,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo(0, 0);
         initPartialContent();
       })
-      .catch(() => {
-        mainColumn.innerHTML = "<p>Could not load content.</p>";
+      .catch(error => {
+      console.error('Error loading partial:', error);
+      document.querySelector('.page-lore').innerHTML = '<p>Could not load content.</p>';
       });
   }
 
