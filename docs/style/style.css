@@ -1,3 +1,5 @@
+/*2025-07-19T12:04:00Z*/
+
 /*=============================================
 =            IMPORTS & VARIABLES            =
 =============================================*/
@@ -175,9 +177,10 @@ body.fade-out {
     opacity: 0 !important;
     transition: opacity 0.5s ease !important;
 }
+
 #main-content.fade-out {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 /* Core */
@@ -2931,20 +2934,19 @@ details[open] .infobox-table {
 =            DYNAMIC PAGES STYLES             =
 =============================================*/
 
-/* Twin Coil System */
-.narrative-table {
+#twin-coil-system .narrative-table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.narrative-table th,
-.narrative-table td {
+#twin-coil-system .narrative-table th,
+#twin-coil-system .narrative-table td {
     padding: 0.75rem 1rem;
     border-bottom: 0px solid var(--ancient-gold, #D4B55A);
     vertical-align: middle;
 }
 
-.toggle-icon {
+#twin-coil-system .toggle-icon {
     cursor: pointer;
     font-size: 1.3rem;
     transition: transform 0.3s ease;
@@ -2954,11 +2956,11 @@ details[open] .infobox-table {
     width: 2rem;
 }
 
-.narrative-toggle.expanded .toggle-icon {
+#twin-coil-system .narrative-toggle.expanded .toggle-icon {
     transform: rotate(90deg);
 }
 
-.narrative-row .narrative-content {
+#twin-coil-system .narrative-row .narrative-content {
     max-height: 0;
     opacity: 0;
     visibility: hidden;
@@ -2977,39 +2979,39 @@ details[open] .infobox-table {
     border-top: 1px solid var(--ancient-gold, #D4B55A);
 }
 
-.narrative-toggle.expanded+.narrative-row .narrative-content {
+#twin-coil-system .narrative-toggle.expanded+.narrative-row .narrative-content {
     max-height: 500px;
     opacity: 1;
     visibility: visible;
     padding: 1rem 1.25rem;
 }
 
-.narrative-toggle {
+#twin-coil-system .narrative-toggle {
     cursor: pointer;
 }
 
-.narrative-row td {
+#twin-coil-system .narrative-row td {
     padding: 0;
     line-height: 0;
 }
 
-li .no-bullet {
+#twin-coil-system li .no-bullet {
     list-style: none;
     padding-left: 0 !important;
     margin-left: 0 !important;
 }
 
-.no-bullet::before {
+#twin-coil-system .no-bullet::before {
     display: none;
 }
 
-blockquote h3 {
+#twin-coil-system blockquote h3 {
     border-bottom: none;
     font-size: 1.3em;
     color: var(--ancient-gold, #D4B55A);
 }
 
-.grid-2x2-axes {
+#twin-coil-system .grid-2x2-axes {
     display: grid;
     grid-template-columns: auto .15fr 1fr 1fr;
     grid-template-rows: auto .2fr 1fr 1fr;
@@ -3020,9 +3022,9 @@ blockquote h3 {
     background-color: none;
 }
 
-.axis-label,
-.grid-label,
-.grid-cell {
+#twin-coil-system .axis-label,
+#twin-coil-system .grid-label,
+#twin-coil-system .grid-cell {
     background: var(--background-dark-2);
     color: var(--off-white);
     padding: 0.5rem;
@@ -3032,7 +3034,7 @@ blockquote h3 {
     font-family: var(--font-main);
 }
 
-.axis-label {
+#twin-coil-system .axis-label {
     background: none;
     color: var(--off-white);
     font-weight: bold;
@@ -3040,7 +3042,7 @@ blockquote h3 {
     grid-row: 2 / span 2;
 }
 
-.x-axis {
+#twin-coil-system .x-axis {
     writing-mode: horizontal-tb;
     grid-column: 3 / span 3;
     grid-row: 1;
@@ -3048,7 +3050,7 @@ blockquote h3 {
     border-radius: 10px 10px 0 0;
 }
 
-.y-axis {
+#twin-coil-system .y-axis {
     background: rgba(var(--faded-jade-rgb, rgb(138, 60, 48)), .2);
     color: var(--text-muted);
     font-weight: bold;
@@ -3062,59 +3064,59 @@ blockquote h3 {
     border-radius: 0 10px 10px 0;
 }
 
-.grid-label {
+#twin-coil-system .grid-label {
     background: var(--deep-charcoal);
     font-weight: bold;
 }
 
-.grid-label.top-left {
+#twin-coil-system .grid-label.top-left {
     grid-column: 3;
     grid-row: 2;
 }
 
-.grid-label.top-right {
+#twin-coil-system .grid-label.top-right {
     grid-column: 4;
     grid-row: 2;
 }
 
-.grid-label.left-top {
+#twin-coil-system .grid-label.left-top {
     grid-column: 2;
     grid-row: 3;
 }
 
-.grid-label.left-bottom {
+#twin-coil-system .grid-label.left-bottom {
     grid-column: 2;
     grid-row: 4;
 }
 
-.grid-cell {
+#twin-coil-system .grid-cell {
     flex-direction: column;
     line-height: 1.2rem;
     font-size: 0.85rem;
     text-align: center;
 }
 
-.grid-cell.top-left {
+#twin-coil-system .grid-cell.top-left {
     grid-column: 3;
     grid-row: 3;
 }
 
-.grid-cell.top-right {
+#twin-coil-system .grid-cell.top-right {
     grid-column: 4;
     grid-row: 3;
 }
 
-.grid-cell.bottom-left {
+#twin-coil-system .grid-cell.bottom-left {
     grid-column: 3;
     grid-row: 4;
 }
 
-.grid-cell.bottom-right {
+#twin-coil-system .grid-cell.bottom-right {
     grid-column: 4;
     grid-row: 4;
 }
 
-.grid-corner-image {
+#twin-coil-system .grid-corner-image {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
     display: flex;
@@ -3125,20 +3127,20 @@ blockquote h3 {
     height: 90%;
 }
 
-.grid-corner-image img {
+#twin-coil-system .grid-corner-image img {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
 }
 
-.risk-badges {
+#twin-coil-system .risk-badges {
     display: flex;
     flex-direction: column;
     gap: 0;
     margin-top: 1rem;
 }
 
-.risk-badge {
+#twin-coil-system .risk-badge {
     background: var(--background-dark-1, #1c1c1c);
     border: 1px solid var(--border-color, #444);
     border-left: 0.5rem solid var(--risk-color);
@@ -3148,7 +3150,7 @@ blockquote h3 {
     transition: background 0.3s ease;
 }
 
-.risk-badge .collapsible-header {
+#twin-coil-system .risk-badge .collapsible-header {
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -3156,7 +3158,7 @@ blockquote h3 {
     gap: 1rem;
 }
 
-.risk-dice {
+#twin-coil-system .risk-dice {
     font-size: 1.6rem;
     font-weight: bold;
     color: var(--ancient-gold, #D4B55A);
@@ -3164,25 +3166,25 @@ blockquote h3 {
     text-align: center;
 }
 
-.risk-info strong {
+#twin-coil-system .risk-info strong {
     display: block;
     color: var(--off-white, #f0f0f0);
     font-size: 1rem;
 }
 
-.risk-info span {
+#twin-coil-system .risk-info span {
     color: var(--text-muted, #aaa);
     font-size: 0.9rem;
 }
 
-.risk-info p {
+#twin-coil-system .risk-info p {
     margin: 0.3rem 0 0;
     font-size: 0.8rem;
     color: var(--text-muted, #888);
     line-height: 1.4;
 }
 
-.expanded .collapsible-content {
+#twin-coil-system .expanded .collapsible-content {
     max-height: 100vh;
     opacity: 1;
     visibility: visible;
@@ -3190,12 +3192,13 @@ blockquote h3 {
 }
 
 /* Overrides */
-table td {
+
+#twin-coil-system table td {
     vertical-align: middle;
 }
 
-table td img,
-.dice-symbol img {
+#twin-coil-system table td img,
+#twin-coil-system .dice-symbol img {
     height: 2em;
     vertical-align: middle;
 }
