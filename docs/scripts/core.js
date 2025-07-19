@@ -1,4 +1,4 @@
-// core.js v1 2025-07-19T11:52:00Z
+// core.js v1.1 2025-07-19T12:20:00Z
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
@@ -173,12 +173,11 @@ function initializeCollapsibles() {
 // ── Initialize narrative toggles ──
 function initializeNarrativeToggles() {
   document.querySelectorAll(".narrative-toggle").forEach((row) => {
-    // Remove duplicate listeners by replacing the node
-    row.replaceWith(row.cloneNode(true));
-    // Select the new node after replacement
-    const newRow = document.querySelector(".narrative-toggle");
-    if (!newRow) return;
+    // Clone and replace node to remove duplicate event listeners
+    const newRow = row.cloneNode(true);
+    row.replaceWith(newRow);
 
+    // Attach click listener to the cloned node (fixes selector scoping issue)
     newRow.addEventListener("click", () => {
       newRow.classList.toggle("expanded");
     });
@@ -240,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const scripts = doc.querySelectorAll("script");
         const content = doc.body.innerHTML;
 
-        // Insert only the content HTML
+        // Insert only the content HTML (no head, no html tags)
         mainColumn.innerHTML = content;
 
         // Re-execute scripts to maintain any dynamic behavior
