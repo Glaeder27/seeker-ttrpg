@@ -17,23 +17,41 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── PARTIAL LOADING SYSTEM ──
   const mainColumn = document.querySelector("#main-content");
 
-  function loadPartial(href, push = false) {
+function loadPartial(href, push = true) {
     fetch(href)
-      .then(response => {
-        if (!response.ok) throw new Error("File not found");
-        return response.text();
-      })
-      .then(html => {
-        if (mainColumn) {
-          mainColumn.innerHTML = html;
-          if (push) history.pushState({ href }, "", href);
-          window.scrollTo(0, 0);
-        }
-      })
-      .catch(err => {
-        if (mainColumn) mainColumn.innerHTML = "<p>Could not load content.</p>";
-      });
-  }
+        .then(response => {
+            if (!response.ok) throw new Error("File not found");
+            return response.text();
+        })
+        .then(html => {
+            // Estrai il contenuto senza gli script
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            const scripts = doc.querySelectorAll("script");
+            const content = doc.body.innerHTML;
+
+            // Inserisci solo il contenuto HTML nella colonna
+            mainColumn.innerHTML = content;
+
+            // Ricrea e riesegui ogni script manualmente
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement("script");
+                if (oldScript.src) {
+                    newScript.src = oldScript.src;
+                    newScript.async = false;
+                } else {
+                    newScript.textContent = oldScript.textContent;
+                }
+                document.body.appendChild(newScript);
+            });
+
+            if (push) history.pushState({ href }, "", href);
+            window.scrollTo(0, 0);
+        })
+        .catch(err => {
+            mainColumn.innerHTML = "<p>Could not load content.</p>";
+        });
+}
 
   // Avvio: se siamo già su un partial (es: /partials/foo.html), lo carichiamo e torniamo a rules.html
   const path = window.location.pathname;

@@ -322,8 +322,7 @@
                     </a>
 
                     <!-- Dice System -->
-                    <a href="/partials/twin-coil-system.html" class="rules-card-link"
-                        data-partial>
+                    <a href="/partials/twin-coil-system.html" class="rules-card-link" data-partial>
                         <div class="rules-card" data-title="Dice Engine" data-category="System" data-status="released">
                             <div class="rules-icon-wrapper">
                                 <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
@@ -570,8 +569,9 @@
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- SCRIPTS ────────────────────────────────────────────────── -->
     <!-- ────────────────────────────────────────────────────────── -->
-    <script src="scripts/sidebar.js"></script>
     <script src="scripts/core.js"></script>
+    <script src="scripts/init-partials.js"></script>
+    <script src="scripts/sidebar.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const mainColumn = document.querySelector("#main-content"); // <-- cambia col tuo ID reale
@@ -586,6 +586,7 @@
                     })
                     .then(html => {
                         mainColumn.innerHTML = html;
+                        initPartialContent(); // <-- inizializza i tooltip, collapsible, toggle ecc.
                         if (push) history.pushState({ href }, "", href);
                         window.scrollTo(0, 0);
                     })
