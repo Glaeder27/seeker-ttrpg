@@ -1,4 +1,4 @@
-// core.js v1.6 2025-07-19T18:45:00Z
+// core.js v1.7 2025-07-19T20:35:00Z
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mainColumn = document.querySelector("#main-content");
 
-  function loadPartial(href, push = true) {
+  function loadPartialContent(href, push = true) {
     fetch(href)
       .then((response) => {
         if (!response.ok) throw new Error("File not found");
@@ -258,11 +258,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((html) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
-        const scripts = doc.querySelectorAll("script");
-        const content = doc.body.innerHTML;
+        const content =
+          doc.querySelector("#main-content")?.innerHTML || doc.body.innerHTML;
         mainColumn.innerHTML = content;
 
-        scripts.forEach((oldScript) => {
+        // Clone and append scripts
+        doc.querySelectorAll("script").forEach((oldScript) => {
           const newScript = document.createElement("script");
           if (oldScript.src) {
             newScript.src = oldScript.src;
@@ -274,27 +275,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (push) {
-          const newUrl = `/rules.html?load=${encodeURIComponent(href)}`;
-          history.pushState({ href }, "", newUrl);
+          history.pushState({ href }, "", href);
         }
 
         initPartialContent();
         window.scrollTo(0, 0);
       })
-      .catch((error) => {
-        console.error("Error loading partial:", error);
+      .catch((err) => {
+        console.error("Error loading partial:", err);
         mainColumn.innerHTML = "<p>Could not load content.</p>";
       });
   }
 
-  // Load initial content from ?load= param
-  const params = new URLSearchParams(window.location.search);
-  const toLoad = params.get("load");
-  if (toLoad && mainColumn) {
-    loadPartial(toLoad, false);
+  // If URL path is a partial HTML page, load main wrapper instead
+  const currentPath = window.location.pathname;
+  if (currentPath !== "/rules.html" && mainColumn) {
+    history.replaceState({ href: currentPath }, "", "/rules.html");
+    loadPartialContent(currentPath, false);
   }
 
-  // Handle click on links with data-partial attribute
+  // Handle partial navigation links
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[data-partial]");
     if (!link) return;
@@ -305,14 +305,14 @@ document.addEventListener("DOMContentLoaded", () => {
     mainColumn.classList.add("fade-out");
     setTimeout(() => {
       mainColumn.classList.remove("fade-out");
-      loadPartial(href, true);
+      loadPartialContent(href, true);
     }, 300);
   });
 
-  // Handle browser back/forward navigation
-  window.addEventListener("popstate", (event) => {
-    if (event.state?.href) {
-      loadPartial(event.state.href, false);
+  // Handle back/forward navigation
+  window.addEventListener("popstate", (e) => {
+    if (e.state?.href) {
+      loadPartialContent(e.state.href, false);
     }
   });
 });
