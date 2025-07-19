@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" data-env="wix">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Twin Coil System</title>
+
+    <base href="/seeker-ttrpg/">
+    <link rel="stylesheet" href="style/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        li {
+            list-style-type: none;
+            padding-left: 1.2em;
+            position: relative;
+        }
+
+        li::before {
+            content: "◆";
+            /* or ✦ ✧ ♦ ◊ ◆ ◇ ❖ */
+            position: absolute;
+            left: 0;
+            top: 0.4em !important;
+            color: var(--ancient-gold);
+            font-size: 1em;
+            line-height: 1;
+        }
+
+        li::before {
+            content: "◆";
+            /* or ✦ ✧ ♦ ◊ ◆ ◇ ❖ */
+            position: absolute;
+            left: 0;
+            top: 0.4em !important;
+            color: var(--ancient-gold);
+            font-size: 1em;
+            line-height: 1;
+        }
+
+        .collapsible-header {
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            overflow: visible;
+        }
+
+        .collapsible-header:hover {
+            background: transparent !important;
+        }
+
+        .collapsible-header::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background-color: rgba(255, 255, 255, .05);
+            border-radius: 8px;
+            z-index: 0;
+            transition: background 0.3s ease;
+            opacity: 0;
+        }
+
+        .collapsible-header:hover::before {
+            opacity: 1;
+        }
+
+        .collapsible-content {
+            margin-top: 1em;
+        }
+
+        .tldr-title {
+            display: block;
+            text-transform: uppercase;
+            background-color: rgba(var(--ancient-gold-rgb, 212, 181, 90), .2);
+            padding: 0.5em 1.2em;
+            margin: 0 -0.5em .5em -0.5em;
+        }
+
+        .turn-order-block {
+            text-align: center;
+            max-width: 940px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            font-family: var(--default-font, sans-serif);
+        }
+
+        .turn-order-row {
+            display: flex;
+            max-width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+
+        .turn-step {
+            aspect-ratio: 1;
+            width: 100%;
+            max-width: 70vw;
+            padding: .4rem;
+            background: var(--background-grey-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+            flex-shrink: 1;
+            border: 1px solid var(--ancient-gold, #D4B55A);
+        }
+
+
+        .turn-step img {
+            width: 100%;
+            height: auto;
+            max-width: 30px;
+            border-radius: 1em;
+            object-fit: contain;
+            display: block;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            transform: rotate(90deg);
+            margin: 0 0 0 15px;
+            color: var(--off-white, #f0f0f0);
+        }
+
+        .turn-step.aggressive-step {
+            border: 1px solid #8B3A3A;
+        }
+
+        .turn-step.defensive-step {
+            border: 1px solid#4A5E6A;
+        }
+
+        .turn-step.evasive-step {
+            border: 1px solid #667054;
+        }
+
+        .turn-step.balanced-step {
+            border: 1px solid #5E7A78;
+        }
+
+        .turn-step.inquisitive-step {
+            border: 1px solid #B89B4B;
+        }
+
+        .turn-step.mystic-step {
+            border: 1px solid #735A84;
+        }
+
+        .turn-label {
+            margin-top: 0.3em;
+            color: var(--text-muted, #bbb);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .turn-item {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            min-width: max-content;
+            gap: 1em;
+            align-items: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar-wrapper">
+        <div class="sidebar-block collapsible-item">
+            <div class="collapsible-header" style="padding: 0">
+                <h3 class="section">TL;DR — Stances & Initiative</h3>
+                <span class="collapsible-icon">▸</span>
+            </div>
+
+            <div class="collapsible-content" style="padding: 0 5px">
+                <ul class="no-bullet">
+                    <li class="no-bullet"><strong>Stances</strong> determine your role, tags, and initiative each round.
+                    </li>
+                    <li>At the start of every round, players choose their stance secretly and reveal it simultaneously.
+                    </li>
+                    <li>The GM then calls stances in a fixed order (e.g., <strong>Aggressive → Evasive → Balanced →
+                            ...</strong>).</li>
+                    <li>Each stance defines which <u>Tags</u> you may use and how many <strong>Actions</strong> you
+                        receive.</li>
+                    <li>Actions are spent to attack, defend, maneuver, or escalate during conflicts.</li>
+                    <li>All characters start with access to six Basic Stances.</li>
+                    <li>Advanced stances (e.g., <em>Ambush</em>, <em>Berserk</em>) are unlocked via Skills and
+                        Masteries.</li>
+                    <li>When multiple actors share a stance, turn order can be resolved by table-preferred methods
+                        (e.g., Speed stat, GM call, clockwise).</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        <div class="sidebar-block">
+            <h3>Stance Order</h3>
+            <div class="turn-order-block">
+                <div class="turn-order-row">
+
+                    <div class="turn-item">
+                        <div class="turn-step aggressive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_e2bc9c16e30a44d88fb148d20c69cecb.svg"
+                                alt="Aggressive Icon" title="Aggressive Stance">
+                        </div>
+                        <span class="turn-label">Aggressive</span>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="turn-item">
+                        <div class="turn-step evasive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_9ad2bb0108154a46947aff68516f720c.svg"
+                                alt="Evasive Icon" title="Evasive Stance">
+                        </div>
+                        <span class="turn-label">Evasive</span>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="turn-item">
+                        <div class="turn-step balanced-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_aed00d602cfb46eabb365eba8b47cc58.svg"
+                                alt="Balanced Icon" title="Balanced Stance">
+                        </div>
+                        <span class="turn-label">Balanced</span>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="turn-item">
+                        <div class="turn-step mystic-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_be9b3570f82d444e95f7ea739638cbed.svg"
+                                alt="Mystic Icon" title="Mystic Stance">
+                        </div>
+                        <span class="turn-label">Mystic</span>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="turn-item">
+                        <div class="turn-step defensive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_5367b73cfbb04fc8af954d94e7e12088.svg"
+                                alt="Defensive Icon" title="Defensive Stance">
+                        </div>
+                        <span class="turn-label">Defensive</span>
+                    </div>
+                    <div class="arrow">→</div>
+
+                    <div class="turn-item">
+                        <div class="turn-step inquisitive-step">
+                            <img src="https://static.wixstatic.com/shapes/e40a82_b8af3702ecbe41f5a8dc0c16bd4be7fd.svg"
+                                alt="Inquisitive Icon" title="Inquisitive Stance">
+                        </div>
+                        <span class="turn-label">Inquisitive</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="sidebar-block">
+            <h3>Player & GM Resources</h3>
+            <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+            <a class="sidebar-link" href="#">Player Cheat Sheet</a>
+        </div>
+
+        <div class="sidebar-block">
+            <h3>Quick Glossary</h3>
+            <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+            <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+        </div>
+
+        <div class="sidebar-block">
+            <h3>From the Archives</h3>
+            <div class="archives-carousel-fade">
+                <div class="archive-item show">
+                    "We measure a Seeker not by what they wield, but by the weight of what they dare."
+                    <div class="archive-author">— Instructor O. Grenci</div>
+                </div>
+                <div class="archive-item">
+                    "Three steps into the ruins, and I knew — this was not built by men."
+                    <div class="archive-author">— Seeker N. Valmorra</div>
+                </div>
+                <div class="archive-item">
+                    "They broke before us, not by blade, but by doubt."
+                    <div class="archive-author">— Journal of S. de La Cruz</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/sidebar.js"></script>
+    <script src="https://glaeder27.github.io/seeker-ttrpg/scripts/generalScripts.js"></script>
+
+</body>
+
+</html>
