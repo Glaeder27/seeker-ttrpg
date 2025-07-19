@@ -1,4 +1,4 @@
-// core.js v1.7 2025-07-19T20:35:00Z
+// core.js v1.8 2025-07-19T20:54:00Z
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
@@ -249,8 +249,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mainColumn = document.querySelector("#main-content");
 
-  function loadPartialContent(href, push = true) {
-    fetch(href)
+  function extractPageFromUrl(pathname) {
+    const match = pathname.match(/^\/rules\/([\w-]+)$/);
+    return match ? match[1] : null;
+  }
+
+  function getPartialPathFromPageName(pageName) {
+    return `/partials/${pageName}.html`;
+  }
+
+  function loadPartialContent(partialPath, pushStateUrl = null) {
+    fetch(partialPath)
       .then((response) => {
         if (!response.ok) throw new Error("File not found");
         return response.text();
@@ -274,8 +283,8 @@ document.addEventListener("DOMContentLoaded", () => {
           document.body.appendChild(newScript);
         });
 
-        if (push) {
-          history.pushState({ href }, "", href);
+        if (pushStateUrl) {
+          history.pushState({ page: pushStateUrl }, "", pushStateUrl);
         }
 
         initPartialContent();
@@ -287,32 +296,40 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // If URL path is a partial HTML page, load main wrapper instead
-  const currentPath = window.location.pathname;
-  if (currentPath !== "/rules.html" && mainColumn) {
-    history.replaceState({ href: currentPath }, "", "/rules.html");
-    loadPartialContent(currentPath, false);
+  // Handle initial load
+  const initialPage = extractPageFromUrl(window.location.pathname);
+  if (initialPage && mainColumn) {
+    const partialPath = getPartialPathFromPageName(initialPage);
+    history.replaceState({ page: window.location.pathname }, "", "/rules.html");
+    loadPartialContent(partialPath, null);
   }
 
-  // Handle partial navigation links
+  // Handle clicks on partial links
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[data-partial]");
     if (!link) return;
 
     e.preventDefault();
-    const href = link.getAttribute("href");
+    const targetPath = link.getAttribute("href");
+    const pageName = extractPageFromUrl(targetPath);
+    if (!pageName) return;
+
+    const partialPath = getPartialPathFromPageName(pageName);
 
     mainColumn.classList.add("fade-out");
     setTimeout(() => {
       mainColumn.classList.remove("fade-out");
-      loadPartialContent(href, true);
+      loadPartialContent(partialPath, targetPath);
     }, 300);
   });
 
   // Handle back/forward navigation
   window.addEventListener("popstate", (e) => {
-    if (e.state?.href) {
-      loadPartialContent(e.state.href, false);
-    }
+    const path = e.state?.page;
+    const pageName = extractPageFromUrl(path || "");
+    if (!pageName) return;
+
+    const partialPath = getPartialPathFromPageName(pageName);
+    loadPartialContent(partialPath, null);
   });
 });
