@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- Fetch tooltip definitions ---
-  fetch("https://glaeder27.github.io/seeker-ttrpg/data/tooltips.json")
+  fetch("/data/tooltips.json")
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // --- Fetch tag definitions + category colors ---
-  fetch("https://glaeder27.github.io/seeker-ttrpg/data/tags.json")
+  fetch("/data/tags.json")
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response.json();
