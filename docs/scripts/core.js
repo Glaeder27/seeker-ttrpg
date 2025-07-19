@@ -11,8 +11,57 @@ window.addEventListener("pageshow", handlePageShow);
 // ── Fade-in on load ──
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => {
-    console.log("Removing preload class");
     document.documentElement.classList.remove("preload");
+  });
+
+  // ── PARTIAL LOADING SYSTEM ──
+  const mainColumn = document.querySelector("#main-content");
+
+  function loadPartial(href, push = false) {
+    fetch(href)
+      .then(response => {
+        if (!response.ok) throw new Error("File not found");
+        return response.text();
+      })
+      .then(html => {
+        if (mainColumn) {
+          mainColumn.innerHTML = html;
+          if (push) history.pushState({ href }, "", href);
+          window.scrollTo(0, 0);
+        }
+      })
+      .catch(err => {
+        if (mainColumn) mainColumn.innerHTML = "<p>Could not load content.</p>";
+      });
+  }
+
+  // Avvio: se siamo già su un partial (es: /partials/foo.html), lo carichiamo e torniamo a rules.html
+  const path = window.location.pathname;
+  if (path.startsWith("/partials/") && mainColumn) {
+    history.replaceState({ href: path }, "", "/rules.html");
+    loadPartial(path);
+  }
+
+  // Click su link partial
+  document.body.addEventListener("click", (e) => {
+    const link = e.target.closest("a[data-partial]");
+    if (!link) return;
+
+    e.preventDefault();
+    const href = link.getAttribute("href");
+
+    document.body.classList.add("fade-out");
+    setTimeout(() => {
+      document.body.classList.remove("fade-out");
+      loadPartial(href, true);
+    }, 300);
+  });
+
+  // Gestione back/forward
+  window.addEventListener("popstate", event => {
+    if (event.state?.href) {
+      loadPartial(event.state.href);
+    }
   });
 
   // ── Tooltip Logic ──
@@ -134,37 +183,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Fetch tooltip definitions ──
+  // ── Fetch tooltip + tag data ──
   fetch("data/tooltips.json")
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
-    })
-    .then((data) => {
+    .then(res => res.ok ? res.json() : Promise.reject(res))
+    .then(data => {
       tooltipDefinitions = data;
       initializeTooltips();
     })
-    .catch((err) => console.error("Error loading tooltip definitions:", err));
+    .catch(err => console.error("Error loading tooltip definitions:", err));
 
-  // ── Fetch tag definitions + category colors ──
   fetch("data/tags.json")
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
-    })
-    .then((data) => {
+    .then(res => res.ok ? res.json() : Promise.reject(res))
+    .then(data => {
       if (data.tags) {
-        data.tags.forEach((entry) => {
-          tagDefinitions[entry.name] = entry;
-        });
+        data.tags.forEach(entry => tagDefinitions[entry.name] = entry);
       }
       if (data.categories) {
-        data.categories.forEach((entry) => {
-          categoryColors[entry.name] = entry.color || "#D4B55A";
-        });
+        data.categories.forEach(entry => categoryColors[entry.name] = entry.color || "#D4B55A");
       }
 
-      document.querySelectorAll(".tag").forEach((tag) => {
+      document.querySelectorAll(".tag").forEach(tag => {
         const tagName = tag.textContent.trim();
         const tagData = tagDefinitions[tagName];
         const color = categoryColors[tagData?.category];
@@ -176,19 +214,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       initializeTagTooltips();
     })
-    .catch((err) => console.error("Error loading tag definitions:", err));
+    .catch(err => console.error("Error loading tag definitions:", err));
 
   // ── Collapsible Logic ──
-  const collapsibleItems = document.querySelectorAll(
-    ".collapsible-item, .collapsible-item-sb"
-  );
+  const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
   collapsibleItems.forEach((item) => {
-    const header = item.querySelector(
-      ".collapsible-header, .collapsible-header-sb"
-    );
-    const content = item.querySelector(
-      ".collapsible-content, .collapsible-content-sb"
-    );
+    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
+    const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
     const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
 
     content.style.height = "0px";
@@ -208,16 +240,12 @@ document.addEventListener("DOMContentLoaded", () => {
         content.classList.remove("expanded-content");
       }
 
-      content.addEventListener(
-        "transitionend",
-        function handler() {
-          if (item.classList.contains("expanded")) {
-            content.style.height = "auto";
-          }
-          content.removeEventListener("transitionend", handler, { once: true });
-        },
-        { once: true }
-      );
+      content.addEventListener("transitionend", function handler() {
+        if (item.classList.contains("expanded")) {
+          content.style.height = "auto";
+        }
+        content.removeEventListener("transitionend", handler, { once: true });
+      }, { once: true });
     });
   });
 
@@ -244,10 +272,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Page fade-out on internal link click ──
+  // ── Page fade-out on full-page internal links ──
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[href]");
-    if (!link) return;
+    if (!link || link.hasAttribute("data-partial")) return;
 
     const href = link.getAttribute("href");
 
@@ -256,10 +284,8 @@ document.addEventListener("DOMContentLoaded", () => {
       href.startsWith("mailto:") ||
       href.startsWith("tel:") ||
       link.target === "_blank" ||
-      (link.hostname && link.hostname !== window.location.hostname) ||
-      link.hasAttribute("data-partial")
-    )
-      return;
+      (link.hostname && link.hostname !== window.location.hostname)
+    ) return;
 
     e.preventDefault();
     document.body.classList.add("fade-out");
@@ -269,10 +295,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
   });
 });
-
-function handlePageShow() {
-  document.documentElement.classList.remove("preload");
-  document.body.classList.remove("fade-out");
-}
-
-window.addEventListener("pageshow", handlePageShow);
