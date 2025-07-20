@@ -187,46 +187,46 @@ body.fade-out {
 
 html,
 body {
-    cursor: url('/assets/cursor/cursor.png') 5 1, auto;
+    cursor: url('/assets/cursor/cursor_24.png') 4 1, auto;
 }
 
 a,
 button,
 .button,
 .clickable {
-  cursor: url('/assets/cursor/cursor_pointer.png') 4 4, pointer;
+  cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
 }
 
 input[type="text"],
 textarea,
 [contenteditable="true"] {
-  cursor: url('/assets/cursor/cursor_text.png') 2 24, text;
+  cursor: url('/assets/cursor/cursor_text_24.png') 2 24, text;
 }
 
 .disabled,
 [disabled],
 [aria-disabled="true"],
 .not-allowed {
-  cursor: url('/assets/cursor/cursor_not-allowed.png') 4 4, not-allowed;
+  cursor: url('/assets/cursor/cursor_not-allowed_24.png') 4 1, not-allowed;
 }
 
 .loading {
-  cursor: url('/assets/cursor/cursor_loading.png') 16 16, progress;
+  cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, progress;
 }
 
 .waiting {
-  cursor: url('/assets/cursor/cursor_loading.png') 16 16, wait;
+  cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, wait;
 }
 
 .draggable {
-  cursor: url('/assets/cursor/cursor_grab.png') 12 12, grab;
+  cursor: url('/assets/cursor/cursor_grab_24.png') 6 8, grab;
 }
 
 .draggable:active {
-  cursor: url('/assets/cursor/cursor_grabbing.png') 12 12, grabbing;
+  cursor: url('/assets/cursor/cursor_grabbing_24.png') 6 8, grabbing;
 }
 p, h1, h2, h3, blockquote {
-  cursor: url('/assets/cursor/cursor_text-2.png') 2 24, text;
+  cursor: url('/assets/cursor/cursor_text-2_24.png') 12 12, text;
 }
 
 /* Core */
