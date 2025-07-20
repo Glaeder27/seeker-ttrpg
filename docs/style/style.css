@@ -225,7 +225,9 @@ textarea,
 .draggable:active {
   cursor: url('/assets/cursor/cursor_grabbing.png') 12 12, grabbing;
 }
-
+p, h1, h2, h3, blockquote {
+  cursor: url('/assets/cursor/cursor_text-2.png') 2 24, text;
+}
 
 /* Core */
 
