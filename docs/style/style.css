@@ -3246,33 +3246,21 @@ details[open] .infobox-table {
     vertical-align: middle;
 }
 
-#twin-coil-system .rules-card-expansion {
+#twin-coil-system .rules-card {
+  position: relative;
+  overflow: visible;
+}
+
+#twin-coil-system .collapsible-content {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  z-index: 20;
-  background: #1b1b1b;
-  border-top: 1px solid #333;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  padding: 1rem;
-}
-
-#twin-coil-system .rules-subchapter-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#twin-coil-system .rules-subchapter-links li {
-  margin: 0.25rem 0;
-}
-
-#twin-coil-system .rules-subchapter-links a {
-  color: #ccc;
-  text-decoration: underline;
-}
-html,
-body {
-    cursor: url('/assets/cursor/cursor.png') 5 1, auto;
+  z-index: 10;
+  background: var(--background); /* o colore coerente */
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: height 0.3s ease;
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
