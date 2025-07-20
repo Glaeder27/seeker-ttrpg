@@ -184,6 +184,7 @@ body.fade-out {
 }
 
 /* Cursors */
+
 html,
 body {
     cursor: url('/assets/cursor/cursor.png'), 5 1, auto;
@@ -214,7 +215,7 @@ textarea,
 }
 
 .waiting {
-  cursor: url('/assets/cursor/cursor_wait.png') 16 16, wait;
+  cursor: url('/assets/cursor/cursor_loading.png') 16 16, wait;
 }
 
 .draggable {
