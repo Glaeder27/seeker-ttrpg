@@ -200,7 +200,7 @@ button,
 input[type="text"],
 textarea,
 [contenteditable="true"] {
-  cursor: url('/assets/cursor/cursor_text.png') 2 16, text;
+  cursor: url('/assets/cursor/cursor_text.png') 2 24, text;
 }
 
 .disabled,
