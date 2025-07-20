@@ -195,7 +195,7 @@ body {
     overflow: auto;
     color: var(--off-white);
     scrollbar-width: none;
-    cursor: url('../assets/cursor/cursor_main.webp'), auto;
+    cursor: url('/assets/cursor/cursor'), auto;
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
 }
