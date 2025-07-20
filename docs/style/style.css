@@ -187,14 +187,14 @@ body.fade-out {
 
 html,
 body {
-    cursor: url('/assets/cursor/cursor.png'), 5 1, auto;
+    cursor: url('/assets/cursor/cursor.png') 5 1, auto;
 }
 
 a,
 button,
 .button,
 .clickable {
-  cursor: url('/assets/cursor/cursor_pointer.png'), pointer;
+  cursor: url('/assets/cursor/cursor_pointer.png') 4 4, pointer;
 }
 
 input[type="text"],
@@ -207,7 +207,7 @@ textarea,
 [disabled],
 [aria-disabled="true"],
 .not-allowed {
-  cursor: url('/assets/cursor/cursor_not-allowed.png'), not-allowed;
+  cursor: url('/assets/cursor/cursor_not-allowed.png') 4 4, not-allowed;
 }
 
 .loading {
