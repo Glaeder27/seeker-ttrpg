@@ -120,7 +120,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            overflow: hidden;
+            overflow: visible;
             background-blend-mode: overlay;
             background-color: rgba(0, 0, 0, .6);
             display: flex;
@@ -128,6 +128,7 @@
             justify-content: space-between;
             height: 100%;
             min-height: 225px;
+            position: relative;
         }
 
         .rules-card[data-status="planned"] {
@@ -219,7 +220,40 @@
             pointer-events: none;
         }
 
+        .rules-subsection-list {
+            list-style: none;
+            margin: 0;
+            padding: 0.75rem 1rem;
+        }
+
+        .rules-subsection-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        .rules-subsection-list a {
+            text-decoration: none;
+            color: var(--accent, #ffc857);
+            font-weight: 500;
+        }
+
+        .rules-subsection-list a:hover {
+            text-decoration: underline;
+        }
+
         /* Overrides */
+        .collapsible-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background: var(--background-color, #1e1e1e);
+            border: 1px solid var(--border-color, #333);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: height 0.3s ease;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
     </style>
 </head>
 
@@ -323,29 +357,29 @@
                     </a>
 
                     <!-- Dice Engine (collapsible) -->
-                        <div class="rules-card collapsible-item" data-title="Dice Engine" data-category="System"
-                            data-status="released">
-                            <div class="rules-card-link collapsible-header">
-                                <div class="rules-icon-wrapper">
-                                    <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
-                                </div>
-                                <h3 class="rules-title">Dice Engine</h3>
-                                <div class="rules-meta">
-                                    <div class="rules-category">Basics</div>
-                                    <span class="rule-tag state-released">Released</span>
-                                </div>
-                                <p class="rules-description">When to roll and how to interpret results.</p>
-                                <div class="collapsible-icon">▸</div>
+                    <div class="rules-card collapsible-item" data-title="Dice Engine" data-category="System"
+                        data-status="released">
+                        <div class="rules-card-link collapsible-header">
+                            <div class="rules-icon-wrapper">
+                                <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
                             </div>
-
-                            <div class="collapsible-content">
-                                <ul class="rules-subsection-list">
-                                    <li><a href="/rules/twin-coil-system">Twin Coil System</a></li>
-                                    <li><a href="/rules/dice-rolls">Dice Rolls</a></li>
-                                    <li><a href="/rules/risk-dice">Risk Dice</a></li>
-                                </ul>
+                            <h3 class="rules-title">Dice Engine</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Basics</div>
+                                <span class="rule-tag state-released">Released</span>
                             </div>
+                            <p class="rules-description">When to roll and how to interpret results.</p>
+                            <div class="collapsible-icon">▸</div>
                         </div>
+
+                        <div class="collapsible-content">
+                            <ul class="rules-subsection-list">
+                                <li><a href="/rules/twin-coil-system">Twin Coil System</a></li>
+                                <li><a href="/rules/dice-rolls">Dice Rolls</a></li>
+                                <li><a href="/rules/risk-dice">Risk Dice</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
 
                     <a href="https://daniloaversa.wixstudio.com/seeker-rpg/rulebook/aptitudes" target="_top"
