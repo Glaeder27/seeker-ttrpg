@@ -183,6 +183,49 @@ body.fade-out {
     transition: opacity 0.3s ease;
 }
 
+/* Cursors */
+html,
+body {
+    cursor: url('/assets/cursor/cursor.png'), 5 1, auto;
+}
+
+a,
+button,
+.button,
+.clickable {
+  cursor: url('/assets/cursor/cursor_pointer.png'), pointer;
+}
+
+input[type="text"],
+textarea,
+[contenteditable="true"] {
+  cursor: url('/assets/cursor/cursor_text.png') 2 16, text;
+}
+
+.disabled,
+[disabled],
+[aria-disabled="true"],
+.not-allowed {
+  cursor: url('/assets/cursor/cursor_not-allowed.png'), not-allowed;
+}
+
+.loading {
+  cursor: url('/assets/cursor/cursor_loading.png') 16 16, progress;
+}
+
+.waiting {
+  cursor: url('/assets/cursor/cursor_wait.png') 16 16, wait;
+}
+
+.draggable {
+  cursor: url('/assets/cursor/cursor_grab.png') 12 12, grab;
+}
+
+.draggable:active {
+  cursor: url('/assets/cursor/cursor_grabbing.png') 12 12, grabbing;
+}
+
+
 /* Core */
 
 html,
