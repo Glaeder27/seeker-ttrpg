@@ -120,7 +120,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            overflow: visible;
+            overflow: hidden;
             background-blend-mode: overlay;
             background-color: rgba(0, 0, 0, .6);
             display: flex;
@@ -128,7 +128,6 @@
             justify-content: space-between;
             height: 100%;
             min-height: 225px;
-            position: relative;
         }
 
         .rules-card[data-status="planned"] {
@@ -220,40 +219,56 @@
             pointer-events: none;
         }
 
-        .rules-subsection-list {
-            list-style: none;
-            margin: 0;
-            padding: 0.75rem 1rem;
+        .flip-container {
+            perspective: 1000px;
+            position: relative;
         }
 
-        .rules-subsection-list li {
-            margin-bottom: 0.4rem;
+        .flip-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
         }
 
-        .rules-subsection-list a {
-            text-decoration: none;
-            color: var(--accent, #ffc857);
-            font-weight: 500;
+        .flip-container.flipped .flip-inner {
+            transform: rotateY(180deg);
         }
 
-        .rules-subsection-list a:hover {
-            text-decoration: underline;
-        }
-
-        /* Overrides */
-        .collapsible-content {
+        .flip-front,
+        .flip-back {
+            backface-visibility: hidden;
             position: absolute;
-            top: 100%;
+            top: 0;
             left: 0;
             width: 100%;
-            z-index: 10;
-            background: var(--background-color, #1e1e1e);
-            border: 1px solid var(--border-color, #333);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            transition: height 0.3s ease;
-            overflow: hidden;
-            border-radius: 0.5rem;
+            height: 100%;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: var(--background);
+            border: 1px solid var(--border-color);
         }
+
+        .flip-front {
+            z-index: 2;
+        }
+
+        .flip-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chapter-list li {
+            margin: 0.5rem 0;
+        }
+
+
+        /* Overrides */
     </style>
 </head>
 
@@ -356,28 +371,58 @@
                         </div>
                     </a>
 
-                    <!-- Dice Engine (collapsible) -->
-                    <div class="rules-card collapsible-item" data-title="Dice Engine" data-category="System"
-                        data-status="released">
-                        <div class="rules-card-link collapsible-header">
-                            <div class="rules-icon-wrapper">
-                                <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
-                            </div>
-                            <h3 class="rules-title">Dice Engine</h3>
-                            <div class="rules-meta">
-                                <div class="rules-category">Basics</div>
-                                <span class="rule-tag state-released">Released</span>
-                            </div>
-                            <p class="rules-description">When to roll and how to interpret results.</p>
-                            <div class="collapsible-icon">▸</div>
-                        </div>
+                    <!-- Dice System -->
+                    <div class="rules-card-link flip-container" id="chapter-card">
+                        <div class="flip-inner">
 
-                        <div class="collapsible-content">
-                            <ul class="rules-subsection-list">
-                                <li><a href="/rules/twin-coil-system">Twin Coil System</a></li>
-                                <li><a href="/rules/dice-rolls">Dice Rolls</a></li>
-                                <li><a href="/rules/risk-dice">Risk Dice</a></li>
-                            </ul>
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="rules-card" data-title="Dice Engine" data-category="System"
+                                    data-status="released">
+                                    <div class="rules-icon-wrapper">
+                                        <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
+                                    </div>
+                                    <h3 class="rules-title">Dice Engine</h3>
+                                    <div class="rules-meta">
+                                        <div class="rules-category">Basics</div>
+                                        <span class="rule-tag state-released">Released</span>
+                                    </div>
+                                    <p class="rules-description">When to roll and how to interpret results.</p>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <h4 class="rules-title">Chapters</h4>
+                                <ul class="chapter-list">
+                                    <li><a href="/rules/twin-coil-system" data-partial
+                                            data-src="/partials/twin-coil-system.html">Twin Coil System</a></li>
+                                    <li><a href="/rules/action-dice" data-partial
+                                            data-src="/partials/action-dice.html">Action Dice</a></li>
+                                    <li><a href="/rules/risk-dice" data-partial data-src="/partials/risk-dice.html">Risk
+                                            Dice</a></li>
+                                    <li><a href="/rules/escalate-rolls" data-partial
+                                            data-src="/partials/escalate-rolls.html">Escalate Rolls</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="rules-card flip-container" id="chapter-card">
+                        <div class="flip-inner">
+                            <div class="flip-front">
+                                <h3 class="rules-title">Combat System</h3>
+                            </div>
+                            <div class="flip-back">
+                                <ul class="chapter-list">
+                                    <li><a href="/rules/twin-coil-system" data-partial>Action Resolution</a></li>
+                                    <li><a href="/rules/stances" data-partial>Stances</a></li>
+                                    <li><a href="/rules/combat-tags" data-partial>Combat Tags</a></li>
+                                    <!-- Altri capitoli -->
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -617,6 +662,22 @@
     <!-- ────────────────────────────────────────────────────────── -->
     <script src="scripts/core.js"></script>
     <script src="scripts/sidebar.js"></script>
+
+    <script>
+        // Flip card on click
+        const flipCard = document.getElementById("chapter-card");
+        flipCard.addEventListener("click", (e) => {
+            e.stopPropagation(); // Evita che il click propaghi al document
+            flipCard.classList.add("flipped");
+        });
+
+        // Click outside flips it back
+        document.addEventListener("click", (e) => {
+            if (!flipCard.contains(e.target)) {
+                flipCard.classList.remove("flipped");
+            }
+        });
+    </script>
 
 </body>
 
