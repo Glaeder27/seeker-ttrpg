@@ -356,7 +356,6 @@ a:visited {
 
 a:hover {
     color: var(--bright-gold);
-    cursor: pointer;
 }
 
 a:active {
@@ -595,11 +594,11 @@ a:active {
     scroll-behavior: auto;
     padding: 1rem 2rem;
     scrollbar-width: none;
-    cursor: grab;
+  cursor: url('/assets/cursor/cursor_grab.png') 12 12, grab;
 }
 
 .carousel-track.active {
-    cursor: grabbing;
+  cursor: url('/assets/cursor/cursor_grabbing.png') 12 12, grabbing;
 }
 
 .carousel-track::-webkit-scrollbar {
