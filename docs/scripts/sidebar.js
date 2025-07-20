@@ -22,7 +22,7 @@ function levenshtein(a, b) {
   return dp[a.length][b.length];
 }
 
-fetch("data/glossary.json")
+fetch("/data/glossary.json")
   .then((response) => {
     if (!response.ok) throw new Error("Network response was not OK");
     return response.json();
@@ -35,7 +35,7 @@ fetch("data/glossary.json")
     result.textContent = "Failed to load glossary data.";
   });
 
-// Funzione di ricerca (in modo che possiamo riutilizzarla)
+// Search function
 function performSearch(term) {
   const key = Object.keys(glossary).find((k) => k.toLowerCase() === term.toLowerCase());
 
@@ -43,7 +43,7 @@ function performSearch(term) {
     const { definition, link } = glossary[key];
     result.innerHTML = `${definition} <a href="${link}" target="_top">[Read More]</a>`;
   } else if (term.length > 0) {
-    // Suggerisci una parola simile
+    // "Did you mean..."
     let closestMatch = null;
     let smallestDistance = Infinity;
 
@@ -58,12 +58,12 @@ function performSearch(term) {
     if (smallestDistance <= 3 && closestMatch) {
       result.innerHTML = `No result found. Did you mean: <a href="#" class="suggested-term">${closestMatch}</a>?`;
 
-      // Rende cliccabile il suggerimento
+      // Clickable "Did you mean..."
       const suggestionLink = result.querySelector(".suggested-term");
       suggestionLink.addEventListener("click", (e) => {
         e.preventDefault();
         input.value = closestMatch;
-        performSearch(closestMatch); // Ripeti la ricerca con il termine corretto
+        performSearch(closestMatch); // Repeat search
       });
     } else {
       result.textContent = "No result found.";
@@ -73,7 +73,7 @@ function performSearch(term) {
   }
 }
 
-// Ascolta i cambiamenti nell'input
+// Listen input changes
 input.addEventListener("input", () => {
   performSearch(input.value.trim());
 });
@@ -81,12 +81,12 @@ input.addEventListener("input", () => {
 // Archives carousel fade logic (runs once on load)
 async function loadArchives() {
   try {
-    const response = await fetch('data/archives.json'); // metti qui il path corretto
+    const response = await fetch('/data/archives.json');
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
 
     const container = document.querySelector('.archives-carousel-fade');
-    container.innerHTML = ''; // svuota contenuto attuale
+    container.innerHTML = ''; // Clean current content
 
     data.archives.forEach(archive => {
       const item = document.createElement('div');
