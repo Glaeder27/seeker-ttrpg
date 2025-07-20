@@ -1722,10 +1722,6 @@ thead th:last-child {
     opacity: 1;
 }
 
-.collapsible-content-sb {
-    margin-top: 1em;
-}
-
 .collapsible-title-sb {
     flex-grow: 1;
 }
@@ -1758,6 +1754,7 @@ thead th:last-child {
     font-family: var(--font-main);
     box-sizing: border-box;
     font-size: 0.9rem;
+    margin-top: 1em;
 }
 
 .collapsible-content-sb.expanded-content-sb {
