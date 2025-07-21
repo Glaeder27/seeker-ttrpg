@@ -318,7 +318,7 @@ p {
     margin: 5rem 0;
 }
 .section-wrapper[id^="section"] { 
-  scroll-margin-top: 60px; 
+  scroll-margin-top: 260px; 
 }
 
 /* ── LISTS ─────────────── */
