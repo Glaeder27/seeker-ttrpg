@@ -729,6 +729,58 @@ a:active {
     pointer-events: none !important;
 }
 
+/* ── SIDE MENU ─────────────── */
+
+.side-menu {
+  width: 250px;
+  background-color: #1c1c1c;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.side-menu.collapsed {
+  transform: translateX(-100%);
+}
+
+#toggle-menu {
+  position: absolute;
+  top: 10px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-section {
+  margin: 1rem;
+  font-weight: bold;
+}
+
+.menu-content ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.menu-content li a {
+  display: block;
+  padding: 0.4rem 0.8rem;
+  color: white;
+  text-decoration: none;
+}
+
+.menu-content li a:hover {
+  background-color: #333;
+}
+
 /* ── GRID MENU ─────────────── */
 
 .menu-grid {
