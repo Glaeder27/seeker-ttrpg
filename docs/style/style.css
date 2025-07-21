@@ -815,6 +815,11 @@ a:active {
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     background: transparent;
+    }
+    @media (max-width: 767px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .menu-cell {
@@ -837,6 +842,11 @@ a:active {
         border-color 0.3s ease;
     user-select: none;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, .2))
+    }
+    @media (max-width: 767px) {
+    .menu-cell {
+        min-height: 240px;
+    }
 }
 
 .menu-cell:hover,
@@ -1114,6 +1124,10 @@ h4 {
     transform: rotate(0deg);
 }
 
+.title .title-icon.mobile {
+    transform: rotate(0deg);
+}
+
 .title .subtitle {
     font-size: 1.2rem;
     font-family: var(--font-antique);
@@ -1140,6 +1154,10 @@ h4 {
     }
 
     .title .title-icon.flipped {
+        display: none;
+    }
+
+    .title .title-icon.notflipped {
         display: none;
     }
 
