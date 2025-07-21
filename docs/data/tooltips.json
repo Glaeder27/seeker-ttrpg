@@ -1,4 +1,13 @@
 {
+    "aptStrength": "Raw physical power, brute force, and the capacity to lift, shove, strike, or break through obstacles using over­whelm­ing strength and effort.",
+    "aptAgility": "Quick reflexes, balance, speed, coordination, and precise control over fine motor movements — especially under pressure or in dynamic environments.",
+    "aptVigor": "Stamina, resilience, and physical durability — the ability to endure pain, resist harm, and keep going despite exhaustion, illness, or injury.",
+    "aptPerception": "Awareness, observation skills, and the ability to notice details, detect hidden dangers, or sense subtle changes in the environment.",
+    "aptIntellect": "Logic, memory, reasoning, and the capacity to analyze information, solve problems, and un­der­stand complex or abstract concepts.",
+    "aptAdaptability": "Improvisation, creativity under pressure, and the ability to react quickly and re­source­fully to un­ex­pect­ed situations or unfamiliar tools.",
+    "aptCharisma": "Presence, personal magnetism, and the ability to influence others through charm, confidence, or emotional appeal — whether inspiring trust, com­mand­ing respect, or bending a crowd to your will.",
+    "aptInsight": "Empathy, intuition, and social sensitivity — the ability to interpret tone, read subtle cues in body language, discern hidden motives, and grasp emotional un­der­cur­rents in con­ver­sa­tions and situations.",
+    "aptWillpower": "Mental fortitude, discipline, and inner resolve — the strength to resist fear, withstand stress, endure ma­nip­u­la­tion, or remain focused under o­ver­whelm­ing pressure.",
     "actionDice": "These dice represent a character's <b>competence</b>, attributes, trained abilities, and any benefits derived from equipment or external assistance. They are rolled to determine the <b>success or failure</b> of an action.",
     "riskDice": "These dice signify the inherent difficulty of an action, its intrinsic danger, environmental threats, or the character's haste or fatigue. They are rolled to ascertain the <b>consequences</b> of an action.",
     "tagMovement": "This tag is assigned to abilities that involve changing position or manipulating physical space. Rules often interact with this tag to restrict or modify movement effects.",
