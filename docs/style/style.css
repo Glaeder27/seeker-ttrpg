@@ -317,10 +317,8 @@ p {
 .spacer.large {
     margin: 5rem 0;
 }
-#section1, #section2, #section3,
-#section4, #section5, #section6,
-#section8, #section7, #section9 {
-  scroll-margin-top: 60px;
+.section-wrapper[id^="section"] { 
+  scroll-margin-top: 60px; 
 }
 
 /* ── LISTS ─────────────── */
