@@ -317,8 +317,9 @@ p {
 .spacer.large {
     margin: 5rem 0;
 }
+
 [id^="section"] { 
-  scroll-margin-top: 260px; 
+  scroll-margin-top: 60px; 
 }
 
 /* ── LISTS ─────────────── */
