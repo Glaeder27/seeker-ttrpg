@@ -233,7 +233,8 @@
             margin-top: 1em;
         }
 
-        .aptitude-row {
+        .aptitude-row,
+        .aptitude-row-sb {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -243,7 +244,8 @@
             border-radius: 6px;
         }
 
-        .aptitude-row label {
+        .aptitude-row label,
+        .aptitude-row-sb label {
             display: flex;
             align-items: center;
             gap: 0.5em;
@@ -257,7 +259,8 @@
             filter: brightness(1.3);
         }
 
-        .aptitude-row input[type="number"] {
+        .aptitude-row input[type="number"],
+        .aptitude-row-sb input[type="number"] {
             -webkit-appearance: none;
             background: #222;
             color: #eee;
@@ -269,7 +272,8 @@
             font-weight: bold;
         }
 
-        .aptitude-value {
+        .aptitude-value, 
+        .aptitude-value-sb {
             min-width: 20px;
             text-align: center;
             font-weight: 700;
@@ -278,12 +282,15 @@
         }
 
         .aptitude-row input[type=number]::-webkit-inner-spin-button,
-        .aptitude-row input[type=number]::-webkit-outer-spin-button {
+        .aptitude-row input[type=number]::-webkit-outer-spin-button,
+        .aptitude-row-sb input[type=number]::-webkit-inner-spin-button,
+        .aptitude-row-sb input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
 
-        .aptitude-value.maxed {
+        .aptitude-value.maxed,
+        .aptitude-value-sb.maxed {
             color: var(--ancient-gold);
             font-weight: bold;
         }
@@ -325,7 +332,9 @@
         }
 
         #reset-button,
-        #copy-button {
+        #copy-button,
+        #reset-button-sb,
+        #copy-button-sb {
             background-color: var(--burnt-copper);
             color: #fff;
             border: none;
@@ -337,7 +346,9 @@
         }
 
         #reset-button:hover,
-        #copy-button:hover {
+        #copy-button:hover,
+        #reset-button-sb:hover,
+        #copy-button-sb:hover {
             background-color: var(--ancient-gold);
             color: #222;
         }
@@ -1574,107 +1585,105 @@
                     <p class="calculator-description">Distribute <strong>6 points</strong> among your Aptitudes. No
                         Aptitude may exceed <strong>3</strong>. All start at <strong>1</strong>.</p>
                     <div class="calculator">
-                        <div class="aptitude-row" data-aptitude="Strength">
+                        <div class="aptitude-row-sb" data-aptitude="Strength">
                             <img src="https://static.wixstatic.com/shapes/e40a82_7e1d9de23f2645b988a5d5e3c22c8231.svg"
                                 class="aptitude-icon" alt="Strength">
                             <span class="aptitude-label">Strength</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Agility">
+                        <div class="aptitude-row-sb" data-aptitude="Agility">
                             <img src="https://static.wixstatic.com/shapes/e40a82_ce3f5a9ea70f4af5a634742be8d043ad.svg"
                                 class="aptitude-icon" alt="Agility">
                             <span class="aptitude-label">Agility</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Vigor">
+                        <div class="aptitude-row-sb" data-aptitude="Vigor">
                             <img src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg"
                                 class="aptitude-icon" alt="Vigor">
                             <span class="aptitude-label">Vigor</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Perception">
+                        <div class="aptitude-row-sb" data-aptitude="Perception">
                             <img src="https://static.wixstatic.com/shapes/e40a82_d8b41b7bd36a4230929131bc44276eb7.svg"
                                 class="aptitude-icon" alt="Perception">
                             <span class="aptitude-label">Perception</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Insight">
+                        <div class="aptitude-row-sb" data-aptitude="Insight">
                             <img src="https://static.wixstatic.com/shapes/e40a82_6da737fa86b1492cb32a571f1f2f8e62.svg"
                                 class="aptitude-icon" alt="Insight">
                             <span class="aptitude-label">Insight</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Adaptability">
+                        <div class="aptitude-row-sb" data-aptitude="Adaptability">
                             <img src="https://static.wixstatic.com/shapes/e40a82_cba6d08d5b93403798c6ddc1418d2c4f.svg"
                                 class="aptitude-icon" alt="Adaptability">
                             <span class="aptitude-label">Adaptability</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Willpower">
+                        <div class="aptitude-row-sb" data-aptitude="Willpower">
                             <img src="https://static.wixstatic.com/shapes/e40a82_70b95ae668b245ccb152aa17228996ad.svg"
                                 class="aptitude-icon" alt="Willpower">
                             <span class="aptitude-label">Willpower</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Intellect">
+                        <div class="aptitude-row-sb" data-aptitude="Intellect">
                             <img src="https://static.wixstatic.com/shapes/e40a82_81b63b524d76464eaf071b4f5cd9ab87.svg"
                                 class="aptitude-icon" alt="Intellect">
                             <span class="aptitude-label">Intellect</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
-                        <div class="aptitude-row" data-aptitude="Charisma">
+                        <div class="aptitude-row-sb" data-aptitude="Charisma">
                             <img src="https://static.wixstatic.com/shapes/e40a82_57fbbea322f14072915fe83908e360df.svg"
                                 class="aptitude-icon" alt="Charisma">
                             <span class="aptitude-label">Charisma</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn">-</button>
-                                <span class="aptitude-value">1</span>
-                                <button class="plus-btn">+</button>
+                                <button class="minus-btn-sb">-</button>
+                                <span class="aptitude-value-sb">1</span>
+                                <button class="plus-btn-sb">+</button>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="calculator-footer">
-                        <p><strong>Points used:</strong> <span id="point-used">0</span>/6 <span
-                                id="point-warning"></span>
-                        </p>
-                        <button id="reset-button">Reset</button>
-                        <button id="copy-button">Copy Results</button>
+                        <p><strong>Points remaining:</strong> <span id="remaining-points-sb">6</span>/6</p>
+                        <button id="reset-button-sb">Reset</button>
+                        <button id="copy-button-sb">Copy Build</button>
                     </div>
                 </div>
+
                 <!-- Block 3: Player & GM Resources -->
                 <div class="sidebar-block">
                     <h3>Player & GM Resources</h3>
@@ -1910,6 +1919,106 @@
                 updateMaxedAptitudes();
             });
         });
+
+        // Sidebar Point Buy Calculator
+
+        const rows_sb = document.querySelectorAll('.aptitude-row-sb');
+        const resetBtn_sb = document.getElementById('reset-button-sb');
+        const copyBtn_sb = document.getElementById('copy-button-sb');
+        const maxPoints_sb = 6;
+        const minValue_sb = 1;
+        const maxValue_sb = 3;
+
+        function getTotalPointsUsed_sb() {
+            let total_sb = 0;
+            rows_sb.forEach(row_sb => {
+                const val_sb = parseInt(row_sb.querySelector('.aptitude-value-sb').textContent);
+                total_sb += val_sb - minValue_sb;
+            });
+            return total_sb;
+        }
+
+        function updateDisplay_sb() {
+            const totalUsed_sb = getTotalPointsUsed_sb();
+            const remaining_sb = maxPoints_sb - totalUsed_sb;
+
+            // Aggiorna punti rimanenti nel DOM
+            const remainingDisplay_sb = document.getElementById('remaining-points-sb');
+            if (remainingDisplay_sb) remainingDisplay_sb.textContent = remaining_sb;
+
+            // Disabilita i + se non ci sono punti rimanenti
+            rows_sb.forEach(row_sb => {
+                const valSpan_sb = row_sb.querySelector('.aptitude-value-sb');
+                const plusBtn_sb = row_sb.querySelector('.plus-btn-sb');
+                const minusBtn_sb = row_sb.querySelector('.minus-btn-sb');
+                const val_sb = parseInt(valSpan_sb.textContent);
+
+                plusBtn_sb.disabled = val_sb >= maxValue_sb || remaining_sb <= 0;
+                minusBtn_sb.disabled = val_sb <= minValue_sb;
+            });
+        }
+
+        rows_sb.forEach(row_sb => {
+            const plusBtn_sb = row_sb.querySelector('.plus-btn-sb');
+            const minusBtn_sb = row_sb.querySelector('.minus-btn-sb');
+            const valSpan_sb = row_sb.querySelector('.aptitude-value-sb');
+
+            plusBtn_sb.addEventListener('click', () => {
+                let val_sb = parseInt(valSpan_sb.textContent);
+                const totalUsed_sb = getTotalPointsUsed_sb();
+
+                if (val_sb < maxValue_sb && totalUsed_sb < maxPoints_sb) {
+                    val_sb++;
+                    valSpan_sb.textContent = val_sb;
+                    updateDisplay_sb();
+                    updateMaxedAptitudes_sb();
+                }
+            });
+
+            minusBtn_sb.addEventListener('click', () => {
+                let val_sb = parseInt(valSpan_sb.textContent);
+                if (val_sb > minValue_sb) {
+                    val_sb--;
+                    valSpan_sb.textContent = val_sb;
+                    updateDisplay_sb();
+                    updateMaxedAptitudes_sb();
+                }
+            });
+        });
+
+        resetBtn_sb.addEventListener('click', () => {
+            rows_sb.forEach(row_sb => {
+                row_sb.querySelector('.aptitude-value-sb').textContent = minValue_sb;
+            });
+            updateDisplay_sb();
+            updateMaxedAptitudes_sb();
+        });
+
+        copyBtn_sb.addEventListener('click', () => {
+            let result_sb = "Aptitude Scores:\n";
+            rows_sb.forEach(row_sb => {
+                const label_sb = row_sb.getAttribute('data-aptitude');
+                const val_sb = row_sb.querySelector('.aptitude-value-sb').textContent;
+                result_sb += `• ${label_sb}: ${val_sb}\n`;
+            });
+            navigator.clipboard.writeText(result_sb);
+            copyBtn_sb.textContent = "Copied!";
+            setTimeout(() => copyBtn_sb.textContent = "Copy Build", 1500);
+        });
+
+        function updateMaxedAptitudes_sb() {
+            const values_sb = document.querySelectorAll('.aptitude-value-sb');
+            values_sb.forEach(span_sb => {
+                if (parseInt(span_sb.textContent, 10) === 3) {
+                    span_sb.classList.add('maxed');
+                } else {
+                    span_sb.classList.remove('maxed');
+                }
+            });
+        }
+
+        updateDisplay_sb();
+        updateMaxedAptitudes_sb();
 
     </script>
 </body>
