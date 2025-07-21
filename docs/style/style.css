@@ -317,7 +317,7 @@ p {
 .spacer.large {
     margin: 5rem 0;
 }
-.section-wrapper[id^="section"] { 
+[id^="section"] { 
   scroll-margin-top: 260px; 
 }
 
