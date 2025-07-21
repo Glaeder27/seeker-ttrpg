@@ -476,7 +476,7 @@ a:active {
 
 @media (max-width: 767px) {
     .banner-parallax-main {
-        height: 650px;
+        height: 750px;
         background-position: left;
     }
     .banner-parallax-secondary {
@@ -522,18 +522,17 @@ a:active {
     .banner-mask::before {
         display: none;
     }
-
     .site-title-wrapper::before {
         content: '';
         position: absolute;
         left: 0;
         width: 100%;
-        height: 220px;
+        height: 320px;
         background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.6) 30%,
-        rgba(0, 0, 0, 0.6) 70%,
+        rgba(0, 0, 0, 0.8) 30%,
+        rgba(0, 0, 0, 0.8) 70%,
         rgba(0, 0, 0, 0) 100% 
         );
         z-index: 0;
