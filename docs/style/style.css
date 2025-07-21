@@ -450,7 +450,7 @@ a:active {
 
 /* ── BANNERS ─────────────── */
 
-.banner-parallax-main {
+.banner-parallax {
     position: relative;
     height: 500px;
     /* Mask */
