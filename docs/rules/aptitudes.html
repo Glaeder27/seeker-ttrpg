@@ -259,6 +259,10 @@
             filter: brightness(1.3);
         }
 
+        .right-column .aptitude-label {
+            text-align: left;
+        }
+
         .aptitude-row input[type="number"],
         .aptitude-row-sb input[type="number"] {
             -webkit-appearance: none;
@@ -1588,7 +1592,7 @@
                         <div class="aptitude-row-sb" data-aptitude="Strength">
                             <img src="https://static.wixstatic.com/shapes/e40a82_7e1d9de23f2645b988a5d5e3c22c8231.svg"
                                 class="aptitude-icon" alt="Strength">
-                            <span class="aptitude-label">Strength</span>
+                            <span class="aptitude-label tooltip" data-tooltip-key="apt-strength">Strength</span>
                             <div class="calculator-buttons">
                                 <button class="minus-btn-sb">-</button>
                                 <span class="aptitude-value-sb">1</span>
