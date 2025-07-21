@@ -322,6 +322,13 @@ p {
   scroll-margin-top: 80px; 
 }
 
+.section-wrapper[id^="section"] {
+  margin-top: 8rem;
+}
+.section-wrapper[id="section1"] {
+  margin-top: 4rem;
+}
+
 /* ── LISTS ─────────────── */
 
 ul,

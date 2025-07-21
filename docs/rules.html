@@ -377,7 +377,7 @@
                     </a>
 
                     <!-- Dice System -->
-                    <div class="rules-card-link flip-container" id="chapter-card">
+                    <div class="rules-card-link flip-container chapter-card">
                         <div class="flip-inner">
 
                             <!-- FRONT -->
@@ -415,7 +415,7 @@
                     </div>
 
                     <!-- Aptitudes -->
-                    <div class="rules-card-link flip-container" id="chapter-card">
+                    <div class="rules-card-link flip-container chapter-card">
                         <div class="flip-inner">
 
                             <!-- FRONT -->
@@ -451,57 +451,57 @@
                         </div>
                     </div>
 
-                        <a href="" target="_top" class="rules-card-link">
-                            <div class="rules-card unavailable" data-title="Skills & Masteries" data-category="Lore"
-                                data-status="planned">
-                                <div class="rules-icon-wrapper">
-                                    <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
-                                        class="rules-icon">
-                                </div>
-                                <div class="rules-icon-wrapper"></div>
-                                <h3 class="rules-title">Skills & Masteries</h3>
-                                <div class="rules-meta">
-                                    <div class="rules-category">Characters</div>
-                                    <span class="rule-tag state-planned">Planned</span>
-                                </div>
-                                <p class="rules-description">Rules for characters' special abilities.</p>
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Skills & Masteries" data-category="Lore"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
                             </div>
-                        </a>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Skills & Masteries</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">Characters</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rules for characters' special abilities.</p>
+                        </div>
+                    </a>
 
-                        <a href="" target="_top" class="rules-card-link">
-                            <div class="rules-card unavailable" data-title="Travel & Exploration" data-category="System"
-                                data-status="planned">
-                                <div class="rules-icon-wrapper">
-                                    <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
-                                        class="rules-icon">
-                                </div>
-                                <div class="rules-icon-wrapper"></div>
-                                <h3 class="rules-title">Travel & Exploration</h3>
-                                <div class="rules-meta">
-                                    <div class="rules-category">System</div>
-                                    <span class="rule-tag state-planned">Planned</span>
-                                </div>
-                                <p class="rules-description">Rules for navigating and discovering the New World.</p>
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Travel & Exploration" data-category="System"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
                             </div>
-                        </a>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Travel & Exploration</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">System</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rules for navigating and discovering the New World.</p>
+                        </div>
+                    </a>
 
-                        <a href="" target="_top" class="rules-card-link">
-                            <div class="rules-card unavailable" data-title="Social Interactions" data-category="System"
-                                data-status="planned">
-                                <div class="rules-icon-wrapper">
-                                    <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
-                                        class="rules-icon">
-                                </div>
-                                <div class="rules-icon-wrapper"></div>
-                                <h3 class="rules-title">Social Interactions</h3>
-                                <div class="rules-meta">
-                                    <div class="rules-category">System</div>
-                                    <span class="rule-tag state-planned">Planned</span>
-                                </div>
-                                <p class="rules-description">Rules for interacting (peacefully!) with NPCs.</p>
+                    <a href="" target="_top" class="rules-card-link">
+                        <div class="rules-card unavailable" data-title="Social Interactions" data-category="System"
+                            data-status="planned">
+                            <div class="rules-icon-wrapper">
+                                <img src="https://glaeder27.github.io/seeker-ttrpg/assets/icons/svg/icon_game-system.svg"
+                                    class="rules-icon">
                             </div>
-                        </a>
-                    </div>
+                            <div class="rules-icon-wrapper"></div>
+                            <h3 class="rules-title">Social Interactions</h3>
+                            <div class="rules-meta">
+                                <div class="rules-category">System</div>
+                                <span class="rule-tag state-planned">Planned</span>
+                            </div>
+                            <p class="rules-description">Rules for interacting (peacefully!) with NPCs.</p>
+                        </div>
+                    </a>
+                </div>
             </section>
 
             <!-- Explore Rules -->
@@ -670,29 +670,30 @@
     <script src="scripts/sidebar.js"></script>
 
     <script>
-        const flipCard = document.getElementById("chapter-card");
+        const flipCards = document.querySelectorAll(".chapter-card");
 
-        // Gira la card in avanti al primo click (fronte → retro)
-        flipCard.addEventListener("click", (e) => {
-            // Se la card non è ancora girata, girala
-            if (!flipCard.classList.contains("flipped")) {
-                e.stopPropagation(); // Evita propagazione
-                flipCard.classList.add("flipped");
-            }
+        flipCards.forEach((flipCard) => {
+            // Click fronte → retro
+            flipCard.addEventListener("click", (e) => {
+                if (!flipCard.classList.contains("flipped")) {
+                    e.stopPropagation();
+                    flipCard.classList.add("flipped");
+                }
+            });
         });
 
-        // Gira la card indietro (retro → fronte) se clicchi fuori o all'interno ma non su un link
+        // Click retro → fronte (fuori o dentro ma non su link)
         document.addEventListener("click", (e) => {
-            if (
-                flipCard.classList.contains("flipped") && // Solo se è girata
-                (
-                    !flipCard.contains(e.target) ||        // Click fuori
-                    (flipCard.contains(e.target) && e.target.tagName !== "A") // Oppure dentro, ma non su <a>
-                )
-            ) {
-                flipCard.classList.remove("flipped");
-            }
+            flipCards.forEach((flipCard) => {
+                if (
+                    flipCard.classList.contains("flipped") &&
+                    (!flipCard.contains(e.target) || (flipCard.contains(e.target) && e.target.tagName !== "A"))
+                ) {
+                    flipCard.classList.remove("flipped");
+                }
+            });
         });
+
     </script>
 
 </body>
