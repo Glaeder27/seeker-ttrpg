@@ -596,11 +596,11 @@ a:active {
     scroll-behavior: auto;
     padding: 1rem 2rem;
     scrollbar-width: none;
-  cursor: url('/assets/cursor/cursor_grab.png') 12 12, grab;
+  cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
 }
 
 .carousel-track.active {
-  cursor: url('/assets/cursor/cursor_grabbing.png') 12 12, grabbing;
+  cursor: url('/assets/cursor/cursor_grabbing_24.png') 12 12, grabbing;
 }
 
 .carousel-track::-webkit-scrollbar {
