@@ -475,7 +475,7 @@ a:active {
 }
 
 @media (max-width: 767px) {
-    .banner-parallax-main {
+    .banner-parallax {
         height: 750px;
         background-position: left;
     }
