@@ -450,7 +450,19 @@ a:active {
 
 /* ── BANNERS ─────────────── */
 
-.banner-parallax {
+.banner-parallax-main {
+    position: relative;
+    height: 500px;
+    /* Mask */
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+    /* Parallax */
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.banner-parallax-secondary {
     position: relative;
     height: 500px;
     /* Mask */
@@ -463,8 +475,12 @@ a:active {
 }
 
 @media (max-width: 767px) {
-    .banner-parallax {
+    .banner-parallax-main {
         height: 650px;
+        background-position: left;
+    }
+    .banner-parallax-secondary {
+        height: 400px;
         background-position: left;
     }
 }
@@ -603,6 +619,11 @@ a:active {
     max-width: 1400px;
     padding: 0 50px;
 
+}
+@media (max-width: 767px) {
+    .carousel-wrapper {
+        max-width: 100vw;
+    }
 }
 
 .carousel-track {
