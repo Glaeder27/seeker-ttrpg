@@ -653,7 +653,7 @@ a:active {
     .banner-mask {
         display: flex;
         flex-direction: column;
-        z-index: 9;
+        z-index: 7;
         background-color: rgba(0, 0, 0, 0);
     }
 }
