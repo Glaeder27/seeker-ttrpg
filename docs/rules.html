@@ -672,6 +672,7 @@
     <!-- ────────────────────────────────────────────────────────── -->
     <script src="scripts/core.js"></script>
     <script src="scripts/sidebar.js"></script>
+    <script src="scripts/side-menu.js"></script>
 
     <script>
         const flipCards = document.querySelectorAll(".chapter-card");
@@ -697,38 +698,6 @@
                 }
             });
         });
-
-        // Side Menu
-        fetch("menu-rules.html")
-        .then((res) => res.text())
-        .then((html) => {
-            document.body.insertAdjacentHTML("afterbegin", html);
-            initializeMenu();
-        });
-
-        function initializeMenu() {
-        const sideMenu = document.getElementById("side-menu");
-        const toggleButton = document.getElementById("toggle-menu");
-
-        // Read state from localStorage
-        const menuVisible = localStorage.getItem("menuVisible") === "true";
-        if (!menuVisible) sideMenu.classList.add("collapsed");
-
-        toggleButton.addEventListener("click", () => {
-            sideMenu.classList.toggle("collapsed");
-            const isVisible = !sideMenu.classList.contains("collapsed");
-            localStorage.setItem("menuVisible", isVisible);
-        });
-
-        // Auto highlight
-        const links = document.querySelectorAll("#chapter-sections a");
-        const currentHash = window.location.hash;
-        links.forEach((link) => {
-            if (link.getAttribute("href") === currentHash) {
-            link.classList.add("active");
-            }
-        });
-        }
 
     </script>
 
