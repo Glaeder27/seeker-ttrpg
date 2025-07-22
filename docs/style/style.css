@@ -1,4 +1,4 @@
-/*v1.95 2025-07-22T22:30:00Z*/
+/*v1.96 2025-07-22T23:30:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -557,9 +557,9 @@ a:active {
 
     .navbar-close {
         position: absolute;
-        top: 1.2rem;
-        right: 1.8rem;
-        font-size: 3.2rem;
+        bottom: 1rem;
+        right: 2rem;
+        font-size: 4rem;
         background: none;
         border: none;
         color: var(--rust-red, #AA3B3B);
