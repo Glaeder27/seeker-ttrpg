@@ -582,6 +582,7 @@ a:active {
 .banner-parallax {
     position: relative;
     height: 500px;
+    margin-top: 70px;
     /* Mask */
     background-size: cover;
     background-position: center bottom;
@@ -607,6 +608,7 @@ a:active {
     .banner-parallax {
         height: 750px;
         background-position: left;
+        margin-top: 30px;
     }
 
     .banner-parallax-secondary {
