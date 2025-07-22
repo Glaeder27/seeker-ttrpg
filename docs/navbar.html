@@ -5,7 +5,7 @@
     </a>
   </div>
 
-  <!-- Menu links (desktop + mobile) -->
+  <!-- Menu links (desktop) -->
   <ul class="navbar-links" id="navbar-links">
     <li><a href="/rules.html" class="nav-link">Rulebook</a></li>
     <li><a href="/lore.html" class="nav-link">Lorebook</a></li>
@@ -15,16 +15,28 @@
   </ul>
 </nav>
 
- <!-- Hamburger menu -->
+<div class="navbar-links-mobile" id="navbar-links-mobile">
+  <button class="navbar-close" id="navbar-close" aria-label="Close Menu">×</button>
+  <ul>
+    <li><a href="/rules.html">Rulebook</a></li>
+    <li><a href="/lore.html">Lorebook</a></li>
+    <li><a href="/roadmap.html">Roadmap</a></li>
+    <li><a href="/playtest.html">Playtest</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</div>
+
+<!-- Mobile toggle button -->
 <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle Menu">☰</button>
 
 <script>
-  /*v3 2025-07-22T11:30:00Z*/
- document.addEventListener("DOMContentLoaded", function () {
+  /*v3.1 2025-07-22T15:30:00Z*/
+  document.addEventListener("DOMContentLoaded", function () {
+    // Highlight active
     const path = window.location.pathname;
     const currentPage = path === "/" || path === "/seeker-ttrpg/" ? "index.html" : path.split("/").pop();
 
-    document.querySelectorAll(".nav-link").forEach(link => {
+    document.querySelectorAll(".nav-link, .navbar-links-mobile a").forEach(link => {
       const href = link.getAttribute("href");
       if (
         href.includes(currentPage) ||
@@ -34,23 +46,23 @@
       }
     });
 
-    // Mobile menu logic
-    const hamburger = document.getElementById("hamburger");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const closeBtn = document.getElementById("close-btn");
+    // Toggle mobile menu
+    const toggleButton = document.getElementById("navbar-toggle");
+    const mobileMenu = document.getElementById("navbar-links-mobile");
+    const closeButton = document.getElementById("navbar-close");
 
-    hamburger.addEventListener("click", () => {
-      mobileMenu.style.display = "flex";
+    toggleButton.addEventListener("click", () => {
+      mobileMenu.classList.add("show");
     });
 
-    closeBtn.addEventListener("click", () => {
-      mobileMenu.style.display = "none";
+    closeButton.addEventListener("click", () => {
+      mobileMenu.classList.remove("show");
     });
 
-    // Optional: close menu when clicking a link
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
+    // Close menu on link click
+    document.querySelectorAll("#navbar-links-mobile a").forEach(link => {
       link.addEventListener("click", () => {
-        mobileMenu.style.display = "none";
+        mobileMenu.classList.remove("show");
       });
     });
   });
