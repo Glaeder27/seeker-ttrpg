@@ -146,7 +146,7 @@
     .then(html => {
       document.getElementById("navbar-top").innerHTML = html;
 
-      // Evidenzia il link attivo
+      // Highlight active
       const path = window.location.pathname;
       const currentPage = path === "/" || path === "/seeker-ttrpg/"
         ? "index.html"
@@ -162,7 +162,7 @@
         }
       });
 
-      // Gestione mobile menu
+      // Mobile menu logic
       const toggleBtn = document.getElementById("navbar-toggle");
       const mobileMenu = document.getElementById("navbar-links-mobile");
       const closeBtn = document.getElementById("navbar-close");
@@ -179,7 +179,7 @@
         });
       }
 
-      // Chiudi il menu mobile al click su un link
+      // Close menu on link click
       mobileMenu?.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
           mobileMenu.classList.remove("show");
