@@ -1,4 +1,52 @@
-// core.js v2.0 2025-07-19T22:16:00Z
+//v2.0 2025-07-19T22:16:00Z
+
+// Version Checker
+fetch('/style/style.css')
+  .then(res => res.text())
+  .then(css => {
+    const versionMatch = css.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+    if (versionMatch) {
+      const version = versionMatch[1];
+      const timestamp = versionMatch[2];
+      console.log(
+        `%c🧾 style.css version v${version} – ${timestamp}`,
+        'color: lightgreen; font-weight: bold;'
+      );
+    } else {
+      console.warn('⚠️ No version info found in style.css');
+    }
+  })
+  .catch(err => console.error('❌ Failed to fetch style.css:', err));
+  (function logCoreVersion() {
+  try {
+    const scriptEl = document.currentScript;
+    const request = new XMLHttpRequest();
+    request.open('GET', scriptEl.src, true);
+    request.onreadystatechange = function () {
+      if (request.readyState === 4 && request.status === 200) {
+        const content = request.responseText;
+        const versionMatch = content.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+        if (versionMatch) {
+          const version = versionMatch[1];
+          const timestamp = versionMatch[2];
+          console.log(
+            `%c📜 core.js version v${version} – ${timestamp}`,
+            'color: orange; font-weight: bold;'
+          );
+        } else {
+          console.warn('⚠️ No version info found in core.js');
+        }
+      }
+    };
+    request.send();
+  } catch (err) {
+    console.error('❌ Failed to read core.js version:', err);
+  }
+})();
+
+// ───────────────────────────────────────────────────────────────────
+// ── MAIN SCRIPT ────────────────────────────────────────────────────
+// ───────────────────────────────────────────────────────────────────
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
