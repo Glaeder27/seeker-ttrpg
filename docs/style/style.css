@@ -522,9 +522,11 @@ a:active {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("/assets/icons/svg/alchemy-5.svg") no-repeat center/150%;
+    background: url("/assets/icons/svg/alchemy-5.svg") no-repeat center/100%;
     opacity: 0.05;
     pointer-events: none;
+    transform: rotate(30deg) scale(1.5);
+    margin-top: 5rem;
   }
 
     .navbar-links-mobile ul {
