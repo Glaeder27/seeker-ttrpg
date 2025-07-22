@@ -224,6 +224,12 @@
             position: relative;
         }
 
+        .flip-container.chapter-card {
+            min-height: 240px;
+            height: 100%;
+            display: block;
+        }
+
         .flip-inner {
             transition: transform 0.6s;
             transform-style: preserve-3d;
@@ -282,57 +288,57 @@
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <div id="navbar-top"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
 
-  <script>
-    /* v3.2 2025-07-22T16:30:00Z */
-    fetch("navbar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("navbar-top").innerHTML = html;
+    <script>
+        /* v3.2 2025-07-22T16:30:00Z */
+        fetch("navbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("navbar-top").innerHTML = html;
 
-        // Evidenzia il link attivo
-        const path = window.location.pathname;
-        const currentPage = path === "/" || path === "/seeker-ttrpg/"
-          ? "index.html"
-          : path.split("/").pop();
+                // Evidenzia il link attivo
+                const path = window.location.pathname;
+                const currentPage = path === "/" || path === "/seeker-ttrpg/"
+                    ? "index.html"
+                    : path.split("/").pop();
 
-        document.querySelectorAll(".nav-link").forEach(link => {
-          const href = link.getAttribute("href");
-          if (
-            href.includes(currentPage) ||
-            (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
-          ) {
-            link.classList.add("active");
-          }
-        });
+                document.querySelectorAll(".nav-link").forEach(link => {
+                    const href = link.getAttribute("href");
+                    if (
+                        href.includes(currentPage) ||
+                        (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
+                    ) {
+                        link.classList.add("active");
+                    }
+                });
 
-        // Gestione mobile menu
-        const toggleBtn = document.getElementById("navbar-toggle");
-        const mobileMenu = document.getElementById("navbar-links-mobile");
-        const closeBtn = document.getElementById("navbar-close");
+                // Gestione mobile menu
+                const toggleBtn = document.getElementById("navbar-toggle");
+                const mobileMenu = document.getElementById("navbar-links-mobile");
+                const closeBtn = document.getElementById("navbar-close");
 
-        if (toggleBtn && mobileMenu) {
-          toggleBtn.addEventListener("click", () => {
-            mobileMenu.classList.add("show");
-          });
-        }
+                if (toggleBtn && mobileMenu) {
+                    toggleBtn.addEventListener("click", () => {
+                        mobileMenu.classList.add("show");
+                    });
+                }
 
-        if (closeBtn && mobileMenu) {
-          closeBtn.addEventListener("click", () => {
-            mobileMenu.classList.remove("show");
-          });
-        }
+                if (closeBtn && mobileMenu) {
+                    closeBtn.addEventListener("click", () => {
+                        mobileMenu.classList.remove("show");
+                    });
+                }
 
-        // Chiudi il menu mobile al click su un link
-        mobileMenu?.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            mobileMenu.classList.remove("show");
-          });
-        });
-      });
-  </script>
+                // Chiudi il menu mobile al click su un link
+                mobileMenu?.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        mobileMenu.classList.remove("show");
+                    });
+                });
+            });
+    </script>
 
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- MAIN CONTENT ───────────────────────────────────────────── -->
