@@ -1,5 +1,5 @@
 // Caricamento menu
-fetch("/partials/menu.html")
+fetch("/menu-rules.html")
   .then((res) => res.text())
   .then((html) => {
     document.body.insertAdjacentHTML("afterbegin", html);
