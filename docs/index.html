@@ -139,53 +139,56 @@
 <body>
   <!-- NAVBAR -->
   <div id="navbar-top"></div>
-  <script>
-    /*v3.2 2025-07-22T15:40:00Z*/
-    fetch("navbar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("navbar-top").innerHTML = html;
+<script>
+  /* v5.0 2025-07-22T15:55:00Z */
+  fetch("navbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("navbar-top").innerHTML = html;
 
-        // Highlight active
-        const path = window.location.pathname;
-        const currentPage = path === "/" || path === "/seeker-ttrpg/" ? "index.html" : path.split("/").pop();
-        document.querySelectorAll(".nav-link").forEach(link => {
-          const href = link.getAttribute("href");
-          if (
-            href.includes(currentPage) ||
-            (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
-          ) {
-            link.classList.add("active");
-          }
-        });
+      // Evidenzia il link attivo
+      const path = window.location.pathname;
+      const currentPage = path === "/" || path === "/seeker-ttrpg/"
+        ? "index.html"
+        : path.split("/").pop();
 
-        // Mobile menu logic
-        const toggleButton = document.getElementById("navbar-toggle");
-        const navLinks = document.getElementById("navbar-links");
-        const closeButton = document.getElementById("navbar-close");
-
-        if (toggleButton && navLinks) {
-          toggleButton.addEventListener("click", () => {
-            navLinks.classList.add("show");
-          });
-        }
-
-        if (closeButton && navLinks) {
-          closeButton.addEventListener("click", () => {
-            navLinks.classList.remove("show");
-          });
-        }
-
-        // Close menu on link click
-        if (navLinks) {
-          navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-              navLinks.classList.remove("show");
-            });
-          });
+      document.querySelectorAll(".nav-link").forEach(link => {
+        const href = link.getAttribute("href");
+        if (
+          href.includes(currentPage) ||
+          (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
+        ) {
+          link.classList.add("active");
         }
       });
-  </script>
+
+      // Gestione mobile menu
+      const toggleBtn = document.getElementById("navbar-toggle");
+      const mobileMenu = document.getElementById("navbar-links-mobile");
+      const closeBtn = document.getElementById("navbar-close");
+
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener("click", () => {
+          mobileMenu.classList.add("show");
+        });
+      }
+
+      if (closeBtn && mobileMenu) {
+        closeBtn.addEventListener("click", () => {
+          mobileMenu.classList.remove("show");
+        });
+      }
+
+      // Chiudi il menu mobile al click su un link
+      mobileMenu?.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("show");
+        });
+      });
+    });
+</script>
+
+
 
   <!-- ────────────────────────────────────────────────────────── -->
   <!-- MAIN CONTENT ───────────────────────────────────────────── -->
