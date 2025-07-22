@@ -551,6 +551,7 @@ a:active {
     .banner-mask {
         display: flex;
         flex-direction: column;
+        z-index: 999;
     }
 }
 
