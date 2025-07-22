@@ -639,7 +639,7 @@ a:active {
         z-index: 0;
         height: clamp(350px, 30vh + 10vw, 450px);
         filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
-        margin: -3rem 0 2rem;
+        margin: -15rem 0 2rem;
     }
 }
 
