@@ -1,48 +1,33 @@
-//v2.0 2025-07-19T22:16:00Z
+/*v2.0 2025-07-22T10:30:00Z*/
 
 // Version Checker
-fetch('/style/style.css')
-  .then(res => res.text())
-  .then(css => {
-    const versionMatch = css.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
-    if (versionMatch) {
-      const version = versionMatch[1];
-      const timestamp = versionMatch[2];
-      console.log(
-        `%c🧾 style.css version v${version} – ${timestamp}`,
-        'color: lightgreen; font-weight: bold;'
-      );
-    } else {
-      console.warn('⚠️ No version info found in style.css');
+Promise.all([
+  fetch('/style/style.css').then(res => res.text()).catch(() => null),
+  new Promise(resolve => {
+    try {
+      const scriptEl = document.currentScript;
+      const request = new XMLHttpRequest();
+      request.open('GET', scriptEl.src, true);
+      request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+          resolve(request.responseText);
+        }
+      };
+      request.onerror = () => resolve(null);
+      request.send();
+    } catch {
+      resolve(null);
     }
   })
-  .catch(err => console.error('❌ Failed to fetch style.css:', err));
-  (function logCoreVersion() {
-  try {
-    const scriptEl = document.currentScript;
-    const request = new XMLHttpRequest();
-    request.open('GET', scriptEl.src, true);
-    request.onreadystatechange = function () {
-      if (request.readyState === 4 && request.status === 200) {
-        const content = request.responseText;
-        const versionMatch = content.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
-        if (versionMatch) {
-          const version = versionMatch[1];
-          const timestamp = versionMatch[2];
-          console.log(
-            `%c📜 core.js version v${version} – ${timestamp}`,
-            'color: orange; font-weight: bold;'
-          );
-        } else {
-          console.warn('⚠️ No version info found in core.js');
-        }
-      }
-    };
-    request.send();
-  } catch (err) {
-    console.error('❌ Failed to read core.js version:', err);
-  }
-})();
+]).then(([css, js]) => {
+  const cssMatch = css?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+  const jsMatch = js?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+
+  const cssVersion = cssMatch ? `🎨 style.css v${cssMatch[1]} – ${cssMatch[2]}` : '🎨 style.css ❓';
+  const jsVersion = jsMatch ? `🔣 core.js v${jsMatch[1]} – ${jsMatch[2]}` : '🔣 core.js ❓';
+
+  console.log(`%c${cssVersion}   %c${jsVersion}`, 'color: lightgreen; font-weight: bold;', 'color: orange; font-weight: bold;');
+});
 
 // ───────────────────────────────────────────────────────────────────
 // ── MAIN SCRIPT ────────────────────────────────────────────────────
