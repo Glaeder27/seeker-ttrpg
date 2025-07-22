@@ -59,11 +59,12 @@
       font-family: var(--font-antique, serif);
       filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 1));
     }
+
     @media (max-width: 767px) {
-    .site-subtitle {
+      .site-subtitle {
         font-size: 1.3rem;
+      }
     }
-}
 
     .title-container {
       z-index: 2;
@@ -129,52 +130,62 @@
     /* Overrides */
     @media (max-width: 600px) {
       .menu-2-cell {
-          padding: 3.5rem 0rem 0;
+        padding: 3.5rem 0rem 0;
       }
     }
   </style>
 </head>
 
 <body>
-<!-- NAVBAR -->
-<div id="navbar-top"></div>
-<script>
-  fetch("navbar.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("navbar-top").innerHTML = html;
+  <!-- NAVBAR -->
+  <div id="navbar-top"></div>
+  <script>
+    /*v3.2 2025-07-22T15:40:00Z*/
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-top").innerHTML = html;
 
-      // Evidenzia link attivo
-      const path = window.location.pathname;
-      const currentPage = path === "/" || path === "/seeker-ttrpg/" ? "index.html" : path.split("/").pop();
-      document.querySelectorAll(".nav-link").forEach(link => {
-        const href = link.getAttribute("href");
-        if (
-          href.includes(currentPage) ||
-          (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
-        ) {
-          link.classList.add("active");
-        }
-      });
-
-      // Gestione hamburger
-      const toggleButton = document.getElementById("navbar-toggle");
-      const navLinks = document.getElementById("navbar-links");
-
-      if (toggleButton && navLinks) {
-        toggleButton.addEventListener("click", () => {
-          navLinks.classList.toggle("show");
+        // Highlight active
+        const path = window.location.pathname;
+        const currentPage = path === "/" || path === "/seeker-ttrpg/" ? "index.html" : path.split("/").pop();
+        document.querySelectorAll(".nav-link").forEach(link => {
+          const href = link.getAttribute("href");
+          if (
+            href.includes(currentPage) ||
+            (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
+          ) {
+            link.classList.add("active");
+          }
         });
 
-        // Chiudi menu al click su link (mobile)
-        navLinks.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
+        // Mobile menu logic
+        const toggleButton = document.getElementById("navbar-toggle");
+        const navLinks = document.getElementById("navbar-links");
+        const closeButton = document.getElementById("navbar-close");
+
+        if (toggleButton && navLinks) {
+          toggleButton.addEventListener("click", () => {
+            navLinks.classList.add("show");
+          });
+        }
+
+        if (closeButton && navLinks) {
+          closeButton.addEventListener("click", () => {
             navLinks.classList.remove("show");
           });
-        });
-      }
-    });
-</script>
+        }
+
+        // Close menu on link click
+        if (navLinks) {
+          navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+              navLinks.classList.remove("show");
+            });
+          });
+        }
+      });
+  </script>
 
   <!-- ────────────────────────────────────────────────────────── -->
   <!-- MAIN CONTENT ───────────────────────────────────────────── -->
@@ -383,8 +394,8 @@
     <div class="spacer small-medium"></div>
 
     <!-- Banner 2-->
-    <div class="banner-parallax-secondary" style="background-image: url('assets/images/banners/cantino-planisphere.jpg');"
-      alt="Cantino Planisphere">
+    <div class="banner-parallax-secondary"
+      style="background-image: url('assets/images/banners/cantino-planisphere.jpg');" alt="Cantino Planisphere">
       <span class="banner-stain-top"></span>
       <span class="banner-stain-bottom"></span>
     </div>
