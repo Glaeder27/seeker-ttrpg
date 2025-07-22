@@ -460,6 +460,13 @@ a:active {
         display: block;
         order: 2;
         z-index: 1000;
+        position: fixed;
+        top: 1rem;
+        right: 2rem;
+
+    }
+    .main-navbar {
+        display: none;
     }
 
     .navbar-links {
