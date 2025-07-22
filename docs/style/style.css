@@ -428,6 +428,29 @@ a:active {
     font-weight: bold;
 }
 
+/* MOBILE STYLES */
+  @media (max-width: 768px) {
+    .navbar-toggle {
+      display: block;
+    }
+
+    .navbar-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .navbar-links.show {
+      display: flex;
+    }
+
+    .navbar-links li {
+      padding: 10px 0;
+    }
+  }
+  
+
 /* ── FOOTER ─────────────── */
 
 .site-footer {
