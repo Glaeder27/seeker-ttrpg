@@ -72,6 +72,10 @@
 
 /* ── PAGE LAYOUTS ─────────── */
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 .central-column {
     display: flex;
     flex-direction: column;
