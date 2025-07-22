@@ -160,6 +160,12 @@
         margin-top: 2rem;
     }
 }
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+    .dual-column {
+        padding: 2rem;
+    }
+}
 
 /* ── GENERAL ─────────────── */
 /* Preload */
@@ -461,13 +467,18 @@ a:active {
 /* MOBILE STYLES */
 @media (max-width: 768px) {
     .navbar-toggle {
-        display: block;
-        order: 2;
-        z-index: 1000;
-        position: fixed;
-        top: 1rem;
-        right: 2rem;
-
+    display: block;
+    order: 2;
+    z-index: 1000;
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    background: var(--background-dark-1);
+    border: 1px solid var(--bright-gold, #F6CB75);
+    height: 60px;
+    width: 60px;
+    padding-bottom: 0.3rem;
+    border-radius: 0.6rem;
     }
 
     .main-navbar {
@@ -517,11 +528,11 @@ a:active {
     .navbar-close {
         position: absolute;
         top: 1rem;
-        right: 1.5rem;
-        font-size: 2rem;
+        right: 2rem;
+        font-size: 3.5rem;
         background: none;
         border: none;
-        color: white;
+        color: var(--rust-red, red);
         cursor: pointer;
     }
 
