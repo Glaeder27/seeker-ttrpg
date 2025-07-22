@@ -141,16 +141,18 @@
   <div id="navbar-top"></div>
 
 <script>
-  /* v3.1 2025-07-22T16:10:00Z */
+  /* v3.2 2025-07-22T16:30:00Z */
   fetch("navbar.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("navbar-top").innerHTML = html;
-      console.log("[NAVBAR] Navbar HTML loaded and injected.");
 
-      // Evidenzia link attivo
+      // Evidenzia il link attivo
       const path = window.location.pathname;
-      const currentPage = path === "/" || path === "/seeker-ttrpg/" ? "index.html" : path.split("/").pop();
+      const currentPage = path === "/" || path === "/seeker-ttrpg/"
+        ? "index.html"
+        : path.split("/").pop();
+
       document.querySelectorAll(".nav-link").forEach(link => {
         const href = link.getAttribute("href");
         if (
@@ -158,56 +160,34 @@
           (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
         ) {
           link.classList.add("active");
-          console.log(`[NAVBAR] Marked active: ${href}`);
         }
       });
 
-      // Debug elementi
-      const toggleButton = document.getElementById("navbar-toggle");
+      // Gestione mobile menu
+      const toggleBtn = document.getElementById("navbar-toggle");
       const mobileMenu = document.getElementById("navbar-links-mobile");
-      const closeButton = document.getElementById("navbar-close");
+      const closeBtn = document.getElementById("navbar-close");
 
-      if (!toggleButton) console.warn("[NAVBAR] ⚠ toggleButton (#navbar-toggle) not found");
-      else console.log("[NAVBAR] toggleButton found");
-
-      if (!mobileMenu) console.warn("[NAVBAR] ⚠ mobileMenu (#navbar-links-mobile) not found");
-      else console.log("[NAVBAR] mobileMenu found");
-
-      if (!closeButton) console.warn("[NAVBAR] ⚠ closeButton (#navbar-close) not found");
-      else console.log("[NAVBAR] closeButton found");
-
-      // Eventi per aprire menu mobile
-      if (toggleButton && mobileMenu) {
-        toggleButton.addEventListener("click", () => {
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener("click", () => {
           mobileMenu.classList.add("show");
-          console.log("[NAVBAR] Mobile menu opened (class 'show' added)");
         });
       }
 
-      // Eventi per chiudere menu mobile
-      if (closeButton && mobileMenu) {
-        closeButton.addEventListener("click", () => {
+      if (closeBtn && mobileMenu) {
+        closeBtn.addEventListener("click", () => {
           mobileMenu.classList.remove("show");
-          console.log("[NAVBAR] Mobile menu closed (class 'show' removed via close button)");
         });
       }
 
-      // Chiudi anche cliccando su un link del menu mobile
-      if (mobileMenu) {
-        mobileMenu.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            mobileMenu.classList.remove("show");
-            console.log(`[NAVBAR] Mobile menu closed via link click: ${link.getAttribute("href")}`);
-          });
+      // Chiudi il menu mobile al click su un link
+      mobileMenu?.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("show");
         });
-      }
-    })
-    .catch(err => {
-      console.error("[NAVBAR] ❌ Error loading navbar:", err);
+      });
     });
 </script>
-
-
 
   <!-- ────────────────────────────────────────────────────────── -->
   <!-- MAIN CONTENT ───────────────────────────────────────────── -->
