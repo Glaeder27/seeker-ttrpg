@@ -138,13 +138,34 @@
 <body>
   <!-- NAVBAR -->
   <div id="navbar-top"></div>
-  <script>
-    fetch("navbar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("navbar-top").innerHTML = html;
+<script>
+  fetch("navbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("navbar-top").innerHTML = html;
+
+      // Re-bind JS logic after navbar is inserted
+      const path = window.location.pathname;
+      const currentPage = path === "/" || path === "/seeker-ttrpg/" ? "index.html" : path.split("/").pop();
+      document.querySelectorAll(".nav-link").forEach(link => {
+        const href = link.getAttribute("href");
+        if (
+          href.includes(currentPage) ||
+          (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
+        ) {
+          link.classList.add("active");
+        }
       });
-  </script>
+
+      const toggleButton = document.querySelector(".navbar-toggle");
+      const navLinks = document.querySelector(".navbar-links");
+      if (toggleButton && navLinks) {
+        toggleButton.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      }
+    });
+</script>
 
   <!-- ────────────────────────────────────────────────────────── -->
   <!-- MAIN CONTENT ───────────────────────────────────────────── -->
