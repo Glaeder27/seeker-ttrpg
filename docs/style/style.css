@@ -453,8 +453,9 @@ a:active {
     border: none;
     cursor: pointer;
 }
+
 .navbar-links-mobile {
-  display: none;
+    display: none;
 }
 
 /* MOBILE STYLES */
@@ -468,6 +469,7 @@ a:active {
         right: 2rem;
 
     }
+
     .main-navbar {
         display: none;
     }
@@ -525,6 +527,9 @@ a:active {
 
     .navbar-links-mobile.show {
         display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        z-index: 1001;
     }
 }
 
