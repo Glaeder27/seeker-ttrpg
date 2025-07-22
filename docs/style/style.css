@@ -194,39 +194,44 @@ a,
 button,
 .button,
 .clickable {
-  cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+    cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
 }
 
 input[type="text"],
 textarea,
 [contenteditable="true"] {
-  cursor: url('/assets/cursor/cursor_text_24.png') 2 24, text;
+    cursor: url('/assets/cursor/cursor_text_24.png') 2 24, text;
 }
 
 .disabled,
 [disabled],
 [aria-disabled="true"],
 .not-allowed {
-  cursor: url('/assets/cursor/cursor_not-allowed_24.png') 4 1, not-allowed;
+    cursor: url('/assets/cursor/cursor_not-allowed_24.png') 4 1, not-allowed;
 }
 
 .loading {
-  cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, progress;
+    cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, progress;
 }
 
 .waiting {
-  cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, wait;
+    cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, wait;
 }
 
 .draggable {
-  cursor: url('/assets/cursor/cursor_grab_24.png') 6 8, grab;
+    cursor: url('/assets/cursor/cursor_grab_24.png') 6 8, grab;
 }
 
 .draggable:active {
-  cursor: url('/assets/cursor/cursor_grabbing_24.png') 6 8, grabbing;
+    cursor: url('/assets/cursor/cursor_grabbing_24.png') 6 8, grabbing;
 }
-p, h1, h2, h3, blockquote {
-  cursor: url('/assets/cursor/cursor_text-2_24.png') 12 12, text;
+
+p,
+h1,
+h2,
+h3,
+blockquote {
+    cursor: url('/assets/cursor/cursor_text-2_24.png') 12 12, text;
 }
 
 /* Core */
@@ -318,15 +323,16 @@ p {
     margin: 5rem 0;
 }
 
-[id^="section"] { 
-  scroll-margin-top: 80px; 
+[id^="section"] {
+    scroll-margin-top: 80px;
 }
 
 .section-wrapper[id^="section"] {
-  margin-top: 8rem;
+    margin-top: 8rem;
 }
+
 .section-wrapper[id="section1"] {
-  margin-top: 4rem;
+    margin-top: 4rem;
 }
 
 /* ── LISTS ─────────────── */
@@ -392,17 +398,18 @@ a:active {
 }
 
 .navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .navbar-logo {
     padding: 1rem;
 }
+
 .navbar-logo img {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .navbar-links {
@@ -439,33 +446,74 @@ a:active {
 }
 
 .navbar-toggle {
-  display: none;
-  background: none;
-  color: white;
-  font-size: 1.8rem;
-  border: none;
-  cursor: pointer;
+    display: none;
+    background: none;
+    color: white;
+    font-size: 1.8rem;
+    border: none;
+    cursor: pointer;
 }
 
 /* MOBILE STYLES */
 @media (max-width: 768px) {
-  .main-navbar {
-    flex-wrap: wrap;
-    padding: 0.5rem 1rem;
-    height: auto;
-  }
+    .navbar-toggle {
+        display: block;
+        order: 2;
+        z-index: 1000;
+    }
 
+    .navbar-links {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--background-dark-1, #1E1E1E);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.3s ease;
+        display: flex;
+        z-index: 1000;
+    }
+
+    .navbar-links.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .navbar-links li {
+        padding: 1rem 0;
+    }
+}
+
+/* === Mobile full-screen menu === */
+@media screen and (max-width: 768px) {
   .navbar-toggle {
     display: block;
-    order: 2;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
   }
 
   .navbar-links {
     display: none;
     flex-direction: column;
-    width: 100%;
-    order: 3;
-    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-dark-1, #1E1E1E);
+    z-index: 1000;
+    gap: 2rem;
   }
 
   .navbar-links.show {
@@ -473,8 +521,31 @@ a:active {
   }
 
   .navbar-links li {
-    padding: 10px 0;
+    list-style: none;
   }
+
+  .navbar-links a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .navbar-links a:hover {
+    color: var(--accent, #f0a500);
+  }
+}
+
+.navbar-toggle.open .hamburger-icon rect:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.navbar-toggle.open .hamburger-icon rect:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.open .hamburger-icon rect:nth-child(3) {
+    transform: rotate(-45deg) translate(10px, -10px);
 }
 
 /* ── FOOTER ─────────────── */
@@ -528,6 +599,7 @@ a:active {
         height: 750px;
         background-position: left;
     }
+
     .banner-parallax-secondary {
         height: 400px;
         background-position: left;
@@ -573,19 +645,18 @@ a:active {
     .banner-mask::before {
         display: none;
     }
+
     .site-title-wrapper::before {
         content: '';
         position: absolute;
         left: 0;
         width: 100%;
         height: 320px;
-        background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.8) 30%,
-        rgba(0, 0, 0, 0.8) 70%,
-        rgba(0, 0, 0, 0) 100% 
-        );
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.8) 30%,
+                rgba(0, 0, 0, 0.8) 70%,
+                rgba(0, 0, 0, 0) 100%);
         z-index: 0;
         pointer-events: none;
         margin-bottom: .2rem;
@@ -670,6 +741,7 @@ a:active {
     padding: 0 50px;
 
 }
+
 @media (max-width: 767px) {
     .carousel-wrapper {
         max-width: 100vw;
@@ -683,11 +755,11 @@ a:active {
     scroll-behavior: auto;
     padding: 1rem 2rem;
     scrollbar-width: none;
-  cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
+    cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
 }
 
 .carousel-track.active {
-  cursor: url('/assets/cursor/cursor_grabbing_24.png') 12 12, grabbing;
+    cursor: url('/assets/cursor/cursor_grabbing_24.png') 12 12, grabbing;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -809,53 +881,53 @@ a:active {
 /* ── SIDE MENU ─────────────── */
 
 .side-menu {
-  width: 250px;
-  background-color: #1c1c1c;
-  color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  overflow-y: auto;
-  transition: transform 0.3s ease;
-  z-index: 1000;
+    width: 250px;
+    background-color: #1c1c1c;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 1000;
 }
 
 .side-menu.collapsed {
-  transform: translateX(-100%);
+    transform: translateX(-100%);
 }
 
 #toggle-menu {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 1001;
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
 }
 
 .menu-section {
-  margin: 1rem;
-  font-weight: bold;
+    margin: 1rem;
+    font-weight: bold;
 }
 
 .menu-content ul {
-  list-style: none;
-  padding-left: 1rem;
+    list-style: none;
+    padding-left: 1rem;
 }
 
 .menu-content li a {
-  display: block;
-  padding: 0.4rem 0.8rem;
-  color: white;
-  text-decoration: none;
+    display: block;
+    padding: 0.4rem 0.8rem;
+    color: white;
+    text-decoration: none;
 }
 
 .menu-content li a:hover {
-  background-color: #333;
+    background-color: #333;
 }
 
 /* ── GRID MENU ─────────────── */
@@ -865,8 +937,9 @@ a:active {
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     background: transparent;
-    }
-    @media (max-width: 767px) {
+}
+
+@media (max-width: 767px) {
     .menu-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -892,8 +965,9 @@ a:active {
         border-color 0.3s ease;
     user-select: none;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, .2))
-    }
-    @media (max-width: 767px) {
+}
+
+@media (max-width: 767px) {
     .menu-cell {
         min-height: 240px;
     }
