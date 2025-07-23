@@ -513,7 +513,10 @@ a:active {
         backdrop-filter: blur(8px);
         transform: translateY(-100%);
         opacity: 0;
-        transition: transform .5s ease, opacity .4s ease;
+        transition: 
+            transform .5s ease, 
+            opacity .4s ease, 
+            backdrop-filter 0.4s ease;
         z-index: 10;
         position: fixed;
         overflow: hidden;
@@ -566,6 +569,7 @@ a:active {
 
     .navbar-links-mobile.fade-out {
         animation: fadeOutBackground 0.4s forwards;
+        backdrop-filter: blur(0px);
     }
     .navbar-links-mobile.fade-out::before {
         opacity: 0;
@@ -599,6 +603,7 @@ a:active {
         transform: translateY(0);
         opacity: 1;
         animation: slideIn 0.4s forwards;
+        backdrop-filter: blur(8px);
     }
 
     .navbar-links-mobile.show::before {
