@@ -14,7 +14,7 @@
     <meta name="author" content="Alonso de Luna" />
 
     <!-- Favicon (opzionale) -->
-    <link rel="icon" href="assets/icons/ico/favicon.ico" type="image/ico" />
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
 
     <!-- Open Graph per link preview -->
     <meta property="og:title" content="Seeker TTRPG" />
@@ -30,7 +30,7 @@
     <!-- IE Compatibility -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
     <style>
         /* Specific Styles */
         .rule-tag {
@@ -369,55 +369,7 @@
 <body>
   <!-- NAVBAR -->
   <div id="navbar-top"></div>
-
-  <script>
-    /* v3.2 2025-07-22T16:30:00Z */
-    fetch("navbar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("navbar-top").innerHTML = html;
-
-        // Evidenzia il link attivo
-        const path = window.location.pathname;
-        const currentPage = path === "/" || path === "/seeker-ttrpg/"
-          ? "index.html"
-          : path.split("/").pop();
-
-        document.querySelectorAll(".nav-link").forEach(link => {
-          const href = link.getAttribute("href");
-          if (
-            href.includes(currentPage) ||
-            (currentPage === "index.html" && (href === "index.html" || href === "./" || href === "/"))
-          ) {
-            link.classList.add("active");
-          }
-        });
-
-        // Gestione mobile menu
-        const toggleBtn = document.getElementById("navbar-toggle");
-        const mobileMenu = document.getElementById("navbar-links-mobile");
-        const closeBtn = document.getElementById("navbar-close");
-
-        if (toggleBtn && mobileMenu) {
-          toggleBtn.addEventListener("click", () => {
-            mobileMenu.classList.add("show");
-          });
-        }
-
-        if (closeBtn && mobileMenu) {
-          closeBtn.addEventListener("click", () => {
-            mobileMenu.classList.remove("show");
-          });
-        }
-
-        // Chiudi il menu mobile al click su un link
-        mobileMenu?.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            mobileMenu.classList.remove("show");
-          });
-        });
-      });
-  </script>
+  <script src="/scripts/navbar.js"></script>
 
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- MAIN CONTENT ───────────────────────────────────────────── -->
