@@ -1,4 +1,4 @@
-/*v1.96 2025-07-22T23:30:00Z*/
+/*v1.97 2025-07-23T11:00:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -548,10 +548,10 @@ a:active {
     }
 
     .navbar-links-mobile a {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: var(--ancient-gold, #D4B55A);
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
         letter-spacing: 1px;
         transition: color 0.3s, transform 0.2s;
         text-transform: uppercase;
@@ -609,19 +609,7 @@ a:active {
 
 /* ── BANNERS ─────────────── */
 
-.banner-parallax {
-    position: relative;
-    height: 500px;
-    margin-top: 70px;
-    /* Mask */
-    background-size: cover;
-    background-position: center bottom;
-    background-attachment: fixed;
-    /* Parallax */
-    background-repeat: no-repeat;
-    width: 100%;
-}
-
+.banner-parallax,
 .banner-parallax-secondary {
     position: relative;
     height: 500px;
@@ -634,15 +622,19 @@ a:active {
     width: 100%;
 }
 
+.banner-parallax {
+    margin-top: 70px;
+}
+
 @media (max-width: 767px) {
     .banner-parallax {
-        height: 750px;
+        height: 100dvh;
         background-position: left;
         margin-top: 30px;
     }
 
     .banner-parallax-secondary {
-        height: 400px;
+        height: 50dvh;
         background-position: left;
     }
 }

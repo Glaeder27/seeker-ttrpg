@@ -26,7 +26,7 @@ Promise.all([
   const cssVersion = cssMatch ? `🎨 style.css v${cssMatch[1]} – ${cssMatch[2]}` : '🎨 style.css ❓';
   const jsVersion = jsMatch ? `🔣 core.js v${jsMatch[1]} – ${jsMatch[2]}` : '🔣 core.js ❓';
 
-  console.log(`%c${cssVersion}   %c${jsVersion}`, 'color: lightgreen; font-weight: bold;', 'color: orange; font-weight: bold;');
+  console.log(`%c${cssVersion}   %c${jsVersion}`, 'color: lightgreen; font-weight: bold;', 'color: teal; font-weight: bold;');
 });
 
 // ───────────────────────────────────────────────────────────────────
@@ -46,7 +46,6 @@ window.addEventListener("pageshow", handlePageShow);
 // ── Fade-in on load ──
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => {
-    console.log("Removing preload class");
     document.documentElement.classList.remove("preload");
   });
 
