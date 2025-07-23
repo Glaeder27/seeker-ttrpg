@@ -481,17 +481,9 @@ a:active {
 
 /* MOBILE STYLES */
 @media (max-width: 768px) {
-    .navbar-toggle-wrapper {
-        border-radius: .8rem;
-        padding: 2px;
-        background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
-        display: inline-block;
-    }
-
     .navbar-toggle {
         display: block;
         z-index: 8;
-        position: fixed;
         bottom: 2rem;
         right: 2rem;
         background: linear-gradient(to right, rgba(var(--burnt-copper-rgb), 0.3), rgba(var(--ancient-gold-rgb), 0.5));
