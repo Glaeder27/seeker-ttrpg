@@ -1,5 +1,5 @@
 /* v3.71 2025-07-23T22:00:00Z */
-fetch("navbar.html")
+fetch("/navbar.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("navbar-top").innerHTML = html;
