@@ -566,7 +566,7 @@ a:active {
         position: absolute;
         bottom: 1rem;
         right: 2rem;
-        font-size: 4rem;
+        font-size: 4.5rem;
         background: none;
         border: none;
         color: var(--rust-red, #AA3B3B);
