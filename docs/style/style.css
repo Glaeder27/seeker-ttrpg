@@ -630,24 +630,6 @@ a:active {
         animation-delay: 0.9s;
     }
 
-    @keyframes fadeInBackground {
-        from {
-            background-color: rgba(30, 30, 30, 0);
-        }
-        to {
-            background-color: rgba(30, 30, 30, 0.9);
-        }
-    }
-
-    @keyframes fadeOutBackground {
-        from {
-            background-color: rgba(30, 30, 30, 0.9);
-        }
-        to {
-            background-color: rgba(30, 30, 30, 0);
-        }
-    }
-    
     @keyframes slideIn {
         from {
             opacity: 0;
