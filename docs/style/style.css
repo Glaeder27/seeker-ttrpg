@@ -482,6 +482,7 @@ a:active {
 /* MOBILE STYLES */
 @media (max-width: 768px) {
     .navbar-toggle {
+        position: fixed;
         display: block;
         z-index: 8;
         bottom: 2rem;
