@@ -28,12 +28,14 @@ fetch("navbar.html")
     function openMenu() {
       mobileMenu.classList.add("show");
       closeBtn?.classList.add("rotated");
+      console.log("openMenu");
 
       // Trigger slide-in animation on each list item
       const links = mobileMenu.querySelectorAll("li");
       links.forEach((li, i) => {
         li.style.animation = `slideIn 0.4s forwards`;
         li.style.animationDelay = `${0.1 * i}s`;
+        console.log("openMenu animation");
       });
 
       // Fade-in background
