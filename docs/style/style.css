@@ -1,4 +1,4 @@
-/*v2.01 2025-07-23T22:00:00Z*/
+/*v2.02 2025-07-23T23:30:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1030,55 +1030,76 @@ a:active {
 
 /* ── SIDE MENU ─────────────── */
 
-.side-menu {
-    width: 250px;
-    background-color: #1c1c1c;
-    color: white;
+  .side-menu-wrapper {
+    position: relative;
+  }
+
+  .toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    background: #222;
+    color: #fff;
+    border: none;
+    font-size: 1.2em;
+    padding: 0.4em 0.6em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .side-menu {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
+    width: 240px;
+    height: 100vh;
+    background-color: #1f1f1f;
+    color: #f0f0f0;
+    padding: 1rem;
     overflow-y: auto;
     transition: transform 0.3s ease;
-    z-index: 9;
-}
+    z-index: 1000;
+  }
 
-.side-menu.collapsed {
+  .side-menu.collapsed {
     transform: translateX(-100%);
-}
+  }
 
-#toggle-menu {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 10;
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
+  .menu-content h3 {
+    margin-top: 1rem;
+    font-size: 1.1em;
+    border-bottom: 1px solid #555;
+    padding-bottom: 0.3rem;
+    color: #ddd;
+  }
 
-.menu-section {
-    margin: 1rem;
-    font-weight: bold;
-}
-
-.menu-content ul {
+  .menu-content ul {
     list-style: none;
-    padding-left: 1rem;
-}
+    padding: 0;
+    margin: 0.5rem 0;
+  }
 
-.menu-content li a {
-    display: block;
-    padding: 0.4rem 0.8rem;
-    color: white;
+  .menu-content li {
+    margin: 0.4rem 0;
+  }
+
+  .menu-content a {
+    color: #aaa;
     text-decoration: none;
-}
+    transition: color 0.2s;
+  }
 
-.menu-content li a:hover {
-    background-color: #333;
-}
+  .menu-content a:hover {
+    color: #fff;
+  }
+
+  .menu-content a.active {
+    font-weight: bold;
+    color: #fff;
+    border-left: 3px solid #fff;
+    padding-left: 0.5rem;
+  }
 
 /* ── GRID MENU ─────────────── */
 

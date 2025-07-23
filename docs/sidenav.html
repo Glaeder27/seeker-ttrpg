@@ -1,23 +1,18 @@
 <div class="side-menu-wrapper">
   <!-- Toggle Button -->
-  <button id="toggle-menu" class="toggle-btn">☰</button>
+  <button id="toggle-menu" class="toggle-btn" title="Toggle Sidebar">☰</button>
 
-  
   <!-- Side Menu -->
   <aside id="side-menu" class="side-menu collapsed">
-    <!-- Contents -->
+    <!-- Dynamic Menu -->
     <nav class="menu-content">
-      <h3 class="menu-section">Rulebook</h3>
-      <ul>
-        <li><a href="/rules/twin-coil-system" data-partial>Twin Coil System</a></li>
-        <li><a href="/rules/aptitudes" data-partial>Aptitudes</a></li>
-      </ul>
+      <!-- Rulebook menu will be populated via JS -->
+      <div id="rulebook-menu"></div>
 
+      <!-- Per-page Anchors -->
       <h3 class="menu-section">This Chapter</h3>
       <ul id="chapter-sections">
-        <li><a href="#section1">Introduction</a></li>
-        <li><a href="#section2">Resolution</a></li>
-        <li><a href="#section3">Risk & Success</a></li>
+        <!-- Anchors will be injected dynamically -->
       </ul>
     </nav>
   </aside>

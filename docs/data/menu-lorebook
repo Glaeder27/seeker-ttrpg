@@ -1,0 +1,7 @@
+{
+  "title": "Lorebook",
+  "items": [
+    { "label": "Isla de los Ojos", "href": "/lore/isla-de-los-ojos" },
+    { "label": "The Serpent Crown", "href": "/lore/serpent-crown" }
+  ]
+}

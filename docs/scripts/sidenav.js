@@ -1,11 +1,17 @@
-// Load the menu
-fetch("/sidenav.html")
-  .then((res) => res.text())
-  .then((html) => {
-    document.body.insertAdjacentHTML("afterbegin", html);
-    initializeMenu();
-    generateChapterSections(); // After loading, generate the chapter submenu
-  });
+/*v1.00 2025-07-23T23:30:00Z*/
+document.addEventListener("DOMContentLoaded", () => {
+  const menuSrc = document.body.getAttribute("data-menu-src");
+  if (menuSrc) {
+    fetch(menuSrc)
+      .then(res => res.json())
+      .then(data => {
+        populateStaticMenu(data);
+        generateChapterSections(); // Submenu
+        initializeMenu();
+      })
+      .catch(err => console.error("Failed to load sidenav menu:", err));
+  }
+});
 
 function initializeMenu() {
   const sideMenu = document.getElementById("side-menu");
@@ -30,7 +36,7 @@ function initializeMenu() {
     }
   });
 }
-// Populate menu
+
 function generateChapterSections() {
   const chapterMenu = document.getElementById("chapter-sections");
   if (!chapterMenu) return;
@@ -62,4 +68,42 @@ function generateChapterSections() {
     li.appendChild(a);
     chapterMenu.appendChild(li);
   });
+}
+
+function populateStaticMenu(data) {
+  const sideMenu = document.querySelector("#side-menu .menu-content");
+  if (!sideMenu || !data || !data.items) return;
+
+  // Clear existing static sections
+  sideMenu.innerHTML = "";
+
+  // Title
+  const title = document.createElement("h3");
+  title.classList.add("menu-section");
+  title.textContent = data.title;
+  sideMenu.appendChild(title);
+
+  // Items
+  const ul = document.createElement("ul");
+  data.items.forEach(item => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.textContent = item.label;
+    a.href = item.href;
+    if (item.href.includes("/rules/")) a.setAttribute("data-partial", "");
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+
+  sideMenu.appendChild(ul);
+
+  // Chapter nav
+  const dynamicNav = document.createElement("h3");
+  dynamicNav.classList.add("menu-section");
+  dynamicNav.textContent = "This Chapter";
+  sideMenu.appendChild(dynamicNav);
+
+  const chapterList = document.createElement("ul");
+  chapterList.id = "chapter-sections";
+  sideMenu.appendChild(chapterList);
 }
