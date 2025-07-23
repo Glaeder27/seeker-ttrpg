@@ -276,7 +276,7 @@
             font-weight: bold;
         }
 
-        .aptitude-value, 
+        .aptitude-value,
         .aptitude-value-sb {
             min-width: 20px;
             text-align: center;
@@ -718,9 +718,11 @@
 </head>
 
 <body id="aptitudes" data-menu-src="/data/menu-rulebook.json">
-  <!-- NAVBAR -->
-  <div id="navbar-top"></div>
-  <script src="/scripts/navbar.js"></script>
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
 
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- MAIN CONTENT ───────────────────────────────────────────── -->
@@ -1726,9 +1728,20 @@
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- SCRIPTS ────────────────────────────────────────────────── -->
     <!-- ────────────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
     <script src="/scripts/sidebar.js"></script>
     <script src="/scripts/core.js"></script>
-    <script src="/scripts/sidenav.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

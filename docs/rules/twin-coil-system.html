@@ -33,14 +33,15 @@
     <link rel="stylesheet" href="/style/style.css">
     <style>
         /* Specific Styles */
-        
     </style>
 </head>
 
 <body id="twin-coil-system" data-menu-src="/data/menu-rulebook.json">
-  <!-- NAVBAR -->
-  <div id="navbar-top"></div>
-  <script src="/scripts/navbar.js"></script>
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
 
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- MAIN CONTENT ───────────────────────────────────────────── -->
@@ -54,7 +55,8 @@
                     <h1>Twin Coil System</h1>
                     <span class="title-icon flipped">🜍</span>
                 </div>
-                <p class="subtitle">A modular dice-resolution engine<br> for dynamic and narrative-driven tabletop play</p>
+                <p class="subtitle">A modular dice-resolution engine<br> for dynamic and narrative-driven tabletop play
+                </p>
             </header>
 
             <!-- ─────────────── MAIN CONTENT ─────────────── -->
@@ -225,20 +227,24 @@
                     </div>
 
                     <div class="grid-cell top-left">
-                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span style="color: var(--rust-red);">Failure</span></strong><br>
+                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span
+                                style="color: var(--rust-red);">Failure</span></strong><br>
                         The attempt fails cleanly.
                     </div>
                     <div class="grid-cell top-right">
-                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span style="color: var(--rust-red);">Failure</span> +
+                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span
+                                style="color: var(--rust-red);">Failure</span> +
                             <span style="color: var(--rust-red);">Complication</span></strong><br>
                         The attempt fails <em><strong>and</strong></em> a new problem emerges.
                     </div>
                     <div class="grid-cell bottom-left">
-                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span style="color: var(--faded-jade);">Success</span></strong><br>
+                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span
+                                style="color: var(--faded-jade);">Success</span></strong><br>
                         The attempt succeeds with no downside.
                     </div>
                     <div class="grid-cell bottom-right">
-                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span style="color: var(--faded-jade);">Success</span> +
+                        <strong style="text-transform: uppercase; margin-bottom: -.8em;"><span
+                                style="color: var(--faded-jade);">Success</span> +
                             <span style="color: var(--rust-red);">Complication</span></strong><br>
                         The attempt succeeds, <em><strong>but</strong></em> something else goes wrong.
                     </div>
@@ -903,7 +909,7 @@
                     tension, or strategic depth. Use them individually or mix and match to suit your table’s tone and
                     playstyle.
                 </p>
-                <div class="rule-options-box" >
+                <div class="rule-options-box">
                     <div class="rule-options-label">Rule Options</div>
 
                     <div class="toggle-bar">
@@ -937,7 +943,7 @@
 
                     </div>
                 </div>
-            
+
                 <div class="rule-degrees-of-success">
                     <h3 class="tagged">1. Degrees of Success <span class="rule-tag optional tooltip"
                             data-tooltip-key="optional-rule">
@@ -1022,7 +1028,7 @@
                 </div>
             </section>
             <section class="section-wrapper" id="section6" sidenav="6 • Attribution">
-            <div class="section-number">Section VI</div>
+                <div class="section-number">Section VI</div>
                 <h2 class="section" id="twin-coil">
                     Attribution
                     <span class="section-ornament">⸺ ✦ ⸺</span>
@@ -1051,8 +1057,7 @@
                     <div class="collapsible-content-sb" style="padding: 0 5px">
                         <ul class="no-bullet">
                             <li class="no-bullet"><strong class="tldr-title">1 • Roll Action vs Risk Dice</strong>
-                                <div>Use <strong
-                                        style="color: var(--faded-jade)">Action</strong>
+                                <div>Use <strong style="color: var(--faded-jade)">Action</strong>
                                     <img class="dice-symbol"
                                         src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
                                     Dice to
@@ -1148,8 +1153,7 @@
                                         =
                                         serious, 3+ =
                                         catastrophic</li>
-                                    <li><strong>Push:</strong> Reroll 1 <img
-                                            class="dice-symbol"
+                                    <li><strong>Push:</strong> Reroll 1 <img class="dice-symbol"
                                             src="https://static.wixstatic.com/shapes/e40a82_9ce92d219b07477ca064dedc9e24f571.svg">
                                         by spending a resource
                                         or adding 1
@@ -1220,9 +1224,20 @@
     <!-- ────────────────────────────────────────────────────────── -->
     <!-- SCRIPTS ────────────────────────────────────────────────── -->
     <!-- ────────────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
     <script src="/scripts/sidebar.js"></script>
     <script src="/scripts/core.js"></script>
-    <script src="/scripts/sidenav.js"></script>
 
     <script>
         // Narrative Examples toggle logic
