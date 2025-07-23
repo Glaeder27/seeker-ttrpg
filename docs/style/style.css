@@ -510,7 +510,7 @@ a:active {
         justify-content: center;
         align-items: flex-start;
         background: rgba(30, 30, 30, 0.9);
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(0px);
         transform: translateY(-100%);
         opacity: 0;
         transition: 
@@ -572,8 +572,10 @@ a:active {
     }
 
     .navbar-links-mobile.fade-out {
+        opacity: 0;
         animation: fadeOutBackground 0.4s forwards;
         backdrop-filter: blur(0px);
+        pointer-events: none;
     }
     .navbar-links-mobile.fade-out::before {
         opacity: 0;
