@@ -1,4 +1,4 @@
-/* v3.6 2025-07-23T19:20:00Z */
+/* v3.70 2025-07-23T21:30:00Z */
 fetch("navbar.html")
   .then(res => res.text())
   .then(html => {
@@ -37,7 +37,7 @@ fetch("navbar.html")
         li.style.animationDelay = `${0.1 * i}s`;
       });
 
-      // Menu fade-in
+      // Menu fade-in background
       mobileMenu.style.animation = `fadeInBackground 0.4s forwards`;
     }
 
@@ -52,13 +52,15 @@ fetch("navbar.html")
 
       // Menu fade-out
       mobileMenu.classList.add("fade-out");
+
+      // Trigger background fade-out
       mobileMenu.style.animation = `fadeOutBackground 0.4s forwards`;
 
       // Hide the menu after animations finish
       setTimeout(() => {
         mobileMenu.classList.remove("show", "fade-out");
 
-        // Clear styles to reset state
+        // Reset styles
         links.forEach(li => {
           li.style.opacity = "";
           li.style.transform = "";

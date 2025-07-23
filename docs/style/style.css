@@ -1,4 +1,4 @@
-/*v1.99 2025-07-23T19:40:00Z*/
+/*v2.00 2025-07-23T21:30:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -505,7 +505,8 @@ a:active {
     .navbar-links-mobile {
         position: fixed;
         inset: 0;
-        display: none;
+        display: flex;
+        pointer-events: none;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
@@ -576,6 +577,7 @@ a:active {
         animation: fadeOutBackground 0.4s forwards;
         backdrop-filter: blur(0px);
         pointer-events: none;
+        transform: translateY(-100%);
     }
     .navbar-links-mobile.fade-out::before {
         opacity: 0;
@@ -605,11 +607,11 @@ a:active {
     }
 
     .navbar-links-mobile.show {
-        display: flex;
         transform: translateY(0);
         opacity: 1;
         animation: slideIn 0.4s forwards;
         backdrop-filter: blur(8px);
+        pointer-events: auto;
     }
 
     .navbar-links-mobile.show::before {
