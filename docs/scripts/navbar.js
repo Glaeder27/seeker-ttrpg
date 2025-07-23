@@ -33,7 +33,7 @@ fetch("navbar.html")
       // Trigger staggered slide-in animation for each item
       const links = mobileMenu.querySelectorAll("li");
       links.forEach((li, i) => {
-        li.style.animation = `slideIn 0.4s forwards`;
+        li.style.animation = `slideIn 0.8s forwards`;
         li.style.animationDelay = `${0.1 * i}s`;
       });
 
@@ -54,7 +54,7 @@ fetch("navbar.html")
       mobileMenu.classList.add("fade-out");
 
       // Trigger background fade-out
-      mobileMenu.style.animation = `fadeOutBackground 0.4s forwards`;
+      mobileMenu.style.animation = `fadeOutBackground 0.8s forwards`;
 
       // Hide the menu after animations finish
       setTimeout(() => {
@@ -68,7 +68,7 @@ fetch("navbar.html")
           li.style.animationDelay = "";
         });
         mobileMenu.style.removeProperty("animation");
-      }, 400);
+      }, 50);
     }
 
     toggleBtn?.addEventListener("click", openMenu);
