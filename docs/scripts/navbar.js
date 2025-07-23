@@ -27,6 +27,7 @@ fetch("navbar.html")
 
     function openMenu() {
       mobileMenu.classList.add("show");
+      mobileMenu.classList.remove("fade-out");
       closeBtn?.classList.add("rotated");
 
       // Trigger staggered slide-in animation for each item
@@ -36,7 +37,7 @@ fetch("navbar.html")
         li.style.animationDelay = `${0.1 * i}s`;
       });
 
-      // Background fade-in
+      // Menu fade-in
       mobileMenu.style.animation = `fadeInBackground 0.4s forwards`;
     }
 
@@ -49,12 +50,13 @@ fetch("navbar.html")
         li.style.animationDelay = `${0.05 * i}s`;
       });
 
-      // Background fade-out
+      // Menu fade-out
+      mobileMenu.classList.add("fade-out");
       mobileMenu.style.animation = `fadeOutBackground 0.4s forwards`;
 
       // Hide the menu after animations finish
       setTimeout(() => {
-        mobileMenu.classList.remove("show");
+        mobileMenu.classList.remove("show", "fade-out");
 
         // Clear styles to reset state
         links.forEach(li => {

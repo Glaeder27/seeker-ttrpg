@@ -525,9 +525,12 @@ a:active {
         position: absolute;
         inset: 0;
         background: url("/assets/icons/svg/alchemy-5.svg") no-repeat center/100%;
-        opacity: 0.05;
+        opacity: 0;
+        transition: 
+            opacity 0.4s ease,
+            transform 0.4s ease;
         pointer-events: none;
-        transform: rotate(30deg) scale(1.5);
+        transform: rotate(25deg) scale(1.4);
         margin-top: 5rem;
     }
 
@@ -564,6 +567,10 @@ a:active {
     .navbar-links-mobile.fade-out {
         animation: fadeOutBackground 0.4s forwards;
     }
+    .navbar-links-mobile.fade-out::before {
+        opacity: 0;
+        transform: rotate(25deg) scale(1.4);
+    }
 
     .navbar-close {
         position: absolute;
@@ -592,6 +599,11 @@ a:active {
         transform: translateY(0);
         opacity: 1;
         animation: slideIn 0.4s forwards;
+    }
+
+    .navbar-links-mobile.show::before {
+        opacity: 0.05;
+        transform: rotate(30deg) scale(1.5);
     }
 
     .navbar-links-mobile.show li:nth-child(1) {
