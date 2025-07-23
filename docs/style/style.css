@@ -589,6 +589,8 @@ a:active {
 
     .navbar-links-mobile.show {
         display: flex;
+        transform: translateY(0);
+        opacity: 1;
         animation: slideIn 0.4s forwards;
     }
 
