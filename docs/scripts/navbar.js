@@ -1,4 +1,4 @@
-/* v3.5 2025-07-23T12:20:00Z */
+/* v3.6 2025-07-23T19:20:00Z */
 fetch("navbar.html")
   .then(res => res.text())
   .then(html => {
