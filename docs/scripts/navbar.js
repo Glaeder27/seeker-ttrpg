@@ -32,8 +32,6 @@ fetch("navbar.html")
       // Trigger slide-in animation on each list item
       const links = mobileMenu.querySelectorAll("li");
       links.forEach((li, i) => {
-        li.style.opacity = "0";
-        li.style.transform = "translateY(20px)";
         li.style.animation = `slideIn 0.4s forwards`;
         li.style.animationDelay = `${0.1 * i}s`;
       });
