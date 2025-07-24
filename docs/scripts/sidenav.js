@@ -1,4 +1,4 @@
-/* v1.07 2025-07-24T00:00:00Z */
+/*v1.06 2025-07-24T23:55:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -6,25 +6,22 @@ if (menuSrc) {
     .then(data => {
       populateStaticMenu(data);
       generateChapterSections();
-      restoreMenuState();      // <-- NEW: persist state BEFORE toggle event
-      initializeMenu();
+      initializeMenu(); // moved down to ensure side-menu exists
       initializeScrollSpy();
     })
     .catch(err => console.error("Failed to load sidenav menu:", err));
-}
-
-function restoreMenuState() {
-  const sideMenu = document.getElementById("side-menu");
-  const menuVisible = localStorage.getItem("menuVisible") !== "false";
-  sideMenu.classList.toggle("collapsed", !menuVisible);
 }
 
 function initializeMenu() {
   const sideMenu = document.getElementById("side-menu");
   const toggleButton = document.getElementById("toggle-menu");
 
+  // Read the state from localStorage
+  const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default to true
+  sideMenu.classList.toggle("collapsed", !menuVisible);
+
   toggleButton.addEventListener("click", () => {
-    const isNowVisible = !sideMenu.classList.toggle("collapsed");
+    const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
     localStorage.setItem("menuVisible", isNowVisible);
   });
 
@@ -85,46 +82,40 @@ function initializeScrollSpy() {
   const sections = document.querySelectorAll("section.section-wrapper[id]");
 
   const observer = new IntersectionObserver((entries) => {
-    let currentSectionId = null;
-    let currentHeaderText = null;
-
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
       const target = entry.target;
-      const section = target.closest("section.section-wrapper");
-      if (!section || !section.id) return;
+      const parentSection = target.closest("section.section-wrapper");
+      if (!parentSection || !parentSection.id) return;
 
-      const sectionId = section.id;
+      const sectionId = parentSection.id;
+      let activeHeader = null;
+      let isSubsection = false;
 
       if (target.hasAttribute("sidenav-inset")) {
-        // Sottosezione
-        currentSectionId = sectionId;
-        currentHeaderText = target.getAttribute("sidenav-inset") || target.textContent.trim();
-      } else if (target.tagName === "SECTION") {
-        // Sezione principale (senza sottosezioni)
-        currentSectionId = sectionId;
-        currentHeaderText = null;
+        activeHeader = target;
+        isSubsection = true;
       }
-    });
 
-    links.forEach((link) => {
-      const isSub = link.parentElement.classList.contains("subsection");
-      const matchesId = link.dataset.id === currentSectionId;
+      links.forEach((link) => {
+        const linkIsSub = link.parentElement.classList.contains("subsection");
+        const matchById = link.dataset.id === sectionId;
+        const matchByText = activeHeader
+          ? link.textContent.trim() === (activeHeader.getAttribute("sidenav-inset") || activeHeader.textContent).trim()
+          : false;
 
-      if (isSub && currentHeaderText) {
-        const matchesText = link.textContent.trim() === currentHeaderText.trim();
-        link.classList.toggle("active", matchesId && matchesText);
-      } else if (!isSub && currentHeaderText === null) {
-        link.classList.toggle("active", matchesId);
-      } else {
-        link.classList.remove("active");
-      }
+        const shouldActivate = isSubsection
+          ? (linkIsSub ? matchById && matchByText : matchById)
+          : !linkIsSub && matchById;
+
+        link.classList.toggle("active", shouldActivate);
+      });
     });
   }, observerOptions);
 
   headers.forEach((header) => observer.observe(header));
-  sections.forEach((section) => observer.observe(section));
+  sections.forEach((section) => observer.observe(section)); // <-- fix: include full sections too
 }
 
 function populateStaticMenu(data) {
