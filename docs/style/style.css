@@ -347,6 +347,9 @@ p {
 [id^="section"] {
     scroll-margin-top: 80px;
 }
+[id="section1"] {
+    scroll-margin-top: 0;
+}
 
 .section-wrapper[id^="section"] {
     margin-top: 8rem;

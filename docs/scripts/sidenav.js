@@ -1,17 +1,15 @@
-/*v1.00 2025-07-23T23:30:00Z*/
-document.addEventListener("DOMContentLoaded", () => {
-  const menuSrc = document.body.getAttribute("data-menu-src");
-  if (menuSrc) {
-    fetch(menuSrc)
-      .then(res => res.json())
-      .then(data => {
-        populateStaticMenu(data);
-        generateChapterSections(); // Submenu
-        initializeMenu();
-      })
-      .catch(err => console.error("Failed to load sidenav menu:", err));
-  }
-});
+/*v1.01 2025-07-24T11:30:00Z*/
+const menuSrc = document.body.getAttribute("data-menu-src");
+if (menuSrc) {
+  fetch(menuSrc)
+    .then(res => res.json())
+    .then(data => {
+      populateStaticMenu(data);
+      generateChapterSections(); // Submenu
+      initializeMenu();
+    })
+    .catch(err => console.error("Failed to load sidenav menu:", err));
+}
 
 function initializeMenu() {
   const sideMenu = document.getElementById("side-menu");
