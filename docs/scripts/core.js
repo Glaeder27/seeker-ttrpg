@@ -1,32 +1,36 @@
-/*v1.95 2025-07-22T22:30:00Z*/
+/*v1.96 2025-07-24T11:30:00Z*/
 
 // Version Checker
-Promise.all([
-  fetch('/style/style.css').then(res => res.text()).catch(() => null),
-  new Promise(resolve => {
-    try {
-      const scriptEl = document.currentScript;
-      const request = new XMLHttpRequest();
-      request.open('GET', scriptEl.src, true);
-      request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-          resolve(request.responseText);
-        }
-      };
-      request.onerror = () => resolve(null);
-      request.send();
-    } catch {
-      resolve(null);
-    }
-  })
-]).then(([css, js]) => {
-  const cssMatch = css?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
-  const jsMatch = js?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+const versionTargets = [
+  { label: '🎨 style.css', path: '/style/style.css' },
+  { label: '🔣 core.js', path: document.currentScript.src },
+  { label: '📂 sidenav.js', path: '/scripts/sidenav.js' },
+  { label: '💬 infobox.js', path: '/scripts/infobox.js' },
+  { label: '📑 sidebar.js', path: '/scripts/sidebar.js' }
+];
 
-  const cssVersion = cssMatch ? `🎨 style.css v${cssMatch[1]} – ${cssMatch[2]}` : '🎨 style.css ❓';
-  const jsVersion = jsMatch ? `🔣 core.js v${jsMatch[1]} – ${jsMatch[2]}` : '🔣 core.js ❓';
+Promise.all(versionTargets.map(target =>
+  fetch(target.path)
+    .then(res => res.ok ? res.text() : null)
+    .then(text => {
+      const match = text?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+      return match
+        ? `${target.label} v${match[1]} – ${match[2]}`
+        : `${target.label} ❓`;
+    })
+    .catch(() => `${target.label} ❌`)
+)).then(versionMessages => {
+  const styles = [
+    'color: lightgreen; font-weight: bold;',
+    'color: teal; font-weight: bold;',
+    'color: orange; font-weight: bold;',
+    'color: hotpink; font-weight: bold;',
+    'color: cornflowerblue; font-weight: bold;'
+  ];
 
-  console.log(`%c${cssVersion}   %c${jsVersion}`, 'color: lightgreen; font-weight: bold;', 'color: teal; font-weight: bold;');
+  console.log(
+    ...versionMessages.flatMap((msg, i) => [`%c${msg}`, styles[i % styles.length]])
+  );
 });
 
 // ───────────────────────────────────────────────────────────────────

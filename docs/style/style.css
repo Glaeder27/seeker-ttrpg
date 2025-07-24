@@ -464,8 +464,8 @@ a:active {
 }
 
 .nav-link.active {
-    color: gold;
-    background-color: rgba(255, 215, 0, 0.1);
+    color: var(--ancient-gold, #D4B55A);
+    background-color: rgba(255, 215, 0, 0.05);
     font-weight: bold;
 }
 
