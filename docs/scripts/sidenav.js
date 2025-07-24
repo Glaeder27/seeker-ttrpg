@@ -1,4 +1,4 @@
-/*v1.01 2025-07-24T11:30:00Z*/
+/*v1.02 2025-07-24T18:00:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -40,7 +40,7 @@ function generateChapterSections() {
   if (!chapterMenu) return;
 
   const sections = document.querySelectorAll("section.section-wrapper");
-  const headers = document.querySelectorAll("h4[sidenav-inset]");
+  const headers = document.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
 
   sections.forEach((section) => {
     const id = section.id;
@@ -67,6 +67,31 @@ function generateChapterSections() {
     chapterMenu.appendChild(li);
   });
 }
+
+// Spyscroll
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("#chapter-sections a");
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px 0px -70% 0px", // highlight on 30% portion visible
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        links.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll("section.section-wrapper[id]").forEach((section) => {
+    observer.observe(section);
+  });
+});
 
 function populateStaticMenu(data) {
   const sideMenu = document.querySelector("#side-menu .menu-content");
