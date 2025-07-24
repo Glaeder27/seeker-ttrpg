@@ -1,4 +1,4 @@
-/*v1.96 2025-07-24T11:30:00Z*/
+/*v1.97 2025-07-24T11:45:00Z*/
 
 // Version Checker
 const versionTargets = [
@@ -28,9 +28,10 @@ Promise.all(versionTargets.map(target =>
     'color: cornflowerblue; font-weight: bold;'
   ];
 
-  console.log(
-    ...versionMessages.flatMap((msg, i) => [`%c${msg}`, styles[i % styles.length]])
-  );
+  const logFormat = versionMessages.map(() => '%c%s').join(' ');
+  const logValues = versionMessages.flatMap((msg, i) => [styles[i % styles.length], msg]);
+
+  console.log(logFormat, ...logValues);
 });
 
 // ───────────────────────────────────────────────────────────────────
