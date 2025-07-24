@@ -1,12 +1,13 @@
-/*v1.03 2025-07-24T22:00:00Z*/
+/* v1.04 2025-07-24T22:00:00Z */
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
     .then(res => res.json())
     .then(data => {
       populateStaticMenu(data);
-      generateChapterSections(); // Submenu
+      generateChapterSections();
       initializeMenu();
+      initializeScrollSpy();
     })
     .catch(err => console.error("Failed to load sidenav menu:", err));
 }
@@ -25,21 +26,23 @@ function initializeMenu() {
     localStorage.setItem("menuVisible", isVisible);
   });
 
-  // Automatically highlight the current section
+  // Highlight the link on page load (hash-based)
   const links = document.querySelectorAll("#chapter-sections a");
   const currentHash = window.location.hash;
-  links.forEach((link) => {
-    if (link.getAttribute("href") === currentHash) {
-      link.classList.add("active");
-    }
-  });
+  if (currentHash) {
+    links.forEach((link) => {
+      if (link.getAttribute("href") === currentHash) {
+        link.classList.add("active");
+      }
+    });
+  }
 }
 
 function generateChapterSections() {
   const chapterMenu = document.getElementById("chapter-sections");
   if (!chapterMenu) return;
 
-  const sections = document.querySelectorAll("section.section-wrapper");
+  const sections = document.querySelectorAll("section.section-wrapper[id]");
   const headers = document.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
 
   sections.forEach((section) => {
@@ -49,70 +52,62 @@ function generateChapterSections() {
     const a = document.createElement("a");
     a.href = `#${id}`;
     a.textContent = title;
+    a.dataset.id = id;
     li.appendChild(a);
     chapterMenu.appendChild(li);
   });
 
-  headers.forEach((h4) => {
-    const section = h4.closest("section.section-wrapper");
-    if (!section) return;
+  headers.forEach((header) => {
+    const section = header.closest("section.section-wrapper");
+    if (!section || !section.id) return;
     const id = section.id;
-    const title = h4.getAttribute("sidenav-inset") || h4.textContent;
+    const title = header.getAttribute("sidenav-inset") || header.textContent;
     const li = document.createElement("li");
     li.classList.add("subsection");
     const a = document.createElement("a");
     a.href = `#${id}`;
     a.textContent = title;
+    a.dataset.id = id;
     li.appendChild(a);
     chapterMenu.appendChild(li);
   });
 }
 
-// Spyscroll
-document.addEventListener("DOMContentLoaded", () => {
+function initializeScrollSpy() {
   const observerOptions = {
     root: null,
-    rootMargin: "0px 0px -70% 0px",
+    rootMargin: "0px 0px -70% 0px", // Triggers when section reaches 30% from top
     threshold: 0,
   };
 
-  const chapterLinks = document.querySelectorAll("#chapter-sections a");
+  const links = document.querySelectorAll("#chapter-sections a");
+  const sections = document.querySelectorAll("section.section-wrapper[id]");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const sectionId = entry.target.getAttribute("id");
-
-        chapterLinks.forEach((link) => {
-          link.classList.remove("active");
+        const currentId = entry.target.id;
+        links.forEach((link) => {
+          link.classList.toggle("active", link.dataset.id === currentId);
         });
-
-        const activeLink = document.querySelector(`#chapter-sections a[href="#${sectionId}"]`);
-        if (activeLink) {
-          activeLink.classList.add("active");
-        }
       }
     });
   }, observerOptions);
 
-  const sections = document.querySelectorAll("section.section-wrapper[id]");
   sections.forEach((section) => observer.observe(section));
-});
+}
 
 function populateStaticMenu(data) {
   const sideMenu = document.querySelector("#side-menu .menu-content");
   if (!sideMenu || !data || !data.items) return;
 
-  // Clear existing static sections
   sideMenu.innerHTML = "";
 
-  // Title
   const title = document.createElement("h3");
   title.classList.add("menu-section");
   title.textContent = data.title;
   sideMenu.appendChild(title);
 
-  // Items
   const ul = document.createElement("ul");
   data.items.forEach(item => {
     const li = document.createElement("li");
@@ -123,10 +118,8 @@ function populateStaticMenu(data) {
     li.appendChild(a);
     ul.appendChild(li);
   });
-
   sideMenu.appendChild(ul);
 
-  // Chapter nav
   const dynamicNav = document.createElement("h3");
   dynamicNav.classList.add("menu-section");
   dynamicNav.textContent = "This Chapter";
