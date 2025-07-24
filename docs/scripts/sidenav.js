@@ -1,4 +1,4 @@
-/* v1.04 2025-07-24T22:00:00Z */
+/* v1.05 2025-07-24T23:30:00Z */
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -31,9 +31,7 @@ function initializeMenu() {
   const currentHash = window.location.hash;
   if (currentHash) {
     links.forEach((link) => {
-      if (link.getAttribute("href") === currentHash) {
-        link.classList.add("active");
-      }
+      link.classList.toggle("active", link.getAttribute("href") === currentHash);
     });
   }
 }
@@ -76,25 +74,42 @@ function generateChapterSections() {
 function initializeScrollSpy() {
   const observerOptions = {
     root: null,
-    rootMargin: "0px 0px -70% 0px", // Triggers when section reaches 30% from top
+    rootMargin: "0px 0px -70% 0px",
     threshold: 0,
   };
 
   const links = document.querySelectorAll("#chapter-sections a");
-  const sections = document.querySelectorAll("section.section-wrapper[id]");
+  const headers = document.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const currentId = entry.target.id;
+        const parentSection = entry.target.closest("section.section-wrapper");
+        if (!parentSection || !parentSection.id) return;
+        const sectionId = parentSection.id;
+
+        // Find the exact header within this section that triggered the intersection
+        let activeHeader = entry.target;
+        if (!activeHeader.hasAttribute("sidenav-inset")) {
+          activeHeader = Array.from(headers).find(h => parentSection.contains(h) && h === entry.target);
+        }
+
+        // Match only the link corresponding to this header
+        const currentId = sectionId;
+        const targetText = activeHeader.getAttribute("sidenav-inset") || activeHeader.textContent;
+
         links.forEach((link) => {
-          link.classList.toggle("active", link.dataset.id === currentId);
+          const isSubsection = link.parentElement.classList.contains("subsection");
+          const matchByText = link.textContent.trim() === targetText.trim();
+          const matchById = link.dataset.id === currentId;
+          const isActive = isSubsection ? (matchById && matchByText) : matchById;
+          link.classList.toggle("active", isActive);
         });
       }
     });
   }, observerOptions);
 
-  sections.forEach((section) => observer.observe(section));
+  headers.forEach((header) => observer.observe(header));
 }
 
 function populateStaticMenu(data) {
