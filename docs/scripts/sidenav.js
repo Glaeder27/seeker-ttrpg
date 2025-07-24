@@ -1,4 +1,4 @@
-/* v1.05 2025-07-24T23:30:00Z */
+/* v1.06 2025-07-24T23:55:00Z */
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -6,7 +6,7 @@ if (menuSrc) {
     .then(data => {
       populateStaticMenu(data);
       generateChapterSections();
-      initializeMenu();
+      initializeMenu(); // moved down to ensure side-menu exists
       initializeScrollSpy();
     })
     .catch(err => console.error("Failed to load sidenav menu:", err));
@@ -17,13 +17,12 @@ function initializeMenu() {
   const toggleButton = document.getElementById("toggle-menu");
 
   // Read the state from localStorage
-  const menuVisible = localStorage.getItem("menuVisible") === "true";
-  if (!menuVisible) sideMenu.classList.add("collapsed");
+  const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default to true
+  sideMenu.classList.toggle("collapsed", !menuVisible);
 
   toggleButton.addEventListener("click", () => {
-    sideMenu.classList.toggle("collapsed");
-    const isVisible = !sideMenu.classList.contains("collapsed");
-    localStorage.setItem("menuVisible", isVisible);
+    const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
+    localStorage.setItem("menuVisible", isNowVisible);
   });
 
   // Highlight the link on page load (hash-based)
@@ -80,36 +79,43 @@ function initializeScrollSpy() {
 
   const links = document.querySelectorAll("#chapter-sections a");
   const headers = document.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
+  const sections = document.querySelectorAll("section.section-wrapper[id]");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const parentSection = entry.target.closest("section.section-wrapper");
-        if (!parentSection || !parentSection.id) return;
-        const sectionId = parentSection.id;
+      if (!entry.isIntersecting) return;
 
-        // Find the exact header within this section that triggered the intersection
-        let activeHeader = entry.target;
-        if (!activeHeader.hasAttribute("sidenav-inset")) {
-          activeHeader = Array.from(headers).find(h => parentSection.contains(h) && h === entry.target);
-        }
+      const target = entry.target;
+      const parentSection = target.closest("section.section-wrapper");
+      if (!parentSection || !parentSection.id) return;
 
-        // Match only the link corresponding to this header
-        const currentId = sectionId;
-        const targetText = activeHeader.getAttribute("sidenav-inset") || activeHeader.textContent;
+      const sectionId = parentSection.id;
+      let activeHeader = null;
+      let isSubsection = false;
 
-        links.forEach((link) => {
-          const isSubsection = link.parentElement.classList.contains("subsection");
-          const matchByText = link.textContent.trim() === targetText.trim();
-          const matchById = link.dataset.id === currentId;
-          const isActive = isSubsection ? (matchById && matchByText) : matchById;
-          link.classList.toggle("active", isActive);
-        });
+      if (target.hasAttribute("sidenav-inset")) {
+        activeHeader = target;
+        isSubsection = true;
       }
+
+      links.forEach((link) => {
+        const linkIsSub = link.parentElement.classList.contains("subsection");
+        const matchById = link.dataset.id === sectionId;
+        const matchByText = activeHeader
+          ? link.textContent.trim() === (activeHeader.getAttribute("sidenav-inset") || activeHeader.textContent).trim()
+          : false;
+
+        const shouldActivate = isSubsection
+          ? (linkIsSub ? matchById && matchByText : matchById)
+          : !linkIsSub && matchById;
+
+        link.classList.toggle("active", shouldActivate);
+      });
     });
   }, observerOptions);
 
   headers.forEach((header) => observer.observe(header));
+  sections.forEach((section) => observer.observe(section)); // <-- fix: include full sections too
 }
 
 function populateStaticMenu(data) {
