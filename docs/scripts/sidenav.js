@@ -1,4 +1,4 @@
-/*v1.02 2025-07-24T18:00:00Z*/
+/*v1.03 2025-07-24T22:00:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -70,27 +70,33 @@ function generateChapterSections() {
 
 // Spyscroll
 document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll("#chapter-sections a");
   const observerOptions = {
     root: null,
-    rootMargin: "0px 0px -70% 0px", // highlight on 30% portion visible
+    rootMargin: "0px 0px -70% 0px",
     threshold: 0,
   };
+
+  const chapterLinks = document.querySelectorAll("#chapter-sections a");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const id = entry.target.id;
-        links.forEach((link) => {
-          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        const sectionId = entry.target.getAttribute("id");
+
+        chapterLinks.forEach((link) => {
+          link.classList.remove("active");
         });
+
+        const activeLink = document.querySelector(`#chapter-sections a[href="#${sectionId}"]`);
+        if (activeLink) {
+          activeLink.classList.add("active");
+        }
       }
     });
   }, observerOptions);
 
-  document.querySelectorAll("section.section-wrapper[id]").forEach((section) => {
-    observer.observe(section);
-  });
+  const sections = document.querySelectorAll("section.section-wrapper[id]");
+  sections.forEach((section) => observer.observe(section));
 });
 
 function populateStaticMenu(data) {
