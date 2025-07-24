@@ -786,11 +786,11 @@ a:active {
 }
 
 .banner-mask .border-top {
-    top: 0;
+    top: calc(50% - 150px);
 }
 
 .banner-mask .border-bottom {
-    bottom: 0;
+    bottom: calc(50% - 150px);
 }
 
 @media (max-width: 767px) {
