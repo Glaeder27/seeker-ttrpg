@@ -756,7 +756,7 @@ a:active {
 }
 
 .banner-mask {
-    position: absolute;
+    position: relative;
     inset: 0;
     display: flex;
     justify-content: center;
@@ -766,6 +766,25 @@ a:active {
     color: white;
     text-align: center;
     padding: 1rem;
+}
+
+.banner-mask .border-top,
+.banner-mask .border-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.banner-mask .border-top {
+  top: 0;
+}
+
+.banner-mask .border-bottom {
+  bottom: 0;
 }
 
 @media (max-width: 767px) {
