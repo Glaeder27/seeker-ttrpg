@@ -1105,6 +1105,12 @@ a:active {
     padding-left: 0.5rem;
   }
 
+  #side-menu a.active {
+    color: var(--ancient-gold);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
 /* ── GRID MENU ─────────────── */
 
 .menu-grid {
