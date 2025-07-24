@@ -1,4 +1,4 @@
-/*v2.03 2025-07-24T11:30:00Z*/
+/*v2.04 2025-07-24T16:30:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -262,7 +262,7 @@ body {
     font-family: var(--font-default);
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: auto;
     background-color: var(--background-site, #1E1E1E);
     overflow: auto;
     color: var(--off-white);
