@@ -120,7 +120,8 @@
 }
 
 .right-column {
-    position: sticky;
+    position: fixed;
+    right: 2rem;
     top: 5rem;
     align-self: start;
     height: calc(100vh - 5rem);
