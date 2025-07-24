@@ -770,6 +770,7 @@ a:active {
 
 @media (max-width: 767px) {
     .banner-mask {
+        height: 100dvh;
         display: flex;
         flex-direction: column;
         z-index: 7;
