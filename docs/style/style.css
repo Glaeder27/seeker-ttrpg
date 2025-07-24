@@ -1,4 +1,4 @@
-/*v2.02 2025-07-23T23:30:00Z*/
+/*v2.03 2025-07-24T11:30:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -348,7 +348,7 @@ p {
     scroll-margin-top: 80px;
 }
 [id="section1"] {
-    scroll-margin-top: 0;
+    scroll-margin-top: 999px;
 }
 
 .section-wrapper[id^="section"] {
