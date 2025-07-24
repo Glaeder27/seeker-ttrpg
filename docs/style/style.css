@@ -1,4 +1,4 @@
-/*v2.04 2025-07-24T16:30:00Z*/
+/*v2.05 2025-07-24T21:30:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -419,6 +419,7 @@ a:active {
     position: fixed;
     height: 60px;
     z-index: 9;
+    opacity: 1 !important;
 }
 
 .navbar-container {
