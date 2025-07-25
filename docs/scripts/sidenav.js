@@ -26,14 +26,14 @@ function initializeMenu() {
   } else {
     toggleButton.style.transform = "translate(0, 0)";
   }
-  toggleButton.textContent = menuVisible ? "◀" : "▶";
+  toggleButton.textContent = menuVisible ? "❰" : "❱";
 
   toggleButton.addEventListener("click", () => {
     const wasCollapsed = sideMenu.classList.contains("collapsed");
     const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
     localStorage.setItem("menuVisible", isNowVisible);
 
-    toggleButton.textContent = isNowVisible ? "◀" : "▶";
+    toggleButton.textContent = isNowVisible ? "❰" : "❱";
 
     // Reset classi animazione
     toggleButton.classList.remove("animate-open", "animate-close");
