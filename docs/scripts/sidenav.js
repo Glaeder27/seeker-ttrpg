@@ -1,4 +1,4 @@
-/*v1.06 2025-07-24T23:55:00Z*/
+/*v1.07 2025-07-25T09:50:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -73,8 +73,8 @@ function generateChapterSections() {
 function initializeScrollSpy() {
   const observerOptions = {
     root: null,
-    rootMargin: "0px 0px -70% 0px",
-    threshold: 0,
+    rootMargin: "0px 0px -30% 0px",
+    threshold: 0.1,
   };
 
   const links = document.querySelectorAll("#chapter-sections a");

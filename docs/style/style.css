@@ -787,9 +787,15 @@ a:active {
 .banner-mask .border-top {
     top: calc(50% - 150px);
 }
-
 .banner-mask .border-bottom {
     bottom: calc(50% - 150px);
+}
+
+@media (max-width: 767px) {
+    .banner-mask .border-top,
+    .banner-mask .border-bottom {
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
