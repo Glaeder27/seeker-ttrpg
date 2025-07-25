@@ -22,7 +22,7 @@ function initializeMenu() {
 
   // Btn initial state
   if (menuVisible) {
-    toggleButton.style.transform = "translate(370px, 80px)";
+    toggleButton.style.transform = "translate(370px, 0)";
   } else {
     toggleButton.style.transform = "translate(0, 0)";
   }
