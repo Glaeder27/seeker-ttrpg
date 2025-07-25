@@ -1056,17 +1056,22 @@ a:active {
 .sidenav-toggle-btn {
     position: fixed;
     top: 25%;
-    left: 10px;
+    left: 5px;
     z-index: 1001;
-    background: #222;
+    background: var(--background-dark-2);
     color: #fff;
     border: none;
     font-size: 1.2em;
-    padding: 0.4em 0.6em;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 10px;
     border: 2px solid var(--ancient-gold);
     transform: translate(0, 0);
+    height: 3rem;
+    width: 3rem;
+}
+
+.sidenav-toggle-btn:hover {
+    font-size: 1.5rem;
+    background: var(--background-dark-3);
 }
 
 .sidenav:not(.collapsed) + .sidenav-toggle-btn {
@@ -1119,15 +1124,14 @@ a:active {
     backdrop-filter: blur(4px);
     border-radius: 0 1rem 1rem 0;
     transform: translateY(-50%);
-    border-top: 2px solid var(--ancient-gold);
     border-right: 2px solid var(--ancient-gold);
-    border-bottom: 2px solid var(--ancient-gold);
     border-left: none;
     min-height: 70vh;
 }
 
 .sidenav.collapsed {
-    transform: translate(-100%, -50%)
+    transform: translate(-95%, -50%);
+    padding-right: 2rem;
 }
 
 .sidenav-content h3 {
