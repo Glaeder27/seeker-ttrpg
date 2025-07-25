@@ -6,14 +6,14 @@ if (menuSrc) {
     .then(data => {
       populateStaticMenu(data);
       generateChapterSections();
-      initializeMenu(); // moved down to ensure side-menu exists
+      initializeMenu(); // moved down to ensure sidenav exists
       initializeScrollSpy();
     })
     .catch(err => console.error("Failed to load sidenav menu:", err));
 }
 
 function initializeMenu() {
-  const sideMenu = document.getElementById("side-menu");
+  const sideMenu = document.getElementById("sidenav");
   const toggleButton = document.getElementById("toggle-menu");
 
   // Read the state from localStorage
@@ -119,7 +119,7 @@ function initializeScrollSpy() {
 }
 
 function populateStaticMenu(data) {
-  const sideMenu = document.querySelector("#side-menu .menu-content");
+  const sideMenu = document.querySelector("#sidenav .sidenav");
   if (!sideMenu || !data || !data.items) return;
 
   sideMenu.innerHTML = "";

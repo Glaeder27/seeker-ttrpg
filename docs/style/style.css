@@ -1064,11 +1064,11 @@ a:active {
 
 /* ── SIDE MENU ─────────────── */
 
-.side-menu-wrapper {
+.sidenav-wrapper {
     position: relative;
 }
 
-.toggle-btn {
+.sidenav-toggle-btn {
     position: fixed;
     top: 10px;
     left: 10px;
@@ -1082,25 +1082,26 @@ a:active {
     cursor: pointer;
 }
 
-.side-menu {
+.sidenav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 240px;
+    width: 400px;
     height: 100vh;
-    background-color: #1f1f1f;
+    background-color: #1f1f1fdd;
     color: #f0f0f0;
     padding: 1rem;
     overflow-y: auto;
     transition: transform 0.3s ease;
     z-index: 1000;
+    backdrop-filter: blur(4px);
 }
 
-.side-menu.collapsed {
+.sidenav.collapsed {
     transform: translateX(-100%);
 }
 
-.menu-content h3 {
+.sidenav h3 {
     margin-top: 1rem;
     font-size: 1.1em;
     border-bottom: 1px solid #555;
@@ -1108,34 +1109,34 @@ a:active {
     color: #ddd;
 }
 
-.menu-content ul {
+.sidenav ul {
     list-style: none;
     padding: 0;
     margin: 0.5rem 0;
 }
 
-.menu-content li {
+.sidenav li {
     margin: 0.4rem 0;
 }
 
-.menu-content a {
+.sidenav a {
     color: #aaa;
     text-decoration: none;
     transition: color 0.2s;
 }
 
-.menu-content a:hover {
+.sidenav a:hover {
     color: #fff;
 }
 
-.menu-content a.active {
+.sidenav a.active {
     font-weight: bold;
     color: #fff;
     border-left: 3px solid #fff;
     padding-left: 0.5rem;
 }
 
-#side-menu a.active {
+#sidenav a.active {
     color: var(--ancient-gold);
     font-weight: bold;
     text-decoration: underline;
