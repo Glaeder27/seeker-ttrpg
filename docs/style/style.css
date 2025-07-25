@@ -1084,17 +1084,23 @@ a:active {
 
 .sidenav {
     position: fixed;
-    top: 0;
+    top: 50%;
     left: 0;
     width: 400px;
-    height: 100vh;
     background-color: #1f1f1fdd;
     color: #f0f0f0;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 3rem;
     overflow-y: auto;
     transition: transform 0.3s ease;
     z-index: 1000;
     backdrop-filter: blur(4px);
+    border-radius: 0 1rem 1rem 0;
+    transform: translateY(-50%);
+    border-top: 2px solid var(--ancient-gold);
+    border-right: 2px solid var(--ancient-gold);
+    border-bottom: 2px solid var(--ancient-gold);
+    border-left: none;
+    min-height: 70vh;
 }
 
 .sidenav.collapsed {
@@ -1132,16 +1138,14 @@ a:active {
 }
 
 .sidenav a.active {
-    font-weight: bold;
     color: #fff;
     border-left: 3px solid #fff;
     padding-left: 0.5rem;
+    line-height: 2;
 }
 
 #sidenav a.active {
     color: var(--ancient-gold);
-    font-weight: bold;
-    text-decoration: underline;
 }
 
 #chapter-sections a.active {
