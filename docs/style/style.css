@@ -272,6 +272,27 @@ body {
     opacity: 1;
 }
 
+body {
+    position: relative;
+    z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/images/banners/home-page.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+}
+
 body.fade-out {
     opacity: 0;
 }
