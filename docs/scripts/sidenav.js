@@ -1,4 +1,4 @@
-/*v1.07 2025-07-25T09:50:00Z*/
+/*v1.08 2025-07-25T11:00:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -119,7 +119,7 @@ function initializeScrollSpy() {
 }
 
 function populateStaticMenu(data) {
-  const sideMenu = document.querySelector("#sidenav .sidenav");
+  const sideMenu = document.querySelector("#sidenav .sidenav-content");
   if (!sideMenu || !data || !data.items) return;
 
   sideMenu.innerHTML = "";

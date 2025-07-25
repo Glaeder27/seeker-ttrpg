@@ -1,4 +1,4 @@
-/*v2.06 2025-07-24T22:00:00Z*/
+/*v2.07 2025-07-25T11:00:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1107,7 +1107,7 @@ a:active {
     transform: translateX(-100%);
 }
 
-.sidenav h3 {
+.sidenav-content h3 {
     margin-top: 1rem;
     font-size: 1.1em;
     border-bottom: 1px solid #555;
@@ -1115,17 +1115,17 @@ a:active {
     color: #ddd;
 }
 
-.sidenav ul {
+.sidenav-content ul {
     list-style: none;
     padding: 0;
     margin: 0.5rem 0;
 }
 
-.sidenav li {
+.sidenav-content li {
     margin: 0.4rem 0;
 }
 
-.sidenav a {
+.sidenav-content a {
     color: #aaa;
     text-decoration: none;
     transition: color 0.2s;
@@ -1133,18 +1133,18 @@ a:active {
     padding: .5rem;
 }
 
-.sidenav a:hover {
+.sidenav-content a:hover {
     color: #fff;
 }
 
-.sidenav a.active {
+.sidenav-content a.active {
     color: #fff;
     border-left: 3px solid #fff;
     padding-left: 0.5rem;
     line-height: 2;
 }
 
-#sidenav a.active {
+#sidenav-content a.active {
     color: var(--ancient-gold);
 }
 
