@@ -2,14 +2,14 @@
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       populateStaticMenu(data);
       generateChapterSections();
       initializeMenu(); // moved down to ensure sidenav exists
       initializeScrollSpy();
     })
-    .catch(err => console.error("Failed to load sidenav menu:", err));
+    .catch((err) => console.error("Failed to load sidenav menu:", err));
 }
 
 function initializeMenu() {
@@ -20,25 +20,41 @@ function initializeMenu() {
   const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default to true
   sideMenu.classList.toggle("collapsed", !menuVisible);
 
-  // Initial icon
+  // Btn initial state
+  if (menuVisible) {
+    toggleButton.style.transform = "translate(370px, 80px)";
+  } else {
+    toggleButton.style.transform = "translate(0, 0)";
+  }
+  toggleButton.textContent = menuVisible ? "◀" : "▶";
+
   toggleButton.addEventListener("click", () => {
-  const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
-  localStorage.setItem("menuVisible", isNowVisible);
+    const wasCollapsed = sideMenu.classList.contains("collapsed");
+    const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
+    localStorage.setItem("menuVisible", isNowVisible);
 
-  toggleButton.textContent = sideMenu.classList.contains("collapsed") ? "▶" : "◀";
+    toggleButton.textContent = isNowVisible ? "◀" : "▶";
 
-  // 🔁 Riattiva animazione ogni volta
-  toggleButton.classList.remove("animate-move");
-  void toggleButton.offsetWidth;
-  toggleButton.classList.add("animate-move");
-});
+    // Reset classi animazione
+    toggleButton.classList.remove("animate-open", "animate-close");
+    void toggleButton.offsetWidth; // forza reflow per ri-trigger animazione
+
+    if (wasCollapsed) {
+      toggleButton.classList.add("animate-open");
+    } else {
+      toggleButton.classList.add("animate-close");
+    }
+  });
 
   // Highlight the link on page load (hash-based)
   const links = document.querySelectorAll("#chapter-sections a");
   const currentHash = window.location.hash;
   if (currentHash) {
     links.forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href") === currentHash);
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === currentHash
+      );
     });
   }
 }
@@ -63,14 +79,17 @@ function generateChapterSections() {
     li.appendChild(a);
     chapterMenu.appendChild(li);
 
-    const headers = section.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
+    const headers = section.querySelectorAll(
+      "h3[sidenav-inset], h4[sidenav-inset]"
+    );
     headers.forEach((header) => {
       const subLi = document.createElement("li");
       subLi.classList.add("subsection");
 
       const subA = document.createElement("a");
       subA.href = `#${id}`;
-      subA.textContent = header.getAttribute("sidenav-inset") || header.textContent;
+      subA.textContent =
+        header.getAttribute("sidenav-inset") || header.textContent;
       subA.dataset.id = id;
 
       subLi.appendChild(subA);
@@ -87,7 +106,9 @@ function initializeScrollSpy() {
   };
 
   const links = document.querySelectorAll("#chapter-sections a");
-  const headers = document.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
+  const headers = document.querySelectorAll(
+    "h3[sidenav-inset], h4[sidenav-inset]"
+  );
   const sections = document.querySelectorAll("section.section-wrapper[id]");
 
   const observer = new IntersectionObserver((entries) => {
@@ -111,11 +132,17 @@ function initializeScrollSpy() {
         const linkIsSub = link.parentElement.classList.contains("subsection");
         const matchById = link.dataset.id === sectionId;
         const matchByText = activeHeader
-          ? link.textContent.trim() === (activeHeader.getAttribute("sidenav-inset") || activeHeader.textContent).trim()
+          ? link.textContent.trim() ===
+            (
+              activeHeader.getAttribute("sidenav-inset") ||
+              activeHeader.textContent
+            ).trim()
           : false;
 
         const shouldActivate = isSubsection
-          ? (linkIsSub ? matchById && matchByText : matchById)
+          ? linkIsSub
+            ? matchById && matchByText
+            : matchById
           : !linkIsSub && matchById;
 
         link.classList.toggle("active", shouldActivate);
@@ -139,7 +166,7 @@ function populateStaticMenu(data) {
   sideMenu.appendChild(title);
 
   const ul = document.createElement("ul");
-  data.items.forEach(item => {
+  data.items.forEach((item) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.textContent = item.label;

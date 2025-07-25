@@ -1069,13 +1069,40 @@ a:active {
     transform: translate(0, 0);
 }
 
-.sidenav-toggle-btn.animate-move {
-    animation: sidenavRightThenDown 0.6s ease forwards;
+.sidenav:not(.collapsed) + .sidenav-toggle-btn {
+  left: 10px;
 }
 
-.sidenav.collapsed + .sidenav-toggle-btn {
-    transform: none;
-    transition: all 0.3 ease;
+.sidenav-toggle-btn.animate-open {
+  animation: sidenavOpen 0.6s ease forwards;
+}
+
+.sidenav-toggle-btn.animate-close {
+  animation: sidenavClose 0.6s ease forwards;
+}
+
+@keyframes sidenavOpen {
+  0% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(370px, 0);
+  }
+  100% {
+    transform: translate(370px, 80px);
+  }
+}
+
+@keyframes sidenavClose {
+  0% {
+    transform: translate(370px, 80px);
+  }
+  60% {
+    transform: translate(370px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 .sidenav {
@@ -1988,80 +2015,54 @@ thead th:last-child {
         transform: translateY(0);
     }
 }
+
 @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    @keyframes slideOut {
-        from {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        to {
-            opacity: 0;
-            transform: translateY(20px);
-        }
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    @keyframes fadeInBackground {
-        from {
-            background-color: rgba(30, 30, 30, 0);
-            backdrop-filter: blur(0px);
-        }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
 
-        to {
-            background-color: rgba(30, 30, 30, 0.9);
-            backdrop-filter: blur(8px);
-        }
+@keyframes fadeInBackground {
+    from {
+        background-color: rgba(30, 30, 30, 0);
+        backdrop-filter: blur(0px);
     }
 
-    @keyframes fadeOutBackground {
-        from {
-            background-color: rgba(30, 30, 30, 0.9);
-            backdrop-filter: blur(8px);
-        }
+    to {
+        background-color: rgba(30, 30, 30, 0.9);
+        backdrop-filter: blur(8px);
+    }
+}
 
-        to {
-            background-color: rgba(30, 30, 30, 0);
-            backdrop-filter: blur(0px);
-        }
+@keyframes fadeOutBackground {
+    from {
+        background-color: rgba(30, 30, 30, 0.9);
+        backdrop-filter: blur(8px);
     }
 
-    @keyframes sidenavRightThenDown {
-        0% {
-            transform: translate(0, 0);
-        }
-
-        60% {
-            transform: translate(370px, 0);
-        }
-
-        100% {
-            transform: translate(370px, 80px);
-        }
+    to {
+        background-color: rgba(30, 30, 30, 0);
+        backdrop-filter: blur(0px);
     }
-    @keyframes sidenavUpThenLeft {
-        0% {
-            transform: translate(0, 0);
-        }
-
-        60% {
-            transform: translate(380px, 0);
-        }
-
-        100% {
-            transform: translate(380px, 80px);
-        }
-    }
+}
 
 /*=============================================
 =              OUTCOME BOXES                  =
