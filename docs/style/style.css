@@ -1123,6 +1123,8 @@ a:active {
     color: #aaa;
     text-decoration: none;
     transition: color 0.2s;
+    display: block;
+    padding: .5rem;
 }
 
 .sidenav a:hover {
@@ -1144,8 +1146,9 @@ a:active {
 
 #chapter-sections a.active {
     font-weight: bold;
-    border-left: 3px solid var(--highlight-color);
+    border-left: 3px solid var(--ancient-gold, #D4B55A);
     background-color: rgba(255, 255, 255, 0.05);
+    padding-left: 1rem;
 }
 
 /* ── GRID MENU ─────────────── */
