@@ -283,19 +283,19 @@ body {
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/assets/images/banners/home-page.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: -1;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/assets/images/banners/home-page.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
 }
 
 body.clean::before {
@@ -738,6 +738,20 @@ a:active {
             backdrop-filter: blur(0px);
         }
     }
+
+    @keyframes moveRightThenDown {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        60% {
+            transform: translate(400px, 0);
+        }
+
+        100% {
+            transform: translate(400px, 80px);
+        }
+    }
 }
 
 /* ── FOOTER ─────────────── */
@@ -818,11 +832,13 @@ a:active {
 .banner-mask .border-top {
     top: calc(50% - 150px);
 }
+
 .banner-mask .border-bottom {
     bottom: calc(50% - 150px);
 }
 
 @media (max-width: 767px) {
+
     .banner-mask .border-top,
     .banner-mask .border-bottom {
         display: none;
@@ -1093,7 +1109,7 @@ a:active {
     pointer-events: none !important;
 }
 
-/* ── SIDE MENU ─────────────── */
+/* ── SIDENAV ─────────────── */
 
 .sidenav-wrapper {
     position: relative;
@@ -1101,7 +1117,7 @@ a:active {
 
 .sidenav-toggle-btn {
     position: fixed;
-    top: 10px;
+    top: 25%;
     left: 10px;
     z-index: 1001;
     background: #222;
@@ -1111,6 +1127,11 @@ a:active {
     padding: 0.4em 0.6em;
     border-radius: 4px;
     cursor: pointer;
+    border: 2px solid var(--ancient-gold);
+}
+
+.sidenav:not(.collapsed)+.sidenav-toggle-btn {
+    left: 380px;
 }
 
 .sidenav {
@@ -1185,13 +1206,14 @@ a:active {
     background-color: rgba(255, 255, 255, 0.05);
     padding-left: 1rem;
 }
+
 #chapter-sections li.subsection a {
-  font-size: 0.9em;
-  color: var(--light-gray);
-  padding-left: 1.5em;
-  border-left: 2px solid var(--ancient-gold);
-  margin-top: 0.25em;
-  display: block;
+    font-size: 0.9em;
+    color: var(--light-gray);
+    padding-left: 1.5em;
+    border-left: 2px solid var(--ancient-gold);
+    margin-top: 0.25em;
+    display: block;
 }
 
 /* ── GRID MENU ─────────────── */
