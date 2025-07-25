@@ -57,6 +57,11 @@
     --off-white-rgb: 240, 240, 240;
     --dark-paper-rgb: 147, 134, 99;
 
+    --background-site-rgb: rgb(30, 30, 30);
+    --background-dark-1-rgb: rgb(30, 30, 30);
+    --background-dark-2-rgb: rgb(41, 41, 41);
+    --background-dark-3-rgb: rgb(59, 59, 59);
+
     /* ── FONTS ─────────────── */
     --font-default: 'Arial';
     --font-main: 'Montserrat', sans-serif;
@@ -1609,7 +1614,7 @@ h2.section::after {
     max-width: 800px;
     position: relative;
     padding-top: 0;
-    background-color: rgba(255, 255, 255, .03);
+    background-color: rgba(var(--background-dark-2-rgb, 41, 41, 41), 0.5);
     padding: 0 2rem 2rem 2rem;
     border-radius: 0 0 1rem 1rem;
     border-right: 2px solid var(--background-dark-2);
