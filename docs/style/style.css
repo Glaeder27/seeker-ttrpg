@@ -1066,11 +1066,16 @@ a:active {
     border-radius: 4px;
     cursor: pointer;
     border: 2px solid var(--ancient-gold);
-    animation: sidenavRightThenDown 1s ease forwards;
+    transform: translate(0, 0);
 }
 
-.sidenav:not(.collapsed)+.sidenav-toggle-btn {
-    left: 380px;
+.sidenav-toggle-btn.animate-move {
+    animation: sidenavRightThenDown 0.6s ease forwards;
+}
+
+.sidenav.collapsed + .sidenav-toggle-btn {
+    transform: none;
+    transition: all 0.3 ease;
 }
 
 .sidenav {
@@ -2037,11 +2042,11 @@ thead th:last-child {
         }
 
         60% {
-            transform: translate(400px, 0);
+            transform: translate(370px, 0);
         }
 
         100% {
-            transform: translate(400px, 80px);
+            transform: translate(370px, 80px);
         }
     }
     @keyframes sidenavUpThenLeft {
@@ -2050,11 +2055,11 @@ thead th:last-child {
         }
 
         60% {
-            transform: translate(400px, 0);
+            transform: translate(380px, 0);
         }
 
         100% {
-            transform: translate(400px, 80px);
+            transform: translate(380px, 80px);
         }
     }
 

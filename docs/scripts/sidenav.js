@@ -21,15 +21,17 @@ function initializeMenu() {
   sideMenu.classList.toggle("collapsed", !menuVisible);
 
   // Initial icon
+  toggleButton.addEventListener("click", () => {
+  const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
+  localStorage.setItem("menuVisible", isNowVisible);
+
   toggleButton.textContent = sideMenu.classList.contains("collapsed") ? "▶" : "◀";
 
-  toggleButton.addEventListener("click", () => {
-    const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
-    localStorage.setItem("menuVisible", isNowVisible);
-
-    // State-specific icon
-    toggleButton.textContent = sideMenu.classList.contains("collapsed") ? "▶" : "◀";
-  });
+  // 🔁 Riattiva animazione ogni volta
+  toggleButton.classList.remove("animate-move");
+  void toggleButton.offsetWidth;
+  toggleButton.classList.add("animate-move");
+});
 
   // Highlight the link on page load (hash-based)
   const links = document.querySelectorAll("#chapter-sections a");
