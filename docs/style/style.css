@@ -1098,7 +1098,7 @@ a:active {
     transform: translate(370px, 80px);
   }
   60% {
-    transform: translate(370px, 0);
+    transform: translate(0, 80px);
   }
   100% {
     transform: translate(0, 0);
@@ -1127,7 +1127,7 @@ a:active {
 }
 
 .sidenav.collapsed {
-    transform: translateX(-100%);
+    transform: translate(-100%, -50%)
 }
 
 .sidenav-content h3 {
