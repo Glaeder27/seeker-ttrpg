@@ -39,34 +39,35 @@ function generateChapterSections() {
   const chapterMenu = document.getElementById("chapter-sections");
   if (!chapterMenu) return;
 
+  chapterMenu.innerHTML = ""; // Clear all
+
   const sections = document.querySelectorAll("section.section-wrapper[id]");
-  const headers = document.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
 
   sections.forEach((section) => {
     const id = section.id;
     const title = section.getAttribute("sidenav") || id;
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.href = `#${id}`;
-    a.textContent = title;
-    a.dataset.id = id;
-    li.appendChild(a);
-    chapterMenu.appendChild(li);
-  });
 
-  headers.forEach((header) => {
-    const section = header.closest("section.section-wrapper");
-    if (!section || !section.id) return;
-    const id = section.id;
-    const title = header.getAttribute("sidenav-inset") || header.textContent;
     const li = document.createElement("li");
-    li.classList.add("subsection");
     const a = document.createElement("a");
     a.href = `#${id}`;
     a.textContent = title;
     a.dataset.id = id;
     li.appendChild(a);
     chapterMenu.appendChild(li);
+
+    const headers = section.querySelectorAll("h3[sidenav-inset], h4[sidenav-inset]");
+    headers.forEach((header) => {
+      const subLi = document.createElement("li");
+      subLi.classList.add("subsection");
+
+      const subA = document.createElement("a");
+      subA.href = `#${id}`;
+      subA.textContent = header.getAttribute("sidenav-inset") || header.textContent;
+      subA.dataset.id = id;
+
+      subLi.appendChild(subA);
+      chapterMenu.appendChild(subLi);
+    });
   });
 }
 

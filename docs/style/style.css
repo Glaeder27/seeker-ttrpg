@@ -1154,6 +1154,14 @@ a:active {
     background-color: rgba(255, 255, 255, 0.05);
     padding-left: 1rem;
 }
+#chapter-sections li.subsection a {
+  font-size: 0.9em;
+  color: var(--light-gray);
+  padding-left: 1.5em;
+  border-left: 2px solid var(--ancient-gold);
+  margin-top: 0.25em;
+  display: block;
+}
 
 /* ── GRID MENU ─────────────── */
 
