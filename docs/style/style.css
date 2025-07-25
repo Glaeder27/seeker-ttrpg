@@ -739,7 +739,20 @@ a:active {
         }
     }
 
-    @keyframes moveRightThenDown {
+    @keyframes sidenavRightThenDown {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        60% {
+            transform: translate(400px, 0);
+        }
+
+        100% {
+            transform: translate(400px, 80px);
+        }
+    }
+    @keyframes sidenavUpThenLeft {
         0% {
             transform: translate(0, 0);
         }

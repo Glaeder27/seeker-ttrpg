@@ -20,9 +20,15 @@ function initializeMenu() {
   const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default to true
   sideMenu.classList.toggle("collapsed", !menuVisible);
 
+  // Initial icon
+  toggleButton.textContent = sideMenu.classList.contains("collapsed") ? "▶" : "◀";
+
   toggleButton.addEventListener("click", () => {
     const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
     localStorage.setItem("menuVisible", isNowVisible);
+
+    // State-specific icon
+    toggleButton.textContent = sideMenu.classList.contains("collapsed") ? "▶" : "◀";
   });
 
   // Highlight the link on page load (hash-based)
