@@ -452,6 +452,7 @@ a:active {
     height: 60px;
     z-index: 9;
     opacity: 1 !important;
+    border-bottom: 1px solid var(--ancient-gold, #D4B55A)
 }
 
 .navbar-container {
