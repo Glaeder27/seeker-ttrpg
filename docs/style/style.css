@@ -1,4 +1,4 @@
-/*v2.07 2025-07-25T11:00:00Z*/
+/*v2.08 2025-07-25T16:00:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1141,6 +1141,7 @@ a:active {
     border-radius: 4px;
     cursor: pointer;
     border: 2px solid var(--ancient-gold);
+    animation: sidenavRightThenDown 1s ease forwards;
 }
 
 .sidenav:not(.collapsed)+.sidenav-toggle-btn {
