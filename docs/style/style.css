@@ -57,10 +57,10 @@
     --off-white-rgb: 240, 240, 240;
     --dark-paper-rgb: 147, 134, 99;
 
-    --background-site-rgb: rgb(30, 30, 30);
-    --background-dark-1-rgb: rgb(30, 30, 30);
-    --background-dark-2-rgb: rgb(41, 41, 41);
-    --background-dark-3-rgb: rgb(59, 59, 59);
+    --background-site-rgb: 30, 30, 30;
+    --background-dark-1-rgb: 30, 30, 30;
+    --background-dark-2-rgb: 41, 41, 41;
+    --background-dark-3-rgb: 59, 59, 59;
 
     /* ── FONTS ─────────────── */
     --font-default: 'Arial';
