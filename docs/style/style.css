@@ -298,6 +298,10 @@ body::before {
   z-index: -1;
 }
 
+body.clean::before {
+    content: none;
+}
+
 body.fade-out {
     opacity: 0;
 }
