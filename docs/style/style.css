@@ -728,6 +728,10 @@ a:active {
 }
 
 .banner-parallax {
+    height: 650px;
+}
+
+.banner-parallax {
     margin-top: 70px;
 }
 
