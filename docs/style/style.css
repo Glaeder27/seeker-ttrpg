@@ -935,7 +935,7 @@ a:active {
 }
 
 .feature-card-wrapper {
-    border-radius: 1rem;
+    border-radius: .5rem;
     padding: 2px;
     background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
     display: inline-block;
@@ -947,7 +947,7 @@ a:active {
     flex: 0 0 250px;
     height: 350px;
     width: 250px;
-    border-radius: 1rem;
+    border-radius: .5rem;
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -982,6 +982,7 @@ a:active {
     text-align: center;
     margin-bottom: 0.25rem;
     cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
+    border: none;
 }
 
 .card-description.short {
