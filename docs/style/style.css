@@ -1138,6 +1138,21 @@ body#home .main-navbar {
     min-height: 70vh;
 }
 
+.sidenav-label {
+  position: absolute;
+  top: 30px;
+  left: 100%;
+  transform: translateX(-50%);
+  background-color: #222;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  z-index: 20;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 .sidenav.collapsed {
     transform: translateX(-95%) translateY(-50%);
     padding-right: 2rem;
