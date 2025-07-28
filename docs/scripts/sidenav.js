@@ -80,7 +80,7 @@ function generateChapterSections() {
     chapterMenu.appendChild(li);
 
     const headers = section.querySelectorAll(
-      "h3[sidenav-inset], h4[sidenav-inset]"
+      "h3[sidenav-2], h4[sidenav-2]"
     );
     headers.forEach((header) => {
       const subLi = document.createElement("li");
@@ -89,7 +89,7 @@ function generateChapterSections() {
       const subA = document.createElement("a");
       subA.href = `#${id}`;
       subA.textContent =
-        header.getAttribute("sidenav-inset") || header.textContent;
+        header.getAttribute("sidenav-2") || header.textContent;
       subA.dataset.id = id;
 
       subLi.appendChild(subA);
@@ -107,7 +107,7 @@ function initializeScrollSpy() {
 
   const links = document.querySelectorAll("#chapter-sections a");
   const headers = document.querySelectorAll(
-    "h3[sidenav-inset], h4[sidenav-inset]"
+    "h3[sidenav-2], h4[sidenav-2]"
   );
   const sections = document.querySelectorAll("section.section-wrapper[id]");
 
@@ -123,7 +123,7 @@ function initializeScrollSpy() {
       let activeHeader = null;
       let isSubsection = false;
 
-      if (target.hasAttribute("sidenav-inset")) {
+      if (target.hasAttribute("sidenav-2")) {
         activeHeader = target;
         isSubsection = true;
       }
@@ -134,7 +134,7 @@ function initializeScrollSpy() {
         const matchByText = activeHeader
           ? link.textContent.trim() ===
             (
-              activeHeader.getAttribute("sidenav-inset") ||
+              activeHeader.getAttribute("sidenav-2") ||
               activeHeader.textContent
             ).trim()
           : false;
