@@ -940,7 +940,7 @@ body#home-page .main-navbar {
 
 .feature-card-wrapper {
     border-radius: .5rem;
-    padding: 2px;
+    padding: 5px;
     background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
     display: inline-block;
 }
