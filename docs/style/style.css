@@ -454,7 +454,7 @@ a:active {
     opacity: 1 !important;
     border-bottom: 1px solid var(--ancient-gold);
 }
-body#home .main-navbar {
+body#home-page .main-navbar {
     border-bottom: none;
 }
 
