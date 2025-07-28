@@ -1146,28 +1146,22 @@ body#home .main-navbar {
     transform: translateX(-95%) translateY(-50%);
     padding-right: 2rem;
 }
-#sidenav::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-#sidenav:hover::-webkit-scrollbar {
+/* Scrollbar Webkit */
+.sidenav::-webkit-scrollbar {
   width: 4px;
 }
-#sidenav::-webkit-scrollbar-track {
+.sidenav::-webkit-scrollbar-track {
   background: transparent;
 }
-#sidenav::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
+.sidenav::-webkit-scrollbar-thumb {
+  background-color: var(--ancient-gold, #D4B55A);
   border-radius: 10px;
 }
 
 /* Firefox */
-#sidenav {
-  scrollbar-width: none;
-}
-#sidenav:hover {
+.sidenav {
   scrollbar-width: thin;
-  scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
+  scrollbar-color: rgba(var(--ancient-gold-rgb), 0.2) transparent;
 }
 
 .sidenav-content h3 {
