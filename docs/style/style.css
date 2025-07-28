@@ -1193,11 +1193,16 @@ body#home .main-navbar {
 
 #chapter-sections li.subsection a {
     font-size: 0.9em;
-    color: var(--light-gray);
     padding-left: 1.5em;
-    border-left: 2px solid var(--ancient-gold);
     margin-top: 0.25em;
     display: block;
+}
+
+#chapter-sections li.subsection a {
+    font-weight: bold;
+    border-left: 1px solid var(--ancient-gold, #D4B55A);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding-left: 1rem;
 }
 
 /* ── GRID MENU ─────────────── */
