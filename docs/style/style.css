@@ -1136,23 +1136,14 @@ body#home .main-navbar {
     border-right: 2px solid var(--ancient-gold);
     border-left: none;
     min-height: 70vh;
+    max-height: 70vh;
+    direction: rtl;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
-
-.sidenav-label {
-  position: absolute;
-  top: 30px;
-  left: 100%;
-  transform: translateX(-50%);
-  background-color: #222;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 4px;
-  z-index: 20;
-  font-weight: bold;
-  white-space: nowrap;
-  pointer-events: none;
+.sidenav > * {
+    direction: ltr;
 }
-
 .sidenav.collapsed {
     transform: translateX(-95%) translateY(-50%);
     padding-right: 2rem;
