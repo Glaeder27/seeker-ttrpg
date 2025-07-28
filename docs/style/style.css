@@ -1138,8 +1138,6 @@ body#home .main-navbar {
     min-height: 70vh;
     max-height: 70vh;
     direction: rtl;
-    scrollbar-width: thin;
-    scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
 .sidenav > * {
     direction: ltr;
@@ -1148,7 +1146,6 @@ body#home .main-navbar {
     transform: translateX(-95%) translateY(-50%);
     padding-right: 2rem;
 }
-
 #sidenav::-webkit-scrollbar {
   width: 0px;
   background: transparent;
@@ -1156,14 +1153,21 @@ body#home .main-navbar {
 #sidenav:hover::-webkit-scrollbar {
   width: 4px;
 }
-
 #sidenav::-webkit-scrollbar-track {
   background: transparent;
 }
-
 #sidenav::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
+}
+
+/* Firefox */
+#sidenav {
+  scrollbar-width: none;
+}
+#sidenav:hover {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
 
 .sidenav-content h3 {
