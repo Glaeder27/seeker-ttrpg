@@ -2532,18 +2532,33 @@ thead th:last-child {
 blockquote {
     margin: 1.5em 0;
     padding: 0.5em 1.5em;
-    border-left: 4px solid var(--ancient-gold, #D4B55A);
     background-color: var(--background-grey-1, #3B3B3B);
     color: var(--off-white, #F0F0F0);
     font-size: .9rem;
+    border-radius: 0 1rem 1rem 0;
 }
 
-blockquote footer {
-    font-size: 0.9em;
+blockquote::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to right, 
+        rgba(var(--burnt-copper-rgb), 0.2), 
+        rgba(var(--ancient-gold-rgb), 0.2)), 
+        url(/assets/textures/antique-gold-1.jpg);
+}
+
+blockquote .footer {
+    font-size: 1.2em;
     text-align: right;
     margin-top: 0.5em;
-    color: black;
+    color: var(--text-muted);
     z-index: 2;
+    font-style: italic;
+    padding-right: 4rem;
 }
 
 .blockquote-medieval {
