@@ -272,6 +272,16 @@
             margin-top: 10px;
         }
 
+        .flip-wrapper {
+            background: linear-gradient(to right, 
+            rgba(var(--deep-charcoal-rgb), 0.2), 
+            rgba(var(--brown-charcoal-rgb), 0.2)), 
+            url(/assets/textures/antique-gold-1.jpg);
+            padding: 5px;
+            border-radius: .5rem;
+            display: inline-block;
+        }
+
         .chapter-list {
             list-style: none;
             padding: 0;
@@ -529,37 +539,36 @@
                     <!-- Dice System -->
                     <div class="rules-card-link flip-container chapter-card">
                         <div class="flip-inner">
-
-                            <!-- FRONT -->
-                            <div class="flip-front">
-                                <div class="rules-card" data-title="Dice Engine" data-category="System"
-                                    data-status="released">
-                                    <div class="rules-icon-wrapper">
-                                        <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
+                            <div class="flip-wrapper">
+                                <!-- FRONT -->
+                                <div class="flip-front">
+                                    <div class="rules-card" data-title="Dice Engine" data-category="System" data-status="released">
+                                        <div class="rules-icon-wrapper">
+                                            <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
+                                        </div>
+                                        <h3 class="rules-title">Dice Engine</h3>
+                                        <div class="rules-meta">
+                                            <div class="rules-category">Basics</div>
+                                            <span class="rule-tag state-released">Released</span>
+                                        </div>
+                                        <p class="rules-description">When to roll and how to interpret results.</p>
                                     </div>
-                                    <h3 class="rules-title">Dice Engine</h3>
-                                    <div class="rules-meta">
-                                        <div class="rules-category">Basics</div>
-                                        <span class="rule-tag state-released">Released</span>
+                                </div>
+                    
+                                <!-- BACK -->
+                                <div class="flip-back">
+                                    <div class="rules-card" data-title="Dice Engine" data-category="System" data-status="released">
+                                        <h3>Twin Coil System</h3>
+                                        <ul class="chapter-list">
+                                            <li><a href="/rules/twin-coil-system#section1">I • Core Concept</a></li>
+                                            <li><a href="/rules/twin-coil-system#section2">II • Action & Risk Dice</a></li>
+                                            <li><a href="/rules/twin-coil-system#section3">III • Outcome Matrix</a></li>
+                                            <li><a href="/rules/twin-coil-system#section4">IV • Probabilities</a></li>
+                                            <li><a href="/rules/twin-coil-system#section5">V • Optional Rules</a></li>
+                                        </ul>
                                     </div>
-                                    <p class="rules-description">When to roll and how to interpret results.</p>
+                    
                                 </div>
-                            </div>
-
-                            <!-- BACK -->
-                            <div class="flip-back">
-                                <div class="rules-card" data-title="Dice Engine" data-category="System"
-                                    data-status="released">
-                                    <h3>Twin Coil System</h3>
-                                    <ul class="chapter-list">
-                                        <li><a href="/rules/twin-coil-system#section1">I • Core Concept</a></li>
-                                        <li><a href="/rules/twin-coil-system#section2">II • Action & Risk Dice</a></li>
-                                        <li><a href="/rules/twin-coil-system#section3">III • Outcome Matrix</a></li>
-                                        <li><a href="/rules/twin-coil-system#section4">IV • Probabilities</a></li>
-                                        <li><a href="/rules/twin-coil-system#section5">V • Optional Rules</a></li>
-                                    </ul>
-                                </div>
-
                             </div>
                         </div>
                     </div>
