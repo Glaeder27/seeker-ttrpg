@@ -234,6 +234,8 @@
             transition: transform 0.6s;
             transform-style: preserve-3d;
             position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .flip-container.flipped .flip-inner {
@@ -270,16 +272,6 @@
             text-align: center;
             font-size: 1.2rem;
             margin-top: 10px;
-        }
-
-        .flip-wrapper {
-            background: linear-gradient(to right, 
-            rgba(var(--deep-charcoal-rgb), 0.2), 
-            rgba(var(--brown-charcoal-rgb), 0.2)), 
-            url(/assets/textures/antique-gold-1.jpg);
-            padding: 5px;
-            border-radius: .5rem;
-            display: inline-block;
         }
 
         .chapter-list {
@@ -432,9 +424,11 @@
                     <strong>Masteries</strong>.
                     Each ability can be further modified through Augmentations, allowing players to shape truly unique
                     characters
-                    tailored to their playstyle and story arc.</p>
+                    tailored to their playstyle and story arc.
+                </p>
 
-                <p><strong>Narrative-focused Dice Engine.</strong> At the core of the system lies the Twin Coil System, a
+                <p><strong>Narrative-focused Dice Engine.</strong> At the core of the system lies the Twin Coil System,
+                    a
                     dice mechanic that resolves actions by rolling two types of
                     dice: <strong>Action</strong>, which determine success, and <strong>Risk</strong>, which introduce
                     complications. This framework allows for
@@ -442,11 +436,13 @@
                     <em>“success with complication”</em> or <em>“failure
                         with benefit.”</em> It encourages drama, tension, and consequence while <strong>minimizing math
                         at the table</strong>. Rolls are clean,
-                    fast, and easy to interpret.</p>
+                    fast, and easy to interpret.
+                </p>
 
                 <p><strong>Tag System.</strong> Abilities, items, effects, and actions are all structured through a Tag
                     system, which standardizes language and
-                    promotes synergy. Tags like <span class="tag">Toxin</span>, <span class="tag">Maneuver</span>, <span class="tag">Strike</span>, or <span class="tag">Defensive</span> define
+                    promotes synergy. Tags like <span class="tag">Toxin</span>, <span class="tag">Maneuver</span>, <span
+                        class="tag">Strike</span>, or <span class="tag">Defensive</span> define
                     how abilities interact — skills sharing a
                     Tag can enhance one another, trigger combo effects, or modify outcomes. This creates emergent
                     gameplay with fewer
@@ -506,8 +502,10 @@
                     myth, inviting creative freedom without demanding academic precision.</p>
 
                 <h4>Is this game respectful of real-world cultures?</h4>
-                <p>The civilizations encountered in the New World are unlike anything known to European chroniclers. Though echoes of
-                    real-world myths and cultures may be felt, these societies have no direct analogue in our own history — their
+                <p>The civilizations encountered in the New World are unlike anything known to European chroniclers.
+                    Though echoes of
+                    real-world myths and cultures may be felt, these societies have no direct analogue in our own
+                    history — their
                     mysteries remain wholly their own.</p>
             </section>
 
@@ -539,36 +537,36 @@
                     <!-- Dice System -->
                     <div class="rules-card-link flip-container chapter-card">
                         <div class="flip-inner">
-                            <div class="flip-wrapper">
-                                <!-- FRONT -->
-                                <div class="flip-front">
-                                    <div class="rules-card" data-title="Dice Engine" data-category="System" data-status="released">
-                                        <div class="rules-icon-wrapper">
-                                            <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
-                                        </div>
-                                        <h3 class="rules-title">Dice Engine</h3>
-                                        <div class="rules-meta">
-                                            <div class="rules-category">Basics</div>
-                                            <span class="rule-tag state-released">Released</span>
-                                        </div>
-                                        <p class="rules-description">When to roll and how to interpret results.</p>
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="rules-card" data-title="Dice Engine" data-category="System"
+                                    data-status="released">
+                                    <div class="rules-icon-wrapper">
+                                        <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
                                     </div>
-                                </div>
-                    
-                                <!-- BACK -->
-                                <div class="flip-back">
-                                    <div class="rules-card" data-title="Dice Engine" data-category="System" data-status="released">
-                                        <h3>Twin Coil System</h3>
-                                        <ul class="chapter-list">
-                                            <li><a href="/rules/twin-coil-system#section1">I • Core Concept</a></li>
-                                            <li><a href="/rules/twin-coil-system#section2">II • Action & Risk Dice</a></li>
-                                            <li><a href="/rules/twin-coil-system#section3">III • Outcome Matrix</a></li>
-                                            <li><a href="/rules/twin-coil-system#section4">IV • Probabilities</a></li>
-                                            <li><a href="/rules/twin-coil-system#section5">V • Optional Rules</a></li>
-                                        </ul>
+                                    <h3 class="rules-title">Dice Engine</h3>
+                                    <div class="rules-meta">
+                                        <div class="rules-category">Basics</div>
+                                        <span class="rule-tag state-released">Released</span>
                                     </div>
-                    
+                                    <p class="rules-description">When to roll and how to interpret results.</p>
                                 </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <div class="rules-card" data-title="Dice Engine" data-category="System"
+                                    data-status="released">
+                                    <h3>Twin Coil System</h3>
+                                    <ul class="chapter-list">
+                                        <li><a href="/rules/twin-coil-system#section1">I • Core Concept</a></li>
+                                        <li><a href="/rules/twin-coil-system#section2">II • Action & Risk Dice</a></li>
+                                        <li><a href="/rules/twin-coil-system#section3">III • Outcome Matrix</a></li>
+                                        <li><a href="/rules/twin-coil-system#section4">IV • Probabilities</a></li>
+                                        <li><a href="/rules/twin-coil-system#section5">V • Optional Rules</a></li>
+                                    </ul>
+                                </div>
+
                             </div>
                         </div>
                     </div>
