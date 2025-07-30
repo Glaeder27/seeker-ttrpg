@@ -2538,7 +2538,7 @@ blockquote {
     border-radius: 0 1rem 1rem 0;
 }
 
-blockquote::before {
+blockquote:not(.clean)::before {
     content: "";
     position: absolute;
     top: 0;
