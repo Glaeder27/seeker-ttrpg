@@ -15,8 +15,6 @@ if (menuSrc) {
 function initializeMenu() {
   const sideMenu = document.getElementById("sidenav");
   const toggleButton = document.getElementById("toggle-menu");
-  const sidenav = document.querySelector(".sidenav");
-  const toggleBtn = document.querySelector("#sidenav-toggle");
 
   // Read the state from localStorage
   const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default to true
@@ -59,9 +57,9 @@ function initializeMenu() {
       );
     });
   }
-  toggleBtn?.addEventListener("click", () => {
+    setTimeout(() => {
     sidenav?.classList.remove("no-transition");
-  }, { once: true }); // solo al primo click
+  }, 0);
 }
 
 function generateChapterSections() {
