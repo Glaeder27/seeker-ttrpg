@@ -315,7 +315,7 @@ body.fade-out {
 }
 
 p {
-    line-height: 1.6;
+    line-height: 1.7;
     font-family: var(--font-main);
     font-weight: 400;
     color: var(--off-white);
@@ -1634,7 +1634,7 @@ h1.site-title {
 h2.section {
     position: relative;
     font-family: var(--font-main);
-    font-size: 2.2em;
+    font-size: 2.5em;
     line-height: 1.2;
     font-weight: 600;
     text-transform: uppercase;
