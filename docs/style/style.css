@@ -1144,6 +1144,11 @@ body#home-page .main-navbar {
     border-left: none;
     height: 70vh;
 }
+
+.sidenav.no-transition {
+  transition: none !important;
+}
+
 .sidenav-scroll > * {
     direction: ltr;
 }

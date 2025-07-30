@@ -57,6 +57,9 @@ function initializeMenu() {
       );
     });
   }
+    setTimeout(() => {
+    sidenav?.classList.remove("no-transition");
+  }, 0);
 }
 
 function generateChapterSections() {
