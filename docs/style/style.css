@@ -1143,9 +1143,8 @@ body#home-page .main-navbar {
     border-right: 2px solid var(--ancient-gold);
     border-left: none;
     height: 70vh;
-    direction: rtl;
 }
-.sidenav > * {
+.sidenav-scroll > * {
     direction: ltr;
 }
 .sidenav.collapsed {
@@ -1155,21 +1154,22 @@ body#home-page .main-navbar {
 .sidenav-scroll {
     height: 100%;
     overflow-y: auto;
+    direction: rtl;
 }
 /* Scrollbar Webkit */
-.sidenav::-webkit-scrollbar {
+.sidenav-scroll::-webkit-scrollbar {
   width: 4px;
 }
-.sidenav::-webkit-scrollbar-track {
+.sidenav-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
-.sidenav::-webkit-scrollbar-thumb {
+.sidenav-scroll::-webkit-scrollbar-thumb {
   background-color: var(--ancient-gold, #D4B55A);
   border-radius: 10px;
 }
 
 /* Firefox */
-.sidenav {
+.sidenav-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(var(--ancient-gold-rgb), 0.2) transparent;
 }
