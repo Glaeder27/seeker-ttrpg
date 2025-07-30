@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Page Title</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Specific Styles */
+        /* Responsive tweaks */
+    </style>
+</head>
+
+<body id="aptitudes" data-menu-src="/data/menu-rulebook.json">
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+
+    <main class="dual-column">
+        <div class="left-column">
+            <header class="title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Main Title</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">Main Subtitle</p>
+            </header>
+            <!-- ─────────────── MAIN CONTENT ─────────────── -->
+            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="aptitudes">
+                    Core Concept
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p></p>
+            </section>
+
+            <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
+                        <h3 class="section">TL;DR — Title</h3>
+                        <span class="collapsible-icon">▸</span>
+                    </div>
+
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
+                        <ul class="no-bullet">
+                            <li class="no-bullet">
+                                <strong class="tldr-title">1 • Title</strong>
+                                <div style="margin-left: 1em;">
+                                    Description
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Block 3: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+
+                <!-- Block 4: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
+
+</body>
+
+</html>
