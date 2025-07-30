@@ -1658,20 +1658,18 @@ h2.section::after {
     top: 0;
     width: 12px;
     height: 100%;
-    background: linear-gradient(to right, 
-    rgba(var(--deep-charcoal-rgb), 0.6), 
-    rgba(var(--brown-charcoal-rgb), 0.4)), 
-    url(/assets/textures/antique-gold-1.jpg);
 }
 
 h2.section::before {
     left: 0;
     border-radius: 10px 0 0 10px;
+    background: linear-gradient(to bottom, var(--burnt-copper), var(--ancient-gold));
 }
 
 h2.section::after {
     right: 0;
     border-radius: 0 10px 10px 0;
+    background: linear-gradient(to top, var(--burnt-copper), var(--ancient-gold));
 }
 
 .section-ornament {
