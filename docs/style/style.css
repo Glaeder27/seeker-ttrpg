@@ -69,11 +69,20 @@
     --font-handwritten: 'Great Vibes', cursive;
     --font-title: 'Cinzel Decorative', serif;
     --font-antique: 'IM Fell English', serif;
+    --font-arcane: 'Mistlock Rough', serif;
 }
 
 /*=============================================
 =                    MAIN                     =
 =============================================*/
+
+/* ── FONTS ─────────── */
+@font-face {
+  font-family: "Mistlock Rough";
+  src: url("/asset-files/fonts/Mistlock-Rough.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* ── PAGE LAYOUTS ─────────── */
 
