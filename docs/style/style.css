@@ -1622,7 +1622,7 @@ h1.site-title {
 }
 
 .title .title-icon.mirrored {
-    transform: scaleY(-1);
+    transform: scaleX(-1);
 }
 
 .title .subtitle {
