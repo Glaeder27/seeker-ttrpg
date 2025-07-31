@@ -306,10 +306,10 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('/assets/images/banners/home-page.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url('/assets/textures/background-page.webp');
+    background-size: auto;
+    background-position: top left;
+    background-repeat: repeat;
     opacity: 0.03;
     pointer-events: none;
     z-index: -1;
@@ -3920,4 +3920,60 @@ details[open] .infobox-table {
 #twin-coil-system .dice-symbol img {
     height: 2em;
     vertical-align: middle;
+}
+
+/*=============================================
+=                  SYMBOLS                    =
+=============================================*/
+.overlay-symbol {
+    position: absolute;
+    top: 55%;
+    width: 500px;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.05;
+    transition: opacity 0.4s ease-in-out;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.overlay-symbol.l {
+    left: 20%;
+}
+.overlay-symbol.r {
+    right: -35%;
+}
+
+.overlay-symbol.var-1 {
+    background-image: url('assets/icons/svg/alchemy-1.svg');
+}
+.overlay-symbol.var-2 {
+    background-image: url('assets/icons/svg/alchemy-2.svg');
+}
+.overlay-symbol.var-3 {
+    background-image: url('assets/icons/svg/alchemy-3.svg');
+}
+.overlay-symbol.var-4 {
+    background-image: url('assets/icons/svg/alchemy-4.svg');
+}
+.overlay-symbol.var-5 {
+    background-image: url('assets/icons/svg/alchemy-5.svg');
+}
+.overlay-symbol.var-6 {
+    background-image: url('assets/icons/svg/alchemy-6.svg');
+}
+.overlay-symbol.var-7 {
+    background-image: url('assets/icons/svg/alchemy-7.svg');
+}
+.overlay-symbol.var-8 {
+    background-image: url('assets/icons/svg/alchemy-8.svg');
+}
+.overlay-symbol.var-9 {
+    background-image: url('assets/icons/svg/alchemy-9.svg');
+}
+.overlay-symbol.var-19 {
+    background-image: url('assets/icons/svg/alchemy-10.svg');
 }
