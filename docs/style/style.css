@@ -79,7 +79,7 @@
 /* ── FONTS ─────────── */
 @font-face {
   font-family: "Mistlock Rough";
-  src: url("/asset-files/fonts/Mistlock-Rough.ttf") format("truetype");
+  src: url("/assets/fonts/Mistlock-Rough.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
