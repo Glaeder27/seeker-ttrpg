@@ -1619,6 +1619,10 @@ h1.site-title {
     transform: rotate(0deg);
 }
 
+.title .title-icon.mirrored {
+    transform: scaleY(-1);
+}
+
 .title .subtitle {
     font-size: 1.2rem;
     font-family: var(--font-antique);
