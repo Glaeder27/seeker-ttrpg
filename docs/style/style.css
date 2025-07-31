@@ -2715,6 +2715,9 @@ blockquote.clean p {
 
 .signature {
     font-family: var(--font-calligraphy);
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 100;
 }
 
 /*=============================================
