@@ -306,13 +306,20 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('/assets/textures/background-page.webp');
+    background-image: url('/assets/textures/background-page-1.webp');
     background-size: auto;
     background-position: top left;
     background-repeat: repeat;
     opacity: 0.03;
     pointer-events: none;
     z-index: -1;
+}
+
+body.bckg-1::before {
+    background-image: url('/assets/textures/background-page-1.webp');
+}
+body.bckg-2::before {
+    background-image: url('/assets/textures/background-page-2.webp');
 }
 
 body.clean::before {
