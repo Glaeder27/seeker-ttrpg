@@ -67,6 +67,7 @@
     --font-main: 'Montserrat', sans-serif;
     --font-special: 'Georgia', serif;
     --font-handwritten: 'Great Vibes', cursive;
+    --font-calligraphy: 'Quentin', cursive;
     --font-title: 'Cinzel Decorative', serif;
     --font-antique: 'IM Fell English', serif;
     --font-arcane: 'Mistlock Rough', serif;
@@ -83,6 +84,13 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Quentin";
+  src: url("/assets/fonts/Quentin.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 /* ── PAGE LAYOUTS ─────────── */
 
@@ -2703,6 +2711,10 @@ blockquote.clean p {
     text-align: right;
     font-size: 1.1rem;
     color: var(--pale-beige);
+}
+
+.signature {
+    font-family: var(--font-calligraphy);
 }
 
 /*=============================================
