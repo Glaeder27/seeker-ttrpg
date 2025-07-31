@@ -1,4 +1,4 @@
-/*v2.09 2025-07-25T18:00:00Z*/
+/*v2.1 2025-07-31T23:00:00Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -317,9 +317,11 @@ body::before {
 
 body.bckg-1::before {
     background-image: url('/assets/textures/background-page-1.webp');
+    opacity: 0.03;
 }
 body.bckg-2::before {
     background-image: url('/assets/textures/background-page-2.webp');
+    opacity: 0.01;
 }
 
 body.clean::before {
@@ -802,11 +804,11 @@ body#home-page .main-navbar {
 }
 
 .banner-mask .border-top {
-    top: calc(50% - 150px);
+    top: calc(50% - 170px);
 }
 
 .banner-mask .border-bottom {
-    bottom: calc(50% - 150px);
+    bottom: calc(50% - 170px);
 }
 
 @media (max-width: 767px) {
@@ -834,7 +836,7 @@ body#home-page .main-navbar {
     left: 0;
     transform: translateY(-50%);
     width: 100%;
-    height: 300px;
+    height: 350px;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 0;
     pointer-events: none;

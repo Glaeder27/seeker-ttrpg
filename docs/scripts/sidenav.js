@@ -1,4 +1,4 @@
-/*v1.08 2025-07-25T11:00:00Z*/
+/*v1.1 2025-07-31T23:00:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -57,9 +57,11 @@ function initializeMenu() {
       );
     });
   }
+  window.addEventListener("load", () => {
     setTimeout(() => {
-    sidenav?.classList.remove("no-transition");
-  }, 0);
+      sidenav?.classList.remove("no-transition");
+    }, 100);
+  });
 }
 
 function generateChapterSections() {
