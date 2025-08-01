@@ -1,4 +1,4 @@
-/*v1.1 2025-07-31T23:00:00Z*/
+/*v1.11 2025-08-01T11:30:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -6,8 +6,14 @@ if (menuSrc) {
     .then((data) => {
       populateStaticMenu(data);
       generateChapterSections();
-      initializeMenu(); // moved down to ensure sidenav exists
+      initializeMenu();
       initializeScrollSpy();
+
+      const sidenav = document.getElementById("sidenav");
+      setTimeout(() => {
+        sidenav?.classList.remove("no-transition");
+        console.log("Removed 'no-transition' from sidenav:", sidenav?.classList);
+      }, 100);
     })
     .catch((err) => console.error("Failed to load sidenav menu:", err));
 }
@@ -57,12 +63,6 @@ function initializeMenu() {
       );
     });
   }
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const sidenav = document.getElementById("sidenav");
-    sidenav?.classList.remove("no-transition");
-  }, 100);
-});
 }
 
 function generateChapterSections() {
