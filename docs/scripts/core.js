@@ -1,4 +1,4 @@
-/*v2.3 2025-08-01T15:40:00Z*/
+/*v2.4 2025-08-01T16:00:00Z*/
 
 // ─── Version Checker ───
 const versionTargets = [
