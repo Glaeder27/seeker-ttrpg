@@ -2161,7 +2161,7 @@ thead th:last-child {
 
 .tag:hover {
     color: var(--ancient-gold, #D4B55A);
-    cursor: url('/assets/cursor/info_24.png') 4 1, help;
+    cursor: url('/assets/cursor/cursor_info_24.png') 4 1, help;
 }
 
 .rule-tag.tooltip {
