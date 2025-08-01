@@ -3827,6 +3827,7 @@ details[open] .infobox-table {
 #twin-coil-system .grid-label.top-left {
     grid-column: 3;
     grid-row: 2;
+    gap: .2rem;
 }
 
 #twin-coil-system .grid-label.top-right {
