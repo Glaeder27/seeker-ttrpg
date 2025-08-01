@@ -1,4 +1,4 @@
-/*v2.7 2025-08-01T16:40:00Z*/
+/*v2.8 2025-08-01T16:40:00Z*/
 
 // ─── Version Checker ───
 const versionTargets = [
@@ -144,8 +144,11 @@ document.addEventListener("DOMContentLoaded", () => {
         description.innerHTML = tagData?.definition || `No description available for <strong>${tagKey}</strong>.`;
 
         const rect = tag.getBoundingClientRect();
-        tooltip.style.left = `${rect.left}px`;
-        tooltip.style.top = `${rect.bottom + 10}px`;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        tooltip.style.left = (rect.left + scrollLeft) + "px";
+        tooltip.style.top = (rect.bottom + scrollTop + 10) + "px";
 
         tooltip.classList.add("visible");
         tooltip.style.pointerEvents = "auto";
