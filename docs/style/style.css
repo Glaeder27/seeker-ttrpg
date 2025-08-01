@@ -7,7 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Great+Vibes&family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    /* ── COLOR PALETTE ─────────────── */
+    /* ── COLOR PALETTE ───────────────────────────────────────────── */
 
     /* Main */
     --bright-gold: #F6CB75;
@@ -36,12 +36,12 @@
     --hover-light-1: rgba(255, 255, 255, 0.1);
 
     /* Stances */
-    --aggressive: #8B3A3A;
-    --defensive: #4A5E6A;
-    --evasive: #667054;
-    --inquisitive: #B89B4B;
-    --balanced: #5E7A78;
-    --mystic: #735A84;
+    --stance-aggressive: #8B3A3A;
+    --stance-defensive: #4A5E6A;
+    --stance-evasive: #667054;
+    --stance-inquisitive: #B89B4B;
+    --stance-balanced: #5E7A78;
+    --stance-mystic: #735A84;
 
     /* RGB Color Conversions */
     --bright-gold-rgb: 246, 203, 117;
@@ -62,7 +62,7 @@
     --background-dark-2-rgb: 41, 41, 41;
     --background-dark-3-rgb: 59, 59, 59;
 
-    /* ── FONTS ─────────────── */
+    /* ── FONTS ───────────────────────────────────────────── */
     --font-default: 'Arial';
     --font-main: 'Montserrat', sans-serif;
     --font-special: 'Georgia', serif;
@@ -72,7 +72,7 @@
     --font-antique: 'IM Fell English', serif;
     --font-arcane: 'Mistlock Rough', serif;
 
-    /* ── IMAGES ─────────────── */
+    /* ── IMAGES ───────────────────────────────────────────── */
     /* Dice */
     --dice-action: url('/assets/icons/svg/dice/dice-action.svg');
     --dice-risk: url('/assets/icons/svg/dice/dice-risk.svg');
@@ -91,6 +91,9 @@
     --dice-risk-4: url('/assets/icons/svg/dice/dice-red-4.svg');
     --dice-risk-5: url('/assets/icons/svg/dice/dice-red-5.svg');
     --dice-risk-6: url('/assets/icons/svg/dice/dice-red-6.svg');
+
+    /* ── TEXTURES ───────────────────────────────────────────── */
+    --texture-leather: url('/assets/textures/leather-1.png');
 }
 
 /*=============================================
@@ -2595,6 +2598,7 @@ blockquote {
     color: var(--off-white, #F0F0F0);
     font-size: .9rem;
     border-radius: 0 1rem 1rem 0;
+    background-image: var(--texture-leather);
 }
 
 blockquote:not(.clean)::before {
@@ -2602,7 +2606,7 @@ blockquote:not(.clean)::before {
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
+    width: 6px;
     height: 100%;
     background: linear-gradient(to right, 
         rgba(var(--burnt-copper-rgb), 0.2), 
