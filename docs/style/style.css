@@ -2011,9 +2011,10 @@ thead th:last-child {
   max-width: 320px;
   padding: 10px 14px;
   background-color: rgba(0, 0, 0, 0.5);
-  border: 2px solid var(--ancient-gold, #B89B4B);
-  border-top: 8px solid;
-  border-radius: 5px;
+  border: 0px solid var(--ancient-gold, #B89B4B);
+  border-top: 5px solid;
+  border-bottom: 5px solid;
+  border-radius: 10px;
   color: var(--off-white, #F0F0F0);
   font-size: 0.9rem;
   line-height: 1.4;
