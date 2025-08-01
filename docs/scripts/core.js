@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!tagElements.length) return;
 
     const tooltip = document.createElement("div");
-    tooltip.classList.add("global-tooltip");
+    tooltip.classList.add("tag-tooltip");
 
     const tooltipIcon = document.createElement("div");
     tooltipIcon.classList.add("tooltip-icon");
