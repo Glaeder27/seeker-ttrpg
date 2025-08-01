@@ -4013,3 +4013,12 @@ details[open] .infobox-table {
 .overlay-symbol.var-19 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-10.svg');
 }
+
+/*=============================================
+=              PREMADE ELEMENTS               =
+=============================================*/
+.dice-combined {
+    background-image: var(--dice-combined);
+    background-repeat: no-repeat;
+    background-position: center;
+}
