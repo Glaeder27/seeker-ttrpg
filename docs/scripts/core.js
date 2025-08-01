@@ -1,4 +1,4 @@
-/*v2.0 2025-08-01T14:00:00Z*/
+/*v2.1 2025-08-01T14:30:00Z*/
 
 // Version Checker
 const versionTargets = [
@@ -27,15 +27,12 @@ Promise.all(versionTargets.map(target =>
     'color: hotpink; font-weight: bold;',
     'color: cornflowerblue; font-weight: bold;'
   ];
-
   const logFormat = versionMessages.map(() => '%c%s').join(' ');
   const logValues = versionMessages.flatMap((msg, i) => [styles[i % styles.length], msg]);
   console.log(logFormat, ...logValues);
 });
 
-// ───────────────────────────────────────────────────────────────────
-// ── MAIN SCRIPT ────────────────────────────────────────────────────
-// ───────────────────────────────────────────────────────────────────
+// ── MAIN SCRIPT ──
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
@@ -87,6 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hoverWords.forEach((word) => {
       word.addEventListener("mouseenter", () => {
+        word.classList.add("active-tooltip"); // Add tooltip class
+
         const tooltipKey = word.dataset.tooltipKey;
         const tooltipContent = tooltipDefinitions[tooltipKey];
         tooltipContentWrapper.innerHTML = tooltipContent || "";
@@ -101,6 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       word.addEventListener("mouseleave", () => {
+        word.classList.remove("active-tooltip"); // Remove tooltip class
+
         tooltip.style.opacity = "0";
         tooltip.style.pointerEvents = "none";
         setTimeout(() => {
@@ -120,6 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tagElements.forEach((tag) => {
       tag.addEventListener("mouseenter", () => {
+        tag.classList.add("active-tag-tooltip"); // Add Tag Class
+
         const tagKey = tag.textContent.trim();
         const tagData = tagDefinitions[tagKey];
         const category = tagData?.category || "";
@@ -146,6 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       tag.addEventListener("mouseleave", () => {
+        tag.classList.remove("active-tag-tooltip"); // Remove Tag Class
+
         tooltip.style.opacity = "0";
         tooltip.style.pointerEvents = "none";
         setTimeout(() => {
