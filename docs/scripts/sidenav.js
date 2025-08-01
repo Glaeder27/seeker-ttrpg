@@ -1,4 +1,4 @@
-/*v1.14 2025-08-01T23:00:00Z*/
+/*v1.15 2025-08-02T00:30:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
