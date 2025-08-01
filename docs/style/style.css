@@ -1195,8 +1195,6 @@ body#home-page .main-navbar {
 }
 
 .sidenav.no-transition {
-  transition: none !important;
-  transform: none !important;
 }
 
 .sidenav-scroll > * {
