@@ -1131,6 +1131,7 @@ body#home-page .main-navbar {
     transform: translate(0, 0);
     height: 3rem;
     width: 3rem;
+    line-height: 1;
 }
 
 .sidenav-toggle-btn:hover {
@@ -1209,7 +1210,7 @@ body#home-page .main-navbar {
     height: 100%;
     overflow-y: auto;
     direction: rtl;
-    padding-left: 2rem;
+    padding: 0 2rem;
 }
 /* Scrollbar Webkit */
 .sidenav-scroll::-webkit-scrollbar {
@@ -2542,6 +2543,21 @@ thead th:last-child {
 
 .tldr-title {
     color: var(--ancient-gold, #D4B55A);
+}
+
+.sidenav-content .collapsible-header {
+    padding: 10px;
+}
+.sidenav-content .collapsible-header h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+}
+.sidenav-content .collapsible-item {
+    margin-left: -10px;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: none;
 }
 
 /*=============================================
@@ -4083,6 +4099,14 @@ details[open] .infobox-table {
 }
 .overlay-symbol.var-19 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-10.svg');
+}
+
+i.fas.fa-square-xmark {
+    color: var(--rust-red);
+    font-size: 26px;
+}
+i.fas.fa-right-from-bracket {
+    color: var(--ancient-gold);
 }
 
 /*=============================================
