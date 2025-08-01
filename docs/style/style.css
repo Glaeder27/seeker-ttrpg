@@ -1247,6 +1247,11 @@ body#home-page .main-navbar {
     margin: 0.4rem 0;
 }
 
+ul#rulebook li {
+    margin: 0;
+    line-height: 1;
+}
+
 .sidenav-content a {
     color: #aaa;
     text-decoration: none;
