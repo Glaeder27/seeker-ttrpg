@@ -2025,7 +2025,8 @@ thead th:last-child {
     color: var(--bright-gold);
 }
 
-.global-tooltip {
+.global-tooltip,
+.tag-tooltip {
     position: fixed;
     background: linear-gradient(145deg, #2a2a2a, #3a3a3a);
     color: var(--off-white);
@@ -2043,9 +2044,10 @@ thead th:last-child {
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-/* ───────── Tooltip Icon (Magnifying Glass) ───────── */
+/* ───────── Tooltip Icon ───────── */
 .tooltip-icon {
     position: absolute;
     top: 10px;
