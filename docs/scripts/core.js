@@ -1,4 +1,4 @@
-/*v2.5 2025-08-01T16:00:00Z*/
+/*v2.7 2025-08-01T16:40:00Z*/
 
 // ─── Version Checker ───
 const versionTargets = [
@@ -95,31 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const content = tooltipDefinitions[key] || `No description available for <strong>${key}</strong>.`;
         description.innerHTML = content;
 
-        const rect = word.getBoundingClientRect();
-        tooltip.style.left = `${rect.left}px`;
-        tooltip.style.top = `${rect.bottom + 10}px`;
+        const rect = tag.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        tooltip.style.left = (rect.left + scrollLeft) + "px";
+        tooltip.style.top = (rect.bottom + scrollTop + 10) + "px";
 
         tooltip.classList.add("visible");
         tooltip.style.pointerEvents = "auto";
-
-                                                // ─── DEBUGGER BLOCK ───
-                                                console.log("Hover su tag:", tag.textContent.trim());
-                                                console.log("Tooltip element:", tooltip);
-                                                console.log("Tag rect:", rect);
-                                                console.log("Tooltip style before:", tooltip.style.cssText);
-                                                // Force tooltip style for debug
-                                                tooltip.style.position = "fixed";
-                                                tooltip.style.left = `${rect.left}px`;
-                                                tooltip.style.top = `${rect.bottom + 10}px`;
-                                                tooltip.style.visibility = "visible";
-                                                tooltip.style.opacity = "1";
-                                                tooltip.style.pointerEvents = "auto";
-                                                tooltip.style.zIndex = "9999";
-                                                tooltip.style.backgroundColor = "rgba(0,0,0,0.8)";
-                                                tooltip.style.color = "#fff";
-                                                tooltip.style.padding = "8px";
-                                                tooltip.style.borderRadius = "6px";
-                                                tooltip.classList.add("visible");
       });
 
       word.addEventListener("mouseleave", () => {
@@ -165,25 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tooltip.classList.add("visible");
         tooltip.style.pointerEvents = "auto";
-
-                                            // ─── DEBUGGER BLOCK ───
-                                                console.log("Hover su tag:", tag.textContent.trim());
-                                                console.log("Tooltip element:", tooltip);
-                                                console.log("Tag rect:", rect);
-                                                console.log("Tooltip style before:", tooltip.style.cssText);
-                                                // Force tooltip style for debug
-                                                tooltip.style.position = "fixed";
-                                                tooltip.style.left = `${rect.left}px`;
-                                                tooltip.style.top = `${rect.bottom + 10}px`;
-                                                tooltip.style.visibility = "visible";
-                                                tooltip.style.opacity = "1";
-                                                tooltip.style.pointerEvents = "auto";
-                                                tooltip.style.zIndex = "9999";
-                                                tooltip.style.backgroundColor = "rgba(0,0,0,0.8)";
-                                                tooltip.style.color = "#fff";
-                                                tooltip.style.padding = "8px";
-                                                tooltip.style.borderRadius = "6px";
-                                                tooltip.classList.add("visible");
       });
 
       tag.addEventListener("mouseleave", () => {
