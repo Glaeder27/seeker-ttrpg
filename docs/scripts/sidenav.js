@@ -12,7 +12,6 @@ if (menuSrc) {
       const sidenav = document.getElementById("sidenav");
       setTimeout(() => {
         sidenav?.classList.remove("no-transition");
-        console.log("Removed 'no-transition' from sidenav:", sidenav?.classList);
       }, 100);
     })
     .catch((err) => console.error("Failed to load sidenav menu:", err));
