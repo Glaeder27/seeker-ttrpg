@@ -2,7 +2,7 @@
 // La trovi nella console Firebase: Project settings (icona ingranaggio) -> "Your apps"
 // Seleziona la tua app web (o aggiungine una) e copia il "Firebase SDK snippet" (Config)
 const firebaseConfig = {
-  apiKey: "AIzaSyDY6xDCady9D1j7k27vApWCkbv0O1ST6yA",
+  apiKey: "AIzaSyCZu-da02W-5Q4gd5N7mhwx_UReEu8QSfE",
   authDomain: "seeker-ttrpg.firebaseapp.com",
   projectId: "seeker-ttrpg",
   storageBucket: "seeker-ttrpg.firebasestorage.app",
