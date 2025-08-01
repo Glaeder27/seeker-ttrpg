@@ -220,6 +220,4 @@ function populateStaticMenu(data) {
   const chapterList = document.createElement("ul");
   chapterList.id = "chapter-sections";
   sideMenu.appendChild(chapterList);
-  
-  initializeCollapsibles();
 }
