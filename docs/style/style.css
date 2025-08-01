@@ -2616,13 +2616,15 @@ blockquote:not(.clean)::before {
 }
 
 blockquote .footer {
-    font-size: 1.2em;
+    font-size: 2em;
     text-align: right;
     margin-top: 0.5em;
     color: var(--text-muted);
     z-index: 2;
     font-style: italic;
     padding-right: 4rem;
+    font-family: var(--font-calligraphy);
+    line-height: 1;
 }
 
 .blockquote-medieval {
