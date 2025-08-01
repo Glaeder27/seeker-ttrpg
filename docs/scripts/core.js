@@ -1,6 +1,6 @@
 /*v2.1 2025-08-01T14:30:00Z*/
 
-// Version Checker
+// ─── Version Checker ───
 const versionTargets = [
   { label: '🎨 style.css', path: '/style/style.css' },
   { label: '🔣 core.js', path: document.currentScript.src },
@@ -32,23 +32,24 @@ Promise.all(versionTargets.map(target =>
   console.log(logFormat, ...logValues);
 });
 
-// ── MAIN SCRIPT ──
+// ─── Tooltip Engine ───
 
 let tooltipDefinitions = {};
 let tagDefinitions = {};
 let categoryColors = {};
 
-function handlePageShow() {
+// Remove preload class once page is ready
+window.addEventListener("pageshow", () => {
   document.documentElement.classList.remove("preload");
   document.body.classList.remove("fade-out");
-}
-window.addEventListener("pageshow", handlePageShow);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => {
     document.documentElement.classList.remove("preload");
   });
 
+  // Create tooltip container with optional icon
   function createTooltipElement(className, iconSVG = null) {
     const tooltip = document.createElement("div");
     tooltip.classList.add(className);
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return { tooltip, tooltipIcon, tooltipContentWrapper };
   }
 
+  // Initialize tooltips for standard glossary words
   function initializeTooltips() {
     const hoverWords = document.querySelectorAll(".tooltip");
     if (!hoverWords.length) return;
@@ -84,15 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hoverWords.forEach((word) => {
       word.addEventListener("mouseenter", () => {
-        word.classList.add("active-tooltip"); // Add tooltip class
+        word.classList.add("active-tooltip");
+        const key = word.dataset.tooltipKey;
+        const content = tooltipDefinitions[key];
+        tooltipContentWrapper.innerHTML = content || "";
 
-        const tooltipKey = word.dataset.tooltipKey;
-        const tooltipContent = tooltipDefinitions[tooltipKey];
-        tooltipContentWrapper.innerHTML = tooltipContent || "";
-
-        const wordRect = word.getBoundingClientRect();
-        tooltip.style.left = `${wordRect.left}px`;
-        tooltip.style.top = `${wordRect.bottom + 10}px`;
+        const rect = word.getBoundingClientRect();
+        tooltip.style.left = `${rect.left}px`;
+        tooltip.style.top = `${rect.bottom + 10}px`;
 
         tooltip.style.visibility = "visible";
         tooltip.style.opacity = "1";
@@ -100,8 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       word.addEventListener("mouseleave", () => {
-        word.classList.remove("active-tooltip"); // Remove tooltip class
-
+        word.classList.remove("active-tooltip");
         tooltip.style.opacity = "0";
         tooltip.style.pointerEvents = "none";
         setTimeout(() => {
@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Initialize tooltips for .tag elements with categories
   function initializeTagTooltips() {
     const tagElements = document.querySelectorAll(".tag");
     if (!tagElements.length) return;
@@ -121,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tagElements.forEach((tag) => {
       tag.addEventListener("mouseenter", () => {
-        tag.classList.add("active-tag-tooltip"); // Add Tag Class
+        tag.classList.add("active-tag-tooltip");
 
         const tagKey = tag.textContent.trim();
         const tagData = tagDefinitions[tagKey];
@@ -134,14 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>`;
 
         tooltip.style.borderColor = color;
-        tooltipContentWrapper.innerHTML =
-          tagData && tagData.definition
-            ? `<strong>${tagKey}</strong><br>${tagData.definition}`
-            : `No description available for <strong>${tagKey}</strong>.`;
 
-        const tagRect = tag.getBoundingClientRect();
-        tooltip.style.left = `${tagRect.left}px`;
-        tooltip.style.top = `${tagRect.bottom + 10}px`;
+        tooltipContentWrapper.innerHTML = tagData?.definition
+          ? `<strong>${tagKey}</strong><br>${tagData.definition}`
+          : `No description available for <strong>${tagKey}</strong>.`;
+
+        const rect = tag.getBoundingClientRect();
+        tooltip.style.left = `${rect.left}px`;
+        tooltip.style.top = `${rect.bottom + 10}px`;
 
         tooltip.style.visibility = "visible";
         tooltip.style.opacity = "1";
@@ -149,8 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       tag.addEventListener("mouseleave", () => {
-        tag.classList.remove("active-tag-tooltip"); // Remove Tag Class
-
+        tag.classList.remove("active-tag-tooltip");
         tooltip.style.opacity = "0";
         tooltip.style.pointerEvents = "none";
         setTimeout(() => {
@@ -162,21 +162,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Load tooltip definitions
   fetch("/data/tooltips.json")
-    .then((res) => res.ok ? res.json() : Promise.reject(res.status))
-    .then((data) => {
+    .then(res => res.ok ? res.json() : Promise.reject(res.status))
+    .then(data => {
       tooltipDefinitions = data;
       initializeTooltips();
     })
-    .catch((err) => console.error("Error loading tooltip definitions:", err));
+    .catch(err => console.error("Error loading tooltip definitions:", err));
 
+  // Load tag and category definitions
   fetch("/data/tags.json")
-    .then((res) => res.ok ? res.json() : Promise.reject(res.status))
-    .then((data) => {
-      if (data.tags) data.tags.forEach((entry) => tagDefinitions[entry.name] = entry);
-      if (data.categories) data.categories.forEach((entry) => categoryColors[entry.name] = entry.color || "#D4B55A");
+    .then(res => res.ok ? res.json() : Promise.reject(res.status))
+    .then(data => {
+      if (data.tags) data.tags.forEach(tag => tagDefinitions[tag.name] = tag);
+      if (data.categories) data.categories.forEach(cat => categoryColors[cat.name] = cat.color || "#D4B55A");
 
-      document.querySelectorAll(".tag").forEach((tag) => {
+      document.querySelectorAll(".tag").forEach(tag => {
         const tagName = tag.textContent.trim();
         const tagData = tagDefinitions[tagName];
         const color = categoryColors[tagData?.category];
@@ -188,10 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       initializeTagTooltips();
     })
-    .catch((err) => console.error("Error loading tag definitions:", err));
+    .catch(err => console.error("Error loading tag definitions:", err));
 
+  // ─── Expandable Sections ───
   const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
-  collapsibleItems.forEach((item) => {
+  collapsibleItems.forEach(item => {
     const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
     const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
     const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
@@ -199,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     content.style.height = "0px";
     header.addEventListener("click", () => {
       item.classList.toggle("expanded");
-      if (icon) icon.classList.toggle("expanded-icon");
+      icon?.classList.toggle("expanded-icon");
 
       if (item.classList.contains("expanded")) {
         content.style.height = content.scrollHeight + "px";
@@ -211,22 +214,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       content.addEventListener("transitionend", function handler() {
-        if (item.classList.contains("expanded")) {
-          content.style.height = "auto";
-        }
+        if (item.classList.contains("expanded")) content.style.height = "auto";
         content.removeEventListener("transitionend", handler, { once: true });
       }, { once: true });
     });
   });
 
+  // ─── Rule Toggles ───
   const toggles = document.querySelectorAll(".rule-switch input[data-rule]");
-  toggles.forEach((cb) => {
+  toggles.forEach(cb => {
     const key = "rule-" + cb.dataset.rule;
     if (localStorage.getItem(key) === "false") cb.checked = false;
     updateVisibility(cb.dataset.rule, cb.checked);
   });
 
-  toggles.forEach((cb) => cb.addEventListener("change", (e) => {
+  toggles.forEach(cb => cb.addEventListener("change", (e) => {
     const rule = e.target.dataset.rule;
     const on = e.target.checked;
     localStorage.setItem("rule-" + rule, on);
@@ -234,16 +236,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }));
 
   function updateVisibility(rule, on) {
-    document.querySelectorAll(".rule-" + rule).forEach((el) => {
+    document.querySelectorAll(".rule-" + rule).forEach(el => {
       el.style.display = on ? "" : "none";
     });
   }
 
+  // ─── Page Fade Navigation ───
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[href]");
     if (!link) return;
     const href = link.getAttribute("href");
-    if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || link.target === "_blank" || (link.hostname && link.hostname !== window.location.hostname)) return;
+    if (
+      href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") ||
+      link.target === "_blank" || (link.hostname && link.hostname !== location.hostname)
+    ) return;
 
     e.preventDefault();
     document.body.classList.add("fade-out");
