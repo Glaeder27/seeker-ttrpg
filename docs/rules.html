@@ -898,15 +898,24 @@
             });
         });
 
+        // Visual Variation (Gradient + Texture)
+
         document.addEventListener("DOMContentLoaded", () => {
             const fronts = document.querySelectorAll(".rules-grid .flip-front");
             fronts.forEach((el, i) => {
                 const offsetX = (i % 4) * 15; // 0, 15, 30, 45 px per background position
-                const baseAlpha = 0.2;
-                const variation = (i % 4) * 0.025;
-                const alpha = Math.min(baseAlpha + variation, 0.25);
 
-                const gradient = `linear-gradient(to right, rgba(var(--burnt-copper-rgb), ${alpha}), rgba(var(--ancient-gold-rgb), ${alpha}))`;
+                // Base HSL colors
+                const burntCopperHSL = [37, 40, 45]; // hsl(37, 40%, 45%)
+                const ancientGoldHSL = [45, 59, 59]; // hsl(45, 59%, 59%)
+
+                const hueShift = (i % 4) * 1.5; // tone variation
+                const lightnessShift = (i % 3) * 2; // luminosity variation
+
+                const hsl1 = `hsl(${burntCopperHSL[0] + hueShift}, ${burntCopperHSL[1]}%, ${burntCopperHSL[2] + lightnessShift}%)`;
+                const hsl2 = `hsl(${ancientGoldHSL[0] + hueShift}, ${ancientGoldHSL[1]}%, ${ancientGoldHSL[2] + lightnessShift}%)`;
+
+                const gradient = `linear-gradient(to right, ${hsl1}, ${hsl2})`;
 
                 el.style.backgroundImage = `${gradient}, url(/assets/textures/antique-gold-1.jpg)`;
                 el.style.backgroundPosition = `center, ${offsetX}px 0px`;
