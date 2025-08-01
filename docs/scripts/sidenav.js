@@ -12,6 +12,7 @@ if (menuSrc) {
       const sidenav = document.getElementById("sidenav");
       setTimeout(() => {
         sidenav?.classList.remove("no-transition");
+        console.log("Removed 'no-transition' from sidenav:", sidenav?.classList);
       }, 100);
     })
     .catch((err) => console.error("Failed to load sidenav menu:", err));
@@ -84,14 +85,17 @@ function generateChapterSections() {
     li.appendChild(a);
     chapterMenu.appendChild(li);
 
-    const headers = section.querySelectorAll("h3[sidenav-2], h4[sidenav-2]");
+    const headers = section.querySelectorAll(
+      "h3[sidenav-2], h4[sidenav-2]"
+    );
     headers.forEach((header) => {
       const subLi = document.createElement("li");
       subLi.classList.add("subsection");
 
       const subA = document.createElement("a");
       subA.href = `#${id}`;
-      subA.textContent = header.getAttribute("sidenav-2") || header.textContent;
+      subA.textContent =
+        header.getAttribute("sidenav-2") || header.textContent;
       subA.dataset.id = id;
 
       subLi.appendChild(subA);
@@ -108,7 +112,9 @@ function initializeScrollSpy() {
   };
 
   const links = document.querySelectorAll("#chapter-sections a");
-  const headers = document.querySelectorAll("h3[sidenav-2], h4[sidenav-2]");
+  const headers = document.querySelectorAll(
+    "h3[sidenav-2], h4[sidenav-2]"
+  );
   const sections = document.querySelectorAll("section.section-wrapper[id]");
 
   const observer = new IntersectionObserver((entries) => {
@@ -134,7 +140,8 @@ function initializeScrollSpy() {
         const matchByText = activeHeader
           ? link.textContent.trim() ===
             (
-              activeHeader.getAttribute("sidenav-2") || activeHeader.textContent
+              activeHeader.getAttribute("sidenav-2") ||
+              activeHeader.textContent
             ).trim()
           : false;
 
@@ -159,14 +166,9 @@ function populateStaticMenu(data) {
 
   sideMenu.innerHTML = "";
 
-  const pageHeader = document.querySelector("header.title h1");
-  const pageTitle = pageHeader
-    ? pageHeader.textContent.trim()
-    : data.title || "Untitled";
-
   const title = document.createElement("h3");
   title.classList.add("menu-section");
-  title.textContent = pageTitle;
+  title.textContent = data.title;
   sideMenu.appendChild(title);
 
   const ul = document.createElement("ul");
@@ -183,7 +185,11 @@ function populateStaticMenu(data) {
 
   const dynamicNav = document.createElement("h3");
   dynamicNav.classList.add("menu-section");
-  dynamicNav.textContent = "This Chapter";
+
+  const pageHeader = document.querySelector("header.title h1");
+  const chapterTitle = pageHeader ? pageHeader.textContent.trim() : "This Chapter";
+  dynamicNav.textContent = chapterTitle;
+
   sideMenu.appendChild(dynamicNav);
 
   const chapterList = document.createElement("ul");
