@@ -2052,7 +2052,7 @@ thead th:last-child {
   font-size: 1rem;
   text-transform: uppercase;
   font-family: var(--font-main);
-  font-weight: 100;
+  font-weight: 400;
 }
 
 .tooltip-tag-type {
