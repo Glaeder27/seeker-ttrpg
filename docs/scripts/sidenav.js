@@ -33,14 +33,14 @@ function initializeMenu() {
   } else {
     toggleButton.style.transform = "translate(0, 0)";
   }
-  toggleIcon.className = menuVisible ? "fas fa-square-xmar" : "fas fa-right-from-bracket";
+  toggleIcon.className = menuVisible ? "fa-solid fa-square-xmark" : "fa-solid fa-right-from-bracket";
 
   toggleButton.addEventListener("click", () => {
     const wasCollapsed = sideMenu.classList.contains("collapsed");
     const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
     localStorage.setItem("menuVisible", isNowVisible);
 
-    toggleIcon.className = isNowVisible ? "fas fa-square-xmark" : "fas fa-right-from-bracket";
+    toggleIcon.className = isNowVisible ? "fa-solid fa-square-xmark" : "fa-solid fa-right-from-bracket";
 
     // Reset animation
     toggleButton.classList.remove("animate-open", "animate-close");
