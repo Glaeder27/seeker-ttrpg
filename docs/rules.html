@@ -888,6 +888,14 @@
             });
         });
 
+        document.addEventListener("DOMContentLoaded", () => {
+            const fronts = document.querySelectorAll(".rules-grid .flip-front");
+            fronts.forEach((el, i) => {
+                const offsetX = (i % 4) * 15; // varia da 0 a 45 px (4 varianti)
+                const offsetY = (i % 3) * 10; // varia da 0 a 20 px (3 varianti)
+                el.style.backgroundPosition = `center, ${offsetX}px ${offsetY}px`;
+            });
+        });
     </script>
 
 </body>
