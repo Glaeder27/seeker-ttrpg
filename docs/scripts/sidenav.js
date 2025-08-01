@@ -1,4 +1,4 @@
-/*v1.13 2025-08-01T22:10:00Z*/
+/*v1.14 2025-08-01T23:00:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -21,6 +21,7 @@ if (menuSrc) {
 function initializeMenu() {
   const sideMenu = document.getElementById("sidenav");
   const toggleButton = document.getElementById("toggle-menu");
+  const toggleIcon = toggleButton.querySelector("i");
 
   // Read the state from localStorage
   const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default to true
@@ -32,18 +33,18 @@ function initializeMenu() {
   } else {
     toggleButton.style.transform = "translate(0, 0)";
   }
-  toggleButton.textContent = menuVisible ? "❰" : "❱";
+  toggleIcon.className = menuVisible ? "fas fa-chevron-left" : "fas fa-chevron-right";
 
   toggleButton.addEventListener("click", () => {
     const wasCollapsed = sideMenu.classList.contains("collapsed");
     const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
     localStorage.setItem("menuVisible", isNowVisible);
 
-    toggleButton.textContent = isNowVisible ? "❰" : "❱";
+    toggleIcon.className = isNowVisible ? "fas fa-chevron-left" : "fas fa-chevron-right";
 
-    // Reset classi animazione
+    // Reset animation
     toggleButton.classList.remove("animate-open", "animate-close");
-    void toggleButton.offsetWidth; // forza reflow per ri-trigger animazione
+    void toggleButton.offsetWidth; // force reflow
 
     if (wasCollapsed) {
       toggleButton.classList.add("animate-open");
