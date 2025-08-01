@@ -71,6 +71,26 @@
     --font-title: 'Cinzel Decorative', serif;
     --font-antique: 'IM Fell English', serif;
     --font-arcane: 'Mistlock Rough', serif;
+
+    /* ── IMAGES ─────────────── */
+    /* Dice */
+    --dice-action: url('/assets/icons/svg/dice/dice-action.svg');
+    --dice-risk: url('/assets/icons/svg/dice/dice-risk.svg');
+    --dice-combined: url('/assets/icons/svg/dice/dice-combined.svg');
+
+    --dice-action-1: url('/assets/icons/svg/dice/dice-green-1.svg');
+    --dice-action-2: url('/assets/icons/svg/dice/dice-green-2.svg');
+    --dice-action-3: url('/assets/icons/svg/dice/dice-green-3.svg');
+    --dice-action-4: url('/assets/icons/svg/dice/dice-green-4.svg');
+    --dice-action-5: url('/assets/icons/svg/dice/dice-green-5.svg');
+    --dice-action-6: url('/assets/icons/svg/dice/dice-green-6.svg');
+
+    --dice-risk-1: url('/assets/icons/svg/dice/dice-red-1.svg');
+    --dice-risk-2: url('/assets/icons/svg/dice/dice-red-2.svg');
+    --dice-risk-3: url('/assets/icons/svg/dice/dice-red-3.svg');
+    --dice-risk-4: url('/assets/icons/svg/dice/dice-red-4.svg');
+    --dice-risk-5: url('/assets/icons/svg/dice/dice-red-5.svg');
+    --dice-risk-6: url('/assets/icons/svg/dice/dice-red-6.svg');
 }
 
 /*=============================================
@@ -592,7 +612,7 @@ body#home-page .main-navbar {
         content: "";
         position: absolute;
         inset: 0;
-        background: url("/assets/icons/svg/alchemy-5.svg") no-repeat center/100%;
+        background: url("/assets/icons/svg/alchemy/alchemy-5.svg") no-repeat center/100%;
         opacity: 0;
         transition:
             opacity 0.4s ease,
@@ -3961,32 +3981,32 @@ details[open] .infobox-table {
 }
 
 .overlay-symbol.var-1 {
-    background-image: url('/assets/icons/svg/alchemy-1.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-1.svg');
 }
 .overlay-symbol.var-2 {
-    background-image: url('/assets/icons/svg/alchemy-2.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-2.svg');
 }
 .overlay-symbol.var-3 {
-    background-image: url('/assets/icons/svg/alchemy-3.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-3.svg');
 }
 .overlay-symbol.var-4 {
-    background-image: url('/assets/icons/svg/alchemy-4.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-4.svg');
 }
 .overlay-symbol.var-5 {
-    background-image: url('/assets/icons/svg/alchemy-5.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-5.svg');
 }
 .overlay-symbol.var-6 {
-    background-image: url('/assets/icons/svg/alchemy-6.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-6.svg');
 }
 .overlay-symbol.var-7 {
-    background-image: url('/assets/icons/svg/alchemy-7.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-7.svg');
 }
 .overlay-symbol.var-8 {
-    background-image: url('/assets/icons/svg/alchemy-8.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-8.svg');
 }
 .overlay-symbol.var-9 {
-    background-image: url('/assets/icons/svg/alchemy-9.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-9.svg');
 }
 .overlay-symbol.var-19 {
-    background-image: url('/assets/icons/svg/alchemy-10.svg');
+    background-image: url('/assets/icons/svg/alchemy/alchemy-10.svg');
 }
