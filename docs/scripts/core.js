@@ -33,42 +33,6 @@ Promise.all(versionTargets.map(target =>
 });
 
 // ─── Globals ───
-function initializeCollapsibles(scope = document) {
-  const collapsibleItems = scope.querySelectorAll(".collapsible-item, .collapsible-item-sb");
-  collapsibleItems.forEach(item => {
-    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
-    const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
-    const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
-
-    if (!header || !content) return;
-
-    // Start collapsed
-    content.style.height = "0px";
-
-    header.addEventListener("click", () => {
-      item.classList.toggle("expanded");
-      icon?.classList.toggle("expanded-icon");
-
-      if (item.classList.contains("expanded")) {
-        content.style.height = content.scrollHeight + "px";
-        content.classList.add("expanded-content");
-      } else {
-        content.style.height = content.offsetHeight + "px";
-        requestAnimationFrame(() => {
-          content.style.height = "0px";
-        });
-        content.classList.remove("expanded-content");
-      }
-
-      content.addEventListener("transitionend", function handler() {
-        if (item.classList.contains("expanded")) {
-          content.style.height = "auto";
-        }
-        content.removeEventListener("transitionend", handler, { once: true });
-      }, { once: true });
-    });
-  });
-}
 let tooltipDefinitions = {};
 let tagDefinitions = {};
 let categoryColors = {};
@@ -229,7 +193,39 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Error loading tag definitions:", err));
 
   // ─── Expandable Sections ───
-  initializeCollapsibles();
+  const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
+  collapsibleItems.forEach(item => {
+    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
+    const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
+    const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
+
+    // Start collapsed
+    content.style.height = "0px";
+
+    header.addEventListener("click", () => {
+      item.classList.toggle("expanded");
+      icon?.classList.toggle("expanded-icon");
+
+      if (item.classList.contains("expanded")) {
+        content.style.height = content.scrollHeight + "px";
+        content.classList.add("expanded-content");
+      } else {
+        content.style.height = content.offsetHeight + "px";
+        requestAnimationFrame(() => {
+          content.style.height = "0px";
+        });
+        content.classList.remove("expanded-content");
+      }
+
+      // After transition, fix height to auto if expanded
+      content.addEventListener("transitionend", function handler() {
+        if (item.classList.contains("expanded")) {
+          content.style.height = "auto";
+        }
+        content.removeEventListener("transitionend", handler, { once: true });
+      }, { once: true });
+    });
+  });
 
   // ─── Rule Toggles ───
   const toggles = document.querySelectorAll(".rule-switch input[data-rule]");
