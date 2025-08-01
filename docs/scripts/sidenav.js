@@ -57,11 +57,12 @@ function initializeMenu() {
       );
     });
   }
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      sidenav?.classList.remove("no-transition");
-    }, 100);
-  });
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const sidenav = document.getElementById("sidenav");
+    sidenav?.classList.remove("no-transition");
+  }, 100);
+});
 }
 
 function generateChapterSections() {
