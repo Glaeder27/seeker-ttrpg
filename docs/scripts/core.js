@@ -101,6 +101,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tooltip.classList.add("visible");
         tooltip.style.pointerEvents = "auto";
+
+                                                // ─── DEBUGGER BLOCK ───
+                                                console.log("Hover su tag:", tag.textContent.trim());
+                                                console.log("Tooltip element:", tooltip);
+                                                console.log("Tag rect:", rect);
+                                                console.log("Tooltip style before:", tooltip.style.cssText);
+                                                // Force tooltip style for debug
+                                                tooltip.style.position = "fixed";
+                                                tooltip.style.left = `${rect.left}px`;
+                                                tooltip.style.top = `${rect.bottom + 10}px`;
+                                                tooltip.style.visibility = "visible";
+                                                tooltip.style.opacity = "1";
+                                                tooltip.style.pointerEvents = "auto";
+                                                tooltip.style.zIndex = "9999";
+                                                tooltip.style.backgroundColor = "rgba(0,0,0,0.8)";
+                                                tooltip.style.color = "#fff";
+                                                tooltip.style.padding = "8px";
+                                                tooltip.style.borderRadius = "6px";
+                                                tooltip.classList.add("visible");
       });
 
       word.addEventListener("mouseleave", () => {
