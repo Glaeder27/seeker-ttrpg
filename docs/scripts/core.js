@@ -1,4 +1,4 @@
-/*v1.97 2025-07-24T11:45:00Z*/
+/*v2.0 2025-08-01T14:00:00Z*/
 
 // Version Checker
 const versionTargets = [
@@ -30,7 +30,6 @@ Promise.all(versionTargets.map(target =>
 
   const logFormat = versionMessages.map(() => '%c%s').join(' ');
   const logValues = versionMessages.flatMap((msg, i) => [styles[i % styles.length], msg]);
-
   console.log(logFormat, ...logValues);
 });
 
@@ -48,27 +47,18 @@ function handlePageShow() {
 }
 window.addEventListener("pageshow", handlePageShow);
 
-// ── Fade-in on load ──
 document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => {
     document.documentElement.classList.remove("preload");
   });
 
-  // ── Tooltip Logic ──
-  function initializeTooltips() {
-    const hoverWords = document.querySelectorAll(".tooltip");
-    if (!hoverWords.length) return;
-
+  function createTooltipElement(className, iconSVG = null) {
     const tooltip = document.createElement("div");
-    tooltip.classList.add("global-tooltip");
+    tooltip.classList.add(className);
 
     const tooltipIcon = document.createElement("div");
     tooltipIcon.classList.add("tooltip-icon");
-    tooltipIcon.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>`;
+    if (iconSVG) tooltipIcon.innerHTML = iconSVG;
 
     const tooltipContentWrapper = document.createElement("div");
     tooltipContentWrapper.classList.add("tooltip-content-wrapper");
@@ -82,11 +72,23 @@ document.addEventListener("DOMContentLoaded", () => {
     tooltip.style.visibility = "hidden";
     tooltip.style.display = "block";
 
+    return { tooltip, tooltipIcon, tooltipContentWrapper };
+  }
+
+  function initializeTooltips() {
+    const hoverWords = document.querySelectorAll(".tooltip");
+    if (!hoverWords.length) return;
+
+    const { tooltip, tooltipIcon, tooltipContentWrapper } = createTooltipElement("global-tooltip", `
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>`);
+
     hoverWords.forEach((word) => {
       word.addEventListener("mouseenter", () => {
         const tooltipKey = word.dataset.tooltipKey;
         const tooltipContent = tooltipDefinitions[tooltipKey];
-
         tooltipContentWrapper.innerHTML = tooltipContent || "";
 
         const wordRect = word.getBoundingClientRect();
@@ -110,28 +112,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Tag Tooltips Logic ──
   function initializeTagTooltips() {
     const tagElements = document.querySelectorAll(".tag");
     if (!tagElements.length) return;
 
-    const tooltip = document.createElement("div");
-    tooltip.classList.add("tag-tooltip");
-
-    const tooltipIcon = document.createElement("div");
-    tooltipIcon.classList.add("tooltip-icon");
-
-    const tooltipContentWrapper = document.createElement("div");
-    tooltipContentWrapper.classList.add("tooltip-content-wrapper");
-
-    tooltip.appendChild(tooltipIcon);
-    tooltip.appendChild(tooltipContentWrapper);
-    document.body.appendChild(tooltip);
-
-    tooltip.style.opacity = "0";
-    tooltip.style.pointerEvents = "none";
-    tooltip.style.visibility = "hidden";
-    tooltip.style.display = "block";
+    const { tooltip, tooltipIcon, tooltipContentWrapper } = createTooltipElement("tag-tooltip");
 
     tagElements.forEach((tag) => {
       tag.addEventListener("mouseenter", () => {
@@ -146,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>`;
 
         tooltip.style.borderColor = color;
-
         tooltipContentWrapper.innerHTML =
           tagData && tagData.definition
             ? `<strong>${tagKey}</strong><br>${tagData.definition}`
@@ -173,35 +157,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Fetch tooltip definitions ──
   fetch("/data/tooltips.json")
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
-    })
+    .then((res) => res.ok ? res.json() : Promise.reject(res.status))
     .then((data) => {
       tooltipDefinitions = data;
       initializeTooltips();
     })
     .catch((err) => console.error("Error loading tooltip definitions:", err));
 
-  // ── Fetch tag definitions + category colors ──
   fetch("/data/tags.json")
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
-    })
+    .then((res) => res.ok ? res.json() : Promise.reject(res.status))
     .then((data) => {
-      if (data.tags) {
-        data.tags.forEach((entry) => {
-          tagDefinitions[entry.name] = entry;
-        });
-      }
-      if (data.categories) {
-        data.categories.forEach((entry) => {
-          categoryColors[entry.name] = entry.color || "#D4B55A";
-        });
-      }
+      if (data.tags) data.tags.forEach((entry) => tagDefinitions[entry.name] = entry);
+      if (data.categories) data.categories.forEach((entry) => categoryColors[entry.name] = entry.color || "#D4B55A");
 
       document.querySelectorAll(".tag").forEach((tag) => {
         const tagName = tag.textContent.trim();
@@ -217,21 +185,13 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error("Error loading tag definitions:", err));
 
-  // ── Collapsible Logic ──
-  const collapsibleItems = document.querySelectorAll(
-    ".collapsible-item, .collapsible-item-sb"
-  );
+  const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
   collapsibleItems.forEach((item) => {
-    const header = item.querySelector(
-      ".collapsible-header, .collapsible-header-sb"
-    );
-    const content = item.querySelector(
-      ".collapsible-content, .collapsible-content-sb"
-    );
+    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
+    const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
     const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
 
     content.style.height = "0px";
-
     header.addEventListener("click", () => {
       item.classList.toggle("expanded");
       if (icon) icon.classList.toggle("expanded-icon");
@@ -241,26 +201,19 @@ document.addEventListener("DOMContentLoaded", () => {
         content.classList.add("expanded-content");
       } else {
         content.style.height = content.offsetHeight + "px";
-        requestAnimationFrame(() => {
-          content.style.height = "0px";
-        });
+        requestAnimationFrame(() => content.style.height = "0px");
         content.classList.remove("expanded-content");
       }
 
-      content.addEventListener(
-        "transitionend",
-        function handler() {
-          if (item.classList.contains("expanded")) {
-            content.style.height = "auto";
-          }
-          content.removeEventListener("transitionend", handler, { once: true });
-        },
-        { once: true }
-      );
+      content.addEventListener("transitionend", function handler() {
+        if (item.classList.contains("expanded")) {
+          content.style.height = "auto";
+        }
+        content.removeEventListener("transitionend", handler, { once: true });
+      }, { once: true });
     });
   });
 
-  // ── Rule Visibility Logic ──
   const toggles = document.querySelectorAll(".rule-switch input[data-rule]");
   toggles.forEach((cb) => {
     const key = "rule-" + cb.dataset.rule;
@@ -268,14 +221,12 @@ document.addEventListener("DOMContentLoaded", () => {
     updateVisibility(cb.dataset.rule, cb.checked);
   });
 
-  toggles.forEach((cb) =>
-    cb.addEventListener("change", (e) => {
-      const rule = e.target.dataset.rule;
-      const on = e.target.checked;
-      localStorage.setItem("rule-" + rule, on);
-      updateVisibility(rule, on);
-    })
-  );
+  toggles.forEach((cb) => cb.addEventListener("change", (e) => {
+    const rule = e.target.dataset.rule;
+    const on = e.target.checked;
+    localStorage.setItem("rule-" + rule, on);
+    updateVisibility(rule, on);
+  }));
 
   function updateVisibility(rule, on) {
     document.querySelectorAll(".rule-" + rule).forEach((el) => {
@@ -283,34 +234,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Page fade-out on internal link click ──
   document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[href]");
     if (!link) return;
-
     const href = link.getAttribute("href");
-
-    if (
-      href.startsWith("#") ||
-      href.startsWith("mailto:") ||
-      href.startsWith("tel:") ||
-      link.target === "_blank" ||
-      (link.hostname && link.hostname !== window.location.hostname)
-    )
-      return;
+    if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || link.target === "_blank" || (link.hostname && link.hostname !== window.location.hostname)) return;
 
     e.preventDefault();
     document.body.classList.add("fade-out");
-
-    setTimeout(() => {
-      window.location.href = href;
-    }, 500);
+    setTimeout(() => window.location.href = href, 500);
   });
 });
-
-function handlePageShow() {
-  document.documentElement.classList.remove("preload");
-  document.body.classList.remove("fade-out");
-}
-
-window.addEventListener("pageshow", handlePageShow);

@@ -2006,6 +2006,56 @@ thead th:last-child {
 =                 TOOLTIPS                    =
 =============================================*/
 
+.tooltip-box {
+  position: absolute;
+  max-width: 320px;
+  padding: 10px 14px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--faded-jade, #7E9E85);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 9999;
+}
+.tooltip-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tooltip-box::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 12px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.9) transparent;
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 6px;
+}
+.tooltip-title {
+  color: var(--highlight-color, #F3D99C);
+}
+.tooltip-tag-type {
+  font-size: 0.75em;
+  color: #ccc;
+  margin-left: auto;
+  text-transform: uppercase;
+}
+.tooltip-description {
+  color: #e0e0e0;
+}
+
 .tooltip {
     position: relative;
     display: inline-block;
