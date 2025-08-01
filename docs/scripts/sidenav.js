@@ -1,4 +1,4 @@
-/*v1.12 2025-08-01T2200:00Z*/
+/*v1.13 2025-08-01T22:10:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -166,31 +166,35 @@ function populateStaticMenu(data) {
 
   sideMenu.innerHTML = "";
 
-  const title = document.createElement("h3");
-  title.classList.add("menu-section");
-  title.textContent = data.title;
-  sideMenu.appendChild(title);
+  const siteTitle = document.createElement("h3");
+  siteTitle.classList.add("menu-section");
+  siteTitle.textContent = data.title;
+  sideMenu.appendChild(siteTitle);
 
-  const ul = document.createElement("ul");
+  const siteList = document.createElement("ul");
+  siteList.id = "site-index";
   data.items.forEach((item) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.textContent = item.label;
     a.href = item.href;
-    if (item.href.includes("/rules/")) a.setAttribute("data-partial", "");
+    if (item.href.includes("/rules/")) {
+      a.setAttribute("data-partial", "");
+    }
     li.appendChild(a);
-    ul.appendChild(li);
+    siteList.appendChild(li);
   });
-  sideMenu.appendChild(ul);
+  sideMenu.appendChild(siteList);
 
-  const dynamicNav = document.createElement("h3");
-  dynamicNav.classList.add("menu-section");
+  const chapterTitle = document.createElement("h3");
+  chapterTitle.classList.add("menu-section");
 
   const pageHeader = document.querySelector("header.title h1");
-  const chapterTitle = pageHeader ? pageHeader.textContent.trim() : "This Chapter";
-  dynamicNav.textContent = chapterTitle;
+  chapterTitle.textContent = pageHeader
+    ? pageHeader.textContent.trim()
+    : "This Chapter";
 
-  sideMenu.appendChild(dynamicNav);
+  sideMenu.appendChild(chapterTitle);
 
   const chapterList = document.createElement("ul");
   chapterList.id = "chapter-sections";
