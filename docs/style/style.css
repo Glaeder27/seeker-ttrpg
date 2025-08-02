@@ -256,7 +256,6 @@ body.fade-out {
 html,
 body {
     cursor: url('/assets/cursor/cursor_24.png') 4 1, auto;
-    scroll-behavior: smooth;
 }
 
 a,
@@ -321,6 +320,7 @@ body {
 body {
     position: relative;
     z-index: 0;
+    scroll-behavior: smooth;
 }
 
 body::before {
@@ -1198,6 +1198,9 @@ body#home-page .main-navbar {
 
 .sidenav.no-transition {
   transition: none;
+}
+.body.no-scroll {
+    scroll-behavior: auto;
 }
 
 .sidenav-scroll > * {

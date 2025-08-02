@@ -10,12 +10,10 @@ if (menuSrc) {
       initializeScrollSpy();
 
       const sidenav = document.getElementById("sidenav");
+      const page = document.getElementById("body");
       setTimeout(() => {
         sidenav?.classList.remove("no-transition");
-        console.log(
-          "Removed 'no-transition' from sidenav:",
-          sidenav?.classList
-        );
+        page?.classList.remove("no-scroll");
       }, 100);
     })
     .catch((err) => console.error("Failed to load sidenav menu:", err));
