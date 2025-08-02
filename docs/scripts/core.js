@@ -91,11 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
       word.addEventListener("mouseenter", () => {
         word.classList.add("active-tooltip");
 
-        const key = word.dataset.tooltipKey;
+        const key = word.dataset.tooltipKey || word.textContent.trim(); // fallback
         const content = tooltipDefinitions[key] || `No description available for <strong>${key}</strong>.`;
         description.innerHTML = content;
 
-        const rect = tag.getBoundingClientRect();
+        const rect = word.getBoundingClientRect();
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
