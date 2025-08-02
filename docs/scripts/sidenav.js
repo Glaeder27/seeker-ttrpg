@@ -1,4 +1,4 @@
-/*v1.16 2025-08-02T09:30:00Z*/
+/*v1.17 2025-08-02T09:30:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -223,6 +223,8 @@ function populateStaticMenu(data) {
   const chapterList = document.createElement("ul");
   chapterList.id = "chapter-sections";
   sideMenu.appendChild(chapterList);
+
+  initializeCollapsibles();
 }
 
 function initializeCollapsibles() {
