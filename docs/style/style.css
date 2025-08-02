@@ -1716,7 +1716,7 @@ h2.section {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     letter-spacing: 1px;
     text-align: center;
-    margin-inline: -4rem;
+    margin-inline: -3rem;
 }
 
 h2.section::before,
@@ -2454,6 +2454,7 @@ thead th:last-child {
     overflow: visible;
     display: flex;
     align-items: flex-end;
+    cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
 }
 
 .collapsible-header-sb:hover {
@@ -3554,7 +3555,7 @@ details[open] .infobox-table {
 
 .archives-carousel-fade {
     position: relative;
-    min-height: 100px;
+    min-height: 120px;
 }
 
 .archive-item.show {
@@ -4119,9 +4120,12 @@ details[open] .infobox-table {
 i.fa-solid.fa-square-xmark {
     color: var(--rust-red);
     font-size: 26px;
+    transition: all .6s ease-in-out;
 }
 i.fa-solid.fa-right-from-bracket {
     color: var(--ancient-gold);
+    transition: all .6s ease-in-out;
+    font-size: 26px;
 }
 
 /*=============================================
