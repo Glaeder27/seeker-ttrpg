@@ -72,7 +72,7 @@
     <!-- MAIN CONTENT ───────────────────────────────────────────── -->
     <!-- ────────────────────────────────────────────────────────── -->
 
-    <main class="dual-column" type="lorebook">
+    <main class="dual-column" type="rulebook">
         <div class="left-column">
             <header class="title">
                 <div class="title-container">
@@ -89,91 +89,97 @@
                     What is Solaria?
                     <span class="section-ornament">⸺ ✦ ⸺</span>
                 </h2>
-                <p></p>
+                <p>Solaria is a form of cosmic energy discovered and harnessed by Mesoamerican civilizations, most
+                    notably the
+                    <span class="tooltip">Tenochca</span>, through a sophisticated
+                    system of engineering.
+                </p>
+                <p>It bears no resemblance to the supernatural in the traditional sense: it is a scientific
+                    interaction with the solar energy, harnessed and distributed through ritual structures such as
+                    pyramids, stelae,
+                    and solar calendars.The “magic” of the New World is, in truth, a still occult part of natural
+                    physics.</p>
+                <p>Anyone within the New World is exposed to the energy flows transmitted by this ancient network — and
+                    can learn to harness them.</p>
+                <blockquote>
+                    <p>
+                        “What you call sorcery is but the science of antiquity — a science our instruments are not yet
+                        refined enough to discern.”</p>
+                    <p class="footer">— Paracelsus</p>
+                    <p>Opera Omnia Apocrypha (attrib.)</p>
+                </blockquote>
+                <h3>Nomenclature</h3>
+                <p>This power goes by different names, depending on the culture interpreting it:</p>
+                <ul>
+                    <li><strong class="highlight">Solaria</strong> — the more “scientific” European term, commonly used
+                        by Seekers</li>
+                    <li><strong class="highlight">Tonalli</strong> — from Nahuatl: the vital energy radiated by the Sun
+                    </li>
+                    <li><strong class="highlight">Xiuhtlalpan</strong> — from Nahuatl: “sacred field of energy,” used by
+                        the Aztecs</li>
+                    <li><strong class="highlight">Æther Solis</strong> — a syncretic term favored by Renaissance
+                        alchemists</li>
+                </ul>
             </section>
         </div>
 
         <div class="right-column">
             <aside class="sidebar-wrapper">
-                    <div class="page-infobox">
-        <aside class="infobox" style="flex: 0 0 250px">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Alain_Manesson_Mallet_-_circa_1685_-_The_Islet_Guanahani_or_San_Salvador_-_Fig_22.jpg/800px-Alain_Manesson_Mallet_-_circa_1685_-_The_Islet_Guanahani_or_San_Salvador_-_Fig_22.jpg"
-                alt="Map of Isla de los Ojos" class="infobox-image">
-            <div class="only-mobile">
-                <h3>Isla de los Ojos</h3>
-            </div>        
-            <details class="infobox-section" open>
-                <summary>Geography</summary>
-                <table class="infobox-table">
-                    <tr>
-                        <th scope="row">Location</th>
-                        <td>Lucayan Archipelago</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Area</th>
-                        <td>Unknown (mutable)</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Terrain</th>
-                        <td>Limestone ridge, Mirror Pools, Sanguine mangroves</td>
-                    </tr>
-                </table>
-            </details>
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
 
-            <details class="infobox-section" open>
-                <summary>Politics</summary>
-                <table class="infobox-table">
-                    <tr>
-                        <th scope="row">Claimant</th>
-                        <td>Spanish Crown (disputed)</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Native Authority</th>
-                        <td>Guardians of the Ripple</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Seeker Status</th>
-                        <td>Tier III Unstable Zone</td>
-                    </tr>
-                </table>
-            </details>
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
+                        <h3 class="section">TL;DR — Title</h3>
+                        <span class="collapsible-icon">▸</span>
+                    </div>
 
-            <details class="infobox-section" open>
-                <summary>Arcana</summary>
-                <table class="infobox-table">
-                    <tr>
-                        <th scope="row">Primary Anomaly</th>
-                        <td>Mirror Pools</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Secondary</th>
-                        <td>Rotating constellations</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Known Relics</th>
-                        <td>Hollow‑Moon Compass</td>
-                    </tr>
-                </table>
-            </details>
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
+                        <ul class="no-bullet">
+                            <li class="no-bullet">
+                                <strong class="tldr-title">1 • Title</strong>
+                                <div style="margin-left: 1em;">
+                                    Description
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-            <details class="infobox-section" open>
-                <summary>Fauna</summary>
-                <table class="infobox-table">
-                    <tr>
-                        <th scope="row">Hostile</th>
-                        <td>Eye Crabs, Sirens of Glass</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Sentient</th>
-                        <td>N/A</td>
-                    </tr>
-                </table>
-            </details>
-            <button id="toggle-infobox" class="infobox-collapse-button">
-                Collapse All
-            </button>
-        </aside>
-    </div>
+                <!-- Block 3: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+
+                <!-- Block 4: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
             </aside>
         </div>
     </main>
@@ -205,6 +211,5 @@
 
     <script src="/scripts/sidebar.js"></script>
     <script src="/scripts/core.js"></script>
-    <script src="/scripts/infobox.js"></script>
 
 </body>

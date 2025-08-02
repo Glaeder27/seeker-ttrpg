@@ -118,5 +118,11 @@
     "icon": "/assets/icons/svg/tag/experimental.svg",
     "type": "Rule Type",
     "description": "A playtest feature under development, subject to change in future editions."
+  },
+  "tenochca": {
+    "title": "Tenochca",
+    "icon": "/assets/icons/svg/tag/experimental.svg",
+    "type": "Rule Type",
+    "description": "Tenochca (or Mexica, pronounced [meh-shee-kah]) was the name the Aztecs used for themselves. The term \"Aztec\" was coined much later by European scholars."
   }
 }

@@ -182,6 +182,9 @@ main.dual-column[type="rulebook"] .right-column {
   
 }
 
+main.dual-column[type="lorebook"] .right-column {
+    position: static;
+}
 main.dual-column[type="lorebook"] .right-column .sidebar-wrapper{
     max-width: 400px;
 }
