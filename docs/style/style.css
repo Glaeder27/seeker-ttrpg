@@ -4101,11 +4101,11 @@ details[open] .infobox-table {
     background-image: url('/assets/icons/svg/alchemy/alchemy-10.svg');
 }
 
-i.fas.fa-square-xmark {
+i.fa-solid.fa-square-xmark {
     color: var(--rust-red);
     font-size: 26px;
 }
-i.fas.fa-right-from-bracket {
+i.fa-solid.fa-right-from-bracket {
     color: var(--ancient-gold);
 }
 
