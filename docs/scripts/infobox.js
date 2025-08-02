@@ -1,7 +1,7 @@
 /*v1.00 2025-07-24T11:30:00Z*/
 (() => {
 
-    const DEFINITIONS_URL = 'https://glaeder27.github.io/seeker-ttrpg/data/tooltipDefinitions.json';
+    const DEFINITIONS_URL = '/data/tooltips.json';
     let tooltipDefinitions = {};
 
     const tooltip = document.createElement('div');

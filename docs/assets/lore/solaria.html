@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Solaria</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Specific Styles */
+        .section-columns {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .section-col {
+            flex: 1 1 300px;
+            min-width: 280px;
+            background: var(--background-dark-3);
+            padding: 0 1rem;
+            margin: 1rem 0;
+            border-radius: 1rem;
+        }
+
+        .phase-wrapper {
+            background-color: var(--background-dark-1);
+            border: 1px solid var(--ancient-gold);
+            border-radius: 1rem;
+            padding: .5rem 1rem;
+        }
+
+        /* Responsive tweaks */
+    </style>
+</head>
+
+<body id="aptitudes" data-menu-src="/data/menu-rulebook.json" class="no-scroll">
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+
+    <main class="dual-column">
+        <div class="left-column">
+            <header class="title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Solaria</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">The Lost Science of the Sun</p>
+            </header>
+            <!-- ─────────────── MAIN CONTENT ─────────────── -->
+            <section class="section-wrapper" id="section1" sidenav="1 • What is Solaria?">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="solaria">
+                    What is Solaria?
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p></p>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                    <div class="page-infobox">
+        <aside class="infobox" style="flex: 0 0 250px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Alain_Manesson_Mallet_-_circa_1685_-_The_Islet_Guanahani_or_San_Salvador_-_Fig_22.jpg/800px-Alain_Manesson_Mallet_-_circa_1685_-_The_Islet_Guanahani_or_San_Salvador_-_Fig_22.jpg"
+                alt="Map of Isla de los Ojos" class="infobox-image">
+            <div class="only-mobile">
+                <h3>Isla de los Ojos</h3>
+            </div>        
+            <details class="infobox-section" open>
+                <summary>Geography</summary>
+                <table class="infobox-table">
+                    <tr>
+                        <th scope="row">Location</th>
+                        <td>Lucayan Archipelago</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Area</th>
+                        <td>Unknown (mutable)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Terrain</th>
+                        <td>Limestone ridge, Mirror Pools, Sanguine mangroves</td>
+                    </tr>
+                </table>
+            </details>
+
+            <details class="infobox-section" open>
+                <summary>Politics</summary>
+                <table class="infobox-table">
+                    <tr>
+                        <th scope="row">Claimant</th>
+                        <td>Spanish Crown (disputed)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Native Authority</th>
+                        <td>Guardians of the Ripple</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Seeker Status</th>
+                        <td>Tier III Unstable Zone</td>
+                    </tr>
+                </table>
+            </details>
+
+            <details class="infobox-section" open>
+                <summary>Arcana</summary>
+                <table class="infobox-table">
+                    <tr>
+                        <th scope="row">Primary Anomaly</th>
+                        <td>Mirror Pools</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Secondary</th>
+                        <td>Rotating constellations</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Known Relics</th>
+                        <td>Hollow‑Moon Compass</td>
+                    </tr>
+                </table>
+            </details>
+
+            <details class="infobox-section" open>
+                <summary>Fauna</summary>
+                <table class="infobox-table">
+                    <tr>
+                        <th scope="row">Hostile</th>
+                        <td>Eye Crabs, Sirens of Glass</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Sentient</th>
+                        <td>N/A</td>
+                    </tr>
+                </table>
+            </details>
+            <button id="toggle-infobox" class="infobox-collapse-button">
+                Collapse All
+            </button>
+        </aside>
+    </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
+    <script src="/scripts/infobox.js"></script>
+
+</body>
