@@ -2545,19 +2545,34 @@ thead th:last-child {
     color: var(--ancient-gold, #D4B55A);
 }
 
-.sidenav-content .collapsible-header {
-    padding: 10px;
+.collapsible-sidenav-item {
+  background: transparent;
+  margin: 1rem 0;
+  box-shadow: none;
+  border-radius: 5px;
 }
-.sidenav-content .collapsible-header h3 {
+
+.collapsible-sidenav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.collapsible-sidenav-header h3 {
     padding: 0;
     margin: 0;
     font-size: 1.1rem;
 }
-.sidenav-content .collapsible-item {
-    margin-left: -10px;
-    border-radius: 5px;
-    background-color: transparent;
-    box-shadow: none;
+
+.collapsible-sidenav-icon {
+  transition: transform 0.3s ease;
+}
+
+.collapsible-sidenav-content {
+  overflow: hidden;
+  transition: height 0.3s ease;
 }
 
 /*=============================================

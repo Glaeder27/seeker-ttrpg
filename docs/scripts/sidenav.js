@@ -1,4 +1,4 @@
-/*v1.15 2025-08-02T00:50:00Z*/
+/*v1.16 2025-08-02T09:30:00Z*/
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
   fetch(menuSrc)
@@ -12,7 +12,10 @@ if (menuSrc) {
       const sidenav = document.getElementById("sidenav");
       setTimeout(() => {
         sidenav?.classList.remove("no-transition");
-        console.log("Removed 'no-transition' from sidenav:", sidenav?.classList);
+        console.log(
+          "Removed 'no-transition' from sidenav:",
+          sidenav?.classList
+        );
       }, 100);
     })
     .catch((err) => console.error("Failed to load sidenav menu:", err));
@@ -33,14 +36,18 @@ function initializeMenu() {
   } else {
     toggleButton.style.transform = "translate(0, 0)";
   }
-  toggleIcon.className = menuVisible ? "fa-solid fa-square-xmark" : "fa-solid fa-right-from-bracket";
+  toggleIcon.className = menuVisible
+    ? "fa-solid fa-square-xmark"
+    : "fa-solid fa-right-from-bracket";
 
   toggleButton.addEventListener("click", () => {
     const wasCollapsed = sideMenu.classList.contains("collapsed");
     const isNowVisible = sideMenu.classList.toggle("collapsed") === false;
     localStorage.setItem("menuVisible", isNowVisible);
 
-    toggleIcon.className = isNowVisible ? "fa-solid fa-square-xmark" : "fa-solid fa-right-from-bracket";
+    toggleIcon.className = isNowVisible
+      ? "fa-solid fa-square-xmark"
+      : "fa-solid fa-right-from-bracket";
 
     // Reset animation
     toggleButton.classList.remove("animate-open", "animate-close");
@@ -86,17 +93,14 @@ function generateChapterSections() {
     li.appendChild(a);
     chapterMenu.appendChild(li);
 
-    const headers = section.querySelectorAll(
-      "h3[sidenav-2], h4[sidenav-2]"
-    );
+    const headers = section.querySelectorAll("h3[sidenav-2], h4[sidenav-2]");
     headers.forEach((header) => {
       const subLi = document.createElement("li");
       subLi.classList.add("subsection");
 
       const subA = document.createElement("a");
       subA.href = `#${id}`;
-      subA.textContent =
-        header.getAttribute("sidenav-2") || header.textContent;
+      subA.textContent = header.getAttribute("sidenav-2") || header.textContent;
       subA.dataset.id = id;
 
       subLi.appendChild(subA);
@@ -113,9 +117,7 @@ function initializeScrollSpy() {
   };
 
   const links = document.querySelectorAll("#chapter-sections a");
-  const headers = document.querySelectorAll(
-    "h3[sidenav-2], h4[sidenav-2]"
-  );
+  const headers = document.querySelectorAll("h3[sidenav-2], h4[sidenav-2]");
   const sections = document.querySelectorAll("section.section-wrapper[id]");
 
   const observer = new IntersectionObserver((entries) => {
@@ -141,8 +143,7 @@ function initializeScrollSpy() {
         const matchByText = activeHeader
           ? link.textContent.trim() ===
             (
-              activeHeader.getAttribute("sidenav-2") ||
-              activeHeader.textContent
+              activeHeader.getAttribute("sidenav-2") || activeHeader.textContent
             ).trim()
           : false;
 
@@ -168,17 +169,17 @@ function populateStaticMenu(data) {
   sideMenu.innerHTML = "";
 
   const collapsibleItem = document.createElement("div");
-  collapsibleItem.classList.add("collapsible-item");
+  collapsibleItem.classList.add("collapsible-sidenav-item");
 
   const collapsibleHeader = document.createElement("div");
-  collapsibleHeader.classList.add("collapsible-header");
+  collapsibleHeader.classList.add("collapsible-sidenav-header");
 
   const title = document.createElement("h3");
   title.classList.add("menu-section");
   title.textContent = data.title;
 
   const icon = document.createElement("div");
-  icon.classList.add("collapsible-icon");
+  icon.classList.add("collapsible-sidenav-icon");
   icon.textContent = "▸";
 
   collapsibleHeader.appendChild(title);
@@ -186,7 +187,7 @@ function populateStaticMenu(data) {
   collapsibleItem.appendChild(collapsibleHeader);
 
   const collapsibleContent = document.createElement("div");
-  collapsibleContent.classList.add("collapsible-content");
+  collapsibleContent.classList.add("collapsible-sidenav-content");
 
   const ul = document.createElement("ul");
   ul.id = "site-index";
@@ -212,7 +213,9 @@ function populateStaticMenu(data) {
   dynamicNav.classList.add("menu-section");
 
   const pageHeader = document.querySelector("header.title h1");
-  const chapterTitle = pageHeader ? pageHeader.textContent.trim() : "This Chapter";
+  const chapterTitle = pageHeader
+    ? pageHeader.textContent.trim()
+    : "This Chapter";
   dynamicNav.textContent = chapterTitle;
 
   sideMenu.appendChild(dynamicNav);
@@ -220,4 +223,23 @@ function populateStaticMenu(data) {
   const chapterList = document.createElement("ul");
   chapterList.id = "chapter-sections";
   sideMenu.appendChild(chapterList);
+}
+
+function initializeCollapsibles() {
+  const items = document.querySelectorAll(".collapsible-sidenav-item");
+
+  items.forEach(item => {
+    const header = item.querySelector(".collapsible-sidenav-header");
+    const content = item.querySelector(".collapsible-sidenav-content");
+    const icon = item.querySelector(".collapsible-sidenav-icon");
+
+    header.addEventListener("click", () => {
+      const expanded = item.classList.toggle("expanded");
+      content.style.height = expanded ? `${content.scrollHeight}px` : "0px";
+      icon.style.transform = expanded ? "rotate(90deg)" : "rotate(0deg)";
+    });
+
+    // Collapse on load
+    content.style.height = "0px";
+  });
 }
