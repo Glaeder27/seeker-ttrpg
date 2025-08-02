@@ -2893,6 +2893,14 @@ blockquote.clean p {
     font-weight: 100;
 }
 
+p.blockquote-attribution {
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: -1.2rem;
+    padding-right: 4rem;
+    font-size: 0.7rem;
+}
+
 /*=============================================
 =                  CONTENTS                   =
 =============================================*/
