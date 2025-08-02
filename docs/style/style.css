@@ -2563,14 +2563,14 @@ thead th:last-child {
 }
 
 .collapsible-sidenav-header::before {
-  content: "";
-  display: inline-block;
-  width: 1.2em;
-  height: 1.2em;
-  background-image: url("/assets/icons/webp/rulebook.webp");
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 0.5em;
+    content: "";
+    display: inline-block;
+    width: 3.5em;
+    height: 3.5em;
+    background-image: url(/assets/icons/webp/rulebook.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: -1rem 0 -1rem -2rem;
 }
 
 .collapsible-sidenav-header h3 {

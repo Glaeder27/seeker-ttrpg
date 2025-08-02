@@ -178,9 +178,8 @@ function populateStaticMenu(data) {
   title.classList.add("menu-section");
   title.textContent = data.title;
 
-  const icon = document.createElement("div");
-  icon.classList.add("collapsible-sidenav-icon");
-  icon.textContent = "▸";
+  const icon = document.createElement("i");
+  icon.classList.add("collapsible-sidenav-icon", "fas", "fa-angle-right");
 
   collapsibleHeader.appendChild(title);
   collapsibleHeader.appendChild(icon);
