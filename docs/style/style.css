@@ -2560,6 +2560,7 @@ thead th:last-child {
   cursor: pointer;
   padding: 10px;
   background: var(--background-dark-3);
+  cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
 }
 
 .collapsible-sidenav-header::before {
