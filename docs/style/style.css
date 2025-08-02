@@ -2559,12 +2559,23 @@ thead th:last-child {
   align-items: center;
   cursor: pointer;
   padding: 10px;
+  background: var(--background-dark-3);
+}
+
+.collapsible-sidenav-header::before {
+  content: url("/assets/icons/webp/rulebook.webp");
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  vertical-align: middle;
 }
 
 .collapsible-sidenav-header h3 {
     padding: 0;
     margin: 0;
     font-size: 1.1rem;
+    border: none;
 }
 
 .collapsible-sidenav-icon {
