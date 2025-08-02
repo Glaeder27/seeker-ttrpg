@@ -178,6 +178,14 @@
     scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
 
+main.dual-column[type="rulebook"] .right-column {
+  
+}
+
+main.dual-column[type="lorebook"] .right-column .sidebar-wrapper{
+    max-width: 400px;
+}
+
 /* Scrollbar WebKit */
 .right-column::-webkit-scrollbar {
     width: 8px;
