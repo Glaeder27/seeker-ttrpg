@@ -256,6 +256,7 @@ body.fade-out {
 html,
 body {
     cursor: url('/assets/cursor/cursor_24.png') 4 1, auto;
+    scroll-behavior: smooth;
 }
 
 a,
@@ -1231,7 +1232,6 @@ body#home-page .main-navbar {
 }
 
 .sidenav-content h3 {
-    margin-top: 1rem;
     font-size: 1.1em;
     border-bottom: 1px solid #555;
     padding-bottom: 0.3rem;
@@ -2578,6 +2578,8 @@ thead th:last-child {
     margin: 0;
     font-size: 1.1rem;
     border: none;
+    flex-grow: 1;
+    text-align: left;
 }
 
 .collapsible-sidenav-icon {
