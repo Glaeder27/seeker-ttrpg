@@ -34,7 +34,7 @@
   "tags": [
     {
       "name": "Arcane",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Magic",
       "definition": "Relates to magic derived from study, runes, or eldritch sources.",
       "visibility": true,
@@ -47,7 +47,7 @@
     },
     {
       "name": "Area",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Combat",
       "definition": "Affects multiple targets within a defined space.",
       "visibility": true,
@@ -60,7 +60,7 @@
     },
     {
       "name": "Attack",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Combat",
       "definition": "A direct offensive action intended to harm a target.",
       "visibility": true,
@@ -73,7 +73,7 @@
     },
     {
       "name": "Cold",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Elemental",
       "definition": "Causes chilling, freezing, or slowing effects.",
       "visibility": true,
@@ -86,7 +86,7 @@
     },
     {
       "name": "Control",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
       "definition": "Alters battlefield conditions or restricts enemy actions.",
       "visibility": true,
@@ -99,7 +99,7 @@
     },
     {
       "name": "Debuff",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
       "definition": "Applies penalties or hindrances to enemies.",
       "visibility": true,
@@ -112,7 +112,7 @@
     },
     {
       "name": "Defense",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Combat",
       "definition": "Enhances your resistance, armor, or ability to avoid harm.",
       "visibility": true,
@@ -122,7 +122,7 @@
     },
     {
       "name": "Divine",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Magic",
       "definition": "Relates to sacred power, faith, or blessings.",
       "visibility": true,
@@ -132,7 +132,7 @@
     },
     {
       "name": "Fire",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Elemental",
       "definition": "Causes fire damage or ignition. May interact with flammable materials.",
       "visibility": true,
@@ -145,7 +145,7 @@
     },
     {
       "name": "Instant",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Meta",
       "definition": "The effect resolves immediately, with no duration.",
       "visibility": true,
@@ -155,7 +155,7 @@
     },
     {
       "name": "Lightning",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Elemental",
       "definition": "Delivers electric shocks; may chain to other targets.",
       "visibility": true,
@@ -168,7 +168,7 @@
     },
     {
       "name": "Movement",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
       "definition": "Changes your position (dash, teleport, disengage).",
       "visibility": true,
@@ -181,7 +181,7 @@
     },
     {
       "name": "Ongoing",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Meta",
       "definition": "The effect lasts over multiple turns or requires upkeep.",
       "visibility": true,
@@ -194,7 +194,7 @@
     },
     {
       "name": "Passive",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Meta",
       "definition": "Always active; does not require activation.",
       "visibility": true,
@@ -207,7 +207,7 @@
     },
     {
       "name": "Poison",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Elemental",
       "definition": "Applies toxic effects that deal damage over time.",
       "visibility": true,
@@ -220,7 +220,7 @@
     },
     {
       "name": "Ranged",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Combat",
       "definition": "An attack made from a distance, often requiring line of sight.",
       "visibility": true,
@@ -233,7 +233,7 @@
     },
     {
       "name": "Reaction",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Combat",
       "definition": "Can be used outside your turn in response to a trigger.",
       "visibility": true,
@@ -246,7 +246,7 @@
     },
     {
       "name": "Risky",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Meta",
       "definition": "Involves a higher number of Risk Dice or increased danger.",
       "visibility": true,
@@ -259,7 +259,7 @@
     },
     {
       "name": "Strike",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Combat",
       "definition": "A close-range melee attack. Must be within reach.",
       "visibility": true,
@@ -272,7 +272,7 @@
     },
     {
       "name": "Summon",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
       "definition": "Creates creatures or constructs to fight or assist you.",
       "visibility": true,
@@ -285,7 +285,7 @@
     },
     {
       "name": "Support",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
       "definition": "Assists allies through buffs, healing, or tactical coordination.",
       "visibility": true,
@@ -298,7 +298,7 @@
     },
     {
       "name": "Triggered",
-      "icon": "/assets/icons/svg/tags/placeholder.html",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Meta",
       "definition": "Activates only when a specific condition is met.",
       "visibility": true,
