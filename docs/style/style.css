@@ -1,4 +1,4 @@
-/*v2.21 2025-08-03T21:19:32.825Z*/
+/*v2.25 2025-08-03T21:35:07.312Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1182,7 +1182,7 @@ body#home-page .main-navbar {
 }
 @media (max-width: 768px) {
     .sidenav:not(.collapsed) + .sidenav-toggle-btn {
-        left: 0px;
+        left: 2rem;
     }
 }
 
@@ -4234,6 +4234,17 @@ i.fa-solid.fa-right-from-bracket {
     color: var(--ancient-gold);
     transition: all .6s ease-in-out;
     font-size: 26px;
+}
+
+@media (max-width: 768px) {
+    i.fa-solid.fa-square-xmark {
+        font-size: 30px;
+        transform: rotate(180deg);
+        content: "\f2f5";
+    }
+    i.fa-solid.fa-right-from-bracket {
+        font-size: 30px;
+    }
 }
 
 /*=============================================
