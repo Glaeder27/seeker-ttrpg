@@ -1,4 +1,4 @@
-/*v1.20 2025-08-03T20:32:05.085Z*/
+/*v1.20 2025-08-03T21:06:59.146Z*/
 
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
@@ -36,10 +36,6 @@ function initializeMenu() {
   toggleIcon.className = menuVisible
     ? "fa-solid fa-square-xmark"
     : "fa-solid fa-right-from-bracket";
-
-  // Deactivate Btn animation on mobile
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  if (isMobile) return;
 
   toggleButton.addEventListener("click", () => {
     const wasCollapsed = sideMenu.classList.contains("collapsed");
