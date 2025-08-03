@@ -1,4 +1,4 @@
-/*v2.8 2025-08-01T16:40:00Z*/
+/*v2.9 2025-08-03T16:00:00Z*/
 
 // ─── Version Checker ───
 const versionTargets = [
@@ -148,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>`;
 
         tooltip.style.borderColor = color;
+        tooltip.style.setProperty("--tooltip-color", color);
 
         title.textContent = tagKey;
         description.innerHTML =
