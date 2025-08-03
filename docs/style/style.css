@@ -1,4 +1,4 @@
-/*v2.9 2025-08-03T20:06:43.737Z*/
+/*v2.12 2025-08-03T20:23:28.769Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -609,8 +609,8 @@ body#home-page .main-navbar {
         background: linear-gradient(to right, rgba(var(--burnt-copper-rgb), 0.3), rgba(var(--ancient-gold-rgb), 0.5));
         height: 55px;
         width: 60px;
+        border: 2px solid var(--background-dark-3);
         border-radius: 0.6rem;
-        box-shadow: 0 0 10px rgba(246, 203, 117, 0.4);
         backdrop-filter: blur(4px);
         color: var(--ancient-gold);
         font-size: 2.5rem;
@@ -1180,14 +1180,19 @@ body#home-page .main-navbar {
 .sidenav-toggle-btn.animate-close {
   animation: sidenavClose 0.6s ease forwards;
 }
+@media (max-width: 768px) {
+  .sidenav-toggle-btn.animate-open {
+    animation: none;
+    }
+.sidenav-toggle-btn.animate-close {
+    animation: none;
+    }
+}
 
 @keyframes sidenavOpen {
   0% {
     transform: translate(0, 0);
   }
-  /* 60% {
-    transform: translate(370px, 0);
-  } */
   100% {
     transform: translate(370px, 0);
   }
@@ -1197,9 +1202,6 @@ body#home-page .main-navbar {
   0% {
     transform: translate(370px, 0);
   }
-  /* 60% {
-    transform: translate(0, 80px);
-  } */
   100% {
     transform: translate(0, 0);
   }
@@ -1327,6 +1329,30 @@ ul#site-index li {
     border-left: 1px solid var(--ancient-gold, #D4B55A);
     background-color: rgba(255, 255, 255, 0.05);
     padding-left: 1rem;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) { 
+    .sidenav-collapsed {
+        transform: translateX(-100%) translateY(-50%);    
+    }
+    .sidenav-toggle-btn {
+        position: fixed;
+        display: block;
+        z-index: 8;
+        bottom: 2rem;
+        left: 2rem;
+        background: linear-gradient(to right, rgba(var(--burnt-copper-rgb), 0.3), rgba(var(--ancient-gold-rgb), 0.5));
+        height: 55px;
+        width: 60px;
+        border-radius: 0.6rem;
+        box-shadow: 0 0 10px rgba(246, 203, 117, 0.4);
+        backdrop-filter: blur(4px);
+        color: var(--ancient-gold);
+        font-size: 2.5rem;
+        line-height: 1;
+        border: 2px solid var(--background-dark-3);
+    }
 }
 
 /* ── GRID MENU ─────────────── */
@@ -1657,6 +1683,7 @@ h1.site-title {
 @media (max-width: 767px) {
     .title .title-container h1 {
         width: 360px;
+        font-size: clamp(2.5rem, 20vw, 4rem);
     }
 }
 
