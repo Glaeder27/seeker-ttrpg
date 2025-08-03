@@ -1,0 +1,484 @@
+<!-- v1.5 2025-08-03T17:41:33.658Z -->
+
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Rulebook</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+    <meta name="last-modified" content="2025-07-19T12:04:00Z" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Specific Styles */
+        .rule-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: 2px 6px;
+            margin: .9rem 0 0 0;
+            border-radius: 3px;
+            font-weight: 600;
+            vertical-align: middle;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--off-white);
+        }
+
+        .rule-tag.state-planned {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--off-white);
+        }
+
+        .rule-tag.state-progress {
+            background-color: rgba(var(--ancient-gold-rgb, 198, 166, 100), 0.15);
+            color: var(--ancient-gold, #c6a664);
+        }
+
+        .rule-tag.state-released {
+            background-color: rgba(0, 200, 120, 0.15);
+            color: #64ffb4;
+            border-color: rgba(0, 200, 120, 0.3);
+        }
+
+        /* ── Filters UI ───────────────────────────────── */
+        .rules-filters-wrapper {
+            background-color: rgba(var(--ancient-gold-rgb), 0.08);
+            margin: 0 -2vw;
+            padding: 1rem 2vw;
+            box-sizing: border-box;
+        }
+
+        .rules-filters {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        .rules-filters label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--off-white, #efefef);
+        }
+
+        .rules-filters select {
+            background: var(--background-grey-2, #2c2c2c);
+            color: var(--off-white, #efefef);
+            border: 1px solid var(--ancient-gold, #c6a664);
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-family: var(--font-main, serif);
+            font-size: 0.85rem;
+        }
+
+        /* ── Grid & card ──────────────────────────────── */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            align-items: start;
+            text-align: center;
+        }
+
+        .rules-card {
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+            transition: transform 0.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-blend-mode: overlay;
+            background-color: rgba(25, 25, 25, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 290px;
+        }
+
+        .rules-card[data-status="planned"] {
+            border: 1px solid var(--deep-charcoal, #161718);
+            background-color: rgba(0, 0, 0, .015);
+            background-image: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(255, 255, 255, 0.03) 10px,
+                    transparent 10px,
+                    transparent 20px);
+            backdrop-filter: grayscale(30%);
+            min-height: 300px;
+        }
+
+        .rules-card:hover {
+            background-color: rgba(30, 30, 30, 1);
+        }
+
+        .rules-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .rules-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+            text-align: center;
+        }
+
+        .rules-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            margin: auto;
+            width: 42px;
+            height: 42px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .rules-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--bright-gold, #e6c87c);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .rules-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--off-white, #efefef);
+            margin: 0;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .rules-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            width: 100%;
+        }
+
+        .rules-meta {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--bright-gold, #e6c87c);
+            margin-top: .2rem;
+        }
+
+        .section-description {
+            font-size: .9rem;
+            line-height: 1.6;
+            color: var(--off-white, #ececec);
+            font-family: var(--font-main, 'Montserrat', serif);
+            ;
+            text-align: left;
+        }
+
+        a.rules-card-link:not([href]),
+        a.rules-card-link[href=""] {
+            cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+            pointer-events: none;
+        }
+
+        .flip-container {
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .flip-container.chapter-card {
+            min-height: 300px;
+            height: 100%;
+            display: block;
+        }
+
+        .flip-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flip-container.flipped .flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front,
+        .flip-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.6rem;
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            background: linear-gradient(to right,
+                    rgba(var(--burnt-copper-rgb), 0.2),
+                    rgba(var(--ancient-gold-rgb), 0.2)),
+                url(/assets/textures/antique-gold-1.jpg);
+            background-size: cover;
+            background-blend-mode: overlay;
+            padding: 2px;
+            cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+        }
+
+        .flip-front {
+            z-index: 2;
+        }
+
+        .flip-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        .flip-back .rules-card {
+            justify-content: start;
+        }
+
+        .flip-back h3 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .flip-front h3,
+        .flip-back h3,
+        .flip-front p {
+            cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+        }
+
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chapter-list li {
+            margin: 0.5rem 0;
+        }
+
+
+        /* Overrides */
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+
+    <main class="dual-column">
+        <div class="left-column" id="main-content">
+            <header class="title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1>Seeker Lorebook</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+                <p class="subtitle">Subtitle Placeholder</p>
+            </header>
+
+            <!-- What is Seeker -->
+            <section class="section-wrapper">
+                <div class="section-number">Section I</div>
+                <h2 class="section" id="about">
+                    The New World
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p class="section-description" style="margin-top: 1.5rem;">
+                    Seeker is a tabletop roleplaying game of forbidden power, colonial secrets, and arcane exploration.
+                    It does not reinvent history — it reveals what was hidden beneath it. Set during the first voyages
+                    to the New World, the game chronicles a world forever altered by contact with ancient forces and
+                    unnatural phenomena.</p>
+            </section>
+
+            <!-- Learn to Play -->
+            <section class="section-wrapper">
+                <div class="section-number">Section II</div>
+                <h2 class="section" id="learn">
+                    Core Rules
+                    <span class="section-ornament">⸺ ✦ ⸺</span>
+                </h2>
+                <p>These are the essential mechanics you need to play Seeker. From how a session flows to the dice
+                    engine, character
+                    creation, and key abilities, this section establishes the foundation of play. Whether you’re a
+                    player or Guide,
+                    these rules provide everything needed to explore, act, and survive in the New World.</p>
+                <div class="rules-grid">
+
+                    <!-- Atlas -->
+                    <div class="rules-card-link flip-container chapter-card">
+                        <div class="flip-inner">
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="rules-card" data-title="Atlas" data-category="System"
+                                    data-status="progress">
+                                    <div class="rules-icon-wrapper">
+                                        <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
+                                    </div>
+                                    <h3 class="rules-title">Atlas</h3>
+                                    <div class="rules-meta">
+                                        <div class="rules-category">Geography and Places</div>
+                                        <span class="rule-tag state-progress">In Progress</span>
+                                    </div>
+                                    <p class="rules-description">Placeholder</p>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <div class="rules-card" data-title="Atlas" data-category="System"
+                                    data-status="progress">
+                                    <h3>Twin Coil System</h3>
+                                    <ul class="chapter-list">
+                                        <li><a href="/lorebook/isla-de-los-ojos#section1">I • La Isla de los Ojos</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">Character Sheet (PDF)</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+
+                <!-- Block 2: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    </main>
+
+    <!-- ────────────────────────────────────────────────────────── -->
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <!-- ────────────────────────────────────────────────────────── -->
+    <script src="/scripts/core.js"></script>
+    <script src="/scripts/sidebar.js"></script>
+
+    <script>
+        const flipCards = document.querySelectorAll(".chapter-card");
+
+        flipCards.forEach((flipCard) => {
+            // Click fronte → retro
+            flipCard.addEventListener("click", (e) => {
+                if (!flipCard.classList.contains("flipped")) {
+                    e.stopPropagation();
+                    flipCard.classList.add("flipped");
+                }
+            });
+        });
+
+        // Click retro → fronte (fuori o dentro ma non su link)
+        document.addEventListener("click", (e) => {
+            flipCards.forEach((flipCard) => {
+                if (
+                    flipCard.classList.contains("flipped") &&
+                    (!flipCard.contains(e.target) || (flipCard.contains(e.target) && e.target.tagName !== "A"))
+                ) {
+                    flipCard.classList.remove("flipped");
+                }
+            });
+        });
+
+        // Visual Variation (Gradient + Texture)
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const fronts = document.querySelectorAll(".rules-grid .flip-front");
+            fronts.forEach((el, i) => {
+                const offsetX = (i % 4) * 15; // 0, 15, 30, 45 px per background position
+
+                // Base HSL colors
+                const burntCopperHSL = [37, 40, 45]; // hsl(37, 40%, 45%)
+                const ancientGoldHSL = [45, 59, 59]; // hsl(45, 59%, 59%)
+
+                const hueShift = (i % 4) * 1.5; // tone variation
+                const lightnessShift = (i % 3) * 2; // luminosity variation
+
+                const hsl1 = `hsl(${burntCopperHSL[0] + hueShift}, ${burntCopperHSL[1]}%, ${burntCopperHSL[2] + lightnessShift}%)`;
+                const hsl2 = `hsl(${ancientGoldHSL[0] + hueShift}, ${ancientGoldHSL[1]}%, ${ancientGoldHSL[2] + lightnessShift}%)`;
+
+                const gradient = `linear-gradient(to right, ${hsl1}, ${hsl2})`;
+
+                el.style.backgroundImage = `${gradient}, url(/assets/textures/antique-gold-1.jpg)`;
+                el.style.backgroundPosition = `center, ${offsetX}px 0px`;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
