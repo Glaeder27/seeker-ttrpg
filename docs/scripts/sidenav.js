@@ -1,4 +1,4 @@
-/*v1.20 2025-08-03T21:06:59.146Z*/
+/*v1.21 2025-08-03T21:07:57.586Z*/
 
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
