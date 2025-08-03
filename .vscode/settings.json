@@ -1,0 +1,10 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.(css|js|html)$",
+        "cmd": "node .vscode/scripts/update-version.js ${file}"
+      }
+    ]
+  }
+}
