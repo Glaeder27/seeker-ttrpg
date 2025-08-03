@@ -1,8 +1,8 @@
 {
   "title": "Rulebook",
   "items": [
-    { "label": "How to Play", "href": "/rules/joining-the-seekers" },
-    { "label": "Twin Coil System", "href": "/rules/twin-coil-system" },
-    { "label": "Aptitudes", "href": "/rules/aptitudes" }
+    { "label": "How to Play", "href": "/rulebook/joining-the-seekers" },
+    { "label": "Twin Coil System", "href": "/rulebook/twin-coil-system" },
+    { "label": "Aptitudes", "href": "/rulebook/aptitudes" }
   ]
 }

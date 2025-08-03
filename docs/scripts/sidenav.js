@@ -1,4 +1,4 @@
-/*v1.18 2025-08-03T14:36:17.781Z*/
+/*v1.19 2025-08-03T15:30:49.125Z*/
 
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
@@ -193,7 +193,7 @@ function populateStaticMenu(data) {
     const a = document.createElement("a");
     a.textContent = item.label;
     a.href = item.href;
-    if (item.href.includes("/rules/")) {
+    if (item.href.includes("/rulebook/")) {
       a.setAttribute("data-partial", "");
     }
     li.appendChild(a);

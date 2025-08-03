@@ -1,11 +1,11 @@
-/*v2.14 2025-08-03T15:19:07.247Z*/
+/*v2.16 2025-08-03T15:24:27.959Z*/
 
 // ─── Version Checker ───
 
 const versionTargets = [
-  { label: "📄 HTML",       path: location.pathname,         isHTML: true },
-  { label: "🎨 style.css",  path: "/style/style.css" },
-  { label: "🔣 core.js",    path: document.currentScript.src },
+  { label: "📄 This page (.html)", path: location.pathname, isHTML: true },
+  { label: "🎨 style.css", path: "/style/style.css" },
+  { label: "🔣 core.js", path: document.currentScript.src },
   { label: "📂 sidenav.js", path: "/scripts/sidenav.js" },
   { label: "💬 infobox.js", path: "/scripts/infobox.js" },
   { label: "📑 sidebar.js", path: "/scripts/sidebar.js" },
