@@ -1,4 +1,4 @@
-/*v2.13 2025-08-03T20:29:00.427Z*/
+/*v2.14 2025-08-03T20:32:48.274Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1183,9 +1183,11 @@ body#home-page .main-navbar {
 @media (max-width: 768px) {
   .sidenav-toggle-btn.animate-open {
     animation: none;
+    transform: none;
     }
 .sidenav-toggle-btn.animate-close {
     animation: none;
+    transform: none;
     }
 }
 
