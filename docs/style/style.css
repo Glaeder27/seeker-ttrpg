@@ -1,4 +1,4 @@
-/*v2.15 2025-08-03T20:34:37.390Z*/
+/*v2.18 2025-08-03T21:13:43.219Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1172,6 +1172,11 @@ body#home-page .main-navbar {
 .sidenav:not(.collapsed) + .sidenav-toggle-btn {
   left: 10px;
 }
+@media (max-width: 768px) {
+    .sidenav:not(.collapsed) + .sidenav-toggle-btn {
+        left: 10px;
+    }
+}
 
 .sidenav-toggle-btn.animate-open {
   animation: sidenavOpen 0.6s ease forwards;
@@ -1182,12 +1187,12 @@ body#home-page .main-navbar {
 }
 @media (max-width: 768px) {
   .sidenav-toggle-btn.animate-open {
-    animation: none;
-    transform: none;
+    animation: none !important;
+    transform: none !important;
     }
 .sidenav-toggle-btn.animate-close {
-    animation: none;
-    transform: none;
+    animation: none !important;
+    transform: none !important;
     }
 }
 
@@ -1344,6 +1349,7 @@ ul#site-index li {
         z-index: 8;
         bottom: 2rem;
         left: 2rem;
+        top: unset;
         background: linear-gradient(to right, rgba(var(--burnt-copper-rgb), 0.3), rgba(var(--ancient-gold-rgb), 0.5));
         height: 55px;
         width: 60px;
