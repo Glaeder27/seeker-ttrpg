@@ -1,20 +1,74 @@
-<!-- v1.2 2025-08-03T17:39:16.047Z -->
+<!-- v1.4 2025-08-03T17:46:49.017Z -->
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Not Found</title>
+  <title>404 – Not Found</title>
   <link rel="stylesheet" href="/style/style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+      color: #f9f4dc;
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+
+    .error-container {
+      max-width: 600px;
+      padding: 2rem;
+    }
+
+    .error-title {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .error-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #d2b55b;
+    }
+
+    .error-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      color: #000;
+      background-color: #d2b55b;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .error-link:hover {
+      background-color: #b99c45;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="page-columns">
-    <main class="section-wrapper">
-      <h1>🚫 Page Not Found</h1>
-      <p>The page you're looking for doesn't exist.</p>
-      <a href="/">← Back to Home</a>
-    </main>
+  <div class="error-container">
+    <header class="title">
+      <div class="title-container">
+        <span class="title-icon">🜍</span>
+        <h1>404 – Page Not Found</h1>
+        <span class="title-icon flipped">🜍</span>
+      </div>
+      <p class="subtitle">No chart leads here. This path fades into the mist.</p>
+    </header>
+
+    <a class="error-link" href="/">← Return to the Expedition</a>
   </div>
 </body>
+
 </html>
