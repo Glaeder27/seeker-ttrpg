@@ -1,4 +1,4 @@
-/*v2.25 2025-08-03T21:35:07.312Z*/
+/*v2.26 2025-08-03T21:35:58.035Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -4239,7 +4239,7 @@ i.fa-solid.fa-right-from-bracket {
 @media (max-width: 768px) {
     i.fa-solid.fa-square-xmark {
         font-size: 30px;
-        transform: rotate(180deg);
+        transform: scaleX(-1);
         content: "\f2f5";
     }
     i.fa-solid.fa-right-from-bracket {
