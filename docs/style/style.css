@@ -1,4 +1,4 @@
-/*v2.12 2025-08-03T20:23:28.769Z*/
+/*v2.13 2025-08-03T20:29:00.427Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -224,7 +224,7 @@ main.dual-column[type="lorebook"] .right-column .sidebar-wrapper{
         margin-left: auto;
         margin-right: auto;
         max-width: 800px;
-        padding: 2rem 2rem 0 2rem;
+        padding: 2rem 1rem 0 1rem;
     }
 
     .left-column,
@@ -1825,6 +1825,11 @@ h2.section::after {
     border-radius: 0 0 1rem 1rem;
     border-right: 2px solid var(--background-dark-2);
     border-left: 2px solid var(--background-dark-2);
+}
+@media (max-width: 768px) {
+    .section-wrapper {
+        padding: 0 1rem 1rem 1rem;
+    }
 }
 
 .section-number {
@@ -3868,6 +3873,7 @@ details[open] .infobox-table {
 
     h2.section {
         font-size: 1.5rem;
+        margin-inline: -1.5rem;
     }
 }
 
