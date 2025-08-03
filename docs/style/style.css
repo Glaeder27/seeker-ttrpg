@@ -1,4 +1,4 @@
-/*v2.18 2025-08-03T21:13:43.219Z*/
+/*v2.19 2025-08-03T21:17:31.056Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1167,6 +1167,14 @@ body#home-page .main-navbar {
 .sidenav-toggle-btn:hover {
     font-size: 1.5rem;
     background: var(--background-dark-3);
+}
+@media (max-width: 768px) {
+    .sidenav-toggle-btn:hover {
+    font-size: 30px;
+    background: linear-gradient(to left, 
+    rgba(var(--burnt-copper-rgb), 0.3), 
+    rgba(var(--ancient-gold-rgb), 0.5));
+    }
 }
 
 .sidenav:not(.collapsed) + .sidenav-toggle-btn {
