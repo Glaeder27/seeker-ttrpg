@@ -1,52 +1,47 @@
-/*v2.13 2025-08-03T15:05:22.387Z*/
+/*v2.14 2025-08-03T15:19:07.247Z*/
 
 // ─── Version Checker ───
-// ─── Version Checker Enhanced ───
+
 const versionTargets = [
-  { label: "📄 HTML", path: location.pathname, isHTML: true },
-  { label: "🎨 style.css", path: "/style/style.css" },
-  { label: "🔣 core.js", path: document.currentScript.src },
+  { label: "📄 HTML",       path: location.pathname,         isHTML: true },
+  { label: "🎨 style.css",  path: "/style/style.css" },
+  { label: "🔣 core.js",    path: document.currentScript.src },
   { label: "📂 sidenav.js", path: "/scripts/sidenav.js" },
   { label: "💬 infobox.js", path: "/scripts/infobox.js" },
   { label: "📑 sidebar.js", path: "/scripts/sidebar.js" },
 ];
 
-const versionRegex = /v([\d.]+)\s+([\d\-T:.Z]+)/; // accetta anche commenti HTML
+const versionRegexHTML  = /<!--\s*v([\d.]+)\s+([\d\-T:.Z]+)\s*-->/;
+const versionRegexOther = /\/\*v([\d.]+)\s+([\d\-T:.Z]+)\*\//;
 
 Promise.all(
   versionTargets.map((target) =>
     fetch(target.path)
       .then((res) => (res.ok ? res.text() : null))
       .then((text) => {
-        if (!text) return { label: target.label, version: "❌" };
+        if (!text) return { Resource: target.label, Version: "❌", Date: "" };
 
-        let match;
-        if (target.isHTML) {
-          // Cerca solo nei primi 500 caratteri (inizio file)
-          match = text.slice(0, 500).match(/<!--\s*v([\d.]+)\s+([\d\-T:.Z]+)\s*-->/);
-        } else {
-          match = text.match(/\/\*v([\d.]+)\s+([\d\-T:.Z]+)\*\//);
-        }
+        const match = target.isHTML
+          ? text.slice(0, 500).match(versionRegexHTML)
+          : text.match(versionRegexOther);
 
         return match
-          ? { label: target.label, version: `v${match[1]} – ${match[2]}` }
-          : { label: target.label, version: "❓" };
+          ? {
+              Resource: target.label,
+              Version: `v${match[1]}`,
+              Date: match[2]
+            }
+          : {
+              Resource: target.label,
+              Version: "❓",
+              Date: ""
+            };
       })
-      .catch(() => ({ label: target.label, version: "❌" }))
+      .catch(() => ({ Resource: target.label, Version: "❌", Date: "" }))
   )
-).then((results) => {
-  const styles = [
-    "color: DarkGoldenRod; font-weight: bold; text-decoration: underline dotted",
-    "color: GoldenRod; font-weight: bold;",
-    "color: Gold; font-weight: bold;",
-    "color: PaleGoldenRod; font-weight: bold;",
-    "color: Chocolate; font-weight: bold;",
-    "color: DarkOrange; font-weight: bold;"
-  ];
-
-  results.forEach((entry, i) => {
-    console.log(`%c${entry.label} %c${entry.version}`, "color: gray; font-weight: bold;", styles[i % styles.length]);
-  });
+).then((rows) => {
+  console.log("%c📦 Resource Versions", "color: goldenrod; font-weight: bold; font-size: 14px;");
+  console.table(rows);
 });
 
 // ─── Globals ───
