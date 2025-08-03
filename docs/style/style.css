@@ -1,4 +1,4 @@
-/*v2.7 2025-08-03T19:48:54.143Z*/
+/*v2.8 2025-08-03T19:51:19.341Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -118,15 +118,6 @@
 }
 .uppercase {
     text-transform: uppercase;
-}
-.align-left {
-    text-align: left;
-}
-.align-right {
-    text-align: right;
-}
-.align-center {
-    text-align: center;
 }
 
 /* ── PAGE LAYOUTS ─────────── */
@@ -427,6 +418,18 @@ p {
     padding: 1rem 2vw;
     box-sizing: border-box;
     margin: 0 auto;
+}
+
+/* Positions */
+
+.align-left {
+    text-align: left;
+}
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
 }
 
 /* Spacers */
@@ -1828,19 +1831,6 @@ h2.section::after {
     text-transform: capitalize;
     font-variant: normal;
     font-weight: normal;
-}
-
-/*=============================================
-=                 POSITIONS                   =
-=============================================*/
-
-.centered,
-.center-align {
-    text-align: center !important;
-}
-
-.left-align {
-    text-align: left !important;
 }
 
 /*=============================================
