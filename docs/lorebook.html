@@ -1,4 +1,4 @@
-<!-- v1.5 2025-08-03T17:41:33.658Z -->
+<!-- v1.6 2025-08-03T17:43:57.533Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -38,75 +38,11 @@
 
     <style>
         /* Specific Styles */
-        .rule-tag {
-            display: inline-block;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: .05em;
-            padding: 2px 6px;
-            margin: .9rem 0 0 0;
-            border-radius: 3px;
-            font-weight: 600;
-            vertical-align: middle;
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--off-white);
-        }
-
-        .rule-tag.state-planned {
-            background-color: rgba(255, 255, 255, 0.08);
-            color: var(--off-white);
-        }
-
-        .rule-tag.state-progress {
-            background-color: rgba(var(--ancient-gold-rgb, 198, 166, 100), 0.15);
-            color: var(--ancient-gold, #c6a664);
-        }
-
-        .rule-tag.state-released {
-            background-color: rgba(0, 200, 120, 0.15);
-            color: #64ffb4;
-            border-color: rgba(0, 200, 120, 0.3);
-        }
 
         /* ── Filters UI ───────────────────────────────── */
-        .rules-filters-wrapper {
-            background-color: rgba(var(--ancient-gold-rgb), 0.08);
-            margin: 0 -2vw;
-            padding: 1rem 2vw;
-            box-sizing: border-box;
-        }
-
-        .rules-filters {
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0 1rem;
-            box-sizing: border-box;
-        }
-
-        .rules-filters label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--off-white, #efefef);
-        }
-
-        .rules-filters select {
-            background: var(--background-grey-2, #2c2c2c);
-            color: var(--off-white, #efefef);
-            border: 1px solid var(--ancient-gold, #c6a664);
-            border-radius: 4px;
-            padding: 4px 8px;
-            font-family: var(--font-main, serif);
-            font-size: 0.85rem;
-        }
 
         /* ── Grid & card ──────────────────────────────── */
-        .rules-grid {
+        .lore-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
@@ -115,7 +51,7 @@
             text-align: center;
         }
 
-        .rules-card {
+        .lore-card {
             padding: 1rem 1.2rem;
             border-radius: 8px;
             cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
@@ -133,7 +69,7 @@
             min-height: 290px;
         }
 
-        .rules-card[data-status="planned"] {
+        .lore-card[data-status="planned"] {
             border: 1px solid var(--deep-charcoal, #161718);
             background-color: rgba(0, 0, 0, .015);
             background-image: repeating-linear-gradient(45deg,
@@ -145,25 +81,17 @@
             min-height: 300px;
         }
 
-        .rules-card:hover {
+        .lore-card:hover {
             background-color: rgba(30, 30, 30, 1);
         }
 
-        .rules-card-link {
+        .lore-card-link {
             text-decoration: none;
             color: inherit;
             display: block;
         }
 
-        .rules-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.35rem;
-            text-align: center;
-        }
-
-        .rules-icon {
+        .lore-icon {
             font-size: 1.4rem;
             line-height: 1;
             margin: auto;
@@ -173,7 +101,7 @@
             object-fit: contain;
         }
 
-        .rules-category {
+        .lore-category {
             font-size: 0.75rem;
             text-transform: uppercase;
             color: var(--bright-gold, #e6c87c);
@@ -181,7 +109,7 @@
             letter-spacing: 0.03em;
         }
 
-        .rules-title {
+        .lore-title {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--off-white, #efefef);
@@ -190,7 +118,7 @@
             border-bottom: none;
         }
 
-        .rules-icon-wrapper {
+        .lore-icon-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -198,7 +126,7 @@
             width: 100%;
         }
 
-        .rules-meta {
+        .lore-meta {
             text-align: center;
             font-size: 0.75rem;
             font-weight: 600;
@@ -216,8 +144,8 @@
             text-align: left;
         }
 
-        a.rules-card-link:not([href]),
-        a.rules-card-link[href=""] {
+        a.lore-card-link:not([href]),
+        a.lore-card-link[href=""] {
             cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
             pointer-events: none;
         }
@@ -275,7 +203,7 @@
             z-index: 1;
         }
 
-        .flip-back .rules-card {
+        .flip-back .lore-card {
             justify-content: start;
         }
 
@@ -352,30 +280,30 @@
                     creation, and key abilities, this section establishes the foundation of play. Whether you’re a
                     player or Guide,
                     these rules provide everything needed to explore, act, and survive in the New World.</p>
-                <div class="rules-grid">
+                <div class="lore-grid">
 
                     <!-- Atlas -->
-                    <div class="rules-card-link flip-container chapter-card">
+                    <div class="lore-card-link flip-container chapter-card">
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
-                                <div class="rules-card" data-title="Atlas" data-category="System"
+                                <div class="lore-card" data-title="Atlas" data-category="System"
                                     data-status="progress">
-                                    <div class="rules-icon-wrapper">
-                                        <img src="assets/icons/svg/icon_game-system.svg" class="rules-icon">
+                                    <div class="lore-icon-wrapper">
+                                        <img src="assets/icons/svg/icon_game-system.svg" class="lore-icon">
                                     </div>
-                                    <h3 class="rules-title">Atlas</h3>
-                                    <div class="rules-meta">
-                                        <div class="rules-category">Geography and Places</div>
+                                    <h3 class="lore-title">Atlas</h3>
+                                    <div class="lore-meta">
+                                        <div class="lore-category">Geography and Places</div>
                                         <span class="rule-tag state-progress">In Progress</span>
                                     </div>
-                                    <p class="rules-description">Placeholder</p>
+                                    <p class="lore-description">Placeholder</p>
                                 </div>
                             </div>
 
                             <!-- BACK -->
                             <div class="flip-back">
-                                <div class="rules-card" data-title="Atlas" data-category="System"
+                                <div class="lore-card" data-title="Atlas" data-category="System"
                                     data-status="progress">
                                     <h3>Twin Coil System</h3>
                                     <ul class="chapter-list">
@@ -457,7 +385,7 @@
         // Visual Variation (Gradient + Texture)
 
         document.addEventListener("DOMContentLoaded", () => {
-            const fronts = document.querySelectorAll(".rules-grid .flip-front");
+            const fronts = document.querySelectorAll(".lore-grid .flip-front");
             fronts.forEach((el, i) => {
                 const offsetX = (i % 4) * 15; // 0, 15, 30, 45 px per background position
 
