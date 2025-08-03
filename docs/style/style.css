@@ -1,4 +1,4 @@
-/*v2.14 2025-08-03T20:32:48.274Z*/
+/*v2.15 2025-08-03T20:34:37.390Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2628,6 +2628,7 @@ thead th:last-child {
   padding: 10px;
   background: var(--background-dark-3);
   cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+  border-radius: 0 10px 10px 0;
 }
 
 .collapsible-sidenav-header::before {
