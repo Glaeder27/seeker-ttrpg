@@ -1,4 +1,4 @@
-/*v2.4 2025-08-03T14:36:43.902Z*/
+/*v2.5 2025-08-03T14:57:42.435Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -113,7 +113,12 @@
   font-weight: normal;
   font-style: normal;
 }
-
+.lowercase {
+    text-transform: lowercase;
+}
+.uppercase {
+    text-transform: uppercase;
+}
 
 /* ── PAGE LAYOUTS ─────────── */
 
