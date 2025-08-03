@@ -1,4 +1,4 @@
-/*v2.26 2025-08-03T21:35:58.035Z*/
+/*v2.27 2025-08-03T21:36:21.702Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -4238,6 +4238,7 @@ i.fa-solid.fa-right-from-bracket {
 
 @media (max-width: 768px) {
     i.fa-solid.fa-square-xmark {
+        color: var(--ancient-gold);
         font-size: 30px;
         transform: scaleX(-1);
         content: "\f2f5";
