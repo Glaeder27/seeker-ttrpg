@@ -1,3 +1,5 @@
+/*v1.1 2025-08-03T14:35:49.681Z*/
+
 const firebaseConfig = {
   apiKey: "AIzaSyCZu-da02W-5Q4gd5N7mhwx_UReEu8QSfE",
   authDomain: "seeker-ttrpg.firebaseapp.com",

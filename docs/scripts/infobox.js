@@ -1,4 +1,5 @@
-/*v1.00 2025-07-24T11:30:00Z*/
+/*v1.1 2025-08-03T14:36:11.864Z*/
+
 (() => {
 
     const DEFINITIONS_URL = '/data/tooltips.json';

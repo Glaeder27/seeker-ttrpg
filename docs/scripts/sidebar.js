@@ -1,4 +1,5 @@
-/*v1.01 2025-07-24T11:30:00Z*/
+/*v1.2 2025-08-03T14:36:08.632Z*/
+
 // Glossary search logic with clickable suggestions
 const input = document.getElementById("glossary-search");
 const result = document.getElementById("glossary-result");

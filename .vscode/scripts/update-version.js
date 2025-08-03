@@ -1,28 +1,49 @@
-// update-version.js
-const fs = require("fs");
+#!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
 
 const filePath = process.argv[2];
 if (!filePath) {
-  console.error("Nessun file specificato");
+  console.error("Usage: node update-version.js <file>");
   process.exit(1);
 }
 
-const fileContent = fs.readFileSync(filePath, "utf8");
-const versionRegex = /\/\*v(\d+)\.(\d+)\s.*?\*\//;
-const match = fileContent.match(versionRegex);
-
-if (!match) {
-  console.warn("Nessuna intestazione di versione trovata in", filePath);
-  process.exit(0);
+if (!fs.existsSync(filePath)) {
+  console.error("File not found:", filePath);
+  process.exit(1);
 }
 
-let [major, minor] = [parseInt(match[1]), parseInt(match[2])];
-minor += 1;
+let content = fs.readFileSync(filePath, 'utf8');
 
+const versionRegex = /(?:\/\*|<!--)\s*v(\d+)\.(\d+)\s+([\d\-T:.Z+]+)\*?\s*(?:\*\/|-->)/i;
+
+const match = content.match(versionRegex);
+if (!match) {
+  console.error("No version comment found in the file.");
+  process.exit(1);
+}
+
+let [fullMatch, majorStr, minorStr, oldTimestamp] = match;
+
+let major = parseInt(majorStr, 10);
+let minor = parseInt(minorStr, 10);
+
+minor++;  // incrementa minor di 1
+
+const newVersion = `${major}.${minor}`;
 const newTimestamp = new Date().toISOString();
-const newHeader = `/*v${major}.${minor} ${newTimestamp}*/`;
 
-const updatedContent = fileContent.replace(versionRegex, newHeader);
-fs.writeFileSync(filePath, updatedContent, "utf8");
+let newComment = '';
 
-console.log(`Aggiornato ${filePath} → v${major}.${minor}`);
+// Mantieni tipo di commento originale
+if (fullMatch.startsWith('<!--')) {
+  newComment = `<!-- v${newVersion} ${newTimestamp}* -->`;
+} else {
+  newComment = `/*v${newVersion} ${newTimestamp}*/`;
+}
+
+const updatedContent = content.replace(versionRegex, newComment);
+
+fs.writeFileSync(filePath, updatedContent, 'utf8');
+
+console.log(`Updated ${path.basename(filePath)} to version v${newVersion} (${newTimestamp})`);
