@@ -2187,12 +2187,24 @@ thead th:last-child {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 4px 6px;
-    border-radius: 5px;
+    border-radius: 10px 5px 5px 10px;
     font-weight: 600;
     vertical-align: middle;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-decoration: none;
     line-height: .9;
+}
+.tag::before {
+    content: "";
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    background-image: var(--tag-icon);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 4px;
+    vertical-align: middle;
 }
 
 .tag:hover {

@@ -2,33 +2,38 @@
 
 // ─── Version Checker ───
 const versionTargets = [
-  { label: '🎨 style.css', path: '/style/style.css' },
-  { label: '🔣 core.js', path: document.currentScript.src },
-  { label: '📂 sidenav.js', path: '/scripts/sidenav.js' },
-  { label: '💬 infobox.js', path: '/scripts/infobox.js' },
-  { label: '📑 sidebar.js', path: '/scripts/sidebar.js' }
+  { label: "🎨 style.css", path: "/style/style.css" },
+  { label: "🔣 core.js", path: document.currentScript.src },
+  { label: "📂 sidenav.js", path: "/scripts/sidenav.js" },
+  { label: "💬 infobox.js", path: "/scripts/infobox.js" },
+  { label: "📑 sidebar.js", path: "/scripts/sidebar.js" },
 ];
 
-Promise.all(versionTargets.map(target =>
-  fetch(target.path)
-    .then(res => res.ok ? res.text() : null)
-    .then(text => {
-      const match = text?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
-      return match
-        ? `${target.label} v${match[1]} – ${match[2]}`
-        : `${target.label} ❓`;
-    })
-    .catch(() => `${target.label} ❌`)
-)).then(versionMessages => {
+Promise.all(
+  versionTargets.map((target) =>
+    fetch(target.path)
+      .then((res) => (res.ok ? res.text() : null))
+      .then((text) => {
+        const match = text?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+        return match
+          ? `${target.label} v${match[1]} – ${match[2]}`
+          : `${target.label} ❓`;
+      })
+      .catch(() => `${target.label} ❌`)
+  )
+).then((versionMessages) => {
   const styles = [
-    'color: lightgreen; font-weight: bold;',
-    'color: teal; font-weight: bold;',
-    'color: orange; font-weight: bold;',
-    'color: hotpink; font-weight: bold;',
-    'color: cornflowerblue; font-weight: bold;'
+    "color: lightgreen; font-weight: bold;",
+    "color: teal; font-weight: bold;",
+    "color: orange; font-weight: bold;",
+    "color: hotpink; font-weight: bold;",
+    "color: cornflowerblue; font-weight: bold;",
   ];
-  const logFormat = versionMessages.map(() => '%c%s').join(' ');
-  const logValues = versionMessages.flatMap((msg, i) => [styles[i % styles.length], msg]);
+  const logFormat = versionMessages.map(() => "%c%s").join(" ");
+  const logValues = versionMessages.flatMap((msg, i) => [
+    styles[i % styles.length],
+    msg,
+  ]);
   console.log(logFormat, ...logValues);
 });
 
@@ -87,20 +92,24 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.style.display = "none";
     title.style.display = "none";
 
-    hoverWords.forEach(word => {
+    hoverWords.forEach((word) => {
       word.addEventListener("mouseenter", () => {
         word.classList.add("active-tooltip");
 
         const key = word.dataset.tooltipKey || word.textContent.trim(); // fallback
-        const content = tooltipDefinitions[key] || `No description available for <strong>${key}</strong>.`;
+        const content =
+          tooltipDefinitions[key] ||
+          `No description available for <strong>${key}</strong>.`;
         description.innerHTML = content;
 
         const rect = word.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft =
+          window.pageXOffset || document.documentElement.scrollLeft;
 
-        tooltip.style.left = (rect.left + scrollLeft) + "px";
-        tooltip.style.top = (rect.bottom + scrollTop + 10) + "px";
+        tooltip.style.left = rect.left + scrollLeft + "px";
+        tooltip.style.top = rect.bottom + scrollTop + 10 + "px";
 
         tooltip.classList.add("visible");
         tooltip.style.pointerEvents = "auto";
@@ -124,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.style.display = "";
     title.style.display = "";
 
-    tagElements.forEach(tag => {
+    tagElements.forEach((tag) => {
       tag.addEventListener("mouseenter", () => {
         tag.classList.add("active-tag-tooltip");
 
@@ -141,14 +150,18 @@ document.addEventListener("DOMContentLoaded", () => {
         tooltip.style.borderColor = color;
 
         title.textContent = tagKey;
-        description.innerHTML = tagData?.definition || `No description available for <strong>${tagKey}</strong>.`;
+        description.innerHTML =
+          tagData?.definition ||
+          `No description available for <strong>${tagKey}</strong>.`;
 
         const rect = tag.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft =
+          window.pageXOffset || document.documentElement.scrollLeft;
 
-        tooltip.style.left = (rect.left + scrollLeft) + "px";
-        tooltip.style.top = (rect.bottom + scrollTop + 10) + "px";
+        tooltip.style.left = rect.left + scrollLeft + "px";
+        tooltip.style.top = rect.bottom + scrollTop + 10 + "px";
 
         tooltip.classList.add("visible");
         tooltip.style.pointerEvents = "auto";
@@ -164,21 +177,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ─── Load tooltip definitions ───
   fetch("/data/tooltips.json")
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .then(data => {
+    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then((data) => {
       tooltipDefinitions = data;
       initializeTooltips();
     })
-    .catch(err => console.error("Error loading tooltip definitions:", err));
+    .catch((err) => console.error("Error loading tooltip definitions:", err));
 
   // ─── Load tag and category definitions ───
   fetch("/data/tags.json")
-    .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .then(data => {
-      if (data.tags) data.tags.forEach(tag => tagDefinitions[tag.name] = tag);
-      if (data.categories) data.categories.forEach(cat => categoryColors[cat.name] = cat.color || "#D4B55A");
+    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then((data) => {
+      if (data.tags)
+        data.tags.forEach((tag) => (tagDefinitions[tag.name] = tag));
+      if (data.categories)
+        data.categories.forEach(
+          (cat) => (categoryColors[cat.name] = cat.color || "#D4B55A")
+        );
 
-      document.querySelectorAll(".tag").forEach(tag => {
+      document.querySelectorAll(".tag").forEach((tag) => {
         const tagName = tag.textContent.trim();
         const tagData = tagDefinitions[tagName];
         const color = categoryColors[tagData?.category];
@@ -188,15 +205,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
+      applyTagIcons();
+
       initializeTagTooltips();
     })
-    .catch(err => console.error("Error loading tag definitions:", err));
+    .catch((err) => console.error("Error loading tag definitions:", err));
 
   // ─── Expandable Sections ───
-  const collapsibleItems = document.querySelectorAll(".collapsible-item, .collapsible-item-sb");
-  collapsibleItems.forEach(item => {
-    const header = item.querySelector(".collapsible-header, .collapsible-header-sb");
-    const content = item.querySelector(".collapsible-content, .collapsible-content-sb");
+  const collapsibleItems = document.querySelectorAll(
+    ".collapsible-item, .collapsible-item-sb"
+  );
+  collapsibleItems.forEach((item) => {
+    const header = item.querySelector(
+      ".collapsible-header, .collapsible-header-sb"
+    );
+    const content = item.querySelector(
+      ".collapsible-content, .collapsible-content-sb"
+    );
     const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
 
     // Start collapsed
@@ -218,48 +243,68 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // After transition, fix height to auto if expanded
-      content.addEventListener("transitionend", function handler() {
-        if (item.classList.contains("expanded")) {
-          content.style.height = "auto";
-        }
-        content.removeEventListener("transitionend", handler, { once: true });
-      }, { once: true });
+      content.addEventListener(
+        "transitionend",
+        function handler() {
+          if (item.classList.contains("expanded")) {
+            content.style.height = "auto";
+          }
+          content.removeEventListener("transitionend", handler, { once: true });
+        },
+        { once: true }
+      );
     });
   });
 
   // ─── Rule Toggles ───
   const toggles = document.querySelectorAll(".rule-switch input[data-rule]");
-  toggles.forEach(cb => {
+  toggles.forEach((cb) => {
     const key = "rule-" + cb.dataset.rule;
     if (localStorage.getItem(key) === "false") cb.checked = false;
     updateVisibility(cb.dataset.rule, cb.checked);
   });
 
-  toggles.forEach(cb => cb.addEventListener("change", e => {
-    const rule = e.target.dataset.rule;
-    const on = e.target.checked;
-    localStorage.setItem("rule-" + rule, on);
-    updateVisibility(rule, on);
-  }));
+  toggles.forEach((cb) =>
+    cb.addEventListener("change", (e) => {
+      const rule = e.target.dataset.rule;
+      const on = e.target.checked;
+      localStorage.setItem("rule-" + rule, on);
+      updateVisibility(rule, on);
+    })
+  );
 
+  // ─── Visibility Functions ───
   function updateVisibility(rule, on) {
-    document.querySelectorAll(".rule-" + rule).forEach(el => {
+    document.querySelectorAll(".rule-" + rule).forEach((el) => {
       el.style.display = on ? "" : "none";
+    });
+  }
+  function applyTagIcons() {
+    document.querySelectorAll(".tag").forEach((tag) => {
+      const tagName = tag.textContent.trim();
+      const tagData = tagDefinitions[tagName];
+      if (tagData?.icon) {
+        tag.style.setProperty("--tag-icon", `url("${tagData.icon}")`);
+      }
     });
   }
 
   // ─── Page Fade Navigation ───
-  document.body.addEventListener("click", e => {
+  document.body.addEventListener("click", (e) => {
     const link = e.target.closest("a[href]");
     if (!link) return;
     const href = link.getAttribute("href");
     if (
-      href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") ||
-      link.target === "_blank" || (link.hostname && link.hostname !== location.hostname)
-    ) return;
+      href.startsWith("#") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:") ||
+      link.target === "_blank" ||
+      (link.hostname && link.hostname !== location.hostname)
+    )
+      return;
 
     e.preventDefault();
     document.body.classList.add("fade-out");
-    setTimeout(() => window.location.href = href, 500);
+    setTimeout(() => (window.location.href = href), 500);
   });
 });
