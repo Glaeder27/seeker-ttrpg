@@ -1,14 +1,14 @@
-/*v2.17 2025-08-03T15:33:09.598Z*/
+/*v2.18 2025-08-03T20:35:31.740Z*/
 
 // ─── Version Checker ───
 
 const versionTargets = [
-  { label: "📄 This page (.html)", path: location.pathname, isHTML: true },
-  { label: "🎨 style.css", path: "/style/style.css" },
-  { label: "🔣 core.js", path: document.currentScript.src },
-  { label: "📂 sidenav.js", path: "/scripts/sidenav.js" },
-  { label: "💬 infobox.js", path: "/scripts/infobox.js" },
-  { label: "📑 sidebar.js", path: "/scripts/sidebar.js" },
+  { label: '📄 This page (.html)', path: location.pathname, isHTML: true },
+  { label: '🎨 style.css', path: "/style/style.css" },
+  { label: '🔣 core.js', path: document.currentScript.src },
+  { label: '📂 sidenav.js', path: "/scripts/sidenav.js" },
+  { label: '💬 infobox.js', path: "/scripts/infobox.js" },
+  { label: '📑 sidebar.js', path: "/scripts/sidebar.js" },
 ];
 
 const versionRegexHTML  = /<!--\s*v([\d.]+)\s+([\d\-T:.Z]+)\s*-->/;
