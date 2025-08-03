@@ -37,7 +37,7 @@ let newComment = '';
 
 // Mantieni tipo di commento originale
 if (fullMatch.startsWith('<!--')) {
-  newComment = `<!-- v${newVersion} ${newTimestamp}* -->`;
+  newComment = `<!-- v${newVersion} ${newTimestamp} -->`;
 } else {
   newComment = `/*v${newVersion} ${newTimestamp}*/`;
 }
