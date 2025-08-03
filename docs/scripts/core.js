@@ -1,7 +1,9 @@
-/*v2.10 2025-08-03T14:36:38.350Z*/
+/*v2.13 2025-08-03T15:05:22.387Z*/
 
 // ─── Version Checker ───
+// ─── Version Checker Enhanced ───
 const versionTargets = [
+  { label: "📄 HTML", path: location.pathname, isHTML: true },
   { label: "🎨 style.css", path: "/style/style.css" },
   { label: "🔣 core.js", path: document.currentScript.src },
   { label: "📂 sidenav.js", path: "/scripts/sidenav.js" },
@@ -9,32 +11,42 @@ const versionTargets = [
   { label: "📑 sidebar.js", path: "/scripts/sidebar.js" },
 ];
 
+const versionRegex = /v([\d.]+)\s+([\d\-T:.Z]+)/; // accetta anche commenti HTML
+
 Promise.all(
   versionTargets.map((target) =>
     fetch(target.path)
       .then((res) => (res.ok ? res.text() : null))
       .then((text) => {
-        const match = text?.match(/\/\*v([\d.]+)\s+([\d\-T:Z]+)\*\//);
+        if (!text) return { label: target.label, version: "❌" };
+
+        let match;
+        if (target.isHTML) {
+          // Cerca solo nei primi 500 caratteri (inizio file)
+          match = text.slice(0, 500).match(/<!--\s*v([\d.]+)\s+([\d\-T:.Z]+)\s*-->/);
+        } else {
+          match = text.match(/\/\*v([\d.]+)\s+([\d\-T:.Z]+)\*\//);
+        }
+
         return match
-          ? `${target.label} v${match[1]} – ${match[2]}`
-          : `${target.label} ❓`;
+          ? { label: target.label, version: `v${match[1]} – ${match[2]}` }
+          : { label: target.label, version: "❓" };
       })
-      .catch(() => `${target.label} ❌`)
+      .catch(() => ({ label: target.label, version: "❌" }))
   )
-).then((versionMessages) => {
+).then((results) => {
   const styles = [
-    "color: lightgreen; font-weight: bold;",
-    "color: teal; font-weight: bold;",
-    "color: orange; font-weight: bold;",
-    "color: hotpink; font-weight: bold;",
-    "color: cornflowerblue; font-weight: bold;",
+    "color: DarkGoldenRod; font-weight: bold; text-decoration: underline dotted",
+    "color: GoldenRod; font-weight: bold;",
+    "color: Gold; font-weight: bold;",
+    "color: PaleGoldenRod; font-weight: bold;",
+    "color: Chocolate; font-weight: bold;",
+    "color: DarkOrange; font-weight: bold;"
   ];
-  const logFormat = versionMessages.map(() => "%c%s").join(" ");
-  const logValues = versionMessages.flatMap((msg, i) => [
-    styles[i % styles.length],
-    msg,
-  ]);
-  console.log(logFormat, ...logValues);
+
+  results.forEach((entry, i) => {
+    console.log(`%c${entry.label} %c${entry.version}`, "color: gray; font-weight: bold;", styles[i % styles.length]);
+  });
 });
 
 // ─── Globals ───
