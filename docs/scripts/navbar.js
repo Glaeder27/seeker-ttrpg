@@ -1,4 +1,50 @@
-/* v3.72 2025-07-24T11:30:00Z */
+/*v3.73 2025-08-04T13:33:25.108Z*/
+
+// Aggiungi queste variabili all'inizio del tuo script navbar.js
+const userIcon = document.getElementById('user-icon');
+const userDropdownMenu = document.getElementById('user-dropdown-menu');
+const dropdownAuthLink = document.getElementById('dropdown-auth-link');
+const mobileUserLink = document.getElementById('mobile-user-link');
+
+// Gestisci la visualizzazione del menu a tendina
+userIcon.addEventListener('click', (e) => {
+    e.preventDefault();
+    userDropdownMenu.classList.toggle('show');
+});
+
+// Nascondi il menu se l'utente clicca fuori
+document.addEventListener('click', (e) => {
+    if (!userMenuContainer.contains(e.target)) {
+        userDropdownMenu.classList.remove('show');
+    }
+});
+
+// Aggiungi il listener per lo stato di autenticazione di Firebase
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // L'utente è loggato
+        // Mostra il link per la pagina del profilo e il logout
+        dropdownAuthLink.textContent = 'Logout';
+        dropdownAuthLink.href = '#'; // Cambia l'URL per il logout
+        dropdownAuthLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            await auth.signOut();
+            window.location.href = '/auth.html';
+        });
+
+        // Aggiorna il link del menu mobile
+        mobileUserLink.style.display = 'block';
+
+    } else {
+        // L'utente non è loggato
+        // Mostra il link per il login
+        dropdownAuthLink.textContent = 'Login';
+        dropdownAuthLink.href = '/auth.html';
+        
+        // Nascondi il link del menu mobile
+        mobileUserLink.style.display = 'none';
+    }
+});
 
 fetch("/navbar.html")
   .then(res => res.text())

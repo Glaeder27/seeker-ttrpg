@@ -1,4 +1,4 @@
-/*v2.27 2025-08-03T21:36:21.702Z*/
+/*v2.28 2025-08-04T13:33:56.721Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3606,6 +3606,46 @@ details[open] .infobox-table {
     padding: 1em;
     background: var(--background-grey-1);
     border-radius: 1em;
+}
+
+/*=============================================
+=                 USER PAGE                   =
+=============================================*/
+.user-menu-container {
+    position: relative;
+}
+
+.user-icon {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--background-color-dark);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px;
+    color: var(--text-color-light);
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: var(--hover-color);
 }
 
 /*=============================================
