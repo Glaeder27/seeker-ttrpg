@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Utente</title>
+    
+    <link rel="stylesheet" href="/style/style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+    <script src="config.js" defer></script>
+    <script src="user-page.js" defer></script>
+</head>
+<body>
+
+    <div class="central-column">
+        <h1>La tua pagina utente</h1>
+
+        <div id="userProfile" style="display: none;">
+            <p>Benvenuto/a, <span id="userName"></span>!</p>
+            
+            <form id="profileForm">
+                <div class="spacer small">
+                    <label for="nickname">Nickname:</label>
+                    <input type="text" id="nickname" required>
+                </div>
+                <div class="spacer small">
+                    <label for="faction">Fazione:</label>
+                    <select id="faction" required>
+                        <option value="" disabled selected>Scegli una fazione</option>
+                        <option value="corona_spagnola">Corona Spagnola</option>
+                        <option value="corona_inglese">Corona Inglese</option>
+                        <option value="papato">Papato</option>
+                    </select>
+                </div>
+                <button type="submit" class="button">Salva</button>
+            </form>
+        </div>
+
+        <p id="notLoggedIn" style="display: none;">Per visualizzare questa pagina, devi aver effettuato l'accesso.</p>
+    </div>
+
+</body>
+</html>
