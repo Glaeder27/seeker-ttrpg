@@ -1,8 +1,8 @@
-/*v1.2 2025-08-04T09:52:49.235Z*/
+/*v1.3 2025-08-04T10:22:42.466Z*/
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyADcrS6zihFsQNcCCc5qdjJdyK3GuXcy_c",
+  apiKey: "AIzaSyCZu-da02W-5Q4gd5N7mhwx_UReEu8QSfE",
   authDomain: "seeker-ttrpg.firebaseapp.com",
   projectId: "seeker-ttrpg",
   storageBucket: "seeker-ttrpg.firebasestorage.app",
