@@ -1,4 +1,4 @@
-<!-- v1.3 2025-08-04T09:09:18.030Z -->
+<!-- v1.4 2025-08-04T09:18:21.584Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -38,7 +38,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    
+
     <script src="/scripts/config.js" defer></script>
     <script src="/scripts/user-page.js" defer></script>
 
@@ -46,41 +46,51 @@
         /* Specific Styles */
     </style>
 </head>
-<body is="user-page">
 
+<body class="clean" id="user-page">
     <!-- NAVBAR -->
     <div id="navbar-top"></div>
     <script src="/scripts/navbar.js"></script>
 
-    <div class="central-column">
-        <h1>La tua pagina utente</h1>
-
-        <div id="userProfile" style="display: none;">
-            <p>Benvenuto/a, <span id="userName"></span>!</p>
-            
-            <form id="profileForm">
-                <div class="spacer small">
-                    <label for="nickname">Nickname:</label>
-                    <input type="text" id="nickname" required>
-                </div>
-                <div class="spacer small">
-                    <label for="faction">Fazione:</label>
-                    <select id="faction" required>
-                        <option value="" disabled selected>Scegli una fazione</option>
-                        <option value="corona_spagnola">Corona Spagnola</option>
-                        <option value="corona_inglese">Corona Inglese</option>
-                        <option value="papato">Papato</option>
-                    </select>
-                </div>
-                <button type="submit" class="button">Salva</button>
-            </form>
+    <main>
+        <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+            <section id="what-is-seeker" class="central-column">
+      <header class="title">
+        <div class="title-container">
+          <span class="title-icon">🜍</span>
+          <h1>The Expedition</h1>
+          <span class="title-icon flipped">🜍</span>
         </div>
+      </header>
 
-        <p id="notLoggedIn" style="display: none;">Per visualizzare questa pagina, devi aver effettuato l'accesso.</p>
-    </div>
+            <div id="userProfile" style="display: none;">
+                <p>Welcome, <span id="userName"></span>!</p>
+
+                <form id="profileForm">
+                    <div class="spacer small">
+                        <label for="nickname">Nickname:</label>
+                        <input type="text" id="nickname" required>
+                    </div>
+                    <div class="spacer small">
+                        <label for="faction">Fazione:</label>
+                        <select id="faction" required>
+                            <option value="" disabled selected>Scegli una fazione</option>
+                            <option value="corona_spagnola">Corona Spagnola</option>
+                            <option value="corona_inglese">Corona Inglese</option>
+                            <option value="papato">Papato</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="button">Salva</button>
+                </form>
+            </div>
+
+            <p id="notLoggedIn" style="display: none;">Per visualizzare questa pagina, devi aver effettuato l'accesso.
+            </p>
+    </main>
 
     <!-- SCRIPTS ────────────────────────────────────────────────── -->
     <script src="/scripts/core.js"></script>
 
 </body>
+
 </html>
