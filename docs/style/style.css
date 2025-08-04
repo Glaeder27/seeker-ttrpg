@@ -1,4 +1,4 @@
-/*v2.29 2025-08-04T14:04:59.379Z*/
+/*v2.30 2025-08-04T14:57:39.967Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2092,7 +2092,7 @@ thead th:last-child {
     background-color: rgba(0, 0, 0, 0.5);
     border: 0px solid var(--ancient-gold, #B89B4B);
     border-style: solid;
-    border-width: 5px 1px 5px 1px;
+    border-width: 5px 0 5px 0;
     border-radius: 10px;
     color: var(--off-white, #F0F0F0);
     font-size: 0.9rem;
