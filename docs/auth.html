@@ -1,93 +1,138 @@
-<!-- v1.4 2025-08-04T10:28:38.257Z -->
+<!-- v1.7 2025-08-04T10:34:36.287Z -->
 
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrazione Utente - Seeker TTRPG</title>
-    <link rel="stylesheet" href="/style/style.css">
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG | About</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
     <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-.container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
 
-h1 {
-    color: #333;
-    margin-bottom: 20px;
-}
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
 
-input[type="email"],
-input[type="password"] {
-    width: calc(100% - 20px); /* Spazio per il padding */
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            /* Spazio per il padding */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-}
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
 
-button:hover {
-    background-color: #45a049;
-}
+        button:hover {
+            background-color: #45a049;
+        }
 
-.message {
-    margin-top: 20px;
-    font-weight: bold;
-}
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
 
-.message.success {
-    color: #28a745;
-}
+        .message.success {
+            color: #28a745;
+        }
 
-.message.error {
-    color: #dc3545;
-}
+        .message.error {
+            color: #dc3545;
+        }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1 id="form-title">Accedi</h1>
-        
+
+<body class="bckg-2" id="auth">
+  <!-- NAVBAR -->
+  <div id="navbar-top" style="opacity: 1 !important"></div>
+  <script src="/scripts/navbar.js"></script>
+
+
+    <!-- Banner -->
+  <div class="banner-parallax-secondary" style="background-image: url('assets/images/banners/home-page.webp');"
+    alt="Conquista de México por Cortés - Conquest of Mexico by Cortés">
+    <span class="banner-stain-top"></span>
+    <span class="banner-stain-bottom"></span>
+  </div>
+    <section id="auth" class="central-column">
+      <header class="title">
+        <div class="title-container">
+          <span class="title-icon">🜁</span>
+          <h1>Accedi</h1>
+          <span class="title-icon flipped">🜁</span>
+        </div>
+      </header>
+
         <form id="loginForm">
             <div class="form-group">
                 <label for="loginEmail">Email:</label>
@@ -111,7 +156,7 @@ button:hover {
             </div>
             <button type="submit">Registrati</button>
         </form>
-        
+
         <p id="message" class="message"></p>
 
         <p class="switch-form">
@@ -119,7 +164,7 @@ button:hover {
             <br>
             Hai già un account? <a href="#" id="switchToLogin" style="display: none;">Accedi</a>
         </p>
-    </div>
+    </section>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
@@ -127,5 +172,7 @@ button:hover {
 
     <script src="/scripts/config.js"></script>
     <script src="/scripts/auth.js"></script>
+    <script src="/scripts/core.js"></script>
 </body>
+
 </html>
