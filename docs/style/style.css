@@ -1,4 +1,4 @@
-/*v2.28 2025-08-04T13:33:56.721Z*/
+/*v2.29 2025-08-04T14:04:59.379Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1782,10 +1782,10 @@ h1.site-title {
 
 h2.section {
     position: relative;
-    font-family: var(--font-main);
+    font-family: var(--font-antique);
     font-size: 2.5em;
     line-height: 1.2;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     font-variant: small-caps;
     color: var(--ancient-gold, #d6b879);
@@ -3625,8 +3625,8 @@ details[open] .infobox-table {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: var(--background-color-dark);
-    border: 1px solid var(--border-color);
+    background-color: var(--background-dark-1);
+    border: 1px solid var(--ancient-gold);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     min-width: 150px;
     z-index: 1000;
