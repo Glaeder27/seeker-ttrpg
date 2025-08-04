@@ -1,4 +1,4 @@
-/*v2.20 2025-08-04T09:51:44.336Z*/
+/*v2.22 2025-08-04T10:28:59.813Z*/
 
 // ─── Version Checker ───
 
@@ -10,7 +10,7 @@ const versionTargets = [
   { label: '📑 sidebar.js', path: "/scripts/sidebar.js" },
   { label: '💬 infobox.js', path: "/scripts/infobox.js" },
   { label: '🗿 user-page.js', path: "/scripts/user-page.js" },
-  { label: '🔐 login.js', path: "/scripts/login.js" },
+  { label: '🔐 auth.js', path: "/scripts/auth.js" },
   { label: '📚 config.js', path: "/scripts/config.js" }
 ];
 
