@@ -1,4 +1,6 @@
-/*v1.2 2025-08-04T10:28:36.258Z*/
+/*v1.3 2025-08-04T10:31:16.471Z*/
+
+firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 
