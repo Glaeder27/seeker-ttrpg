@@ -1,4 +1,4 @@
-/*v2.22 2025-08-04T10:28:59.813Z*/
+/*v2.23 2025-08-04T14:40:09.972Z*/
 
 // ─── Version Checker ───
 
@@ -6,6 +6,7 @@ const versionTargets = [
   { label: '📄 This page (.html)', path: location.pathname, isHTML: true },
   { label: '🔣 core.js', path: document.currentScript.src },
   { label: '🎨 style.css', path: "/style/style.css" },
+  { label: '🧭 navbar.js', path: "/scripts/navbar.js" },
   { label: '📂 sidenav.js', path: "/scripts/sidenav.js" },
   { label: '📑 sidebar.js', path: "/scripts/sidebar.js" },
   { label: '💬 infobox.js', path: "/scripts/infobox.js" },
