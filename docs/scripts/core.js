@@ -1,4 +1,4 @@
-/*v2.24 2025-08-04T20:31:25.071Z*/
+/*v2.25 2025-08-04T20:38:59.934Z*/
 
 // ─── Version Checker ───
 
@@ -107,11 +107,14 @@ document.addEventListener("DOMContentLoaded", () => {
       word.addEventListener("mouseenter", () => {
         word.classList.add("active-tooltip");
 
-        const key = word.dataset.tooltipKey || word.textContent.trim(); // fallback
-        const content =
-          tooltipDefinitions[key] ||
-          `No description available for <strong>${key}</strong>.`;
-        description.innerHTML = content;
+        const rawKey = word.dataset.tooltipKey || word.textContent.trim();
+        const key = rawKey.toLowerCase();
+        const entry = tooltipDefinitions[key];
+
+        description.innerHTML =
+          entry && entry.description
+            ? entry.description
+            : `No description available for <strong>${rawKey}</strong>.`;
 
         const rect = word.getBoundingClientRect();
         const scrollTop =
