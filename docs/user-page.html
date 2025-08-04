@@ -1,96 +1,146 @@
-<!-- v1.4 2025-08-04T09:18:21.584Z -->
-
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
 
 <head>
-    <!-- Charset -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Seeker TTRPG • User Area</title>
+    <title>Seeker TTRPG • The Encampment</title>
 
     <meta name="description"
-        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+        content="Your personal area on Seeker TTRPG. Manage your profile, data, and game preferences." />
 
     <meta name="author" content="Alonso de Luna" />
 
-    <!-- Favicon (opzionale) -->
     <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
 
-    <!-- Open Graph per link preview -->
-    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:title" content="Seeker TTRPG - The Encampment" />
     <meta property="og:description"
-        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+        content="Customize your profile, connect with other Seekers, and manage your characters." />
     <meta property="og:image" content="/assets/preview.png" />
-    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:url" content="https://www.seekerttrpg.com/user-page.html" />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter Card preview -->
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- IE Compatibility -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js" defer></script>
 
     <script src="/scripts/config.js" defer></script>
     <script src="/scripts/user-page.js" defer></script>
+    <script src="/scripts/core.js" defer></script>
 
-    <style>
-        /* Specific Styles */
-    </style>
 </head>
 
 <body class="clean" id="user-page">
-    <!-- NAVBAR -->
     <div id="navbar-top"></div>
-    <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/navbar.js" defer></script>
 
     <main>
-        <!-- MAIN CONTENT ───────────────────────────────────────────── -->
-            <section id="what-is-seeker" class="central-column">
-      <header class="title">
-        <div class="title-container">
-          <span class="title-icon">🜍</span>
-          <h1>The Expedition</h1>
-          <span class="title-icon flipped">🜍</span>
-        </div>
-      </header>
+        <section class="central-column">
+            <header class="title">
+                <div class="title-container">
+                    <span class="title-icon">🜍</span>
+                    <h1 id="pageTitle">Welcome to The Encampment, <span id="userName"></span>!</h1>
+                    <span class="title-icon flipped">🜍</span>
+                </div>
+            </header>
 
-            <div id="userProfile" style="display: none;">
-                <p>Welcome, <span id="userName"></span>!</p>
-
-                <form id="profileForm">
-                    <div class="spacer small">
-                        <label for="nickname">Nickname:</label>
-                        <input type="text" id="nickname" required>
-                    </div>
-                    <div class="spacer small">
-                        <label for="faction">Fazione:</label>
-                        <select id="faction" required>
-                            <option value="" disabled selected>Scegli una fazione</option>
-                            <option value="corona_spagnola">Corona Spagnola</option>
-                            <option value="corona_inglese">Corona Inglese</option>
-                            <option value="papato">Papato</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="button">Salva</button>
-                </form>
+            <div id="notLoggedIn" class="message-box message-error" style="display: none;">
+                <p>To view this page, you must be logged in.</p>
+                <p><a href="/auth.html">Click here to log in or register.</a></p>
             </div>
 
-            <p id="notLoggedIn" style="display: none;">Per visualizzare questa pagina, devi aver effettuato l'accesso.
-            </p>
+            <div id="userProfile" style="display: none;">
+                
+                <form id="profileForm" class="profile-form">
+                    
+                    <div class="profile-section">
+                        <h2><i class="fa-solid fa-user"></i> Personal Details</h2>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your chosen name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" rows="4" placeholder="Tell us a little about yourself and your interests..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="languages">Languages Spoken</label>
+                            <input type="text" id="languages" placeholder="e.g. Italian, English, Spanish">
+                        </div>
+                        <div class="form-group">
+                            <label for="socialLink">Social / Website Link</label>
+                            <input type="url" id="socialLink" placeholder="https://your-site.com">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="profile-section">
+                        <h2><i class="fa-solid fa-ship"></i> Your Expedition</h2>
+                        <div class="form-group">
+                            <label for="faction">Faction</label>
+                            <select id="faction" required>
+                                <option value="" disabled selected>Choose a faction</option>
+                                <option value="corona_spagnola">Spanish Crown</option>
+                                <option value="corona_inglese">English Crown</option>
+                                <option value="papato">Papacy</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferredRole">Game Role</label>
+                            <input type="text" id="preferredRole" placeholder="e.g. Storyteller, Player, Lore Crafter">
+                        </div>
+                        <div class="form-group">
+                            <label for="preferredPlaystyle">Preferred Playstyle</label>
+                            <textarea id="preferredPlaystyle" rows="3" placeholder="Adventure, Combat, Intrigue..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Game Experience</label>
+                            <select id="experience">
+                                <option value="" disabled selected>Select your level</option>
+                                <option value="novice">Novice</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="experienced">Experienced</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="profile-section">
+                        <h2><i class="fa-regular fa-clock"></i> Availability</h2>
+                        <div class="form-group">
+                            <label for="timezone">Timezone</label>
+                            <input type="text" id="timezone" placeholder="e.g. GMT+1, CET">
+                        </div>
+                        <div class="form-group">
+                            <label for="availability">Weekly Availability</label>
+                            <textarea id="availability" rows="3" placeholder="e.g. Monday evenings, weekends..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferredPlatform">Gaming Platform</label>
+                            <input type="text" id="preferredPlatform" placeholder="e.g. Discord, Roll20, Foundry">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="button primary">Save Profile</button>
+                    <button type="button" class="button secondary" id="logoutButton">Log Out</button>
+                </form>
+
+            </div>
+        </section>
     </main>
 
-    <!-- SCRIPTS ────────────────────────────────────────────────── -->
-    <script src="/scripts/core.js"></script>
+    <div id="footer"></div>
+    <script src="/scripts/footer.js" defer></script>
 
 </body>
-
 </html>
