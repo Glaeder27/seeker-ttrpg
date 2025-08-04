@@ -1,9 +1,4 @@
-/*v2.2 2025-08-04T13:29:53.319Z*/
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const db = firebase.firestore();
+/*v2.3 2025-08-04T14:08:30.755Z*/
 
 // Ottieni riferimenti agli elementi HTML
 const userProfileDiv = document.getElementById('userProfile');
