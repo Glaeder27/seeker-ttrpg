@@ -139,8 +139,15 @@
         </section>
     </main>
 
-    <div id="footer"></div>
-    <script src="/scripts/footer.js" defer></script>
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+      fetch("footer.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("footer-bottom").innerHTML = html;
+        });
+    </script>
 
 </body>
 </html>
