@@ -1,8 +1,4 @@
-/*v1.3 2025-08-04T10:31:16.471Z*/
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
+/*v1.4 2025-08-04T14:44:31.932Z*/
 
 const loginForm = document.getElementById('loginForm');
 const loginEmailInput = document.getElementById('loginEmail');
