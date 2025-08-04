@@ -1,4 +1,4 @@
-/*v2.36 2025-08-04T21:45:11.664Z*/
+/*v2.37 2025-08-04T21:45:46.476Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -802,7 +802,7 @@ body#home-page .main-navbar {
     height: 300px;
     /* Mask */
     background-size: cover;
-    background-position: center bottom;
+    background-position: center;
     background-attachment: fixed;
     /* Parallax */
     background-repeat: no-repeat;
