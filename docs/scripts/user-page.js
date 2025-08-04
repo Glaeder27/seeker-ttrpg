@@ -1,4 +1,6 @@
-/*v1.1 2025-08-04T09:52:36.666Z*/
+/*v1.2 2025-08-04T10:14:17.720Z*/
+
+firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const db = firebase.firestore();
