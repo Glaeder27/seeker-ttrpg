@@ -1,4 +1,4 @@
-<!-- v1.29 2025-08-04T15:44:33.919Z -->
+<!-- v1.30 2025-08-04T15:49:03.686Z -->
 
 <!-- v1.0 2025-08-03T14:40:43.432Z -->
 
@@ -266,35 +266,102 @@
 
                 <h4 id="solaria-diagram">Visual Summary</h2>
 
-                    <div class="solaria-diagram">
-                        <div class="diagram-step">
-                            <div class="icon">🛕</div>
-                            <h3>Pyramid</h3>
-                            <p>Captures and focuses solar energy at specific times of day using its geometry and
-                                materials.
-                            </p>
-                        </div>
-                        <div class="arrow">→</div>
-                        <div class="diagram-step">
-                            <div class="icon">🌊</div>
-                            <h3>Cenote</h3>
-                            <p>Stores and amplifies energy in water, becoming dangerously charged when full.</p>
-                        </div>
-                        <div class="arrow">→</div>
-                        <div class="diagram-step">
-                            <div class="icon">🪨</div>
-                            <h3>Ley-lines</h3>
-                            <p>Conduct energy across long distances using underground paths made of obsidian and copper.
-                            </p>
-                        </div>
-                        <div class="arrow">→</div>
-                        <div class="diagram-step">
-                            <div class="icon">🗿</div>
-                            <h3>Obelisk</h3>
-                            <p>Acts as a repeater node, allowing controlled access to Solaria through ritual interface.
-                            </p>
+                    <!-- —— Solaria Network Carousel —— -->
+                    <div class="full-width">
+                        <div class="carousel-wrapper">
+                            <button class="carousel-arrow left" aria-label="Scroll Left">‹</button>
+                            <div class="carousel-track">
+
+                                <!-- Pyramid: Energy Capture -->
+                                <div class="feature-card-wrapper">
+                                    <div class="feature-card"
+                                        style="background-image: url('assets/images/solaria/pyramid-capture.webp');">
+                                        <div class="card-content">
+                                            <p class="card-description full">
+                                                At sunrise and sunset, radiant beams of sunlight concentrate upon temple
+                                                apexes, charging the Solaria
+                                                field. This is known as the "Descent of the Sun Serpent."
+                                            </p>
+                                            <h3>Pyramid: Energy Capture</h3>
+                                            <p class="card-description short">Solar rays descend upon pyramid tops
+                                                during celestial alignments.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Cenote: Energy Storage -->
+                                <div class="feature-card-wrapper">
+                                    <div class="feature-card"
+                                        style="background-image: url('assets/images/solaria/cenote-storage.webp');">
+                                        <div class="card-content">
+                                            <p class="card-description full">
+                                                The solar energy flows into cenotes, where water serves as a natural
+                                                capacitor. The water glows with a
+                                                blinding intensity and is deadly to touch.
+                                            </p>
+                                            <h3>Cenote: Energy Storage</h3>
+                                            <p class="card-description short">Cenotes act as luminous capacitors for
+                                                stored solar energy.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Ley Lines: Transmission -->
+                                <div class="feature-card-wrapper">
+                                    <div class="feature-card"
+                                        style="background-image: url('assets/images/solaria/ley-lines.webp');">
+                                        <div class="card-content">
+                                            <p class="card-description full">
+                                                Energy travels through artificial ley lines made of conductive sacred
+                                                materials like obsidian and jade,
+                                                connecting the land in a glowing network.
+                                            </p>
+                                            <h3>Ley Lines: Transmission</h3>
+                                            <p class="card-description short">Energy is channeled through constructed
+                                                solar veins.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Obelisks: Distribution Nodes -->
+                                <div class="feature-card-wrapper">
+                                    <div class="feature-card"
+                                        style="background-image: url('assets/images/solaria/obelisk-repeaters.webp');">
+                                        <div class="card-content">
+                                            <p class="card-description full">
+                                                Obelisks and stelae act as energy repeaters and amplifiers, ensuring
+                                                stable access to Solaria across
+                                                vast distances.
+                                            </p>
+                                            <h3>Obelisks: Distribution Nodes</h3>
+                                            <p class="card-description short">Transmitters grant localized access to the
+                                                Solaria field.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Users: Access & Manipulation -->
+                                <div class="feature-card-wrapper">
+                                    <div class="feature-card"
+                                        style="background-image: url('assets/images/solaria/solar-mage.webp');">
+                                        <div class="card-content">
+                                            <p class="card-description full">
+                                                Once within a broadcast zone, initiates marked with glyphs or sigils can
+                                                access Solaria to invoke
+                                                phenomena, cast spells, or manipulate the world.
+                                            </p>
+                                            <h3>Users: Access & Manipulation</h3>
+                                            <p class="card-description short">Practitioners draw upon the field through
+                                                ritual inscriptions.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button class="carousel-arrow right" aria-label="Scroll Right">›</button>
                         </div>
                     </div>
+
             </section>
 
             <!-- Mysteries of Solaria: Ancient Technologies Reclaimed -->
@@ -883,6 +950,94 @@
                 script.src = '/scripts/sidenav.js';
                 document.body.appendChild(script);
             });
+    </script>
+
+    <script>
+        // ── Carousel Script ─────────────────────────────────────────────
+        document.addEventListener("DOMContentLoaded", function () {
+            const track = document.querySelector(".carousel-track");
+            const wrapper = document.querySelector(".carousel-wrapper");
+            const leftArrow = document.querySelector(".carousel-arrow.left");
+            const rightArrow = document.querySelector(".carousel-arrow.right");
+
+            let isDown = false;
+            let startX = 0;
+            let scrollStart = 0;
+            let animationFrame;
+
+            function updateArrows() {
+                const scrollLeft = track.scrollLeft;
+                const maxScroll = track.scrollWidth - track.clientWidth;
+
+                if (scrollLeft <= 0) {
+                    leftArrow.classList.add("hidden");
+                } else {
+                    leftArrow.classList.remove("hidden");
+                }
+
+                if (scrollLeft >= maxScroll - 1) {
+                    rightArrow.classList.add("hidden");
+                } else {
+                    rightArrow.classList.remove("hidden");
+                }
+            }
+
+            // ── Drag ───────────────────────
+            track.addEventListener("mousedown", (e) => {
+                isDown = true;
+                startX = e.clientX;
+                scrollStart = track.scrollLeft;
+                track.classList.add("active");
+                document.body.style.userSelect = "none";
+            });
+
+            track.addEventListener("mouseup", () => {
+                isDown = false;
+                track.classList.remove("active");
+                document.body.style.userSelect = "";
+                if (animationFrame) cancelAnimationFrame(animationFrame);
+                updateArrows();
+            });
+
+            track.addEventListener("mouseleave", () => {
+                if (isDown) {
+                    isDown = false;
+                    track.classList.remove("active");
+                    document.body.style.userSelect = "";
+                    if (animationFrame) cancelAnimationFrame(animationFrame);
+                    updateArrows();
+                }
+            });
+
+            track.addEventListener("mousemove", (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const walk = e.clientX - startX;
+                if (animationFrame) cancelAnimationFrame(animationFrame);
+                animationFrame = requestAnimationFrame(() => {
+                    track.scrollLeft = scrollStart - walk;
+                    updateArrows();
+                });
+            });
+
+            // ── Arrows ───────────────────────
+            const scrollAmount = 300;
+
+            leftArrow.addEventListener("click", () => {
+                track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            });
+
+            rightArrow.addEventListener("click", () => {
+                track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            });
+
+            // ─ Update arrows on scroll
+            track.addEventListener("scroll", updateArrows);
+            window.addEventListener("resize", updateArrows);
+
+            // Initial check
+            updateArrows();
+        });
     </script>
 
     <script src="/scripts/sidebar.js"></script>
