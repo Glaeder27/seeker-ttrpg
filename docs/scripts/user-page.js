@@ -1,15 +1,3 @@
-// Aggiungi il tuo codice di configurazione Firebase in un file separato (es. config.js)
-const firebaseConfig = {
-  apiKey: "AIzaSyCZu-da02W-5Q4gd5N7mhwx_UReEu8QSfE",
-  authDomain: "seeker-ttrpg.firebaseapp.com",
-  projectId: "seeker-ttrpg",
-  messagingSenderId: "762210490643",
-  appId: "1:762210490643:web:a2b3893b9e4cfbdc8862e6"
-};
-
-// Inizializza Firebase
-firebase.initializeApp(firebaseConfig);
-
 const auth = firebase.auth();
 const db = firebase.firestore();
 
