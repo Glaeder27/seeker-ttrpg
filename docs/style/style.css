@@ -1,4 +1,4 @@
-/*v2.34 2025-08-04T19:38:05.548Z*/
+/*v2.35 2025-08-04T21:40:11.177Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -424,13 +424,13 @@ p {
 /* Positions */
 
 .align-left {
-    text-align: left;
+    text-align: left !important;
 }
 .align-right {
-    text-align: right;
+    text-align: right !important;
 }
 .align-center {
-    text-align: center;
+    text-align: center !important;
 }
 
 /* Spacers */
