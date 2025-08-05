@@ -1,4 +1,4 @@
-/*v2.42 2025-08-05T13:35:00.100Z*/
+/*v2.43 2025-08-05T13:42:23.544Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -777,7 +777,9 @@ body#home-page .main-navbar {
 /* ── FOOTER ─────────────── */
 
 .site-footer {
-    border-top: 1px solid var(--ancient-gold);
+    border-width: 2px 0 10px 0;
+    border-color: var(--ancient-gold);
+    border-style: solid;
     padding: 2rem 1rem;
     text-align: center;
     font-size: 0.9rem;
