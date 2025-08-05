@@ -1,4 +1,4 @@
-/*v2.39 2025-08-05T10:06:15.585Z*/
+/*v2.40 2025-08-05T13:05:21.103Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2246,7 +2246,7 @@ thead th:last-child {
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding: 1px 6px 0 1px;
+    padding: 1px 6px 1px 1px;
     border-radius: 10px 5px 5px 10px;
     font-weight: 600;
     vertical-align: middle;
