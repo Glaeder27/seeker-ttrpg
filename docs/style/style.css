@@ -1,4 +1,4 @@
-/*v2.47 2025-08-05T14:05:44.907Z*/
+/*v2.48 2025-08-05T18:40:18.142Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1798,7 +1798,7 @@ h2.section {
     margin: 60px 0 30px 0;
     background: var(--background-dark-2);
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     letter-spacing: 1px;
     text-align: center;
     margin-inline: -3rem;
