@@ -1,4 +1,4 @@
-<!-- v1.23 2025-08-05T13:36:18.748Z -->
+<!-- v1.24 2025-08-05T15:00:07.402Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -331,6 +331,86 @@
             text-decoration: none;
         }
 
+                .solaria-arrow {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            pointer-events: none;
+        }
+
+        .solaria-arrow svg {
+            width: 100%;
+            height: 100%;
+            fill: #aaa;
+        }
+
+        .solaria-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 0.5rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .feature-card {
+            height: 250px;
+            width: 250px;
+        }
+
+        .card-content h4 {
+            margin-top: 0;
+            font-family: var(--font-antique);
+            color: var(--bright-gold);
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .card-content h3 {
+            margin-top: 0;
+            font-family: var(--font-antique);
+            color: var(--bright-gold);
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            margin: 0;
+        }
+
+        .feature-card:hover h3,
+        .feature-card:hover h4,
+        .feature-card:hover .card-description.short,
+        .feature-card:hover .solaria-icon {
+            opacity: 0;
+            transition: all .3s ease;
+        }
+
+        .carousel-wrapper {
+            max-width: 870px;
+        }
+
+        .card-description.full {
+            min-height: 0;
+            position: absolute;
+        }
+
+        .card-description.short {
+            margin-top: 0;
+        }
+
+        .card-content {
+            align-items: center;
+            justify-content: flex-start;
+            background-color: rgba(0, 0, 0, .9);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 600px) {
+            .solaria-diagram {
+                flex-direction: column;
+            }
+
+            .solaria.arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
 
         /* Overrides */
     </style>
@@ -409,6 +489,175 @@
                     mechanical devices,
                     contain traces of what they encountered. But the full truth was buried, redacted, or sealed by the
                     founding compact.</p>
+
+                <!-- Seekers & Buscadores Carousel -->
+
+                <div class="full-width">
+    <div class="carousel-wrapper">
+        <button class="carousel-arrow left" aria-label="Scroll Left">‹</button>
+        <div class="carousel-track">
+
+            <!-- Columbus -->
+            <div class="feature-card-wrapper">
+                <div class="feature-card"
+                    style="background-image: url('/assets/images/portraits/columbus.webp');">
+                    <div class="card-content">
+                        <div class="solaria-icon">
+                            <img src="/assets/icons/svg/solaria/icon-compass.svg" alt="Navigator" title="Navigator"
+                                class="solaria-icon" />
+                        </div>
+                        <h3>Christopher Columbus</h3>
+                        <h4>Navigator & Pathfinder</h4>
+                        <p class="card-description short">First official Seeker commissioned by the Spanish Crown.</p>
+                        <p class="card-description full">
+                            Tasked with charting routes to Solaria-active zones, Columbus was selected for his exceptional instinct and navigational resilience beyond known maps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solaria-arrow">
+                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
+            </div>
+
+            <!-- Isabella -->
+            <div class="feature-card-wrapper">
+                <div class="feature-card"
+                    style="background-image: url('/assets/images/portraits/isabella.webp');">
+                    <div class="card-content">
+                        <div class="solaria-icon">
+                            <img src="/assets/icons/svg/solaria/icon-crown.svg" alt="Patron" title="Royal Patron"
+                                class="solaria-icon" />
+                        </div>
+                        <h3>Isabella of Castile</h3>
+                        <h4>Royal Patron</h4>
+                        <p class="card-description short">Sponsored the first Solaria-linked expeditions.</p>
+                        <p class="card-description full">
+                            Aware of the New World's arcane value, Isabella funneled resources into covert missions aimed at securing pyramidal structures and channeling sites.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solaria-arrow">
+                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
+            </div>
+
+            <!-- Henry VII -->
+            <div class="feature-card-wrapper">
+                <div class="feature-card"
+                    style="background-image: url('/assets/images/portraits/henry-vii.webp');">
+                    <div class="card-content">
+                        <div class="solaria-icon">
+                            <img src="/assets/icons/svg/solaria/icon-scroll.svg" alt="Diplomacy" title="Strategic Sponsor"
+                                class="solaria-icon" />
+                        </div>
+                        <h3>Henry VII of England</h3>
+                        <h4>Strategic Sponsor</h4>
+                        <p class="card-description short">Supported early English covert Seeker expeditions.</p>
+                        <p class="card-description full">
+                            Through intermediaries, Henry VII funded expeditions seeking access to arcane knowledge, hoping to counterbalance Spanish dominance over Solaria access.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solaria-arrow">
+                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
+            </div>
+
+            <!-- Leonardo -->
+            <div class="feature-card-wrapper">
+                <div class="feature-card"
+                    style="background-image: url('/assets/images/portraits/da-vinci.webp');">
+                    <div class="card-content">
+                        <div class="solaria-icon">
+                            <img src="/assets/icons/svg/solaria/icon-glyph.svg" alt="Architect" title="Glyph Designer"
+                                class="solaria-icon" />
+                        </div>
+                        <h3>Leonardo da Vinci</h3>
+                        <h4>Glyph Designer</h4>
+                        <p class="card-description short">Encoded Solaria field diagrams in his notebooks.</p>
+                        <p class="card-description full">
+                            Da Vinci corresponded with European Seekers, embedding ritual patterns and resonant geometries in his inventions to manipulate Solaria frequencies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solaria-arrow">
+                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
+            </div>
+
+            <!-- Vespucci -->
+            <div class="feature-card-wrapper">
+                <div class="feature-card"
+                    style="background-image: url('/assets/images/portraits/vespucci.webp');">
+                    <div class="card-content">
+                        <div class="solaria-icon">
+                            <img src="/assets/icons/svg/solaria/icon-map.svg" alt="Cartographer" title="Seeker Cartographer"
+                                class="solaria-icon" />
+                        </div>
+                        <h3>Amerigo Vespucci</h3>
+                        <h4>Seeker Cartographer</h4>
+                        <p class="card-description short">Mapped resonance zones aligned with celestial patterns.</p>
+                        <p class="card-description full">
+                            Vespucci’s journals recorded recurring anomalies in terrain and sky, suggesting an awareness of how Solaria energies interact with geography and astronomy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solaria-arrow">
+                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
+            </div>
+
+            <!-- Luther -->
+            <div class="feature-card-wrapper">
+                <div class="feature-card"
+                    style="background-image: url('/assets/images/portraits/luther.webp');">
+                    <div class="card-content">
+                        <div class="solaria-icon">
+                            <img src="/assets/icons/svg/solaria/icon-doctrine.svg" alt="Theologian" title="Doctrine Disruptor"
+                                class="solaria-icon" />
+                        </div>
+                        <h3>Martin Luther</h3>
+                        <h4>Doctrine Disruptor</h4>
+                        <p class="card-description short">Unknowingly exposed to Solarian writings.</p>
+                        <p class="card-description full">
+                            Some of Luther’s reformist ideas were inspired by contact with esoteric texts smuggled from the New World, triggering a spiritual and ideological upheaval.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solaria-arrow">
+                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
+            </div>
+
+            <!-- Nostradamus -->
+            <div class="feature-card-wrapper">
+                <div class="feature-card"
+                    style="background-image: url('/assets/images/portraits/nostradamus.webp');">
+                    <div class="card-content">
+                        <div class="solaria-icon">
+                            <img src="/assets/icons/svg/solaria/icon-star.svg" alt="Oracle" title="Astrologer-Seer"
+                                class="solaria-icon" />
+                        </div>
+                        <h3>Nostradamus</h3>
+                        <h4>Astrologer-Seer</h4>
+                        <p class="card-description short">Predicted Solaria events through stellar alignments.</p>
+                        <p class="card-description full">
+                            While not directly involved in field expeditions, Nostradamus advised key agents via symbolic correspondences, interpreting celestial shifts as Solaria pulses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
                 <p>The Seekers are the custodians of that hidden war — a war not for land, but for reality itself.</p>
 
@@ -955,6 +1204,94 @@
                 el.style.backgroundImage = `${gradient}, url(/assets/textures/antique-gold-1.jpg)`;
                 el.style.backgroundPosition = `center, ${offsetX}px 0px`;
             });
+        });
+    </script>
+
+        <script>
+        // ── Carousel Script ─────────────────────────────────────────────
+        document.addEventListener("DOMContentLoaded", function () {
+            const track = document.querySelector(".carousel-track");
+            const wrapper = document.querySelector(".carousel-wrapper");
+            const leftArrow = document.querySelector(".carousel-arrow.left");
+            const rightArrow = document.querySelector(".carousel-arrow.right");
+
+            let isDown = false;
+            let startX = 0;
+            let scrollStart = 0;
+            let animationFrame;
+
+            function updateArrows() {
+                const scrollLeft = track.scrollLeft;
+                const maxScroll = track.scrollWidth - track.clientWidth;
+
+                if (scrollLeft <= 0) {
+                    leftArrow.classList.add("hidden");
+                } else {
+                    leftArrow.classList.remove("hidden");
+                }
+
+                if (scrollLeft >= maxScroll - 1) {
+                    rightArrow.classList.add("hidden");
+                } else {
+                    rightArrow.classList.remove("hidden");
+                }
+            }
+
+            // ── Drag ───────────────────────
+            track.addEventListener("mousedown", (e) => {
+                isDown = true;
+                startX = e.clientX;
+                scrollStart = track.scrollLeft;
+                track.classList.add("active");
+                document.body.style.userSelect = "none";
+            });
+
+            track.addEventListener("mouseup", () => {
+                isDown = false;
+                track.classList.remove("active");
+                document.body.style.userSelect = "";
+                if (animationFrame) cancelAnimationFrame(animationFrame);
+                updateArrows();
+            });
+
+            track.addEventListener("mouseleave", () => {
+                if (isDown) {
+                    isDown = false;
+                    track.classList.remove("active");
+                    document.body.style.userSelect = "";
+                    if (animationFrame) cancelAnimationFrame(animationFrame);
+                    updateArrows();
+                }
+            });
+
+            track.addEventListener("mousemove", (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const walk = e.clientX - startX;
+                if (animationFrame) cancelAnimationFrame(animationFrame);
+                animationFrame = requestAnimationFrame(() => {
+                    track.scrollLeft = scrollStart - walk;
+                    updateArrows();
+                });
+            });
+
+            // ── Arrows ───────────────────────
+            const scrollAmount = 388;
+
+            leftArrow.addEventListener("click", () => {
+                track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            });
+
+            rightArrow.addEventListener("click", () => {
+                track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            });
+
+            // ─ Update arrows on scroll
+            track.addEventListener("scroll", updateArrows);
+            window.addEventListener("resize", updateArrows);
+
+            // Initial check
+            updateArrows();
         });
     </script>
 
