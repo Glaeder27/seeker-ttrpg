@@ -112,7 +112,7 @@
     },
     {
       "name": "Defense",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
+      "icon": "/assets/icons/svg/tags/tag-defense.svg",
       "category": "Combat",
       "definition": "Enhances your resistance, armor, or ability to avoid harm.",
       "visibility": true,
@@ -164,6 +164,18 @@
         "Often bypasses armor"
       ],
       "examples": ["Chain Spark", "Storm Jolt"],
+      "notes": ""
+    },
+    {
+      "name": "Loud",
+      "icon": "/assets/icons/svg/tags/tag-loud.svg",
+      "category": "General",
+      "definition": "Produces loud noise; may attract unwanted attention.",
+      "visibility": true,
+      "interactions": [
+        "None"
+      ],
+      "examples": ["Lightning Bolt", "Alarm"],
       "notes": ""
     },
     {
@@ -294,6 +306,19 @@
         "Triggers synergy with Leadership talents"
       ],
       "examples": ["Inspire", "Bandage"],
+      "notes": ""
+    },
+    {
+      "name": "Toxic",
+      "icon": "/assets/icons/svg/tags/tag-toxic.svg",
+      "category": "Elemental",
+      "definition": "Applies toxic effects that deal damage over time.",
+      "visibility": true,
+      "interactions": [
+        "Stacks with other poisons",
+        "Affected by Constitution and Detox talents"
+      ],
+      "examples": ["Venom Blade", "Toxic Mist"],
       "notes": ""
     },
     {
