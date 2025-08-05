@@ -53,3 +53,4 @@ build/
 
 # Others
 *.tgz
+postcss.config.js
