@@ -1,4 +1,4 @@
-<!-- v1.33 2025-08-05T16:27:44.717Z -->
+<!-- v1.36 2025-08-05T16:35:30.541Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -339,6 +339,7 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
+            border-radius: 20px;
         }
 
         .feature-card {
@@ -355,31 +356,31 @@
         }
 
         .card-content h3 {
-            margin-top: 0;
             font-family: var(--font-antique);
             color: var(--bright-gold);
             text-transform: uppercase;
             font-size: 1.4rem;
-            margin: 0;
+            margin: 1rem 0;
+        }
+
+        .feature-card h3,
+        .feature-card h4,
+        .feature-card .card-description.short,
+        .feature-card .carousel-icon {
+            opacity: 0;
+            transition: all .3s ease;
         }
 
         .feature-card:hover h3,
         .feature-card:hover h4,
         .feature-card:hover .card-description.short,
         .feature-card:hover .carousel-icon {
-            opacity: 0;
+            opacity: 1;
             transition: all .3s ease;
         }
 
         .carousel-wrapper {
             max-width: 830px;
-        }
-
-        .card-description.full {
-            min-height: 0;
-            position: absolute;
-            margin-top: auto;
-            margin-bottom: auto;
         }
 
         .card-description.short {
@@ -389,12 +390,7 @@
         .card-content {
             align-items: center;
             justify-content: flex-start;
-            background-color: rgba(0, 0, 0, .9);
-        }
-
-        .feature-card:hover .card-description.full {
-            margin-top: auto;
-            margin-bottom: auto;
+            background-color: rgba(0, 0, 0, .3);
         }
     </style>
 </head>
@@ -483,18 +479,14 @@
                                 <div class="feature-card"
                                     style="background-image: url('/assets/images/webp/portraits/portrait-cristophorus-columbus.webp');">
                                     <div class="card-content">
+                                        <h3>Christopher Columbus</h3>
                                         <div class="carousel-icon">
                                             <img src="/assets/icons/webp/flags/flag-crown-of-castilla.webp"
                                                 alt="Crown of Castilla" title="Buscador under the Crown of Castilla" class="carousel-icon" />
                                         </div>
-                                        <h3>Christopher Columbus</h3>
                                         <h4>Navigator & Pathfinder</h4>
                                         <p class="card-description short">First official Seeker commissioned by the
                                             Spanish Crown.</p>
-                                        <p class="card-description full">
-                                            Tasked with charting routes to Solaria-active zones, Columbus was selected
-                                            for his exceptional instinct and navigational resilience beyond known maps.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -503,20 +495,16 @@
                                 <div class="feature-card"
                                     style="background-image: url('/assets/images/webp/portraits/portrait-isabella-castilla.webp');">
                                     <div class="card-content">
-                                        <div class="carousel-icon">
+                                        <h3>Isabella of Castile</h3>
+                                         <div class="carousel-icon">
                                             <img src="/assets/icons/webp/flags/coat-of-arms-isabella-castilla.webp"
                                                 alt="Isabella of Castilla" title="Isabella of Castilla" class="carousel-icon" />
                                             <img src="/assets/icons/webp/flags/flag-crown-of-castilla.webp" alt="Crown of Castilla"
                                                 title="Buscador under the Crown of Castilla" class="carousel-icon" />
                                         </div>
-                                        <h3>Isabella of Castile</h3>
                                         <h4>Royal Patron</h4>
                                         <p class="card-description short">Sponsored the first Solaria-linked
                                             expeditions.</p>
-                                        <p class="card-description full">
-                                            Aware of the New World's arcane value, Isabella funneled resources into
-                                            covert missions aimed at securing pyramidal structures and channeling sites.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -525,21 +513,17 @@
                                 <div class="feature-card"
                                     style="background-image: url('/assets/images/webp/portraits/portrait-henry-vii.webp');">
                                     <div class="card-content">
-                                        <div class="carousel-icon">
+                                        <h3>Henry VII of England</h3>
+                                                                                <div class="carousel-icon">
                                             <img src="/assets/icons/webp/flags/coat-of-arms-henry-vii.webp"
                                                 alt="Henry VII" title="Henry VII" class="carousel-icon" />
                                             <img src="/assets/icons/webp/flags/coat-of-arms-henry-vii.webp" alt="Seeker under the Crown of England"
                                                 title="Seeker under the Crown of England" class="carousel-icon" />
                                         </div>
-                                        <h3>Henry VII of England</h3>
+
                                         <h4>Strategic Sponsor</h4>
                                         <p class="card-description short">Supported early English covert Seeker
                                             expeditions.</p>
-                                        <p class="card-description full">
-                                            Through intermediaries, Henry VII funded expeditions seeking access to
-                                            arcane knowledge, hoping to counterbalance Spanish dominance over Solaria
-                                            access.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -548,18 +532,15 @@
                                 <div class="feature-card"
                                     style="background-image: url('/assets/images/webp/portraits/portrait-leonardo-da-vinci.webp');">
                                     <div class="card-content">
-                                        <div class="carousel-icon">
+                                        <h3>Leonardo da Vinci</h3>
+                                                                                <div class="carousel-icon">
                                             <img src="/assets/icons/webp/flags/flag-crown-of-castilla.webp"
                                                 alt="Buscador under the Crown of Castilla" title="Buscador under the Crown of Castilla" class="carousel-icon" />
                                         </div>
-                                        <h3>Leonardo da Vinci</h3>
+
                                         <h4>Glyph Designer</h4>
                                         <p class="card-description short">Encoded Solaria field diagrams in his
                                             notebooks.</p>
-                                        <p class="card-description full">
-                                            Da Vinci corresponded with European Seekers, embedding ritual patterns and
-                                            resonant geometries in his inventions to manipulate Solaria frequencies.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -568,19 +549,14 @@
                                 <div class="feature-card"
                                     style="background-image: url('/assets/images/webp/portraits/portrait-amerigo-vespucci.webp');">
                                     <div class="card-content">
-                                        <div class="carousel-icon">
+                                        <h3>Amerigo Vespucci</h3>
+                                         <div class="carousel-icon">
                                             <img src="/assets/icons/webp/flags/flag-crown-of-castilla.webp"
                                                 alt="Buscador under the Crown of Castilla" title="Buscador under the Crown of Castilla" class="carousel-icon" />
                                         </div>
-                                        <h3>Amerigo Vespucci</h3>
                                         <h4>Seeker Cartographer</h4>
                                         <p class="card-description short">Mapped resonance zones aligned with celestial
                                             patterns.</p>
-                                        <p class="card-description full">
-                                            Vespucci’s journals recorded recurring anomalies in terrain and sky,
-                                            suggesting an awareness of how Solaria energies interact with geography and
-                                            astronomy.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -589,18 +565,13 @@
                                 <div class="feature-card"
                                     style="background-image: url('/assets/images/webp/portraits/portrait-martin-luther.webp');">
                                     <div class="card-content">
-                                        <div class="carousel-icon">
+                                        <h3>Martin Luther</h3>
+                                         <div class="carousel-icon">
                                             <img src="/assets/icons/webp/flags/flag-crown-of-england.webp"
                                                 alt="Seeker under the Crown of England" title="Seeker under the Crown of England" class="carousel-icon" />
                                         </div>
-                                        <h3>Martin Luther</h3>
                                         <h4>Doctrine Disruptor</h4>
                                         <p class="card-description short">Unknowingly exposed to Solarian writings.</p>
-                                        <p class="card-description full">
-                                            Some of Luther’s reformist ideas were inspired by contact with esoteric
-                                            texts smuggled from the New World, triggering a spiritual and ideological
-                                            upheaval.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -609,19 +580,14 @@
                                 <div class="feature-card"
                                     style="background-image: url('/assets/images/webp/portraits/portrait-nostradamus.webp');">
                                     <div class="card-content">
+                                        <h3>Nostradamus</h3>
                                         <div class="carousel-icon">
                                             <img src="/assets/icons/webp/flags/flag-crown-of-england.webp" alt="Seeker under the Crown of England"
                                                 title="Seeker under the Crown of England" class="carousel-icon" />
                                         </div>
-                                        <h3>Nostradamus</h3>
                                         <h4>Astrologer-Seer</h4>
                                         <p class="card-description short">Predicted Solaria events through stellar
                                             alignments.</p>
-                                        <p class="card-description full">
-                                            While not directly involved in field expeditions, Nostradamus advised key
-                                            agents via symbolic correspondences, interpreting celestial shifts as
-                                            Solaria pulses.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
