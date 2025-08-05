@@ -1,4 +1,4 @@
-<!-- v1.50 2025-08-05T19:21:32.778Z -->
+<!-- v1.52 2025-08-05T20:19:53.327Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -406,8 +406,7 @@
         }
 
         .feature-wrapper {
-            display: flex;
-            flex-direction: column;
+            display: block;
         }
 
         .feature-desc {
@@ -416,8 +415,35 @@
 
         .feature-image {
             display: block;
-            width: 2rem;
-            height: 2rem;
+            width: 130px;
+            height: 130px;
+            border-radius: 10px;
+            padding: 10px;
+            background: var(--background-dark-1);
+        }
+
+        .feature-symbol {
+            display: block;
+            border-radius: .7rem;
+            padding: 3px;
+            margin-right: 15px;
+            background: linear-gradient(to right, 
+                        rgba(var(--deep-charcoal-rgb), 0.2), 
+                        rgba(var(--brown-charcoal-rgb), 0.2)), 
+                        url(/assets/textures/antique-gold-1.jpg);
+        }
+
+        .float-left {
+            float: left;
+        }
+        .float-right {
+            float: right;
+        }
+        
+
+        .feature-desc h4 {
+            border-bottom: 1px solid var(--ancient-gold);
+            display: flex;
         }
     </style>
 </head>
@@ -672,41 +698,50 @@
                     a world that pushes back. Its systems are tightly interwoven to support tense exploration,
                     meaningful choices, and escalating consequences.</p>
 
-
                 <div class="feature-wrapper">
-                    <div class="feature-symbol">
-                        <img src="/assets/icons/svg/rules/symbol-no-archetypes.svg"
-                        alt="No Classes, Background, nor Races" title="No Archetypes" class="feature-image" />
+                    <div class="feature-symbol float-left">
+                        <img src="/assets/icons/svg/rules/symbol-no-archetypes.svg" alt="No Classes, Background, nor Races"
+                            title="No Archetypes" class="feature-image" />
                     </div>
                     <div class="feature-desc">
                         <h4>No Archetypes</h4>
                         <p>Seeker breaks away from traditional roleplaying
-                    templates. There are
-                    no classes, races, spell slots, or fixed
-                    archetypes. Instead of locking characters into predefined paths, Seeker lets them grow dynamically
-                    across three
-                    Tracks — <strong>Combat</strong>, <strong>Exploration</strong>, and <strong>Social</strong> — by
-                    earning experience and investing it into modular <strong>Skills</strong> and
-                    <strong>Masteries</strong>.
-                    Each ability can be further modified through Augmentations, allowing players to shape truly unique
-                    characters
-                    tailored to their playstyle and story arc.
-                </p>
+                            templates. There are
+                            no classes, races, spell slots, or fixed
+                            archetypes. Instead of locking characters into predefined paths, Seeker lets them grow dynamically
+                            across three
+                            Tracks — <strong>Combat</strong>, <strong>Exploration</strong>, and <strong>Social</strong> — by
+                            earning experience and investing it into modular <strong>Skills</strong> and
+                            <strong>Masteries</strong>.
+                            Each ability can be further modified through Augmentations, allowing players to shape truly unique
+                            characters
+                            tailored to their playstyle and story arc.
+                        </p>
                     </div>
                 </div>
 
-                <p><strong class="highlight">No Archetypes.</strong> Seeker breaks away from traditional roleplaying
-                    templates. There are
-                    no classes, races, spell slots, or fixed
-                    archetypes. Instead of locking characters into predefined paths, Seeker lets them grow dynamically
-                    across three
-                    Tracks — <strong>Combat</strong>, <strong>Exploration</strong>, and <strong>Social</strong> — by
-                    earning experience and investing it into modular <strong>Skills</strong> and
-                    <strong>Masteries</strong>.
-                    Each ability can be further modified through Augmentations, allowing players to shape truly unique
-                    characters
-                    tailored to their playstyle and story arc.
-                </p>
+                <div class="feature-wrapper">
+                    <div class="feature-symbol float-right">
+                        <img src="/assets/icons/svg/rules/symbol-dice-engine.svg" alt="No Classes, Background, nor Races"
+                            title="No Archetypes" class="feature-image" />
+                    </div>
+                    <div class="feature-desc">
+                        <h4>Narrative-focused Dice Engine.</h4>
+                        <p>At the core of the system lies the
+                    Twin Coil System,
+                    a
+                    dice mechanic that resolves actions by rolling two types of
+                    dice: <strong>Action</strong>, which determine success, and <strong>Risk</strong>, which introduce
+                    complications. This framework allows for
+                    non-binary and nuanced results — not just success or failure, but also mixed outcomes like
+                    <em>“success with complication”</em> or <em>“failure
+                        with benefit.”</em> It encourages drama, tension, and consequence while <strong>minimizing math
+                        at the table</strong>. Rolls are clean,
+                    fast, and easy to interpret.
+                        </p>
+                    </div>
+                </div>
+
 
                 <p><strong class="highlight">Narrative-focused Dice Engine.</strong> At the core of the system lies the
                     Twin Coil System,
