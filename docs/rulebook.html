@@ -1,4 +1,4 @@
-<!-- v1.24 2025-08-05T15:00:07.402Z -->
+<!-- v1.27 2025-08-05T15:33:57.502Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -331,20 +331,7 @@
             text-decoration: none;
         }
 
-                .solaria-arrow {
-            display: flex;
-            flex-wrap: wrap;
-            align-content: center;
-            pointer-events: none;
-        }
-
-        .solaria-arrow svg {
-            width: 100%;
-            height: 100%;
-            fill: #aaa;
-        }
-
-        .solaria-icon {
+        .carousel-icon {
             width: 64px;
             height: 64px;
             margin-bottom: 0.5rem;
@@ -352,7 +339,7 @@
         }
 
         .feature-card {
-            height: 250px;
+            height: 300px;
             width: 250px;
         }
 
@@ -376,7 +363,7 @@
         .feature-card:hover h3,
         .feature-card:hover h4,
         .feature-card:hover .card-description.short,
-        .feature-card:hover .solaria-icon {
+        .feature-card:hover .carousel-icon {
             opacity: 0;
             transition: all .3s ease;
         }
@@ -399,20 +386,9 @@
             justify-content: flex-start;
             background-color: rgba(0, 0, 0, .9);
         }
-
-        /* Responsive tweaks */
-        @media (max-width: 600px) {
-            .solaria-diagram {
-                flex-direction: column;
-            }
-
-            .solaria.arrow {
-                transform: rotate(90deg);
-            }
+        .feature-card:hover .card-description.full {
+            align-self: anchor-center;
         }
-    </style>
-
-        /* Overrides */
     </style>
 </head>
 
@@ -494,17 +470,15 @@
 
                 <div class="full-width">
     <div class="carousel-wrapper">
-        <button class="carousel-arrow left" aria-label="Scroll Left">‹</button>
         <div class="carousel-track">
-
             <!-- Columbus -->
             <div class="feature-card-wrapper">
                 <div class="feature-card"
-                    style="background-image: url('/assets/images/portraits/columbus.webp');">
+                    style="background-image: url('/assets/images/portraits/portrait-cristophorus-columbus.webp');">
                     <div class="card-content">
-                        <div class="solaria-icon">
-                            <img src="/assets/icons/svg/solaria/icon-compass.svg" alt="Navigator" title="Navigator"
-                                class="solaria-icon" />
+                        <div class="carousel-icon">
+                            <img src="/assets/icons/webp/flags/flag_crown-of-castilla.webp" alt="Navigator" title="Navigator"
+                                class="carousel-icon" />
                         </div>
                         <h3>Christopher Columbus</h3>
                         <h4>Navigator & Pathfinder</h4>
@@ -515,19 +489,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="solaria-arrow">
-                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
-            </div>
-
             <!-- Isabella -->
             <div class="feature-card-wrapper">
                 <div class="feature-card"
-                    style="background-image: url('/assets/images/portraits/isabella.webp');">
+                    style="background-image: url('/assets/images/portraits/portrait-isabella-castilla.webp');">
                     <div class="card-content">
-                        <div class="solaria-icon">
-                            <img src="/assets/icons/svg/solaria/icon-crown.svg" alt="Patron" title="Royal Patron"
-                                class="solaria-icon" />
+                        <div class="carousel-icon">
+                            <img src="/assets/icons/webp/flags/flag_crown-of-castilla.webp" alt="Patron" title="Royal Patron"
+                                class="carousel-icon" />
                         </div>
                         <h3>Isabella of Castile</h3>
                         <h4>Royal Patron</h4>
@@ -538,19 +507,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="solaria-arrow">
-                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
-            </div>
-
             <!-- Henry VII -->
             <div class="feature-card-wrapper">
                 <div class="feature-card"
-                    style="background-image: url('/assets/images/portraits/henry-vii.webp');">
+                    style="background-image: url('/assets/images/portraits/portrait-henry-vii.webp');">
                     <div class="card-content">
-                        <div class="solaria-icon">
-                            <img src="/assets/icons/svg/solaria/icon-scroll.svg" alt="Diplomacy" title="Strategic Sponsor"
-                                class="solaria-icon" />
+                        <div class="carousel-icon">
+                            <img src="/assets/icons/webp/flags/flag_henry-vii.webp" alt="Diplomacy" title="Strategic Sponsor"
+                                class="carousel-icon" />
                         </div>
                         <h3>Henry VII of England</h3>
                         <h4>Strategic Sponsor</h4>
@@ -561,19 +525,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="solaria-arrow">
-                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
-            </div>
-
             <!-- Leonardo -->
             <div class="feature-card-wrapper">
                 <div class="feature-card"
-                    style="background-image: url('/assets/images/portraits/da-vinci.webp');">
+                    style="background-image: url('/assets/images/portraits/portrait-leonardo-da-vinci.webp');">
                     <div class="card-content">
-                        <div class="solaria-icon">
-                            <img src="/assets/icons/svg/solaria/icon-glyph.svg" alt="Architect" title="Glyph Designer"
-                                class="solaria-icon" />
+                        <div class="carousel-icon">
+                            <img src="/assets/icons/webp/flags/flag_crown-of-castilla.webp" alt="Architect" title="Glyph Designer"
+                                class="carousel-icon" />
                         </div>
                         <h3>Leonardo da Vinci</h3>
                         <h4>Glyph Designer</h4>
@@ -584,19 +543,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="solaria-arrow">
-                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
-            </div>
-
             <!-- Vespucci -->
             <div class="feature-card-wrapper">
                 <div class="feature-card"
-                    style="background-image: url('/assets/images/portraits/vespucci.webp');">
+                    style="background-image: url('/assets/images/portraits/portrait-amerigo-vespucci.webp');">
                     <div class="card-content">
-                        <div class="solaria-icon">
-                            <img src="/assets/icons/svg/solaria/icon-map.svg" alt="Cartographer" title="Seeker Cartographer"
-                                class="solaria-icon" />
+                        <div class="carousel-icon">
+                            <img src="/assets/icons/webp/flags/flag_crown-of-castilla.webp" alt="Cartographer" title="Seeker Cartographer"
+                                class="carousel-icon" />
                         </div>
                         <h3>Amerigo Vespucci</h3>
                         <h4>Seeker Cartographer</h4>
@@ -607,19 +561,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="solaria-arrow">
-                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
-            </div>
-
             <!-- Luther -->
             <div class="feature-card-wrapper">
                 <div class="feature-card"
-                    style="background-image: url('/assets/images/portraits/luther.webp');">
+                    style="background-image: url('/assets/images/portraits/portrait-martin-luther.webp');">
                     <div class="card-content">
-                        <div class="solaria-icon">
-                            <img src="/assets/icons/svg/solaria/icon-doctrine.svg" alt="Theologian" title="Doctrine Disruptor"
-                                class="solaria-icon" />
+                        <div class="carousel-icon">
+                            <img src="/assets/icons/webp/flags/flag_crown-of-england.webp" alt="Theologian" title="Doctrine Disruptor"
+                                class="carousel-icon" />
                         </div>
                         <h3>Martin Luther</h3>
                         <h4>Doctrine Disruptor</h4>
@@ -630,19 +579,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="solaria-arrow">
-                <img src="/assets/icons/svg/solaria/icon-arrow-right.svg" class="solaria-icon" />
-            </div>
-
             <!-- Nostradamus -->
             <div class="feature-card-wrapper">
                 <div class="feature-card"
-                    style="background-image: url('/assets/images/portraits/nostradamus.webp');">
+                    style="background-image: url('/assets/images/portraits/portrait-nostradamus.webp');">
                     <div class="card-content">
-                        <div class="solaria-icon">
-                            <img src="/assets/icons/svg/solaria/icon-star.svg" alt="Oracle" title="Astrologer-Seer"
-                                class="solaria-icon" />
+                        <div class="carousel-icon">
+                            <img src="/assets/icons/webp/flags/flag_crown-of-england.webp" alt="Oracle" title="Astrologer-Seer"
+                                class="carousel-icon" />
                         </div>
                         <h3>Nostradamus</h3>
                         <h4>Astrologer-Seer</h4>
@@ -653,7 +597,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -1212,30 +1155,11 @@
         document.addEventListener("DOMContentLoaded", function () {
             const track = document.querySelector(".carousel-track");
             const wrapper = document.querySelector(".carousel-wrapper");
-            const leftArrow = document.querySelector(".carousel-arrow.left");
-            const rightArrow = document.querySelector(".carousel-arrow.right");
 
             let isDown = false;
             let startX = 0;
             let scrollStart = 0;
             let animationFrame;
-
-            function updateArrows() {
-                const scrollLeft = track.scrollLeft;
-                const maxScroll = track.scrollWidth - track.clientWidth;
-
-                if (scrollLeft <= 0) {
-                    leftArrow.classList.add("hidden");
-                } else {
-                    leftArrow.classList.remove("hidden");
-                }
-
-                if (scrollLeft >= maxScroll - 1) {
-                    rightArrow.classList.add("hidden");
-                } else {
-                    rightArrow.classList.remove("hidden");
-                }
-            }
 
             // ── Drag ───────────────────────
             track.addEventListener("mousedown", (e) => {
@@ -1251,7 +1175,6 @@
                 track.classList.remove("active");
                 document.body.style.userSelect = "";
                 if (animationFrame) cancelAnimationFrame(animationFrame);
-                updateArrows();
             });
 
             track.addEventListener("mouseleave", () => {
@@ -1260,7 +1183,6 @@
                     track.classList.remove("active");
                     document.body.style.userSelect = "";
                     if (animationFrame) cancelAnimationFrame(animationFrame);
-                    updateArrows();
                 }
             });
 
@@ -1271,27 +1193,8 @@
                 if (animationFrame) cancelAnimationFrame(animationFrame);
                 animationFrame = requestAnimationFrame(() => {
                     track.scrollLeft = scrollStart - walk;
-                    updateArrows();
                 });
             });
-
-            // ── Arrows ───────────────────────
-            const scrollAmount = 388;
-
-            leftArrow.addEventListener("click", () => {
-                track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-            });
-
-            rightArrow.addEventListener("click", () => {
-                track.scrollBy({ left: scrollAmount, behavior: "smooth" });
-            });
-
-            // ─ Update arrows on scroll
-            track.addEventListener("scroll", updateArrows);
-            window.addEventListener("resize", updateArrows);
-
-            // Initial check
-            updateArrows();
         });
     </script>
 
