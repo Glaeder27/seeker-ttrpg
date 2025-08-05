@@ -3,12 +3,27 @@
     {
       "name": "Combat",
       "definition": "Insert category description",
-      "color": "#a35e4e"
+      "color": "#8B3A3A"
+    },
+    {
+      "name": "Offensive",
+      "definition": "Insert category description",
+      "color": "#8B3A3A"
+    },
+    {
+      "name": "Defensive",
+      "definition": "Insert category description",
+      "color": "#4A5E6A"
     },
     {
       "name": "Social",
       "definition": "Insert category description",
       "color": "#a87c7c"
+    },
+    {
+      "name": "General",
+      "definition": "Insert category description",
+      "color": "#666666"
     },
     {
       "name": "Exploration",
@@ -113,7 +128,7 @@
     {
       "name": "Defense",
       "icon": "/assets/icons/svg/tags/tag-defense.svg",
-      "category": "Combat",
+      "category": "Defensive",
       "definition": "Enhances your resistance, armor, or ability to avoid harm.",
       "visibility": true,
       "interactions": ["Stacks with cover", "May reduce incoming damage"],
@@ -272,7 +287,7 @@
     {
       "name": "Strike",
       "icon": "/assets/icons/svg/tags/tag-strike.svg",
-      "category": "Combat",
+      "category": "Offensive",
       "definition": "A close-range melee attack. Must be within reach.",
       "visibility": true,
       "interactions": [
@@ -311,7 +326,7 @@
     {
       "name": "Toxic",
       "icon": "/assets/icons/svg/tags/tag-toxic.svg",
-      "category": "Elemental",
+      "category": "General",
       "definition": "Applies toxic effects that deal damage over time.",
       "visibility": true,
       "interactions": [
