@@ -1,21 +1,21 @@
-/*v2.28 2025-08-05T09:00:31.723Z*/
+/*v2.29 2025-08-05T13:07:18.991Z*/
 
 // ─── Version Checker ───
 
 const versionTargets = [
-  { label: '📄 This page (.html)', path: location.pathname, isHTML: true },
-  { label: '🔣 core.js', path: document.currentScript.src },
-  { label: '🎨 style.css', path: "/style/style.css" },
-  { label: '🧭 navbar.js', path: "/scripts/navbar.js" },
-  { label: '📂 sidenav.js', path: "/scripts/sidenav.js" },
-  { label: '📑 sidebar.js', path: "/scripts/sidebar.js" },
-  { label: '💬 infobox.js', path: "/scripts/infobox.js" },
-  { label: '🗿 user-page.js', path: "/scripts/user-page.js" },
-  { label: '🔐 auth.js', path: "/scripts/auth.js" },
-  { label: '📚 config.js', path: "/scripts/config.js" }
+  { label: "📄 This page (.html)", path: location.pathname, isHTML: true },
+  { label: "🔣 core.js", path: document.currentScript.src },
+  { label: "🎨 style.css", path: "/style/style.css" },
+  { label: "🧭 navbar.js", path: "/scripts/navbar.js" },
+  { label: "📂 sidenav.js", path: "/scripts/sidenav.js" },
+  { label: "📑 sidebar.js", path: "/scripts/sidebar.js" },
+  { label: "💬 infobox.js", path: "/scripts/infobox.js" },
+  { label: "🗿 user-page.js", path: "/scripts/user-page.js" },
+  { label: "🔐 auth.js", path: "/scripts/auth.js" },
+  { label: "📚 config.js", path: "/scripts/config.js" },
 ];
 
-const versionRegexHTML  = /<!--\s*v([\d.]+)\s+([\d\-T:.Z]+)\s*-->/;
+const versionRegexHTML = /<!--\s*v([\d.]+)\s+([\d\-T:.Z]+)\s*-->/;
 const versionRegexOther = /\/\*v([\d.]+)\s+([\d\-T:.Z]+)\*\//;
 
 Promise.all(
@@ -33,18 +33,21 @@ Promise.all(
           ? {
               Resource: target.label,
               Version: `v${match[1]}`,
-              Date: match[2]
+              Date: match[2],
             }
           : {
               Resource: target.label,
               Version: "❓",
-              Date: ""
+              Date: "",
             };
       })
       .catch(() => ({ Resource: target.label, Version: "❌", Date: "" }))
   )
 ).then((rows) => {
-  console.log("%c📦 Resource Versions", "color: goldenrod; font-weight: bold; font-size: 14px;");
+  console.log(
+    "%c📦 Resource Versions",
+    "color: goldenrod; font-weight: bold; font-size: 14px;"
+  );
   console.table(rows);
 });
 
@@ -144,31 +147,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!tagElements.length) return;
 
     const { tooltip, icon, title, description } = createTooltipBox();
-    // Show icon and title for tags
     icon.style.display = "";
     title.style.display = "";
 
     tagElements.forEach((tag) => {
-      tag.addEventListener("mouseenter", () => {
+      tag.addEventListener("mouseenter", async () => {
         tag.classList.add("active-tag-tooltip");
 
         const tagKey = tag.textContent.trim();
         const tagData = tagDefinitions[tagKey];
-        const category = tagData?.category || "";
+
+        if (!tagData) {
+          title.textContent = tagKey;
+          description.innerHTML = `No description available for <strong>${tagKey}</strong>.`;
+          return;
+        }
+
+        const category = tagData.category || "";
         const color = categoryColors[category] || "#D4B55A";
-
-        icon.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512">
-            <path fill="${color}" d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5L0 80C0 53.5 21.5 32 48 32l149.5 0c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
-          </svg>`;
-
         tooltip.style.borderColor = color;
         tooltip.style.setProperty("--tooltip-color", color);
 
         title.textContent = tagKey;
-        description.innerHTML =
-          tagData?.definition ||
-          `No description available for <strong>${tagKey}</strong>.`;
+        description.innerHTML = tagData.definition || "";
+
+        // Load SVG from icon URL
+        try {
+          const response = await fetch(tagData.icon);
+          const svgText = await response.text();
+          icon.innerHTML = svgText;
+        } catch (error) {
+          icon.innerHTML = ""; // fallback in caso di errore
+        }
 
         const rect = tag.getBoundingClientRect();
         const scrollTop =
@@ -178,7 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tooltip.style.left = rect.left + scrollLeft + "px";
         tooltip.style.top = rect.bottom + scrollTop + 10 + "px";
-
         tooltip.classList.add("visible");
         tooltip.style.pointerEvents = "auto";
       });
