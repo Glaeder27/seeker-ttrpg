@@ -1,4 +1,4 @@
-/*v2.25 2025-08-04T20:38:59.934Z*/
+/*v2.26 2025-08-05T08:39:02.030Z*/
 
 // ─── Version Checker ───
 
@@ -99,9 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!hoverWords.length) return;
 
     // One tooltip box for all glossary tooltips - no icon, no title shown
-    const { tooltip, icon, title, description } = createTooltipBox();
+    const { tooltip, icon, title, description, header } = createTooltipBox();
     icon.style.display = "none";
     title.style.display = "none";
+    header.style.display = "none";
 
     hoverWords.forEach((word) => {
       word.addEventListener("mouseenter", () => {
