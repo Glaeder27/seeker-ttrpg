@@ -259,7 +259,7 @@
     },
     {
       "name": "Strike",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
+      "icon": "/assets/icons/svg/tags/tag-strike.svg",
       "category": "Combat",
       "definition": "A close-range melee attack. Must be within reach.",
       "visibility": true,
