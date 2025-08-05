@@ -1,4 +1,4 @@
-/*v2.45 2025-08-05T13:54:40.435Z*/
+/*v2.46 2025-08-05T13:55:38.131Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -824,11 +824,13 @@ body#home-page .main-navbar {
         height: 750px;
         background-position: left;
         margin-top: 30px;
+        background-attachment: scroll;
     }
 
     .banner-parallax-secondary {
         height: 150px;
         background-position: left;
+        background-attachment: scroll;
     }
 }
 
