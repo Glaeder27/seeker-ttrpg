@@ -1,4 +1,4 @@
-<!-- v1.52 2025-08-05T20:19:53.327Z -->
+<!-- v1.56 2025-08-05T20:48:34.798Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -405,7 +405,8 @@
             background-image: none;
         }
 
-        .feature-wrapper {
+        .feature-wrapper-left,
+        .feature-wrapper-right {
             display: block;
         }
 
@@ -426,21 +427,29 @@
             display: block;
             border-radius: .7rem;
             padding: 3px;
+        }
+
+        .feature-wrapper-left .feature-symbol {
+            float: left;
             margin-right: 15px;
             background: linear-gradient(to right, 
                         rgba(var(--deep-charcoal-rgb), 0.2), 
                         rgba(var(--brown-charcoal-rgb), 0.2)), 
                         url(/assets/textures/antique-gold-1.jpg);
         }
-
-        .float-left {
-            float: left;
-        }
-        .float-right {
+        .feature-wrapper-right .feature-symbol {
             float: right;
+            margin-left: 15px;
+            background: linear-gradient(to left, 
+                        rgba(var(--deep-charcoal-rgb), 0.2), 
+                        rgba(var(--brown-charcoal-rgb), 0.2)), 
+                        url(/assets/textures/antique-gold-1.jpg);
         }
-        
 
+        .feature-wrapper-right h4 {
+            justify-content: flex-end;
+        }
+ 
         .feature-desc h4 {
             border-bottom: 1px solid var(--ancient-gold);
             display: flex;
@@ -698,8 +707,8 @@
                     a world that pushes back. Its systems are tightly interwoven to support tense exploration,
                     meaningful choices, and escalating consequences.</p>
 
-                <div class="feature-wrapper">
-                    <div class="feature-symbol float-left">
+                <div class="feature-wrapper-left">
+                    <div class="feature-symbol">
                         <img src="/assets/icons/svg/rules/symbol-no-archetypes.svg" alt="No Classes, Background, nor Races"
                             title="No Archetypes" class="feature-image" />
                     </div>
