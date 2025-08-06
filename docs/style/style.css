@@ -1,4 +1,4 @@
-/*v2.88 2025-08-06T20:19:44.257Z*/
+/*v2.89 2025-08-06T20:33:34.402Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -840,8 +840,8 @@ body#home-page {
     -webkit-mask-image: url('/assets/images/banners/banner-stain-full.svg');
     mask-image: url('/assets/images/banners/banner-stain-full.svg');
 
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
+    /*mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;*/
 
     mask-position: bottom center;
     -webkit-mask-position: bottom center;
