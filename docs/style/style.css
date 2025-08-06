@@ -1,4 +1,4 @@
-/*v2.64 2025-08-06T13:04:14.433Z*/
+/*v2.65 2025-08-06T13:08:50.763Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1635,7 +1635,7 @@ h1 {
 
 h2 {
     font-family: var(--font-antique);
-    font-size: 3rem;
+    font-size: clamp(2rem, 6.5vw, 4rem);
     line-height: 1.2;
     font-weight: 500;
     text-transform: uppercase;
