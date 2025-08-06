@@ -1,4 +1,4 @@
-/*v2.114 2025-08-06T22:45:26.955Z*/
+/*v2.115 2025-08-06T22:47:38.152Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -4424,6 +4424,9 @@ details[open] .infobox-table {
     transform: translate(-50%, -50%);
     z-index: 0;
     pointer-events: none;
+}
+.section-wrapper:hover .overlay-symbol {
+    opacity: 0.06;
 }
 
 .overlay-symbol.l {
