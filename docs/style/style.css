@@ -1,4 +1,4 @@
-/*v2.68 2025-08-06T13:51:12.856Z*/
+/*v2.69 2025-08-06T14:00:19.465Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1887,6 +1887,7 @@ h1.site-title {
                 rgba(var(--deep-charcoal-rgb), 0.2), 
                 rgba(var(--brown-charcoal-rgb), 0.2)), 
                 url(/assets/textures/antique-gold-1.jpg);
+    background-position: -240px;
 }
 
 .section::after {
