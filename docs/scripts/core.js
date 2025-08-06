@@ -1,4 +1,4 @@
-/*v2.31 2025-08-06T09:12:28.148Z*/
+/*v2.32 2025-08-06T09:36:47.925Z*/
 
 // ─── Version Checker ───
 
@@ -167,8 +167,11 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.style.display = "";
     title.style.display = "";
 
+    let hideTooltipTimeout = null;
+
     tagElements.forEach((tag) => {
       tag.addEventListener("mouseenter", async () => {
+        if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
         tag.classList.add("active-tag-tooltip");
 
         const tagKey = tag.textContent.trim();
@@ -210,10 +213,24 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       tag.addEventListener("mouseleave", () => {
-        tag.classList.remove("active-tag-tooltip");
-        tooltip.classList.remove("visible");
-        tooltip.style.pointerEvents = "none";
+        hideTooltipTimeout = setTimeout(() => {
+          tag.classList.remove("active-tag-tooltip");
+          tooltip.classList.remove("visible");
+          tooltip.style.pointerEvents = "none";
+        }, 150);
       });
+    });
+
+    tooltip.addEventListener("mouseenter", () => {
+      if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
+    });
+
+    tooltip.addEventListener("mouseleave", () => {
+      tooltip.classList.remove("visible");
+      tooltip.style.pointerEvents = "none";
+      document
+        .querySelector(".active-tag-tooltip")
+        ?.classList.remove("active-tag-tooltip");
     });
   }
 
