@@ -1,4 +1,4 @@
-/*v2.57 2025-08-06T10:35:45.924Z*/
+/*v2.59 2025-08-06T10:45:53.576Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1801,10 +1801,11 @@ h1.site-title {
 .subtitle {
     font-size: 1.2rem;
     font-family: var(--font-antique);
-    color: var(--burnt-copper);
     letter-spacing: 0.03em;
-    margin-top: -.2rem;
+    margin: 0.5rem 0;
     color: var(--pale-beige);
+    font-variant: none;
+    text-transform: none;
 }
 
 @media (max-width: 600px) {
