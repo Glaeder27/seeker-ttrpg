@@ -1,4 +1,4 @@
-/*v2.104 2025-08-06T21:56:01.791Z*/
+/*v2.106 2025-08-06T22:12:18.457Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1054,6 +1054,7 @@ body#home-page {
 
 .carousel-wrapper#home-page {
     max-width: 1400px;
+    position: relative;
 }
 
 @media (max-width: 767px) {
@@ -1103,14 +1104,14 @@ body#home-page {
 }
 
 .carousel-arrow.left {
-    left: 0;
+    left: -4rem;
 }
 
 .carousel-arrow.right {
-    right: 0;
+    right: -4rem;
 }
 
-.carousel-wrapper:hover .carousel-arrow {
+.full-width:hover .carousel-arrow {
     opacity: 1;
     pointer-events: auto;
 }
