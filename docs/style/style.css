@@ -1,4 +1,4 @@
-/*v2.101 2025-08-06T21:47:52.056Z*/
+/*v2.104 2025-08-06T21:56:01.791Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -836,18 +836,13 @@ body#home-page {
     /* Parallax */
     background-repeat: no-repeat;
     width: 100%;
-
     -webkit-mask-image: url('/assets/images/banners/banner-stain-full.svg');
     mask-image: url('/assets/images/banners/banner-stain-full.svg');
-
-    /*mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;*/
-
     mask-position: bottom center;
     -webkit-mask-position: bottom center;
-
     mask-size: contain;
     -webkit-mask-size: contain;
+    mask-size: auto 650px
 }
 
 .banner-parallax {
@@ -3115,6 +3110,7 @@ blockquote.clean {
     font-style: italic;
     font-weight: 300;
     max-width: 500px;
+    margin: auto;
 }
 
 blockquote.clean p {
@@ -4412,11 +4408,11 @@ details[open] .infobox-table {
 }
 
 .overlay-symbol.l {
-    left: 20%;
+    left: 50%;
 }
 
 .overlay-symbol.r {
-    right: -30%;
+    left: 50%;
 }
 
 .overlay-symbol.var-1 {
