@@ -1,4 +1,4 @@
-/*v2.97 2025-08-06T21:41:17.757Z*/
+/*v2.99 2025-08-06T21:46:03.485Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1939,6 +1939,19 @@ h1.site-title {
     letter-spacing: 1px;
     text-align: center;
     margin-inline: -3rem;
+}
+@media (max-width: 767px) {
+    .section {
+        margin-inline: -1rem;
+    }
+    .section::before,
+    .section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 6px;
+        height: 100%;
+    }
 }
 
 .section.var-1 {
