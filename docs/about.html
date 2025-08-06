@@ -1,4 +1,4 @@
-<!-- v1.15 2025-08-06T08:49:51.713Z -->
+<!-- v1.17 2025-08-06T09:43:42.589Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -15,7 +15,7 @@
 
   <meta name="author" content="Alonso de Luna" />
 
-  <!-- Favicon (opzionale) -->
+  <!-- Favicon -->
   <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
 
   <!-- Open Graph per link preview -->
@@ -39,217 +39,21 @@
   <script src="/scripts/config.js"></script>
 
   <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/style-add.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* Specific Styles */
-    .letter-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.7;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .letter-content em {
-      font-style: italic;
-    }
-
-    .section-columns {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .section-col {
-      flex: 1 1 300px;
-      min-width: 280px;
-      background: var(--background-dark-2);
-      padding: 0 1rem;
-      margin: 1rem 0;
-      border-radius: 1rem;
-    }
-
-    #letter-from-alonso:hover .overlay-symbol.var-4,
-    #cultural-approach-and-ethics:hover .overlay-symbol.var-5,
-    #ai-policy:hover .overlay-symbol.var-6,
-    #tools-and-inspiration:hover .overlay-symbol.var-7,
-    #license:hover .overlay-symbol.var-6 {
-      opacity: 0.1;
-    }
-
-    .carousel-icon {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 0.5rem;
-      margin: 0.5rem 0 2rem 0;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      border-radius: 20px;
-      pointer-events: none;
-    }
-
-    .feature-card {
-      height: 300px;
-      width: 250px;
-      background-position: top;
-    }
-
-    .card-content h4 {
-      margin-top: 0;
-      font-family: var(--font-antique);
-      color: var(--bright-gold);
-      text-transform: uppercase;
-      font-size: .8rem;
-    }
-
-    .card-content h3 {
-      font-family: var(--font-antique);
-      color: var(--bright-gold);
-      text-transform: uppercase;
-      font-size: 1.4rem;
-    }
-
-    .feature-card h3,
-    .feature-card h4,
-    .feature-card .card-description.short,
-    .feature-card .carousel-icon {
-      opacity: 0;
-      transition: all .3s ease;
-    }
-
-    .feature-card:hover h3,
-    .feature-card:hover h4,
-    .feature-card:hover .card-description.short,
-    .feature-card:hover .carousel-icon {
-      opacity: 1;
-      transition: all .3s ease;
-    }
-
-    .feature-card-wrapper {
-      filter: drop-shadow(2px 4px 6px black);
-    }
-
-    .carousel-wrapper {
-      max-width: 750px;
-      padding: 3px;
-      border-width: 0 3px 0 3px;
-      border-color: var(--ancient-gold);
-      border-style: solid;
-      border-radius: 15px;
-    }
-
-    .carousel-track {
-      padding: 5px 0;
-    }
-
-    .card-description.short {
-      margin-top: 0;
-    }
-
-    .card-content {
-      align-items: center;
-      justify-content: flex-start;
-      background-color: transparent;
-      padding: 0 10px;
-      background-image: none;
-    }
-
-    .feature-wrapper-left,
-    .feature-wrapper-right {
-      display: block;
-      padding: 1rem;
-      background: var(--background-dark-3);
-      margin: 1rem 0;
-      border-radius: 1rem;
-    }
-
-    .feature-desc {
-      display: block;
-      margin-bottom: 0;
-    }
-
-    .feature-image {
-      display: block;
-      width: 130px;
-      height: 130px;
-      border-radius: 10px;
-      padding: 10px;
-      background: var(--background-dark-1);
-    }
-
-    .feature-symbol {
-      display: block;
-      border-radius: .7rem;
-      padding: 3px;
-    }
-
-    .feature-wrapper-left .feature-symbol {
-      float: left;
-      margin-right: 15px;
-      background: linear-gradient(to right,
-          rgba(var(--deep-charcoal-rgb), 0.2),
-          rgba(var(--brown-charcoal-rgb), 0.2)),
-        url(/assets/textures/antique-gold-1.jpg);
-    }
-
-    .feature-wrapper-right .feature-symbol {
-      float: right;
-      margin-left: 15px;
-      background: linear-gradient(to left,
-          rgba(var(--deep-charcoal-rgb), 0.2),
-          rgba(var(--brown-charcoal-rgb), 0.2)),
-        url(/assets/textures/antique-gold-1.jpg);
-    }
-
-    .feature-wrapper-right h4 {
-      justify-content: flex-end;
-    }
-
-    .feature-desc h4 {
-      border-bottom: 3px solid var(--ancient-gold);
-      display: flex;
-      margin-top: 0;
-    }
-
-    .map {
-      width: 100vw;
-      max-width: 800px;
-      padding: 1rem 2rem;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    @media (max-width: 767px) {
-      .carousel-wrapper {
-        max-width: 95vw;
-      }
-
-      .feature-image {
-        display: block;
-        width: 70px;
-        height: 70px;
-        border-radius: 10px;
-        padding: 10px;
-        background: var(--background-dark-1);
-      }
-    }
-
     /* Overrides */
   </style>
 </head>
 
 <body class="bckg-2" id="about">
-  <!-- NAVBAR -->
+  <!-- ── NAVBAR ───────────────────────────────────────────── -->
   <div id="navbar-top" style="opacity: 1 !important"></div>
   <script src="/scripts/navbar.js"></script>
 
-  <!-- ────────────────────────────────────────────────────────── -->
-  <!-- MAIN CONTENT ───────────────────────────────────────────── -->
-  <!-- ────────────────────────────────────────────────────────── -->
-
+  <!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
   <!-- Banner -->
   <div class="banner-parallax-secondary" style="background-image: url('assets/images/banners/home-page.webp');"
     alt="Conquista de México por Cortés - Conquest of Mexico by Cortés">
@@ -258,7 +62,6 @@
   </div>
 
   <main>
-
     <!-- ── Letter from Alonso ───────────────────────────────────────────── -->
     <section id="letter-from-alonso" class="central-column">
       <header class="title">
@@ -280,7 +83,6 @@
             it is the one I have chosen to protect those close to me — and perhaps also to protect what little remains
             of my peace.
           </p>
-
           <p>
             I come from a family whose name once opened doors in <em>Madrid</em>, <em>Sevilla</em>, even <em>Lima</em>,
             in the days when the world was still being drawn on parchment.
@@ -289,14 +91,12 @@
             Encased in dark volcanic glass, it held the faint trace of ink and salt, and something else. <em>Una
               presencia.</em>
           </p>
-
           <p>
             From that moment, I could not rest. I began a journey, not just through places, but through meanings.
             The kind of path that does not lead forward, but downward, like a well with no bottom.
             From forgotten libraries to convents where the books are kept behind iron bars, I followed the signs until
             Rome, where the final door opened, not to light, but to a deeper darkness.
           </p>
-
           <p>
             Inside the Secret Archives, in a section unmarked and almost erased from memory, I found documents that do
             not belong to the history we are taught.
@@ -304,7 +104,6 @@
             and maps that shift when the candlelight flickers.
             Things that our world has chosen not to remember — or perhaps, has been told to forget.
           </p>
-
           <p>
             It became clear to me that I could not publish these findings in any academic journal. I do not have
             powerful friends. I am just a man who followed what he believed to be true.
@@ -346,7 +145,6 @@
     <div class="spacer small-medium"></div>
 
     <!-- ── Game Features ───────────────────────────────────────────── -->
-
     <section class="section-wrapper">
       <div class="section-number">Section I</div>
       <h2 class="section" id="about">
@@ -402,7 +200,6 @@
         founding compact.</p>
 
       <!-- Seekers & Buscadores Carousel -->
-
       <div class="full-width">
         <div class="carousel-wrapper">
           <div class="carousel-track">
@@ -531,7 +328,6 @@
           </div>
         </div>
       </div>
-
 
       <p>The Seekers are the custodians of that hidden war — a war not for land, but for reality itself.</p>
 
@@ -900,6 +696,7 @@
           While the core of the project lives in <strong>plain text and version control</strong>,
           its soul is scattered across <em>notebooks, dream fragments, and forgotten books</em>.
         </p>
+
         <p>
           Most of the writing and development takes place in <strong>Visual Studio Code</strong>,
           using <strong>GitHub</strong> to manage and publish updates.
@@ -907,6 +704,7 @@
           public presentation. Before publication and playtesting, rules and concepts undergo multiple simulation cycles
           using AI to evaluate their mechanics and interactions.
         </p>
+
         <p>
           Visual elements, including maps, symbols, and page textures,
           are crafted with <strong>Adobe Photoshop</strong> and <strong>Illustrator</strong>,
@@ -914,6 +712,7 @@
           Wherever possible, digital tools are bent to serve the tone —
           not clean, not corporate, but <em>cracked, raw, and a little wrong</em>.
         </p>
+
         <p>
           As for inspirations: <em>Seeker</em> owes much to the speculative weirdness of authors like
           <strong>Gene Wolfe</strong>, <strong>Cormac McCarthy</strong>, <strong>Dan Brown</strong>, and <strong>Umberto
@@ -946,14 +745,17 @@
             rel="noopener noreferrer">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
             (CC BY-NC-SA 4.0)</a>.
         </p>
+
         <p>
           This means you are free to share and adapt the material for personal, non-commercial use,
           as long as you give appropriate credit, provide a link to the license, and distribute your contributions under
           the same license.
         </p>
+
         <p>
           Commercial use or redistribution for profit requires explicit permission from the project creator.
         </p>
+
         <p>
           For any questions about licensing, please contact us at [your contact email or link].
         </p>
@@ -963,7 +765,7 @@
 
     <div class="spacer medium"></div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER ────────────────────────────────────────────────── -->
     <div id="footer-bottom"></div>
     <script>
       fetch("footer.html")
@@ -975,59 +777,58 @@
 
   </main>
 
-  <!-- ────────────────────────────────────────────────────────── -->
   <!-- SCRIPTS ────────────────────────────────────────────────── -->
-  <!-- ────────────────────────────────────────────────────────── -->
 
   <script src="/scripts/core.js"></script>
 
-      <script>
-        // ── Carousel Script ─────────────────────────────────────────────
-        document.addEventListener("DOMContentLoaded", function () {
-            const track = document.querySelector(".carousel-track");
-            const wrapper = document.querySelector(".carousel-wrapper");
+  <script>
+    // ── Carousel Script ─────────────────────────────────────────────
+    document.addEventListener("DOMContentLoaded", function () {
+      const track = document.querySelector(".carousel-track");
+      const wrapper = document.querySelector(".carousel-wrapper");
 
-            let isDown = false;
-            let startX = 0;
-            let scrollStart = 0;
-            let animationFrame;
+      let isDown = false;
+      let startX = 0;
+      let scrollStart = 0;
+      let animationFrame;
 
-            // ── Drag ───────────────────────
-            track.addEventListener("mousedown", (e) => {
-                isDown = true;
-                startX = e.clientX;
-                scrollStart = track.scrollLeft;
-                track.classList.add("active");
-                document.body.style.userSelect = "none";
-            });
+      // ── Drag ───────────────────────
+      track.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.clientX;
+        scrollStart = track.scrollLeft;
+        track.classList.add("active");
+        document.body.style.userSelect = "none";
+      });
 
-            track.addEventListener("mouseup", () => {
-                isDown = false;
-                track.classList.remove("active");
-                document.body.style.userSelect = "";
-                if (animationFrame) cancelAnimationFrame(animationFrame);
-            });
+      track.addEventListener("mouseup", () => {
+        isDown = false;
+        track.classList.remove("active");
+        document.body.style.userSelect = "";
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+      });
 
-            track.addEventListener("mouseleave", () => {
-                if (isDown) {
-                    isDown = false;
-                    track.classList.remove("active");
-                    document.body.style.userSelect = "";
-                    if (animationFrame) cancelAnimationFrame(animationFrame);
-                }
-            });
+      track.addEventListener("mouseleave", () => {
+        if (isDown) {
+          isDown = false;
+          track.classList.remove("active");
+          document.body.style.userSelect = "";
+          if (animationFrame) cancelAnimationFrame(animationFrame);
+        }
+      });
 
-            track.addEventListener("mousemove", (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const walk = e.clientX - startX;
-                if (animationFrame) cancelAnimationFrame(animationFrame);
-                animationFrame = requestAnimationFrame(() => {
-                    track.scrollLeft = scrollStart - walk;
-                });
-            });
+      track.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const walk = e.clientX - startX;
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        animationFrame = requestAnimationFrame(() => {
+          track.scrollLeft = scrollStart - walk;
         });
-    </script>
+      });
+    });
+  </script>
+
 </body>
 
 </html>
