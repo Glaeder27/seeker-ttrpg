@@ -1,4 +1,4 @@
-/*v2.49 2025-08-06T09:57:17.189Z*/
+/*v2.50 2025-08-06T10:06:00.918Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1031,14 +1031,43 @@ body#home-page .main-navbar {
     display: none;
 }
 
-.feature-card-wrapper {
-    border-radius: .5rem;
-    padding: 5px;
-    background: linear-gradient(to right,
-            rgba(var(--deep-charcoal-rgb), 0.2),
-            rgba(var(--brown-charcoal-rgb), 0.2)),
-        url(/assets/textures/antique-gold-1.jpg);
-    display: inline-block;
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    background: black;
+    border: none;
+    color: var(--ancient-gold);
+    cursor: pointer;
+    padding: 0.6rem;
+    z-index: 2;
+    border-radius: 0.5rem;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.carousel-arrow:hover {
+    color: var(--bright-gold);
+}
+
+.carousel-arrow.left {
+    left: 0;
+}
+
+.carousel-arrow.right {
+    right: 0;
+}
+
+.carousel-wrapper:hover .carousel-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-arrow.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 .feature-card {
@@ -1058,6 +1087,48 @@ body#home-page .main-navbar {
     -webkit-user-select: none;
 }
 
+.feature-card.small {
+    height: 300px;
+    width: 250px;
+    background-position: top;
+}
+
+.feature-card.square {
+    height: 250px;
+    width: 250px;
+}
+
+.feature-card-wrapper {
+    border-radius: .5rem;
+    padding: 5px;
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+    display: inline-block;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.feature-card:hover .card-content {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.feature-card h3,
+.feature-card h4,
+.feature-card .card-description.short,
+.feature-card .carousel-icon {
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.feature-card:hover h3,
+.feature-card:hover h4,
+.feature-card:hover .card-description.short,
+.feature-card:hover .carousel-icon {
+    opacity: 1;
+    transition: all .3s ease;
+}
+
 .card-content {
     position: absolute;
     inset: 0;
@@ -1069,10 +1140,6 @@ body#home-page .main-navbar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.feature-card:hover .card-content {
-    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .card-content h3 {
@@ -1112,43 +1179,19 @@ body#home-page .main-navbar {
     cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
 }
 
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 3rem;
-    background: black;
-    border: none;
-    color: var(--ancient-gold);
-    cursor: pointer;
-    padding: 0.6rem;
-    z-index: 2;
-    border-radius: 0.5rem;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.carousel-arrow:hover {
+.card-content h4 {
+    margin-top: 0;
+    font-family: var(--font-antique);
     color: var(--bright-gold);
+    text-transform: uppercase;
+    font-size: .8rem;
 }
 
-.carousel-arrow.left {
-    left: 0;
-}
-
-.carousel-arrow.right {
-    right: 0;
-}
-
-.carousel-wrapper:hover .carousel-arrow {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.carousel-arrow.hidden {
-    opacity: 0 !important;
-    pointer-events: none !important;
+.card-content h3 {
+    font-family: var(--font-antique);
+    color: var(--bright-gold);
+    text-transform: uppercase;
+    font-size: 1.4rem;
 }
 
 /* ── SIDENAV ─────────────── */
@@ -4388,47 +4431,6 @@ i.fa-solid.fa-right-from-bracket {
     gap: 1rem;
     border-radius: 20px;
     pointer-events: none;
-}
-
-.feature-card {
-    height: 300px;
-    width: 250px;
-    background-position: top;
-}
-
-.card-content h4 {
-    margin-top: 0;
-    font-family: var(--font-antique);
-    color: var(--bright-gold);
-    text-transform: uppercase;
-    font-size: .8rem;
-}
-
-.card-content h3 {
-    font-family: var(--font-antique);
-    color: var(--bright-gold);
-    text-transform: uppercase;
-    font-size: 1.4rem;
-}
-
-.feature-card h3,
-.feature-card h4,
-.feature-card .card-description.short,
-.feature-card .carousel-icon {
-    opacity: 0;
-    transition: all .3s ease;
-}
-
-.feature-card:hover h3,
-.feature-card:hover h4,
-.feature-card:hover .card-description.short,
-.feature-card:hover .carousel-icon {
-    opacity: 1;
-    transition: all .3s ease;
-}
-
-.feature-card-wrapper {
-    filter: drop-shadow(2px 4px 6px black);
 }
 
 .carousel-wrapper {
