@@ -1,4 +1,4 @@
-/*v2.90 2025-08-06T20:36:42.081Z*/
+/*v2.91 2025-08-06T20:41:59.290Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1687,7 +1687,6 @@ h2 {
 }
 
 h3 {
-    border-bottom: 1px solid var(--ancient-gold);
     padding-bottom: 5px;
     margin-top: 30px;
     margin-bottom: 15px;
@@ -1695,6 +1694,22 @@ h3 {
     font-family: var(--font-main);
     color: var(--off-white);
     font-weight: 500;
+}
+h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-image: linear-gradient(to right,           
+        rgba(var(--deep-charcoal-rgb), 0.2),
+        rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+    background-repeat: repeat;
+    background-size: 100%;
+    pointer-events: none;
+    border-radius: 5px;
 }
 
 h3.tagged {
