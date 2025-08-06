@@ -1,4 +1,4 @@
-/*v2.53 2025-08-06T10:19:03.238Z*/
+/*v2.57 2025-08-06T10:35:45.924Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1100,13 +1100,13 @@ body#home-page .main-navbar {
 
 .feature-card-wrapper {
     border-radius: .5rem;
-    padding: 5px;
+    padding: 3px;
     background: linear-gradient(to right,
             rgba(var(--deep-charcoal-rgb), 0.2),
             rgba(var(--brown-charcoal-rgb), 0.2)),
         url(/assets/textures/antique-gold-1.jpg);
     display: inline-block;
-    filter: drop-shadow(2px 4px 6px black);
+    filter: drop-shadow(2px 0px 5px black);
 }
 
 .feature-card:hover .card-content {
@@ -4290,7 +4290,7 @@ details[open] .infobox-table {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    opacity: 0.05;
+    opacity: 0.03;
     transition: opacity 0.4s ease-in-out;
     transform: translate(-50%, -50%);
     z-index: 0;
@@ -4302,7 +4302,7 @@ details[open] .infobox-table {
 }
 
 .overlay-symbol.r {
-    right: -35%;
+    right: -30%;
 }
 
 .overlay-symbol.var-1 {
@@ -4510,7 +4510,7 @@ i.fa-solid.fa-right-from-bracket {
 }
 
 .feature-desc h4 {
-    border-bottom: 3px solid var(--ancient-gold);
+    border-bottom: 1px solid var(--ancient-gold);
     display: flex;
     margin-top: 0;
 }
