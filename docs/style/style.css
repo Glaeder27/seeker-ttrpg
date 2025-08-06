@@ -1,4 +1,4 @@
-/*v2.82 2025-08-06T19:15:26.638Z*/
+/*v2.84 2025-08-06T19:55:51.599Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -551,16 +551,18 @@ body#home-page .main-navbar {
 
 body#home-page {
     background-image:
-  linear-gradient(to top,
+linear-gradient(to bottom,
     rgba(var(--background-site-rgb), 1) 0px,
-    rgba(var(--background-site-rgb), 1) 200px,
+    rgba(var(--background-site-rgb), 1) 150px,
     rgba(var(--background-site-rgb), 0) 400px),
 
-  linear-gradient(to bottom,
+  linear-gradient(to top,
     rgba(var(--background-site-rgb), 1) 0px,
-    rgba(var(--background-site-rgb), 0) 200px),
+    rgba(var(--background-site-rgb), .97) 200px),
 
-  url("/assets/images/webp/decorations/horizontal-map-mappa-mundi.webp");
+  url("/assets/images/webp/decorations/full-new-world.webp");
+
+  background-attachment: fixed;
 }
 
 .navbar-container {
