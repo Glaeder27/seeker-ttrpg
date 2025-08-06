@@ -1,4 +1,4 @@
-/*v2.93 2025-08-06T20:54:59.647Z*/
+/*v2.94 2025-08-06T21:03:28.723Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -871,6 +871,16 @@ body#home-page {
         background-position: left;
         background-attachment: scroll;
     }
+
+    .banner-parallax,
+    .banner-parallax-secondary {
+        -webkit-mask-image: none;
+        mask-image: none;
+        mask-position: unset;
+        mask-size: unset;
+        -webkit-mask-size: unset;
+        mask-repeat: unset;
+    }
 }
 
 .banner-mask {
@@ -973,6 +983,13 @@ body#home-page {
     left: 0;
     pointer-events: none;
     z-index: 2;
+    display: none;
+}
+@media (max-width: 767px) {
+    .banner-stain-top,
+    .banner-stain-bottom {
+        display: block;
+    }
 }
 
 .banner-stain-top {
