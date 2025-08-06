@@ -1,4 +1,4 @@
-/*v2.85 2025-08-06T20:03:07.988Z*/
+/*v2.88 2025-08-06T20:19:44.257Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -900,11 +900,11 @@ body#home-page {
 }
 
 .banner-mask .border-top {
-    top: calc(50% - 170px);
+    top: calc(50% - 175px);
 }
 
 .banner-mask .border-bottom {
-    bottom: calc(50% - 170px);
+    bottom: calc(50% - 175px);
 }
 
 @media (max-width: 767px) {
@@ -933,9 +933,10 @@ body#home-page {
     transform: translateY(-50%);
     width: 100%;
     height: 350px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(13, 14, 12, 0.9);
     z-index: 0;
     pointer-events: none;
+    background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
 }
 
 @media (max-width: 767px) {
