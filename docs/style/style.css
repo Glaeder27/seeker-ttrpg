@@ -1,4 +1,4 @@
-/*v2.91 2025-08-06T20:41:59.290Z*/
+/*v2.93 2025-08-06T20:54:59.647Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1040,6 +1040,10 @@ body#home-page {
     border-radius: 15px;
 }
 
+.carousel-wrapper#home-page {
+    max-width: 1400px;
+}
+
 @media (max-width: 767px) {
     .carousel-wrapper {
         max-width: 95vw;
@@ -1823,7 +1827,7 @@ h1.site-title {
     }
 }
 
-.title .title-icon {
+.title-icon {
     font-size: 2.6rem;
     color: var(--burnt-copper);
     transform: rotate(90deg);
@@ -1836,19 +1840,19 @@ h1.site-title {
     -webkit-text-fill-color: transparent;
 }
 
-.title .title-icon.flipped {
+.title-icon.flipped {
     transform: rotate(-90deg);
 }
 
-.title .title-icon.notflipped {
+.title-icon.notflipped {
     transform: rotate(0deg);
 }
 
-.title .title-icon.mobile {
+.title-icon.mobile {
     transform: rotate(0deg);
 }
 
-.title .title-icon.mirrored {
+.title-icon.mirrored {
     transform: scaleX(-1);
 }
 
@@ -1873,25 +1877,25 @@ h1.site-title {
         gap: .1rem;
     }
 
-    .title .title-icon {
+    .title-icon {
         font-size: 3rem;
         transform: rotate(0deg);
         margin: -1em 0 0 0;
     }
 
-    .title .title-icon.flipped {
+    .title-icon.flipped {
         display: none;
     }
 
-    .title .title-icon.notflipped {
+    .title-icon.notflipped {
         display: none;
     }
 
-    .title .title-icon.top {
+    .title-icon.top {
         order: -1;
     }
 
-    .title .title-icon.bottom {
+    .title-icon.bottom {
         order: 1;
     }
 }
