@@ -1,4 +1,4 @@
-/*v2.89 2025-08-06T20:33:34.402Z*/
+/*v2.90 2025-08-06T20:36:42.081Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1032,16 +1032,17 @@ body#home-page {
 }
 
 .carousel-wrapper {
-    position: relative;
-    overflow: visible;
-    max-width: 1400px;
-    padding: 0 50px;
-
+    max-width: 750px;
+    padding: 3px;
+    border-width: 0 3px 0 3px;
+    border-color: var(--ancient-gold);
+    border-style: solid;
+    border-radius: 15px;
 }
 
 @media (max-width: 767px) {
     .carousel-wrapper {
-        max-width: 100vw;
+        max-width: 95vw;
         box-sizing: content-box;
     }
 }
@@ -4497,15 +4498,6 @@ i.fa-solid.fa-right-from-bracket {
     pointer-events: none;
 }
 
-.carousel-wrapper {
-    max-width: 750px;
-    padding: 3px;
-    border-width: 0 3px 0 3px;
-    border-color: var(--ancient-gold);
-    border-style: solid;
-    border-radius: 15px;
-}
-
 .carousel-track {
     padding: 5px 0;
 }
@@ -4588,10 +4580,6 @@ i.fa-solid.fa-right-from-bracket {
 }
 
 @media (max-width: 767px) {
-    .carousel-wrapper {
-        max-width: 95vw;
-    }
-
     .feature-image {
         display: block;
         width: 70px;
