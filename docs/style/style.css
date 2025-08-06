@@ -1,4 +1,4 @@
-/*v2.99 2025-08-06T21:46:03.485Z*/
+/*v2.101 2025-08-06T21:47:52.056Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1900,11 +1900,10 @@ h1.site-title {
         margin: -1em 0 0 0;
     }
 
-    .title-icon.flipped {
-        display: none;
-    }
-
-    .title-icon.notflipped {
+    .title-icon,
+    .title-icon.flipped,
+    .title-icon.notflipped,
+    .title-icon.mirrored {
         display: none;
     }
 
