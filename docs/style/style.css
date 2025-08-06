@@ -1,4 +1,4 @@
-/*v2.110 2025-08-06T22:39:08.631Z*/
+/*v2.111 2025-08-06T22:40:20.941Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3145,6 +3145,7 @@ blockquote.clean p {
     text-align: right;
     font-size: 1.1rem;
     color: var(--pale-beige);
+    font-family: var(--font-calligraphy-2);
 }
 
 .signature {
