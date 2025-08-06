@@ -1,4 +1,4 @@
-/*v2.96 2025-08-06T21:39:40.995Z*/
+/*v2.97 2025-08-06T21:41:17.757Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3961,6 +3961,7 @@ details[open] .infobox-table {
     h2 {
         font-size: clamp(2.5rem, 3rem, 4rem);
         padding: 8px 10px;
+        margin: auto;
     }
 
     h3 {
