@@ -1,4 +1,4 @@
-<!-- v1.23 2025-08-06T10:13:16.238Z -->
+<!-- v1.25 2025-08-06T10:24:51.883Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -44,6 +44,14 @@
   <style>
     /* Specific Styles */
     /* Overrides */
+    /* Animations */
+    #used-for:hover .used-for-text {
+      color: #36b37e;
+    }
+
+    #not-used-for:hover .not-used-for-text {
+      color: #e8594f;
+    }
   </style>
 </head>
 
@@ -613,16 +621,14 @@
     <div class="spacer small-medium"></div>
 
     <!-- ── AI Policy ───────────────────────────────────────────── -->
-    <section id="ai-policy" class="central-column">
-      <header class="title">
-        <div class="title-container">
-          <span class="title-icon">⚴</span>
-          <h1>AI Policy</h1>
-          <span class="title-icon flipped">⚴</span>
-        </div>
+   <section class="section-wrapper" id="cultural-approach-and-ethics">
+      <div class="section-number">Section II</div>
+      <h2 class="section" id="about">
+        Cultural Approach & Ethics
+        <span class="section-ornament">⸺ ✦ ⸺</span>
+      </h2>
         <p class="subtitle">A tool, not a muse. A compass, not a map.<br>
           This is how we use — and do not use — artificial intelligence.</p>
-      </header>
 
       <div>
 
@@ -634,30 +640,30 @@
           focusing on game design, historical research, and storytelling.</p>
 
         <div class="section-columns">
-          <div class="section-col">
+          <div class="section-col" id="used-for">
             <div style="text-align: center; font-size: 3rem; color: #36b37e; margin: 1rem auto -1rem;">
               <i class="fa-solid fa-check-circle"></i>
             </div>
             <h3 style="text-align: center;">AI is <span style="color: #36b37e">used</span> for:</h3>
             <ul>
-              <li>Translating and editing bilingual content (Spanish ↔ English)</li>
-              <li>Simulating game mechanics and hypothetical playtest scenarios</li>
-              <li>Researching historical sources and documentation</li>
-              <li>Editing, rewriting, and maintaining a consistent style across documents</li>
-              <li>Generating code for some complex sections of the website (HTML, CSS, JavaScript)</li>
+              <li><span class="used-for-text">Translating</span> and editing bilingual content <span class="used-for-text">(Spanish ↔ English)</span></li>
+              <li><span class="used-for-text">Simulating</span> game mechanics and hypothetical <span class="used-for-text">playtest scenarios</span></li>
+              <li>Researching <span class="used-for-text">historical sources</span> and documentation</li>
+              <li><span class="used-for-text">Editing</span>, rewriting, and maintaining a consistent style across documents</li>
+              <li>Generating code for some complex <span class="used-for-text">sections of this website</span> (HTML, CSS, JavaScript)</li>
             </ul>
           </div>
-          <div class="section-col">
+          <div class="section-col" id="not-used-for">
             <div style="text-align: center; font-size: 3rem; color: #e8594f; margin: 1rem auto -1rem;">
               <i class="fa-solid fa-ban"></i>
             </div>
             <h3 style="text-align: center;">AI is <span style="color: #e8594f">not used</span> for:</h3>
             <ul>
-              <li>Original creative writing (lore, adventures, character creation)</li>
-              <li>Designing the game's setting, factions, or narrative tone</li>
-              <li>Generating visual art, concept pieces, or maps</li>
-              <li>Inventing mechanics, rules, or core gameplay systems</li>
-              <li>Making editorial or narrative design decisions</li>
+              <li>Original <span class="not-used-for-text">creative writing</span> (lore, adventures, character creation)</li>
+              <li><span class="not-used-for-text">Designing</span> the game's setting, factions, or narrative tone</li>
+              <li>Generating visual <span class="not-used-for-text">art</span>, concept pieces, or <span class="not-used-for-text">maps</span></li>
+              <li>Inventing mechanics, rules, or <span class="not-used-for-text">core gameplay systems</span></li>
+              <li>Making <span class="not-used-for-text">editorial or narrative design decisions</span></li>
             </ul>
           </div>
         </div>

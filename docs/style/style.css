@@ -1,4 +1,4 @@
-/*v2.52 2025-08-06T10:15:27.817Z*/
+/*v2.53 2025-08-06T10:19:03.238Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1798,7 +1798,7 @@ h1.site-title {
     transform: scaleX(-1);
 }
 
-.title .subtitle {
+.subtitle {
     font-size: 1.2rem;
     font-family: var(--font-antique);
     color: var(--burnt-copper);
