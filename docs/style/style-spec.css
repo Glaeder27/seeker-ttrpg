@@ -1,4 +1,4 @@
-/*v1.3 2025-08-06T09:53:27.047Z*/
+/*v1.4 2025-08-06T09:54:05.996Z*/
 
 /* About: Letter from Alonso */
 .letter-wrapper {
@@ -36,6 +36,7 @@
     opacity: 0.1;
 }
 
+/* About: What is Seeker? */
 .carousel-icon {
     width: 50px;
     height: 50px;
