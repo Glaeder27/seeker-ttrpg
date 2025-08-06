@@ -1,4 +1,4 @@
-/*v2.122 2025-08-06T23:00:53.481Z*/
+/*v2.124 2025-08-06T23:05:57.919Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -873,22 +873,14 @@ body#home-page {
         background-position: left;
         margin-top: 30px;
         background-attachment: scroll;
+        mask-size: auto 750px
     }
 
     .banner-parallax-secondary {
         height: 150px;
         background-position: left;
         background-attachment: scroll;
-    }
-
-    .banner-parallax,
-    .banner-parallax-secondary {
-        -webkit-mask-image: none;
-        mask-image: none;
-        mask-position: unset;
-        mask-size: unset;
-        -webkit-mask-size: unset;
-        mask-repeat: unset;
+        mask-size: auto 150px
     }
 }
 
@@ -980,7 +972,7 @@ body#home-page {
     }
 }
 
-/* Stains */
+/* Stains — Candidate for deletion */
 .banner-stain-top,
 .banner-stain-bottom {
     background-image: url('../assets/images/banners/banner-stain.svg');
@@ -997,7 +989,7 @@ body#home-page {
 @media (max-width: 767px) {
     .banner-stain-top,
     .banner-stain-bottom {
-        display: block;
+        display: none;
     }
 }
 
