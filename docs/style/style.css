@@ -1,4 +1,4 @@
-/*v2.119 2025-08-06T22:56:27.096Z*/
+/*v2.121 2025-08-06T22:59:25.276Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3149,12 +3149,15 @@ blockquote.clean p {
     }
 }
 
-.blockquote-clean-author.var-1 p {
+.blockquote-clean-author {
     text-align: right;
     font-size: 1.1rem;
     color: var(--pale-beige);
-    font-family: var(--font-calligraphy-1);
     font-size: 1.8rem;
+}
+
+.blockquote-clean-author.var-1 p {
+    font-family: var(--font-calligraphy-1);
 }
 .blockquote-clean-author.var-2 p {
     font-family: var(--font-calligraphy-2);
