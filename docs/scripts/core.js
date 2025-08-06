@@ -1,4 +1,4 @@
-/*v2.30 2025-08-05T13:49:50.915Z*/
+/*v2.31 2025-08-06T09:12:28.148Z*/
 
 // ─── Version Checker ───
 
@@ -107,8 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
     title.style.display = "none";
     header.style.display = "none";
 
+    let hideTooltipTimeout = null;
+
     hoverWords.forEach((word) => {
       word.addEventListener("mouseenter", () => {
+        if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
         word.classList.add("active-tooltip");
 
         const rawKey = word.dataset.tooltipKey || word.textContent.trim();
@@ -134,10 +137,24 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       word.addEventListener("mouseleave", () => {
-        word.classList.remove("active-tooltip");
-        tooltip.classList.remove("visible");
-        tooltip.style.pointerEvents = "none";
+        hideTooltipTimeout = setTimeout(() => {
+          word.classList.remove("active-tooltip");
+          tooltip.classList.remove("visible");
+          tooltip.style.pointerEvents = "none";
+        }, 150);
       });
+    });
+
+    tooltip.addEventListener("mouseenter", () => {
+      if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
+    });
+
+    tooltip.addEventListener("mouseleave", () => {
+      tooltip.classList.remove("visible");
+      tooltip.style.pointerEvents = "none";
+      document
+        .querySelector(".active-tooltip")
+        ?.classList.remove("active-tooltip");
     });
   }
 
