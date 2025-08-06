@@ -1,4 +1,4 @@
-/*v2.106 2025-08-06T22:12:18.457Z*/
+/*v2.107 2025-08-06T22:13:50.186Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -4634,4 +4634,11 @@ i.fa-solid.fa-right-from-bracket {
         padding: 10px;
         background: var(--background-dark-1);
     }
+}
+
+.opacity-1 {
+    opacity: 1;
+}
+.opacity-0 {
+    opacity: 0;
 }
