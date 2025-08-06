@@ -1,4 +1,4 @@
-/*v2.48 2025-08-05T18:40:18.142Z*/
+/*v2.49 2025-08-06T09:57:17.189Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -9,7 +9,7 @@
 :root {
     /* ── COLOR PALETTE ───────────────────────────────────────────── */
 
-    /* Main */ 
+    /* Main */
     --bright-gold: #F6CB75;
     --ancient-gold: #D4B55A;
     --pale-copper: #C99C5E;
@@ -102,20 +102,23 @@
 
 /* ── FONTS ─────────── */
 @font-face {
-  font-family: "Mistlock Rough";
-  src: url("/assets/fonts/Mistlock-Rough.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Mistlock Rough";
+    src: url("/assets/fonts/Mistlock-Rough.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "Quentin";
-  src: url("/assets/fonts/Quentin.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Quentin";
+    src: url("/assets/fonts/Quentin.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
 }
+
 .lowercase {
     text-transform: lowercase;
 }
+
 .uppercase {
     text-transform: uppercase;
 }
@@ -183,14 +186,13 @@
     scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
 
-main.dual-column[type="rulebook"] .right-column {
-  
-}
+main.dual-column[type="rulebook"] .right-column {}
 
 main.dual-column[type="lorebook"] .right-column {
     position: static;
 }
-main.dual-column[type="lorebook"] .right-column .sidebar-wrapper{
+
+main.dual-column[type="lorebook"] .right-column .sidebar-wrapper {
     max-width: 400px;
 }
 
@@ -360,6 +362,7 @@ body.bckg-1::before {
     background-image: url('/assets/textures/background-page-1.webp');
     opacity: 0.03;
 }
+
 body.bckg-2::before {
     background-image: url('/assets/textures/background-page-2.webp');
     opacity: 0.01;
@@ -374,6 +377,7 @@ body.fade-out {
 }
 
 @media (max-width: 767px) {
+
     html,
     body {
         overflow-x: hidden;
@@ -426,9 +430,11 @@ p {
 .align-left {
     text-align: left !important;
 }
+
 .align-right {
     text-align: right !important;
 }
+
 .align-center {
     text-align: center !important;
 }
@@ -533,6 +539,7 @@ a:active {
     opacity: 1 !important;
     border-bottom: 1px solid var(--ancient-gold);
 }
+
 body#home-page .main-navbar {
     border-bottom: none;
 }
@@ -852,10 +859,10 @@ body#home-page .main-navbar {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, 
-    rgba(var(--deep-charcoal-rgb), 0.6), 
-    rgba(var(--brown-charcoal-rgb), 0.4)), 
-    url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.6),
+            rgba(var(--brown-charcoal-rgb), 0.4)),
+        url(/assets/textures/antique-gold-1.jpg);
     z-index: 1;
     pointer-events: none;
 }
@@ -1027,11 +1034,10 @@ body#home-page .main-navbar {
 .feature-card-wrapper {
     border-radius: .5rem;
     padding: 5px;
-    background: linear-gradient(
-    to right,
-    rgba(var(--deep-charcoal-rgb), 0.2),
-    rgba(var(--brown-charcoal-rgb), 0.2)),
-    url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
     display: inline-block;
 }
 
@@ -1172,58 +1178,64 @@ body#home-page .main-navbar {
     font-size: 1.5rem;
     background: var(--background-dark-3);
 }
+
 @media (max-width: 768px) {
     .sidenav-toggle-btn:hover {
-    font-size: 30px;
-    background: linear-gradient(to left, 
-    rgba(var(--burnt-copper-rgb), 0.3), 
-    rgba(var(--ancient-gold-rgb), 0.5));
+        font-size: 30px;
+        background: linear-gradient(to left,
+                rgba(var(--burnt-copper-rgb), 0.3),
+                rgba(var(--ancient-gold-rgb), 0.5));
     }
 }
 
-.sidenav:not(.collapsed) + .sidenav-toggle-btn {
-  left: 10px;
+.sidenav:not(.collapsed)+.sidenav-toggle-btn {
+    left: 10px;
 }
+
 @media (max-width: 768px) {
-    .sidenav:not(.collapsed) + .sidenav-toggle-btn {
+    .sidenav:not(.collapsed)+.sidenav-toggle-btn {
         left: 2rem;
     }
 }
 
 .sidenav-toggle-btn.animate-open {
-  animation: sidenavOpen 0.6s ease forwards;
+    animation: sidenavOpen 0.6s ease forwards;
 }
 
 .sidenav-toggle-btn.animate-close {
-  animation: sidenavClose 0.6s ease forwards;
+    animation: sidenavClose 0.6s ease forwards;
 }
+
 @media (max-width: 768px) {
-  .sidenav-toggle-btn.animate-open {
-    animation: none !important;
-    transform: none !important;
+    .sidenav-toggle-btn.animate-open {
+        animation: none !important;
+        transform: none !important;
     }
-.sidenav-toggle-btn.animate-close {
-    animation: none !important;
-    transform: none !important;
+
+    .sidenav-toggle-btn.animate-close {
+        animation: none !important;
+        transform: none !important;
     }
 }
 
 @keyframes sidenavOpen {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(370px, 0);
-  }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(370px, 0);
+    }
 }
 
 @keyframes sidenavClose {
-  0% {
-    transform: translate(370px, 0);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+    0% {
+        transform: translate(370px, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 .sidenav {
@@ -1247,41 +1259,47 @@ body#home-page .main-navbar {
 }
 
 .sidenav.no-transition {
-  transition: none;
+    transition: none;
 }
+
 .body.no-scroll {
     scroll-behavior: auto;
 }
 
-.sidenav-scroll > * {
+.sidenav-scroll>* {
     direction: ltr;
 }
+
 .sidenav.collapsed {
     transform: translateX(-95%) translateY(-50%);
     padding-right: 2rem;
 }
+
 .sidenav-scroll {
     height: 100%;
     overflow-y: auto;
     direction: rtl;
     padding: 0 2rem;
 }
+
 /* Scrollbar Webkit */
 .sidenav-scroll::-webkit-scrollbar {
-  width: 4px;
+    width: 4px;
 }
+
 .sidenav-scroll::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
+
 .sidenav-scroll::-webkit-scrollbar-thumb {
-  background-color: var(--ancient-gold, #D4B55A);
-  border-radius: 10px;
+    background-color: var(--ancient-gold, #D4B55A);
+    border-radius: 10px;
 }
 
 /* Firefox */
 .sidenav-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(var(--ancient-gold-rgb), 0.2) transparent;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--ancient-gold-rgb), 0.2) transparent;
 }
 
 .sidenav-content h3 {
@@ -1351,10 +1369,11 @@ ul#site-index li {
 }
 
 /* MOBILE STYLES */
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     .sidenav.collapsed {
-        transform: translateX(-100%) translateY(-50%);    
+        transform: translateX(-100%) translateY(-50%);
     }
+
     .sidenav-toggle-btn {
         position: fixed;
         display: block;
@@ -1620,15 +1639,15 @@ h1.site-title {
     font-family: var(--font-arcane);
     font-weight: normal;
     text-transform: uppercase;
-    background: linear-gradient(
-    to right,
-    rgba(var(--deep-charcoal-rgb), 0.2),
-    rgba(var(--brown-charcoal-rgb), 0.2)),
-    url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 @media (max-width: 767px) {
     h1.site-title {
         font-size: 8rem;
@@ -1691,11 +1710,10 @@ h1.site-title {
     font-size: inherit;
     padding: 10px 0;
     font-weight: 100;
-    background: linear-gradient(
-    to right,
-    rgba(var(--deep-charcoal-rgb), 0.2),
-    rgba(var(--brown-charcoal-rgb), 0.2)),
-    url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1712,11 +1730,10 @@ h1.site-title {
     font-size: 2.6rem;
     color: var(--burnt-copper);
     transform: rotate(90deg);
-    background: linear-gradient(
-    to right,
-    rgba(var(--deep-charcoal-rgb), 0.2),
-    rgba(var(--brown-charcoal-rgb), 0.2)),
-    url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1847,6 +1864,7 @@ h2.section::after {
     border-right: 2px solid var(--background-dark-2);
     border-left: 2px solid var(--background-dark-2);
 }
+
 @media (max-width: 768px) {
     .section-wrapper {
         padding: 0 1rem 1rem 1rem;
@@ -2111,9 +2129,10 @@ thead th:last-child {
 }
 
 .tooltip-box.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
+
 .tooltip-box::before {
     content: "▲";
     position: absolute;
@@ -2129,24 +2148,26 @@ thead th:last-child {
     margin: 0 0 6px 26px;
     border-bottom: 1px solid var(--background-dark-3);
 }
+
 .tooltip-title {
-  color: var(--off-white, #F0F0F0);
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-family: var(--font-main);
-  font-weight: 400;
+    color: var(--off-white, #F0F0F0);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font-main);
+    font-weight: 400;
 }
 
 .tooltip-tag-type {
-  font-size: 0.75em;
-  color: #ccc;
-  margin-left: auto;
-  text-transform: uppercase;
+    font-size: 0.75em;
+    color: #ccc;
+    margin-left: auto;
+    text-transform: uppercase;
 }
+
 .tooltip-description {
-  color: var(--off-white, #F0F0F0);
-  font-family: var(--font-main);
-  font-size: 0.8rem;
+    color: var(--off-white, #F0F0F0);
+    font-family: var(--font-main);
+    font-size: 0.8rem;
 }
 
 .tooltip {
@@ -2250,6 +2271,7 @@ thead th:last-child {
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-decoration: none;
 }
+
 .tag::before {
     content: "";
     display: inline-block;
@@ -2634,21 +2656,21 @@ thead th:last-child {
 }
 
 .collapsible-sidenav-item {
-  background: transparent;
-  margin: 1rem 0;
-  box-shadow: none;
-  border-radius: 5px;
+    background: transparent;
+    margin: 1rem 0;
+    box-shadow: none;
+    border-radius: 5px;
 }
 
 .collapsible-sidenav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  background: var(--background-dark-3);
-  cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
-  border-radius: 0 10px 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background: var(--background-dark-3);
+    cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+    border-radius: 0 10px 10px 0;
 }
 
 .collapsible-sidenav-header::before {
@@ -2672,12 +2694,12 @@ thead th:last-child {
 }
 
 .collapsible-sidenav-icon {
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .collapsible-sidenav-content {
-  overflow: hidden;
-  transition: height 0.3s ease;
+    overflow: hidden;
+    transition: height 0.3s ease;
 }
 
 /*=============================================
@@ -2811,9 +2833,9 @@ blockquote:not(.clean)::before {
     left: 0;
     width: 6px;
     height: 100%;
-    background: linear-gradient(to right, 
-        rgba(var(--burnt-copper-rgb), 0.2), 
-        rgba(var(--ancient-gold-rgb), 0.2)), 
+    background: linear-gradient(to right,
+            rgba(var(--burnt-copper-rgb), 0.2),
+            rgba(var(--ancient-gold-rgb), 0.2)),
         url(/assets/textures/antique-gold-1.jpg);
 }
 
@@ -4235,6 +4257,7 @@ details[open] .infobox-table {
 .overlay-symbol.l {
     left: 20%;
 }
+
 .overlay-symbol.r {
     right: -35%;
 }
@@ -4242,30 +4265,39 @@ details[open] .infobox-table {
 .overlay-symbol.var-1 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-1.svg');
 }
+
 .overlay-symbol.var-2 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-2.svg');
 }
+
 .overlay-symbol.var-3 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-3.svg');
 }
+
 .overlay-symbol.var-4 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-4.svg');
 }
+
 .overlay-symbol.var-5 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-5.svg');
 }
+
 .overlay-symbol.var-6 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-6.svg');
 }
+
 .overlay-symbol.var-7 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-7.svg');
 }
+
 .overlay-symbol.var-8 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-8.svg');
 }
+
 .overlay-symbol.var-9 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-9.svg');
 }
+
 .overlay-symbol.var-19 {
     background-image: url('/assets/icons/svg/alchemy/alchemy-10.svg');
 }
@@ -4275,6 +4307,7 @@ i.fa-solid.fa-square-xmark {
     font-size: 26px;
     transition: all .6s ease-in-out;
 }
+
 i.fa-solid.fa-right-from-bracket {
     color: var(--ancient-gold);
     transition: all .6s ease-in-out;
@@ -4288,9 +4321,11 @@ i.fa-solid.fa-right-from-bracket {
         transform: scaleX(-1);
         content: "\f2f5" !important;
     }
+
     .fa-square-xmark:before {
         content: "\f2f5" !important;
     }
+
     i.fa-solid.fa-right-from-bracket {
         font-size: 30px;
     }
@@ -4303,4 +4338,201 @@ i.fa-solid.fa-right-from-bracket {
     background-image: var(--dice-combined);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+/*========== PAGE: ABOUT ==========*/
+/*Letter from Alonso */
+.letter-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.7;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.letter-content em {
+    font-style: italic;
+}
+
+.section-columns {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.section-col {
+    flex: 1 1 300px;
+    min-width: 280px;
+    background: var(--background-dark-2);
+    padding: 0 1rem;
+    margin: 1rem 0;
+    border-radius: 1rem;
+}
+
+#letter-from-alonso:hover .overlay-symbol.var-4,
+#cultural-approach-and-ethics:hover .overlay-symbol.var-5,
+#ai-policy:hover .overlay-symbol.var-6,
+#tools-and-inspiration:hover .overlay-symbol.var-7,
+#license:hover .overlay-symbol.var-6 {
+    opacity: 0.1;
+}
+
+/* About: What is Seeker? */
+.carousel-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+    margin: 0.5rem 0 2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.feature-card {
+    height: 300px;
+    width: 250px;
+    background-position: top;
+}
+
+.card-content h4 {
+    margin-top: 0;
+    font-family: var(--font-antique);
+    color: var(--bright-gold);
+    text-transform: uppercase;
+    font-size: .8rem;
+}
+
+.card-content h3 {
+    font-family: var(--font-antique);
+    color: var(--bright-gold);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+}
+
+.feature-card h3,
+.feature-card h4,
+.feature-card .card-description.short,
+.feature-card .carousel-icon {
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.feature-card:hover h3,
+.feature-card:hover h4,
+.feature-card:hover .card-description.short,
+.feature-card:hover .carousel-icon {
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.feature-card-wrapper {
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.carousel-wrapper {
+    max-width: 750px;
+    padding: 3px;
+    border-width: 0 3px 0 3px;
+    border-color: var(--ancient-gold);
+    border-style: solid;
+    border-radius: 15px;
+}
+
+.carousel-track {
+    padding: 5px 0;
+}
+
+.card-description.short {
+    margin-top: 0;
+}
+
+.card-content {
+    align-items: center;
+    justify-content: flex-start;
+    background-color: transparent;
+    padding: 0 10px;
+    background-image: none;
+}
+
+.feature-wrapper-left,
+.feature-wrapper-right {
+    display: block;
+    padding: 1rem;
+    background: var(--background-dark-3);
+    margin: 1rem 0;
+    border-radius: 1rem;
+}
+
+.feature-desc {
+    display: block;
+    margin-bottom: 0;
+}
+
+.feature-image {
+    display: block;
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
+    padding: 10px;
+    background: var(--background-dark-1);
+}
+
+.feature-symbol {
+    display: block;
+    border-radius: .7rem;
+    padding: 3px;
+}
+
+.feature-wrapper-left .feature-symbol {
+    float: left;
+    margin-right: 15px;
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+}
+
+.feature-wrapper-right .feature-symbol {
+    float: right;
+    margin-left: 15px;
+    background: linear-gradient(to left,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+}
+
+.feature-wrapper-right h4 {
+    justify-content: flex-end;
+}
+
+.feature-desc h4 {
+    border-bottom: 3px solid var(--ancient-gold);
+    display: flex;
+    margin-top: 0;
+}
+
+.map {
+    width: 100vw;
+    max-width: 800px;
+    padding: 1rem 2rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 767px) {
+    .carousel-wrapper {
+        max-width: 95vw;
+    }
+
+    .feature-image {
+        display: block;
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        padding: 10px;
+        background: var(--background-dark-1);
+    }
 }
