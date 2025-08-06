@@ -1,4 +1,4 @@
-/*v2.50 2025-08-06T10:06:00.918Z*/
+/*v2.52 2025-08-06T10:15:27.817Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1901,7 +1901,7 @@ h2.section::after {
     max-width: 800px;
     position: relative;
     padding-top: 0;
-    background-color: rgba(var(--background-dark-2-rgb, 41, 41, 41), 0.5);
+    background-color: rgba(var(--background-dark-2-rgb, 41, 41, 41), 0.3);
     padding: 0 2rem 2rem 2rem;
     border-radius: 0 0 1rem 1rem;
     border-right: 2px solid var(--background-dark-2);
@@ -4462,7 +4462,7 @@ i.fa-solid.fa-right-from-bracket {
 .feature-wrapper-right {
     display: block;
     padding: 1rem;
-    background: var(--background-dark-3);
+    background: var(--background-dark-2);
     margin: 1rem 0;
     border-radius: 1rem;
 }
