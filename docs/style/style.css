@@ -1,4 +1,4 @@
-/*v2.115 2025-08-06T22:47:38.152Z*/
+/*v2.119 2025-08-06T22:56:27.096Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -73,6 +73,7 @@
     --font-handwritten: 'Great Vibes', cursive;
     --font-calligraphy: 'Quentin', cursive;
     --font-calligraphy-2: 'High Summit', cursive;
+    --font-calligraphy-3: 'Honey Script', cursive;
     --font-title: 'Cinzel Decorative', serif;
     --font-antique: 'IM Fell English', serif;
     --font-arcane: 'Mistlock Rough', serif;
@@ -123,7 +124,14 @@
 
 @font-face {
     font-family: "High Summit";
-    src: url("/assets/fonts/High-Summit.otf") format("truetype");
+    src: url("/assets/fonts/High-Summit.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Honey Script";
+    src: url("/assets/fonts/HoneyScript-Light.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -3141,11 +3149,18 @@ blockquote.clean p {
     }
 }
 
-.blockquote-clean-author {
+.blockquote-clean-author.var-1 p {
     text-align: right;
     font-size: 1.1rem;
     color: var(--pale-beige);
+    font-family: var(--font-calligraphy-1);
+    font-size: 1.8rem;
+}
+.blockquote-clean-author.var-2 p {
     font-family: var(--font-calligraphy-2);
+}
+.blockquote-clean-author.var-3 p {
+    font-family: var(--font-calligraphy-3);
 }
 
 .signature {
@@ -4422,7 +4437,7 @@ details[open] .infobox-table {
     opacity: 0.03;
     transition: opacity 0.4s ease-in-out;
     transform: translate(-50%, -50%);
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
 }
 .section-wrapper:hover .overlay-symbol {
