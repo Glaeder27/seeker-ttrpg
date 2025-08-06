@@ -1,4 +1,4 @@
-/*v2.80 2025-08-06T16:01:04.107Z*/
+/*v2.82 2025-08-06T19:15:26.638Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -547,6 +547,20 @@ a:active {
 
 body#home-page .main-navbar {
     border-bottom: none;
+}
+
+body#home-page {
+    background-image:
+  linear-gradient(to top,
+    rgba(var(--background-site-rgb), 1) 0px,
+    rgba(var(--background-site-rgb), 1) 200px,
+    rgba(var(--background-site-rgb), 0) 400px),
+
+  linear-gradient(to bottom,
+    rgba(var(--background-site-rgb), 1) 0px,
+    rgba(var(--background-site-rgb), 0) 200px),
+
+  url("/assets/images/webp/decorations/horizontal-map-mappa-mundi.webp");
 }
 
 .navbar-container {
