@@ -1,4 +1,4 @@
-/*v2.111 2025-08-06T22:40:20.941Z*/
+/*v2.114 2025-08-06T22:45:26.955Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -850,15 +850,13 @@ body#home-page {
     -webkit-mask-position: bottom center;
     mask-size: contain;
     -webkit-mask-size: contain;
-    mask-size: auto 650px
-}
-
-.banner-parallax {
-    height: 650px;
+    mask-size: auto 300px
 }
 
 .banner-parallax {
     margin-top: 70px;
+    height: 650px;
+    mask-size: auto 650px
 }
 
 @media (max-width: 767px) {
@@ -1190,8 +1188,10 @@ body#home-page {
 
 #home-page .card-content,
 #home-page .carousel-icon,
-#home-page .card-description {
+#home-page .card-description,
+#home-page h3 {
     opacity: 1;
+    text-align: center;
 }
 #home-page .card-content {
     background: rgba(0, 0, 0, 0.8);
