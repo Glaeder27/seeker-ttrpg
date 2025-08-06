@@ -1,4 +1,4 @@
-/*v2.84 2025-08-06T19:55:51.599Z*/
+/*v2.85 2025-08-06T20:03:07.988Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -550,10 +550,9 @@ body#home-page .main-navbar {
 }
 
 body#home-page {
-    background-image:
-linear-gradient(to bottom,
+    background-image: linear-gradient(to bottom,
     rgba(var(--background-site-rgb), 1) 0px,
-    rgba(var(--background-site-rgb), 1) 150px,
+    rgba(var(--background-site-rgb), 1) 200px,
     rgba(var(--background-site-rgb), 0) 400px),
 
   linear-gradient(to top,
@@ -561,8 +560,8 @@ linear-gradient(to bottom,
     rgba(var(--background-site-rgb), .97) 200px),
 
   url("/assets/images/webp/decorations/full-new-world.webp");
-
-  background-attachment: fixed;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 .navbar-container {
