@@ -1,4 +1,4 @@
-/*v2.78 2025-08-06T15:07:06.065Z*/
+/*v2.80 2025-08-06T16:01:04.107Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -821,6 +821,18 @@ body#home-page .main-navbar {
     /* Parallax */
     background-repeat: no-repeat;
     width: 100%;
+
+    -webkit-mask-image: url('/assets/images/banners/banner-stain-full.svg');
+    mask-image: url('/assets/images/banners/banner-stain-full.svg');
+
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+
+    mask-position: bottom center;
+    -webkit-mask-position: bottom center;
+
+    mask-size: contain;
+    -webkit-mask-size: contain;
 }
 
 .banner-parallax {
