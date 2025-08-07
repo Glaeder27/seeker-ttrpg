@@ -1,4 +1,4 @@
-/*v2.139 2025-08-07T15:08:23.364Z*/
+/*v2.141 2025-08-07T15:11:52.484Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1247,6 +1247,9 @@ body#home-page {
     opacity: 1;
     text-align: center;
     cursor: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
+}
+#home-page h3::after {
+    background: none;
 }
 #home-page .card-content {
     background: rgba(0, 0, 0, 0.8);
