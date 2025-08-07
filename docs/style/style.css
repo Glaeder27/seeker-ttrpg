@@ -1,4 +1,4 @@
-/*v2.136 2025-08-07T14:59:53.052Z*/
+/*v2.137 2025-08-07T15:05:46.543Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -223,7 +223,9 @@
     scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
 
-main.dual-column[type="rulebook"] .right-column {}
+main.dual-column[type="rulebook"] .right-column {
+    position: static;
+}
 
 main.dual-column[type="lorebook"] .right-column {
     position: static;
