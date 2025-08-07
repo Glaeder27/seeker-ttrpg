@@ -1,4 +1,4 @@
-/*v2.128 2025-08-06T23:18:58.747Z*/
+/*v2.129 2025-08-07T12:59:20.808Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -77,6 +77,8 @@
     --font-title: 'Cinzel Decorative', serif;
     --font-antique: 'IM Fell English', serif;
     --font-arcane: 'Mistlock Rough', serif;
+    --font-alchemy-symbols: '1651 Alchemy Symbols', serif;
+    --font-logo: '1540 Mercator Script', serif;
 
     /* ── IMAGES ───────────────────────────────────────────── */
     /* Dice */
@@ -132,6 +134,20 @@
 @font-face {
     font-family: "Honey Script";
     src: url("/assets/fonts/HoneyScript-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "1651 Alchemy Symbols";
+    src: url("/assets/fonts/1651-Alchemy-Symbols.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "1540 Mercator Script";
+    src: url("/assets/fonts/1540-Mercator-Script.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
