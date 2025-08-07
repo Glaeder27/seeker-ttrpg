@@ -1,4 +1,4 @@
-/*v2.133 2025-08-07T13:44:30.245Z*/
+/*v2.135 2025-08-07T14:00:43.382Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1819,7 +1819,7 @@ h4 {
 h1.site-title {
     font-size: 12vw;
     line-height: 1;
-    margin: -0.4em 0 0 0;
+    margin: -0.3em 0 0 0;
     font-family: var(--font-logo);
     font-weight: normal;
     background: linear-gradient(to right,
@@ -2077,6 +2077,7 @@ h1.site-title {
     border-radius: 0 0 1rem 1rem;
     border-right: 2px solid var(--background-dark-2);
     border-left: 2px solid var(--background-dark-2);
+    filter: drop-shadow(0px 0px 5px black);
 }
 
 @media (max-width: 768px) {
