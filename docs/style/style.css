@@ -1,4 +1,4 @@
-/*v2.129 2025-08-07T12:59:20.808Z*/
+/*v2.132 2025-08-07T13:17:58.812Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1309,9 +1309,10 @@ body#home-page {
 
 .card-content h3 {
     font-family: var(--font-antique);
-    color: var(--bright-gold);
+    color: var(--ancient-gold);
     text-transform: uppercase;
     font-size: 1.4rem;
+    margin: 1.5rem 1rem 0;
 }
 
 /* ── SIDENAV ─────────────── */
@@ -1817,11 +1818,10 @@ h4 {
 
 h1.site-title {
     font-size: 12vw;
-    line-height: 0.8;
-    margin: 0;
-    font-family: var(--font-arcane);
+    line-height: 1;
+    margin: -0.4em 0 0 0;
+    font-family: var(--font-logo);
     font-weight: normal;
-    text-transform: uppercase;
     background: linear-gradient(to right,
             rgba(var(--deep-charcoal-rgb), 0.2),
             rgba(var(--brown-charcoal-rgb), 0.2)),
@@ -1829,6 +1829,8 @@ h1.site-title {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    padding-bottom: .3em;
+    padding-top: .1em;
 }
 
 @media (max-width: 767px) {
@@ -1911,6 +1913,7 @@ h1.site-title {
 
 .title-icon {
     font-size: 2.6rem;
+    font-family: var(--font-alchemy-symbols);
     color: var(--burnt-copper);
     transform: rotate(90deg);
     background: linear-gradient(to right,
