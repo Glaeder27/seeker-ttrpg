@@ -1,4 +1,4 @@
-/*v2.132 2025-08-07T13:17:58.812Z*/
+/*v2.133 2025-08-07T13:44:30.245Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -311,43 +311,43 @@ body.fade-out {
 
 html,
 body {
-    cursor: url('/assets/cursor/cursor_24.png') 4 1, auto;
+    cursor: url('/assets/cursor/cursor-24.png') 4 1, auto;
 }
 
 a,
 button,
 .button,
 .clickable {
-    cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+    cursor: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
 }
 
 input[type="text"],
 textarea,
 [contenteditable="true"] {
-    cursor: url('/assets/cursor/cursor_text_24.png') 2 24, text;
+    cursor: url('/assets/cursor/cursor-text-24.png') 2 24, text;
 }
 
 .disabled,
 [disabled],
 [aria-disabled="true"],
 .not-allowed {
-    cursor: url('/assets/cursor/cursor_not-allowed_24.png') 4 1, not-allowed;
+    cursor: url('/assets/cursor/cursor-not-allowed-24.png') 4 1, not-allowed;
 }
 
 .loading {
-    cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, progress;
+    cursor: url('/assets/cursor/cursor-loading-24.png') 12 12, progress;
 }
 
 .waiting {
-    cursor: url('/assets/cursor/cursor_loading_24.png') 12 12, wait;
+    cursor: url('/assets/cursor/cursor-loading-24.png') 12 12, wait;
 }
 
 .draggable {
-    cursor: url('/assets/cursor/cursor_grab_24.png') 6 8, grab;
+    cursor: url('/assets/cursor/cursor-grab-24.png') 6 8, grab;
 }
 
 .draggable:active {
-    cursor: url('/assets/cursor/cursor_grabbing_24.png') 6 8, grabbing;
+    cursor: url('/assets/cursor/cursor-grabbing-24.png') 6 8, grabbing;
 }
 
 p,
@@ -355,7 +355,7 @@ h1,
 h2,
 h3,
 blockquote {
-    cursor: url('/assets/cursor/cursor_text-2_24.png') 12 12, text;
+    cursor: url('/assets/cursor/cursor-text-2-24.png') 12 12, text;
 }
 
 /* Core */
@@ -1129,11 +1129,11 @@ body#home-page {
     scroll-behavior: auto;
     padding: 1rem 2rem;
     scrollbar-width: none;
-    cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
+    cursor: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
 }
 
 .carousel-track.active {
-    cursor: url('/assets/cursor/cursor_grabbing_24.png') 12 12, grabbing;
+    cursor: url('/assets/cursor/cursor-grabbing-24.png') 12 12, grabbing;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -1268,7 +1268,7 @@ body#home-page {
     color: var(--ancient-gold, #D4B55A);
     text-align: center;
     margin-bottom: 0.25rem;
-    cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
+    cursor: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
     border: none;
 }
 
@@ -1276,7 +1276,7 @@ body#home-page {
     font-size: 0.9rem;
     text-align: center;
     padding: 0 1rem;
-    cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
+    cursor: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
 }
 
 .card-description.full {
@@ -1290,13 +1290,13 @@ body#home-page {
     z-index: 1;
     box-sizing: border-box;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
+    cursor: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
 }
 
 .feature-card:hover .card-description.full {
     opacity: 1;
     visibility: visible;
-    cursor: url('/assets/cursor/cursor_grab_24.png') 12 12, grab;
+    cursor: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
 }
 
 .card-content h4 {
@@ -2511,7 +2511,7 @@ thead th:last-child {
 
 .tag:hover {
     color: var(--ancient-gold, #D4B55A);
-    cursor: url('/assets/cursor/cursor_info_24.png') 4 1, help;
+    cursor: url('/assets/cursor/cursor-info-24.png') 4 1, help;
 }
 
 .rule-tag.tooltip {
@@ -2787,7 +2787,7 @@ thead th:last-child {
     overflow: visible;
     display: flex;
     align-items: flex-end;
-    cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+    cursor: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
 }
 
 .collapsible-header-sb:hover {
@@ -2893,7 +2893,7 @@ thead th:last-child {
     cursor: pointer;
     padding: 10px;
     background: var(--background-dark-3);
-    cursor: url('/assets/cursor/cursor_pointer_24.png') 9 4, pointer;
+    cursor: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
     border-radius: 0 10px 10px 0;
 }
 
