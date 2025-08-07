@@ -1,4 +1,4 @@
-/*v2.141 2025-08-07T15:11:52.484Z*/
+/*v2.142 2025-08-07T15:24:47.035Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1253,6 +1253,10 @@ body#home-page {
 }
 #home-page .card-content {
     background: rgba(0, 0, 0, 0.8);
+}
+
+#home-page .carousel-icon {
+    border-radius: 0;
 }
 
 .card-content {
