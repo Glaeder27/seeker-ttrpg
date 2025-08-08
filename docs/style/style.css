@@ -1,4 +1,4 @@
-/*v2.147 2025-08-08T08:13:15.769Z*/
+/*v2.149 2025-08-08T08:26:08.752Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1025,6 +1025,9 @@ body#home-page {
     margin-bottom: 3rem;
     z-index: 9;
     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-100%, -50%);
 }
 
 @media (max-width: 767px) {
