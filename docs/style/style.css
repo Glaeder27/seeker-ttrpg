@@ -1,4 +1,4 @@
-/*v2.68 2025-08-08T15:40:26.939Z*/
+/*v2.69 2025-08-08T15:53:28.931Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1577,7 +1577,7 @@ ul#site-index li {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 3.5rem 1rem 0;
+    padding: .5rem 1rem 0;
     background-color: var(--background-dark-2);
     border-top: 5px solid var(--ancient-gold);
     border-bottom: 5px solid var(--ancient-gold);
@@ -1639,7 +1639,7 @@ ul#site-index li {
     font-size: .9rem;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 5rem 0 0.25rem 0;
+    margin: .5rem 0 0.25rem 0;
     user-select: text;
 }
 
