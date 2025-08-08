@@ -1,4 +1,4 @@
-/*v2.66 2025-08-08T15:16:54.332Z*/
+/*v2.68 2025-08-08T15:40:26.939Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1664,7 +1664,7 @@ ul#site-index li {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 3.5rem 1rem 0;
+    padding: .5rem 1rem 0;
     border-radius: 0.5rem;
     cursor: pointer;
     text-decoration: none;
@@ -1712,10 +1712,10 @@ ul#site-index li {
 }
 
 .menu-2-cell h4 {
-    font-size: .9rem;
+    font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 5rem 0 0.25rem 0;
+    margin: 2rem 0 0.25rem 0;
     user-select: text;
 }
 
@@ -1811,6 +1811,13 @@ h4 {
     font-family: var(--font-main);
     color: var(--ancient-gold);
     font-weight: 500;
+    background: linear-gradient(to bottom, 
+        rgba(var(--deep-charcoal-rgb), 0.2), 
+        rgba(var(--brown-charcoal-rgb), 0.2)), 
+        url(/assets/textures/antique-gold-1.jpg);
+    background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h1.site-title {
@@ -4521,7 +4528,7 @@ details[open] .infobox-table {
 .alchemy-symbol.huge{
     font-size: 10rem;
 }
-.alchemy-symbol.big{
+.alchemy-symbol.large{
     font-size: 7rem;
 }
 .alchemy-symbol.medium{
