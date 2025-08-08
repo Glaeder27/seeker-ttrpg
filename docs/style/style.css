@@ -1,4 +1,4 @@
-/*v2.70 2025-08-08T15:59:07.257Z*/
+/*v2.73 2025-08-08T16:28:35.332Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1594,20 +1594,28 @@ ul#site-index li {
 }
 
 .menu-cell::before {
+    content: "";
+    display: block;
+    height: 5px;
     top: 0;
     border-radius: 10px 10px 0 0;
     background: linear-gradient(to bottom, 
         rgba(var(--deep-charcoal-rgb), 0.2), 
         rgba(var(--brown-charcoal-rgb), 0.2)), 
         url(/assets/textures/antique-gold-1.jpg);
+    position: relative;
 }
 .menu-cell::after {
+    content: "";
+    display: block;
+    height: 5px;
     bottom: 0;
     border-radius: 10px 10px 0 0;
     background: linear-gradient(to bottom, 
         rgba(var(--deep-charcoal-rgb), 0.2), 
         rgba(var(--brown-charcoal-rgb), 0.2)), 
         url(/assets/textures/antique-gold-1.jpg);
+    position: relative;
 }
 
 @media (max-width: 767px) {
