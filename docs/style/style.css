@@ -1,4 +1,4 @@
-/*v2.62 2025-08-08T13:54:26.111Z*/
+/*v2.64 2025-08-08T13:57:46.689Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3238,7 +3238,7 @@ p.blockquote-attribution.clean {
     font-size: 0.7rem;
 }
 
-img .signature {
+img.img-signature {
     width: 100px
 }
 
