@@ -1,4 +1,4 @@
-/*v2.81 2025-08-08T20:23:16.657Z*/
+/*v2.82 2025-08-08T20:48:37.320Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -706,7 +706,7 @@ body#home-page {
         content: "";
         position: absolute;
         inset: 0;
-        background: url("/assets/icons/svg/alchemy/alchemy-5.svg") no-repeat center/100%;
+        background: url("/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-5.svg") no-repeat center/100%;
         opacity: 0;
         transition:
             opacity 0.4s ease,
@@ -4606,45 +4606,50 @@ p.alchemy-symbol.high {
 }
 
 .overlay-symbol.var-1 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-1.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-1.webp');
 }
-
 .overlay-symbol.var-2 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-2.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-2.webp');
 }
-
 .overlay-symbol.var-3 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-3.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-3.webp');
 }
-
 .overlay-symbol.var-4 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-4.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-4.webp');
 }
-
 .overlay-symbol.var-5 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-5.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-5.webp');
 }
-
 .overlay-symbol.var-6 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-6.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-6.webp');
 }
-
 .overlay-symbol.var-7 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-7.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-7.webp');
 }
-
 .overlay-symbol.var-8 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-8.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-8.webp');
 }
-
 .overlay-symbol.var-9 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-9.svg');
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-9.webp');
 }
-
-.overlay-symbol.var-19 {
-    background-image: url('/assets/icons/svg/alchemy/alchemy-10.svg');
+.overlay-symbol.var-10 {
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-10.webp');
 }
-
+.overlay-symbol.var-11 {
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-11.webp');
+}
+.overlay-symbol.var-12 {
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-12.webp');
+}
+.overlay-symbol.var-13 {
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-13.webp');
+}
+.overlay-symbol.var-14 {
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-14.webp');
+}
+.overlay-symbol.var-15 {
+    background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-15.webp');
+}
 i.fa-solid.fa-square-xmark {
     color: var(--rust-red);
     font-size: 26px;
