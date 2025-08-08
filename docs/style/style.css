@@ -1,4 +1,4 @@
-/*v2.143 2025-08-08T07:26:49.044Z*/
+/*v2.146 2025-08-08T08:06:26.884Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1042,6 +1042,14 @@ body#home-page {
 }
 /* Seeker Logo Mobile*/
 .logo-containe-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .logo-container {
+        display: none;
+    }
+    .logo-container-mobile {
     height: clamp(150px, calc(10vh + 30vw), 550px);
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
     margin: -10vh 0 2rem;
@@ -1051,16 +1059,7 @@ body#home-page {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 9;
-}
-@media (max-width: 767px) {
-    .logo-container {
-        display: none;
-    }
-    .logo-container-mobile {
-        z-index: 0;
-        height: clamp(350px, 30vh + 10vw, 450px);
-        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
-        margin: -10vh 0 2rem;
+    display: block;
     }
 }
 
