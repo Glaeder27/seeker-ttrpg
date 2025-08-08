@@ -1,4 +1,4 @@
-/*v2.84 2025-08-08T22:17:54.393Z*/
+/*v2.84 2025-08-08T22:27:19.167Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1804,13 +1804,14 @@ h3 {
     font-family: var(--font-main);
     color: var(--off-white);
     font-weight: 500;
+    position: relative;
 }
 h3::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 2px;
+    height: 1px;
     width: 100%;
     background-image: linear-gradient(to right,           
         rgba(var(--deep-charcoal-rgb), 0.2),
