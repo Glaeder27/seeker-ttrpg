@@ -1,4 +1,4 @@
-/*v2.82 2025-08-08T20:48:48.844Z*/
+/*v2.83 2025-08-08T21:42:16.687Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -706,7 +706,7 @@ body#home-page {
         content: "";
         position: absolute;
         inset: 0;
-        background: url("/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-5.svg") no-repeat center/100%;
+        background: url("/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-5.webp") no-repeat center/100%;
         opacity: 0;
         transition:
             opacity 0.4s ease,
@@ -2127,8 +2127,8 @@ h1.site-title {
     background-color: rgba(var(--background-dark-2-rgb, 41, 41, 41), 0.3);
     padding: 0 2rem 2rem 2rem;
     border-radius: 0 0 1rem 1rem;
-    border-right: 2px solid var(--background-dark-2);
-    border-left: 2px solid var(--background-dark-2);
+    border-right: 2px solid rgba(var(--pale-beige-rgb), 0.1);
+    border-left: 2px solid rgba(var(--pale-beige-rgb), 0.1);
     filter: drop-shadow(0px 0px 5px black);
 }
 
