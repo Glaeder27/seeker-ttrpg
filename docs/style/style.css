@@ -1,4 +1,4 @@
-/*v2.142 2025-08-07T15:24:47.035Z*/
+/*v2.143 2025-08-08T07:26:49.044Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -912,6 +912,8 @@ body#home-page {
     color: white;
     text-align: center;
     padding: 1rem;
+    top: 50%;
+    translate: 0% -50%;
 }
 
 .banner-mask .border-top,
@@ -966,16 +968,6 @@ body#home-page {
         bottom: 10vh;
         position: absolute;
     }
-    .logo-container {
-        z-index: 10;
-        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
-        margin: -10vh 0 2rem;
-        position: absolute;
-        top: 10vh;
-        justify-content: center;
-        left: 50%;
-        transform: translate(-50%, 0);
-    }
     .banner-parallax {
         margin-top: 0;
     }
@@ -1026,53 +1018,13 @@ body#home-page {
     }
 }
 
-/* Stains — Candidate for deletion */
-.banner-stain-top,
-.banner-stain-bottom {
-    background-image: url('../assets/images/banners/banner-stain.svg');
-    background-repeat: repeat-x;
-    background-size: cover;
-    height: 70px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    pointer-events: none;
-    z-index: 2;
-    display: none;
-}
-@media (max-width: 767px) {
-    .banner-stain-top,
-    .banner-stain-bottom {
-        display: none;
-    }
-}
-
-.banner-stain-top {
-    top: 0;
-    transform: rotate(180deg);
-}
-
-.banner-stain-bottom {
-    bottom: 0;
-    transform: rotate(0deg);
-}
-
-@media (max-width: 767px) {
-    .banner-stain-top {
-        top: -10px;
-    }
-
-    .banner-stain-bottom {
-        bottom: -2px;
-    }
-}
-
 /* Seeker Logo */
 .logo-container {
     height: clamp(150px, calc(10vh + 30vw), 550px);
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
     margin-bottom: 3rem;
     z-index: 9;
+    position: absolute;
 }
 
 @media (max-width: 767px) {
@@ -1085,6 +1037,34 @@ body#home-page {
 }
 
 .logo-container img.logo {
+    height: 110%;
+    object-fit: cover;
+}
+/* Seeker Logo Mobile*/
+.logo-containe-mobile {
+    height: clamp(150px, calc(10vh + 30vw), 550px);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
+    margin: -10vh 0 2rem;
+    position: absolute;
+    top: 10vh;
+    justify-content: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 9;
+}
+@media (max-width: 767px) {
+    .logo-container {
+        display: none;
+    }
+    .logo-container-mobile {
+        z-index: 0;
+        height: clamp(350px, 30vh + 10vw, 450px);
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
+        margin: -10vh 0 2rem;
+    }
+}
+
+.logo-container-mobile img.logo {
     height: 110%;
     object-fit: cover;
 }
