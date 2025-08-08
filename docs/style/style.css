@@ -1,4 +1,4 @@
-/*v2.80 2025-08-08T18:44:46.114Z*/
+/*v2.81 2025-08-08T20:23:16.657Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2029,10 +2029,6 @@ h1.site-title {
     color: var(--ancient-gold, #d6b879);
     padding: 30px 12px 10px 12px;
     margin: 60px 0 30px 0;
-    background: linear-gradient(to right, 
-        rgba(var(--background-dark-1-rgb), .85), 
-        rgba(var(--background-dark-2-rgb), .98)), 
-        url('/assets/images/webp/decorations/horizontal-map-new-world.webp');
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     letter-spacing: 1px;
@@ -2057,7 +2053,31 @@ h1.site-title {
     background: linear-gradient(to right, 
         rgba(var(--background-dark-1-rgb), .85), 
         rgba(var(--background-dark-2-rgb), .98)), 
-        url('/assets/images/webp/decorations/horizontal-map-mappa-mundi.webp');
+        url('/assets/images/webp/decorations/horizontal-mappa-mundi.webp');
+}
+.section.var-2 {
+    background: linear-gradient(to right, 
+        rgba(var(--background-dark-1-rgb), .85), 
+        rgba(var(--background-dark-2-rgb), .98)), 
+        url('/assets/images/webp/decorations/horizontal-novo-mondo.webp');
+}
+.section.var-3 {
+    background: linear-gradient(to right, 
+        rgba(var(--background-dark-1-rgb), .85), 
+        rgba(var(--background-dark-2-rgb), .98)), 
+        url('/assets/images/webp/decorations/horizontal-orbis-terrarum.webp');
+}
+.section.var-4 {
+    background: linear-gradient(to right, 
+        rgba(var(--background-dark-1-rgb), .85), 
+        rgba(var(--background-dark-2-rgb), .98)), 
+        url('/assets/images/webp/decorations/horizontal-waldseemuller.webp');
+}
+.section.var-5{
+    background: linear-gradient(to right, 
+        rgba(var(--background-dark-1-rgb), .85), 
+        rgba(var(--background-dark-2-rgb), .98)), 
+        url('/assets/images/webp/decorations/horizontal-new-world.webp');
 }
 
 .section::before,
