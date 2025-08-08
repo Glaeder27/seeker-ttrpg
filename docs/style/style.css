@@ -1,4 +1,4 @@
-/*v2.77 2025-08-08T16:47:45.997Z*/
+/*v2.78 2025-08-08T16:58:02.697Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1595,7 +1595,7 @@ ul#site-index li {
     content: "";
     display: block;
     height: 5px;
-    width: 100%;
+    width: calc(100% + 2rem);
     top: 0;
     border-radius: 10px 10px 0 0;
     background: linear-gradient(to bottom, 
@@ -1608,9 +1608,9 @@ ul#site-index li {
     content: "";
     display: block;
     height: 5px;
-    width: 100%;
+    width: calc(100% + 2rem);
     bottom: 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 0 0 10px 10px;
     background: linear-gradient(to bottom, 
         rgba(var(--deep-charcoal-rgb), 0.2), 
         rgba(var(--brown-charcoal-rgb), 0.2)), 
