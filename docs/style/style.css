@@ -1,4 +1,4 @@
-/*v2.86 2025-08-09T14:54:27.668Z*/
+/*v2.87 2025-08-09T15:03:51.194Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -894,6 +894,12 @@ body#home-page {
 }
 
 .banner-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.painting-frame {
     border-radius: .5rem;
     padding: 3px;
     background: linear-gradient(to bottom,
