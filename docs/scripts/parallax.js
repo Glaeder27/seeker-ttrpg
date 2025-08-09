@@ -1,4 +1,4 @@
-/*v1.0 2025-08-09T15:47:28.943Z*/
+/*v1.1 2025-08-09T15:56:56.764Z*/
 document.addEventListener("DOMContentLoaded", () => {
   const parallaxElements = document.querySelectorAll(".parallax-vertical, .parallax-horizontal");
 
@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const speed = parseFloat(el.dataset.speed) || 0.3;
 
       if (el.classList.contains("parallax-vertical")) {
-        el.style.backgroundPosition = `center ${-offsetFromCenter * speed}px`;
+        el.style.backgroundPosition = `center calc(50% + ${-offsetFromCenter * speed}px)`;
       } else if (el.classList.contains("parallax-horizontal")) {
-        el.style.backgroundPosition = `${-offsetFromCenter * speed}px center`;
+        el.style.backgroundPosition = `calc(50% + ${-offsetFromCenter * speed}px) center`;
       }
     });
   });
