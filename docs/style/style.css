@@ -576,7 +576,10 @@ a:active {
     height: 60px;
     z-index: 9;
     opacity: 1 !important;
-    border-bottom: 1px solid var(--ancient-gold);
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: transparent;
+    border-image: url(/assets/textures/ancient-gold-3-h.jpg) 1 round;
 }
 
 body#home-page .main-navbar {
@@ -4063,7 +4066,7 @@ details[open] .infobox-table {
 
 .sidebar-block h3 {
     font-size: 1rem;
-    color: var(--bright-gold, #e6c87c);
+    color: var(--ancient-gold, #D4B55A);
     margin: 0 0 .5rem 0;
     font-family: var(--font-main);
     text-transform: uppercase;
