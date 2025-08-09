@@ -1,4 +1,4 @@
-/*v2.91 2025-08-09T21:14:29.962Z*/
+/*v2.92 2025-08-09T21:37:58.380Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1911,7 +1911,7 @@ h1.site-title {
     align-items: center;
 }
 
-.title .title-container {
+.title-container {
     width: clamp(150px, calc(10vh + 35vw), 700px);
     display: flex;
     margin: 0 auto .1rem auto;
@@ -1927,13 +1927,13 @@ h1.site-title {
 }
 
 @media (max-width: 767px) {
-    .title .title-container {
+    .title-container {
         width: 95vw;
         flex-direction: column;
     }
 }
 
-.title .title-container-sidebar {
+.title-container-sidebar {
 
     display: inline-flex;
     justify-content: left;
@@ -1953,7 +1953,7 @@ h1.site-title {
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.8));
 }
 
-.title .title-container-sidebar h1 {
+.title-container-sidebar h1 {
     background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
     padding: 10px 0;
     font-weight: 100;
@@ -1969,11 +1969,12 @@ h1.site-title {
     }
 }
 
-.title .title-container h1 {
+.title-container h1 {
     margin: 0;
     font-size: inherit;
     padding: 10px 0;
     font-weight: 100;
+    letter-spacing: normal;
     background: linear-gradient(to right,
             rgba(var(--deep-charcoal-rgb), 0.2),
             rgba(var(--brown-charcoal-rgb), 0.2)),
@@ -1984,7 +1985,7 @@ h1.site-title {
 }
 
 @media (max-width: 767px) {
-    .title .title-container h1 {
+    .title-container h1 {
         width: 360px;
         font-size: clamp(2.5rem, 20vw, 4rem);
     }
@@ -2033,7 +2034,7 @@ h1.site-title {
 }
 
 @media (max-width: 600px) {
-    .title .title-container {
+    .title-container {
         display: flex;
         flex-direction: column;
         align-items: center;
