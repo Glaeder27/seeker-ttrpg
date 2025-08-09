@@ -1,21 +1,22 @@
+/*v1.0 2025-08-09T15:47:28.943Z*/
 document.addEventListener("DOMContentLoaded", () => {
   const parallaxElements = document.querySelectorAll(".parallax-vertical, .parallax-horizontal");
 
-  function updateParallax() {
+  window.addEventListener("scroll", () => {
+    const viewportHeight = window.innerHeight;
+
     parallaxElements.forEach(el => {
-      const speed = parseFloat(el.dataset.speed) || 0.3;
       const rect = el.getBoundingClientRect();
-      const offset = rect.top * speed;
+      const elementCenterY = rect.top + rect.height / 2;
+      const offsetFromCenter = elementCenterY - viewportHeight / 2;
+
+      const speed = parseFloat(el.dataset.speed) || 0.3;
 
       if (el.classList.contains("parallax-vertical")) {
-        el.style.backgroundPosition = `center ${offset}px`;
+        el.style.backgroundPosition = `center ${-offsetFromCenter * speed}px`;
       } else if (el.classList.contains("parallax-horizontal")) {
-        el.style.backgroundPosition = `${offset}px center`;
+        el.style.backgroundPosition = `${-offsetFromCenter * speed}px center`;
       }
     });
-  }
-
-  window.addEventListener("scroll", updateParallax);
-  window.addEventListener("resize", updateParallax);
-  updateParallax(); // initial call
+  });
 });
