@@ -1,4 +1,4 @@
-/*v2.90 2025-08-09T20:41:28.149Z*/
+/*v2.91 2025-08-09T21:14:29.962Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -15,7 +15,7 @@
 
     --pale-copper: #C99C5E;
     --burnt-copper: #A07C44;
-    
+
     --pale-beige: #C6BCA9;
     --deep-charcoal: #161718;
     --brown-charcoal: #3D2E23;
@@ -585,15 +585,15 @@ body#home-page .main-navbar {
 
 body#home-page {
     background-image: linear-gradient(to bottom,
-    rgba(var(--background-site-rgb), 1) 0px,
-    rgba(var(--background-site-rgb), 1) 200px,
-    rgba(var(--background-site-rgb), 0) 400px),
+            rgba(var(--background-site-rgb), 1) 0px,
+            rgba(var(--background-site-rgb), 1) 200px,
+            rgba(var(--background-site-rgb), 0) 400px),
 
-  linear-gradient(to top,
-    rgba(var(--background-site-rgb), 1) 0px,
-    rgba(var(--background-site-rgb), .97) 200px),
+        linear-gradient(to top,
+            rgba(var(--background-site-rgb), 1) 0px,
+            rgba(var(--background-site-rgb), .97) 200px),
 
-  url("/assets/images/webp/decorations/full-new-world.webp");
+        url("/assets/images/webp/decorations/full-new-world.webp");
     background-attachment: fixed;
     background-position: center;
 }
@@ -905,6 +905,7 @@ body#home-page {
     justify-content: center;
     align-items: center;
 }
+
 .painting-frame {
     border-radius: 1rem;
     padding: 3px;
@@ -915,6 +916,7 @@ body#home-page {
     display: inline-block;
     filter: drop-shadow(2px 0px 5px black);
 }
+
 .banner-parallax-painting::before {
     content: "—" attr(data-title);
     font-family: 'IM Fell English';
@@ -989,12 +991,15 @@ body#home-page {
         bottom: 10vh;
         position: absolute;
     }
+
     .banner-parallax {
         margin-top: 0;
     }
+
     .banner-mask {
         justify-content: end;
     }
+
     .logo-container img.logo {
         height: clamp(300px, 50vh + 10vw, 450px);
         object-fit: cover;
@@ -1067,6 +1072,7 @@ body#home-page {
     height: 110%;
     object-fit: cover;
 }
+
 /* Seeker Logo Mobile*/
 .logo-container-mobile {
     display: none;
@@ -1076,17 +1082,18 @@ body#home-page {
     .logo-container {
         display: none;
     }
+
     .logo-container-mobile {
-    height: clamp(150px, calc(10vh + 30vw), 550px);
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
-    margin: -10vh 0 2rem;
-    position: absolute;
-    top: 10vh;
-    justify-content: center;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 9;
-    display: block;
+        height: clamp(150px, calc(10vh + 30vw), 550px);
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
+        margin: -10vh 0 2rem;
+        position: absolute;
+        top: 10vh;
+        justify-content: center;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 9;
+        display: block;
     }
 }
 
@@ -1254,9 +1261,11 @@ body#home-page {
     text-align: center;
     cursor: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
 }
+
 #home-page h3::after {
     background: none;
 }
+
 #home-page .card-content {
     background: rgba(0, 0, 0, 0.8);
 }
@@ -1618,12 +1627,13 @@ ul#site-index li {
     width: calc(100% + 2rem);
     top: 0;
     border-radius: 10px 10px 0 0;
-    background: linear-gradient(to bottom, 
-        rgba(var(--deep-charcoal-rgb), 0.2), 
-        rgba(var(--brown-charcoal-rgb), 0.2)), 
+    background: linear-gradient(to bottom,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
         url(/assets/textures/antique-gold-1.jpg);
     position: relative;
 }
+
 .menu-cell::after {
     content: "";
     display: block;
@@ -1631,9 +1641,9 @@ ul#site-index li {
     width: calc(100% + 2rem);
     bottom: 0;
     border-radius: 0 0 10px 10px;
-    background: linear-gradient(to bottom, 
-        rgba(var(--deep-charcoal-rgb), 0.2), 
-        rgba(var(--brown-charcoal-rgb), 0.2)), 
+    background: linear-gradient(to bottom,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
         url(/assets/textures/antique-gold-1.jpg);
     position: relative;
 }
@@ -1803,12 +1813,13 @@ h2 {
     font-weight: 500;
     margin: 1rem auto;
     /*text-transform: uppercase;
-    font-variant: small-caps;*/ /* testing without those */
+    font-variant: small-caps;*/
+    /* testing without those */
     color: var(--ancient-gold, #d6b879);
     background: linear-gradient(to bottom,
-                rgba(var(--deep-charcoal-rgb), 0.2),
-                rgba(var(--brown-charcoal-rgb), 0.2)),
-                url(/assets/textures/antique-gold-1.jpg);
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1826,6 +1837,7 @@ h3 {
     font-weight: 500;
     position: relative;
 }
+
 h3::after {
     content: "";
     position: absolute;
@@ -1833,9 +1845,9 @@ h3::after {
     left: 0;
     height: 1px;
     width: 100%;
-    background-image: linear-gradient(to right,           
-        rgba(var(--deep-charcoal-rgb), 0.2),
-        rgba(var(--brown-charcoal-rgb), 0.2)),
+    background-image: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
         url(/assets/textures/antique-gold-1.jpg);
     background-repeat: repeat;
     background-size: 100%;
@@ -1858,9 +1870,9 @@ h4 {
     font-family: var(--font-main);
     color: var(--ancient-gold);
     font-weight: 500;
-    background: linear-gradient(to bottom, 
-        rgba(var(--deep-charcoal-rgb), 0.2), 
-        rgba(var(--brown-charcoal-rgb), 0.2)), 
+    background: linear-gradient(to bottom,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
         url(/assets/textures/antique-gold-1.jpg);
     background-clip: text;
     background-clip: text;
@@ -1900,18 +1912,25 @@ h1.site-title {
 }
 
 .title .title-container {
-    width: clamp(250px, calc(10vh + 50vw), 850px);
-
-    display: inline-flex;
-    margin: 3rem 0 0 0;
+    width: clamp(150px, calc(10vh + 35vw), 700px);
+    display: flex;
+    margin: 0 auto .1rem auto;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
     font-size: 4rem;
     line-height: 1;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.3em;
     position: relative;
     scroll-margin-top: 80px;
+    z-index: 2;
+}
+
+@media (max-width: 767px) {
+    .title .title-container {
+        width: 95vw;
+        flex-direction: column;
+    }
 }
 
 .title .title-container-sidebar {
@@ -1924,6 +1943,14 @@ h1.site-title {
     letter-spacing: 0.05em;
     position: relative;
     scroll-margin-top: 80px;
+}
+
+.title-container img {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.8));
 }
 
 .title .title-container-sidebar h1 {
@@ -2056,10 +2083,12 @@ h1.site-title {
     text-align: center;
     margin-inline: -3rem;
 }
+
 @media (max-width: 767px) {
     .section {
         margin-inline: -1rem;
     }
+
     .section::before,
     .section::after {
         content: "";
@@ -2071,33 +2100,37 @@ h1.site-title {
 }
 
 .section.var-1 {
-    background: linear-gradient(to right, 
-        rgba(var(--background-dark-1-rgb), .85), 
-        rgba(var(--background-dark-2-rgb), .98)), 
+    background: linear-gradient(to right,
+            rgba(var(--background-dark-1-rgb), .85),
+            rgba(var(--background-dark-2-rgb), .98)),
         url('/assets/images/webp/decorations/horizontal-mappa-mundi.webp');
 }
+
 .section.var-2 {
-    background: linear-gradient(to right, 
-        rgba(var(--background-dark-1-rgb), .85), 
-        rgba(var(--background-dark-2-rgb), .98)), 
+    background: linear-gradient(to right,
+            rgba(var(--background-dark-1-rgb), .85),
+            rgba(var(--background-dark-2-rgb), .98)),
         url('/assets/images/webp/decorations/horizontal-novo-mondo.webp');
 }
+
 .section.var-3 {
-    background: linear-gradient(to right, 
-        rgba(var(--background-dark-1-rgb), .85), 
-        rgba(var(--background-dark-2-rgb), .98)), 
+    background: linear-gradient(to right,
+            rgba(var(--background-dark-1-rgb), .85),
+            rgba(var(--background-dark-2-rgb), .98)),
         url('/assets/images/webp/decorations/horizontal-orbis-terrarum.webp');
 }
+
 .section.var-4 {
-    background: linear-gradient(to right, 
-        rgba(var(--background-dark-1-rgb), .85), 
-        rgba(var(--background-dark-2-rgb), .98)), 
+    background: linear-gradient(to right,
+            rgba(var(--background-dark-1-rgb), .85),
+            rgba(var(--background-dark-2-rgb), .98)),
         url('/assets/images/webp/decorations/horizontal-waldseemuller.webp');
 }
-.section.var-5{
-    background: linear-gradient(to right, 
-        rgba(var(--background-dark-1-rgb), .85), 
-        rgba(var(--background-dark-2-rgb), .98)), 
+
+.section.var-5 {
+    background: linear-gradient(to right,
+            rgba(var(--background-dark-1-rgb), .85),
+            rgba(var(--background-dark-2-rgb), .98)),
         url('/assets/images/webp/decorations/horizontal-new-world.webp');
 }
 
@@ -2113,20 +2146,20 @@ h1.site-title {
 .section::before {
     left: 0;
     border-radius: 10px 0 0 10px;
-    background: linear-gradient(to top, 
-                rgba(var(--deep-charcoal-rgb), 0.2), 
-                rgba(var(--brown-charcoal-rgb), 0.2)), 
-                url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(to top,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
     background-position: -240px;
 }
 
 .section::after {
     right: 0;
     border-radius: 0 10px 10px 0;
-    background: linear-gradient(to bottom, 
-                rgba(var(--deep-charcoal-rgb), 0.2), 
-                rgba(var(--brown-charcoal-rgb), 0.2)), 
-                url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(to bottom,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
 }
 
 .section-ornament {
@@ -2167,9 +2200,9 @@ h1.site-title {
     font-size: 0.85em;
     font-weight: 500;
     background: linear-gradient(to top,
-                rgba(var(--off-white-rgb), 0.2),
-                rgba(var(--off-white-rgb), 0.1)),
-                url(/assets/textures/antique-gold-1.jpg);
+            rgba(var(--off-white-rgb), 0.2),
+            rgba(var(--off-white-rgb), 0.1)),
+        url(/assets/textures/antique-gold-1.jpg);
     padding: 4px 30px;
     border-radius: 8px;
     text-transform: uppercase;
@@ -3281,10 +3314,12 @@ blockquote.clean p {
     font-family: var(--font-calligraphy-1);
     font-size: 1.8rem;
 }
+
 .blockquote-clean-author.var-2 {
     font-family: var(--font-calligraphy-2);
     font-size: 1.8rem;
 }
+
 .blockquote-clean-author.var-3 {
     font-family: var(--font-calligraphy-3);
     font-size: 1.8rem;
@@ -3304,6 +3339,7 @@ p.blockquote-attribution {
     padding-right: 4rem;
     font-size: 0.7rem;
 }
+
 p.blockquote-attribution.clean {
     color: var(--text-muted);
     text-align: right;
@@ -4584,28 +4620,33 @@ details[open] .infobox-table {
     font-family: var(--font-alchemy-symbols);
     color: var(--ancient-gold, #d6b879);
     background: linear-gradient(to bottom,
-                rgba(var(--deep-charcoal-rgb), 0.2),
-                rgba(var(--brown-charcoal-rgb), 0.2)),
-                url(/assets/textures/antique-gold-1.jpg);
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0px 4px 10px black);
     user-select: none;
 }
-.alchemy-symbol.huge{
+
+.alchemy-symbol.huge {
     font-size: 10rem;
 }
-.alchemy-symbol.large{
+
+.alchemy-symbol.large {
     font-size: 7rem;
 }
-.alchemy-symbol.medium{
+
+.alchemy-symbol.medium {
     font-size: 5rem;
 }
-.alchemy-symbol.small{
+
+.alchemy-symbol.small {
     font-size: 2rem;
 }
-.alchemy-symbol.tiny{
+
+.alchemy-symbol.tiny {
     font-size: .8rem;
 }
 
@@ -4629,48 +4670,63 @@ p.alchemy-symbol.high {
 .overlay-symbol.var-1 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-1.webp');
 }
+
 .overlay-symbol.var-2 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-2.webp');
 }
+
 .overlay-symbol.var-3 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-3.webp');
 }
+
 .overlay-symbol.var-4 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-4.webp');
 }
+
 .overlay-symbol.var-5 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-5.webp');
 }
+
 .overlay-symbol.var-6 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-6.webp');
 }
+
 .overlay-symbol.var-7 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-7.webp');
 }
+
 .overlay-symbol.var-8 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-8.webp');
 }
+
 .overlay-symbol.var-9 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-9.webp');
 }
+
 .overlay-symbol.var-10 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-10.webp');
 }
+
 .overlay-symbol.var-11 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-11.webp');
 }
+
 .overlay-symbol.var-12 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-12.webp');
 }
+
 .overlay-symbol.var-13 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-13.webp');
 }
+
 .overlay-symbol.var-14 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-14.webp');
 }
+
 .overlay-symbol.var-15 {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-15.webp');
 }
+
 i.fa-solid.fa-square-xmark {
     color: var(--rust-red);
     font-size: 26px;
@@ -4854,6 +4910,7 @@ i.fa-solid.fa-right-from-bracket {
 .opacity-1 {
     opacity: 1;
 }
+
 .opacity-0 {
     opacity: 0;
 }
