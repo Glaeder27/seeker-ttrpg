@@ -1,4 +1,4 @@
-/*v2.98 2025-08-10T22:23:22.533Z*/
+/*v2.99 2025-08-10T22:43:04.114Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -560,7 +560,16 @@ li {
     font-weight: 400;
     color: var(--off-white);
     font-size: 0.9rem;
+    list-style: none;
+    padding-left: 1.5em;
+    text-indent: -1em;
 }
+li::marker {
+    color: var(--ancient-gold);
+    content: "♦ ";
+    font-family: var(--font-main);
+}
+
 
 /* ── LINKS ─────────────── */
 
