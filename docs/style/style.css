@@ -1,4 +1,4 @@
-/*v2.93 2025-08-10T10:22:10.056Z*/
+/*v2.94 2025-08-10T14:18:07.883Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1878,14 +1878,56 @@ h3::after {
     left: 0;
     height: 1px;
     width: 100%;
-    background-image: linear-gradient(to right,
-            rgba(var(--deep-charcoal-rgb), 0.2),
-            rgba(var(--brown-charcoal-rgb), 0.2)),
-        url(/assets/textures/antique-gold-1.jpg);
-    background-repeat: repeat;
-    background-size: 100%;
-    pointer-events: none;
+    background: url(/assets/textures/antique-gold-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 5px;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(var(--deep-charcoal), 1) 0%, 
+        rgba(var(--deep-charcoal), 1) 20%, 
+        rgba(var(--deep-charcoal), .8) 40%, 
+        rgba(var(--deep-charcoal), .8) 60%,    
+        rgba(var(--deep-charcoal), .4) 80%,
+        rgba(var(--deep-charcoal), .2) 90%, 
+        rgba(var(--deep-charcoal), 0) 100%
+        );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    mask-image: linear-gradient(
+        to right, 
+        rgba(var(--deep-charcoal), 1) 0%, 
+        rgba(var(--deep-charcoal), 1) 20%, 
+        rgba(var(--deep-charcoal), .8) 40%, 
+        rgba(var(--deep-charcoal), .8) 60%,    
+        rgba(var(--deep-charcoal), .4) 80%,
+        rgba(var(--deep-charcoal), .2) 90%, 
+        rgba(var(--deep-charcoal), 0) 100%  
+        );
+    mask-size: cover;
+}
+
+.flip-front h3, 
+.flip-back h3 {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(var(--deep-charcoal), 0) 0%, 
+        rgba(var(--deep-charcoal), .5) 20%, 
+        rgba(var(--deep-charcoal), 1) 40%, 
+        rgba(var(--deep-charcoal), 1) 60%,    
+        rgba(var(--deep-charcoal), .5) 80%,
+        rgba(var(--deep-charcoal), 0) 100%
+  );
+  mask-image: linear-gradient(
+        to right, 
+        rgba(var(--deep-charcoal), 0) 0%, 
+        rgba(var(--deep-charcoal), .5) 20%, 
+        rgba(var(--deep-charcoal), 1) 40%, 
+        rgba(var(--deep-charcoal), 1) 60%,    
+        rgba(var(--deep-charcoal), .5) 80%,
+        rgba(var(--deep-charcoal), 0) 100%  
+        );
 }
 
 h3.tagged {
