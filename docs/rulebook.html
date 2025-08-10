@@ -1,4 +1,4 @@
-<!-- v1.98 2025-08-10T19:38:56.141Z -->
+<!-- v1.98 2025-08-10T19:41:44.379Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -344,11 +344,43 @@
             position: relative;
             font-size: 0.9rem;
             color: var(--off-white);
-            margin: .5rem auto 1rem;
+            margin: 0rem auto 0.5rem;
             -webkit-text-fill-color: unset;
             background-clip: unset;
             background: unset;
             text-transform: uppercase;
+        }
+
+        .flip-back h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background: url(/assets/textures/antique-gold-1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 5px;
+            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to right,
+                    rgba(var(--deep-charcoal-rgb), 0) 0%,
+                    rgba(var(--deep-charcoal-rgb), .5) 20%,
+                    rgba(var(--deep-charcoal-rgb), 1) 40%,
+                    rgba(var(--deep-charcoal-rgb), 1) 60%,
+                    rgba(var(--deep-charcoal-rgb), .5) 80%,
+                    rgba(var(--deep-charcoal-rgb), 0) 100%);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-size: cover;
+            mask-image: linear-gradient(to right,
+                    rgba(var(--deep-charcoal-rgb), 0) 0%,
+                    rgba(var(--deep-charcoal-rgb), .5) 20%,
+                    rgba(var(--deep-charcoal-rgb), 1) 40%,
+                    rgba(var(--deep-charcoal-rgb), 1) 60%,
+                    rgba(var(--deep-charcoal-rgb), .5) 80%,
+                    rgba(var(--deep-charcoal-rgb), 0) 100%);
+            mask-size: cover;
+            mask-repeat: no-repeat;
         }
 
         .card-top {
@@ -370,9 +402,11 @@
             width: 90%;
             margin: 0 auto;
         }
+
         .go-to-page-btn a {
             color: var(--deep-charcoal);
         }
+
         .go-to-page-btn a:visited {
             color: var(--deep-charcoal);
         }
@@ -381,6 +415,7 @@
             background-color: var(--bright-gold);
             font-weight: bold;
         }
+
         .go-to-page-btn:hover a {
             font-weight: bold;
         }
@@ -453,12 +488,14 @@
                                 <div class="rules-card" data-title="Joining the Seekers" data-category="System"
                                     data-status="released">
                                     <div class="card-top">
-                                    <h4>Joining the Seekers</h4>
-                                    <p>How a session works and who the players are, guiding you through the flow and
-                                        <em><strong>roles</strong></em> involved in the game.</p>
+                                        <h4>Joining the Seekers</h4>
+                                        <p>How a session works and who the players are, guiding you through the flow and
+                                            <em><strong>roles</strong></em> involved in the game.
+                                        </p>
                                     </div>
                                     <div class="card-bottom">
-                                    <div class="go-to-page-btn"><a href="/rulebook/joining-the-seekers">Read the Chapter</a></div>
+                                        <div class="go-to-page-btn"><a href="/rulebook/joining-the-seekers">Read the
+                                                Chapter</a></div>
                                     </div>
                                 </div>
 
@@ -494,7 +531,8 @@
                                     data-status="released">
                                 </div>
                                 <p>How to roll and interpret the results, explaining dice mechanics of the
-                                    <em><strong>Twin Coil System</strong></em> and reading outcomes clearly.</p>
+                                    <em><strong>Twin Coil System</strong></em> and reading outcomes clearly.
+                                </p>
                             </div>
                         </div>
                     </div>
