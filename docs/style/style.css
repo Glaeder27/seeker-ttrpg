@@ -1,4 +1,4 @@
-/*v2.96 2025-08-10T14:42:59.385Z*/
+/*v2.97 2025-08-10T16:55:23.271Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1930,6 +1930,10 @@ h3.rules-title::after {
         rgba(var(--deep-charcoal-rgb), .5) 80%,
         rgba(var(--deep-charcoal-rgb), 0) 100%  
         );
+}
+
+.rules-card.unavailable h3::after {
+    filter: grayscale(1);
 }
 
 h3.tagged {

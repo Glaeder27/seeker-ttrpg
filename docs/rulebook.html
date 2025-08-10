@@ -1,4 +1,4 @@
-<!-- v1.94 2025-08-10T16:45:12.388Z -->
+<!-- v1.95 2025-08-10T16:56:44.585Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -140,7 +140,8 @@
             min-height: 190px;
         }
 
-        .rules-card[data-status="planned"] {
+        .rules-card[data-status="planned"],
+        .rules-card[data-status="progress"] {
             border: 1px solid var(--deep-charcoal, #161718);
             background-color: rgba(0, 0, 0, .015);
             background-image: repeating-linear-gradient(45deg,
@@ -193,6 +194,10 @@
             margin: 1rem auto;
         }
 
+        .rules-card.unavailable .rules-category {
+            color: var(--text-muted)
+        }
+
         .rules-title {
             font-size: 1.1rem;
             font-weight: 600;
@@ -200,7 +205,7 @@
             margin: 0;
             text-align: center;
             border-bottom: none;
-            padding-bottom: .5rem;
+            padding-bottom: .7rem;
         }
 
         .rules-icon-wrapper {
@@ -430,9 +435,9 @@
                                         <div class="rules-icon-wrapper">
                                             <img src="assets/icons/webp/generic/icon-dice.webp" class="rules-icon">
                                         </div>
-                                        <h3 class="rules-title">Dice Engine</h3>
                                     </div>
                                     <div class="card-bottom">
+                                        <h3 class="rules-title">Dice Engine</h3>
                                         <div class="rules-meta">
                                             <div class="rules-category">Basics</div>
                                             <span class="rule-tag state-released">Released</span>
@@ -454,7 +459,7 @@
                     <!-- Tags -->
                     <a href="" target="_top" class="rules-card-link">
                         <div class="rules-card unavailable" data-title="Tags" data-category="System"
-                            data-status="planned">
+                            data-status="progress">
                             <div class="card-top">
                                 <div class="rules-icon-wrapper">
                                     <img src="assets/icons/webp/generic/icon-tag.webp" class="rules-icon">
@@ -464,7 +469,7 @@
                             <div class="card-bottom">
                                 <div class="rules-meta">
                                     <div class="rules-category">Basics</div>
-                                    <span class="rule-tag state-planned">Planned</span>
+                                    <span class="rule-tag state-progress">In Progress</span>
                                 </div>
                             </div>
                         </div>
@@ -507,7 +512,7 @@
                     <!-- Health & Defense -->
                     <a href="" target="_top" class="rules-card-link">
                         <div class="rules-card unavailable" data-title="Health & Defense" data-category="System"
-                            data-status="planned">
+                            data-status="progress">
                             <div class="card-top">
                                 <div class="rules-icon-wrapper">
                                     <img src="assets/icons/webp/generic/icon-health.webp" class="rules-icon">
@@ -517,7 +522,7 @@
                                 <h3 class="rules-title">Health & Defense</h3>
                                 <div class="rules-meta">
                                     <div class="rules-category">Character Features</div>
-                                    <span class="rule-tag state-planned">Planned</span>
+                                    <span class="rule-tag state-progress">In Progress</span>
                                 </div>
                             </div>
                         </div>
