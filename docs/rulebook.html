@@ -1,4 +1,4 @@
-<!-- v1.96 2025-08-10T17:13:17.321Z -->
+<!-- v1.97 2025-08-10T17:29:11.841Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -340,9 +340,10 @@
             transition: all .3s ease;
         }
 
-        .rules-card h4 {
-            text-transform: uppercase;
-            font-size: 15px;
+        .flip-back h4 {
+            font-size: .9rem;
+            color: var(--off-white);
+            margin: .5rem auto 1rem;
         }
 
         .card-top {
@@ -353,6 +354,18 @@
         .chapter-list a:link {
             color: var(--off-white);
             text-decoration: none;
+        }
+
+        .go-to-page-btn {
+            background: var(--ancient-gold);
+            border-radius: 1rem;
+            color: var(--off-white);
+            padding: .5rem 1rem;
+            width: 90%;
+        }
+        .go-to-page-btn:hover {
+            background-color: var(--bright-gold);
+            font-weight: bold;
         }
     </style>
 </head>
@@ -422,8 +435,14 @@
                             <div class="flip-back">
                                 <div class="rules-card" data-title="Joining the Seekers" data-category="System"
                                     data-status="released">
+                                    <div class="card-top">
+                                    <h4>Joining the Seekers</h4>
                                     <p>How a session works and who the players are, guiding you through the flow and
                                         <em><strong>roles</strong></em> involved in the game.</p>
+                                    </div>
+                                    <div class="card-bottom">
+                                    <div class="go-to-page-btn"><a href="/rulebook/joining-the-seekers">Read the Chapter</a></div>
+                                    </div>
                                 </div>
 
                             </div>
