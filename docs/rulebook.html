@@ -1,5 +1,4 @@
-<!-- v2.0 2025-08-10T20:39:49.064Z -->
-
+<!-- v2.1 2025-08-10T21:08:13.039Z -->
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
 
@@ -185,6 +184,10 @@
             filter: grayscale(1);
         }
 
+        .rules-card p {
+            font-size: .8rem;
+        }
+
         .rules-category {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -349,6 +352,7 @@
             background-clip: unset;
             background: unset;
             text-transform: uppercase;
+            padding-bottom: 1rem;
         }
 
         .flip-back h4::after {
@@ -396,7 +400,7 @@
         .go-to-page-btn {
             background: var(--ancient-gold);
             border: 1px solid var(--deep-charcoal);
-            border-radius: 1rem;
+            border-radius: .4rem;
             color: var(--off-white);
             padding: .5rem 1rem;
             width: 100%;
@@ -410,7 +414,7 @@
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
-            right: 0;
+            right: 1rem;
             top: 50%;
             transform: translateY(-50%);
         }
@@ -539,9 +543,16 @@
                                 <div class="rules-card" data-title="Dice Engine" data-category="System"
                                     data-status="released">
                                 </div>
-                                <p>How to roll and interpret the results, explaining dice mechanics of the
-                                    <em><strong>Twin Coil System</strong></em> and reading outcomes clearly.
-                                </p>
+                                <div class="card-top">
+                                    <h4>Dice Engine</h4>
+                                    <p>How to roll and interpret the results, explaining dice mechanics of the
+                                        <em><strong>Twin Coil System</strong></em> and reading outcomes clearly.
+                                    </p>
+                                </div>
+                                <div class="card-bottom">
+                                    <div class="go-to-page-btn"><a href="/rulebook/twin-coil-system">Read the
+                                            Chapter</a></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -594,8 +605,15 @@
                                 <div class="rules-card" data-title="Aptitudes" data-category="System"
                                     data-status="released">
                                 </div>
-                                <p>How aptitudes work, explaining core skills and their influence on character
-                                    abilities.</p>
+                                <div class="card-top">
+                                    <h4>Aptitudes</h4>
+                                    <p>How aptitudes work, explaining core skills and their influence on character
+                                        abilities.</p>
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="go-to-page-btn"><a href="/rulebook/aptitudes">Read the
+                                        Chapter</a></div>
                             </div>
                         </div>
                     </div>
