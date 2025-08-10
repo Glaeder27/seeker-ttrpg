@@ -1,4 +1,4 @@
-<!-- v1.86 2025-08-10T14:46:41.400Z -->
+<!-- v1.87 2025-08-10T14:58:39.296Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -290,6 +290,8 @@
 
         .flip-back .rules-card {
             justify-content: start;
+            background: url(/assets/textures/parchment-1.webp);
+            background-color: rgba(25, 25, 25, 0.9);
         }
 
         .flip-back h3 {
@@ -304,10 +306,6 @@
             cursor: var(--cursor-pointer);
         }
 
-        .flip-back .rules-card:hover {
-            background-color: rgba(25, 25, 25, 1);
-        }
-
         .chapter-list {
             list-style: none;
             padding: 0;
@@ -317,15 +315,20 @@
         .chapter-list li {
             margin: 0.5rem 0;
             background: rgba(var(--background-dark-2-rgb), 1);
-            border-radius: 0 5px 5px 0;
-            border-left: 4px solid var(--ancient-gold);
+            border-radius: 5px;
+            border-width: 0 2px 0 2px;
+            border-color: var(--ancient-gold);
+            border-style: solid;
             padding: .2rem .2rem .2rem 1rem;
             text-align: left;
+            transition: all .3s ease;
         }
 
         .chapter-list li:hover {
             background: rgba(var(--background-dark-3-rgb), 1);
-            border-left: 6px solid var(--ancient-gold);
+            border-radius: 10px;
+            transition: all .3s ease;
+            padding: 0.2rem 0.2rem 0.2rem 1.2rem;
         }
 
         .rules-card h4 {
