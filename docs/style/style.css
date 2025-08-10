@@ -1,4 +1,4 @@
-/*v2.99 2025-08-10T22:43:04.114Z*/
+/*v2.99 2025-08-10T22:45:59.179Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -566,7 +566,7 @@ li {
 }
 li::marker {
     color: var(--ancient-gold);
-    content: "♦ ";
+    content: "✦ ";
     font-family: var(--font-main);
 }
 
@@ -1920,7 +1920,8 @@ h3::after {
 
 .flip-front h3::after, 
 .flip-back h3::after,
-h3.rules-title::after {
+h3.rules-title::after,
+h3.centered {
     -webkit-mask-image: linear-gradient(
         to right,
         rgba(var(--deep-charcoal-rgb), 0) 0%, 
