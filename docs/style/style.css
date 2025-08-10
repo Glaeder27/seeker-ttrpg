@@ -1,4 +1,4 @@
-/*v2.99 2025-08-10T22:45:59.179Z*/
+/*v2.99 2025-08-10T22:46:36.502Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1922,6 +1922,7 @@ h3::after {
 .flip-back h3::after,
 h3.rules-title::after,
 h3.centered {
+    text-align: center;
     -webkit-mask-image: linear-gradient(
         to right,
         rgba(var(--deep-charcoal-rgb), 0) 0%, 
