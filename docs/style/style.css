@@ -1,4 +1,4 @@
-/*v2.91 2025-08-10T09:40:11.554Z*/
+/*v2.92 2025-08-10T09:50:17.401Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -81,9 +81,9 @@
     --font-logo: '1540 Mercator Script', serif;
 
     /* ── POINTERS ───────────────────────────────────────────── */
-    --cursor-default: url('/assets/cursor/cursor-default.svg') 4 1, auto;
+    --cursor-default: url('/assets/cursor/cursor-default.svg') 5 2, auto;
     --cursor-pointer: url('/assets/cursor/cursor-pointer.svg') 9 4, pointer;
-    --cursor-text: url('/assets/cursor/cursor-text.svg') 2 24, text;
+    --cursor-text: url('/assets/cursor/cursor-text.svg') 12 14, text;
     --cursor-wait: wait;
     --cursor-not-allowed: url('/assets/cursor/cursor-not-allowed.svg') 4 1, not-allowed;
     --cursor-progress: url('/assets/cursor/cursor-loading.svg') 12 12, progress;
@@ -1285,7 +1285,10 @@ body#home-page {
 #home-page h3 {
     opacity: 1;
     text-align: center;
-    cursor: var(--cursor-grab);
+}
+
+p.card-description {
+    pointer-events: none;
 }
 
 #home-page h3::after {
@@ -1698,7 +1701,6 @@ ul#site-index li {
         opacity 0.3s ease-in-out,
         transform 0.3s ease-in-out;
     pointer-events: none;
-    user-select: none;
 }
 
 .menu-cell:hover .symbol,
@@ -1722,13 +1724,13 @@ ul#site-index li {
     font-weight: bold;
     text-transform: uppercase;
     margin: .5rem 0;
-    user-select: none;
+    pointer-events: none;
 }
 
 .menu-cell p {
     font-size: 0.875rem;
     margin: 0;
-    user-select: none;
+    pointer-events: none;
     opacity: 0.85;
 }
 
