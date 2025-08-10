@@ -1,4 +1,4 @@
-/*v2.97 2025-08-10T16:55:23.271Z*/
+/*v2.98 2025-08-10T22:23:22.533Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1951,13 +1951,6 @@ h4 {
     font-family: var(--font-main);
     color: var(--ancient-gold);
     font-weight: 500;
-    background: linear-gradient(to bottom,
-            rgba(var(--deep-charcoal-rgb), 0.2),
-            rgba(var(--brown-charcoal-rgb), 0.2)),
-        url(/assets/textures/antique-gold-1.jpg);
-    background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 h1.site-title {
@@ -2913,11 +2906,7 @@ thead th:last-child {
 .collapsible-icon {
     width: 24px;
     height: 24px;
-    margin-left: 10px;
     transition: transform 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-left: auto;
 }
 
@@ -2925,9 +2914,11 @@ thead th:last-child {
     fill: var(--off-white);
 }
 
-.collapsible-item.expanded .collapsible-icon {
+.collapsible-item.expanded .collapsible-icon,
+.collapsible-item-sb.expanded .collapsible-icon {
     transform: rotate(90deg);
 }
+
 
 .collapsible-content {
     height: 0;
@@ -2980,12 +2971,17 @@ thead th:last-child {
     background: transparent;
     overflow: visible;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     cursor: var(--cursor-pointer);
+    justify-content: space-between;
 }
 
 .collapsible-header-sb:hover {
     background: transparent !important;
+}
+
+h3.sidebar-section {
+    pointer-events: none;
 }
 
 .collapsible-header-sb::before {
@@ -4151,6 +4147,7 @@ details[open] .infobox-table {
     font-family: var(--font-main);
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    width: 100%;
 }
 
 .sidebar-link {
