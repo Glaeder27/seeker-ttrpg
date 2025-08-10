@@ -82,15 +82,16 @@
 
     /* ── POINTERS ───────────────────────────────────────────── */
     --cursor-default: url('/assets/cursor/cursor-default.svg') 4 1, auto;
-    --cursor-pointer: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
-    --cursor-text: url('/assets/cursor/cursor-text-24.png') 2 24, text;
+    --cursor-pointer: url('/assets/cursor/cursor-pointer.svg') 9 4, pointer;
+    --cursor-text: url('/assets/cursor/cursor-text.svg') 2 24, text;
     --cursor-wait: wait;
-    --cursor-not-allowed: url('/assets/cursor/cursor-not-allowed-24.png') 4 1, not-allowed;
-    --cursor-progress: url('/assets/cursor/cursor-loading-24.png') 12 12, progress;
+    --cursor-not-allowed: url('/assets/cursor/cursor-not-allowed.svg') 4 1, not-allowed;
+    --cursor-progress: url('/assets/cursor/cursor-loading.svg') 12 12, progress;
+    --cursor-help: url('/assets/cursor/cursor-help.svg') 4 1, help;
 
     /* Drag & drop */
-    --cursor-grab: url('/assets/cursor/cursor-grab-24.png') 12 12, grab;
-    --cursor-grabbing: url('/assets/cursor/cursor-grabbing-24.png') 12 12, grabbing;
+    --cursor-grab: url('/assets/cursor/cursor-grab.svg') 12 12, grab;
+    --cursor-grabbing: url('/assets/cursor/cursor-grabbing.svg') 12 12, grabbing;
     --cursor-move: move;
 
     /* Resize */
@@ -378,7 +379,7 @@ h1,
 h2,
 h3,
 blockquote {
-    cursor: url('/assets/cursor/cursor-text-2-24.png') 12 12, text;
+    cursor: var(--cursor-text);
 }
 
 /* Core */
@@ -2533,11 +2534,11 @@ thead th:last-child {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted #a0a0a0;
-    cursor: help;
+    cursor: var(--cursor-help);
 }
 
 .tooltip-trigger {
-    cursor: help;
+    cursor: var(--cursor-help);
     border-bottom: 1px dotted rgba(240, 240, 240, 0.21);
     transition: border-bottom 0.2s ease-in-out;
     padding-bottom: 1px;
@@ -2646,11 +2647,11 @@ thead th:last-child {
 
 .tag:hover {
     color: var(--ancient-gold, #D4B55A);
-    cursor: url('/assets/cursor/cursor-info-24.png') 4 1, help;
+    cursor: var(--cursor-help);
 }
 
 .rule-tag.tooltip {
-    cursor: help;
+    cursor: var(--cursor-help);
     background-color: #2e2e2e;
     border: 1px solid var(--bright-gold);
     border-radius: 4px;
