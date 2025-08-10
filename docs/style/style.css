@@ -1,4 +1,4 @@
-/*v2.100 2025-08-10T22:59:12.493Z*/
+/*v3.0 2025-08-10T23:00:04.376Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -562,12 +562,12 @@ li {
     font-size: 0.9rem;
 }
 
-li .diamond {
+ul.diamond li {
     list-style: none;
     text-indent: 0;
     padding-left: 1em;
 }
-li.diamond::marker {
+ul.diamond li::marker {
     color: var(--ancient-gold);
     content: "✦ ";
     font-family: var(--font-main);
