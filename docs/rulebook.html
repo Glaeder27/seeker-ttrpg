@@ -1,4 +1,4 @@
-<!-- v1.97 2025-08-10T17:29:11.841Z -->
+<!-- v1.98 2025-08-10T19:38:56.141Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -341,9 +341,14 @@
         }
 
         .flip-back h4 {
-            font-size: .9rem;
+            position: relative;
+            font-size: 0.9rem;
             color: var(--off-white);
             margin: .5rem auto 1rem;
+            -webkit-text-fill-color: unset;
+            background-clip: unset;
+            background: unset;
+            text-transform: uppercase;
         }
 
         .card-top {
@@ -358,13 +363,25 @@
 
         .go-to-page-btn {
             background: var(--ancient-gold);
+            border: 1px solid var(--deep-charcoal);
             border-radius: 1rem;
             color: var(--off-white);
             padding: .5rem 1rem;
             width: 90%;
+            margin: 0 auto;
         }
+        .go-to-page-btn a {
+            color: var(--deep-charcoal);
+        }
+        .go-to-page-btn a:visited {
+            color: var(--deep-charcoal);
+        }
+
         .go-to-page-btn:hover {
             background-color: var(--bright-gold);
+            font-weight: bold;
+        }
+        .go-to-page-btn:hover a {
             font-weight: bold;
         }
     </style>
