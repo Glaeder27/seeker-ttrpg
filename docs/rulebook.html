@@ -1,4 +1,4 @@
-<!-- v1.98 2025-08-10T19:41:44.379Z -->
+<!-- v1.99 2025-08-10T20:11:17.762Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -399,25 +399,31 @@
             border-radius: 1rem;
             color: var(--off-white);
             padding: .5rem 1rem;
-            width: 90%;
+            width: 100%;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+
+         .go-to-page-btn a::after {
+            content: "\f0da";
+            font-family: var(--font-default);
+            font-weight: 900;
+         }
 
         .go-to-page-btn a {
             color: var(--deep-charcoal);
+            text-decoration: none;
         }
 
         .go-to-page-btn a:visited {
             color: var(--deep-charcoal);
+            text-decoration: none;
         }
 
         .go-to-page-btn:hover {
             background-color: var(--bright-gold);
-            font-weight: bold;
-        }
-
-        .go-to-page-btn:hover a {
-            font-weight: bold;
         }
     </style>
 </head>
