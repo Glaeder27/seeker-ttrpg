@@ -1,4 +1,4 @@
-/*v2.94 2025-08-10T14:18:07.883Z*/
+/*v2.95 2025-08-10T14:29:09.692Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1885,48 +1885,48 @@ h3::after {
     pointer-events: none;
     -webkit-mask-image: linear-gradient(
         to right,
-        rgba(var(--deep-charcoal), 1) 0%, 
-        rgba(var(--deep-charcoal), 1) 20%, 
-        rgba(var(--deep-charcoal), .8) 40%, 
-        rgba(var(--deep-charcoal), .8) 60%,    
-        rgba(var(--deep-charcoal), .4) 80%,
-        rgba(var(--deep-charcoal), .2) 90%, 
-        rgba(var(--deep-charcoal), 0) 100%
+        rgba(var(--deep-charcoal-rgb), 1) 0%, 
+        rgba(var(--deep-charcoal-rgb), 1) 20%, 
+        rgba(var(--deep-charcoal-rgb), .8) 40%, 
+        rgba(var(--deep-charcoal-rgb), .8) 60%,    
+        rgba(var(--deep-charcoal-rgb), .4) 80%,
+        rgba(var(--deep-charcoal-rgb), .2) 90%, 
+        rgba(var(--deep-charcoal-rgb), 0) 100%
         );
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: cover;
     mask-image: linear-gradient(
         to right, 
-        rgba(var(--deep-charcoal), 1) 0%, 
-        rgba(var(--deep-charcoal), 1) 20%, 
-        rgba(var(--deep-charcoal), .8) 40%, 
-        rgba(var(--deep-charcoal), .8) 60%,    
-        rgba(var(--deep-charcoal), .4) 80%,
-        rgba(var(--deep-charcoal), .2) 90%, 
-        rgba(var(--deep-charcoal), 0) 100%  
+        rgba(var(--deep-charcoal-rgb), 1) 0%, 
+        rgba(var(--deep-charcoal-rgb), 1) 20%, 
+        rgba(var(--deep-charcoal-rgb), .8) 40%, 
+        rgba(var(--deep-charcoal-rgb), .8) 60%,    
+        rgba(var(--deep-charcoal-rgb), .4) 80%,
+        rgba(var(--deep-charcoal-rgb), .2) 90%, 
+        rgba(var(--deep-charcoal-rgb), 0) 100%  
         );
     mask-size: cover;
 }
 
-.flip-front h3, 
-.flip-back h3 {
+.flip-front h3::after, 
+.flip-back h3::after {
     -webkit-mask-image: linear-gradient(
         to right,
-        rgba(var(--deep-charcoal), 0) 0%, 
-        rgba(var(--deep-charcoal), .5) 20%, 
-        rgba(var(--deep-charcoal), 1) 40%, 
-        rgba(var(--deep-charcoal), 1) 60%,    
-        rgba(var(--deep-charcoal), .5) 80%,
-        rgba(var(--deep-charcoal), 0) 100%
+        rgba(var(--deep-charcoal-rgb), 0) 0%, 
+        rgba(var(--deep-charcoal-rgb), .5) 20%, 
+        rgba(var(--deep-charcoal-rgb), 1) 40%, 
+        rgba(var(--deep-charcoal-rgb), 1) 60%,    
+        rgba(var(--deep-charcoal-rgb), .5) 80%,
+        rgba(var(--deep-charcoal-rgb), 0) 100%
   );
   mask-image: linear-gradient(
         to right, 
-        rgba(var(--deep-charcoal), 0) 0%, 
-        rgba(var(--deep-charcoal), .5) 20%, 
-        rgba(var(--deep-charcoal), 1) 40%, 
-        rgba(var(--deep-charcoal), 1) 60%,    
-        rgba(var(--deep-charcoal), .5) 80%,
-        rgba(var(--deep-charcoal), 0) 100%  
+        rgba(var(--deep-charcoal-rgb), 0) 0%, 
+        rgba(var(--deep-charcoal-rgb), .5) 20%, 
+        rgba(var(--deep-charcoal-rgb), 1) 40%, 
+        rgba(var(--deep-charcoal-rgb), 1) 60%,    
+        rgba(var(--deep-charcoal-rgb), .5) 80%,
+        rgba(var(--deep-charcoal-rgb), 0) 100%  
         );
 }
 
