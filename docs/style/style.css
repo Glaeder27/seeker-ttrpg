@@ -81,7 +81,7 @@
     --font-logo: '1540 Mercator Script', serif;
 
     /* ── POINTERS ───────────────────────────────────────────── */
-    --cursor-default: url('/assets/cursor/cursor-24.png') 4 1, auto;
+    --cursor-default: url('/assets/cursor/cursor-default.svg') 4 1, auto;
     --cursor-pointer: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
     --cursor-text: url('/assets/cursor/cursor-text-24.png') 2 24, text;
     --cursor-wait: wait;
