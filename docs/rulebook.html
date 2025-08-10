@@ -1,4 +1,4 @@
-<!-- v1.80 2025-08-09T22:35:07.647Z -->
+<!-- v1.81 2025-08-10T08:33:20.197Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -124,7 +124,7 @@
         .rules-card {
             padding: 1rem 1.2rem;
             border-radius: 8px;
-            cursor: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
+            cursor: var(--cursor-pointer);
             transition: transform 0.2s ease-in-out;
             background-size: cover;
             background-position: center;
@@ -224,7 +224,7 @@
 
         a.rules-card-link:not([href]),
         a.rules-card-link[href=""] {
-            cursor: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
+            cursor: var(--cursor-pointer);
             pointer-events: none;
         }
 
@@ -269,7 +269,7 @@
             background-size: cover;
             background-blend-mode: overlay;
             padding: 2px;
-            cursor: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
+            cursor: var(--cursor-pointer);
         }
 
         .flip-front {
@@ -294,7 +294,7 @@
         .flip-front h3,
         .flip-back h3,
         .flip-front p {
-            cursor: url('/assets/cursor/cursor-pointer-24.png') 9 4, pointer;
+            cursor: var(--cursor-pointer);
         }
 
         .flip-back .rules-card:hover {
