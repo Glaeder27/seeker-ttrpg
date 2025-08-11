@@ -1,4 +1,4 @@
-/*v3.1 2025-08-10T23:04:03.866Z*/
+/*v3.2 2025-08-11T08:44:56.036Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2096,6 +2096,15 @@ h1.site-title {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(2px 4px 6px black);
+    position: absolute;
+    top: 50%
+}
+
+.title-icon.left {
+    left: 1rem
+}
+.title-icon.right {
+    right: 1rem
 }
 
 .title-icon.flipped {
