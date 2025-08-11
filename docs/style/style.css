@@ -1,4 +1,4 @@
-/*v3.7 2025-08-11T13:03:06.019Z*/
+/*v3.8 2025-08-11T13:40:32.245Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2081,6 +2081,13 @@ h1.site-title {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.title-container.page-title {
+    width: clamp(150px, calc(10vh + 40vw), 900px);
+    letter-spacing: normal;
+    gap: 4rem;
+    font-size: 5rem;
 }
 
 @media (max-width: 767px) {

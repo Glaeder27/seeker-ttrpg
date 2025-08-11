@@ -1,4 +1,4 @@
-<!-- v1.16 2025-08-11T13:12:43.944Z -->
+<!-- v1.17 2025-08-11T13:56:30.387Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:32.978Z-->
@@ -56,7 +56,7 @@
             background: var(--background-dark-2);
             padding: 0 1rem;
             margin: 1rem 0;
-            border-radius: 1rem;
+            border-radius: .5rem;
         }
 
         .phase-wrapper {
@@ -67,6 +67,12 @@
         }
 
         /* Responsive tweaks */
+
+        /* Overrides */
+        .carousel-icon {
+            height: 100px;
+            width: 100px;
+        }
     </style>
 </head>
 
@@ -82,12 +88,11 @@
     <main class="dual-column" type="rulebook">
         <div class="left-column">
             <header class="title">
-                <div class="title-container">
+                <div class="title-container page-title">
                     <span class="title-icon">s</span>
                     <h1>Joining the Seekers</h1>
                     <span class="title-icon flipped">s</span>
                 </div>
-                <p class="subtitle">How a session works.</p>
             </header>
             <!-- ─────────────── MAIN CONTENT ─────────────── -->
             <!-- 1 • What is a TTRPG? -->
@@ -207,7 +212,7 @@
                     uncovering the forbidden truths of the New World. Every Seeker has a distinct background,
                     motivation, and set of skills that affect how they interact with the world.</p>
                 <p>In play, a Seeker:</p>
-                <ul>
+                <ul class="diamond">
                     <li>Makes decisions for their character</li>
 
                     <li>Uses abilities and dice to overcome obstacles</li>
@@ -329,7 +334,6 @@
                     </div>
                 </section>
 
-
                 <div name="phase-wrapper">
                     <h3>1 • Frame</h3>
                     <h4>The Archivist Sets the Scene</h4>
@@ -413,15 +417,52 @@
                     </div>
                     <div class="title-container">
                         <span class="title-icon">o</span>
-                        <h2>Types of Game Session</h2>
+                        <h2 style="font-size: clamp(3rem, 6.5vw, 3.5rem);">Types of Game Session</h2>
                         <span class="title-icon flipped">o</span>
                     </div>
                     <p class="subtitle">Different ways to explore the New World — from quick missions to epic campaigns.
                     </p>
                 </header>
 
-                <p>
+                <p>When crafting a story for Seeker, three distinct types are commonly referenced. Each type defines the
+                    story’s scope,
+                    gameplay focus, and suitability for different kinds of players and groups. Understanding these
+                    categories helps
+                    Guides and players select the right kind of narrative experience for their needs and available time.
                 </p>
+                <h3>Scenarios</h3>
+                <p>Scenarios feature a straightforward and focused narrative, often self-contained and resolved within a
+                    single or just a
+                    few sessions.</p>
+                <p>They typically emphasize one core aspect of gameplay—such as Combat, Social Interaction,
+                    or
+                    Exploration—making them ideal for players with limited time, newcomers wanting to learn the system,
+                    or
+                    those looking to
+                    explore specific facets of the game. Scenarios also serve well as spin-offs or side stories that
+                    complement larger
+                    arcs or chronicles.</p>
+
+                <h3>Chronicles</h3>
+                <p>Chronicles present a more developed and layered storyline compared to scenarios, weaving together
+                    multiple gameplay
+                    elements to create a richer narrative experience.</p>
+                <p>They usually span several sessions, allowing for
+                    character growth and
+                    plot complexity, making them well-suited for groups seeking ongoing adventures with deeper
+                    engagement in
+                    the world and
+                    its mechanics.</p>
+
+                <h3>Arcs</h3>
+                <p>Arcs represent complex, multi-session narratives with deep and evolving plots that require sustained
+                    player commitment
+                    and strategic engagement across various gameplay aspects.</p>
+                <p>These extended stories challenge players with
+                    intricate
+                    mysteries and long-term goals, providing a rich and immersive experience suited for groups ready to
+                    undertake ambitious
+                    and demanding campaigns.</p>
         </div>
 
         <div class="right-column">
