@@ -1,4 +1,4 @@
-/*v3.13 2025-08-11T15:37:16.516Z*/
+/*v3.14 2025-08-11T18:34:19.974Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1299,7 +1299,6 @@ p.card-description {
     border: none;
     font-size: 1.2em;
     border-radius: 10px;
-    border: 2px solid var(--ancient-gold);
     transform: translate(0, 0);
     height: 3rem;
     width: 3rem;
@@ -3922,10 +3921,18 @@ p.alchemy-symbol.high {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-7.webp');
 }
 
-i.fa-solid.fa-right-from-bracket {
+i.fa-solid {
     color: var(--ancient-gold);
     transition: all .6s ease-in-out;
     font-size: 26px;
+}
+
+i.fa-solid.fa-right-from-bracket {
+    transform: scaleX(-1);
+}
+
+i.fa-solid.fa-right-from-bracket::before {
+    content: "\f2f5";
 }
 
 @media (max-width: 768px) {
