@@ -1,4 +1,4 @@
-/*v3.14 2025-08-11T18:34:19.974Z*/
+/*v3.15 2025-08-11T19:51:56.997Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3927,17 +3927,18 @@ i.fa-solid {
     font-size: 26px;
 }
 
-i.fa-solid.fa-right-from-bracket {
+i.fa-solid.fa-left-from-bracket {
     transform: scaleX(-1);
 }
 
-i.fa-solid.fa-right-from-bracket::before {
+i.fa-solid.fa-left-from-bracket::before {
     content: "\f2f5";
 }
 
 @media (max-width: 768px) {
 
-    i.fa-solid.fa-right-from-bracket {
+    .fa-right-from-bracket,
+    .fa-right-from-bracket {
         font-size: 30px;
     }
 }
