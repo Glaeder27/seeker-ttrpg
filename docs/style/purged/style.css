@@ -1,4 +1,4 @@
-/*v3.9 2025-08-11T14:07:42.847Z*/
+/*v3.10 2025-08-11T15:15:06.838Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1076,10 +1076,24 @@ body#home-page {
     gap: 2rem;
     overflow-x: auto;
     scroll-behavior: auto;
-    padding: 1rem 2rem;
     scrollbar-width: none;
     cursor: var(--cursor-grab);
+    padding: 5px 0;
 }
+
+.carousel-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+    margin: 0.5rem 0 2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.carousel-track {}
 
 .carousel-track.active {
     cursor: var(--cursor-grabbing)
@@ -1333,6 +1347,26 @@ p.card-description {
     }
 }
 
+.sidenav-toggle-btn.animate-open {
+    animation: sidenavOpen 0.6s ease forwards;
+}
+
+.sidenav-toggle-btn.animate-close {
+    animation: sidenavClose 0.6s ease forwards;
+}
+
+@media (max-width: 768px) {
+    .sidenav-toggle-btn.animate-open {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .sidenav-toggle-btn.animate-close {
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
 @keyframes sidenavOpen {
     0% {
         transform: translate(0, 0);
@@ -1414,6 +1448,54 @@ p.card-description {
     overflow-y: auto;
     direction: rtl;
     padding: 0 2rem;
+}
+
+/* Collapsibles for Sidenav */
+.collapsible-sidenav-item {
+    background: transparent;
+    margin: 1rem 0;
+    box-shadow: none;
+    border-radius: 5px;
+}
+
+.collapsible-sidenav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: var(--cursor-pointer);
+    padding: 10px;
+    background: var(--background-dark-3);
+    cursor: var(--cursor-pointer);
+    border-radius: 0 10px 10px 0;
+}
+
+.collapsible-sidenav-header::before {
+    content: "";
+    display: inline-block;
+    width: 3.5em;
+    height: 3.5em;
+    background-image: url(/assets/icons/webp/rulebook.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: -1rem 0 -1rem -2rem;
+}
+
+.collapsible-sidenav-header h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+    border: none;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.collapsible-sidenav-icon {
+    transition: transform 0.3s ease;
+}
+
+.collapsible-sidenav-content {
+    overflow: hidden;
+    transition: height 0.3s ease;
 }
 
 /* Scrollbar Webkit */
@@ -2128,6 +2210,21 @@ h1.site-title {
             rgba(var(--background-dark-1-rgb), .85),
             rgba(var(--background-dark-2-rgb), .98)),
         url('/assets/images/webp/decorations/horizontal-new-world.webp');
+}
+
+.section-columns {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.section-col {
+    flex: 1 1 300px;
+    min-width: 280px;
+    background: var(--background-dark-2);
+    padding: 0 1rem;
+    margin: 1rem 0;
+    border-radius: 1rem;
 }
 
 .section::before,
@@ -3668,8 +3765,7 @@ i.fa-solid.fa-right-from-bracket {
     background-position: center;
 }
 
-/*========== PAGE: ABOUT ==========*/
-/*Letter from Alonso */
+/*========== PAGE FEATURES ==========*/
 .letter-wrapper {
     max-width: 700px;
     margin: 0 auto;
@@ -3682,42 +3778,10 @@ i.fa-solid.fa-right-from-bracket {
     font-style: italic;
 }
 
-.section-columns {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.section-col {
-    flex: 1 1 300px;
-    min-width: 280px;
-    background: var(--background-dark-2);
-    padding: 0 1rem;
-    margin: 1rem 0;
-    border-radius: 1rem;
-}
-
 #letter-from-alonso:hover .overlay-symbol.var-4,
 #cultural-approach-and-ethics:hover .overlay-symbol.var-5,
 #tools-and-inspiration:hover .overlay-symbol.var-7 {
     opacity: 0.1;
-}
-
-/* About: What is Seeker? */
-.carousel-icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0.5rem;
-    margin: 0.5rem 0 2rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    border-radius: 20px;
-    pointer-events: none;
-}
-
-.carousel-track {
-    padding: 5px 0;
 }
 
 .card-description.short {
