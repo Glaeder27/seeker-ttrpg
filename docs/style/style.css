@@ -1,4 +1,4 @@
-/*v3.5 2025-08-11T10:46:33.729Z*/
+/*v3.6 2025-08-11T12:39:30.775Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1502,17 +1502,12 @@ p.card-description {
     border-radius: 0 1rem 1rem 0;
     transform: translateX(0) translateY(-50%);
     height: 70vh;
-    background:
-        linear-gradient(#1f1f1f, #1f1f1f) padding-box,
-        linear-gradient(to right, transparent calc(100% - 4px), white 100%) border-box,
-        url(/assets/textures/antique-gold-1.jpg) border-box;
-    background-repeat: no-repeat;
-    background-size:
-        100% 100%,
-        100% 100%,
-        cover;
-    border-right: 4px solid transparent;
     border-left: none;
+    background: linear-gradient(#1f1f1fff, #1f1f1fff) padding-box,
+        url(/assets/textures/antique-gold-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-right: 4px solid transparent;
 }
 
 .sidenav.no-transition {
