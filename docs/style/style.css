@@ -1,4 +1,4 @@
-/*v3.11 2025-08-11T14:54:08.552Z*/
+/*v3.12 2025-08-11T15:31:45.488Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2769,7 +2769,7 @@ thead th:last-child {
     cursor: var(--cursor-help);
 }
 
-.rule-tag.tooltip {
+.state-tag.tooltip {
     cursor: var(--cursor-help);
     background-color: #2e2e2e;
     border: 1px solid var(--bright-gold);
@@ -2785,7 +2785,7 @@ thead th:last-child {
     transition: background 0.2s, color 0.2s;
 }
 
-.rule-tag.tooltip:hover {
+.state-tag.tooltip:hover {
     background-color: var(--bright-gold);
     color: #1c1c1c;
 }
@@ -4059,7 +4059,7 @@ details[open] .infobox-table {
     text-transform: uppercase;
 }
 
-.rule-tag {
+.state-tag {
     display: inline-block;
     font-size: 0.65rem;
     text-transform: uppercase;
@@ -4074,17 +4074,17 @@ details[open] .infobox-table {
     color: var(--off-white);
 }
 
-.rule-tag.optional {
+.state-tag.optional {
     background-color: rgba(var(--ancient-gold-rgb), 0.15);
     color: var(--ancient-gold);
 }
 
-.rule-tag.variant {
+.state-tag.variant {
     background-color: rgba(var(--burnt-copper-rgb), 0.15);
     color: var(--burnt-copper);
 }
 
-.rule-tag.experimental {
+.state-tag.experimental {
     background-color: rgba(255, 80, 80, 0.15);
     color: #ff8080;
     border-color: rgba(255, 80, 80, 0.3);

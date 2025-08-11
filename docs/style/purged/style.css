@@ -1,4 +1,4 @@
-/*v3.10 2025-08-11T15:15:06.838Z*/
+/*v3.11 2025-08-11T15:32:37.727Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1093,8 +1093,6 @@ body#home-page {
     pointer-events: none;
 }
 
-.carousel-track {}
-
 .carousel-track.active {
     cursor: var(--cursor-grabbing)
 }
@@ -1984,6 +1982,10 @@ h1.site-title {
     z-index: 2;
 }
 
+.title-container.large {
+    width: clamp(150px, calc(10vh + 35vw), 700px);
+}
+
 .title .title-container {
     letter-spacing: 0.3rem;
 }
@@ -2415,6 +2417,27 @@ thead th:last-child {
 =                 TOOLTIPS                    =
 =============================================*/
 
+.tooltip-box {
+    position: absolute;
+    max-width: 320px;
+    padding: 10px 14px;
+    background-color: rgba(30, 30, 30, 0.7);
+    border: 0px solid var(--ancient-gold, #B89B4B);
+    border-style: solid;
+    border-width: 5px 0 3px 0;
+    border-radius: 10px;
+    color: var(--off-white, #F0F0F0);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -2422,7 +2445,128 @@ thead th:last-child {
     cursor: var(--cursor-help);
 }
 
+.tooltip-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tooltip-box::before {
+    content: "▲";
+    position: absolute;
+    top: -20px;
+    left: 12px;
+    color: var(--tooltip-color, #B89B4B);
+}
+
+.tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0 0 6px 26px;
+    border-bottom: 1px solid var(--background-dark-3);
+}
+
+.tooltip-title {
+    color: var(--off-white, #F0F0F0);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font-main);
+    font-weight: 400;
+}
+
+.tooltip-tag-type {
+    font-size: 0.75em;
+    color: #ccc;
+    margin-left: auto;
+    text-transform: uppercase;
+}
+
+.tooltip-description {
+    color: var(--off-white, #F0F0F0);
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+}
+
+.tooltip-trigger {
+    cursor: var(--cursor-help);
+    border-bottom: 1px dotted rgba(240, 240, 240, 0.21);
+    transition: border-bottom 0.2s ease-in-out;
+    padding-bottom: 1px;
+}
+
+.tooltip-trigger:hover {
+    border-bottom: 1px dotted var(--bright-gold);
+    color: var(--bright-gold);
+}
+
+.global-tooltip,
+.tag-tooltip {
+    position: fixed;
+    background: linear-gradient(145deg, #2a2a2a, #3a3a3a);
+    color: var(--off-white);
+    padding: 12px 46px 12px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--bright-gold);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    transition: opacity 0.3s ease-in-out;
+    max-width: 280px;
+    text-align: left;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    font-family: var(--gothic-serif, var(--font-main));
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
 /* ───────── Tooltip Icon ───────── */
+.tooltip-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    color: var(--bright-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.tooltip-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--bright-gold);
+    opacity: 0.9;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 280px;
+    background-color: #2a2a2a;
+    color: var(--off-white);
+    text-align: left;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -140px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
 
 /* ───────── Tag + Tooltip Trigger Style ───────── */
 .tag {
@@ -2456,7 +2600,39 @@ thead th:last-child {
     cursor: var(--cursor-help);
 }
 
-.rule-tag.tooltip {
+.state-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: 2px 6px;
+    margin-top: .9rem;
+    margin-left: 0;
+    border-radius: 3px;
+    font-weight: 600;
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--off-white);
+}
+
+.state-tag.state-planned {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--off-white);
+}
+
+.state-tag.state-progress {
+    background-color: rgba(var(--ancient-gold-rgb, 198, 166, 100), 0.15);
+    color: var(--ancient-gold, #c6a664);
+}
+
+.state-tag.state-released {
+    background-color: rgba(0, 200, 120, 0.15);
+    color: #64ffb4;
+    border-color: rgba(0, 200, 120, 0.3);
+}
+
+.state-tag.tooltip {
     cursor: var(--cursor-help);
     background-color: #2e2e2e;
     border: 1px solid var(--bright-gold);
@@ -2472,12 +2648,15 @@ thead th:last-child {
     transition: background 0.2s, color 0.2s;
 }
 
-.rule-tag.tooltip:hover {
+.state-tag.tooltip:hover {
     background-color: var(--bright-gold);
     color: #1c1c1c;
 }
 
 /* Optional for fading tooltip entries smoother */
+.tooltip-content-wrapper {
+    animation: fadeIn 0.3s ease-in-out;
+}
 
 /*=============================================
 =              ANIMATIONS                     =
@@ -3091,7 +3270,7 @@ details[open] .infobox-table {
     text-transform: uppercase;
 }
 
-.rule-tag {
+.state-tag {
     display: inline-block;
     font-size: 0.65rem;
     text-transform: uppercase;
@@ -3106,17 +3285,17 @@ details[open] .infobox-table {
     color: var(--off-white);
 }
 
-.rule-tag.optional {
+.state-tag.optional {
     background-color: rgba(var(--ancient-gold-rgb), 0.15);
     color: var(--ancient-gold);
 }
 
-.rule-tag.variant {
+.state-tag.variant {
     background-color: rgba(var(--burnt-copper-rgb), 0.15);
     color: var(--burnt-copper);
 }
 
-.rule-tag.experimental {
+.state-tag.experimental {
     background-color: rgba(255, 80, 80, 0.15);
     color: #ff8080;
     border-color: rgba(255, 80, 80, 0.3);
