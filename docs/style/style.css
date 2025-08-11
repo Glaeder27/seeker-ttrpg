@@ -1,4 +1,4 @@
-/*v3.15 2025-08-11T20:00:08.734Z*/
+/*v3.16 2025-08-11T20:04:03.892Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3940,9 +3940,15 @@ p.alchemy-symbol.high {
 }
 
 i.fa-solid {
-    color: var(--ancient-gold);
     transition: all .6s ease-in-out;
     font-size: 26px;
+    color: var(--ancient-gold, #d6b879);
+    background: linear-gradient(to bottom, rgba(var(--deep-charcoal-rgb), 0.2), rgba(var(--brown-charcoal-rgb), 0.2)), url(/assets/textures/antique-gold-1.jpg);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 4px 10px black);
+    letter-spacing: normal;
 }
 
 i.fa-solid.fa-left-from-bracket {
