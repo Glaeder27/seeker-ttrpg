@@ -1,4 +1,4 @@
-/*v1.21 2025-08-03T21:07:57.586Z*/
+/*v1.22 2025-08-11T14:09:05.683Z*/
 
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
@@ -34,7 +34,7 @@ function initializeMenu() {
     toggleButton.style.transform = "translate(0, 0)";
   }
   toggleIcon.className = menuVisible
-    ? "fa-solid fa-square-xmark"
+    ? "fa-solid fa-left-from-bracket"
     : "fa-solid fa-right-from-bracket";
 
   toggleButton.addEventListener("click", () => {
@@ -43,7 +43,7 @@ function initializeMenu() {
     localStorage.setItem("menuVisible", isNowVisible);
 
     toggleIcon.className = isNowVisible
-      ? "fa-solid fa-square-xmark"
+      ? "fa-solid fa-left-from-bracket"
       : "fa-solid fa-right-from-bracket";
 
     // Reset animation
@@ -226,7 +226,7 @@ function populateStaticMenu(data) {
 function initializeCollapsibles() {
   const items = document.querySelectorAll(".collapsible-sidenav-item");
 
-  items.forEach(item => {
+  items.forEach((item) => {
     const header = item.querySelector(".collapsible-sidenav-header");
     const content = item.querySelector(".collapsible-sidenav-content");
     const icon = item.querySelector(".collapsible-sidenav-icon");

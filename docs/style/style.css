@@ -1,4 +1,4 @@
-/*v3.8 2025-08-11T13:40:32.245Z*/
+/*v3.9 2025-08-11T14:07:42.847Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -567,6 +567,7 @@ ul.diamond li {
     text-indent: 0;
     padding-left: .3em;
 }
+
 ul.diamond li::marker {
     color: var(--ancient-gold);
     content: "✦ ";
@@ -1392,7 +1393,6 @@ p.card-description {
     top: 25%;
     left: 5px;
     z-index: 1001;
-    background: var(--background-dark-2);
     color: #fff;
     border: none;
     font-size: 1.2em;
@@ -1402,11 +1402,26 @@ p.card-description {
     height: 3rem;
     width: 3rem;
     line-height: 1;
+    background: linear-gradient(to bottom,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+    padding: 3px;
 }
 
-.sidenav-toggle-btn:hover {
-    font-size: 1.2rem;
-    background: var(--background-dark-3);
+.toggle-btn-container {
+    background: var(--background-dark-1);
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidenav-toggle-btn:hover .toggle-btn-icon {
+    color: var(--bright-gold);
+    transition: color .1s ease;
 }
 
 @media (max-width: 768px) {
@@ -1502,16 +1517,15 @@ p.card-description {
     border-radius: 0 1rem 1rem 0;
     transform: translateX(0) translateY(-50%);
     height: 70vh;
-    background: linear-gradient(#1f1f1f, #1f1f1f) padding-box,        
-                linear-gradient(to top, transparent 
-                calc(100% - 5px), black 
-                calc(100% - 0px), black 100%) border-box,
-                url(/assets/textures/antique-gold-1.jpg) border-box;
+    background: linear-gradient(#1f1f1f, #1f1f1f) padding-box,
+        linear-gradient(to top, transparent calc(100% - 5px), black calc(100% - 0px), black 100%) border-box,
+        url(/assets/textures/antique-gold-1.jpg) border-box;
     background-repeat: no-repeat;
     background-size: 100% 100%, 100% 100%, cover;
     border-right: 4px solid transparent;
     border-left: none;
 }
+
 .sidenav.no-transition {
     transition: none;
 }
@@ -1918,55 +1932,47 @@ h3::after {
     background-size: cover;
     border-radius: 5px;
     pointer-events: none;
-    -webkit-mask-image: linear-gradient(
-        to right,
-        rgba(var(--deep-charcoal-rgb), 1) 0%, 
-        rgba(var(--deep-charcoal-rgb), 1) 20%, 
-        rgba(var(--deep-charcoal-rgb), .8) 40%, 
-        rgba(var(--deep-charcoal-rgb), .8) 60%,    
-        rgba(var(--deep-charcoal-rgb), .4) 80%,
-        rgba(var(--deep-charcoal-rgb), .2) 90%, 
-        rgba(var(--deep-charcoal-rgb), 0) 100%
-        );
+    -webkit-mask-image: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 1) 0%,
+            rgba(var(--deep-charcoal-rgb), 1) 20%,
+            rgba(var(--deep-charcoal-rgb), .8) 40%,
+            rgba(var(--deep-charcoal-rgb), .8) 60%,
+            rgba(var(--deep-charcoal-rgb), .4) 80%,
+            rgba(var(--deep-charcoal-rgb), .2) 90%,
+            rgba(var(--deep-charcoal-rgb), 0) 100%);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: cover;
-    mask-image: linear-gradient(
-        to right, 
-        rgba(var(--deep-charcoal-rgb), 1) 0%, 
-        rgba(var(--deep-charcoal-rgb), 1) 20%, 
-        rgba(var(--deep-charcoal-rgb), .8) 40%, 
-        rgba(var(--deep-charcoal-rgb), .8) 60%,    
-        rgba(var(--deep-charcoal-rgb), .4) 80%,
-        rgba(var(--deep-charcoal-rgb), .2) 90%, 
-        rgba(var(--deep-charcoal-rgb), 0) 100%  
-        );
+    mask-image: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 1) 0%,
+            rgba(var(--deep-charcoal-rgb), 1) 20%,
+            rgba(var(--deep-charcoal-rgb), .8) 40%,
+            rgba(var(--deep-charcoal-rgb), .8) 60%,
+            rgba(var(--deep-charcoal-rgb), .4) 80%,
+            rgba(var(--deep-charcoal-rgb), .2) 90%,
+            rgba(var(--deep-charcoal-rgb), 0) 100%);
     mask-size: cover;
     mask-repeat: no-repeat;
 }
 
-.flip-front h3::after, 
+.flip-front h3::after,
 .flip-back h3::after,
 h3.rules-title::after,
 h3.centered {
     text-align: center;
-    -webkit-mask-image: linear-gradient(
-        to right,
-        rgba(var(--deep-charcoal-rgb), 0) 0%, 
-        rgba(var(--deep-charcoal-rgb), .5) 20%, 
-        rgba(var(--deep-charcoal-rgb), 1) 40%, 
-        rgba(var(--deep-charcoal-rgb), 1) 60%,    
-        rgba(var(--deep-charcoal-rgb), .5) 80%,
-        rgba(var(--deep-charcoal-rgb), 0) 100%
-  );
-  mask-image: linear-gradient(
-        to right, 
-        rgba(var(--deep-charcoal-rgb), 0) 0%, 
-        rgba(var(--deep-charcoal-rgb), .5) 20%, 
-        rgba(var(--deep-charcoal-rgb), 1) 40%, 
-        rgba(var(--deep-charcoal-rgb), 1) 60%,    
-        rgba(var(--deep-charcoal-rgb), .5) 80%,
-        rgba(var(--deep-charcoal-rgb), 0) 100%  
-        );
+    -webkit-mask-image: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0) 0%,
+            rgba(var(--deep-charcoal-rgb), .5) 20%,
+            rgba(var(--deep-charcoal-rgb), 1) 40%,
+            rgba(var(--deep-charcoal-rgb), 1) 60%,
+            rgba(var(--deep-charcoal-rgb), .5) 80%,
+            rgba(var(--deep-charcoal-rgb), 0) 100%);
+    mask-image: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0) 0%,
+            rgba(var(--deep-charcoal-rgb), .5) 20%,
+            rgba(var(--deep-charcoal-rgb), 1) 40%,
+            rgba(var(--deep-charcoal-rgb), 1) 60%,
+            rgba(var(--deep-charcoal-rgb), .5) 80%,
+            rgba(var(--deep-charcoal-rgb), 0) 100%);
 }
 
 h3.centered.no-underline::after {
@@ -2142,6 +2148,7 @@ h1.site-title {
 .title-icon.centered.left {
     left: 1rem
 }
+
 .title-icon.centered.right {
     right: 1rem
 }
