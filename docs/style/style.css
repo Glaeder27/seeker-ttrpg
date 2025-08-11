@@ -1,4 +1,4 @@
-/*v3.6 2025-08-11T12:39:30.775Z*/
+/*v3.7 2025-08-11T13:03:06.019Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -74,11 +74,11 @@
     --font-calligraphy: 'Quentin', cursive;
     --font-calligraphy-2: 'High Summit', cursive;
     --font-calligraphy-3: 'Honey Script', cursive;
-    --font-title: 'Cinzel Decorative', serif;
     --font-antique: 'IM Fell English', serif;
     --font-arcane: 'Mistlock Rough', serif;
     --font-alchemy-symbols: '1651 Alchemy Symbols', serif;
     --font-logo: '1540 Mercator Script', serif;
+    --font-title: '1540 Mercator Script', serif;
 
     /* ── POINTERS ───────────────────────────────────────────── */
     --cursor-default: url('/assets/cursor/cursor-default.svg') 5 2, auto;
@@ -1468,7 +1468,7 @@ p.card-description {
     }
 }
 
-/*.sidenav {
+/*--BACKUP .sidenav {
     position: fixed;
     top: 50%;
     left: 0;
@@ -1502,14 +1502,16 @@ p.card-description {
     border-radius: 0 1rem 1rem 0;
     transform: translateX(0) translateY(-50%);
     height: 70vh;
-    border-left: none;
-    background: linear-gradient(#1f1f1fff, #1f1f1fff) padding-box,
-        url(/assets/textures/antique-gold-1.jpg);
+    background: linear-gradient(#1f1f1f, #1f1f1f) padding-box,        
+                linear-gradient(to top, transparent 
+                calc(100% - 5px), black 
+                calc(100% - 0px), black 100%) border-box,
+                url(/assets/textures/antique-gold-1.jpg) border-box;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%, 100% 100%, cover;
     border-right: 4px solid transparent;
+    border-left: none;
 }
-
 .sidenav.no-transition {
     transition: none;
 }
@@ -1967,6 +1969,10 @@ h3.centered {
         );
 }
 
+h3.centered.no-underline::after {
+    content: none;
+}
+
 .rules-card.unavailable h3::after {
     filter: grayscale(1);
 }
@@ -2085,9 +2091,10 @@ h1.site-title {
 }
 
 .title .title-container h1 {
+    font-family: var(--font-title);
     margin: 0;
     font-size: inherit;
-    padding: 10px 0;
+    padding: 10px 0 1em;
     font-weight: 100;
     background: linear-gradient(to right,
             rgba(var(--deep-charcoal-rgb), 0.2),
