@@ -1,4 +1,4 @@
-/*v3.3 2025-08-11T09:18:54.664Z*/
+/*v3.4 2025-08-11T09:33:18.018Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -246,11 +246,11 @@
 }
 
 main.dual-column[type="rulebook"] .right-column {
-    position: static;
+    position: sticky;
 }
 
 main.dual-column[type="lorebook"] .right-column {
-    position: static;
+    position: sticky;
 }
 
 main.dual-column[type="lorebook"] .right-column .sidebar-wrapper {
