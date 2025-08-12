@@ -1,4 +1,4 @@
-/*v3.19 2025-08-12T15:33:37.547Z*/
+/*v3.20 2025-08-12T16:03:06.883Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -466,6 +466,14 @@ p {
 .section-wrapper[id="section1"] {
     margin-top: 4rem;
 }
+
+/* Iconizer */
+.iconized-text {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
 
 /* ── LISTS ─────────────── */
 
