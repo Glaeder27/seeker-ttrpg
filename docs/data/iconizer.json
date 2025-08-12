@@ -1,11 +1,11 @@
 {
   "Action Dice": {
-    "img": "/assets/icons/svg/dice/dice-risk.svg",
-    "title": "6"
+    "img": "/assets/icons/svg/dice/dice-action.svg",
+    "title": "Action Dice"
   },
   "Risk Dice": {
-    "img": "/assets/icons/svg/dice/dice-action.svg",
-    "title": "6"
+    "img": "/assets/icons/svg/dice/dice-risk.svg",
+    "title": "Risk Dice"
   },
   "AD5": {
     "img": "/assets/icons/svg/dice/dice-green-5.svg",
