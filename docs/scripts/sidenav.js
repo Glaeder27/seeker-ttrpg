@@ -1,4 +1,4 @@
-/*v1.23 2025-08-12T14:35:09.732Z*/
+/*v1.24 2025-08-12T15:42:44.567Z*/
 
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
@@ -107,56 +107,67 @@ function generateChapterSections() {
 }
 
 function initializeScrollSpy() {
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px 0px -30% 0px",
-    threshold: 0.1,
-  };
-
   const links = document.querySelectorAll("#chapter-sections a");
   const headers = document.querySelectorAll("h3[sidenav-2], h4[sidenav-2]");
   const sections = document.querySelectorAll("section.section-wrapper[id]");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+  function updateActiveLink() {
+    const viewportCenter = window.innerHeight / 2;
+    let closestSection = null;
+    let closestDistance = Infinity;
+    let activeHeader = null;
 
-      const target = entry.target;
-      const parentSection = target.closest("section.section-wrapper");
-      if (!parentSection || !parentSection.id) return;
-
-      const sectionId = parentSection.id;
-      let activeHeader = null;
-      let isSubsection = false;
-
-      if (target.hasAttribute("sidenav-2")) {
-        activeHeader = target;
-        isSubsection = true;
+    headers.forEach((header) => {
+      const rect = header.getBoundingClientRect();
+      const distance = Math.abs(rect.top - viewportCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestSection = header.closest("section.section-wrapper");
+        activeHeader = header;
       }
-
-      links.forEach((link) => {
-        const linkIsSub = link.parentElement.classList.contains("subsection");
-        const matchById = link.dataset.id === sectionId;
-        const matchByText = activeHeader
-          ? link.textContent.trim() ===
-            (
-              activeHeader.getAttribute("sidenav-2") || activeHeader.textContent
-            ).trim()
-          : false;
-
-        const shouldActivate = isSubsection
-          ? linkIsSub
-            ? matchById && matchByText
-            : matchById
-          : !linkIsSub && matchById;
-
-        link.classList.toggle("active", shouldActivate);
-      });
     });
-  }, observerOptions);
 
-  headers.forEach((header) => observer.observe(header));
-  sections.forEach((section) => observer.observe(section)); // <-- fix: include full sections too
+    // Fallback
+    if (!closestSection) {
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(rect.top - viewportCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = section;
+          activeHeader = null;
+        }
+      });
+    }
+
+    if (!closestSection) return;
+
+    const sectionId = closestSection.id;
+    const isSubsection = !!activeHeader;
+
+    links.forEach((link) => {
+      const linkIsSub = link.parentElement.classList.contains("subsection");
+      const matchById = link.dataset.id === sectionId;
+      const matchByText = activeHeader
+        ? link.textContent.trim() ===
+          (
+            activeHeader.getAttribute("sidenav-2") || activeHeader.textContent
+          ).trim()
+        : false;
+
+      const shouldActivate = isSubsection
+        ? linkIsSub
+          ? matchById && matchByText
+          : matchById
+        : !linkIsSub && matchById;
+
+      link.classList.toggle("active", shouldActivate);
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveLink, { passive: true });
+  window.addEventListener("resize", updateActiveLink);
+  updateActiveLink();
 }
 
 function populateStaticMenu(data) {

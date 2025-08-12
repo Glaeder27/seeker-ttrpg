@@ -1,4 +1,4 @@
-/*v3.18 2025-08-12T14:47:58.456Z*/
+/*v3.19 2025-08-12T15:33:37.547Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1528,7 +1528,6 @@ p.card-description {
 
 .sidenav-content h3 {
     font-size: 1.1em;
-    border-bottom: 1px solid #555;
     padding-bottom: 0.3rem;
     color: #ddd;
 }
@@ -2047,10 +2046,6 @@ h1.site-title {
     font-size: 5rem;
 }
 
-.title-container.page-title h1 {
-    padding: 0.7em 0 1em 0;
-}
-
 @media (max-width: 767px) {
     .title-container img {
         max-width: 750px !important;
@@ -2073,6 +2068,10 @@ h1.site-title {
     -webkit-text-fill-color: transparent;
     font-size: clamp(50%, 7rem, 110%);
     text-wrap: nowrap;
+}
+
+.title h1.expanded {
+    padding: .7em 0 1em 0;
 }
 
 @media (max-width: 767px) {
@@ -2186,7 +2185,9 @@ h1.site-title {
 
 @media (max-width: 767px) {
     .section {
-        margin-inline: -1rem;
+        margin-inline: unset;
+        width: 95vw;
+        justify-self: center;
     }
 
     .section::before,
