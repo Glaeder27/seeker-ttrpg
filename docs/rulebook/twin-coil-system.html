@@ -1,4 +1,4 @@
-<!-- v1.26 2025-08-12T20:06:51.222Z -->
+<!-- v1.27 2025-08-12T20:12:11.228Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:32.995Z-->
@@ -225,11 +225,13 @@
             padding: 0 1rem 1rem;
         }
 
-        .positive {
-            color: var(--faded-jade, #7E9E85), 
+        .positive,
+        .fa-square-check.positive::before {
+            color: var(--faded-jade, #7E9E85);
         }
-        .negative {
-            color: var(--rust-red, #8A3C30),
+        .negative,
+        .fa-square-check.negative::before {
+            color: var(--rust-red, #8A3C30);
         }
 
         /* Overrides */
