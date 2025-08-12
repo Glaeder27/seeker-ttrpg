@@ -1,4 +1,8 @@
 {
+  "__version": "1.1",
+  "__versionDate": "2025-08-12T19:00:00Z",
+  "otherData": "...",
+
   "title": "Lorebook",
   "items": [
     { "label": "Isla de los Ojos", "href": "/lorebook/isla-de-los-ojos" },
