@@ -1,4 +1,4 @@
-/*v3.17 2025-08-12T09:52:47.482Z*/
+/*v3.17 2025-08-12T09:57:35.938Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1479,11 +1479,16 @@ p.card-description {
 
 .collapsible-sidenav-header h3 {
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 1rem;
     font-size: 1.1rem;
     border: none;
     flex-grow: 1;
     text-align: left;
+    pointer-events: none;
+}
+
+.collapsible-sidenav-header h3::after {
+    content: none;
 }
 
 .collapsible-sidenav-icon {
@@ -1538,6 +1543,10 @@ p.card-description {
     transition: color 0.2s;
     display: block;
     padding: .5rem;
+}
+
+#site-index a {
+    padding: 0 .5rem;
 }
 
 .sidenav-content a:hover {
