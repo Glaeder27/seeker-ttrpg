@@ -1,4 +1,4 @@
-<!-- v1.22 2025-08-12T22:09:44.286Z -->
+<!-- v1.23 2025-08-12T22:15:32.852Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:33.008Z-->
@@ -44,7 +44,7 @@
 
     <style>
         /* Specific Styles */
-        .aptitude-grid-container {
+        .aptitudes-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: .5em;
@@ -633,7 +633,7 @@
                 width: 280px;
             }
 
-            .aptitude-grid-container {
+            .aptitudes-grid {
                 grid-template-columns: none;
             }
 
@@ -642,6 +642,11 @@
             .aptitude-top-social {
                 min-height: auto;
             }
+        }
+
+        /* Overrides */
+        .flip-card {
+            min-height: 350px;
         }
     </style>
 </head>
@@ -758,7 +763,7 @@
                     for
                     overcoming physical challenges and confronting threats head-on.</p>
 
-                <div class="aptitude-grid-container">
+                <div class="aptitudes-grid">
 
                     <!-- Strength -->
                     <div class="flip-card-link flip-container aptitude-card">
@@ -884,7 +889,7 @@
                     territories,
                     understanding ancient lore, and utilizing resources effectively.</p>
 
-                <div class="aptitude-grid-container">
+                <div class="aptitudes-grid">
 
                     <div class="flip-card">
                         <div class="aptitude-top-exploration">
@@ -965,7 +970,7 @@
                     relationships.
                     They are vital for diplomacy, deception, and leadership.</p>
 
-                <div class="aptitude-grid-container">
+                <div class="aptitudes-grid">
 
                     <div class="flip-card">
                         <div class="aptitude-top-social">
@@ -2068,7 +2073,7 @@
         // Visual Variation (Gradient + Texture)
 
         document.addEventListener("DOMContentLoaded", () => {
-            const fronts = document.querySelectorAll(".rules-grid .flip-front");
+            const fronts = document.querySelectorAll(".aptitudes-grid .flip-front");
             fronts.forEach((el, i) => {
                 const offsetX = (i % 4) * 15; // 0, 15, 30, 45 px per background position
 
