@@ -1,5 +1,14 @@
 {
-  "AD5": "<img src='/assets/icons/svg/dice/dice-green-5.svg' alt='5' title='5' class='iconized-text'>",
-  "AD6": "<img src='/assets/icons/svg/dice/dice-green-6.svg' alt='6' title='6' class='iconized-text'>",
-  "RD6": "<img src='/assets/icons/svg/dice/dice-red-6.svg' alt='6' title='6' class='iconized-text'>"
+  "AD5": {
+    "img": "/assets/icons/svg/dice/dice-green-5.svg",
+    "title": "5"
+  },
+  "AD6": {
+    "img": "/assets/icons/svg/dice/dice-green-6.svg",
+    "title": "6"
+  },
+  "RD6": {
+    "img": "/assets/icons/svg/dice/dice-red-6.svg",
+    "title": "6"
+  }
 }

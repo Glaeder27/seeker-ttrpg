@@ -1,4 +1,4 @@
-/*v1.0 2025-08-12T16:00:24.256Z*/
+/*v1.1 2025-08-12T16:07:23.362Z*/
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch("/data/iconizer.json")
@@ -8,10 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const pattern = new RegExp(`\\b(${keys.join("|")})\\b`, "g");
 
       document.querySelectorAll("span.iconize").forEach((span) => {
-        span.innerHTML = span.innerHTML.replace(
-          pattern,
-          (match) => replacements[match] || match
-        );
+        span.innerHTML = span.innerHTML.replace(pattern, (match) => {
+          const rep = replacements[match];
+          if (!rep) return match;
+          return `<img src="${rep.img}" alt="${rep.title}" title="${rep.title}" class="iconized-text">`;
+        });
       });
     })
     .catch((err) => console.error("Iconizer error loading JSON:", err));
