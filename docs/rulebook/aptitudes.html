@@ -1,4 +1,4 @@
-<!-- v1.19 2025-08-12T20:37:20.963Z -->
+<!-- v1.20 2025-08-12T21:47:09.342Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:33.008Z-->
@@ -60,18 +60,6 @@
             position: relative;
         }
 
-        .aptitude-card {
-            background-color: #484848;
-            border-radius: 10px;
-            padding: .3em 1em 1em 1em;
-            display: flex;
-            flex-direction: column;
-            color: var(--off-white);
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-        }
-
         .aptitude-description-container {
             flex-grow: 1;
         }
@@ -92,46 +80,7 @@
             padding-top: 1rem;
         }
 
-        .aptitude-card:hover .icon {
-            transform: scale(1.1);
-        }
-
-        .aptitude-card .icon {
-            width: 128px;
-            height: 128px;
-            border-radius: 8px;
-            background: linear-gradient(to right, var(--burnt-copper), var(--ancient-gold));
-            padding: 3px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px auto;
-            transition: all 0.5s ease-out;
-        }
-
-        .icon-inner {
-            width: 100%;
-            height: 100%;
-            background-color: #383838;
-            border-radius: 6px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .icon-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .aptitude-card .icon img {
-            width: 128px;
-            height: 128px;
-        }
-
-        .aptitude-card h4 {
+        .flip-card h4 {
             font-size: 1.4em;
             margin-top: 0;
             margin-bottom: 10px;
@@ -142,27 +91,16 @@
             margin: 0 auto !important;
         }
 
-        .aptitude-card p {
+        .flip-card p {
             font-size: 0.85em;
             line-height: 1.5;
             margin-bottom: 10px;
         }
 
-        .aptitude-card .tags {
+        .flip-card .tags {
             font-size: 0.8em;
             color: #ccc;
             margin-top: auto;
-        }
-
-        .aptitude-category-title {
-            font-size: 1.3em !important;
-            margin-bottom: -20px !important;
-            color: var(--off-white);
-            border-bottom: none !important;
-            padding-bottom: 5px;
-            width: 100%;
-            grid-column: 1 / -1;
-            text-transform: uppercase;
         }
 
         .aptitude-category-description {
@@ -172,7 +110,7 @@
             grid-column: 1 / -1;
         }
 
-        .aptitude-card .aptitude-description-container {
+        .flip-card .aptitude-description-container {
             flex-grow: 1;
             margin-bottom: 10px;
         }
@@ -739,7 +677,7 @@
     <main class="dual-column" type="rulebook">
         <div class="left-column">
             <header class="title">
-                <div class="title-container">
+                <div class="title-container page-title expanded">
                     <span class="title-icon">b</span>
                     <h1>Aptitudes</h1>
                     <span class="title-icon rot90">b</span>
@@ -841,7 +779,47 @@
 
                 <div class="aptitude-grid-container">
 
-                    <div class="aptitude-card">
+                    <!-- Strength -->
+                    <div class="flip-card-link flip-container aptitude-card">
+                        <div class="flip-inner">
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="flip-card" data-title="Strength" data-category="System"
+                                    data-status="released">
+                                    <div class="card-top">
+                                        <div class="aptitude-icon-wrapper">
+                                            <img src="assets/icons/webp/aptitudes/strength-symbol.webp" class="aptitude-icon">
+                                        </div>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <h3 class="aptitude-title">Strength</h3>
+                                        <div class="aptitude-meta">
+                                            <div class="aptitude-category">Combat</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <div class="flip-card" data-title="Strength" data-category="Combat">
+                                    <div class="card-top">
+                                        <h4>Strength</h4>
+                                        <p>How a session works and who the players are, guiding you through the flow and
+                                            <em><strong>roles</strong></em> involved in the game.
+                                        </p>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <a href="/rulebook/joining-the-seekers"><div class="go-to-page-btn"><a href="/rulebook/joining-the-seekers">Read the
+                                                Chapter</a></div></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
                         <div class="aptitude-top-combat">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -867,7 +845,7 @@
 
 
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-combat">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -894,7 +872,7 @@
 
 
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-combat">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -927,7 +905,7 @@
 
                 <div class="aptitude-grid-container">
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-exploration">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -950,7 +928,7 @@
                         </div>
                     </div>
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-exploration">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -974,7 +952,7 @@
                         </div>
                     </div>
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-exploration">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -1008,7 +986,7 @@
 
                 <div class="aptitude-grid-container">
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-social">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -1032,7 +1010,7 @@
                         </div>
                     </div>
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-social">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -1059,7 +1037,7 @@
                         </div>
                     </div>
 
-                    <div class="aptitude-card">
+                    <div class="flip-card">
                         <div class="aptitude-top-social">
                             <div class="icon">
                                 <div class="icon-inner"><img class="shadowed"
@@ -2079,6 +2057,56 @@
         updateDisplay_sb();
         updateMaxedAptitudes_sb();
 
+    </script>
+
+    <script>
+        const flipCards = document.querySelectorAll(".aptitude-card");
+
+        flipCards.forEach((flipCard) => {
+            // Click fronte → retro
+            flipCard.addEventListener("click", (e) => {
+                if (!flipCard.classList.contains("flipped")) {
+                    e.stopPropagation();
+                    flipCard.classList.add("flipped");
+                }
+            });
+        });
+
+        // Click retro → fronte (fuori o dentro ma non su link)
+        document.addEventListener("click", (e) => {
+            flipCards.forEach((flipCard) => {
+                if (
+                    flipCard.classList.contains("flipped") &&
+                    (!flipCard.contains(e.target) || (flipCard.contains(e.target) && e.target.tagName !== "A"))
+                ) {
+                    flipCard.classList.remove("flipped");
+                }
+            });
+        });
+
+        // Visual Variation (Gradient + Texture)
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const fronts = document.querySelectorAll(".rules-grid .flip-front");
+            fronts.forEach((el, i) => {
+                const offsetX = (i % 4) * 15; // 0, 15, 30, 45 px per background position
+
+                // Base HSL colors
+                const burntCopperHSL = [37, 40, 45]; // hsl(37, 40%, 45%)
+                const ancientGoldHSL = [45, 59, 59]; // hsl(45, 59%, 59%)
+
+                const hueShift = (i % 4) * 1.5; // tone variation
+                const lightnessShift = (i % 3) * 2; // luminosity variation
+
+                const hsl1 = `hsl(${burntCopperHSL[0] + hueShift}, ${burntCopperHSL[1]}%, ${burntCopperHSL[2] + lightnessShift}%)`;
+                const hsl2 = `hsl(${ancientGoldHSL[0] + hueShift}, ${ancientGoldHSL[1]}%, ${ancientGoldHSL[2] + lightnessShift}%)`;
+
+                const gradient = `linear-gradient(to right, ${hsl1}, ${hsl2})`;
+
+                el.style.backgroundImage = `${gradient}, url(/assets/textures/antique-gold-1.jpg)`;
+                el.style.backgroundPosition = `center, ${offsetX}px 0px`;
+            });
+        });
     </script>
 </body>
 

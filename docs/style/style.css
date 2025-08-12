@@ -1,4 +1,4 @@
-/*v3.26 2025-08-12T20:19:31.444Z*/
+/*v3.27 2025-08-12T21:43:48.200Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1935,7 +1935,7 @@ h3.centered.no-underline::after {
     content: none;
 }
 
-.rules-card.unavailable h3::after {
+.flip-card.unavailable h3::after {
     filter: grayscale(1);
 }
 
@@ -2444,8 +2444,279 @@ thead th:last-child {
 }
 
 /*=============================================
-=               NOTE BLOCKS                   =
+=               FLIP-CARDS                    =
 =============================================*/
+
+.flip-card {
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            cursor: var(--cursor-pointer);
+            transition: transform 0.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-blend-mode: overlay;
+            background-color: rgba(25, 25, 25, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 190px;
+        }
+
+        .flip-card[data-status="planned"],
+        .flip-card[data-status="progress"] {
+            border: 1px solid var(--deep-charcoal, #161718);
+            background-color: rgba(0, 0, 0, .015);
+            background-image: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(255, 255, 255, 0.03) 10px,
+                    transparent 10px,
+                    transparent 20px);
+            backdrop-filter: grayscale(30%);
+            min-height: 200px;
+        }
+
+        .flip-card:hover {
+            background-color: rgba(30, 30, 30, 1);
+        }
+
+        .flip-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .rules-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+            text-align: center;
+        }
+
+        .rules-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            margin: auto;
+            width: 80px;
+            height: 80px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .flip-card.unavailable img.rules-icon {
+            filter: grayscale(1);
+        }
+
+        .flip-card p {
+            font-size: .8rem;
+        }
+
+        .rules-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--bright-gold, #e6c87c);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            margin: 1rem auto;
+        }
+
+        .flip-card.unavailable .rules-category {
+            color: var(--text-muted)
+        }
+
+        .rules-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--off-white, #efefef);
+            margin: 0;
+            text-align: center;
+            border-bottom: none;
+            padding-bottom: .7rem;
+        }
+
+        .rules-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            width: 100%;
+        }
+
+        .flip-card:hover .rules-icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        .rules-meta {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--bright-gold, #e6c87c);
+            margin-top: .2rem;
+        }
+
+        .section-description {
+            font-size: .9rem;
+            line-height: 1.6;
+            color: var(--off-white, #ececec);
+            font-family: var(--font-main, 'Montserrat', serif);
+            ;
+            text-align: left;
+        }
+
+        a.flip-card-link:not([href]),
+        a.flip-card-link[href=""] {
+            cursor: var(--cursor-pointer);
+            pointer-events: none;
+            height: 100%;
+        }
+
+        .flip-container {
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .flip-container.chapter-card {
+            min-height: 200px;
+            height: 100%;
+            display: block;
+        }
+
+        .flip-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flip-container.flipped .flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front,
+        .flip-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.6rem;
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            background: linear-gradient(to right,
+                    rgba(var(--burnt-copper-rgb), 0.2),
+                    rgba(var(--ancient-gold-rgb), 0.2)),
+                url(/assets/textures/antique-gold-1.jpg);
+            background-size: cover;
+            background-blend-mode: overlay;
+            padding: 2px;
+            cursor: var(--cursor-pointer);
+        }
+
+        .flip-front {
+            z-index: 2;
+        }
+
+        .flip-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        .flip-back .flip-card {
+            justify-content: start;
+            background-color: rgba(25, 25, 25, 1);
+        }
+
+        .flip-back h3 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .flip-front h3,
+        .flip-back h3,
+        .flip-front p {
+            cursor: var(--cursor-pointer);
+        }
+
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chapter-list li {
+            margin: 0.5rem 0;
+            background: rgba(var(--background-dark-2-rgb), 1);
+            border-radius: 5px;
+            border-width: 0 2px 0 2px;
+            border-color: var(--ancient-gold);
+            border-style: solid;
+            padding: .2rem .2rem .2rem 1rem;
+            text-align: left;
+            transition: all .3s ease;
+        }
+
+        .chapter-list li:hover {
+            background: rgba(var(--background-dark-3-rgb), 1);
+            border-radius: 10px;
+            transition: all .3s ease;
+        }
+
+        .flip-back h4 {
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--off-white);
+            margin: 0rem auto 0.5rem;
+            -webkit-text-fill-color: unset;
+            background-clip: unset;
+            background: unset;
+            text-transform: uppercase;
+            padding-bottom: 1rem;
+        }
+
+        .flip-back h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background: url(/assets/textures/antique-gold-1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 5px;
+            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to right,
+                    rgba(var(--deep-charcoal-rgb), 0) 0%,
+                    rgba(var(--deep-charcoal-rgb), .5) 20%,
+                    rgba(var(--deep-charcoal-rgb), 1) 40%,
+                    rgba(var(--deep-charcoal-rgb), 1) 60%,
+                    rgba(var(--deep-charcoal-rgb), .5) 80%,
+                    rgba(var(--deep-charcoal-rgb), 0) 100%);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-size: cover;
+            mask-image: linear-gradient(to right,
+                    rgba(var(--deep-charcoal-rgb), 0) 0%,
+                    rgba(var(--deep-charcoal-rgb), .5) 20%,
+                    rgba(var(--deep-charcoal-rgb), 1) 40%,
+                    rgba(var(--deep-charcoal-rgb), 1) 60%,
+                    rgba(var(--deep-charcoal-rgb), .5) 80%,
+                    rgba(var(--deep-charcoal-rgb), 0) 100%);
+            mask-size: cover;
+            mask-repeat: no-repeat;
+        }
+
+        .card-top {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
 
 
 /*=============================================
@@ -3563,7 +3834,7 @@ details[open] .infobox-table {
         grid-template-columns: 1fr;
     }
 
-    .aptitude-card .icon {
+    .flip-card .icon {
         margin: 15px auto 15px auto;
     }
 
