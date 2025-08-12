@@ -1,4 +1,4 @@
-/*v3.24 2025-08-12T19:27:55.403Z*/
+/*v3.25 2025-08-12T20:01:07.860Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3025,6 +3025,12 @@ blockquote.clean p {
     font-size: 1rem;
 }
 
+blockquote h3 {
+    border-bottom: none;
+    font-size: 1.3em;
+    color: var(--ancient-gold, #D4B55A);
+}
+
 @media (max-width: 767px) {
     blockquote.clean p {
         font-size: .9rem;
@@ -3600,22 +3606,22 @@ details[open] .infobox-table {
 }
 
 /*=============================================
-=            DYNAMIC PAGES STYLES             =
+=              NARRATIVE TABLE                =
 =============================================*/
 
-#twin-coil-system .narrative-table {
+.narrative-table {
     border-collapse: collapse;
     width: 100%;
 }
 
-#twin-coil-system .narrative-table th,
-#twin-coil-system .narrative-table td {
+.narrative-table th,
+.narrative-table td {
     padding: 0.75rem 1rem;
     border-bottom: 0px solid var(--ancient-gold, #D4B55A);
     vertical-align: middle;
 }
 
-#twin-coil-system .toggle-icon {
+.toggle-icon {
     cursor: var(--cursor-pointer);
     font-size: 1.3rem;
     transition: transform 0.3s ease;
@@ -3625,11 +3631,11 @@ details[open] .infobox-table {
     width: 2rem;
 }
 
-#twin-coil-system .narrative-toggle.expanded .toggle-icon {
+.narrative-toggle.expanded .toggle-icon {
     transform: rotate(90deg);
 }
 
-#twin-coil-system .narrative-row .narrative-content {
+.narrative-row .narrative-content {
     max-height: 0;
     opacity: 0;
     visibility: hidden;
@@ -3648,229 +3654,20 @@ details[open] .infobox-table {
     border-top: 1px solid var(--ancient-gold, #D4B55A);
 }
 
-#twin-coil-system .narrative-toggle.expanded+.narrative-row .narrative-content {
+.narrative-toggle.expanded+.narrative-row .narrative-content {
     max-height: 500px;
     opacity: 1;
     visibility: visible;
     padding: 1rem 1.25rem;
 }
 
-#twin-coil-system .narrative-toggle {
+.narrative-toggle {
     cursor: var(--cursor-pointer);
 }
 
-#twin-coil-system .narrative-row td {
+.narrative-row td {
     padding: 0;
     line-height: 0;
-}
-
-#twin-coil-system li .no-bullet {
-    list-style: none;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-}
-
-#twin-coil-system .no-bullet::before {
-    display: none;
-}
-
-#twin-coil-system blockquote h3 {
-    border-bottom: none;
-    font-size: 1.3em;
-    color: var(--ancient-gold, #D4B55A);
-}
-
-#twin-coil-system .grid-2x2-axes {
-    display: grid;
-    grid-template-columns: auto .15fr 1fr 1fr;
-    grid-template-rows: auto .2fr 1fr 1fr;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 1.5rem;
-    gap: 1px;
-    background-color: none;
-}
-
-#twin-coil-system .axis-label,
-#twin-coil-system .grid-label,
-#twin-coil-system .grid-cell {
-    background: var(--background-dark-2);
-    color: var(--off-white);
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-main);
-}
-
-#twin-coil-system .axis-label {
-    background: none;
-    color: var(--off-white);
-    font-weight: bold;
-    writing-mode: vertical-rl;
-    grid-row: 2 / span 2;
-}
-
-#twin-coil-system .x-axis {
-    writing-mode: horizontal-tb;
-    grid-column: 3 / span 3;
-    grid-row: 1;
-    background: rgba(var(--rust-red-rgb, rgb(138, 60, 48)), .2);
-    border-radius: 10px 10px 0 0;
-}
-
-#twin-coil-system .y-axis {
-    background: rgba(var(--faded-jade-rgb, rgb(138, 60, 48)), .2);
-    color: var(--text-muted);
-    font-weight: bold;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 1;
-    grid-row: 3 / span 3;
-    border-radius: 0 10px 10px 0;
-}
-
-#twin-coil-system .grid-label {
-    background: var(--deep-charcoal);
-    font-weight: bold;
-}
-
-#twin-coil-system .grid-label.top-left {
-    grid-column: 3;
-    grid-row: 2;
-    gap: .2rem;
-}
-
-#twin-coil-system .grid-label.top-right {
-    grid-column: 4;
-    grid-row: 2;
-}
-
-#twin-coil-system .grid-label.left-top {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-#twin-coil-system .grid-label.left-bottom {
-    grid-column: 2;
-    grid-row: 4;
-}
-
-#twin-coil-system .grid-cell {
-    flex-direction: column;
-    line-height: 1.2rem;
-    font-size: 0.85rem;
-    text-align: center;
-}
-
-#twin-coil-system .grid-cell.top-left {
-    grid-column: 3;
-    grid-row: 3;
-}
-
-#twin-coil-system .grid-cell.top-right {
-    grid-column: 4;
-    grid-row: 3;
-}
-
-#twin-coil-system .grid-cell.bottom-left {
-    grid-column: 3;
-    grid-row: 4;
-}
-
-#twin-coil-system .grid-cell.bottom-right {
-    grid-column: 4;
-    grid-row: 4;
-}
-
-#twin-coil-system .grid-corner-image {
-    grid-column: 1 / span 2;
-    grid-row: 1 / span 2;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    padding: 0;
-    width: 90%;
-    height: 90%;
-}
-
-#twin-coil-system .grid-corner-image img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-}
-
-#twin-coil-system .risk-badges {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 1rem;
-}
-
-#twin-coil-system .risk-badge {
-    background: var(--background-dark-1, #1c1c1c);
-    border: 1px solid var(--border-color, #444);
-    border-left: 0.5rem solid var(--risk-color);
-    border-radius: 0.5rem;
-    padding: 0;
-    overflow: hidden;
-    transition: background 0.3s ease;
-}
-
-#twin-coil-system .risk-badge .collapsible-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    cursor: var(--cursor-pointer);
-    gap: 1rem;
-}
-
-#twin-coil-system .risk-dice {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: var(--ancient-gold, #D4B55A);
-    min-width: 3rem;
-    text-align: center;
-}
-
-#twin-coil-system .risk-info strong {
-    display: block;
-    color: var(--off-white, #f0f0f0);
-    font-size: 1rem;
-}
-
-#twin-coil-system .risk-info span {
-    color: var(--text-muted, #aaa);
-    font-size: 0.9rem;
-}
-
-#twin-coil-system .risk-info p {
-    margin: 0.3rem 0 0;
-    font-size: 0.8rem;
-    color: var(--text-muted, #888);
-    line-height: 1.4;
-}
-
-#twin-coil-system .expanded .collapsible-content {
-    max-height: 100vh;
-    opacity: 1;
-    visibility: visible;
-    padding: 0 1rem 1rem;
-}
-
-/* Overrides */
-
-#twin-coil-system table td {
-    vertical-align: middle;
-}
-
-#twin-coil-system table td img,
-#twin-coil-system .dice-symbol img {
-    height: 2em;
-    vertical-align: middle;
 }
 
 /*=============================================

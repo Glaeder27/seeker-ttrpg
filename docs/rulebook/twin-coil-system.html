@@ -1,4 +1,4 @@
-<!-- v1.25 2025-08-12T19:37:40.583Z -->
+<!-- v1.26 2025-08-12T20:06:51.222Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:32.995Z-->
@@ -44,6 +44,205 @@
 
     <style>
         /* Specific Styles */
+        .grid-2x2-axes {
+            display: grid;
+            grid-template-columns: auto .15fr 1fr 1fr;
+            grid-template-rows: auto .2fr 1fr 1fr;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            gap: 1px;
+            background-color: none;
+        }
+
+        .axis-label,
+        .grid-label,
+        .grid-cell {
+            background: var(--background-dark-2);
+            color: var(--off-white);
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-main);
+        }
+
+        .axis-label {
+            background: none;
+            color: var(--off-white);
+            font-weight: bold;
+            writing-mode: vertical-rl;
+            grid-row: 2 / span 2;
+        }
+
+        .x-axis {
+            writing-mode: horizontal-tb;
+            grid-column: 3 / span 3;
+            grid-row: 1;
+            background: rgba(var(--rust-red-rgb, rgb(138, 60, 48)), .2);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .y-axis {
+            background: rgba(var(--faded-jade-rgb, rgb(138, 60, 48)), .2);
+            color: var(--text-muted);
+            font-weight: bold;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            grid-column: 1;
+            grid-row: 3 / span 3;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .grid-label {
+            background: var(--deep-charcoal);
+            font-weight: bold;
+        }
+
+        .grid-label.top-left {
+            grid-column: 3;
+            grid-row: 2;
+            gap: .2rem;
+        }
+
+        .grid-label.top-right {
+            grid-column: 4;
+            grid-row: 2;
+        }
+
+        .grid-label.left-top {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .grid-label.left-bottom {
+            grid-column: 2;
+            grid-row: 4;
+        }
+
+        .grid-cell {
+            flex-direction: column;
+            line-height: 1.2rem;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .grid-cell.top-left {
+            grid-column: 3;
+            grid-row: 3;
+        }
+
+        .grid-cell.top-right {
+            grid-column: 4;
+            grid-row: 3;
+        }
+
+        .grid-cell.bottom-left {
+            grid-column: 3;
+            grid-row: 4;
+        }
+
+        .grid-cell.bottom-right {
+            grid-column: 4;
+            grid-row: 4;
+        }
+
+        .grid-corner-image {
+            grid-column: 1 / span 2;
+            grid-row: 1 / span 2;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            padding: 0;
+            width: 90%;
+            height: 90%;
+        }
+
+        .grid-corner-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .risk-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 1rem;
+        }
+
+        .risk-badge {
+            background: var(--background-dark-1, #1c1c1c);
+            border: 1px solid var(--border-color, #444);
+            border-left: 0.5rem solid var(--risk-color);
+            border-radius: 0.5rem;
+            padding: 0;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        .risk-badge .collapsible-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            cursor: var(--cursor-pointer);
+            gap: 1rem;
+        }
+
+        .risk-dice {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--ancient-gold, #D4B55A);
+            min-width: 3rem;
+            text-align: center;
+        }
+
+        .risk-info strong {
+            display: block;
+            color: var(--off-white, #f0f0f0);
+            font-size: 1rem;
+        }
+
+        .risk-info span {
+            color: var(--text-muted, #aaa);
+            font-size: 0.9rem;
+        }
+
+        .risk-info p {
+            margin: 0.3rem 0 0;
+            font-size: 0.8rem;
+            color: var(--text-muted, #888);
+            line-height: 1.4;
+        }
+
+        .expanded .collapsible-content {
+            max-height: 100vh;
+            opacity: 1;
+            visibility: visible;
+            padding: 0 1rem 1rem;
+        }
+
+        .positive {
+            color: var(--faded-jade, #7E9E85), 
+        }
+        .negative {
+            color: var(--rust-red, #8A3C30),
+        }
+
+        /* Overrides */
+
+        table td {
+            vertical-align: middle;
+        }
+
+        table td img,
+        .dice-symbol img {
+            height: 2em;
+            vertical-align: middle;
+        }
     </style>
 </head>
 
@@ -78,7 +277,8 @@
                         <h2>Core Concept</h2>
                         <span class="title-icon right rot90">b</span>
                     </div>
-                    <p class="subtitle">A modular dice-resolution engine<br> for dynamic and narrative-driven tabletop play.</p>
+                    <p class="subtitle">A modular dice-resolution engine<br> for dynamic and narrative-driven tabletop
+                        play.</p>
                 </header>
 
                 <p>The <strong>Twin Coil System</strong> is a lightweight, modular dice‑resolution mechanic that
@@ -99,7 +299,8 @@
                     <tbody>
                         <tr>
                             <td class="align-center"><strong>Positive Coil</strong></td>
-                            <td class="align-left">The effort, skill, or will a character invests to achieve a goal.</td>
+                            <td class="align-left">The effort, skill, or will a character invests to achieve a goal.
+                            </td>
                         </tr>
                         <tr>
                             <td class="align-center"><strong>Negative Coil</strong></td>
@@ -111,7 +312,9 @@
                 <p>These forces <strong>do not cancel each other</strong>; they combine to generate richly textured
                     results.</p>
 
-                <p>This chapter does not contain specific references to <em>Seeker</em>, even though the system was primarily conceived as the dice engine for this game. However, it can be applied to a wide variety of other game systems — feel free to experiment and incorporate it into your own game design.</p>
+                <p>This chapter does not contain specific references to <em>Seeker</em>, even though the system was
+                    primarily conceived as the dice engine for this game. However, it can be applied to a wide variety
+                    of other game systems — feel free to experiment and incorporate it into your own game design.</p>
             </section>
 
             <!-- 2 • Dice Structure -->
@@ -126,7 +329,7 @@
                         <span class="title-icon right rot90">b</span>
                     </div>
                     <p class="subtitle">Placeholder.</p>
-                </header>                
+                </header>
 
                 <p>In the Twin Coil System, all actions are resolved using standard six-sided dice (d6). These are
                     divided into
@@ -147,16 +350,15 @@
                         <tr>
                             <td class="align-center">d6</td>
                             <td class="align-center"><img class="dice-symbol-big"
-                                    src="/assets/icons/svg/dice/dice-action.svg"
-                                    alt="Action Dice" title="Action Dice"></td>
+                                    src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice" title="Action Dice">
+                            </td>
                             <td><strong>Action Dice</strong></td>
                             <td>Rolled by the player; measure competence and intent.</td>
                         </tr>
                         <tr>
                             <td class="align-center">d6</td>
                             <td class="align-center"><img class="dice-symbol-big"
-                                    src="/assets/icons/svg/dice/dice-risk.svg"
-                                    alt="Risk Dice" title="Risk Dice"></td>
+                                    src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice" title="Risk Dice"></td>
                             <td><strong>Risk Dice</strong></td>
                             <td>Rolled by the GM; measure external danger.</td>
                         </tr>
@@ -172,22 +374,22 @@
                 <ol>
                     <li><strong>Build the pools</strong><br />
                         The player rolls a number of <img class="dice-symbol"
-                            src="/assets/icons/svg/dice/dice-action.svg"
-                            alt="Action Dice" title="Action Dice"> equal to their relevant attribute, skill, or
+                            src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice" title="Action Dice"> equal to
+                        their relevant attribute, skill, or
                         trait.<br />
-                        The GM rolls a number of <span class="iconize">Risk Dice</span> equal to the situation’s threat level.</li>
+                        The GM rolls a number of <span class="iconize">Risk Dice</span> equal to the situation’s threat
+                        level.</li>
                     <li><strong>Roll simultaneously.</strong> </li>
                     <li><strong>Interpret Results:</strong>
                         <ul>
                             <li class="no-bullet"><img class="dice-symbol-big"
-                                    src="/assets/icons/svg/dice/dice-action.svg"
-                                    alt="Action Dice" title="Action Dice"> shows <span class="iconize">AD5</span>
+                                    src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice" title="Action Dice">
+                                shows <span class="iconize">AD5</span>
                                 <span class="iconize">AD6</span> → <strong
                                     style="color: var(--faded-jade, #7E9E85)">Success</strong>
                             </li>
                             <li class="no-bullet"><img class="dice-symbol-big"
-                                    src="/assets/icons/svg/dice/dice-risk.svg"
-                                    alt="Risk Dice" title="Risk Dice"> shows
+                                    src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice" title="Risk Dice"> shows
                                 <span class="iconize">RD6</span> → <strong
                                     style="color: var(--rust-red, #8A3C30)">Complication</strong>
                             </li>
@@ -214,7 +416,7 @@
                         <span class="title-icon right rot90">l</span>
                     </div>
                     <p class="subtitle">Placeholder.</p>
-                </header> 
+                </header>
 
                 <p>The Twin Coil System allows for rich narrative possibilities by moving beyond
                     simple pass/fail mechanics.
@@ -238,21 +440,16 @@
                         <img class="dice-symbol" src="/assets/icons/svg/dice/dice-red-5.svg" alt="5" title="5">
                     </div>
                     <div class="grid-label top-right"><img class="dice-symbol-big"
-                            src="/assets/icons/svg/dice/dice-red-6.svg"
-                            alt="6" title="6"></div>
+                            src="/assets/icons/svg/dice/dice-red-6.svg" alt="6" title="6"></div>
                     <div class="grid-label left-top" style="display: flex; flex-direction: column; gap: 0.3em;">
-                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-1.svg" alt="1" title="1">
-                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-2.svg" alt="2" title="2">
-                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-3.svg" alt="3" title="3">
-                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-4.svg" alt="4" title="4">
+                        <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-1.svg" alt="1" title="1">
+                        <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-2.svg" alt="2" title="2">
+                        <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-3.svg" alt="3" title="3">
+                        <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-4.svg" alt="4" title="4">
                     </div>
                     <div class="grid-label left-bottom" style="display: flex; flex-direction: column; gap: .5em;"><img
-                            class="dice-symbol-big"
-                            src="/assets/icons/svg/dice/dice-green-5.svg"
-                            alt="5" title="5">
-                        <img class="dice-symbol-big"
-                            src="/assets/icons/svg/dice/dice-green-6.svg"
-                            alt="6" title="6">
+                            class="dice-symbol-big" src="/assets/icons/svg/dice/dice-green-5.svg" alt="5" title="5">
+                        <img class="dice-symbol-big" src="/assets/icons/svg/dice/dice-green-6.svg" alt="6" title="6">
                     </div>
 
                     <div class="grid-cell top-left">
@@ -304,8 +501,8 @@
                         success or
                         failure.
                         Below are sample scenarios that show how different combinations of <img class="dice-symbol"
-                            src="/assets/icons/svg/dice/dice-action.svg"
-                            alt="Action Dice" title="Action Dice"> and <span class="iconize">Risk Dice</span>
+                            src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice" title="Action Dice"> and
+                        <span class="iconize">Risk Dice</span>
                         can shape the unfolding story.
                     </p>
                     <p>
@@ -329,9 +526,18 @@
                     <thead>
                         <tr>
                             <th style="text-align: left;">Scenario</th>
-                            <th class="align-center"><img class="dice-symbol-big" src="/assets/icons/svg/dice/dice-green-5.svg" alt="At least one 5 on Action Dice (Success)" title="At least one 5 on Action Dice (Success)">
-                        <img class="dice-symbol-big" src="/assets/icons/svg/dice/dice-green-6.svg" alt="At least one 6 on Actionn Dice (Success)" title="At least one 6 on Action Dice (Success)"></th>
-                            <th class="align-center"><img class="dice-symbol-big" src="/assets/icons/svg/dice/dice-red-6.svg" alt="At least one 6 on Risk Dice (Complication)" title="At least one 6 on Risk Dice (Complication)"></th>
+                            <th class="align-center"><img class="dice-symbol-big"
+                                    src="/assets/icons/svg/dice/dice-green-5.svg"
+                                    alt="At least one 5 on Action Dice (Success)"
+                                    title="At least one 5 on Action Dice (Success)">
+                                <img class="dice-symbol-big" src="/assets/icons/svg/dice/dice-green-6.svg"
+                                    alt="At least one 6 on Actionn Dice (Success)"
+                                    title="At least one 6 on Action Dice (Success)">
+                            </th>
+                            <th class="align-center"><img class="dice-symbol-big"
+                                    src="/assets/icons/svg/dice/dice-red-6.svg"
+                                    alt="At least one 6 on Risk Dice (Complication)"
+                                    title="At least one 6 on Risk Dice (Complication)"></th>
                             <th>Outcome</th>
                             <th></th>
                         </tr>
@@ -339,8 +545,8 @@
                     <tbody>
                         <tr class="narrative-toggle">
                             <td>Quietly pick a lock</td>
-                            <td style="text-align: center;"><i class="fa-solid fa-square-check"></i></td>
-                            <td style="text-align: center;"><i class="fa-solid fa-square-check"></i></td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check positive"></i></td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check negative"></i></td>
                             <td>Success + Complication</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -358,8 +564,8 @@
 
                         <tr class="narrative-toggle">
                             <td>Scale a wet cliff</td>
-                            <td style="text-align: center;"><i class="fa-solid fa-square-xmark"></i></td>
-                            <td style="text-align: center;"><i class="fa-solid fa-square-check"></i></td>
+                            <td style="text-align: center;">—</td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check negative"></i></td>
                             <td>Failure + Complication</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -378,8 +584,8 @@
 
                         <tr class="narrative-toggle">
                             <td>Throw a punch</td>
-                            <td style="text-align: center;">5</td>
-                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check positive"></td>
+                            <td style="text-align: center;">—</td>
                             <td>Success</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -395,8 +601,8 @@
 
                         <tr class="narrative-toggle">
                             <td>Cast magic</td>
-                            <td style="text-align: center;">4</td>
-                            <td style="text-align: center;">4</td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check positive"></td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check negative"></td>
                             <td>Success + Complication</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -414,8 +620,8 @@
 
                         <tr class="narrative-toggle">
                             <td>Negotiate with a noble</td>
-                            <td style="text-align: center;">3</td>
-                            <td style="text-align: center;">2</td>
+                            <td style="text-align: center;">—</td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check negative"></td>
                             <td>Failure + Complication</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -432,8 +638,8 @@
 
                         <tr class="narrative-toggle">
                             <td>Disarm a magical trap</td>
-                            <td style="text-align: center;">5</td>
-                            <td style="text-align: center;">3</td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check positive"></td>
+                            <td style="text-align: center;">—</td>
                             <td>Success</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -449,8 +655,8 @@
 
                         <tr class="narrative-toggle">
                             <td>Interrupt a ritual in extremis</td>
-                            <td style="text-align: center;">4</td>
-                            <td style="text-align: center;">5</td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check positive"></td>
+                            <td style="text-align: center;"><i class="fa-solid fa-square-check negative"></td>
                             <td>Success + Complication</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -469,8 +675,8 @@
 
                         <tr class="narrative-toggle">
                             <td>Fire a crossbow in heavy rain</td>
-                            <td style="text-align: center;">2</td>
-                            <td style="text-align: center;">3</td>
+                            <td style="text-align: center;">—</td>
+                            <td style="text-align: center;">—</td>
                             <td>Failure</td>
                             <td class="toggle-icon">▸</td>
                         </tr>
@@ -496,7 +702,8 @@
                         new doors to drama.
                     </p>
                     <p>
-                        Ready to apply it in your own game? Mix and match scenarios, scale <span class="iconize">Risk Dice</span> to fit tension, and remember:
+                        Ready to apply it in your own game? Mix and match scenarios, scale <span class="iconize">Risk
+                            Dice</span> to fit tension, and remember:
                         <em>the most memorable moments often come when success and complication collide.</em>
                     </p>
                 </div>
@@ -514,7 +721,7 @@
                         <span class="title-icon right rot90">k</span>
                     </div>
                     <p class="subtitle">Placeholder.</p>
-                </header> 
+                </header>
 
                 <div class="section-text">
                     <p>
@@ -561,7 +768,8 @@
                         <li><strong>Balance with Risk</strong>: If a weak character attempts something bold, raise the
                             Risk rather
                             than denying the roll.</li>
-                        <li><strong>Highlight scaling</strong>: Use the <span class="iconize">Action Dice</span> curve to reward growth and cleverness in
+                        <li><strong>Highlight scaling</strong>: Use the <span class="iconize">Action Dice</span> curve
+                            to reward growth and cleverness in
                             building
                             dice pools.</li>
                     </ul>
@@ -570,21 +778,19 @@
                 <p>Understanding the likelihood of success is key to assessing the effectiveness of character actions.
                     The table
                     below shows the probability of rolling at least one success <span class="iconize">AD5</span>
-                    <span class="iconize">AD6</span> based on the number of <span class="iconize">Action Dice</span> rolled.
+                    <span class="iconize">AD6</span> based on the number of <span class="iconize">Action Dice</span>
+                    rolled.
                 </p>
 
                 <table style="text-align: center">
                     <thead>
                         <tr>
-                            <th><img class="dice-symbol-big"
-                                    src="/assets/icons/svg/dice/dice-action.svg"
+                            <th><img class="dice-symbol-big" src="/assets/icons/svg/dice/dice-action.svg"
                                     alt="Action Dice" title="Action Dice"></th>
-                            <th>≥1 Success <img class="dice-symbol"
-                                    src="/assets/icons/svg/dice/dice-green-5.svg"
+                            <th>≥1 Success <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-5.svg"
                                     alt="5" title="5">
-                                <img class="dice-symbol"
-                                    src="/assets/icons/svg/dice/dice-green-6.svg"
-                                    alt="6" title="6">
+                                <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-6.svg" alt="6"
+                                    title="6">
                             </th>
                         </tr>
                     </thead>
@@ -650,7 +856,8 @@
                         fortress gate), no roll is made—it’s an automatic failure. But if the action is conceivable, the
                         GM can
                         allow
-                        the roll while adding extra <span class="iconize">Risk Dice</span> to reflect the high probability of things going
+                        the roll while adding extra <span class="iconize">Risk Dice</span> to reflect the high
+                        probability of things going
                         wrong.
                     </p>
                 </blockquote>
@@ -660,18 +867,22 @@
                     punching
                     through a stone gate, for example — no roll is needed: it simply fails. But if an action is
                     conceivable, even
-                    unlikely, the GM should let it happen with risk. Raise the <span class="iconize">Risk Dice</span> instead of shutting the door. This
+                    unlikely, the GM should let it happen with risk. Raise the <span class="iconize">Risk Dice</span>
+                    instead of shutting the door. This
                     approach keeps the story moving while staying true to the world’s tone. After all, the dice don’t
                     decide
                     what’s possible — they decide what happens when the possible is dared.</p>
 
 
-                <h3 sidenav-2="4.2 | Complication Probabilities (Risk Dice)">4.2 • Complication Probabilities (Risk Dice)</h3>
+                <h3 sidenav-2="4.2 | Complication Probabilities (Risk Dice)">4.2 • Complication Probabilities (Risk
+                    Dice)</h3>
                 <p>
-                    While success determines <em>if</em> the character achieves their goal, <span class="iconize">Risk Dice</span> determine <em>what it
+                    While success determines <em>if</em> the character achieves their goal, <span class="iconize">Risk
+                        Dice</span> determine <em>what it
                         costs</em>. Complications arise not from failure alone, but from the tension inherent in
                     dangerous or
-                    unstable situations. The more <span class="iconize">Risk Dice</span> the GM assigns, the greater the chance that something
+                    unstable situations. The more <span class="iconize">Risk Dice</span> the GM assigns, the greater the
+                    chance that something
                     unexpected,
                     dramatic, or perilous will occur—<strong>regardless</strong> of success.
                 </p>
@@ -681,7 +892,8 @@
                     <ul>
                         <li><strong>Set expectations clearly</strong>: Let players know that complications aren't just
                             failures—they're story seeds.</li>
-                        <li><strong>Use <span class="iconize">Risk Dice</span> liberally</strong>: Especially when you want
+                        <li><strong>Use <span class="iconize">Risk Dice</span> liberally</strong>: Especially when you
+                            want
                             tension, pacing, or unpredictability.
                         </li>
                         <li><strong>Tie complications to consequences</strong>: Make sure they feel meaningful, not just
@@ -690,7 +902,8 @@
                         <li><strong>Don’t roll for the impossible</strong>: If an action is simply out of reach for the
                             character,
                             don’t roll—just describe the failure.</li>
-                        <li><strong>Reward creativity</strong>: If players find clever ways to reduce <span class="iconize">Risk Dice</span> (e.g. planning,
+                        <li><strong>Reward creativity</strong>: If players find clever ways to reduce <span
+                                class="iconize">Risk Dice</span> (e.g. planning,
                             gear,
                             time), let them.</li>
                     </ul>
@@ -706,9 +919,8 @@
                 <table style="text-align: center;">
                     <thead>
                         <tr>
-                            <th><img class="dice-symbol-big"
-                                    src="/assets/icons/svg/dice/dice-risk.svg"
-                                    alt="Risk Dice" title="Risk Dice"></th>
+                            <th><img class="dice-symbol-big" src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice"
+                                    title="Risk Dice"></th>
                             <th>≥1 Complication <span class="iconize">RD6</span></th>
                         </tr>
                     </thead>
@@ -756,9 +968,11 @@
                     </tbody>
                 </table>
 
-                <h3 sidenav-2="4.3 | How Many Risk Dice Should the GM Use?">4.3 • How Many Risk Dice Should the GM Use?</h3>
+                <h3 sidenav-2="4.3 | How Many Risk Dice Should the GM Use?">4.3 • How Many Risk Dice Should the GM Use?
+                </h3>
 
-                <p>When deciding how many <span class="iconize">Risk Dice</span> to assign to a roll, the GM should weigh both narrative
+                <p>When deciding how many <span class="iconize">Risk Dice</span> to assign to a roll, the GM should
+                    weigh both narrative
                     logic and mechanical balance. Risk isn't just about how hard something is — it's about how badly it
                     could go
                     wrong, and how likely that is within the fiction.</p>
@@ -780,10 +994,12 @@
                     </li>
                     <li><strong>Complexity and Precision</strong>: Does the action require fine control, delicate
                         timing, or
-                        multi-step execution? The more room there is for error, the more <span class="iconize">Risk Dice</span> are appropriate.</li>
+                        multi-step execution? The more room there is for error, the more <span class="iconize">Risk
+                            Dice</span> are appropriate.</li>
                     <li><strong>Supernatural Interference</strong>: Does the magic or creature involved have
                         unpredictable or
-                        corruptive qualities? <span class="iconize">Risk Dice</span> reflect the instability of arcane energies, curses, or
+                        corruptive qualities? <span class="iconize">Risk Dice</span> reflect the instability of arcane
+                        energies, curses, or
                         unknowable forces.
                     </li>
                     <li><strong>Speed or Desperation</strong>: Is the character rushing or under pressure? Actions taken
@@ -791,7 +1007,8 @@
                         or under duress are more likely to misfire or cause unintended consequences.</li>
                 </ul>
                 <h4 sidenav-3="Probabilistic Guidelines">Probabilistic Guidelines</h4>
-                <p>These rough benchmarks help translate narrative danger into a number of <span class="iconize">Risk Dice</span>. Note that the GM is not
+                <p>These rough benchmarks help translate narrative danger into a number of <span class="iconize">Risk
+                        Dice</span>. Note that the GM is not
                     bound by these — they’re meant to offer a sense of escalating risk, not strict thresholds.</p>
                 <div class="risk-badges">
                     <div class="risk-badge collapsible-item" style="--risk-color: #C8B048;">
@@ -882,15 +1099,17 @@
                 <h4 sidenav-3="Narrative Shortcut">Narrative Shortcut</h4>
                 <p>If, as a GM, you can <em>immediately imagine what could go wrong</em> — and why it feels probable in
                     the
-                    moment — you should probably assign <span class="iconize">Risk Dice</span>. Risk is not punishment; it’s an opportunity to deepen the
+                    moment — you should probably assign <span class="iconize">Risk Dice</span>. Risk is not punishment;
+                    it’s an opportunity to deepen the
                     fiction through mishaps, reversals, and surprises.</p>
                 <p>For example: if a PC wants to cross a crumbling rope bridge while arrows whistle past, you probably
                     don’t
-                    need to analyze the situation mechanically. The danger is obvious — assign <span class="iconize">Risk Dice</span> and lean into the drama.
+                    need to analyze the situation mechanically. The danger is obvious — assign <span
+                        class="iconize">Risk Dice</span> and lean into the drama.
                 </p>
             </section>
 
-             <!-- 5 • Extensions -->
+            <!-- 5 • Extensions -->
             <section class="section-wrapper" id="section5" sidenav="5 • Extensions">
                 <header class="section var-5">
                     <div class="section-number">
@@ -902,7 +1121,7 @@
                         <span class="title-icon right rot90">r</span>
                     </div>
                     <p class="subtitle">Placeholder.</p>
-                </header> 
+                </header>
 
                 <p>The following optional rules expand the Twin Coil System, offering greater narrative granularity,
                     dramatic
@@ -955,14 +1174,10 @@
                             legendary.</em></p>
                     <p>Not all successes are equal. This variant grades how well an action succeeds based on the number
                         of
-                        <img class="dice-symbol"
-                            src="/assets/icons/svg/dice/dice-action.svg"
-                            alt="Action Dice" title="Action Dice"> that roll <img class="dice-symbol"
-                            src="/assets/icons/svg/dice/dice-green-5.svg"
-                            alt="5" title="5">
-                        <img class="dice-symbol"
-                            src="/assets/icons/svg/dice/dice-green-6.svg"
-                            alt="6" title="6">:
+                        <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice"
+                            title="Action Dice"> that roll <img class="dice-symbol"
+                            src="/assets/icons/svg/dice/dice-green-5.svg" alt="5" title="5">
+                        <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-6.svg" alt="6" title="6">:
                     </p>
                     <ul class="no-bullet">
                         <li><strong>1 Success</strong> → <strong>Basic Success</strong><br>
@@ -986,8 +1201,8 @@
                     <p style="color: var(--ancient-gold, #C8B048); font-weight: bold;"><em>When things go wrong — how
                             wrong?</em>
                     </p>
-                    <p>This variant adds severity to complications based on how many <span class="iconize">Risk Dice</span> roll <img class="dice-symbol"
-                            src="/assets/icons/svg/dice/dice-red-6.svg"
+                    <p>This variant adds severity to complications based on how many <span class="iconize">Risk
+                            Dice</span> roll <img class="dice-symbol" src="/assets/icons/svg/dice/dice-red-6.svg"
                             alt="6" title="6">:
                     </p>
                     <ul class="no-bullet">
@@ -1028,7 +1243,7 @@
                 </div>
             </section>
 
-             <section class="section-wrapper" id="section6" sidenav="6 • License & Attribution">
+            <section class="section-wrapper" id="section6" sidenav="6 • License & Attribution">
                 <header class="section var-1">
                     <div class="section-number">
                         <p>Section VI</p>
@@ -1066,8 +1281,7 @@
                         <ul class="no-bullet">
                             <li class="no-bullet"><strong class="tldr-title">1 • Roll Action vs Risk Dice</strong>
                                 <div>Use <strong style="color: var(--faded-jade)">Action</strong>
-                                    <img class="dice-symbol"
-                                        src="/assets/icons/svg/dice/dice-action.svg">
+                                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg">
                                     Dice to
                                     determine success.<br>
                                     Use <strong style="color: var(--rust-red)">Risk</strong> <img class="dice-symbol"
@@ -1083,8 +1297,7 @@
                                     Roll a number of <img class="dice-symbol"
                                         src="/assets/icons/svg/dice/dice-action.svg">
                                     equal to the relevant trait or skill modifier for your character.<br>
-                                    <img class="dice-symbol"
-                                        src="/assets/icons/svg/dice/dice-risk.svg">
+                                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg">
                                     are assigned by the GM based on the situation’s danger, urgency, or instability.<br>
                                     Rolling Risk Dice can be done by the GM or the player — decide as a group what feels
                                     more
@@ -1095,20 +1308,17 @@
                                 <strong class="tldr-title">3 • Resolution</strong>
                                 <ul class="no-bullet">
                                     <li><strong>3a • Success</strong><br>
-                                        <div>Any <img class="dice-symbol"
-                                                src="/assets/icons/svg/dice/dice-action.svg">
+                                        <div>Any <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg">
                                             showing <img class="dice-symbol"
                                                 src="/assets/icons/svg/dice/dice-green-5.svg">
-                                            <img class="dice-symbol"
-                                                src="/assets/icons/svg/dice/dice-green-6.svg">
+                                            <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-6.svg">
                                             =
                                             success. <br><u>One is enough.</u>
                                         </div>
                                     </li>
 
                                     <li><strong>3b • Complication</strong><br>
-                                        <div>Any <img class="dice-symbol"
-                                                src="/assets/icons/svg/dice/dice-risk.svg">
+                                        <div>Any <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg">
                                             showing <img class="dice-symbol"
                                                 src="/assets/icons/svg/dice/dice-red-6.svg">
                                             =
@@ -1145,8 +1355,7 @@
                                 risk (~45%)<br>
                                 <span class="risk-badge risk-4"
                                     style="--risk-color: #B11210; margin-right: .4em"></span>4+
-                                <img class="dice-symbol"
-                                    src="/assets/icons/svg/dice/dice-risk.svg">
+                                <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg">
                                 →
                                 high/catastrophic risk
                             </li>
@@ -1165,8 +1374,7 @@
                                             src="/assets/icons/svg/dice/dice-action.svg">
                                         by spending a resource
                                         or adding 1
-                                        <img class="dice-symbol"
-                                            src="/assets/icons/svg/dice/dice-risk.svg">
+                                        <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg">
                                     </li>
                                 </ul>
                             </li>
@@ -1175,8 +1383,7 @@
                                     Tips</strong>
                                 <ul>
                                     <li>Gate rolls wisely.</li>
-                                    <li>Use <img class="dice-symbol"
-                                            src="/assets/icons/svg/dice/dice-risk.svg">
+                                    <li>Use <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg">
                                         to build tension.</li>
                                     <li>Make complications meaningful.</li>
                                     <li>Let the fiction lead.</li>
