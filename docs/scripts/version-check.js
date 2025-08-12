@@ -1,6 +1,6 @@
 const versionTargets = [
   { label: "📄 This page (.html)", path: location.pathname, isHTML: true },
-  { label: "🔣 core.js", path: document.currentScript.src },
+  { label: "🔣 core.js", path: "/scripts/core.js" },
   { label: "🎨 style.css", path: "/style/style.css" },
 
   { label: "navbar.js", path: "/scripts/navbar.js" },
