@@ -1,4 +1,4 @@
-/*v1.22 2025-08-11T14:09:05.683Z*/
+/*v1.23 2025-08-12T14:35:09.732Z*/
 
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
@@ -34,8 +34,8 @@ function initializeMenu() {
     toggleButton.style.transform = "translate(0, 0)";
   }
   toggleIcon.className = menuVisible
-    ? "fa-solid fa-left-from-bracket"
-    : "fa-solid fa-right-from-bracket";
+    ? "fa-solid golden fa-left-from-bracket"
+    : "fa-solid golden fa-right-from-bracket";
 
   toggleButton.addEventListener("click", () => {
     const wasCollapsed = sideMenu.classList.contains("collapsed");
@@ -43,8 +43,8 @@ function initializeMenu() {
     localStorage.setItem("menuVisible", isNowVisible);
 
     toggleIcon.className = isNowVisible
-      ? "fa-solid fa-left-from-bracket"
-      : "fa-solid fa-right-from-bracket";
+      ? "fa-solid golden fa-left-from-bracket"
+      : "fa-solid golden fa-right-from-bracket";
 
     // Reset animation
     toggleButton.classList.remove("animate-open", "animate-close");

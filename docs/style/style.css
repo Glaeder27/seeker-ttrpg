@@ -1,4 +1,4 @@
-/*v3.17 2025-08-12T09:57:35.938Z*/
+/*v3.18 2025-08-12T14:47:58.456Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1471,17 +1471,19 @@ p.card-description {
     display: inline-block;
     width: 3.5em;
     height: 3.5em;
-    background-image: url(/assets/icons/webp/rulebook.webp);
-    background-size: contain;
-    background-repeat: no-repeat;
     margin: -1rem 0 -1rem -2rem;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background: url(/assets/icons/webp/generic/icon-book-1.webp) center/contain no-repeat,
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpolygon points='50,0 100,50 50,100 0,50' fill='white' fill-opacity='0.2'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 
 .collapsible-sidenav-header h3 {
     padding: 0;
     margin: 0 0 0 1rem;
     font-size: 1.1rem;
-    border: none;
+    border-bottom: none;
+    padding-bottom: 0;
     flex-grow: 1;
     text-align: left;
     pointer-events: none;
@@ -1498,6 +1500,10 @@ p.card-description {
 .collapsible-sidenav-content {
     overflow: hidden;
     transition: height 0.3s ease;
+    margin-left: 5px;
+    padding-left: 10px;
+    border-left: 2px solid var(--ancient-gold);
+    border-image: url(/assets/textures/ancient-gold-3-h.jpg) 1 round;
 }
 
 /* Scrollbar Webkit */
@@ -2065,6 +2071,8 @@ h1.site-title {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: clamp(50%, 7rem, 110%);
+    text-wrap: nowrap;
 }
 
 @media (max-width: 767px) {
@@ -3948,7 +3956,7 @@ p.alchemy-symbol.high {
     background-image: url('/assets/icons/webp/alchemy-symbols/alchemy-symbol-var-7.webp');
 }
 
-i.fa-solid {
+i.fa-solid.golden {
     transition: all .6s ease-in-out;
     font-size: 26px;
     color: var(--ancient-gold, #d6b879);
