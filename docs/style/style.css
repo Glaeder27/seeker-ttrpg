@@ -1,4 +1,4 @@
-/*v3.25 2025-08-12T20:01:07.860Z*/
+/*v3.26 2025-08-12T20:19:31.444Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2916,7 +2916,6 @@ h3.sidebar-section {
     font-family: var(--font-main);
     box-sizing: border-box;
     font-size: 0.9rem;
-    margin-top: 1em;
 }
 
 .collapsible-content-sb ul {
