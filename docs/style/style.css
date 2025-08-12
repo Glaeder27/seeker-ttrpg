@@ -1,4 +1,4 @@
-/*v3.22 2025-08-12T17:17:17.316Z*/
+/*v3.23 2025-08-12T19:25:36.972Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2117,6 +2117,10 @@ h1.site-title {
 
 .title-icon.centered.right {
     right: 1rem
+}
+
+.title-icon.rot180 {
+    transform: rotate(-180deg);
 }
 
 .title-icon.rot90 {
