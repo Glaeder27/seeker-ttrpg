@@ -6,5 +6,9 @@
         "cmd": "node .vscode/scripts/update-version.js ${file}"
       }
     ]
-  }
+  },
+  "github-actions.workflows.pinned.workflows": [
+    "pages-build-deployment",
+    "dynamic/pages/pages-build-deployment"
+  ]
 }
