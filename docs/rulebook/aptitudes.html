@@ -1,4 +1,4 @@
-<!-- v1.31 2025-08-13T14:39:27.360Z -->
+<!-- v1.32 2025-08-13T15:23:48.305Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:33.008Z-->
@@ -46,7 +46,7 @@
         /* Specific Styles */
         .aptitudes-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: .5em;
             margin-top: 1em;
             padding-bottom: 1em;
@@ -62,9 +62,8 @@
         }
 
         .flip-container.aptitude-card {
-            min-height: 350px;
-            height: 100%;
-            display: block;
+            min-width: 220px;
+            min-height: 380px;
         }
 
         .aptitude-description-container {
@@ -89,7 +88,7 @@
 
         .aptitude-symbol {
             height: 100%;
-            max-height: 150px;
+            max-height: 130px;
         }
 
         .aptitude-category-description {
@@ -659,6 +658,12 @@
             }
         }
 
+        .card-top {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            height: 130px;
+        }
+
         /* Overrides */
     </style>
 </head>
@@ -786,14 +791,17 @@
                                     data-status="released">
                                     <div class="card-top">
                                         <div class="aptitude-symbol-wrapper">
-                                            <img src="/assets/icons/webp/aptitudes/strength-symbol.webp" class="aptitude-symbol">
+                                            <img src="/assets/icons/webp/aptitudes/strength-symbol.webp"
+                                                class="aptitude-symbol">
                                         </div>
                                     </div>
                                     <div class="card-bottom">
                                         <h3 class="card-title aptitude">Strength</h3>
-                                        <p class="aptitude-description">Raw physical power, brute force, and the capacity to lift,
-                                    shove, strike, or break through obstacles using over&shy;whelm&shy;ing strength and
-                                    effort.</p>
+                                        <p class="aptitude-description">Raw physical power, brute force, and the
+                                            capacity to lift,
+                                            shove, strike, or break through obstacles using over&shy;whelm&shy;ing
+                                            strength and
+                                            effort.</p>
                                     </div>
                                 </div>
                             </div>
@@ -803,10 +811,11 @@
                                 <div class="flip-card" data-title="Strength" data-category="Combat">
                                     <div class="card-top">
                                         <h4>Strength</h4>
-                                        <p class="tags"><b>Tags:</b> <span class="tag">Weak</span>, <span class="tag">Mighty</span></p>
-                                    <summary><strong>Used for:</strong></summary>
-                                     <p>Breaking down doors, lifting rubble,
-                                    shoving obstacles, grappling enemies, wielding heavy weapons.</p>
+                                        <p class="tags"><b>Tags:</b> <span class="tag">Weak</span>, <span
+                                                class="tag">Mighty</span></p>
+                                        <summary><strong>Used for:</strong></summary>
+                                        <p>Breaking down doors, lifting rubble,
+                                            shoving obstacles, grappling enemies, wielding heavy weapons.</p>
                                     </div>
                                     <div class="card-bottom">
                                     </div>
@@ -825,14 +834,16 @@
                                     data-status="released">
                                     <div class="card-top">
                                         <div class="aptitude-symbol-wrapper">
-                                            <img src="/assets/icons/webp/aptitudes/agility-symbol.webp" class="aptitude-symbol">
+                                            <img src="/assets/icons/webp/aptitudes/agility-symbol.webp"
+                                                class="aptitude-symbol">
                                         </div>
                                     </div>
                                     <div class="card-bottom">
                                         <h3 class="card-title aptitude">Agility</h3>
-                                        <p class="aptitude-description">Quick reflexes, balance, speed, coordination, and precise
-                                    control over fine motor movements — especially under pressure or in dynamic
-                                    environments.</p>
+                                        <p class="aptitude-description">Quick reflexes, balance, speed, coordination,
+                                            and precise
+                                            control over fine motor movements — especially under pressure or in dynamic
+                                            environments.</p>
                                     </div>
                                 </div>
                             </div>
@@ -842,10 +853,12 @@
                                 <div class="flip-card" data-title="Agility" data-category="Combat">
                                     <div class="card-top">
                                         <h4>Agility</h4>
-                                        <p class="tags"><b>Tags:</b> <span class="tag">Clumsy</span> , <span class="tag">Swift</span></p>
-                                    <summary><strong>Used for:</strong></summary><p>Dodging attacks, sneaking past enemies, climbing walls, leaping over gaps, or
-                                    making quick precise movements under pressure.</p>
-                                     <p></p>
+                                        <p class="tags"><b>Tags:</b> <span class="tag">Clumsy</span> , <span
+                                                class="tag">Swift</span></p>
+                                        <summary><strong>Used for:</strong></summary>
+                                        <p>Dodging attacks, sneaking past enemies, climbing walls, leaping over gaps, or
+                                            making quick precise movements under pressure.</p>
+                                        <p></p>
                                     </div>
                                     <div class="card-bottom">
                                     </div>
@@ -860,17 +873,19 @@
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
-                                <div class="flip-card" data-title="Vigor" data-category="System"
-                                    data-status="released">
+                                <div class="flip-card" data-title="Vigor" data-category="System" data-status="released">
                                     <div class="card-top">
                                         <div class="aptitude-symbol-wrapper">
-                                            <img src="/assets/icons/webp/aptitudes/vigor-symbol.webp" class="aptitude-symbol">
+                                            <img src="/assets/icons/webp/aptitudes/vigor-symbol.webp"
+                                                class="aptitude-symbol">
                                         </div>
                                     </div>
                                     <div class="card-bottom">
                                         <h3 class="card-title aptitude">Vigor</h3>
-                                        <p class="aptitude-description">Stamina, resilience, and physical durability — the ability to
-                                    endure pain, resist harm, and keep going despite exhaustion, illness, or injury.</p>
+                                        <p class="aptitude-description">Stamina, resilience, and physical durability —
+                                            the ability to
+                                            endure pain, resist harm, and keep going despite exhaustion, illness, or
+                                            injury.</p>
                                     </div>
                                 </div>
                             </div>
@@ -880,11 +895,13 @@
                                 <div class="flip-card" data-title="Vigor" data-category="Combat">
                                     <div class="card-top">
                                         <h4>Vigor</h4>
-                                        <p class="tags"><b>Tags:</b> <span class="tag">Frail</span>, <span class="tag">Resilient</span></p>
-                                    <summary><strong>Used for:</strong></summary>
-                                     <p>Withstanding poison or illness,
-                                    enduring harsh climates, resisting fatigue, or pushing the body through pain and
-                                    exhaustion.</p>
+                                        <p class="tags"><b>Tags:</b> <span class="tag">Frail</span>, <span
+                                                class="tag">Resilient</span></p>
+                                        <summary><strong>Used for:</strong></summary>
+                                        <p>Withstanding poison or illness,
+                                            enduring harsh climates, resisting fatigue, or pushing the body through pain
+                                            and
+                                            exhaustion.</p>
                                     </div>
                                     <div class="card-bottom">
                                     </div>
@@ -959,7 +976,8 @@
                             </div>
                             <h4>Adaptability</h4>
                             <div class="aptitude-description-container">
-                                <p class="aptitude-description">Improvisation, creativity under pressure, and the ability to
+                                <p class="aptitude-description">Improvisation, creativity under pressure, and the
+                                    ability to
                                     react quickly and re&shy;source&shy;fully to un&shy;ex&shy;pect&shy;ed situations or
                                     unfamiliar tools.</p>
                             </div>
@@ -993,7 +1011,8 @@
                             </div>
                             <h4>Charisma</h4>
                             <div class="aptitude-description-container">
-                                <p class="aptitude-description">Presence, personal magnetism, and the ability to influence
+                                <p class="aptitude-description">Presence, personal magnetism, and the ability to
+                                    influence
                                     others through charm, confidence, or emotional appeal — whether inspiring trust,
                                     com&shy;mand&shy;ing respect, or bending a crowd to your will.</p>
                             </div>
@@ -1017,7 +1036,8 @@
                             </div>
                             <h4>Insight</h4>
                             <div class="aptitude-description-container">
-                                <p class="aptitude-description">Empathy, intuition, and social sensitivity — the ability to
+                                <p class="aptitude-description">Empathy, intuition, and social sensitivity — the ability
+                                    to
                                     interpret tone, read subtle cues in body language, discern hidden motives, and grasp
                                     emotional un&shy;der&shy;cur&shy;rents in con&shy;ver&shy;sa&shy;tions and
                                     situations.
@@ -1044,7 +1064,8 @@
                             </div>
                             <h4>Willpower</h4>
                             <div class="aptitude-description-container">
-                                <p class="aptitude-description">Mental fortitude, discipline, and inner resolve — the strength
+                                <p class="aptitude-description">Mental fortitude, discipline, and inner resolve — the
+                                    strength
                                     to resist fear, withstand stress, endure ma&shy;nip&shy;u&shy;la&shy;tion, or remain
                                     focused under o&shy;ver&shy;whelm&shy;ing pressure.</p>
                             </div>
@@ -1348,14 +1369,11 @@
 
                 <p>
                     The core mechanic for resolving actions is the <strong>Twin Coil System</strong>, which relies on
-                    rolling <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-action.svg"
-                        alt="Action Dice" title="Action Dice"> and <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-risk.svg"
+                    rolling <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice"
+                        title="Action Dice"> and <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg"
                         alt="Risk Dice" title="Risk Dice">. Aptitude scores directly influence the number of <img
-                        class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-action.svg"
-                        alt="Action Dice" title="Action Dice"> a
+                        class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice"
+                        title="Action Dice"> a
                     character rolls, representing their skill and capability in that area.
                 </p>
 
@@ -1378,25 +1396,20 @@
 
                 <h3>Rolling the Dice</h3>
                 <p>
-                    The number of <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-action.svg"
+                    The number of <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg"
                         alt="Action Dice" title="Action Dice"> rolled equals the character’s Aptitude score for the
                     relevant attribute. Each die showing <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-green-5.svg" alt="5"
-                        title="5">
-                    <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-green-6.svg" alt="6"
-                        title="6"> counts as a success. Successes allow the character to
+                        src="/assets/icons/svg/dice/dice-green-5.svg" alt="5" title="5">
+                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-green-6.svg" alt="6" title="6"> counts as
+                    a success. Successes allow the character to
                     overcome the challenge.
                 </p>
                 <p>
-                    <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-risk.svg"
-                        alt="Risk Dice" title="Risk Dice"> represent potential complications or consequences and are
+                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice"
+                        title="Risk Dice"> represent potential complications or consequences and are
                     assigned by the
                     GM based on the difficulty or danger involved. Any <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-red-6.svg" alt="6"
-                        title="6"> triggers a complication,
+                        src="/assets/icons/svg/dice/dice-red-6.svg" alt="6" title="6"> triggers a complication,
                     regardless of success or failure.
                 </p>
                 <p>
@@ -1406,46 +1419,38 @@
 
                 <h3>Interpreting Results</h3>
                 <p>
-                    The number of successes on <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-action.svg"
+                    The number of successes on <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg"
                         alt="Action Dice" title="Action Dice"> determines the degree of success, from barely succeeding
                     to
                     spectacular feats. The presence of complications from <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-risk.svg"
-                        alt="Risk Dice" title="Risk Dice"> introduces tension and narrative
+                        src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice" title="Risk Dice"> introduces tension
+                    and narrative
                     twists, even in success.
                 </p>
 
                 <h3>Examples</h3>
                 <p>
                     <strong>Example 1:</strong> A character with Strength 2 tries to break down a heavy wooden door.
-                    They roll 2 <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-action.svg"
-                        alt="Action Dice" title="Action Dice">. The GM assigns 1 <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-risk.svg"
-                        alt="Risk Dice" title="Risk Dice"> due to the door’s solid construction. If they
-                    roll one or more successes on <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-action.svg"
+                    They roll 2 <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice"
+                        title="Action Dice">. The GM assigns 1 <img class="dice-symbol"
+                        src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice" title="Risk Dice"> due to the door’s
+                    solid construction. If they
+                    roll one or more successes on <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg"
                         alt="Action Dice" title="Action Dice"> without a <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-risk.svg"
-                        alt="Risk Dice" title="Risk Dice"> 6, the door breaks down cleanly. If a
-                    <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-risk.svg"
-                        alt="Risk Dice" title="Risk Dice"> shows a <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-red-6.svg" alt="6"
-                        title="6">, perhaps the door breaks but causes noise, alerting nearby enemies.
+                        src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice" title="Risk Dice"> 6, the door breaks
+                    down cleanly. If a
+                    <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg" alt="Risk Dice"
+                        title="Risk Dice"> shows a <img class="dice-symbol" src="/assets/icons/svg/dice/dice-red-6.svg"
+                        alt="6" title="6">, perhaps the door breaks but causes noise, alerting nearby enemies.
                 </p>
                 <p>
                     <strong>Example 2:</strong> A character with Perception 3 attempts to spot a hidden trap. They roll
-                    3 <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-action.svg"
-                        alt="Action Dice" title="Action Dice">, with 1 <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-risk.svg"
+                    3 <img class="dice-symbol" src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice"
+                        title="Action Dice">, with 1 <img class="dice-symbol" src="/assets/icons/svg/dice/dice-risk.svg"
                         alt="Risk Dice" title="Risk Dice"> assigned for the trap’s subtle design. Success reveals the
                     trap in
-                    time; a <img class="dice-symbol"
-                        src="/assets/icons/svg/dice/dice-red-6.svg" alt="6"
-                        title="6"> might mean they notice the trap but trigger a secondary alarm.
+                    time; a <img class="dice-symbol" src="/assets/icons/svg/dice/dice-red-6.svg" alt="6" title="6">
+                    might mean they notice the trap but trigger a secondary alarm.
                 </p>
             </section>
 
@@ -1463,7 +1468,7 @@
                     <p class="subtitle">Placeholder</p>
                 </header>
 
-            <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
+                <!-- ─────────────── RULE OPTIONS BOX ─────────────── -->
                 <p>The following optional rules expand the Aptitudes System.
                 </p>
                 <div class="rule-options-box">
@@ -1471,8 +1476,7 @@
 
                     <div class="toggle-bar">
 
-                        <label class="rule-switch"
-                            style="cursor: var(--cursor-not-allowed);">
+                        <label class="rule-switch" style="cursor: var(--cursor-not-allowed);">
                             <input type="checkbox" data-rule="polarity" disabled
                                 style="cursor: var(--cursor-not-allowed);" />
                             <span class="slider"></span>
@@ -1583,8 +1587,8 @@
                                 <strong class="tldr-title">5 • Using Aptitudes</strong>
                                 <div style="margin-left: 1em;">
                                     When attempting something risky, roll <img class="dice-symbol"
-                                        src="/assets/icons/svg/dice/dice-action.svg"
-                                        alt="Action Dice" title="Action Dice"> equal to the relevant Aptitude.<br>
+                                        src="/assets/icons/svg/dice/dice-action.svg" alt="Action Dice"
+                                        title="Action Dice"> equal to the relevant Aptitude.<br>
                                     Higher Aptitude = more dice = more chances of success.
                                 </div>
                             </li>
@@ -1767,7 +1771,7 @@
 
     <script src="/scripts/sidebar.js"></script>
     <script src="/scripts/core.js"></script>
-<script src="/scripts/version-check.js"></script>
+    <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
