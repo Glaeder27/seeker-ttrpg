@@ -1,4 +1,4 @@
-/*v3.28 2025-08-13T09:24:44.429Z*/
+/*v3.29 2025-08-13T09:54:08.301Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -894,7 +894,7 @@ body#home-page {
 
 @media (max-width: 767px) {
     .banner-parallax {
-        height: 750px;
+        height: 110dvh;
         background-position: left;
         margin-top: 30px;
         background-attachment: scroll;
@@ -957,6 +957,15 @@ body#home-page {
     .logo-container img.logo {
         height: clamp(300px, 50vh + 10vw, 450px);
         object-fit: cover;
+    }
+
+    .banner-parallax-painting {
+        width: 100vw;
+    }
+
+    .banner-parallax-painting::before {
+        font-size: .8rem;
+        height: 3rem;
     }
 
 }
@@ -1040,7 +1049,7 @@ body#home-page {
     }
 
     .logo-container-mobile {
-        height: clamp(150px, 80vw, 60vh);
+        height: clamp(150px, 90vw, 60vh);
         filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
         margin: -10vh 0 2rem;
         position: absolute;
@@ -1075,7 +1084,8 @@ body#home-page {
 }
 
 @media (max-width: 767px) {
-    .carousel-wrapper {
+    .carousel-wrapper,
+    .carousel-wrapper#home-page {
         max-width: 95vw;
         box-sizing: content-box;
     }
@@ -2014,8 +2024,9 @@ h1.site-title {
 }
 
 @media (max-width: 767px) {
-    .title .title-container {
-        width: 95vw;
+    .title .title-container, 
+    .title-container {
+        width: 100%;
         flex-direction: column;
     }
 }
@@ -2200,7 +2211,7 @@ h1.site-title {
 @media (max-width: 767px) {
     .section {
         margin-inline: unset;
-        width: 95vw;
+        width: 100vw;
         justify-self: center;
     }
 
@@ -2319,6 +2330,7 @@ h1.site-title {
 @media (max-width: 768px) {
     .section-wrapper {
         padding: 0 1rem 1rem 1rem;
+        max-width: 98vw;
     }
 }
 
@@ -3810,7 +3822,7 @@ details[open] .infobox-table {
 
 @media (max-width: 768px) {
     h2 {
-        font-size: clamp(2.5rem, 3rem, 4rem);
+        font-size: clamp(1.5rem, 2rem, 3rem);
         padding: 8px 10px;
         margin: auto;
         letter-spacing: normal;
@@ -3822,6 +3834,10 @@ details[open] .infobox-table {
 
     h4 {
         font-size: clamp(1.5rem, 2rem, 3rem);
+    }
+
+    .subtitle {
+        font-size: clamp(.7rem, 1rem, 1.5rem);
     }
 
     th,
@@ -4027,7 +4043,6 @@ p.alchemy-symbol.high {
 
 i.fa-solid.golden {
     transition: all .6s ease-in-out;
-    font-size: 26px;
     color: var(--ancient-gold, #d6b879);
     background: linear-gradient(to bottom, rgba(var(--deep-charcoal-rgb), 0.2), rgba(var(--brown-charcoal-rgb), 0.2)), url(/assets/textures/antique-gold-1.jpg);
     background-clip: text;
