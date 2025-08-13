@@ -1,4 +1,4 @@
-/*v3.27 2025-08-12T21:43:48.200Z*/
+/*v3.28 2025-08-13T09:24:44.429Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1040,7 +1040,7 @@ body#home-page {
     }
 
     .logo-container-mobile {
-        height: clamp(150px, calc(10vh + 30vw), 550px);
+        height: clamp(150px, 80vw, 60vh);
         filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(0, 0, 0, 0.2));
         margin: -10vh 0 2rem;
         position: absolute;
@@ -1054,7 +1054,7 @@ body#home-page {
 }
 
 .logo-container-mobile img.logo {
-    height: 110%;
+    height: 100%;
     object-fit: cover;
 }
 
