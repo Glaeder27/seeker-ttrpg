@@ -1,4 +1,4 @@
-/*v3.29 2025-08-13T09:54:08.301Z*/
+/*v3.30 2025-08-13T13:22:40.440Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1922,7 +1922,7 @@ h3::after {
 
 .flip-front h3::after,
 .flip-back h3::after,
-h3.rules-title::after,
+h3.card-title::after,
 h3.centered {
     text-align: center;
     -webkit-mask-image: linear-gradient(to right,
@@ -2539,7 +2539,7 @@ thead th:last-child {
             color: var(--text-muted)
         }
 
-        .rules-title {
+        .card-title {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--off-white, #efefef);
@@ -2547,6 +2547,9 @@ thead th:last-child {
             text-align: center;
             border-bottom: none;
             padding-bottom: .7rem;
+        }
+        .card-title.aptitude {
+            font-size: 1.3rem;
         }
 
         .rules-icon-wrapper {
