@@ -1,4 +1,4 @@
-/*v1.24 2025-08-12T15:42:44.567Z*/
+/*v1.25 2025-08-13T21:35:10.393Z*/
 
 const menuSrc = document.body.getAttribute("data-menu-src");
 if (menuSrc) {
@@ -113,53 +113,43 @@ function initializeScrollSpy() {
 
   function updateActiveLink() {
     const viewportCenter = window.innerHeight / 2;
-    let closestSection = null;
-    let closestDistance = Infinity;
-    let activeHeader = null;
 
-    headers.forEach((header) => {
-      const rect = header.getBoundingClientRect();
-      const distance = Math.abs(rect.top - viewportCenter);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestSection = header.closest("section.section-wrapper");
-        activeHeader = header;
+    let closestSection = null;
+    let closestSectionDist = Infinity;
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const dist = Math.abs(rect.top - viewportCenter);
+      if (dist < closestSectionDist) {
+        closestSectionDist = dist;
+        closestSection = section;
       }
     });
 
-    // Fallback
-    if (!closestSection) {
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - viewportCenter);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestSection = section;
-          activeHeader = null;
+    let closestHeader = null;
+    let closestHeaderDist = Infinity;
+    if (closestSection) {
+      const headersInSection = closestSection.querySelectorAll("h3[sidenav-2], h4[sidenav-2]");
+      headersInSection.forEach((header) => {
+        const rect = header.getBoundingClientRect();
+        const dist = Math.abs(rect.top - viewportCenter);
+        if (dist < closestHeaderDist) {
+          closestHeaderDist = dist;
+          closestHeader = header;
         }
       });
     }
 
-    if (!closestSection) return;
-
-    const sectionId = closestSection.id;
-    const isSubsection = !!activeHeader;
-
     links.forEach((link) => {
-      const linkIsSub = link.parentElement.classList.contains("subsection");
-      const matchById = link.dataset.id === sectionId;
-      const matchByText = activeHeader
+      const isSubLink = link.parentElement.classList.contains("subsection");
+      const matchSection = link.dataset.id === closestSection?.id;
+      const matchHeader = closestHeader
         ? link.textContent.trim() ===
-          (
-            activeHeader.getAttribute("sidenav-2") || activeHeader.textContent
-          ).trim()
+          (closestHeader.getAttribute("sidenav-2") || closestHeader.textContent).trim()
         : false;
 
-      const shouldActivate = isSubsection
-        ? linkIsSub
-          ? matchById && matchByText
-          : matchById
-        : !linkIsSub && matchById;
+      const shouldActivate = closestHeader
+        ? (isSubLink ? matchSection && matchHeader : matchSection)
+        : (!isSubLink && matchSection);
 
       link.classList.toggle("active", shouldActivate);
     });
