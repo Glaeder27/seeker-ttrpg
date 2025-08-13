@@ -1,4 +1,4 @@
-/*v3.30 2025-08-13T13:22:40.440Z*/
+/*v3.30 2025-08-13T13:29:30.924Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -336,7 +336,7 @@ textarea {
 
 .disabled,
 [disabled] {
-    cursor: var(--not-allowed);
+    cursor: var(--cursor-not-allowed);
 }
 
 p,
