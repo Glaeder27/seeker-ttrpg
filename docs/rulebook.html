@@ -1,4 +1,4 @@
-<!-- v2.22 2025-08-13T21:20:08.384Z -->
+<!-- v2.23 2025-08-13T21:29:50.773Z -->
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
 
@@ -136,9 +136,15 @@
             margin: 0 auto;
             position: relative;
             text-align: left;
+            display: block; /* così occupa tutta la larghezza */
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: 'Montserrat';
         }
 
-        .go-to-page-btn a::after {
+        .go-to-page-btn::after {
             content: "\f0da";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
@@ -148,16 +154,7 @@
             transform: translateY(-50%);
         }
 
-        .go-to-page-btn a {
-            color: var(--deep-charcoal);
-            text-decoration: none;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-family: 'Montserrat';
-        }
-
-        .go-to-page-btn a:visited {
+        .go-to-page-btn:visited {
             color: var(--deep-charcoal);
             text-decoration: none;
         }
@@ -241,8 +238,8 @@
                                         </p>
                                     </div>
                                     <div class="card-bottom">
-                                        <a href="/rulebook/joining-the-seekers"><div class="go-to-page-btn">Read the
-                                                Chapter</div></a>
+                                        <a href="/rulebook/joining-the-seekers" class="go-to-page-btn">Read the
+                                                Chapter</a>
                                     </div>
                                 </div>
 
@@ -283,8 +280,8 @@
                                         </p>
                                     </div>
                                     <div class="card-bottom">
-                                        <a href="/rulebook/twin-coil-system"><div class="go-to-page-btn">Read the
-                                                Chapter</div></a>
+                                        <a href="/rulebook/twin-coil-system" class="go-to-page-btn">Read the
+                                                Chapter</a>
                                     </div>
                                 </div>
                             </div>
@@ -342,8 +339,8 @@
                                             abilities.</p>
                                     </div>
                                     <div class="card-bottom">
-                                        <a href="/rulebook/aptitudes"><div class="go-to-page-btn">Read the
-                                                Chapter</div></a>
+                                        <a href="/rulebook/aptitudes" class="go-to-page-btn">Read the
+                                                Chapter</a>
                                     </div>
                                 </div>
                             </div>
