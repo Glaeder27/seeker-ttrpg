@@ -350,6 +350,117 @@
       ],
       "examples": ["Backlash", "Quick Reflex"],
       "notes": ""
+    },
+
+    {
+      "name": "Strength",
+      "icon": "/assets/icons/svg/tags/tag-strength.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+    {
+      "name": "Weak",
+      "icon": "/assets/icons/svg/tags/tag-strength.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+    {
+      "name": "Mighty",
+      "icon": "/assets/icons/svg/tags/tag-strength.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+
+    {
+      "name": "Agility",
+      "icon": "/assets/icons/svg/tags/tag-agility.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+    {
+      "name": "Clumsy",
+      "icon": "/assets/icons/svg/tags/tag-agility.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+    {
+      "name": "Swift",
+      "icon": "/assets/icons/svg/tags/tag-agility.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+
+    {
+      "name": "Vigor",
+      "icon": "/assets/icons/svg/tags/tag-vigor.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+    {
+      "name": "Frail",
+      "icon": "/assets/icons/svg/tags/tag-vigor.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
+    },
+    {
+      "name": "Resilient",
+      "icon": "/assets/icons/svg/tags/tag-vigor.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [
+        ""
+      ],
+      "examples": "",
+      "notes": ""
     }
   ]
 }
