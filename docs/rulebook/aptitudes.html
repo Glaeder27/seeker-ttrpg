@@ -1,4 +1,4 @@
-<!-- v1.39 2025-08-13T20:59:04.708Z -->
+<!-- v1.40 2025-08-13T21:05:53.629Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:33.008Z-->
@@ -64,6 +64,10 @@
         .flip-container.aptitude-card {
             min-width: 220px;
             min-height: 380px;
+        }
+
+        .flip-container.aptitude-card.long {
+            min-height: 400px;
         }
 
         .aptitude-description-container {
@@ -560,19 +564,21 @@
         }
 
         .popup-content {
-            background: #1f1f1f;
+            background: rgba(var(--background-dark-2-rgb), 0.97);
             border-radius: 12px;
-            padding: 1.2em 1.6em;
+            padding: 2em 2em;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 320px;
+            width: 360px;
             max-width: 90vw;
             box-shadow: 0 0 15px rgba(212, 181, 90, 0.6);
             text-align: center;
             font-family: var(--default-font), serif;
             color: var(--text-color, #eee);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--ancient-gold);
         }
 
         .popup-content h4 {
@@ -1057,7 +1063,7 @@
                 <div class="aptitudes-grid">
 
                     <!-- Charisma -->
-                    <div class="flip-card-link flip-container aptitude-card">
+                    <div class="flip-card-link flip-container aptitude-card long">
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
@@ -1095,7 +1101,7 @@
                     </div>
 
                     <!-- Insight -->
-                    <div class="flip-card-link flip-container aptitude-card">
+                    <div class="flip-card-link flip-container aptitude-card long">
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
@@ -1133,7 +1139,7 @@
                     </div>
 
                     <!-- Willpower -->
-                    <div class="flip-card-link flip-container aptitude-card">
+                    <div class="flip-card-link flip-container aptitude-card long">
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
