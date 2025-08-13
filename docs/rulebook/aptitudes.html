@@ -1,4 +1,4 @@
-<!-- v1.35 2025-08-13T19:40:12.046Z -->
+<!-- v1.36 2025-08-13T19:56:35.194Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:33.008Z-->
@@ -786,7 +786,7 @@
                 <p class="aptitude-category-description">These aptitudes reflect your character's physical prowess,
                     ability to engage in direct conflict, and resilience in dangerous situations. They are crucial
                     for
-                    overcoming physical challenges and confronting threats head-on.</p>
+                    <strong class="highlight">overcoming physical challenges</strong> and  <strong class="highlight">confronting threats head-on</strong>.</p>
 
                 <div class="aptitudes-grid">
 
@@ -795,8 +795,7 @@
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
-                                <div class="flip-card" data-title="Strength" data-category="System"
-                                    data-status="released">
+                                <div class="flip-card" data-title="Strength" data-category="Combat">
                                     <div class="card-top">
                                         <div class="aptitude-symbol-wrapper">
                                             <img src="/assets/icons/webp/aptitudes/strength-symbol.webp"
@@ -839,8 +838,7 @@
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
-                                <div class="flip-card" data-title="Agility" data-category="System"
-                                    data-status="released">
+                                <div class="flip-card" data-title="Agility" data-category="Combat">
                                     <div class="card-top">
                                         <div class="aptitude-symbol-wrapper">
                                             <img src="/assets/icons/webp/aptitudes/agility-symbol.webp"
@@ -861,6 +859,7 @@
                             <div class="flip-back">
                                 <div class="flip-card" data-title="Agility" data-category="Combat">
                                     <div class="card-top">
+                                        <img src="/assets/icons/svg/aptitudes/agility-ico.svg" class="aptitude-ico">
                                         <h4>Agility</h4>
                                         <p class="tags"><b>Tags:</b> <span class="tag">Clumsy</span> , <span
                                                 class="tag">Swift</span></p>
@@ -882,7 +881,7 @@
                         <div class="flip-inner">
                             <!-- FRONT -->
                             <div class="flip-front">
-                                <div class="flip-card" data-title="Vigor" data-category="System" data-status="released">
+                                <div class="flip-card" data-title="Vigor" data-category="Combat">
                                     <div class="card-top">
                                         <div class="aptitude-symbol-wrapper">
                                             <img src="/assets/icons/webp/aptitudes/vigor-symbol.webp"
@@ -903,6 +902,7 @@
                             <div class="flip-back">
                                 <div class="flip-card" data-title="Vigor" data-category="Combat">
                                     <div class="card-top">
+                                        <img src="/assets/icons/svg/aptitudes/vigor-ico.svg" class="aptitude-ico">
                                         <h4>Vigor</h4>
                                         <p class="tags"><b>Tags:</b> <span class="tag">Frail</span>, <span
                                                 class="tag">Resilient</span></p>
@@ -923,81 +923,123 @@
 
                 <h3 sidenav-2="2.2 | Exploration Aptitudes">Exploration Aptitudes</h3>
                 <p class="aptitude-category-description">These aptitudes define your character's capacity for discovery,
-                    problem-solving, and interacting with the environment. They are essential for navigating unknown
-                    territories,
-                    understanding ancient lore, and utilizing resources effectively.</p>
+                    problem-solving, and interacting with the environment. They are essential for  <strong class="highlight">navigating unknown
+                    territories</strong>,
+                     <strong class="highlight">understanding ancient lore</strong>, and  <strong class="highlight">utilizing resources effectively</strong>.</p>
 
                 <div class="aptitudes-grid">
 
-                    <div class="flip-card">
-                        <div class="aptitude-top-exploration">
-                            <div class="icon">
-                                <div class="icon-inner"><img class="shadowed"
-                                        src="https://static.wixstatic.com/media/e40a82_7cd2d3c2064e462392d9195b0fc80d20~mv2.webp"
-                                        alt="Perception"></div>
+                    <!-- Perception -->
+                    <div class="flip-card-link flip-container aptitude-card">
+                        <div class="flip-inner">
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="flip-card" data-title="Perception" data-category="Exploration">
+                                    <div class="card-top">
+                                        <div class="aptitude-symbol-wrapper">
+                                            <img src="/assets/icons/webp/aptitudes/perception-symbol.webp"
+                                                class="aptitude-symbol">
+                                        </div>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <h3 class="card-title aptitude">Perception</h3>
+                                        <p class="aptitude-description">Awareness, observation skills, and the ability to notice details, detect hidden dangers, or sense subtle changes in the environment.</p>
+                                    </div>
+                                </div>
                             </div>
-                            <h4>Perception</h4>
-                            <div class="aptitude-description-container">
-                                <p class="aptitude-description">Awareness, observation skills, and the ability to notice
-                                    details, detect hidden dangers, or sense subtle changes in the environment.</p>
+
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <div class="flip-card" data-title="Vigor" data-category="Exploration">
+                                    <div class="card-top">
+                                        <img src="/assets/icons/svg/aptitudes/perception-ico.svg" class="aptitude-ico">
+                                        <h4>Perception</h4>
+                                        <p class="tags"><b>Tags:</b> <span class="tag">Distracted</span>, <span
+                                                class="tag">Vigilant</span></p>
+                                        <summary><strong>Used for:</strong></summary>
+                                        <p>Spotting traps, noticing ambushes, reading hidden expressions, navigating in darkness or fog, reacting to sudden sounds or movement.</p>
+                                    </div>
+                                    <div class="card-bottom">
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="aptitude-bottom">
-                            <p class="tags"><b>Tags:</b> <u>Distracted</u> (1), <u>Vigilant</u> (5)</p>
-                            <details class="aptitude-collapsible">
-                                <summary><strong>Used for:</strong></summary>
-                                <p>Spotting traps, noticing ambushes, reading hidden expressions, navigating in darkness
-                                    or fog, reacting to sudden sounds or movement.</p>
-                            </details>
                         </div>
                     </div>
 
-                    <div class="flip-card">
-                        <div class="aptitude-top-exploration">
-                            <div class="icon">
-                                <div class="icon-inner"><img class="shadowed"
-                                        src="https://static.wixstatic.com/media/e40a82_09e759af8f6c471db2f82bb923085fc9~mv2.webp"
-                                        alt="Intellect"></div>
+                    <!-- Intellect -->
+                    <div class="flip-card-link flip-container aptitude-card">
+                        <div class="flip-inner">
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="flip-card" data-title="Intellect" data-category="Exploration">
+                                    <div class="card-top">
+                                        <div class="aptitude-symbol-wrapper">
+                                            <img src="/assets/icons/webp/aptitudes/intellect-symbol.webp"
+                                                class="aptitude-symbol">
+                                        </div>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <h3 class="card-title aptitude">Intellect</h3>
+                                        <p class="aptitude-description">Logic, memory, reasoning, and the capacity to analyze information, solve problems, and understand complex or abstract concepts.</p>
+                                    </div>
+                                </div>
                             </div>
-                            <h4>Intellect</h4>
-                            <div class="aptitude-description-container">
-                                <p class="aptitude-description">Logic, memory, reasoning, and the capacity to analyze
-                                    information, solve problems, and un&shy;der&shy;stand complex or abstract concepts.
-                                </p>
+
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <div class="flip-card" data-title="Intellect" data-category="Exploration">
+                                    <div class="card-top">
+                                        <img src="/assets/icons/svg/aptitudes/intellect-ico.svg" class="aptitude-ico">
+                                        <h4>Intellect</h4>
+                                        <p class="tags"><b>Tags:</b> <span class="tag">Dull</span>, <span
+                                                class="tag">Brilliant</span></p>
+                                        <summary><strong>Used for:</strong></summary>
+                                        <p>Deciphering ancient texts, recalling lore, solving puzzles, analyzing magical effects, planning tactics, or identifying weaknesses.</p>
+                                    </div>
+                                    <div class="card-bottom">
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="aptitude-bottom">
-                            <p class="tags"><b>Tags:</b> <u>Dull</u> (1), <u>Brilliant</u> (5)</p>
-                            <details class="aptitude-collapsible">
-                                <summary><strong>Used for:</strong></summary>
-                                <p>Deciphering ancient texts, recalling lore, solving puzzles, analyzing magical
-                                    effects, planning tactics, or identifying weaknesses.</p>
-                            </details>
                         </div>
                     </div>
 
-                    <div class="flip-card">
-                        <div class="aptitude-top-exploration">
-                            <div class="icon">
-                                <div class="icon-inner"><img class="shadowed"
-                                        src="https://static.wixstatic.com/media/e40a82_37ddab5030984b9d88e6700ff7987c9c~mv2.webp"
-                                        alt="Adaptability"></div>
+                    <!-- Adaptability -->
+                    <div class="flip-card-link flip-container aptitude-card">
+                        <div class="flip-inner">
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="flip-card" data-title="Adaptability" data-category="Exploration">
+                                    <div class="card-top">
+                                        <div class="aptitude-symbol-wrapper">
+                                            <img src="/assets/icons/webp/aptitudes/adaptability-symbol.webp"
+                                                class="aptitude-symbol">
+                                        </div>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <h3 class="card-title aptitude">Adaptability</h3>
+                                        <p class="aptitude-description">Improvisation, creativity under pressure, and the ability to react quickly and re­source­fully to un­ex­pect­ed situations or unfamiliar tools.</p>
+                                    </div>
+                                </div>
                             </div>
-                            <h4>Adaptability</h4>
-                            <div class="aptitude-description-container">
-                                <p class="aptitude-description">Improvisation, creativity under pressure, and the
-                                    ability to
-                                    react quickly and re&shy;source&shy;fully to un&shy;ex&shy;pect&shy;ed situations or
-                                    unfamiliar tools.</p>
+
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <div class="flip-card" data-title="Adaptability" data-category="Exploration">
+                                    <div class="card-top">
+                                        <img src="/assets/icons/svg/aptitudes/adaptability-ico.svg" class="aptitude-ico">
+                                        <h4>Adaptability</h4>
+                                        <p class="tags"><b>Tags:</b> <span class="tag">Rigid</span>, <span
+                                                class="tag">Versatile</span></p>
+                                        <summary><strong>Used for:</strong></summary>
+                                        <p>Using improvised weapons, jury-rigging equipment, reacting to environmental hazards, disarming traps without proper tools, or surviving in unfamiliar terrain.</p>
+                                    </div>
+                                    <div class="card-bottom">
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="aptitude-bottom">
-                            <p class="tags"><b>Tags:</b> <u>Rigid</u> (1), <u>Versatile</u> (5)</p>
-                            <details class="aptitude-collapsible">
-                                <summary><strong>Used for:</strong></summary>
-                                <p>Using improvised weapons, jury-rigging equipment, reacting to environmental hazards,
-                                    disarming traps without proper tools, or surviving in unfamiliar terrain.</p>
-                            </details>
                         </div>
                     </div>
                 </div>
@@ -1007,7 +1049,7 @@
                     complex
                     social landscapes, influence others, and understand the intricate dynamics of interpersonal
                     relationships.
-                    They are vital for diplomacy, deception, and leadership.</p>
+                    They are vital for  <strong class="highlight">diplomacy</strong>,  <strong class="highlight">deception</strong>, and  <strong class="highlight">leadership</strong>.</p>
 
                 <div class="aptitudes-grid">
 
