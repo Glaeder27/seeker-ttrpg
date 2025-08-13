@@ -1,4 +1,4 @@
-<!-- v1.29 2025-08-13T13:51:26.784Z -->
+<!-- v1.30 2025-08-13T14:09:36.018Z -->
 
 <!DOCTYPE html>
 <!--v1.2 2025-08-03T14:41:33.008Z-->
@@ -50,7 +50,7 @@
             gap: .5em;
             margin-top: 1em;
             padding-bottom: 1em;
-            align-items: start;
+            align-items: stretch;
             text-align: center;
         }
 
@@ -88,8 +88,8 @@
         }
 
         .aptitude-symbol {
-            width: 100%;
             height: 100%;
+            max-height: 150px;
         }
 
         .aptitude-category-description {
@@ -123,14 +123,18 @@
 
         }
 
-        .aptitude-collapsible summary {
+        .card-top summary {
             list-style: none;
             cursor: var(--cursor-pointer);
             font-weight: 600;
             color: #ddd;
             position: relative;
-            padding-right: 1.5rem;
             user-select: none;
+            margin-top: 2rem;
+        }
+
+        p.tags {
+            margin-top: 1.5rem;
         }
 
         .aptitude-collapsible summary::-webkit-details-marker {
@@ -657,7 +661,11 @@
 
         /* Overrides */
         .flip-card {
-            min-height: 350px;
+            min-height: unset;
+        }
+        .flip-front,
+        .flip-back {
+            height: auto;
         }
     </style>
 </head>
@@ -892,6 +900,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
                 <h3 sidenav-2="2.2 | Exploration Aptitudes">Exploration Aptitudes</h3>
                 <p class="aptitude-category-description">These aptitudes define your character's capacity for discovery,
@@ -1612,9 +1621,9 @@
                                 class="aptitude-icon" alt="Strength">
                             <span class="aptitude-label tooltip" data-tooltip-key="apt-strength">Strength</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Agility">
@@ -1622,9 +1631,9 @@
                                 class="aptitude-icon" alt="Agility">
                             <span class="aptitude-label">Agility</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Vigor">
@@ -1632,9 +1641,9 @@
                                 class="aptitude-icon" alt="Vigor">
                             <span class="aptitude-label">Vigor</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Perception">
@@ -1642,9 +1651,9 @@
                                 class="aptitude-icon" alt="Perception">
                             <span class="aptitude-label">Perception</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Insight">
@@ -1652,9 +1661,9 @@
                                 class="aptitude-icon" alt="Insight">
                             <span class="aptitude-label">Insight</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Adaptability">
@@ -1662,9 +1671,9 @@
                                 class="aptitude-icon" alt="Adaptability">
                             <span class="aptitude-label">Adaptability</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Willpower">
@@ -1672,9 +1681,9 @@
                                 class="aptitude-icon" alt="Willpower">
                             <span class="aptitude-label">Willpower</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Intellect">
@@ -1682,9 +1691,9 @@
                                 class="aptitude-icon" alt="Intellect">
                             <span class="aptitude-label">Intellect</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                         <div class="aptitude-row-sb" data-aptitude="Charisma">
@@ -1692,9 +1701,9 @@
                                 class="aptitude-icon" alt="Charisma">
                             <span class="aptitude-label">Charisma</span>
                             <div class="calculator-buttons">
-                                <button class="minus-btn-sb">-</button>
+                                <button class="minus-btn-sb"><i class="fa-solid fa-minus"></i></button>
                                 <span class="aptitude-value-sb">1</span>
-                                <button class="plus-btn-sb">+</button>
+                                <button class="plus-btn-sb"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
