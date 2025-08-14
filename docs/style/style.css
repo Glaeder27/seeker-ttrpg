@@ -1,4 +1,4 @@
-/*v3.31 2025-08-13T21:58:03.944Z*/
+/*v3.32 2025-08-14T10:51:29.650Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3071,12 +3071,12 @@ thead th:last-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 1rem 2rem;
     cursor: var(--cursor-pointer);
     color: var(--off-white);
     font-family: var(--font-main);
-    font-weight: bold;
-    font-size: 1.2em;
+    font-weight: 500;
+    font-size: 1em;
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -3177,6 +3177,13 @@ h3.sidebar-section {
 .collapsible-header-sb .section::before,
 .collapsible-header-sb .section::after {
     content: none;
+}
+
+.collapsible-icon::before {
+  content: "\f0da";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  display: inline-block;
 }
 
 .collapsible-icon-sb {
