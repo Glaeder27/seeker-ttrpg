@@ -1,4 +1,4 @@
-<!-- v1.15 2025-08-15T09:05:49.752Z -->
+<!-- v1.16 2025-08-15T09:13:21.862Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -240,6 +240,47 @@
             line-height: 1.5;
             text-align: center;
         }
+
+        .spend-xp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: .5em;
+            margin-top: 1em;
+            padding-bottom: 1em;
+            align-items: stretch;
+            text-align: center;
+        }
+
+        .spend-xp-card {
+            min-width: 220px;
+            min-height: 380px;
+            background: linear-gradient(to right,
+                    rgba(var(--burnt-copper-rgb), 0.2),
+                    rgba(var(--ancient-gold-rgb), 0.2)),
+                url(/assets/textures/antique-gold-1.jpg);
+            border-radius: 0.6rem;
+            background-size: cover;
+            background-blend-mode: overlay;
+            padding: 2px;
+        }
+
+        .spend-xp-card-inner {
+            padding: 1rem 1.2rem;
+            border-radius: .5rem;
+            cursor: var(--cursor-pointer);
+            transition: transform 0.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-blend-mode: overlay;
+            background-color: rgba(25, 25, 25, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 190px;
+        }
     </style>
 </head>
 
@@ -278,9 +319,11 @@
                 </header>
 
                 <p>In Seeker, growth is not linear—it is lived. Your character does not simply accumulate a universal XP
-                    number until they “level-up.” Instead, they grow through action and specialization, gaining power in the
+                    number until they “level-up.” Instead, they grow through action and specialization, gaining power in
+                    the
                     areas where they take risks and make impact.</p>
-                <p>Experience is divided into <span class="highlight">three distinct <strong>Tracks</strong></span>, each representing a core axis of
+                <p>Experience is divided into <span class="highlight">three distinct <strong>Tracks</strong></span>,
+                    each representing a core axis of
                     gameplay. These Tracks progress independently. You don’t level up in general—you level up in what
                     you
                     do.</strong>:</p>
@@ -312,8 +355,12 @@
                 </div>
 
                 <h3>Independent Progression</h3>
-                <p>Each Track—Combat, Social, and Exploration—has its own XP pool. You earn XP only in the Tracks relevant to your actions. XP is then spent to purchase specific improvements tied to that Track: new abilities, skill upgrades, attribute increases, and more.</p>
-                <p>A Seeker might have invested most of their XP into Exploration, mastering navigation and survival, while leaving their Combat XP unspent. This asymmetry reflects organic, choice-driven development—not a rigid class or leveling path.</p>
+                <p>Each Track—Combat, Social, and Exploration—has its own XP pool. You earn XP only in the Tracks
+                    relevant to your actions. XP is then spent to purchase specific improvements tied to that Track: new
+                    abilities, skill upgrades, attribute increases, and more.</p>
+                <p>A Seeker might have invested most of their XP into Exploration, mastering navigation and survival,
+                    while leaving their Combat XP unspent. This asymmetry reflects organic, choice-driven
+                    development—not a rigid class or leveling path.</p>
             </section>
 
             <!-- 2 • Earning XP -->
@@ -382,13 +429,18 @@
                 </header>
 
 
-                <p>Each Track—Combat, Social, and Exploration—has its own XP pool. XP earned in one Track can only be spent on that Track’s upgrades. There are no thresholds or levels: instead, players purchase improvements directly.</p>
+                <p>Each Track—Combat, Social, and Exploration—has its own XP pool. XP earned in one Track can only be
+                    spent on that Track’s upgrades. There are no thresholds or levels: instead, players purchase
+                    improvements directly.</p>
 
-                <p>Spending XP represents deliberate training, personal growth, or mastery earned through experience. Purchases should be made during downtime or other logical breaks in the narrative.</p>
+                <p>Spending XP represents deliberate training, personal growth, or mastery earned through experience.
+                    Purchases should be made during downtime or other logical breaks in the narrative.</p>
 
 
                 <h4>Asymmetrical Growth</h4>
-                <p>Because XP is awarded and spent per Track, a Seeker’s growth will naturally be uneven. One character may have poured most of their points into Combat while another becomes a master of exploration. This asymmetry is a feature, not a flaw—it reflects the paths taken and risks embraced.</p>
+                <p>Because XP is awarded and spent per Track, a Seeker’s growth will naturally be uneven. One character
+                    may have poured most of their points into Combat while another becomes a master of exploration. This
+                    asymmetry is a feature, not a flaw—it reflects the paths taken and risks embraced.</p>
 
                 <p>Every new Level gained in a Track grants an Advancement—a player-chosen benefit from that Track’s
                     menu.
@@ -398,6 +450,24 @@
                     thematic
                     evolution of the Seeker’s capabilities.</p>
                 <p>Every new level unlocks an <strong>Advancement</strong>—a choice from that Track’s menu.</p>
+
+                <div class="spend-xp-grid">
+
+                    <div class="spend-xp-card">
+                        <div class="spend-xp-card-inner" data-title="Strength" data-category="Combat">
+                            <div class="card-top">
+                                <div class="aptitude-symbol-wrapper"> <img
+                                        src="/assets/icons/webp/aptitudes/strength-symbol.webp" class="xp-track-symbol">
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <h3 class="card-title xp-track">Combat Track</h3>
+                                <p class="xp-track-description">YOu may spend CXP in the following trainings:</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </section>
 
@@ -645,18 +715,18 @@
     <script src="/scripts/carousel.js"></script>
 
     <script>
-    // Fetch and generate tables
-    fetch('/data/experience-points.json')
-        .then(res => res.json())
-        .then(data => {
-            const container = document.getElementById('tablesContainer');
-            const xpData = data["experience-points-normal"];
+        // Fetch and generate tables
+        fetch('/data/experience-points.json')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('tablesContainer');
+                const xpData = data["experience-points-normal"];
 
-            xpData.forEach(cat => {
-                const collapsible = document.createElement('div');
-                collapsible.className = 'collapsible-item';
+                xpData.forEach(cat => {
+                    const collapsible = document.createElement('div');
+                    collapsible.className = 'collapsible-item';
 
-                collapsible.innerHTML = `
+                    collapsible.innerHTML = `
             <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
             style="background: linear-gradient(to right, rgba(var(--background-dark-1-rgb), .85), rgba(var(--background-dark-2-rgb), .98)), url('${cat.banner}')">
             <span class="collapsible-title">${cat.category}</span>
@@ -686,109 +756,109 @@
             </div>
         `;
 
-                container.appendChild(collapsible);
+                    container.appendChild(collapsible);
+                });
+
+                // **Initialize collapsibles** after creating them
+                initCollapsibles();
             });
 
-            // **Initialize collapsibles** after creating them
-            initCollapsibles();
-        });
 
-
-    // Collapsible initialization function
-    function initCollapsibles() {
-        const collapsibleItems = document.querySelectorAll(
-            ".collapsible-item, .collapsible-item-sb"
-        );
-
-        collapsibleItems.forEach(item => {
-            if (item.dataset.initialized) return; // avoid double init
-            const header = item.querySelector(
-                ".collapsible-header, .collapsible-header-sb"
+        // Collapsible initialization function
+        function initCollapsibles() {
+            const collapsibleItems = document.querySelectorAll(
+                ".collapsible-item, .collapsible-item-sb"
             );
-            const content = item.querySelector(
-                ".collapsible-content, .collapsible-content-sb"
-            );
-            const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
 
-            // Start collapsed
-            content.style.height = "0px";
-
-            header.addEventListener("click", () => {
-                item.classList.toggle("expanded");
-                icon?.classList.toggle("expanded-icon");
-
-                if (item.classList.contains("expanded")) {
-                    content.style.height = content.scrollHeight + "px";
-                    content.classList.add("expanded-content");
-                } else {
-                    content.style.height = content.offsetHeight + "px";
-                    requestAnimationFrame(() => {
-                        content.style.height = "0px";
-                    });
-                    content.classList.remove("expanded-content");
-                }
-
-                // After transition, fix height to auto if expanded
-                content.addEventListener(
-                    "transitionend",
-                    function handler() {
-                        if (item.classList.contains("expanded")) {
-                            content.style.height = "auto";
-                        }
-                        content.removeEventListener("transitionend", handler, { once: true });
-                    },
-                    { once: true }
+            collapsibleItems.forEach(item => {
+                if (item.dataset.initialized) return; // avoid double init
+                const header = item.querySelector(
+                    ".collapsible-header, .collapsible-header-sb"
                 );
+                const content = item.querySelector(
+                    ".collapsible-content, .collapsible-content-sb"
+                );
+                const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
+
+                // Start collapsed
+                content.style.height = "0px";
+
+                header.addEventListener("click", () => {
+                    item.classList.toggle("expanded");
+                    icon?.classList.toggle("expanded-icon");
+
+                    if (item.classList.contains("expanded")) {
+                        content.style.height = content.scrollHeight + "px";
+                        content.classList.add("expanded-content");
+                    } else {
+                        content.style.height = content.offsetHeight + "px";
+                        requestAnimationFrame(() => {
+                            content.style.height = "0px";
+                        });
+                        content.classList.remove("expanded-content");
+                    }
+
+                    // After transition, fix height to auto if expanded
+                    content.addEventListener(
+                        "transitionend",
+                        function handler() {
+                            if (item.classList.contains("expanded")) {
+                                content.style.height = "auto";
+                            }
+                            content.removeEventListener("transitionend", handler, { once: true });
+                        },
+                        { once: true }
+                    );
+                });
+
+                item.dataset.initialized = "true"; // mark as initialized
             });
-
-            item.dataset.initialized = "true"; // mark as initialized
-        });
-    }
-
-
-    // Search Filter
-    function applyFilters() {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        const checkedColumns = Array.from(document.querySelectorAll('#filters input:checked')).map(cb => cb.value);
-
-        document.querySelectorAll('#tablesContainer .collapsible-item').forEach(item => {
-            const tableRows = item.querySelectorAll('table tbody tr');
-            let anyVisible = false;
-
-            tableRows.forEach(row => {
-                const textMatch = row.cells[0].textContent.toLowerCase().includes(searchTerm) || searchTerm === '';
-                const columnMatch = checkedColumns.some(col => row.querySelector(`td:nth-child(${colIndex(col)})`).textContent.trim() !== '—');
-
-                if (textMatch && columnMatch) {
-                    row.style.opacity = '1';
-                    row.style.fontWeight = searchTerm ? 'bold' : 'normal';
-                    anyVisible = true;
-                } else {
-                    row.style.opacity = '0.15';
-                    row.style.fontWeight = 'normal';
-                }
-            });
-
-            // Opacità header
-            const header = item.querySelector('.collapsible-header');
-            header.style.opacity = anyVisible ? '1' : '0.3';
-        });
-    }
-
-    // Mappa colonna a indice (1-based)
-    function colIndex(col) {
-        switch (col) {
-            case 'CXP': return 2;
-            case 'SXP': return 3;
-            case 'EXP': return 4;
         }
-    }
 
-    // Event listener
-    document.getElementById('searchInput').addEventListener('input', applyFilters);
-    document.querySelectorAll('#filters input').forEach(cb => cb.addEventListener('change', applyFilters));
 
-</script>
+        // Search Filter
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const checkedColumns = Array.from(document.querySelectorAll('#filters input:checked')).map(cb => cb.value);
+
+            document.querySelectorAll('#tablesContainer .collapsible-item').forEach(item => {
+                const tableRows = item.querySelectorAll('table tbody tr');
+                let anyVisible = false;
+
+                tableRows.forEach(row => {
+                    const textMatch = row.cells[0].textContent.toLowerCase().includes(searchTerm) || searchTerm === '';
+                    const columnMatch = checkedColumns.some(col => row.querySelector(`td:nth-child(${colIndex(col)})`).textContent.trim() !== '—');
+
+                    if (textMatch && columnMatch) {
+                        row.style.opacity = '1';
+                        row.style.fontWeight = searchTerm ? 'bold' : 'normal';
+                        anyVisible = true;
+                    } else {
+                        row.style.opacity = '0.15';
+                        row.style.fontWeight = 'normal';
+                    }
+                });
+
+                // Opacità header
+                const header = item.querySelector('.collapsible-header');
+                header.style.opacity = anyVisible ? '1' : '0.3';
+            });
+        }
+
+        // Mappa colonna a indice (1-based)
+        function colIndex(col) {
+            switch (col) {
+                case 'CXP': return 2;
+                case 'SXP': return 3;
+                case 'EXP': return 4;
+            }
+        }
+
+        // Event listener
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.querySelectorAll('#filters input').forEach(cb => cb.addEventListener('change', applyFilters));
+
+    </script>
 
 
 </body>
