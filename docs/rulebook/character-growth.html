@@ -1,4 +1,4 @@
-<!-- v1.29 2025-08-15T17:11:51.431Z -->
+<!-- v1.30 2025-08-15T17:15:00.809Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -308,12 +308,6 @@
         .xp-highlight {
             filter: drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold));
             opacity: 1;
-            transition: filter 0.3s ease, opacity 0.3s ease;
-        }
-
-        .xp-not-highlight {
-            filter: none;
-            opacity: 0.3;
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
     </style>
@@ -884,10 +878,10 @@
 
                 if (anyVisible) {
                     header.classList.add('xp-highlight');
-                    header.classList.remove('xp-not-highlight');
+                    header.style.opacity = '1';
                 } else {
-                    header.classList.add('xp-not-highlight');
                     header.classList.remove('xp-highlight');
+                    header.style.opacity = '0.3';
                 }
             });
         }
