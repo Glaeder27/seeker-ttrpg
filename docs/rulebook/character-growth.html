@@ -1,4 +1,4 @@
-<!-- v1.17 2025-08-15T13:37:38.963Z -->
+<!-- v1.18 2025-08-15T13:47:12.746Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -42,6 +42,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        :root {
+            --combat-xp-ico: url('/assets/icons/webp/generic/icon-estoque-webp');
+            --exploration-xp-ico: url('/assets/icons/webp/generic/icon-spyglass-webp');
+            --social-xp-ico: url('/assets/icons/webp/generic/icon-scroll-webp');
+        }
         .xp-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -331,7 +336,7 @@
                 <div class="xp-grid">
                     <!-- Combat -->
                     <div class="xp-card">
-                        <img src="https://static.wixstatic.com/shapes/e40a82_74fa6857d47846daae5961eae3b49c2e.svg"
+                        <img src="/assets/icons/webp/generic/icon-estoque.webp" style="transform: scaleX(-1);"
                             alt="CXP icon" class="xp-icon">
                         <h3 class="xp-title">Combat XP&nbsp;(<strong class="highlight">CXP</strong>)</h3>
                         <p>Earned by battles, tactics, and surviving danger.</p>
@@ -339,7 +344,7 @@
 
                     <!-- Social -->
                     <div class="xp-card">
-                        <img src="https://static.wixstatic.com/shapes/e40a82_755ab1971b9d4d0a9987def711bbd6e5.svg"
+                        <img src="/assets/icons/webp/generic/icon-scroll.webp" style="transform: scaleX(-1);"
                             alt="SXP icon" class="xp-icon">
                         <h3 class="xp-title">Social XP&nbsp;(<strong class="highlight">SXP</strong>)</h3>
                         <p>Gained through persuasion, diplomacy, and relationships.</p>
@@ -347,7 +352,7 @@
 
                     <!-- Exploration -->
                     <div class="xp-card">
-                        <img src="https://static.wixstatic.com/shapes/e40a82_b5adb8850fbc4454988c07110cab632c.svg"
+                        <img src="/assets/icons/webp/generic/icon-spyglass.webp" style="transform: scaleX(-1);"
                             alt="EXP icon" class="xp-icon">
                         <h3 class="xp-title">Exploration XP&nbsp;(<strong class="highlight">EXP</strong>)</h3>
                         <p>Awarded for discovery, lore, travel, and investigation.</p>
@@ -457,12 +462,12 @@
                         <div class="spend-xp-card-inner" data-title="Strength" data-category="Combat">
                             <div class="card-top">
                                 <div class="aptitude-symbol-wrapper"> <img
-                                        src="/assets/icons/webp/aptitudes/strength-symbol.webp" class="xp-track-symbol">
+                                        src="/assets/icons/webp/generic/icon-estoque.webp" style="transform: scaleX(-1);" class="xp-track-symbol">
                                 </div>
                             </div>
                             <div class="card-bottom">
                                 <h3 class="card-title xp-track">Combat Track</h3>
-                                <p class="xp-track-description">YOu may spend CXP in the following trainings:</p>
+                                <p class="xp-track-description">You may spend CXP in the following trainings:</p>
                             </div>
                         </div>
                     </div>
@@ -482,9 +487,7 @@
                         <h2 style="font-size: clamp(3rem, 6.5vw, 3.5rem);">Respec & Retraining</h2>
                         <span class="title-icon rot90">n</span>
                     </div>
-                    <p class="subtitle">Different ways to explore the New World — from quick missions to epic
-                        campaigns.
-                    </p>
+                    <p class="subtitle">Placeholder.</p>
                 </header>
 
                 <p><strong>Characters evolve.</strong> After a major narrative event (months of study, a crisis of
@@ -712,7 +715,6 @@
     <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
     <script src="/scripts/parallax.js"></script>
-    <script src="/scripts/carousel.js"></script>
 
     <script>
     // Collapsible initialization function
