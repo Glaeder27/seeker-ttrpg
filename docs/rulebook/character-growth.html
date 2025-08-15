@@ -1,4 +1,4 @@
-<!-- v1.20 2025-08-15T13:56:26.721Z -->
+<!-- v1.21 2025-08-15T14:00:13.433Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -782,15 +782,15 @@
 
             xpData.forEach(cat => {
                 const collapsible = document.createElement('div');
-                collapsible.className = 'collapsible-item';
+                collapsible.className = 'xp-collapsible-item';
 
                 collapsible.innerHTML = `
-                    <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                    <header class="xp-collapsible-header" tabindex="0" role="button" aria-expanded="false"
                         style="background: linear-gradient(to right, rgba(var(--background-dark-1-rgb), .85), rgba(var(--background-dark-2-rgb), .98)), url('${cat.banner}')">
-                        <span class="collapsible-title">${cat.category}</span>
-                        <span class="collapsible-icon" aria-hidden="true"></span>
+                        <span class="xp-collapsible-title">${cat.category}</span>
+                        <span class="xp-collapsible-icon" aria-hidden="true"></span>
                     </header>
-                    <div class="collapsible-content">
+                    <div class="xp-collapsible-content">
                         <table class="xp-table">
                             <thead>
                                 <tr>
