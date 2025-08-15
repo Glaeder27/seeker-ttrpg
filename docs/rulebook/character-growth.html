@@ -1,4 +1,4 @@
-<!-- v1.30 2025-08-15T17:15:00.809Z -->
+<!-- v1.31 2025-08-15T17:19:20.155Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -874,13 +874,14 @@
                 });
 
                 // Opacità header
-                const header = item.querySelector('.xp-collapsible-title');
+                const title = item.querySelector('.xp-collapsible-title');
+                const header = item.querySelector('.xp-collapsible-header')
 
                 if (anyVisible) {
-                    header.classList.add('xp-highlight');
+                    title.classList.add('xp-highlight');
                     header.style.opacity = '1';
                 } else {
-                    header.classList.remove('xp-highlight');
+                    title.classList.remove('xp-highlight');
                     header.style.opacity = '0.3';
                 }
             });
