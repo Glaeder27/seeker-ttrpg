@@ -1,4 +1,4 @@
-/*v3.32 2025-08-14T10:51:29.650Z*/
+/*v3.33 2025-08-15T08:16:59.692Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3104,7 +3104,7 @@ thead th:last-child {
 .collapsible-content {
     height: 0;
     overflow: hidden;
-    transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
     padding: 0 20px;
     color: var(--off-white);
     font-family: var(--font-main);
