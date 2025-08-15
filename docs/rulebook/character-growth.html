@@ -1,4 +1,4 @@
-<!-- v1.27 2025-08-15T16:13:51.963Z -->
+<!-- v1.28 2025-08-15T16:39:41.462Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -305,9 +305,16 @@
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
 
-        .xp-collapsible-title.xp-highlight {
-            opacity: 1;
+        .xp-highlight {
             filter: drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold));
+            opacity: 1;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+        }
+
+        .xp-not-highlight {
+            filter: none;
+            opacity: 0.3;
+            transition: filter 0.3s ease, opacity 0.3s ease;
         }
     </style>
 </head>
@@ -872,12 +879,14 @@
                     }
                 });
 
-                // Aggiungi o rimuovi la classe UNA SOLA VOLTA dopo aver controllato tutte le righe
+                // Opacità header
                 const header = item.querySelector('.xp-collapsible-title');
                 if (anyVisible) {
                     header.classList.add('xp-highlight');
                 } else {
+                    // Forza il reset del filter tramite reflow
                     header.classList.remove('xp-highlight');
+                    void header.offsetWidth; // trigger reflow
                 }
             });
         }
