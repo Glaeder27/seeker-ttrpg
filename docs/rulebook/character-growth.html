@@ -1,4 +1,4 @@
-<!-- v1.23 2025-08-15T14:14:54.991Z -->
+<!-- v1.24 2025-08-15T14:20:33.878Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -142,7 +142,7 @@
 
         .collapsible-item,
         .xp-collapsible-item {
-            background: #3b3b3b;
+            background: transparent;
             box-shadow: none;
         }
 
@@ -291,6 +291,12 @@
             justify-content: space-between;
             height: 100%;
             min-height: 190px;
+        }
+
+        /* Animations */
+        .xp-highlight {
+            filter: drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold));
+            transition: filter 0.3s ease, opacity 0.3s ease;
         }
     </style>
 </head>
@@ -857,10 +863,10 @@
                 const header = item.querySelector('.xp-collapsible-title');
                 if (anyVisible) {
                     header.style.opacity = '1';
-                    header.style.filter = 'drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold))';
+                    header.classList.add('xp-highlight');
                 } else {
                     header.style.opacity = '0.3';
-                    header.style.filter = 'none';
+                    header.classList.remove('xp-highlight');
                 }
             });
         }
