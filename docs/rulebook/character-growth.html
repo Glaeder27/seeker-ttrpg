@@ -1,4 +1,4 @@
-<!-- v1.13 2025-08-15T08:17:34.394Z -->
+<!-- v1.14 2025-08-15T08:55:37.759Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -139,6 +139,10 @@
 
         .collapsible-icon {
             color: var(--ancient-gold, #D4B55A);
+        }
+
+        .collapsible-content.expanded-content {
+            padding: 0;
         }
 
         .xp-table td:first-child {
@@ -356,6 +360,12 @@
                 <p>Use the sample breakdown tables below as a guideline to help calibrate your XP distribution
                     consistently
                     and fairly.</p>
+
+                <div id="filters">
+                    <label><input type="checkbox" value="CXP" checked> CXP</label>
+                    <label><input type="checkbox" value="SXP" checked> SXP</label>
+                    <label><input type="checkbox" value="EXP" checked> EXP</label>
+                </div>
 
                 <input type="text" id="searchInput" placeholder="Search events..."
                     style="margin-bottom: 1rem; width: 100%; padding: 8px;">
@@ -877,20 +887,48 @@
     }
 
 
-    // Search filter
-    document.getElementById('searchInput').addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-        document.querySelectorAll('#tablesContainer table tbody tr').forEach(row => {
-            const text = row.cells[0].textContent.toLowerCase();
-            if (text.includes(searchTerm) || searchTerm === '') {
-                row.style.opacity = '1';
-                row.style.fontWeight = searchTerm ? 'bold' : 'normal';
-            } else {
-                row.style.opacity = '0.3';
-                row.style.fontWeight = 'normal';
-            }
+    // Search Filter
+    function applyFilters() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const checkedColumns = Array.from(document.querySelectorAll('#filters input:checked')).map(cb => cb.value);
+
+        document.querySelectorAll('#tablesContainer .collapsible-item').forEach(item => {
+            const tableRows = item.querySelectorAll('table tbody tr');
+            let anyVisible = false;
+
+            tableRows.forEach(row => {
+                const textMatch = row.cells[0].textContent.toLowerCase().includes(searchTerm) || searchTerm === '';
+                const columnMatch = checkedColumns.some(col => row.querySelector(`td:nth-child(${colIndex(col)})`).textContent.trim() !== '—');
+
+                if (textMatch && columnMatch) {
+                    row.style.opacity = '1';
+                    row.style.fontWeight = searchTerm ? 'bold' : 'normal';
+                    anyVisible = true;
+                } else {
+                    row.style.opacity = '0.15';
+                    row.style.fontWeight = 'normal';
+                }
+            });
+
+            // Opacità header
+            const header = item.querySelector('.collapsible-header');
+            header.style.opacity = anyVisible ? '1' : '0.3';
         });
-    });
+    }
+
+    // Mappa colonna a indice (1-based)
+    function colIndex(col) {
+        switch (col) {
+            case 'CXP': return 2;
+            case 'SXP': return 3;
+            case 'EXP': return 4;
+        }
+    }
+
+    // Event listener
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.querySelectorAll('#filters input').forEach(cb => cb.addEventListener('change', applyFilters));
+
 </script>
 
 
