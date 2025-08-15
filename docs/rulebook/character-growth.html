@@ -1,4 +1,4 @@
-<!-- v1.16 2025-08-15T09:13:21.862Z -->
+<!-- v1.17 2025-08-15T13:37:38.963Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -715,150 +715,158 @@
     <script src="/scripts/carousel.js"></script>
 
     <script>
-        // Fetch and generate tables
-        fetch('/data/experience-points.json')
-            .then(res => res.json())
-            .then(data => {
-                const container = document.getElementById('tablesContainer');
-                const xpData = data["experience-points-normal"];
+    // Collapsible initialization function
+    function initCollapsibles() {
+        const collapsibleItems = document.querySelectorAll(
+            ".collapsible-item, .collapsible-item-sb"
+        );
 
-                xpData.forEach(cat => {
-                    const collapsible = document.createElement('div');
-                    collapsible.className = 'collapsible-item';
-
-                    collapsible.innerHTML = `
-            <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
-            style="background: linear-gradient(to right, rgba(var(--background-dark-1-rgb), .85), rgba(var(--background-dark-2-rgb), .98)), url('${cat.banner}')">
-            <span class="collapsible-title">${cat.category}</span>
-            <span class="collapsible-icon" aria-hidden="true"></span>
-            </header>
-            <div class="collapsible-content">
-            <table class="xp-table">
-                <thead>
-                <tr>
-                    <th>Event / Action</th>
-                    <th>CXP</th>
-                    <th>SXP</th>
-                    <th>EXP</th>
-                </tr>
-                </thead>
-                <tbody>
-                ${cat.events.map(e => `
-                    <tr>
-                    <td>${e.event}</td>
-                    <td>${e.CXP ?? '—'}</td>
-                    <td>${e.SXP ?? '—'}</td>
-                    <td>${e.EXP ?? '—'}</td>
-                    </tr>
-                `).join('')}
-                </tbody>
-            </table>
-            </div>
-        `;
-
-                    container.appendChild(collapsible);
-                });
-
-                // **Initialize collapsibles** after creating them
-                initCollapsibles();
-            });
-
-
-        // Collapsible initialization function
-        function initCollapsibles() {
-            const collapsibleItems = document.querySelectorAll(
-                ".collapsible-item, .collapsible-item-sb"
+        collapsibleItems.forEach(item => {
+            if (item.dataset.initialized) return; // evita doppia init
+            const header = item.querySelector(
+                ".collapsible-header, .collapsible-header-sb"
             );
+            const content = item.querySelector(
+                ".collapsible-content, .collapsible-content-sb"
+            );
+            const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
 
-            collapsibleItems.forEach(item => {
-                if (item.dataset.initialized) return; // avoid double init
-                const header = item.querySelector(
-                    ".collapsible-header, .collapsible-header-sb"
+            if (!header || !content) return; // protezione
+
+            content.style.height = "0px";
+
+            header.addEventListener("click", () => {
+                item.classList.toggle("expanded");
+                icon?.classList.toggle("expanded-icon");
+
+                if (item.classList.contains("expanded")) {
+                    content.style.height = content.scrollHeight + "px";
+                    content.classList.add("expanded-content");
+                } else {
+                    content.style.height = content.offsetHeight + "px";
+                    requestAnimationFrame(() => {
+                        content.style.height = "0px";
+                    });
+                    content.classList.remove("expanded-content");
+                }
+
+                content.addEventListener(
+                    "transitionend",
+                    function handler() {
+                        if (item.classList.contains("expanded")) {
+                            content.style.height = "auto";
+                        }
+                        content.removeEventListener("transitionend", handler, { once: true });
+                    },
+                    { once: true }
                 );
-                const content = item.querySelector(
-                    ".collapsible-content, .collapsible-content-sb"
-                );
-                const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
-
-                // Start collapsed
-                content.style.height = "0px";
-
-                header.addEventListener("click", () => {
-                    item.classList.toggle("expanded");
-                    icon?.classList.toggle("expanded-icon");
-
-                    if (item.classList.contains("expanded")) {
-                        content.style.height = content.scrollHeight + "px";
-                        content.classList.add("expanded-content");
-                    } else {
-                        content.style.height = content.offsetHeight + "px";
-                        requestAnimationFrame(() => {
-                            content.style.height = "0px";
-                        });
-                        content.classList.remove("expanded-content");
-                    }
-
-                    // After transition, fix height to auto if expanded
-                    content.addEventListener(
-                        "transitionend",
-                        function handler() {
-                            if (item.classList.contains("expanded")) {
-                                content.style.height = "auto";
-                            }
-                            content.removeEventListener("transitionend", handler, { once: true });
-                        },
-                        { once: true }
-                    );
-                });
-
-                item.dataset.initialized = "true"; // mark as initialized
             });
-        }
 
+            item.dataset.initialized = "true";
+        });
+    }
 
-        // Search Filter
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const checkedColumns = Array.from(document.querySelectorAll('#filters input:checked')).map(cb => cb.value);
+    // Inizializza collapsible statici subito
+    initCollapsibles();
 
-            document.querySelectorAll('#tablesContainer .collapsible-item').forEach(item => {
-                const tableRows = item.querySelectorAll('table tbody tr');
-                let anyVisible = false;
+    // Fetch e creazione tabelle
+    fetch('/data/experience-points.json')
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('tablesContainer');
+            const xpData = data["experience-points-normal"];
 
-                tableRows.forEach(row => {
-                    const textMatch = row.cells[0].textContent.toLowerCase().includes(searchTerm) || searchTerm === '';
-                    const columnMatch = checkedColumns.some(col => row.querySelector(`td:nth-child(${colIndex(col)})`).textContent.trim() !== '—');
+            xpData.forEach(cat => {
+                const collapsible = document.createElement('div');
+                collapsible.className = 'collapsible-item';
 
-                    if (textMatch && columnMatch) {
-                        row.style.opacity = '1';
-                        row.style.fontWeight = searchTerm ? 'bold' : 'normal';
-                        anyVisible = true;
-                    } else {
-                        row.style.opacity = '0.15';
-                        row.style.fontWeight = 'normal';
-                    }
-                });
+                collapsible.innerHTML = `
+                    <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
+                        style="background: linear-gradient(to right, rgba(var(--background-dark-1-rgb), .85), rgba(var(--background-dark-2-rgb), .98)), url('${cat.banner}')">
+                        <span class="collapsible-title">${cat.category}</span>
+                        <span class="collapsible-icon" aria-hidden="true"></span>
+                    </header>
+                    <div class="collapsible-content">
+                        <table class="xp-table">
+                            <thead>
+                                <tr>
+                                    <th>Event / Action</th>
+                                    <th>CXP</th>
+                                    <th>SXP</th>
+                                    <th>EXP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${cat.events.map(e => `
+                                    <tr>
+                                        <td>${e.event}</td>
+                                        <td>${e.CXP ?? '—'}</td>
+                                        <td>${e.SXP ?? '—'}</td>
+                                        <td>${e.EXP ?? '—'}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
 
-                // Opacità header
-                const header = item.querySelector('.collapsible-header');
-                header.style.opacity = anyVisible ? '1' : '0.3';
+                container.appendChild(collapsible);
             });
+
+            // Inizializza anche i collapsible creati dinamicamente
+            initCollapsibles();
+        })
+        .catch(err => {
+            console.error("Errore caricamento JSON:", err);
+            // Continua comunque, così i collapsible statici funzionano
+        });
+
+    // Search + Filtri
+    function applyFilters() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const checkedColumns = Array.from(document.querySelectorAll('#filters input:checked')).map(cb => cb.value);
+
+        document.querySelectorAll('#tablesContainer .collapsible-item').forEach(item => {
+            const tableRows = item.querySelectorAll('table tbody tr');
+            let anyVisible = false;
+
+            tableRows.forEach(row => {
+                const textMatch = row.cells[0].textContent.toLowerCase().includes(searchTerm) || searchTerm === '';
+                const columnMatch = checkedColumns.length === 0 || checkedColumns.some(col => row.querySelector(`td:nth-child(${colIndex(col)})`).textContent.trim() !== '—');
+
+                if (textMatch && columnMatch) {
+                    row.style.opacity = '1';
+                    row.style.fontWeight = searchTerm ? 'bold' : 'normal';
+                    anyVisible = true;
+                } else {
+                    row.style.opacity = '0.15';
+                    row.style.fontWeight = 'normal';
+                }
+            });
+
+            // Opacità header
+            const header = item.querySelector('.collapsible-header');
+                if (anyVisible) {
+                    header.style.opacity = '1';
+                    header.style.filter = 'drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold))';
+                } else {
+                    header.style.opacity = '0.3';
+                    header.style.filter = 'none';
+                }
+        });
+    }
+
+    function colIndex(col) {
+        switch (col) {
+            case 'CXP': return 2;
+            case 'SXP': return 3;
+            case 'EXP': return 4;
         }
+    }
 
-        // Mappa colonna a indice (1-based)
-        function colIndex(col) {
-            switch (col) {
-                case 'CXP': return 2;
-                case 'SXP': return 3;
-                case 'EXP': return 4;
-            }
-        }
-
-        // Event listener
-        document.getElementById('searchInput').addEventListener('input', applyFilters);
-        document.querySelectorAll('#filters input').forEach(cb => cb.addEventListener('change', applyFilters));
-
-    </script>
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.querySelectorAll('#filters input').forEach(cb => cb.addEventListener('change', applyFilters));
+</script>
 
 
 </body>
