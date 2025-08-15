@@ -1,4 +1,4 @@
-<!-- v1.24 2025-08-15T14:20:33.878Z -->
+<!-- v1.25 2025-08-15T14:30:59.431Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -294,9 +294,14 @@
         }
 
         /* Animations */
-        .xp-highlight {
-            filter: drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold));
+        .xp-collapsible-title {
+            opacity: 0.3;
+            filter: none;
             transition: filter 0.3s ease, opacity 0.3s ease;
+        }
+        .xp-collapsible-title.xp-highlight {
+            opacity: 1;
+            filter: drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold));
         }
     </style>
 </head>
@@ -861,13 +866,13 @@
 
                 // Opacità header
                 const header = item.querySelector('.xp-collapsible-title');
-                if (anyVisible) {
-                    header.style.opacity = '1';
-                    header.classList.add('xp-highlight');
-                } else {
-                    header.style.opacity = '0.3';
-                    header.classList.remove('xp-highlight');
-                }
+                    if (anyVisible) {
+                        header.classList.add('xp-highlight');
+                    } else {
+                        // Forza il reset del filter tramite reflow
+                        header.classList.remove('xp-highlight');
+                        void header.offsetWidth; // trigger reflow
+                    }
             });
         }
 
