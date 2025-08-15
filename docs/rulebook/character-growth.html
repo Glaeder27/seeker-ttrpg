@@ -1,4 +1,4 @@
-<!-- v1.19 2025-08-15T13:50:42.871Z -->
+<!-- v1.20 2025-08-15T13:56:26.721Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -129,24 +129,29 @@
         }
 
         /* OVERRIDES */
-        .collapsible-header {
+        .collapsible-header,
+        .xp-collapsible-header {
             border-radius: 8px;
         }
 
-        .collapsible-header:hover {
+        .collapsible-header:hover,
+        .xp-collapsible-header:hover {
             border-radius: 8px;
         }
 
-        .collapsible-item {
+        .collapsible-item,
+        .xp-collapsible-item {
             background: #3b3b3b;
             box-shadow: none;
         }
 
-        .collapsible-icon {
+        .collapsible-icon,
+        .xp-collapsible-icon {
             color: var(--ancient-gold, #D4B55A);
         }
 
-        .collapsible-content.expanded-content {
+        .collapsible-content.expanded-content,
+        .xp-collapsible-content.expanded-content {
             padding: 0;
         }
 
@@ -717,18 +722,18 @@
     // Collapsible initialization function
     function initCollapsibles() {
         const collapsibleItems = document.querySelectorAll(
-            ".collapsible-item, .collapsible-item-sb"
+            ".xp-collapsible-item, .xp-collapsible-item-sb"
         );
 
         collapsibleItems.forEach(item => {
             if (item.dataset.initialized) return; // evita doppia init
             const header = item.querySelector(
-                ".collapsible-header, .collapsible-header-sb"
+                ".xp-collapsible-header, .xp-collapsible-header-sb"
             );
             const content = item.querySelector(
-                ".collapsible-content, .collapsible-content-sb"
+                ".xp-collapsible-content, .xp-collapsible-content-sb"
             );
-            const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
+            const icon = item.querySelector(".xp-collapsible-icon, .xp-collapsible-icon-sb");
 
             if (!header || !content) return; // protezione
 
@@ -825,7 +830,7 @@
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
         const checkedColumns = Array.from(document.querySelectorAll('#filters input:checked')).map(cb => cb.value);
 
-        document.querySelectorAll('#tablesContainer .collapsible-item').forEach(item => {
+        document.querySelectorAll('#tablesContainer .xp-collapsible-item').forEach(item => {
             const tableRows = item.querySelectorAll('table tbody tr');
             let anyVisible = false;
 
@@ -844,7 +849,7 @@
             });
 
             // Opacità header
-            const header = item.querySelector('.collapsible-header');
+            const header = item.querySelector('.xp-collapsible-header');
                 if (anyVisible) {
                     header.style.opacity = '1';
                     header.style.filter = 'drop-shadow(0 0 6px var(--ancient-gold)) drop-shadow(0 0 12px var(--ancient-gold))';
