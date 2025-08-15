@@ -1,4 +1,4 @@
-<!-- v1.26 2025-08-15T16:11:23.286Z -->
+<!-- v1.27 2025-08-15T16:13:51.963Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -872,14 +872,12 @@
                     }
                 });
 
-                // Opacità header
+                // Aggiungi o rimuovi la classe UNA SOLA VOLTA dopo aver controllato tutte le righe
                 const header = item.querySelector('.xp-collapsible-title');
                 if (anyVisible) {
                     header.classList.add('xp-highlight');
                 } else {
-                    // Forza il reset del filter tramite reflow
                     header.classList.remove('xp-highlight');
-                    void header.offsetWidth; // trigger reflow
                 }
             });
         }
