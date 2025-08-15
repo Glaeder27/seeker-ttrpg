@@ -1,4 +1,4 @@
-<!-- v1.28 2025-08-15T16:39:41.462Z -->
+<!-- v1.29 2025-08-15T17:11:51.431Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -300,7 +300,7 @@
 
         /* Animations */
         .xp-collapsible-title {
-            opacity: 0.3;
+            opacity: 1;
             filter: none;
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
@@ -319,7 +319,7 @@
     </style>
 </head>
 
-<body id="aptitudes" data-menu-src="/data/menu-rulebook.json">
+<body id="character-growth" data-menu-src="/data/menu-rulebook.json">
     <!-- SIDENAV -->
     <div id="sidenav-container"></div>
     <!-- NAVBAR -->
@@ -881,12 +881,13 @@
 
                 // Opacità header
                 const header = item.querySelector('.xp-collapsible-title');
+
                 if (anyVisible) {
                     header.classList.add('xp-highlight');
+                    header.classList.remove('xp-not-highlight');
                 } else {
-                    // Forza il reset del filter tramite reflow
+                    header.classList.add('xp-not-highlight');
                     header.classList.remove('xp-highlight');
-                    void header.offsetWidth; // trigger reflow
                 }
             });
         }
