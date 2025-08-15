@@ -1,4 +1,4 @@
-<!-- v1.10 2025-08-15T07:25:51.370Z -->
+<!-- v1.11 2025-08-15T07:30:44.801Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -784,18 +784,18 @@
     <script src="/scripts/carousel.js"></script>
 
     <script>
-        // Event Filter
-        fetch('/data/experience-points.json')
-            .then(res => res.json())
-            .then(data => {
-                const container = document.getElementById('tablesContainer');
-                const xpData = data["experience-points-normal"];
+    // Fetch and generate tables
+    fetch('/data/experience-points.json')
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('tablesContainer');
+            const xpData = data["experience-points-normal"];
 
-                xpData.forEach(cat => {
-                    const collapsible = document.createElement('div');
-                    collapsible.className = 'collapsible-item';
+            xpData.forEach(cat => {
+                const collapsible = document.createElement('div');
+                collapsible.className = 'collapsible-item';
 
-                    collapsible.innerHTML = `
+                collapsible.innerHTML = `
             <header class="collapsible-header" tabindex="0" role="button" aria-expanded="false"
             style="background: linear-gradient(to right, rgba(var(--background-dark-1-rgb), .85), rgba(var(--background-dark-2-rgb), .98)), url('${cat.banner}')">
             <span class="collapsible-title">${cat.category}</span>
@@ -825,35 +825,82 @@
             </div>
         `;
 
-                    container.appendChild(collapsible);
-                });
-
-                // Collapsible logic (optional)
-                document.querySelectorAll('.collapsible-header').forEach(header => {
-                    header.addEventListener('click', () => {
-                        const expanded = header.getAttribute('aria-expanded') === 'true';
-                        header.setAttribute('aria-expanded', !expanded);
-                        header.nextElementSibling.style.display = expanded ? 'none' : 'block';
-                    });
-                });
+                container.appendChild(collapsible);
             });
 
-
-        // Search filter
-        document.getElementById('searchInput').addEventListener('input', function () {
-            const searchTerm = this.value.toLowerCase();
-            document.querySelectorAll('#tablesContainer table tbody tr').forEach(row => {
-                const text = row.cells[0].textContent.toLowerCase();
-                if (text.includes(searchTerm) || searchTerm === '') {
-                    row.style.opacity = '1';
-                    row.style.fontWeight = searchTerm ? 'bold' : 'normal';
-                } else {
-                    row.style.opacity = '0.3';
-                    row.style.fontWeight = 'normal';
-                }
-            });
+            // **Initialize collapsibles** after creating them
+            initCollapsibles();
         });
-    </script>
+
+
+    // Collapsible initialization function
+    function initCollapsibles() {
+        const collapsibleItems = document.querySelectorAll(
+            ".collapsible-item, .collapsible-item-sb"
+        );
+
+        collapsibleItems.forEach(item => {
+            if (item.dataset.initialized) return; // avoid double init
+            const header = item.querySelector(
+                ".collapsible-header, .collapsible-header-sb"
+            );
+            const content = item.querySelector(
+                ".collapsible-content, .collapsible-content-sb"
+            );
+            const icon = item.querySelector(".collapsible-icon, .collapsible-icon-sb");
+
+            // Start collapsed
+            content.style.height = "0px";
+
+            header.addEventListener("click", () => {
+                item.classList.toggle("expanded");
+                icon?.classList.toggle("expanded-icon");
+
+                if (item.classList.contains("expanded")) {
+                    content.style.height = content.scrollHeight + "px";
+                    content.classList.add("expanded-content");
+                } else {
+                    content.style.height = content.offsetHeight + "px";
+                    requestAnimationFrame(() => {
+                        content.style.height = "0px";
+                    });
+                    content.classList.remove("expanded-content");
+                }
+
+                // After transition, fix height to auto if expanded
+                content.addEventListener(
+                    "transitionend",
+                    function handler() {
+                        if (item.classList.contains("expanded")) {
+                            content.style.height = "auto";
+                        }
+                        content.removeEventListener("transitionend", handler, { once: true });
+                    },
+                    { once: true }
+                );
+            });
+
+            item.dataset.initialized = "true"; // mark as initialized
+        });
+    }
+
+
+    // Search filter
+    document.getElementById('searchInput').addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        document.querySelectorAll('#tablesContainer table tbody tr').forEach(row => {
+            const text = row.cells[0].textContent.toLowerCase();
+            if (text.includes(searchTerm) || searchTerm === '') {
+                row.style.opacity = '1';
+                row.style.fontWeight = searchTerm ? 'bold' : 'normal';
+            } else {
+                row.style.opacity = '0.3';
+                row.style.fontWeight = 'normal';
+            }
+        });
+    });
+</script>
+
 
 </body>
 
