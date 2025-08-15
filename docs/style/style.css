@@ -1,4 +1,4 @@
-/*v3.34 2025-08-15T14:02:50.471Z*/
+/*v3.35 2025-08-15T14:11:22.333Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3116,6 +3116,9 @@ thead th:last-child {
     font-family: var(--font-main);
     box-sizing: border-box;
     font-size: 0.9rem;
+}
+.xp-collapsible-content {
+    padding: 0;
 }
 
 .collapsible-content ul {
