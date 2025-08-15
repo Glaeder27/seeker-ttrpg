@@ -1,0 +1,29 @@
+{
+  "__version": "1.1",
+  "__versionDate": "2025-08-15T12:00:00Z",
+  "otherData": "...",
+
+"experience-points-normal": [
+  {
+    "category": "Combat & Warfare",
+    "banner": "/assets/images/banners/collapsible/cortes-1.webp",
+    "events": [
+      { "event": "Defeated a dangerous enemy", "CXP": 2, "SXP": null, "EXP": null },
+      { "event": "Survived overwhelming odds", "CXP": 2, "SXP": null, "EXP": null },
+      { "event": "Used terrain or tactics creatively", "CXP": 1, "SXP": null, "EXP": 1 },
+      { "event": "Spared an enemy for a moral reason", "CXP": null, "SXP": 1, "EXP": null },
+      { "event": "Defended a vulnerable NPC during combat", "CXP": 1, "SXP": 1, "EXP": null },
+      { "event": "Defeated an enemy using non-lethal tactics", "CXP": null, "SXP": 2, "EXP": null },
+      { "event": "Led a squad or group into battle successfully", "CXP": 2, "SXP": 1, "EXP": null }
+    ]
+  },
+  {
+    "category": "Exploration & Discovery",
+    "banner": "/assets/images/banners/collapsible/cortes-2.webp",
+    "events": [
+      { "event": "Discovered a hidden location", "CXP": null, "SXP": null, "EXP": 2 },
+      { "event": "Survived a hazardous journey", "CXP": 1, "SXP": null, "EXP": 1 }
+    ]
+  }
+]
+}
