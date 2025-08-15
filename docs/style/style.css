@@ -1,4 +1,4 @@
-/*v3.33 2025-08-15T08:16:59.692Z*/
+/*v3.34 2025-08-15T14:02:50.471Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -3057,7 +3057,8 @@ thead th:last-child {
 =             COLLAPSIBLE ITEMS               =
 =============================================*/
 
-.collapsible-item {
+.collapsible-item,
+.xp-collapsible-item {
     background-color: #484848;
     border-radius: 10px;
     margin-top: 25px;
@@ -3067,7 +3068,8 @@ thead th:last-child {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.collapsible-header {
+.collapsible-header,
+.xp-collapsible-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -3080,11 +3082,13 @@ thead th:last-child {
     transition: background-color 0.2s ease-in-out;
 }
 
-.collapsible-header:hover {
+.collapsible-header:hover,
+.xp-collapsible-header:hover {
     background-color: #555555;
 }
 
-.collapsible-icon {
+.collapsible-icon,
+.xp-collapsible-icon {
     width: 24px;
     height: 24px;
     transition: transform 0.3s ease-in-out;
@@ -3096,12 +3100,14 @@ thead th:last-child {
 }
 
 .collapsible-item.expanded .collapsible-icon,
-.collapsible-item-sb.expanded .collapsible-icon {
+.collapsible-item-sb.expanded .collapsible-icon,
+.xp-collapsible-item.expanded .xp-collapsible-icon {
     transform: rotate(90deg);
 }
 
 
-.collapsible-content {
+.collapsible-content,
+.xp-collapsible-content {
     height: 0;
     overflow: hidden;
     transition: height 0.5s ease-in-out;
@@ -3179,7 +3185,8 @@ h3.sidebar-section {
     content: none;
 }
 
-.collapsible-icon::before {
+.collapsible-icon::before,
+.xp-collapsible-icon::before {
   content: "\f0da";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
