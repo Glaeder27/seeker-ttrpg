@@ -69,11 +69,6 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
         }
 
-        .xp-card:hover {
-            background-color: rgba(59, 59, 59, 0.85);
-            transform: scale(1.05);
-        }
-
         .xp-icon {
             width: 40px;
             height: 40px;
@@ -252,9 +247,9 @@
             text-align: center;
         }
 
+        .xp-track-grid,
         .spend-xp-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: .5em;
             margin-top: 1em;
             padding-bottom: 1em;
@@ -262,7 +257,15 @@
             text-align: center;
         }
 
-        .spend-xp-card {
+        .xp-track-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .spend-xp-grid {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .xp-card {
             min-width: 220px;
             min-height: 380px;
             background: linear-gradient(to right,
@@ -275,10 +278,10 @@
             padding: 2px;
         }
 
-        .spend-xp-card-inner {
+        .xp-card-inner {
             padding: 1rem 1.2rem;
             border-radius: .5rem;
-            cursor: var(--cursor-pointer);
+            cursor: var(--cursor-default);
             transition: transform 0.2s ease-in-out;
             background-size: cover;
             background-position: center;
@@ -296,6 +299,24 @@
         .filters {
             display: flex;
             flex-direction: column;
+        }
+
+        .card-title.xp-track {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            ;
+        }
+
+        .card-title.xp-track.acronym {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: var(--ancient-gold);
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        p.xp-track-description {
+            margin-bottom: 0;
         }
 
         /* Animations */
@@ -357,29 +378,52 @@
                     you
                     do.</strong>:</p>
 
-                <div class="xp-grid">
-                    <!-- Combat -->
+                <div class="xp-track-grid">
                     <div class="xp-card">
-                        <img src="/assets/icons/webp/generic/icon-estoque.webp" style="transform: scaleX(-1);"
-                            alt="CXP icon" class="xp-icon">
-                        <h3 class="xp-title">Combat XP&nbsp;(<strong class="highlight">CXP</strong>)</h3>
-                        <p>Earned by battles, tactics, and surviving danger.</p>
+                        <div class="xp-card-inner">
+                            <div class="card-top">
+                                <div class="aptitude-symbol-wrapper"> <img
+                                        src="/assets/icons/webp/generic/icon-estoque.webp"
+                                        style="transform: scaleX(-1);" class="xp-track-symbol">
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <h3 class="card-title xp-track">Combat Experience</h3>
+                                <h4 class="card-title xp-track acronym">CXP</h4>
+                                <p class="xp-track-description">Earned by battles, tactics, and surviving danger.</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Social -->
                     <div class="xp-card">
-                        <img src="/assets/icons/webp/generic/icon-scroll.webp" style="transform: scaleX(-1);"
-                            alt="SXP icon" class="xp-icon">
-                        <h3 class="xp-title">Social XP&nbsp;(<strong class="highlight">SXP</strong>)</h3>
-                        <p>Gained through persuasion, diplomacy, and relationships.</p>
+                        <div class="xp-card-inner">
+                            <div class="card-top">
+                                <div class="aptitude-symbol-wrapper"> <img
+                                        src="/assets/icons/webp/generic/icon-scroll.webp" style="transform: scaleX(-1);"
+                                        class="xp-track-symbol">
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <h3 class="card-title xp-track">Social Experience</h3>
+                                <h4 class="card-title xp-track acronym">SXP</h4>
+                                <p class="xp-track-description">Gained through diplomacy and relationships.</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Exploration -->
                     <div class="xp-card">
-                        <img src="/assets/icons/webp/generic/icon-spyglass.webp" style="transform: scaleX(-1);"
-                            alt="EXP icon" class="xp-icon">
-                        <h3 class="xp-title">Exploration XP&nbsp;(<strong class="highlight">EXP</strong>)</h3>
-                        <p>Awarded for discovery, lore, travel, and investigation.</p>
+                        <div class="xp-card-inner">
+                            <div class="card-top">
+                                <div class="aptitude-symbol-wrapper"> <img
+                                        src="/assets/icons/webp/generic/icon-spyglass.webp"
+                                        style="transform: scaleX(-1);" class="xp-track-symbol">
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <h3 class="card-title xp-track">Exploration Experience</h3>
+                                <h4 class="card-title xp-track acronym">EXP</h4>
+                                <p class="xp-track-description">Awarded for discovery, lore, travel, and investigation.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -484,8 +528,8 @@
 
                 <div class="spend-xp-grid">
 
-                    <div class="spend-xp-card">
-                        <div class="spend-xp-card-inner" data-title="Strength" data-category="Combat">
+                    <div class="xp-card">
+                        <div class="xp-card-inner" data-title="Strength" data-category="Combat">
                             <div class="card-top">
                                 <div class="aptitude-symbol-wrapper"> <img
                                         src="/assets/icons/webp/generic/icon-estoque.webp"
@@ -495,6 +539,69 @@
                             <div class="card-bottom">
                                 <h3 class="card-title xp-track">Combat Track</h3>
                                 <p class="xp-track-description">You may spend CXP in the following trainings:</p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="align-left">Repeatable Upgrades</th>
+                                            <th><img src="/assets/icons/webp/generic/icon-estoque.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
+                                            <th class="align-left">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-left">+1 Strength, Agility, or Vigor</td>
+                                            <td>20</td>
+                                            <td class="align-left">Increase your chosen Aptitude score by 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal;">Learn:</span> Combat Mastery</td>
+                                            <td>15</td>
+                                            <td class="align-left">Unlock a new Mastery with the <span class="tag">Combat</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal;">Learn:</span> Combat Skill</td>
+                                            <td>10</td>
+                                            <td class="align-left">Unlock a new Skill with the <span class="tag">Combat</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal;">Learn:</span> Weapon Specialization</td>
+                                            <td>10</td>
+                                            <td class="align-left">Unlock the use of a new weapon type</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal;">Augment:</span> Combat Skill</td>
+                                            <td>5</td>
+                                            <td class="align-left">Add 1 Augmentation to one of your Skills with the <span class="tag">Combat</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left">+1 Health</td>
+                                            <td>3</td>
+                                            <td class="align-left">Increase your Health score by 1</td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th class="align-left" style="border-top-left-radius: 0">One-Time Upgrades</th>
+                                            <th><img src="/assets/icons/webp/generic/icon-estoque.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
+                                            <th class="align-left" style="border-top-right-radius: 0">Notes</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal;">Unlock:</span> Heroic Mastery</td>
+                                            <td>50</td>
+                                            <td class="align-left">Unlock a Heroic Mastery slot.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal;">Unlock:</span> Weapon Slot</td>
+                                            <td>20</td>
+                                            <td class="align-left">Unlock one additional Weapon slot in your loadout</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal;">Unlock:</span> Potion Slot</td>
+                                            <td>20</td>
+                                            <td class="align-left">Unlock one additional Potion slot in your loadout</td>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -663,7 +770,7 @@
                 <div class="sidebar-block collapsible-item-sb">
                     <div class="collapsible-header-sb" style="padding: 0">
                         <h3 class="sidebar-section">TL;DR — Title</h3>
-                        <span class="collapsible-icon">▸</span>
+                        <span class="collapsible-icon"></span>
                     </div>
 
                     <div class="collapsible-content-sb" style="padding: 0 5px">
@@ -817,9 +924,9 @@
                             <thead>
                                 <tr>
                                     <th>Event / Action</th>
-                                    <th>CXP</th>
-                                    <th>SXP</th>
-                                    <th>EXP</th>
+                                    <th><img src="/assets/icons/webp/generic/icon-estoque.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
+                                    <th><img src="/assets/icons/webp/generic/icon-scroll.webp" width="30px" height="30px" alt="SXP" title="SXP" style="transform: scaleX(-1);"></th>
+                                    <th><img src="/assets/icons/webp/generic/icon-spyglass.webp" width="30px" height="30px" alt="EXP" title="EXP" style="transform: scaleX(-1);"></th>
                                 </tr>
                             </thead>
                             <tbody>
