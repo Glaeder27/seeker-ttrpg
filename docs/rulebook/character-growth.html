@@ -1,4 +1,4 @@
-<!-- v1.31 2025-08-15T17:19:20.155Z -->
+<!-- v1.32 2025-08-16T07:38:06.254Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -854,18 +854,32 @@
 
             document.querySelectorAll('#tablesContainer .xp-collapsible-item').forEach(item => {
                 const tableRows = item.querySelectorAll('table tbody tr');
+                const title = item.querySelector('.xp-collapsible-title');
+                const header = item.querySelector('.xp-collapsible-header');
+
+                // Se la barra di ricerca è vuota, reset completo
+                if (searchTerm === '') {
+                    tableRows.forEach(row => {
+                        row.style.opacity = '1';
+                        row.style.fontWeight = 'normal';
+                    });
+                    title.classList.remove('xp-highlight');
+                    header.style.opacity = '1';
+                    return; // esci da questo item
+                }
+
                 let anyVisible = false;
 
                 tableRows.forEach(row => {
                     const text = row.cells[0].textContent.toLowerCase();
                     const synonyms = JSON.parse(row.dataset.synonyms || '[]').map(s => s.toLowerCase());
 
-                    const textMatch = searchTerm === '' || text.includes(searchTerm) || synonyms.some(s => s.includes(searchTerm));
+                    const textMatch = text.includes(searchTerm) || synonyms.some(s => s.includes(searchTerm));
                     const columnMatch = checkedColumns.length === 0 || checkedColumns.some(col => row.querySelector(`td:nth-child(${colIndex(col)})`).textContent.trim() !== '—');
 
                     if (textMatch && columnMatch) {
                         row.style.opacity = '1';
-                        row.style.fontWeight = searchTerm ? 'bold' : 'normal';
+                        row.style.fontWeight = 'bold';
                         anyVisible = true;
                     } else {
                         row.style.opacity = '0.15';
@@ -874,9 +888,6 @@
                 });
 
                 // Opacità header
-                const title = item.querySelector('.xp-collapsible-title');
-                const header = item.querySelector('.xp-collapsible-header')
-
                 if (anyVisible) {
                     title.classList.add('xp-highlight');
                     header.style.opacity = '1';
