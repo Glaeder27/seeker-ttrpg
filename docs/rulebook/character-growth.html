@@ -1,4 +1,4 @@
-<!-- v1.35 2025-08-16T07:57:35.348Z -->
+<!-- v1.36 2025-08-16T09:49:37.222Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -304,7 +304,10 @@
         .card-title.xp-track {
             font-size: 1rem;
             margin-bottom: 1rem;
-            ;
+        }
+        .card-title.advancement-title {
+            text-transform: uppercase;
+            margin-top: 1rem;
         }
 
         .card-title.xp-track.acronym {
@@ -317,6 +320,11 @@
 
         p.xp-track-description {
             margin-bottom: 0;
+        }
+
+        .aptitude-ico {
+            width: 2em;
+            vertical-align: middle;
         }
 
         /* Animations */
@@ -348,7 +356,7 @@
             <header class="title">
                 <div class="title-container page-title">
                     <span class="title-icon">l</span>
-                    <h1>Character Growth</h1>
+                    <h1>Chara<span class="ligature-none">cter</span> Growth</h1>
                     <span class="title-icon rot90">l</span>
                 </div>
             </header>
@@ -529,7 +537,7 @@
                 <div class="spend-xp-grid">
 
                     <div class="xp-card">
-                        <div class="xp-card-inner" data-title="Strength" data-category="Combat">
+                        <div class="xp-card-inner" data-title="Combat Track" data-category="Experience">
                             <div class="card-top">
                                 <div class="aptitude-symbol-wrapper"> <img
                                         src="/assets/icons/webp/generic/icon-estoque.webp"
@@ -537,46 +545,46 @@
                                 </div>
                             </div>
                             <div class="card-bottom">
-                                <h3 class="card-title xp-track">Combat Track</h3>
+                                <h3 class="card-title advancement-title">Combat Track</h3>
                                 <p class="xp-track-description">You may spend CXP in the following trainings:</p>
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="align-left">Repeatable Upgrades</th>
+                                            <th class="align-left" style="width:35%">Repeatable Upgrades</th>
                                             <th><img src="/assets/icons/webp/generic/icon-estoque.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
                                             <th class="align-left">Notes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="align-left">+1 Strength, Agility, or Vigor</td>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Increase:</span> <img src="/assets/icons/svg/aptitudes/strength-ico.svg" class="aptitude-ico" alt="Strength" title="Strength">, <img src="/assets/icons/svg/aptitudes/agility-ico.svg" class="aptitude-ico" alt="Agility" title="Agility">, or <img src="/assets/icons/svg/aptitudes/vigor-ico.svg" class="aptitude-ico" alt="Vigor" title="Vigor"></td>
                                             <td>20</td>
-                                            <td class="align-left">Increase your chosen Aptitude score by 1</td>
+                                            <td class="align-left">Increase your chosen Aptitude score by 1 <em>(up to the character maximum of 5)</em></td>
                                         </tr>
                                         <tr>
-                                            <td class="align-left"><span style="font-weight: normal;">Learn:</span> Combat Mastery</td>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Increase:</span> Health</td>
                                             <td>15</td>
-                                            <td class="align-left">Unlock a new Mastery with the <span class="tag">Combat</span> tag</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-left"><span style="font-weight: normal;">Learn:</span> Combat Skill</td>
-                                            <td>10</td>
-                                            <td class="align-left">Unlock a new Skill with the <span class="tag">Combat</span> tag</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-left"><span style="font-weight: normal;">Learn:</span> Weapon Specialization</td>
-                                            <td>10</td>
-                                            <td class="align-left">Unlock the use of a new weapon type</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-left"><span style="font-weight: normal;">Augment:</span> Combat Skill</td>
-                                            <td>5</td>
-                                            <td class="align-left">Add 1 Augmentation to one of your Skills with the <span class="tag">Combat</span> tag</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-left">+1 Health</td>
-                                            <td>3</td>
                                             <td class="align-left">Increase your Health score by 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Learn:</span> Combat Mastery</td>
+                                            <td>15</td>
+                                            <td class="align-left">Unlock a new <strong>Mastery</strong> with the <span class="tag">Combat</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Learn:</span> Combat Skill</td>
+                                            <td>10</td>
+                                            <td class="align-left">Unlock a new <strong>Skill</strong> with the <span class="tag">Combat</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Learn:</span> Weapon Specialization</td>
+                                            <td>10</td>
+                                            <td class="align-left">Unlock the use of a new <strong>Weapon Class</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Augment:</span> Combat Skill</td>
+                                            <td>5</td>
+                                            <td class="align-left">Add 1 <strong>Augmentation</strong> to one of your Skills with the <span class="tag">Combat</span> tag</td>
                                         </tr>
                                     </tbody>
                                     <thead>
@@ -586,17 +594,153 @@
                                             <th class="align-left" style="border-top-right-radius: 0">Notes</th>
                                         </tr>
                                         <tr>
-                                            <td class="align-left"><span style="font-weight: normal;">Unlock:</span> Heroic Mastery</td>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Heroic Mastery</td>
                                             <td>50</td>
                                             <td class="align-left">Unlock a Heroic Mastery slot.</td>
                                         </tr>
                                         <tr>
-                                            <td class="align-left"><span style="font-weight: normal;">Unlock:</span> Weapon Slot</td>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Weapon Slot</td>
                                             <td>20</td>
                                             <td class="align-left">Unlock one additional Weapon slot in your loadout</td>
                                         </tr>
                                         <tr>
-                                            <td class="align-left"><span style="font-weight: normal;">Unlock:</span> Potion Slot</td>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Potion Slot</td>
+                                            <td>20</td>
+                                            <td class="align-left">Unlock one additional Potion slot in your loadout</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="xp-card" style="margin-top: 20px;">
+                        <div class="xp-card-inner" data-title="Social Track" data-category="Experience">
+                            <div class="card-top">
+                                <div class="aptitude-symbol-wrapper"> <img
+                                        src="/assets/icons/webp/generic/icon-scroll.webp"
+                                        style="transform: scaleX(-1);" class="xp-track-symbol">
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <h3 class="card-title advancement-title">Social Track</h3>
+                                <p class="xp-track-description">You may spend SXP in the following trainings:</p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="align-left" style="width:35%">Repeatable Upgrades</th>
+                                            <th><img src="/assets/icons/webp/generic/icon-scroll.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
+                                            <th class="align-left">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Increase:</span> <img src="/assets/icons/svg/aptitudes/strength-ico.svg" class="aptitude-ico" alt="Strength" title="Strength">, <img src="/assets/icons/svg/aptitudes/agility-ico.svg" class="aptitude-ico" alt="Agility" title="Agility">, or <img src="/assets/icons/svg/aptitudes/vigor-ico.svg" class="aptitude-ico" alt="Vigor" title="Vigor"></td>
+                                            <td>20</td>
+                                            <td class="align-left">Increase your chosen Aptitude score by 1 <em>(up to the character maximum of 5)</em></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Learn:</span> Social Mastery</td>
+                                            <td>15</td>
+                                            <td class="align-left">Unlock a new <strong>Mastery</strong> with the <span class="tag">Social</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Learn:</span> Social Skill</td>
+                                            <td>10</td>
+                                            <td class="align-left">Unlock a new <strong>Skill</strong> with the <span class="tag">Social</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Augment:</span> Social Skill</td>
+                                            <td>5</td>
+                                            <td class="align-left">Add 1 <strong>Augmentation</strong> to one of your Skills with the <span class="tag">Social</span> tag</td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th class="align-left" style="border-top-left-radius: 0">One-Time Upgrades</th>
+                                            <th><img src="/assets/icons/webp/generic/icon-scroll.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
+                                            <th class="align-left" style="border-top-right-radius: 0">Notes</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Heroic Mastery</td>
+                                            <td>50</td>
+                                            <td class="align-left">Unlock a Heroic Mastery slot.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Weapon Slot</td>
+                                            <td>20</td>
+                                            <td class="align-left">Unlock one additional Weapon slot in your loadout</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Potion Slot</td>
+                                            <td>20</td>
+                                            <td class="align-left">Unlock one additional Potion slot in your loadout</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="xp-card" style="margin-top: 20px;">
+                        <div class="xp-card-inner" data-title="Exploration Track" data-category="Experience">
+                            <div class="card-top">
+                                <div class="aptitude-symbol-wrapper"> <img
+                                        src="/assets/icons/webp/generic/icon-spyglass.webp"
+                                        style="transform: scaleX(-1);" class="xp-track-symbol">
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <h3 class="card-title advancement-title">Exploration Track</h3>
+                                <p class="xp-track-description">You may spend EXP in the following trainings:</p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="align-left" style="width:35%">Repeatable Upgrades</th>
+                                            <th><img src="/assets/icons/webp/generic/icon-spyglass.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
+                                            <th class="align-left">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Increase:</span> <img src="/assets/icons/svg/aptitudes/strength-ico.svg" class="aptitude-ico" alt="Strength" title="Strength">, <img src="/assets/icons/svg/aptitudes/agility-ico.svg" class="aptitude-ico" alt="Agility" title="Agility">, or <img src="/assets/icons/svg/aptitudes/vigor-ico.svg" class="aptitude-ico" alt="Vigor" title="Vigor"></td>
+                                            <td>20</td>
+                                            <td class="align-left">Increase your chosen Aptitude score by 1 <em>(up to the character maximum of 5)</em></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Learn:</span> Exploration Mastery</td>
+                                            <td>15</td>
+                                            <td class="align-left">Unlock a new <strong>Mastery</strong> with the <span class="tag">Exploration</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Learn:</span> Exploration Skill</td>
+                                            <td>10</td>
+                                            <td class="align-left">Unlock a new <strong>Skill</strong> with the <span class="tag">Exploration</span> tag</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Augment:</span> Exploration Skill</td>
+                                            <td>5</td>
+                                            <td class="align-left">Add 1 <strong>Augmentation</strong> to one of your Skills with the <span class="tag">Exploration</span> tag</td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th class="align-left" style="border-top-left-radius: 0">One-Time Upgrades</th>
+                                            <th><img src="/assets/icons/webp/generic/icon-spyglass.webp" width="30px" height="30px" alt="CXP" title="CXP" style="transform: scaleX(-1);"></th>
+                                            <th class="align-left" style="border-top-right-radius: 0">Notes</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Heroic Mastery</td>
+                                            <td>50</td>
+                                            <td class="align-left">Unlock a Heroic Mastery slot.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Weapon Slot</td>
+                                            <td>20</td>
+                                            <td class="align-left">Unlock one additional Weapon slot in your loadout</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-left"><span style="font-weight: normal; color: var(--off-white)">Unlock:</span> Potion Slot</td>
                                             <td>20</td>
                                             <td class="align-left">Unlock one additional Potion slot in your loadout</td>
                                         </tr>

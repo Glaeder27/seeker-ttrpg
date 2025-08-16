@@ -104,6 +104,19 @@
       "notes": ""
     },
     {
+      "name": "Combat",
+      "icon": "/assets/icons/svg/tags/tag-strike.svg",
+      "category": "Combat",
+      "definition": "A direct offensive action intended to harm a target.",
+      "visibility": true,
+      "interactions": [
+        "Can trigger Maneuvers",
+        "Affected by talents that boost damage"
+      ],
+      "examples": ["Sword Slash", "Pistol Shot"],
+      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+    },
+    {
       "name": "Control",
       "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
