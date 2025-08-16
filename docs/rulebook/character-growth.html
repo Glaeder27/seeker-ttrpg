@@ -1,4 +1,4 @@
-<!-- v1.32 2025-08-16T07:38:06.254Z -->
+<!-- v1.33 2025-08-16T07:43:08.672Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -858,14 +858,14 @@
                 const header = item.querySelector('.xp-collapsible-header');
 
                 // Se la barra di ricerca è vuota, reset completo
-                if (searchTerm === '') {
+                if (searchTerm < 3) {
                     tableRows.forEach(row => {
                         row.style.opacity = '1';
                         row.style.fontWeight = 'normal';
                     });
                     title.classList.remove('xp-highlight');
                     header.style.opacity = '1';
-                    return; // esci da questo item
+                    return;
                 }
 
                 let anyVisible = false;
