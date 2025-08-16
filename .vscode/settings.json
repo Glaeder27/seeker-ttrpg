@@ -7,6 +7,8 @@
       }
     ]
   },
+  "liveServer.settings.root": "/docs",
+  "livePreview.root": "docs",
   "github-actions.workflows.pinned.workflows": [
     "pages-build-deployment",
     "dynamic/pages/pages-build-deployment"
