@@ -64,8 +64,8 @@
         }
 
         .state-tag.state-progress {
-            background-color: rgba(var(--ancient-gold-rgb, 198, 166, 100), 0.15);
-            color: var(--ancient-gold, #c6a664);
+            background-color: rgba(var(--light-brown-rgb, 145, 99, 57), 0.15);
+            color: var(--light-brown, #ac8c4c);
         }
 
         .state-tag.state-preview {
@@ -395,23 +395,42 @@
                     </div>
 
                     <!-- Health & Defense -->
-                    <a href="" target="_top" class="flip-card-link">
-                        <div class="flip-card unavailable" data-title="Health & Defense" data-category="System"
-                            data-status="progress">
-                            <div class="card-top">
-                                <div class="rules-icon-wrapper">
-                                    <img src="assets/icons/webp/generic/icon-health.webp" class="rules-icon">
+                    <div class="flip-card-link flip-container chapter-card">
+                        <div class="flip-inner">
+                    
+                            <!-- FRONT -->
+                            <div class="flip-front">
+                                <div class="flip-card" data-title="Health & Defense" data-category="Rule" data-status="released" style="background-blend-mode: normal; background: linear-gradient(to bottom, rgba(var(--background-dark-1-rgb), .85), rgba(var(--background-dark-2-rgb), .98)), url('/assets/images/banners/card/melancholia-6.webp')">
+                                    <div class="card-top">
+                                        <div class="rules-icon-wrapper">
+                                            <img src="assets/icons/webp/generic/icon-health.webp" class="rules-icon">
+                                        </div>
+                    
+                                    </div>
+                                    <div class="card-bottom">
+                                        <h3 class="card-title">Health & Defense</h3>
+                                        <div class="rules-meta">
+                                            <div class="rules-category">Character Features</div>
+                                            <span class="state-tag state-preview">Preview</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-bottom">
-                                <h3 class="card-title">Health & Defense</h3>
-                                <div class="rules-meta">
-                                    <div class="rules-category">Character Features</div>
-                                    <span class="state-tag state-progress">In Progress</span>
+                    
+                            <!-- BACK -->
+                            <div class="flip-back">
+                                <div class="flip-card" data-title="Health & Defense" data-category="Rule" data-status="released">
+                                    <div class="card-top">
+                                        <h4>Health & Defense</h4>
+                                        <p>How health and defense determine a character’s resilience in combat, including ways to block, dodge, and absorb damage.</p>
+                                    </div>
+                                    <div class="card-bottom">
+                                        <a href="/rulebook/health-and-defense" class="go-to-page-btn">Read the Chapter</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- Skills & Masteries -->
                     <a href="" target="_top" class="flip-card-link">
@@ -741,9 +760,9 @@
                         </div>
                     </a>
 
-                    <!-- Inventory -->
+                    <!-- Arsenal -->
                     <a href="" target="_top" class="flip-card-link">
-                        <div class="flip-card unavailable" data-title="Inventory" data-category="Supplement"
+                        <div class="flip-card unavailable" data-title="Arsenal" data-category="Supplement"
                             data-status="planned">
                             <div class="card-top">
                                 <div class="rules-icon-wrapper">
@@ -753,7 +772,7 @@
 
                             </div>
                             <div class="card-bottom">
-                                <h3 class="card-title">Inventory</h3>
+                                <h3 class="card-title">Arsenal</h3>
                                 <div class="rules-meta">
                                     <div class="rules-category">Supplement</div>
                                     <span class="state-tag state-planned">Planned</span>
@@ -775,6 +794,28 @@
                             </div>
                             <div class="card-bottom">
                                 <h3 class="card-title">Glossary</h3>
+                                <div class="rules-meta">
+                                    <div class="rules-category">Supplement</div>
+                                    <span class="state-tag state-planned">Planned</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+
+                    <!-- Skills -->
+                    <a href="" target="_top" class="flip-card-link">
+                        <div class="flip-card unavailable" data-title="Skills" data-category="Supplement"
+                            data-status="planned">
+                            <div class="card-top">
+                                <div class="rules-icon-wrapper">
+                                    <img src="assets/icons/webp/generic/icon-swinging-axe.webp" class="rules-icon">
+                                </div>
+
+
+                            </div>
+                            <div class="card-bottom">
+                                <h3 class="card-title">Skills</h3>
                                 <div class="rules-meta">
                                     <div class="rules-category">Supplement</div>
                                     <span class="state-tag state-planned">Planned</span>
