@@ -15,6 +15,11 @@
       "color": "#8B3A3A"
     },
     {
+      "name": "Gameplay",
+      "definition": "Gameplay feature",
+      "color": "#D4B55A"
+    },
+    {
       "name": "Defensive",
       "definition": "Insert category description",
       "color": "#4A5E6A"
@@ -105,9 +110,9 @@
     },
     {
       "name": "Combat",
-      "icon": "/assets/icons/svg/tags/tag-strike.svg",
-      "category": "Combat",
-      "definition": "A direct offensive action intended to harm a target.",
+      "icon": "/assets/icons/svg/tags/tag-combat.svg",
+      "category": "Gameplay",
+      "definition": "Direct engagement in battle — striking, defending, clashing with steel or spell, and enduring the violence of conflict.",
       "visibility": true,
       "interactions": [
         "Can trigger Maneuvers",
@@ -161,6 +166,16 @@
       "interactions": ["Affected by Willpower", "Often heals or repels Undead"],
       "examples": ["Blessing", "Holy Smite"],
       "notes": ""
+    },
+    {
+      "name": "Exploration",
+      "icon": "/assets/icons/svg/tags/tag-exploration.svg",
+      "category": "Gameplay",
+      "definition": "Discovery through the unknown — navigating terrain, perceiving hidden details, surviving hazards, and unveiling secrets of the land.",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": "Core mechanical tag. Often used to determine legality of abilities."
     },
     {
       "name": "Fire",
@@ -298,6 +313,16 @@
       ],
       "examples": ["Berserker Charge", "Explosive Shot"],
       "notes": ""
+    },
+    {
+      "name": "Social",
+      "icon": "/assets/icons/svg/tags/tag-social.svg",
+      "category": "Gameplay",
+      "definition": "The art of words and presence — persuading, deceiving, intimidating, or inspiring through human interaction.",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": "Core mechanical tag. Often used to determine legality of abilities."
     },
     {
       "name": "Strike",
