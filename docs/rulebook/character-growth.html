@@ -191,6 +191,11 @@
             padding: 0;
         }
 
+        .xp-collapsible-item td {
+            padding: 0.3rem 1rem;
+            line-height: 1.5;
+        }
+
         /* —— 6. ADVANCEMENT CARDS —————— */
         .adv-grid {
             display: grid;
@@ -271,6 +276,11 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         }
 
+        .spend-xp-table td {
+            padding: 0.2rem 1rem;
+            line-height: 1.5;
+        }
+
         /* XP card with golden texture */
         .xp-card {
             min-width: 220px;
@@ -326,14 +336,14 @@
         }
 
         .aptitude-ico {
-            width: 2em;
+            width: 1.5em;
             vertical-align: middle;
         }
 
         /* —— 9. FILTERS & INPUT —————— */
         .filter-wrapper {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             flex-direction: row;
             gap: 1rem;
             margin-bottom: 1rem;
@@ -343,6 +353,13 @@
         .filters {
             display: flex;
             flex-direction: column;
+        }
+
+        .filters-left {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            align-items: center;
         }
 
         #searchInput {
@@ -379,6 +396,23 @@
 
         .icon-checkbox.exp .icon {
             background: url('/assets/icons/webp/generic/icon-spyglass.webp') center/contain no-repeat;
+        }
+
+        #resetFiltersBtn {
+            background-color: var(--background-dark-2, #484848);
+            color: var(--ancient-gold, #D4B55A);
+            border: 1px solid var(--ancient-gold, #D4B55A);
+            border-radius: 0.5rem;
+            padding: 0.3rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        #resetFiltersBtn:hover {
+            background-color: var(--ancient-gold, #D4B55A);
+            color: var(--background-dark-2, #484848);
+            border-color: var(--ancient-gold, #D4B55A);
         }
 
         /* stato checked */
@@ -543,24 +577,29 @@
                     <p>Use the sample breakdown tables below as a guideline to help calibrate your XP distribution
                         consistently
                         and fairly.</p>
+                    <!-- Search Bar -->
+                    <div class="filter-wrapper"> <input type="text" id="searchInput" placeholder="Search events..."
+                            style="margin-bottom: 0; width: 100%; padding: 8px;"> </div>
+
+                    <!-- Filter Boxes -->
                     <div class="filter-wrapper">
-                        <input type="text" id="searchInput" placeholder="Search events..."
-                            style="margin-bottom: 0; width: 100%; padding: 8px;">
-                    </div>
-                    <div class="filter-wrapper">
-                        <p>Filters:</p>
-                        <label class="icon-checkbox cxp">
-                            <input type="checkbox" value="CXP" checked>
-                            <span class="icon"></span>
-                        </label>
-                        <label class="icon-checkbox sxp">
-                            <input type="checkbox" value="SXP" checked>
-                            <span class="icon"></span>
-                        </label>
-                        <label class="icon-checkbox exp">
-                            <input type="checkbox" value="EXP" checked>
-                            <span class="icon"></span>
-                        </label>
+                        <div class="filters-left">
+                            <p>Filters:</p>
+                            <label class="icon-checkbox cxp">
+                                <input type="checkbox" value="CXP" checked>
+                                <span class="icon"></span>
+                            </label>
+                            <label class="icon-checkbox sxp">
+                                <input type="checkbox" value="SXP" checked>
+                                <span class="icon"></span>
+                            </label>
+                            <label class="icon-checkbox exp">
+                                <input type="checkbox" value="EXP" checked>
+                                <span class="icon"></span>
+                            </label>
+                        </div>
+
+                        <button id="resetFiltersBtn" type="button">Reset Filters</button>
                     </div>
                 </div>
 
@@ -618,7 +657,7 @@
                             <div class="card-bottom">
                                 <h3 class="card-title advancement-title">Combat Track</h3>
                                 <p class="xp-track-description">You may spend CXP in the following trainings:</p>
-                                <table>
+                                <table class="spend-xp-table">
                                     <thead>
                                         <tr>
                                             <th class="align-left" style="width:35%">Repeatable Upgrades</th>
@@ -731,7 +770,7 @@
                             <div class="card-bottom">
                                 <h3 class="card-title advancement-title">Social Track</h3>
                                 <p class="xp-track-description">You may spend SXP in the following trainings:</p>
-                                <table>
+                                <table class="spend-xp-table">
                                     <thead>
                                         <tr>
                                             <th class="align-left" style="width:35%">Repeatable Upgrades</th>
@@ -830,7 +869,7 @@
                             <div class="card-bottom">
                                 <h3 class="card-title advancement-title">Exploration Track</h3>
                                 <p class="xp-track-description">You may spend EXP in the following trainings:</p>
-                                <table>
+                                <table class="spend-xp-table">
                                     <thead>
                                         <tr>
                                             <th class="align-left" style="width:35%">Repeatable Upgrades</th>
@@ -1339,6 +1378,14 @@
 
         document.getElementById('searchInput').addEventListener('input', applyFilters);
         document.querySelectorAll('#filters input').forEach(cb => cb.addEventListener('change', applyFilters));
+
+        document.getElementById('resetFiltersBtn').addEventListener('click', () => {
+            document.querySelectorAll('#filters input[type="checkbox"]').forEach(cb => cb.checked = true);
+
+            document.getElementById('searchInput').value = '';
+
+            applyFilters();
+        });
 
     </script>
 
