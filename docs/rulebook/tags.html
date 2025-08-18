@@ -1,0 +1,563 @@
+<!-- v1.0 2025-08-16T09:49:37.222Z -->
+
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Tag System</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script src="/scripts/config.js"></script>
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        #tag-glossary {
+            padding: 1rem;
+            margin-top: -2rem;
+        }
+
+        .tag-category {
+            margin-bottom: 2rem;
+        }
+
+        .tag-category h2 {
+            font-size: 1.8rem;
+            padding-bottom: 0.25rem;
+            background-color: var(--background-grey-1);
+            padding: 10px 10px 8px 12px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-variant: small-caps;
+            font-family: var(--default-font);
+            color: var(--ancient-gold);
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .tag-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+
+        .tag-table th,
+        .tag-table td {
+            padding: 0.5rem;
+            vertical-align: top;
+        }
+    </style>
+
+</head>
+
+<body id="health-and-defense" data-menu-src="/data/menu-rulebook.json">
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
+
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+
+    <main class="dual-column" type="rulebook">
+        <div class="left-column">
+            <header class="title">
+                <div class="title-container page-title">
+                    <span class="title-icon">F</span>
+                    <h1 class="expanded">Tags</h1>
+                    <span class="title-icon rot90">F</span>
+                </div>
+            </header>
+            <!-- ─────────────── MAIN CONTENT ─────────────── -->
+            <!-- 1 • Core Concept -->
+            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
+                <header class="section var-1">
+                    <div class="section-number">
+                        <p>Section I</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon">i</span>
+                        <h2>Core Concept</h2>
+                        <span class="title-icon rot0">i</span>
+                    </div>
+                    <p class="subtitle">Placeholder
+                    </p>
+                </header>
+                <p>Tags are mechanical keywords that define how elements in Seeker interact with each other. Whenever
+                    you see a tag—such as <span class="tag">Attack</span>, <span class="tag">Fire</span>, or <span
+                        class="tag">Movement</span>—you can think of it as a signal that the associated action, effect,
+                    or item belongs to a specific mechanical category.</p>
+
+                <p>Tags do not describe flavor or story; they describe how something works within the rules. This allows
+                    the system to remain modular, consistent, and easy to expand without rewriting interactions for
+                    every individual case.</p>
+
+                <p>If a Mastery boosts all <span class="tag">Fire</span>, it applies to anything tagged with <span
+                        class="tag">Fire</span>, regardless of whether it’s a spell, a trap, or a potion.
+                    If a Maneuver requires an <span class="tag">Attack</span> action, you can only use it with abilities
+                    or items that have the <span class="tag">Attack</span> tag.</p>
+
+                <p>Tags allow for powerful synergy, player creativity, and future-proof design.</p>
+            </section>
+
+            <!-- 2 • Tag Mechanics -->
+            <section class="section-wrapper" id="section2" sidenav="2 • Tag Mechanics">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon">Q</span>
+                        <h2>Tag Mechanics</h2>
+                        <span class="title-icon rot90">Q</span>
+                    </div>
+                    <p class="subtitle">Placeholder
+                    </p>
+                </header>
+                <p>Every tag in Seeker carries a mechanical meaning that tells you how it behaves in the game
+                    system. Think of tags as function labels: when a rule or effect refers to a tag, it's referring
+                    to everything that carries that function.</p>
+                <h4>Where Tags Are Found</h4>
+                <p>Tags aren’t limited to Skills. They are a universal descriptor found across the entire game
+                    engine.</p>
+                <p>You can find tags on:</p>
+                <ul>
+                    <li><strong class="highlight">Skills</strong> — Each action a character can perform has one or
+                        more tags that determine what
+                        bonuses or synergies apply.</li>
+
+                    <li><strong class="highlight">Items</strong> — Some weapons, potions, or artifacts carry tags
+                        that affect how they interact with
+                        abilities or conditions (e.g., a <u>Fire</u> grenade).</li>
+
+                    <li><strong class="highlight">Masteries</strong> — Many Masteries grant bonuses to specific tags
+                        (“+1 to <u>Strike</u> damage”) or
+                        allow you to use a tag in new ways.</li>
+
+                    <li><strong class="highlight">Augmentations</strong> — These are add-ons to Skills that require
+                        specific tags to function (“Can
+                        only augment <u>Ranged</u> abilities”).</li>
+
+                    <li><strong class="highlight">Afflictions</strong> — Some status effects are tagged, so they can
+                        be targeted or resisted as a group
+                        (e.g., <u>Poisoned</u> might be a <u>Debuff</u>).</li>
+
+                    <li><strong class="highlight">Effects</strong> — Persistent effects like auras, wards, and traps
+                        can carry tags that determine who
+                        they affect or how they trigger.</li>
+                </ul>
+                <p>This universal system keeps interactions consistent and predictable.</p>
+                <h3>How Tags are Used</h3>
+                <p>Tags make the Seeker game engine both simple to learn and deep to master. Here's why they matter:
+
+                <h4>1 | To Clarify Rules</h4>
+                <p>Instead of listing every exception, a tag communicates what something is and how it works. If an
+                    ability has the <u>Movement</u> tag, you instantly know it can interact with any mechanics that
+                    care about movement—even if it’s magical, physical, or supernatural.</p>
+
+                <h4>2 | To Enable Conditional Logic</h4>
+                <p>You can design talents, items, and effects that only apply under specific circumstances—without
+                    hardcoding them to individual abilities. For example, a Talent that improves “all <u>Fire</u>
+                    effects” applies to spells, traps, and weapons alike.</p>
+
+                <h4>3 | To Power Synergy</h4>
+                <p>A player who specializes in <u>Support</u> can build a character that boosts allies with any
+                    ability tagged that way—no matter the source. This fosters creativity and flexible builds.</p>
+
+                <h4>4 | To Simplify Game Design</h4>
+                <p>Instead of rewriting how every new ability interacts with the system, you define how a tag
+                    works—and let the engine do the rest. This makes the game easier to expand and balance.</p>
+
+                <blockquote>Without tags, every mechanical interaction would need to be explained in full.
+                    With tags, you just define what a tag does—once—and let it ripple throughout the ruleset.
+                </blockquote>
+
+                <h3>Tag Based Interactions</h3>
+                <p>Tags are not just descriptors — they are interaction points that unlock a wide range of dynamic
+                    effects, conditional rules, and synergies between disparate game elements. By tagging abilities,
+                    items, effects, and conditions with consistent mechanical identifiers, the system allows
+                    designers and players to build conditional logic into the game in a simple, elegant way.
+                    This makes tags one of the most powerful tools in the game engine.</p>
+                <p>Here are some of the most common ways tags are used to shape gameplay:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="left-align" style="min-width: 120px;">Interaction</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Restriction</strong></td>
+                            <td><span style="color: var(--text-muted)">Can only be used with <span
+                                        class="tag">Strike</span> abilities.</span><br><br>Tags help constrain how
+                                and when effects can be used. This is essential for maintaining balance, guiding
+                                player expectations, and enabling meaningful specialization. If an ability only
+                                applies to <u>Ranged</u> effects, that rules out melee, support, or area-based
+                                abilities without requiring lengthy explanations.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Enhancement</strong></td>
+                            <td><span style="color: var(--text-muted)">Your <span class="tag">Support</span> effects
+                                    grant +1 Healing.</span><br><br>Tags enable modular scaling and improvements. A
+                                character that focuses on healing or buffing allies can benefit from any effect that
+                                carries the <u>Support</u> tag — regardless of its source. This allows players to
+                                customize their build around themes or tactical roles.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Triggering</strong></td>
+                            <td><span style="color: var(--text-muted)">When you use a <span class="tag">Movement</span>
+                                    action, gain +1 Guard.</span><br><br>Tags make
+                                it easy to detect and respond to events during play. If a rule or talent cares about
+                                <u>Fire</u>, <u>Attack</u>, or <u>Reaction</u> tags, the moment such an effect is
+                                triggered, the condition is satisfied. This enables both reactive mechanics (like
+                                traps or counterattacks) and combo-building strategies.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modification</strong></td>
+                            <td><span style="color: var(--text-muted)">Reduce the Risk of all <span
+                                        class="tag">Fire</span> effects by 1.</span><br><br>Tags allow selective
+                                tuning of game mechanics without needing to redefine individual abilities. Designers
+                                can reduce, amplify, or reshape entire groups of effects through their shared tag,
+                                making balancing both simpler and more coherent.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Combo Enabler</strong></td>
+                            <td><span style="color: var(--text-muted)">Follow up any <span class="tag">Attack</span>
+                                    with a <span class="tag">Movement</span> action for free.</span><br><br>Tags
+                                define combo triggers and allow players to chain abilities together in fluid and
+                                creative ways. Rather than forcing a linear combo system, the game encourages
+                                emergent play by letting players find natural synergies between tags. This supports
+                                both tactical depth and narrative flavor.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p> essence, tags act as universal rule hooks. Any mechanic can reference a tag to determine when it
+                    applies, to what it applies, or what it does. The result is a system that is not only flexible,
+                    but also highly readable and extensible — both for players and game designers.</p>
+            </section>
+
+            <!-- 3 • Tag Glossary -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Tag Glossary">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section III</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon">G</span>
+                        <h2>Tag Glossary</h2>
+                        <span class="title-icon rot90">G</span>
+                    </div>
+                    <p class="subtitle">Placeholder
+                    </p>
+                </header>
+                <p>Below is a reference list of all tags currently defined in Seeker. Each tag represents a
+                    specific mechanical identity used across abilities, items, conditions, talents, and other
+                    effects. Understanding how each tag functions will help you interpret interactions, identify
+                    synergies, and design characters or content with greater precision.</p>
+
+                <p> If an ability, item, or effect includes a tag, it means that all rules and mechanics that
+                    reference that tag apply.
+                    For example, if a rule boosts all <span class="tag">Fire</span> effects, it affects every
+                    ability, trap, or
+                    condition that carries the <span class="tag">Fire</span> tag—regardless of its source.</p>
+
+                <p> Tags are listed by category, along with a short definition and a few practical examples to
+                    illustrate how they’re used in play.</p>
+
+                <div id="tag-glossary"></div>
+                <script>
+                    async function loadTagGlossary() {
+                        try {
+                            const response = await fetch('/data/tags.json');
+                            const data = await response.json();
+
+                            const glossaryContainer = document.getElementById('tag-glossary');
+                            glossaryContainer.innerHTML = ''; // pulizia
+
+                            // Raggruppa i tag per categoria
+                            const grouped = {};
+                            data.tags.forEach(tag => {
+                                if (!tag.visibility) return;
+                                if (!grouped[tag.category]) grouped[tag.category] = [];
+                                grouped[tag.category].push(tag);
+                            });
+
+                            // Crea sezioni per ciascuna categoria
+                            for (const [category, tags] of Object.entries(grouped)) {
+                                const section = document.createElement('section');
+                                section.classList.add('tag-category');
+
+                                const header = document.createElement('h2');
+                                header.classList.add('table'); // se vuoi una classe specifica
+                                header.textContent = category;
+                                section.appendChild(header);
+
+                                // Trova la definizione della categoria (se esiste)
+                                const categoryObj = data.categories.find(c => c.name === category);
+                                if (categoryObj && categoryObj.definition) {
+                                    const categoryDescription = document.createElement('p');
+                                    categoryDescription.classList.add('category-definition'); // opzionale
+                                    categoryDescription.textContent = categoryObj.definition;
+                                    section.appendChild(categoryDescription);
+                                }
+
+                                const table = document.createElement('table');
+                                table.classList.add('tag-table');
+
+                                const thead = document.createElement('thead');
+                                thead.innerHTML = `
+                    <tr>
+                      <th style="width: 20%; text-align: left;">Tag</th>
+                      <th style="width: 80%;">Definition</th>
+                    </tr>`;
+                                table.appendChild(thead);
+
+                                const tbody = document.createElement('tbody');
+
+                                tags.forEach(tag => {
+                                    const row = document.createElement('tr');
+
+                                    const nameCell = document.createElement('td');
+                                    nameCell.innerHTML = `<u style="font-weight: normal;">${tag.name}</u>`;
+                                    row.appendChild(nameCell);
+
+                                    const defCell = document.createElement('td');
+                                    defCell.textContent = tag.definition;
+                                    row.appendChild(defCell);
+
+                                    tbody.appendChild(row);
+                                });
+
+                                table.appendChild(tbody);
+                                section.appendChild(table);
+                                glossaryContainer.appendChild(section);
+                            }
+                        } catch (error) {
+                            console.error('Failed to load tag glossary:', error);
+                            document.getElementById('tag-glossary').textContent =
+                                'Error loading glossary.';
+                        }
+                    }
+
+                    document.addEventListener('DOMContentLoaded', loadTagGlossary);
+                </script>
+
+            </section>
+        </div>
+
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
+                        <h3 class="sidebar-section">TL;DR — Title</h3>
+                        <span class="collapsible-icon"></span>
+                    </div>
+
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
+                        <ul class="no-bullet">
+                            <li class="no-bullet"><strong class="tldr-title">1 • Defense Layers</strong>
+                                <div style="margin-left: 1em;">Characters in Seeker don't have a single HP pool—they use
+                                    three
+                                    defense layers: <img class="def-symbol-sb"
+                                        src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard"> Guard,
+                                    <img class="def-symbol-sb" src="/assets/icons/svg/health/icon-armor.svg" alt="Armor"
+                                        title="Armor"> Armor, and <img class="def-symbol-sb"
+                                        src="/assets/icons/svg/health/icon-health.svg" alt="Health" title="Health">
+                                    Health.<br>
+                                    <ul style="margin-top: .5em">
+                                        <li class="no-bullet"><img class="def-symbol-sb"
+                                                src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard">
+                                            is a <strong>tactical buffer</strong> that starts at 0 and must
+                                            be built up during combat.
+                                            It’s lost first and doesn’t persist outside battle.</li>
+
+                                        <li class="no-bullet"><img class="def-symbol-sb"
+                                                src="/assets/icons/svg/health/icon-armor.svg" alt="Armor" title="Armor">
+                                            is <strong>physical protection</strong> granted by gear.
+                                            Damage that bypasses or overflows Guard hits Armor next.</li>
+
+                                        <li class="no-bullet"><img class="def-symbol-sb"
+                                                src="/assets/icons/svg/health/icon-health.svg" alt="Health"
+                                                title="Health"> is your character’s <strong>core vitality</strong>.
+                                            If it drops to 0, the character dies.</li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">2 • Damage
+                                    Flow</strong>
+                                <div style="margin-left: 1em;">
+                                    When taking damage, follow this sequence:
+                                </div>
+                                <div class="damage-flow-row-sb">
+                                    <div class="damage-step-sb guard-step-sb">
+                                        <img src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard">
+                                    </div>
+
+                                    <div class="arrow">→</div>
+
+                                    <div class="damage-step-sb armor-step-sb">
+                                        <img src="/assets/icons/svg/health/icon-armor.svg" alt="Armor" title="Armor">
+                                    </div>
+
+                                    <div class="arrow">→</div>
+
+                                    <div class="damage-step-sb health-step-sb">
+                                        <img src="/assets/icons/svg/health/icon-health.svg" alt="Health" title="Health">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="no-bullet" style="margin-top: 1.5em;">
+                                <strong class="tldr-title">3 • Character Health Value</strong>
+                                <ul class="no-bullet">
+                                    <li style="margin: .5em 0 0 0;" class="no-bullet">
+                                        <div class="equation-wrapper" style="display: flex; justify-content: center;">
+                                            <p style="font-size: 1.3em">
+                                                <img class="def-symbol-sb"
+                                                    src="/assets/icons/svg/health/icon-health.svg" alt="Health"
+                                                    title="Health"> Health = 2 ×<img class="def-symbol-sb"
+                                                    src="/assets/icons/svg/aptitudes/vigor-ico.svg" alt="Vigor"
+                                                    title="Vigor" style="height: 1.5em;"> Vigor
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                    </div>
+                </div>
+
+                <!-- Block 3: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+
+                <!-- Block 4: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
+    <script src="/scripts/version-check.js"></script>
+    <script src="/scripts/iconizer.js"></script>
+    <script src="/scripts/parallax.js"></script>
+
+    <script>
+        const steps = ['guard', 'armor', 'health'];
+
+        steps.forEach(step => {
+            const icon = document.querySelector('.damage-step.' + step + '-step');
+            const block = document.querySelector('.damage-step-block.' + step + '-step');
+
+            if (icon && block) {
+                icon.addEventListener('mouseenter', () => {
+                    icon.classList.add('icon-highlighted');
+                    block.classList.add('highlighted');
+                });
+
+                icon.addEventListener('mouseleave', () => {
+                    icon.classList.remove('icon-highlighted');
+                    block.classList.remove('highlighted');
+                });
+
+                block.addEventListener('mouseenter', () => {
+                    icon.classList.add('icon-highlighted');
+                    block.classList.add('highlighted');
+                });
+
+                block.addEventListener('mouseleave', () => {
+                    icon.classList.remove('icon-highlighted');
+                    block.classList.remove('highlighted');
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

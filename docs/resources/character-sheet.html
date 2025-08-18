@@ -1,0 +1,811 @@
+<!-- v0.1 2025-08-18T13:15:00Z -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Seeker • Character Sheet & Rules</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --card: #0e0f12;
+            --ink: #e6e6e6;
+            --muted: #9aa3b2;
+            --accent: #f5c451;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            color: var(--ink);
+            background: #0a0b0e;
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .title-grad {
+            background: linear-gradient(90deg, #fff, #f5e1b3 40%, #f5c451);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gold {
+            color: var(--accent)
+        }
+
+        .kicker {
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+            font-size: .75rem
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield
+        }
+
+        .field {
+            display: flex;
+            gap: .5rem;
+            align-items: center
+        }
+
+        .field label {
+            min-width: 7rem;
+            color: var(--muted)
+        }
+
+        .pill {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            padding: .4rem .7rem
+        }
+
+        .btn {
+            border-radius: .9rem;
+            padding: .65rem .9rem;
+            font-weight: 600;
+        }
+
+        .btn-ghost {
+            border: 1px solid rgba(255, 255, 255, .12)
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #f5d88a, #f5c451);
+            color: #1a1200
+        }
+
+        .grid-auto {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem
+        }
+
+        .section h3 {
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: .03em;
+            color: #fff
+        }
+
+        .rules h4 {
+            margin-top: 1.25rem;
+            font-weight: 700
+        }
+
+        .rules p,
+        .rules li {
+            color: #cfd6e6
+        }
+
+        .rules code {
+            background: rgba(255, 255, 255, .06);
+            padding: .1rem .3rem;
+            border-radius: .35rem
+        }
+
+        @media print {
+            .noprint {
+                display: none !important
+            }
+
+            body {
+                background: white;
+                color: black
+            }
+
+            .card {
+                border-color: #ddd;
+                box-shadow: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <header class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-6">
+            <div>
+                <div class="kicker">TTRPG • High-Magic Age of Discovery</div>
+                <h1 class="title-grad text-3xl md:text-4xl font-extrabold">Seeker — Character Sheet & Quick Rules</h1>
+            </div>
+            <div class="flex gap-2 noprint">
+                <button id="btnSave" class="btn btn-primary">Save</button>
+                <button id="btnLoad" class="btn btn-ghost">Load</button>
+                <button id="btnExport" class="btn btn-ghost">Export JSON</button>
+                <label class="btn btn-ghost cursor-pointer">
+                    Import JSON <input id="importFile" type="file" accept="application/json" class="hidden" />
+                </label>
+                <button id="btnPrint" class="btn btn-ghost">Print</button>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <nav class="noprint mb-6">
+            <ul class="flex gap-2 flex-wrap">
+                <li><button data-tab="sheet" class="pill" aria-selected="true">Character</button></li>
+                <li><button data-tab="combat" class="pill">Combat Tools</button></li>
+                <li><button data-tab="inventory" class="pill">Gear</button></li>
+                <li><button data-tab="powers" class="pill">Solaria & Tags</button></li>
+                <li><button data-tab="exploration" class="pill">Exploration</button></li>
+                <li><button data-tab="notes" class="pill">Notes</button></li>
+                <li><button data-tab="rules" class="pill">Rules Reference</button></li>
+            </ul>
+        </nav>
+
+        <!-- SHEET -->
+<section data-panel="sheet" class="grid md:grid-cols-3 gap-4">
+
+  <!-- LEFT COLUMN -->
+  <div class="md:col-span-2 space-y-4">
+
+    <!-- IDENTITY -->
+    <div class="card p-5">
+      <h3 class="mb-2">Identity</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="field">
+          <label>Name</label>
+          <input class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10" id="name">
+        </div>
+        <div class="field">
+          <label>Concept</label>
+          <input class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10" id="concept" placeholder="e.g., Solar Cartographer">
+        </div>
+        <div class="field">
+          <label>Origin</label>
+          <input class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10" id="origin" placeholder="Nation / Culture">
+        </div>
+        <div class="field">
+          <label>Polarity</label>
+          <select id="polarity" class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10">
+            <option value="Sun">Sun (Aligned)</option>
+            <option value="Shade">Shade (Contrary)</option>
+            <option value="Balanced">Balanced</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>XP</label>
+          <input id="xp" type="number" min="0" value="0"
+            class="w-28 px-3 py-2 rounded-lg bg-black/30 border border-white/10">
+        </div>
+      </div>
+    </div>
+
+    <!-- VITALS -->
+    <div class="card p-5">
+      <h3 class="mb-2">Vitals</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="field"><label>Health</label><input id="hp" type="number" min="0" value="6"
+            class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10"></div>
+        <div class="field"><label>Stress</label><input id="stress" type="number" min="0" value="0"
+            class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10"></div>
+        <div class="field"><label>Solaria</label><input id="solaria" type="number" min="0" value="3"
+            class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10"></div>
+        <div class="field"><label>Risk Dice</label><input id="risk" type="number" min="0" value="0"
+            class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10"></div>
+      </div>
+    </div>
+
+    <!-- APTITUDES -->
+    <div class="card p-5">
+      <h3 class="mb-4">Aptitudes</h3>
+      
+      <!-- Combat -->
+      <div class="mb-4">
+        <h4 class="text-lg mb-2">Combat</h4>
+        <div class="grid md:grid-cols-3 gap-3">
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_strength"></div>
+            <div>
+              <label>Strength</label>
+              <input type="number" id="apt_strength" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_agility"></div>
+            <div>
+              <label>Agility</label>
+              <input type="number" id="apt_agility" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_vigor"></div>
+            <div>
+              <label>Vigor</label>
+              <input type="number" id="apt_vigor" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exploration -->
+      <div class="mb-4">
+        <h4 class="text-lg mb-2">Exploration</h4>
+        <div class="grid md:grid-cols-3 gap-3">
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_perception"></div>
+            <div>
+              <label>Perception</label>
+              <input type="number" id="apt_perception" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_intellect"></div>
+            <div>
+              <label>Intellect</label>
+              <input type="number" id="apt_intellect" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_adaptability"></div>
+            <div>
+              <label>Adaptability</label>
+              <input type="number" id="apt_adaptability" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4 class="text-lg mb-2">Social</h4>
+        <div class="grid md:grid-cols-3 gap-3">
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_charisma"></div>
+            <div>
+              <label>Charisma</label>
+              <input type="number" id="apt_charisma" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_insight"></div>
+            <div>
+              <label>Insight</label>
+              <input type="number" id="apt_insight" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+          <div class="field flex items-center gap-2">
+            <div class="w-6 h-6 bg-black/50 rounded-md" id="icon_willpower"></div>
+            <div>
+              <label>Willpower</label>
+              <input type="number" id="apt_willpower" min="0" value="2" class="w-20 px-2 py-1 rounded-lg bg-black/30 border border-white/10">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAGS -->
+    <div class="card p-5">
+      <h3>Tags (choose those that often apply)</h3>
+      <div id="tagList" class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <aside class="card p-5 h-max space-y-4">
+    <!-- STANCE -->
+    <div class="section">
+      <h3>Stance (initiative by posture)</h3>
+      <div class="mt-2 grid gap-2">
+        <label class="flex items-center gap-2"><input type="radio" name="stance" value="Aggressive" checked> Aggressive <span class="text-white/60 text-sm">(earliest priority; attack focus)</span></label>
+        <label class="flex items-center gap-2"><input type="radio" name="stance" value="Defensive"> Defensive <span class="text-white/60 text-sm">(high guard; block/counter)</span></label>
+        <label class="flex items-center gap-2"><input type="radio" name="stance" value="Evasive"> Evasive <span class="text-white/60 text-sm">(avoidance; reposition)</span></label>
+        <label class="flex items-center gap-2"><input type="radio" name="stance" value="Inquisitive"> Inquisitive <span class="text-white/60 text-sm">(probe; gather info)</span></label>
+        <label class="flex items-center gap-2"><input type="radio" name="stance" value="Balanced"> Balanced <span class="text-white/60 text-sm">(steady; flexible)</span></label>
+        <label class="flex items-center gap-2"><input type="radio" name="stance" value="Mystic"> Mystic <span class="text-white/60 text-sm">(channel Solaria)</span></label>
+        <div class="mt-2 text-sm text-white/70">Actions this round: <strong id="actionsPerRound">2</strong></div>
+      </div>
+    </div>
+
+    <!-- ACTION DICE HELPER -->
+    <div class="section">
+      <h3>Action Dice Pool Helper</h3>
+      <div class="mt-2 space-y-2">
+        <div class="field"><label>Aptitude</label>
+          <select id="adApt" class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10"></select>
+        </div>
+        <div class="field"><label>Tags</label>
+          <input id="adTags" type="number" min="0" value="0" class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10">
+          <span class="text-sm text-white/60">+1 AD per relevant tag</span>
+        </div>
+        <div class="field"><label>Risk Dice</label>
+          <input id="adRisk" type="number" min="0" value="0" class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10">
+        </div>
+        <div class="field"><label>Polarity</label>
+          <select id="adPolarityRule" class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10">
+            <option value="none">—</option>
+            <option value="riskmod">Risk Die Modifier</option>
+            <option value="thresh">Success Threshold Modifier</option>
+          </select>
+        </div>
+        <div class="mt-2 text-sm">Total AD to roll: <strong id="adTotal" class="gold">0</strong></div>
+        <div class="mt-1 text-sm">Successes on: <strong id="adSuccessOn" class="gold">6</strong></div>
+        <div class="mt-3 flex gap-2 noprint">
+          <button id="btnRollAD" class="btn btn-primary">Roll D6s</button>
+          <div id="rollResult" class="text-sm text-white/80"></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
+
+
+        <!-- COMBAT TOOLS -->
+        <section data-panel="combat" class="hidden grid md:grid-cols-3 gap-4">
+            <div class="card p-5 md:col-span-2">
+                <div class="section">
+                    <h3>Opposed Test (Attack vs. Defense)</h3>
+                    <p class="mt-2 text-white/70 text-sm">Each side rolls their Action Dice (AD). Count 6s as successes
+                        (or 5–6 if aided by Polarity variant). Higher successes win; ties favor defense. Escalation:
+                        spend resources to reroll extra AD.</p>
+                    <div class="grid md:grid-cols-2 gap-3 mt-4">
+                        <div class="p-3 rounded-xl border border-white/10 bg-black/20">
+                            <div class="kicker mb-2">Attacker</div>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <label class="field"><span>AD</span><input id="atkAD" type="number" min="0" value="3"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                                <label class="field"><span>Risk</span><input id="atkRisk" type="number" min="0"
+                                        value="0"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                                <label class="field"><span>Escalation</span><input id="atkEsc" type="number" min="0"
+                                        value="0"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                                <label class="field"><span>Success on</span><input id="atkThresh" type="number" min="2"
+                                        max="6" value="6"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl border border-white/10 bg-black/20">
+                            <div class="kicker mb-2">Defender</div>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <label class="field"><span>AD</span><input id="defAD" type="number" min="0" value="3"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                                <label class="field"><span>Risk</span><input id="defRisk" type="number" min="0"
+                                        value="0"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                                <label class="field"><span>Escalation</span><input id="defEsc" type="number" min="0"
+                                        value="0"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                                <label class="field"><span>Success on</span><input id="defThresh" type="number" min="2"
+                                        max="6" value="6"
+                                        class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex gap-2 noprint">
+                        <button id="btnResolve" class="btn btn-primary">Resolve</button>
+                        <div id="oppResult" class="text-sm text-white/80"></div>
+                    </div>
+                </div>
+                <div class="section mt-6">
+                    <h3>Active Defense</h3>
+                    <p class="mt-2 text-white/70 text-sm">When targeted, declare a defensive or evasive action and roll
+                        immediately. If tied, defense prevails.</p>
+                </div>
+            </div>
+            <aside class="card p-5 h-max">
+                <div class="section">
+                    <h3>Conditions & Effects</h3>
+                    <div class="grid-auto mt-2">
+                        <label class="field"><input type="checkbox" class="effect"> Bleeding</label>
+                        <label class="field"><input type="checkbox" class="effect"> Frightened</label>
+                        <label class="field"><input type="checkbox" class="effect"> Exhausted</label>
+                        <label class="field"><input type="checkbox" class="effect"> Marked</label>
+                        <label class="field"><input type="checkbox" class="effect"> Blessed by Solaria</label>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- GEAR -->
+        <section data-panel="inventory" class="hidden grid md:grid-cols-3 gap-4">
+            <div class="card p-5 md:col-span-2">
+                <div class="section">
+                    <h3>Equipment</h3>
+                    <table class="mt-3 w-full text-sm">
+                        <thead class="text-white/70">
+                            <tr>
+                                <th class="text-left font-semibold">Item</th>
+                                <th class="text-left font-semibold">Tags</th>
+                                <th class="text-left font-semibold">Notes</th>
+                                <th class="text-left font-semibold">Wt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gearTable"></tbody>
+                    </table>
+                    <button id="addGear" class="btn btn-ghost mt-3 noprint">+ Add Item</button>
+                </div>
+                <div class="section mt-6">
+                    <h3>Weapons</h3>
+                    <table class="mt-3 w-full text-sm">
+                        <thead class="text-white/70">
+                            <tr>
+                                <th class="text-left font-semibold">Weapon</th>
+                                <th class="text-left font-semibold">Reach</th>
+                                <th class="text-left font-semibold">Tags</th>
+                                <th class="text-left font-semibold">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="weapTable"></tbody>
+                    </table>
+                    <button id="addWeap" class="btn btn-ghost mt-3 noprint">+ Add Weapon</button>
+                </div>
+            </div>
+            <aside class="card p-5 h-max">
+                <div class="section">
+                    <h3>Load & Encumbrance</h3>
+                    <div class="field mt-2"><label>Load Limit</label><input id="loadLimit" type="number" min="0"
+                            value="10" class="w-28 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></div>
+                    <div class="field mt-2"><label>Current Load</label><input id="loadCurrent" type="number" min="0"
+                            value="0" class="w-28 px-3 py-2 rounded-lg bg-black/30 border border-white/10" readonly>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- POWERS -->
+        <section data-panel="powers" class="hidden grid md:grid-cols-3 gap-4">
+            <div class="card p-5 md:col-span-2">
+                <div class="section">
+                    <h3>Solaria Powers</h3>
+                    <p class="mt-2 text-white/70 text-sm">Channel solar force via Mesoamerican networks. Outside active
+                        fields, effects may fail at GM discretion.</p>
+                    <table class="mt-3 w-full text-sm">
+                        <thead class="text-white/70">
+                            <tr>
+                                <th class="text-left font-semibold">Rite / Power</th>
+                                <th class="text-left font-semibold">Cost</th>
+                                <th class="text-left font-semibold">Tags</th>
+                                <th class="text-left font-semibold">Effect</th>
+                            </tr>
+                        </thead>
+                        <tbody id="powerTable"></tbody>
+                    </table>
+                    <button id="addPower" class="btn btn-ghost mt-3 noprint">+ Add Power</button>
+                </div>
+                <div class="section mt-6">
+                    <h3>Advances</h3>
+                    <p class="mt-2 text-white/70 text-sm">Mark XP to buy upgrades. Repeatables vs one-time unlocks as
+                        per design notes.</p>
+                    <ul class="mt-2 text-sm list-disc ml-5 text-white/80" id="advList">
+                        <li>Repeatable: +1 to a specific Aptitude (max table limit).</li>
+                        <li>Repeatable: Gain a specialized Tag tied to a narrative training.</li>
+                        <li>One-time: Unlock a signature Solaria Rite.</li>
+                        <li>One-time: Permanently raise Health by +1.</li>
+                        <li>One-time: Gain a unique exploration feature (e.g., chartered maps).</li>
+                    </ul>
+                </div>
+            </div>
+            <aside class="card p-5 h-max">
+                <div class="section">
+                    <h3>Polarity Options</h3>
+                    <ul class="mt-2 text-sm text-white/80 list-disc ml-5">
+                        <li><strong>Risk Die Modifier</strong>: Acting with your Polarity removes 1 Risk Die; acting
+                            against it adds 1 Risk Die.</li>
+                        <li><strong>Success Threshold Modifier</strong>: Acting with your Polarity counts 5–6 as
+                            successes; against it, only 6s count.</li>
+                    </ul>
+                </div>
+                <div class="section mt-6">
+                    <h3>Tags Library</h3>
+                    <ul class="mt-2 text-sm text-white/80 list-disc ml-5">
+                        <li><strong>Combat</strong>: anything that directly applies to fighting.</li>
+                        <li><strong>Social</strong>: interactions, influence, deception, empathy.</li>
+                        <li><strong>Exploration</strong>: travel, navigation, terrain, survival tasks.</li>
+                        <li><strong>Knowledge</strong>: academia, lore, decoding, research.</li>
+                        <li><strong>Craft</strong>: making, repairing, tinkering.</li>
+                        <li><strong>Mystic</strong>: rites, channeling, occult signs.</li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
+
+        <!-- EXPLORATION -->
+        <section data-panel="exploration" class="hidden grid md:grid-cols-3 gap-4">
+            <div class="card p-5 md:col-span-2">
+                <div class="section">
+                    <h3>Hex Crawl Log</h3>
+                    <table class="mt-3 w-full text-sm">
+                        <thead class="text-white/70">
+                            <tr>
+                                <th class="text-left font-semibold">Hex</th>
+                                <th class="text-left font-semibold">Terrain</th>
+                                <th class="text-left font-semibold">Discovery</th>
+                                <th class="text-left font-semibold">Threat</th>
+                                <th class="text-left font-semibold">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hexTable"></tbody>
+                    </table>
+                    <button id="addHex" class="btn btn-ghost mt-3 noprint">+ Add Hex</button>
+                </div>
+                <div class="section mt-6">
+                    <h3>Navigation</h3>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <label class="field"><span>Speed</span><input id="navSpeed" type="number" min="1" value="6"
+                                class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"> hex/day</label>
+                        <label class="field"><span>Supply</span><input id="navSupply" type="number" min="0" value="10"
+                                class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                        <label class="field"><span>Weather</span><input id="navWeather"
+                                class="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/10"
+                                placeholder="clear, storm, mist..."></label>
+                        <label class="field"><span>Route Risk</span><input id="navRisk" type="number" min="0" value="1"
+                                class="w-24 px-3 py-2 rounded-lg bg-black/30 border border-white/10"></label>
+                    </div>
+                </div>
+            </div>
+            <aside class="card p-5 h-max">
+                <div class="section">
+                    <h3>Discovery Tables (GM)</h3>
+                    <p class="mt-2 text-white/70 text-sm">Roll for landmarks, factions, anomalies, Solaria nodes, fauna,
+                        hazards.</p>
+                    <div class="mt-2 text-sm" id="discResults"></div>
+                    <button id="btnDiscover" class="btn btn-ghost mt-3 noprint">Roll Discoveries</button>
+                </div>
+            </aside>
+        </section>
+
+        <!-- NOTES -->
+        <section data-panel="notes" class="hidden">
+            <div class="card p-5">
+                <h3>Campaign Notes</h3>
+                <textarea id="notes"
+                    class="mt-2 w-full min-h-[300px] px-3 py-2 rounded-lg bg-black/30 border border-white/10"
+                    placeholder="Allies, leads, debts, maps..."></textarea>
+            </div>
+        </section>
+
+        <!-- RULES -->
+        <section data-panel="rules" class="hidden rules">
+            <div class="card p-5">
+                <h3>Core Loop</h3>
+                <ul class="list-disc ml-5 mt-2 text-sm">
+                    <li><strong>Choose Stance</strong> (no initiative roll). Stance sets priority, action types, and
+                        actions per round.</li>
+                    <li><strong>Declare Actions</strong>, building an AD pool from Aptitude + relevant Tags ± Risk Dice.
+                    </li>
+                    <li><strong>Roll & Compare</strong> in opposed tests: count 6s as successes; ties favor defense.
+                    </li>
+                    <li><strong>Escalation</strong> allows extra AD rerolls at a cost (resource, risk, or stress).</li>
+                    <li><strong>Active Defense</strong> lets targets respond immediately with a defensive roll.</li>
+                </ul>
+                <h4 class="mt-4">Polarity</h4>
+                <p class="text-sm">Pick a Polarity (Sun, Shade, or Balanced). Two optional variants exist (Risk Die
+                    Modifier, Success Threshold Modifier). Acting with vs. against your Polarity changes risk or success
+                    threshold as configured.</p>
+                <h4 class="mt-4">Solaria</h4>
+                <p class="text-sm">A solar cosmic force focused by Mesoamerican structures. Seekers attune via mutation
+                    and ritual. Within active fields, powers are reliable; the GM adjudicates edge cases.</p>
+                <h4 class="mt-4">Exploration</h4>
+                <p class="text-sm">Hex-based travel with logging of discoveries, threats, and anomalies. Use speed,
+                    supply, and weather to model journey difficulty. Route Risk may add Risk Dice to checks.</p>
+                <h4 class="mt-4">Advancement</h4>
+                <p class="text-sm">Earn XP to purchase repeatable boosts (e.g., Aptitude +1 up to limits) or one-time
+                    unlocks (signature rites, Health +1, unique exploration benefits).</p>
+            </div>
+        </section>
+
+        <footer class="mt-10 text-center text-xs text-white/40">
+            <div>Seeker © Alonso de Luna — Playtest build. This sheet is a convenience aid; rules text is a summary for
+                table use.</div>
+        </footer>
+    </div>
+
+    <script>
+        // --- State helpers
+        const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+        const $ = (sel, ctx = document) => ctx.querySelector(sel);
+
+        // Tabs
+        $$('nav [data-tab]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                $$('nav [data-tab]').forEach(b => b.setAttribute('aria-selected', 'false'));
+                btn.setAttribute('aria-selected', 'true');
+                const id = btn.getAttribute('data-tab');
+                $$('section[data-panel]').forEach(p => p.classList.toggle('hidden', p.getAttribute('data-panel') !== id));
+            })
+        })
+
+        // Tags
+        const baseTags = [
+            { id: 'Combat', desc: 'anything that directly applies to fighting' },
+            { id: 'Social', desc: 'interactions, influence, deception, empathy' },
+            { id: 'Exploration', desc: 'travel, navigation, terrain, survival tasks' },
+            { id: 'Knowledge', desc: 'academia, lore, decoding, research' },
+            { id: 'Craft', desc: 'making, repairing, tinkering' },
+            { id: 'Mystic', desc: 'rites, channeling, occult signs' }
+        ];
+        const tagList = $('#tagList');
+        baseTags.forEach(t => {
+            const el = document.createElement('label');
+            el.className = 'flex items-center gap-2 text-sm';
+            el.innerHTML = `<input type="checkbox" data-tag="${t.id}"> ${t.id} <span class="text-white/50">(${t.desc})</span>`;
+            tagList.appendChild(el);
+        });
+
+        // Populate aptitude selector in AD helper
+        const aptMap = [
+            ['Might', 'apt_might'], ['Agility', 'apt_agility'], ['Wits', 'apt_wits'], ['Presence', 'apt_presence'], ['Survival', 'apt_survival'], ['Mystic', 'apt_mystic']
+        ];
+        const adApt = $('#adApt');
+        aptMap.forEach(([name, id]) => {
+            const op = document.createElement('option'); op.value = id; op.textContent = name; adApt.appendChild(op);
+        });
+
+        function computeAD() {
+            const apt = Number($('#' + adApt.value).value || 0);
+            let risk = Number($('#adRisk').value || 0);
+            const tags = Number($('#adTags').value || 0);
+            const pol = $('#polarity').value;
+            const polRule = $('#adPolarityRule').value;
+            let successOn = 6;
+            if (polRule === 'riskmod') {
+                // with Polarity remove 1 risk, against add 1 risk (simple toggle based on selection)
+                if (pol === 'Sun') risk = Math.max(0, risk - 1);
+                if (pol === 'Shade') risk = risk + 1;
+            } else if (polRule === 'thresh') {
+                if (pol === 'Sun') successOn = 5; // 5–6
+                if (pol === 'Shade') successOn = 6; // only 6
+            }
+            const total = Math.max(0, apt + tags - risk);
+            $('#adTotal').textContent = total;
+            $('#adSuccessOn').textContent = successOn === 5 ? '5–6' : '6';
+            return { total, successOn };
+        }
+        ['change', 'input'].forEach(ev => {
+            ['#adRisk', '#adTags', '#' + aptMap[0][1], '#' + aptMap[1][1], '#' + aptMap[2][1], '#' + aptMap[3][1], '#' + aptMap[4][1], '#' + aptMap[5][1], '#adPolarityRule', '#polarity'].forEach(sel => {
+                $(sel).addEventListener(ev, computeAD);
+            })
+        });
+        computeAD();
+
+        // Simple dice roller
+        function rollD6(n) { return Array.from({ length: n }, () => 1 + Math.floor(Math.random() * 6)); }
+        $('#btnRollAD').addEventListener('click', () => {
+            const { total, successOn } = computeAD();
+            const r = rollD6(total);
+            const succ = r.filter(x => x >= (successOn === 5 ? 5 : 6)).length;
+            $('#rollResult').textContent = `Rolled [${r.join(', ')}] ⇒ Successes: ${succ}`;
+        });
+
+        // Opposed resolution
+        $('#btnResolve').addEventListener('click', () => {
+            const a = { ad: +$('#atkAD').value, risk: +$('#atkRisk').value, esc: +$('#atkEsc').value, thr: +$('#atkThresh').value };
+            const d = { ad: +$('#defAD').value, risk: +$('#defRisk').value, esc: +$('#defEsc').value, thr: +$('#defThresh').value };
+            const aRoll = rollD6(Math.max(0, a.ad - a.risk) + a.esc);
+            const dRoll = rollD6(Math.max(0, d.ad - d.risk) + d.esc);
+            const aSucc = aRoll.filter(x => x >= a.thr).length;
+            const dSucc = dRoll.filter(x => x >= d.thr).length;
+            let out = `Attacker [${aRoll.join(', ')}] ⇒ ${aSucc} vs Defender [${dRoll.join(', ')}] ⇒ ${dSucc}. `;
+            if (aSucc > dSucc) out += 'Attacker succeeds.'; else if (dSucc > aSucc) out += 'Defense prevails.'; else out += 'Tie — defense prevails.';
+            $('#oppResult').textContent = out;
+        });
+
+        // Gear & Weapons & Powers tables
+        function addRow(tbody, cols) {
+            const tr = document.createElement('tr');
+            cols.forEach((c, i) => {
+                const td = document.createElement('td'); td.className = 'p-1';
+                const inp = document.createElement('input');
+                inp.className = 'w-full px-2 py-1 rounded-lg bg-black/30 border border-white/10';
+                inp.placeholder = c;
+                td.appendChild(inp); tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+            return tr;
+        }
+        $('#addGear').addEventListener('click', () => addRow($('#gearTable'), ['Item', 'Tags', 'Notes', 'Wt']));
+        $('#addWeap').addEventListener('click', () => addRow($('#weapTable'), ['Weapon', 'Reach', 'Tags', 'Notes']));
+        $('#addPower').addEventListener('click', () => addRow($('#powerTable'), ['Rite / Power', 'Cost', 'Tags', 'Effect']));
+        $('#addHex').addEventListener('click', () => addRow($('#hexTable'), ['A1', 'coast', 'ruins', 'hostile', '...']));
+
+        // Load starting rows
+        for (let i = 0; i < 2; i++) { $('#addGear').click(); $('#addWeap').click(); $('#addPower').click(); }
+
+        // Stance → actions per round (example mapping; tune to your final table)
+        const stanceActions = { Aggressive: 2, Defensive: 2, Evasive: 2, Inquisitive: 2, Balanced: 2, Mystic: 2 };
+        $$('input[name="stance"]').forEach(r => r.addEventListener('change', () => {
+            $('#actionsPerRound').textContent = stanceActions[r.value] || 2;
+        }));
+
+        // Save / Load
+        const FIELDS = [
+            'name', 'concept', 'origin', 'polarity', 'xp', 'hp', 'stress', 'solaria', 'risk', 'apt_might', 'apt_agility', 'apt_wits', 'apt_presence', 'apt_survival', 'apt_mystic', 'notes', 'loadLimit', 'navSpeed', 'navSupply', 'navWeather', 'navRisk'
+        ];
+        function save() {
+            const data = {};
+            FIELDS.forEach(id => data[id] = $('#' + id)?.value ?? null);
+            data.tags = baseTags.map(t => ({ id: t.id, on: document.querySelector(`[data-tag="${t.id}"]`).checked }));
+            data.stance = document.querySelector('input[name="stance"]:checked').value;
+            data.tables = ['gearTable', 'weapTable', 'powerTable', 'hexTable'].map(tid => {
+                return $$('#' + tid + ' tr').map(tr => Array.from(tr.querySelectorAll('input')).map(i => i.value));
+            });
+            localStorage.setItem('seekerSheet', JSON.stringify(data));
+            return data;
+        }
+        function load() {
+            const raw = localStorage.getItem('seekerSheet'); if (!raw) return;
+            const data = JSON.parse(raw);
+            FIELDS.forEach(id => { if ($('#' + id)) $('#' + id).value = data[id] ?? $('#' + id).value; });
+            if (data.tags) { data.tags.forEach(t => { const box = document.querySelector(`[data-tag="${t.id}"]`); if (box) box.checked = !!t.on; }); }
+            if (data.stance) { const r = Array.from(document.querySelectorAll('input[name="stance"]')).find(x => x.value === data.stance); if (r) { r.checked = true; $('#actionsPerRound').textContent = stanceActions[r.value] || 2; } }
+            ['gearTable', 'weapTable', 'powerTable', 'hexTable'].forEach((tid, idx) => {
+                const body = $('#' + tid); body.innerHTML = '';
+                (data.tables?.[idx] || []).forEach(row => { const tr = addRow(body, row.map(() => '')); row.forEach((val, i) => tr.children[i].querySelector('input').value = val); });
+            });
+        }
+        $('#btnSave').addEventListener('click', () => { save(); flash('Saved to browser.'); });
+        $('#btnLoad').addEventListener('click', () => { load(); flash('Loaded from browser.'); });
+
+        // Export / Import
+        function dl(filename, text) { const a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(text); a.download = filename; a.click(); }
+        $('#btnExport').addEventListener('click', () => { dl('seeker-character.json', JSON.stringify(save(), null, 2)); });
+        $('#importFile').addEventListener('change', (e) => {
+            const f = e.target.files[0]; if (!f) return; const reader = new FileReader(); reader.onload = () => { localStorage.setItem('seekerSheet', reader.result); load(); flash('Imported.'); }; reader.readAsText(f);
+        });
+
+        // Print
+        $('#btnPrint').addEventListener('click', () => window.print());
+
+        // Small UI flash
+        const flashBox = document.createElement('div');
+        flashBox.className = 'fixed noprint bottom-6 left-1/2 -translate-x-1/2 bg-white/10 text-white/90 backdrop-blur px-4 py-2 rounded-xl border border-white/20 hidden';
+        document.body.appendChild(flashBox);
+        function flash(msg) { flashBox.textContent = msg; flashBox.classList.remove('hidden'); setTimeout(() => flashBox.classList.add('hidden'), 1500); }
+
+        // Derived fields
+        function recalcLoad() {
+            let wt = 0; $$('#gearTable tr').forEach(tr => { const v = parseFloat(tr.children[3]?.querySelector('input')?.value || '0'); wt += isNaN(v) ? 0 : v; });
+            $('#loadCurrent').value = wt.toFixed(1);
+        }
+        new MutationObserver(recalcLoad).observe($('#gearTable'), { childList: true, subtree: true });
+        $('#gearTable').addEventListener('input', recalcLoad);
+
+        // Boot
+        load(); recalcLoad();
+    </script>
+</body>
+
+</html>

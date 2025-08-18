@@ -42,15 +42,199 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .highlighted::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: white;
-            opacity: 0.3;
-            pointer-events: none;
+        .defense-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: .1em;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+            border: 1px solid var(--deep-charcoal);
+            border-radius: 0.5rem;
+            background-color: var(--background-dark-2);
+            padding: 1.75rem;
         }
-       
+
+        .defense-icon {
+            background: var(--background-dark-1);
+            border-radius: 8px;
+            padding: .5em;
+        }
+
+        .defense-icon-outer {
+            background: linear-gradient(to right,
+                    rgba(var(--burnt-copper-rgb), 0.2),
+                    rgba(var(--ancient-gold-rgb), 0.2)),
+                url(/assets/textures/antique-gold-1.jpg);
+            border-radius: 10px;
+            padding: 3px;
+        }
+
+        .defense-icon img {
+            max-width: 128px;
+            height: auto;
+        }
+
+        .defense-inline-symbol {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.2em;
+            vertical-align: middle;
+            cursor: var(--cursor-help);
+        }
+
+        .defense-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .defense-content h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .defense-intro h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+
+        .defense-content h4 {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .flow-of-damage-block {
+            text-align: center;
+            max-width: 940px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            font-family: var(--default-font, sans-serif);
+        }
+
+        .damage-flow-row {
+            display: flex;
+            max-width: 390px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .damage-step {
+            aspect-ratio: 1;
+            width: 100px;
+            padding: 1rem;
+            background: var(--background-grey-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1em;
+        }
+
+        .damage-step img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            margin: 0.25rem 0;
+            color: var(--off-white, #f0f0f0);
+        }
+
+        .damage-sequence {
+            max-width: 700px;
+            margin: 2rem auto;
+            font-family: var(--default-font, sans-serif);
+        }
+
+        .damage-step-block {
+            border-left: 4px solid var(--ancient-gold, #D4B55A);
+            background: var(--background-grey-1);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .damage-step-block h4 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--off-white, #F0F0F0);
+        }
+
+        .damage-step-block ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .damage-step-block li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .defense-tag {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .damage-step.highlighted,
+        .damage-step-block.highlighted {
+            background-color: var(--background-dark-2, #fff9e528);
+            transition: background-color 0.2s ease;
+        } 
+        .damage-step.icon-highlighted img {
+            filter: drop-shadow(0 0 20px rgba(var(--ancient-gold-rgb), 0.5));
+        }
+    
+        /* Sidebar */
+        .def-symbol-sb {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.3em;
+            vertical-align: middle;
+        }
+
+        .damage-flow-row-sb {
+            display: flex;
+            max-width: 390px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .damage-step-sb {
+            aspect-ratio: 1;
+            padding: .1rem;
+            background: var(--background-grey-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1em;
+        }
+
+        .damage-step-sb img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .arrow-sb {
+            font-size: 2rem;
+            margin: 0.25rem 0;
+            color: var(--off-white, #f0f0f0);
+        }
     </style>
 
 </head>
@@ -68,9 +252,9 @@
         <div class="left-column">
             <header class="title">
                 <div class="title-container page-title">
-                    <span class="title-icon">l</span>
-                    <h1>Health & Defense</h1>
-                    <span class="title-icon rot90">l</span>
+                    <span class="title-icon">L</span>
+                    <h1 class="expanded">Health & Defense</h1>
+                    <span class="title-icon rot90">L</span>
                 </div>
             </header>
             <!-- ─────────────── MAIN CONTENT ─────────────── -->
@@ -83,7 +267,7 @@
                     <div class="title-container">
                         <span class="title-icon">i</span>
                         <h2>Core Concept</h2>
-                        <span class="title-icon rot90">i</span>
+                        <span class="title-icon rot0">i</span>
                     </div>
                     <p class="subtitle">Placeholder
                     </p>
@@ -175,7 +359,7 @@
                                 class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-guard.svg"
                                 alt="Guard" title="Guard"> is at 0, you are considered
-                            <u>Off-Guard</u>, and damage bypasses this layer entirely. <img
+                            <span class="tag">Off-Guard</span>, and damage bypasses this layer entirely. <img
                                 class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-guard.svg"
                                 alt="Guard" title="Guard"> is usually lost at the
@@ -243,7 +427,7 @@
                             protections, or certain
                             Masteries. When damage bypasses <img class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-guard.svg"
-                                alt="Guard" title="Guard">—or if you are <u>Off-Guard</u>—<img
+                                alt="Guard" title="Guard">—or if you are <span class="tag">Off-Guard</span>—<img
                                 class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-armor.svg"
                                 alt="Armor" title="Armor"> is the next layer to
@@ -388,9 +572,9 @@
                     <p class="centered-equation">
                         <strong><img class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-health.svg"
-                                alt="Health" title="Health"> Health = 2 ×<img class="defense-inline-symbol"
-                                src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg"
-                                alt="Vigor" title="Vigor" style="height: 1.5em;"> Vigor</strong>
+                                alt="Health" title="Health" style="height: 2rem;"> Health = 2 ×<img class="defense-inline-symbol"
+                                src="/assets/icons/svg/aptitudes/vigor-ico.svg"
+                                alt="Vigor" title="Vigor" style="height: 2rem;"> Vigor</strong>
                     </p>
                     </div>
                     <p>
@@ -403,7 +587,7 @@
             <section class="section-wrapper" id="section3" sidenav="3 • Flow of Damage">
                 <header class="section var-3">
                     <div class="section-number">
-                        <p>Section I</p>
+                        <p>Section III</p>
                     </div>
                     <div class="title-container">
                         <span class="title-icon">G</span>
@@ -462,7 +646,7 @@
                                 alt="Armor" title="Armor">.</li>
                         <li>If your <img class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-guard.svg"
-                                alt="Guard" title="Guard"> is 0, you are considered <u>Off-Guard</u>, and <img
+                                alt="Guard" title="Guard"> is 0, you are considered <span class="tag">Off-Guard</span>, and <img
                                 class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-guard.svg"
                                 alt="Guard" title="Guard"> is skipped entirely.</li>
@@ -474,7 +658,7 @@
                     <ul>
                         <li>If any damage remains after <img class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-guard.svg"
-                                alt="Guard" title="Guard"> (or if you were <u>Off-Guard</u>), it is applied to your
+                                alt="Guard" title="Guard"> (or if you were <span class="tag">Off-Guard</span>), it is applied to your
                             current
                             <img class="defense-inline-symbol"
                                 src="/assets/icons/svg/health/icon-armor.svg"
@@ -508,8 +692,7 @@
                                 alt="Health" title="Health"> reaches 0, your character dies.</li>
                     </ul>
                 </div>
-    </div>
-    </section>
+        </section>
 
             <!-- 5 • Extensions -->
             <section class="section-wrapper" id="section5" sidenav="5 • Extensions">
@@ -580,15 +763,75 @@
 
                     <div class="collapsible-content-sb" style="padding: 0 5px">
                         <ul class="no-bullet">
-                            <li class="no-bullet">
-                                <strong class="tldr-title">1 • Title</strong>
-                                <div style="margin-left: 1em;">
-                                    Description
-                                </div>
-                            </li>
-                        </ul>
+                            <li class="no-bullet"><strong class="tldr-title">1 • Defense Layers</strong>
+                        <div style="margin-left: 1em;">Characters in Seeker don't have a single HP pool—they use three
+                            defense layers: <img class="def-symbol-sb"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> Guard, <img class="def-symbol-sb"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> Armor, and <img class="def-symbol-sb"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> Health.<br>
+                            <ul style="margin-top: .5em">
+                                <li class="no-bullet"><img class="def-symbol-sb"
+                                        src="/assets/icons/svg/health/icon-guard.svg"
+                                        alt="Guard" title="Guard"> is a <strong>tactical buffer</strong> that starts at 0 and must
+                                    be built up during combat.
+                                    It’s lost first and doesn’t persist outside battle.</li>
+
+                                <li class="no-bullet"><img class="def-symbol-sb"
+                                        src="/assets/icons/svg/health/icon-armor.svg"
+                                        alt="Armor" title="Armor"> is <strong>physical protection</strong> granted by gear.
+                                    Damage that bypasses or overflows Guard hits Armor next.</li>
+
+                                <li class="no-bullet"><img class="def-symbol-sb"
+                                        src="/assets/icons/svg/health/icon-health.svg"
+                                        alt="Health" title="Health"> is your character’s <strong>core vitality</strong>.
+                                    If it drops to 0, the character dies.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">2 • Damage Flow</strong>
+                        <div style="margin-left: 1em;">
+                            When taking damage, follow this sequence:
+                        </div>
+                        <div class="damage-flow-row-sb">
+                        <div class="damage-step-sb guard-step-sb">
+                            <img src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard">
+                        </div>
+
+                        <div class="arrow">→</div>
+
+                        <div class="damage-step-sb armor-step-sb">
+                            <img src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor">
+                        </div>
+
+                        <div class="arrow">→</div>
+
+                        <div class="damage-step-sb health-step-sb">
+                            <img src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health">
+                        </div>
                     </div>
-                </div>
+                    </li>
+                    <li class="no-bullet" style="margin-top: 1.5em;">
+                        <strong class="tldr-title">3 • Character Health Value</strong>
+                        <ul class="no-bullet">
+                            <li style="margin: .5em 0 0 0;" class="no-bullet"><div class="equation-wrapper" style="display: flex; justify-content: center;"><p style="font-size: 1.3em">
+                        <img class="def-symbol-sb"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> Health = 2 ×<img class="def-symbol-sb"
+                                src="/assets/icons/svg/aptitudes/vigor-ico.svg"
+                                alt="Vigor" title="Vigor" style="height: 1.5em;"> Vigor
+                    </p>
+                    </div>
+                            </li>           
+                </ul>
+            </div>
+        </div>
 
                 <!-- Block 3: Player & GM Resources -->
                 <div class="sidebar-block">
@@ -661,22 +904,22 @@
 
             if (icon && block) {
                 icon.addEventListener('mouseenter', () => {
-                    icon.classList.add('highlighted');
+                    icon.classList.add('icon-highlighted');
                     block.classList.add('highlighted');
                 });
 
                 icon.addEventListener('mouseleave', () => {
-                    icon.classList.remove('highlighted');
+                    icon.classList.remove('icon-highlighted');
                     block.classList.remove('highlighted');
                 });
 
                 block.addEventListener('mouseenter', () => {
-                    icon.classList.add('highlighted');
+                    icon.classList.add('icon-highlighted');
                     block.classList.add('highlighted');
                 });
 
                 block.addEventListener('mouseleave', () => {
-                    icon.classList.remove('highlighted');
+                    icon.classList.remove('icon-highlighted');
                     block.classList.remove('highlighted');
                 });
             }
