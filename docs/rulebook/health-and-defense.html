@@ -42,6 +42,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        .highlighted::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: white;
+            opacity: 0.3;
+            pointer-events: none;
+        }
        
     </style>
 
@@ -73,17 +81,435 @@
                         <p>Section I</p>
                     </div>
                     <div class="title-container">
-                        <span class="title-icon">r</span>
+                        <span class="title-icon">i</span>
                         <h2>Core Concept</h2>
-                        <span class="title-icon rot90">r</span>
+                        <span class="title-icon rot90">i</span>
                     </div>
-                    <p class="subtitle">Progression through Three Tracks of Play
+                    <p class="subtitle">Placeholder
                     </p>
                 </header>
-
-                <p>
+                <p>In Seeker, your character’s ability to endure wounds, hardship, and the dangers of exploration is
+                    represented by a layered health system. Rather than relying on a single pool of hit points, the game
+                    divides incoming harm across <strong class="highlight">three distinct defensive layers</strong>:
+                    <em>Guard</em>, <em>Armor</em>, and <em>Health</em>.
                 </p>
+                <p>Each layer reflects a different kind of resilience—tactical readiness, physical protection, and raw
+                    vitality. When your character suffers harm, that damage flows through these layers in a specific
+                    order, with each one absorbing part of the impact before the next is affected.</p>
+                <p>At the heart of Seeker's system are two fundamental concepts:</p>
+                <ul>
+                    <li><strong>Damage:</strong> The universal measure of harm inflicted upon your character—whether
+                        from a sword strike,
+                        a fiery spell, or a crushing fall.</li>
+                    <li><strong>Depletion:</strong> When a defensive layer absorbs damage, its current value is reduced.
+                        If the incoming
+                        damage exceeds what remains in that layer, the layer is depleted, and any leftover harm (called
+                        overflow damage) carries over to the next layer.</li>
+                </ul>
+                <p>This layered structure adds both narrative clarity and tactical depth. It rewards smart
+                    decision-making, preparation, and risk management—making every point of damage matter.</p>
             </section>
+
+            <!-- 2 • The Three Layers of Defense -->
+            <section class="section-wrapper" id="section2" sidenav="2 • The Three Layers of Defense">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon">H</span>
+                        <h2>The Three Layers of Defense</h2>
+                        <span class="title-icon rot90">H</span>
+                    </div>
+                    <p class="subtitle">Placeholder
+                    </p>
+                </header>
+                <div class="defense-wrapper">
+                    <div class="defense-header">
+                        <div class="defense-icon-outer">
+                            <div class="defense-icon">
+                                <img src="/assets/icons/webp/health/symbol_guard.webp"
+                                    alt="Guard Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="defense-intro">
+                            <h3>Guard</h3>
+                            <p>
+                                Guard (<img class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-guard.svg"
+                                    alt="Guard" title="Guard">) represents your character’s moment-to-moment combat
+                                readiness—the ability to
+                                deflect,
+                                parry, dodge, or anticipate harm before it hits. It is a <em>temporary, tactical</em>
+                                layer
+                                of defense that reflects alertness and active engagement.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="defense-content">
+                        <h4>How It Works</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> is a numeric value that <strong>starts at 0 at the beginning
+                                of combat</strong>,
+                            unless modified by specific Masteries or effects. Certain Skills allow you to gain <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard">
+                            during your turn. When you suffer damage, <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> is checked first. If your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> value is
+                            greater than 0, that damage is absorbed by <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> before affecting other defenses.
+                        </p>
+
+                        <h4>When It Applies</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> only protects you while it has value. If your <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> is at 0, you are considered
+                            <u>Off-Guard</u>, and damage bypasses this layer entirely. <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> is usually lost at the
+                            moment it absorbs damage, and does not persist outside of combat unless explicitly stated.
+                        </p>
+
+                        <h4>How to Interact With It</h4>
+                        <p>
+                            Many Skills and Masteries grant <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> as a result of defensive actions or successful rolls.
+                            Some enemies may attempt to remove or bypass your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> through surprise, distraction, or
+                            overwhelming force. <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> cannot be repaired or healed—it must be regained through
+                            actions.
+                        </p>
+
+                        <blockquote>
+                            <p>Think of <img class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-guard.svg"
+                                    alt="Guard" title="Guard"> as the split-second reflexes, timing, and discipline that
+                                come with
+                                focus and training. It's not armor. It's not toughness. It's how ready you are right
+                                now.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Armor -->
+                <div class="defense-wrapper">
+                    <div class="defense-header">
+                        <div class="defense-icon-outer">
+                            <div class="defense-icon">
+                                <img src="/assets/icons/webp/health/symbol_armor.webp"
+                                    alt="Guard Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="defense-intro">
+                            <h3>Armor</h3>
+                            <p>
+                                Armor (<img class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-armor.svg"
+                                    alt="Armor" title="Armor">) represents your character’s physical protection—gear,
+                                plating, clothing, or magical shielding designed to reduce harm. Unlike <img
+                                    class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-guard.svg"
+                                    alt="Guard" title="Guard">, <img class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-armor.svg"
+                                    alt="Armor" title="Armor"> is
+                                not tactical or reactive; it is enduring and passive, forming the solid middle layer
+                                between your readiness and your body.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="defense-content">
+                        <h4>How It Works</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> is a numeric value granted by your equipment, magical
+                            protections, or certain
+                            Masteries. When damage bypasses <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard">—or if you are <u>Off-Guard</u>—<img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> is the next layer to
+                            absorb it. Damage reduces your current <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> value. Once it reaches 0, <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> is considered
+                            depleted and can no longer offer protection until it is repaired.
+                        </p>
+
+                        <h4>When It Applies</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> applies whenever damage reaches it. It does not require
+                            activation or management in
+                            combat. However, not all types of damage are effective against <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor">. Certain effects (e.g.,
+                            disease, fire, psychic attacks) may ignore or partially bypass it.
+                        </p>
+
+                        <h4>How to Interact With It</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> can be enhanced or altered through equipment choices, magical
+                            items, and Masteries.
+                            After being depleted, it must be repaired—usually as part of a downtime Activity. Some
+                            enemies may target your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> directly, attempting to destroy or weaken it before reaching
+                            your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health">.
+                        </p>
+
+                        <blockquote>
+                            <p>
+                                <em>Think of <img class="defense-inline-symbol"
+                                        src="/assets/icons/svg/health/icon-armor.svg"
+                                        alt="Armor" title="Armor"> as your character’s shell—reliable, protective, but
+                                    finite. It buys
+                                    you time, but won’t save you forever.</em>.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Health -->
+                <div class="defense-wrapper">
+                    <div class="defense-header">
+                        <div class="defense-icon-outer">
+                            <div class="defense-icon">
+                                <img src="/assets/icons/webp/health/symbol_health.webp"
+                                    alt="Guard Icon" width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="defense-intro">
+                            <h3>Health</h3>
+                            <p>
+                                Health (<img class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-health.svg"
+                                    alt="Health" title="Health">) is the final and most vital layer of defense: it
+                                represents your character’s stamina, vitality, and physical integrity. Once this layer
+                                is harmed, you are no longer resisting damage—you are truly being wounded.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="defense-content">
+                        <h4>How It Works</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> is a fixed value based on your Vigor Aptitude, Masteries,
+                            and level-up choices.
+                            Damage only affects <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> once both <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> and <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> have been depleted. When your <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health">
+                            reaches 0, your character dies.
+                        </p>
+
+                        <h4>When It Applies</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> is only affected by damage that passes through <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> and <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor">, or by specific
+                            effects that bypass those layers (such as poison, internal injuries, or magical corruption).
+                            Because it reflects lasting harm, <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> does not recover automatically after combat.
+                        </p>
+
+                        <h4>How to Interact With It</h4>
+                        <p>
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> can be restored through healing effects, medical skills,
+                            magical items, or resting
+                            during downtime. Some Talents or rare effects may allow you to delay or mitigate lethal
+                            blows, but in most cases, damage to <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> is serious and persistent.
+                        </p>
+
+                        <blockquote>
+                            <p>
+                                <img class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-health.svg"
+                                    alt="Health" title="Health"> is not just a number—it’s your character’s lifeline.
+                                When <img class="defense-inline-symbol"
+                                    src="/assets/icons/svg/health/icon-health.svg"
+                                    alt="Health" title="Health"> drops, the
+                                stakes rise. Every wound tells a story, and every recovery is hard-earned.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div class="rule-highlight-box">
+                    <h4>Calculating Your Health</h4>
+                    <p>
+                        Your character’s starting <img class="defense-inline-symbol"
+                            src="/assets/icons/svg/health/icon-health.svg"
+                            alt="Health" title="Health"> is equal to:
+                    </p>
+                    <div class="equation-wrapper" style="display: flex; justify-content: center;">
+                    <p class="centered-equation">
+                        <strong><img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> Health = 2 ×<img class="defense-inline-symbol"
+                                src="https://static.wixstatic.com/shapes/e40a82_cf217ba8adbb478e9fd4cb8cd464bdd6.svg"
+                                alt="Vigor" title="Vigor" style="height: 1.5em;"> Vigor</strong>
+                    </p>
+                    </div>
+                    <p>
+                        This value may be modified by Masteries, Items, or Talents as development progresses.
+                    </p>
+                </div>
+            </section>
+
+             <!-- 3 • Flow of Damage -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Flow of Damage">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section I</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon">G</span>
+                        <h2>Flow of Damage</h2>
+                        <span class="title-icon rot90">G</span>
+                    </div>
+                    <p class="subtitle">Placeholder
+                    </p>
+                </header>
+                <p>When your character suffers any amount of damage, that harm flows through your layers of defense in a
+                    specific order. Each layer tries to absorb the damage; if it cannot fully do so, the remaining
+                    damage continues to the next.
+
+                    Follow this sequence:</p>
+                <div class="flow-of-damage-block">
+                    <div class="damage-flow-row">
+                        <div class="damage-step guard-step">
+                            <img src="/assets/icons/webp/health/symbol_guard.webp"
+                                alt="Guard Icon">
+                        </div>
+
+                        <div class="arrow">→</div>
+
+                        <div class="damage-step armor-step">
+                            <img src="/assets/icons/webp/health/symbol_armor.webp"
+                                alt="Armor Icon">
+                        </div>
+
+                        <div class="arrow">→</div>
+
+                        <div class="damage-step health-step">
+                            <img src="/assets/icons/webp/health/symbol_health.webp"
+                                alt="Health Icon">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="damage-step-block guard-step">
+                    <h4>1. Check <span class="defense-tag" style="color: #A89D60">Guard</span> First</h4>
+                    <ul>
+                        <li>If your current <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> is greater than 0, the incoming damage is applied to
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> first.
+                        </li>
+                        <li>If <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> absorbs all the damage, the process ends.</li>
+                        <li>If the damage exceeds your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard">, subtract what you can and pass the <em>overflow
+                                damage</em> to <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor">.</li>
+                        <li>If your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> is 0, you are considered <u>Off-Guard</u>, and <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> is skipped entirely.</li>
+                    </ul>
+                </div>
+
+                <div class="damage-step-block armor-step">
+                    <h4>2. Apply Damage to <span class="defense-tag" style="color: #7F7F7F">Armor</span></h4>
+                    <ul>
+                        <li>If any damage remains after <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-guard.svg"
+                                alt="Guard" title="Guard"> (or if you were <u>Off-Guard</u>), it is applied to your
+                            current
+                            <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor">.
+                        </li>
+                        <li>If <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> absorbs all the remaining damage, the process ends.</li>
+                        <li>If the damage exceeds your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor">, subtract what you can and pass the <em>overflow
+                                damage</em> to <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health">.</li>
+                        <li>Some types of damage may bypass <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-armor.svg"
+                                alt="Armor" title="Armor"> partially or completely.</li>
+                    </ul>
+                </div>
+
+                <div class="damage-step-block health-step">
+                    <h4>3. Apply Damage to <span class="defense-tag" style="color: #A33D3D">Health</span></h4>
+                    <ul>
+                        <li>Any damage that remains after Armor is applied directly to your <img
+                                class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health">.</li>
+                        <li>This represents serious injury, lasting harm, or physical trauma.</li>
+                        <li>If your <img class="defense-inline-symbol"
+                                src="/assets/icons/svg/health/icon-health.svg"
+                                alt="Health" title="Health"> reaches 0, your character dies.</li>
+                    </ul>
+                </div>
+    </div>
+    </section>
 
             <!-- 5 • Extensions -->
             <section class="section-wrapper" id="section5" sidenav="5 • Extensions">
@@ -225,6 +651,37 @@
     <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
     <script src="/scripts/parallax.js"></script>
+
+    <script>
+        const steps = ['guard', 'armor', 'health'];
+
+        steps.forEach(step => {
+            const icon = document.querySelector('.damage-step.' + step + '-step');
+            const block = document.querySelector('.damage-step-block.' + step + '-step');
+
+            if (icon && block) {
+                icon.addEventListener('mouseenter', () => {
+                    icon.classList.add('highlighted');
+                    block.classList.add('highlighted');
+                });
+
+                icon.addEventListener('mouseleave', () => {
+                    icon.classList.remove('highlighted');
+                    block.classList.remove('highlighted');
+                });
+
+                block.addEventListener('mouseenter', () => {
+                    icon.classList.add('highlighted');
+                    block.classList.add('highlighted');
+                });
+
+                block.addEventListener('mouseleave', () => {
+                    icon.classList.remove('highlighted');
+                    block.classList.remove('highlighted');
+                });
+            }
+        });
+    </script>
 
 </body>
 
