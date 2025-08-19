@@ -6,18 +6,20 @@
   "skills": [
     {
       "id": "solar-cleave",
-      "icon": "/icons/svg/skills/skill-solar-cleave.svg",
+      "icon": "/assets/icons/svg/skills/skill-solar-cleave.svg",
       "name": "Solar Cleave",
       "category": "Combat",
-      "tags": ["Melee", "Solar", "Attack", "Two-Handed"],
+      "tags": ["Attack", "Strike", "Solar"],
       "description": "You channel Solaria into your weapon, unleashing a radiant strike that sears the air and staggers foes.",
       "effect": {
-        "core": "Deal 2 Harm to a single enemy in melee range and sear them with radiant energy.",
-        "actionCost": "2 AD",
+        "core": "Deal 2 <span class=\"iconize\">Hemorrhage</span> Damage to the Target. <br>Add 1 <span class=\"iconize\">Blind</span> to the Target.",
+        "damage": "2",
+        "damage-type": "2",
+        "actionCost": "2",
         "type": "Attack (Melee, single target)",
-        "targetRange": "1 enemy / melee"
+        "targetRange": "Single • Melee"
       },
-      "afflictions": ["1 Blinded token"],
+      "afflictions": [],
       "augmentations": {
         "slots": 5,
         "examples": [
@@ -41,6 +43,8 @@
       "description": "A shimmering veil of Solaria cloaks your allies, bending light to mislead enemies.",
       "effect": {
         "core": "All allies within 2 hexes gain Disadvantage on being targeted until the start of your next turn.",
+        "damage": "",
+        "damage-type": "",
         "actionCost": "1 AD",
         "type": "Mystic (Area, defensive)",
         "targetRange": "Self + allies in 2 hex radius"
@@ -68,6 +72,8 @@
       "description": "You clear the way forward, cutting through obstacles and finding safe paths.",
       "effect": {
         "core": "Reduce the movement cost of your party by 1 per hex for this turn, and ignore one hazardous terrain effect.",
+        "damage": "",
+        "damage-type": "",
         "actionCost": "1 AD",
         "type": "Exploration (Travel, utility)",
         "targetRange": "Party / expedition group"

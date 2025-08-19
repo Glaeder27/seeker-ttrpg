@@ -1,0 +1,28 @@
+{
+  "augmentations": [
+    {
+      "id": "blaze",
+      "name": "Blaze",
+      "icon": "/assets/icons/svg/tags/tag-fire.svg",
+      "category": "Combat",
+      "tags": ["Attack"],
+      "effect": "Convert Harm to Fire; apply Burn if target is compatible."
+    },
+    {
+      "id": "sweep",
+      "name": "Sweep",
+      "icon": "/assets/icons/svg/skills/skill-solar-cleave.svg",
+      "category": "Combat",
+      "tags": ["Attack"],
+      "effect": "Change target from 1 enemy → up to 3 enemies in a melee arc."
+    },
+    {
+      "id": "lunge",
+      "name": "Lunge",
+      "icon": "/assets/icons/svg/skills/skill-solar-cleave.svg",
+      "category": "Combat",
+      "tags": ["Strike"],
+      "effect": "Gain 1 Strife immediately before the strike."
+    }
+  ]
+}

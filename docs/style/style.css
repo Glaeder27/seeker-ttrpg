@@ -1,4 +1,4 @@
-/*v3.36 2025-08-17T15:24:35.450Z*/
+/*v3.37 2025-08-19T12:57:19.883Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2894,6 +2894,30 @@ a.flip-card-link[href=""] {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+/* ───────── Tooltip Augmentations ───────── */
+.augmentation-tooltip {
+    position: absolute;
+    background: #1a1c22;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    display: none;
+    z-index: 9999;
+    pointer-events: none;
+    max-width: 200px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    font-size: 0.85rem;
+}
+.augmentation-tooltip img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 4px;
+}
+.augmentation-tooltip .tooltip-title {
+    font-weight: 700;
+    margin-bottom: 4px;
 }
 
 /* ───────── Tag + Tooltip Trigger Style ───────── */

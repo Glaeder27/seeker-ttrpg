@@ -356,6 +356,19 @@
       "notes": ""
     },
     {
+      "name": "Solar",
+      "icon": "/assets/icons/svg/tags/placeholder.svg",
+      "category": "Utility",
+      "definition": "No description available.",
+      "visibility": true,
+      "interactions": [
+        "Summons act on your turn or autonomously",
+        "May require maintenance or control"
+      ],
+      "examples": ["Spirit Beast", "Animated Turret"],
+      "notes": ""
+    },
+    {
       "name": "Support",
       "icon": "/assets/icons/svg/tags/tag-support.svg",
       "category": "General",

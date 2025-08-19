@@ -80,20 +80,32 @@
 
         .head {
             display: flex;
-            align-items: baseline;
-            gap: 12px;
+            align-items: flex-start;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .head-icon {
+            max-width: 6rem;
+        }
+
+        .box-title {
+            color: var(--ancient-gold)
+        }
+
+        .box-title::after {
+            content: none;
         }
 
         .name {
-            font-size: 1.6rem;
-            font-weight: 800;
+            font-family: var(--font-antique);
+            font-size: 3em;
+            font-weight: 500;
             letter-spacing: .3px;
-            background: linear-gradient(90deg, #fff, var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--off-white);
+            margin: 0;
+            padding: 0;
         }
 
         .category {
@@ -110,6 +122,17 @@
             flex-wrap: wrap;
             gap: 6px;
             margin: 8px 0 16px
+        }
+
+        .tag-styled-text {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1px 6px 1px 1px;
+            font-weight: 600;
+            vertical-align: middle;
+            text-decoration: none;
         }
 
         .desc {
@@ -177,34 +200,53 @@
         }
 
         .slot {
-            width: 26px;
-            height: 26px;
+            width: 42px;
+            height: 42px;
             border-radius: 6px;
             border: 1px dashed #3a4150;
             background: #121620;
         }
 
         .selector-wrap {
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.selector-wrap label {
-    font-size: 0.9rem;
-    color: var(--muted);
-}
+        .selector-wrap label {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
 
-.skill-select {
-    background: var(--chip);
-    border: 1px solid var(--rule);
-    border-radius: 8px;
-    padding: 6px 10px;
-    color: var(--ink);
-    font-size: 0.95rem;
-    cursor: pointer;
-}
+        .skill-select {
+            background: var(--chip);
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            padding: 6px 10px;
+            color: var(--ink);
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+
+        .category {
+            font-size: .85rem;
+            color: var(--muted);
+            padding: .25rem .6rem;
+            border: 1px solid var(--rule);
+            border-radius: 999px;
+            background: var(--chip);
+        }
+
+        .effect-core {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .assigned-list li {
+            margin-bottom: 4px;
+        }
 
         .compat-note {
             font-size: .8rem;
@@ -214,6 +256,11 @@
 
         .ok {
             color: var(--ok)
+        }
+
+        .augmentation-picker img:hover {
+            outline: 2px solid var(--accent);
+            border-radius: 4px;
         }
 
         @media (max-width:720px) {
@@ -248,236 +295,23 @@
                 </div>
             </header>
 
-<!-- SKILL ───────────────────────────────────────────── -->
-<div class="wrap">
-  <div class="selector-wrap">
-    <label for="skillSelector">Select Skill:</label>
-    <select id="skillSelector" class="skill-select"></select>
-  </div>
-
-  <div id="skillContainer"></div>
-</div>
-
-<script>
-  async function loadSkills() {
-    const res = await fetch('/data/skills.json');
-    const data = await res.json();
-    return data.skills;
-  }
-
-  function renderSkill(skill) {
-    // Utility per array di slot
-    const slotsArray = Array(skill.augmentations.slots).fill(0);
-
-    return `
-    <article class="skill" aria-labelledby="skill-${skill.name.replace(/\s+/g, '-').toLowerCase()}">
-      <header class="head">
-        <img class="icon" src="${skill.icon || '/icons/default.png'}" alt="${skill.name} icon" />
-        <div class="title-wrap">
-          <h1 id="skill-${skill.name.replace(/\s+/g, '-').toLowerCase()}" class="name">${skill.name}</h1>
-          <span class="tag">${skill.category}</span> 
-        </div>
-      </header>
-
-      <div class="tags">
-        ${skill.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-      </div>
-
-      <p class="desc">${skill.description}</p>
-
-      <section class="grid">
-        <!-- Base Effect -->
-        <div class="card" style="grid-column: span 7;">
-          <h3>Effect (base)</h3>
-          <dl class="meta">
-            <dt>Action Cost</dt><dd>${skill.effect.actionCost}</dd>
-            <dt>Type</dt><dd>${skill.effect.type}</dd>
-            <dt>Target / Range</dt><dd>${skill.effect.targetRange}</dd>
-            ${skill.effect.onSuccess ? `<dt>On Success</dt><dd><strong>${skill.effect.onSuccess}</strong></dd>` : ""}
-          </dl>
-
-          ${skill.afflictions && skill.afflictions.length > 0 ? `
-            <hr class="rule" />
-            <h3>Afflictions</h3>
-            <ul>${skill.afflictions.map(a => `<li>${a}</li>`).join('')}</ul>
-          ` : ""}
-        </div>
-
-        <!-- Augmentations -->
-        <div class="card" style="grid-column: span 5;">
-          <h3>Augmentation Slots <span class="muted">(${skill.augmentations.slots} total)</span></h3>
-          <div class="slots">
-            ${slotsArray.map(() => `<span class="slot" title="Empty slot"></span>`).join('')}
-          </div>
-          <p class="compat-note">Compatibility is determined by matching <em>Tags</em> between Skill and Augmentations.</p>
-          <hr class="rule" />
-          <h3>Example Augmentations</h3>
-          <ul>
-            ${skill.augmentations.examples.map(ex => `<li>${ex}</li>`).join('')}
-          </ul>
-        </div>
-
-        <!-- Narrative -->
-        <div class="card" style="grid-column: span 12;">
-          <h3>Narrative Uses</h3>
-          <ul>
-            ${skill.narrative.map(n => `<li>${n}</li>`).join('')}
-          </ul>
-        </div>
-      </section>
-    </article>
-    `;
-  }
-
-  async function init() {
-    const skills = await loadSkills();
-    const selector = document.getElementById('skillSelector');
-    const container = document.getElementById('skillContainer');
-
-    // Popola il menù
-    skills.forEach((s, idx) => {
-      const opt = document.createElement('option');
-      opt.value = idx;
-      opt.textContent = s.name;
-      selector.appendChild(opt);
-    });
-
-    // Render default (prima skill)
-    container.innerHTML = renderSkill(skills[0]);
-
-    // Cambio selezione
-    selector.addEventListener('change', e => {
-      const skill = skills[e.target.value];
-      container.innerHTML = renderSkill(skill);
-    });
-  }
-
-  init();
-</script>
-
-<!-- ───────────────────────────────────────────── -->
-
-
-
-        </div>
-        <div class="right-column">
-            <aside class="sidebar-wrapper">
-                <!-- Block 1: Quick Glossary Search -->
-                <div class="sidebar-block">
-                    <h3>Quick Glossary</h3>
-                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
-                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+            <!-- SKILL ───────────────────────────────────────────── -->
+            <div class="wrap">
+                <div class="selector-wrap">
+                    <label for="skillSelector">Select Skill:</label>
+                    <select id="skillSelector" class="skill-select"></select>
                 </div>
 
-                <!-- Block 2: TL;DR -->
-                <div class="sidebar-block collapsible-item-sb">
-                    <div class="collapsible-header-sb" style="padding: 0">
-                        <h3 class="sidebar-section">TL;DR — Title</h3>
-                        <span class="collapsible-icon"></span>
-                    </div>
+                <div id="skillContainer"></div>
+            </div>
+            
+            <script src="/scripts/skills-selector.js"></script>
 
-                    <div class="collapsible-content-sb" style="padding: 0 5px">
-                        <ul class="no-bullet">
-                            <li class="no-bullet"><strong class="tldr-title">1 • Defense Layers</strong>
-                                <div style="margin-left: 1em;">Characters in Seeker don't have a single HP pool—they use
-                                    three
-                                    defense layers: <img class="def-symbol-sb"
-                                        src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard"> Guard,
-                                    <img class="def-symbol-sb" src="/assets/icons/svg/health/icon-armor.svg" alt="Armor"
-                                        title="Armor"> Armor, and <img class="def-symbol-sb"
-                                        src="/assets/icons/svg/health/icon-health.svg" alt="Health" title="Health">
-                                    Health.<br>
-                                    <ul style="margin-top: .5em">
-                                        <li class="no-bullet"><img class="def-symbol-sb"
-                                                src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard">
-                                            is a <strong>tactical buffer</strong> that starts at 0 and must
-                                            be built up during combat.
-                                            It’s lost first and doesn’t persist outside battle.</li>
 
-                                        <li class="no-bullet"><img class="def-symbol-sb"
-                                                src="/assets/icons/svg/health/icon-armor.svg" alt="Armor" title="Armor">
-                                            is <strong>physical protection</strong> granted by gear.
-                                            Damage that bypasses or overflows Guard hits Armor next.</li>
+            <!-- ───────────────────────────────────────────── -->
 
-                                        <li class="no-bullet"><img class="def-symbol-sb"
-                                                src="/assets/icons/svg/health/icon-health.svg" alt="Health"
-                                                title="Health"> is your character’s <strong>core vitality</strong>.
-                                            If it drops to 0, the character dies.</li>
-                                    </ul>
-                                </div>
-                            </li>
 
-                            <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">2 • Damage
-                                    Flow</strong>
-                                <div style="margin-left: 1em;">
-                                    When taking damage, follow this sequence:
-                                </div>
-                                <div class="damage-flow-row-sb">
-                                    <div class="damage-step-sb guard-step-sb">
-                                        <img src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard">
-                                    </div>
 
-                                    <div class="arrow">→</div>
-
-                                    <div class="damage-step-sb armor-step-sb">
-                                        <img src="/assets/icons/svg/health/icon-armor.svg" alt="Armor" title="Armor">
-                                    </div>
-
-                                    <div class="arrow">→</div>
-
-                                    <div class="damage-step-sb health-step-sb">
-                                        <img src="/assets/icons/svg/health/icon-health.svg" alt="Health" title="Health">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="no-bullet" style="margin-top: 1.5em;">
-                                <strong class="tldr-title">3 • Character Health Value</strong>
-                                <ul class="no-bullet">
-                                    <li style="margin: .5em 0 0 0;" class="no-bullet">
-                                        <div class="equation-wrapper" style="display: flex; justify-content: center;">
-                                            <p style="font-size: 1.3em">
-                                                <img class="def-symbol-sb"
-                                                    src="/assets/icons/svg/health/icon-health.svg" alt="Health"
-                                                    title="Health"> Health = 2 ×<img class="def-symbol-sb"
-                                                    src="/assets/icons/svg/aptitudes/vigor-ico.svg" alt="Vigor"
-                                                    title="Vigor" style="height: 1.5em;"> Vigor
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                    </div>
-                </div>
-
-                <!-- Block 3: Player & GM Resources -->
-                <div class="sidebar-block">
-                    <h3>Player & GM Resources</h3>
-                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
-                    <a class="sidebar-link" href="#">Quickstart Rules</a>
-                </div>
-
-                <!-- Block 4: From the Archives Carousel -->
-                <div class="sidebar-block">
-                    <h3>From the Archives</h3>
-                    <div class="archives-carousel-fade">
-                        <div class="archive-item show">
-                            "They did not fear our steel, but the smoke that rose from southern ruins."
-                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
-                        </div>
-                        <div class="archive-item">
-                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
-                            <div class="archive-author">— Journal of Captain J. Strode</div>
-                        </div>
-                        <div class="archive-item">
-                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
-                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
-                        </div>
-                        <div class="archive-item">
-                            "The stone idols breathe. Some say they dream. Pray they never awaken."
-                            <div class="archive-author">— Codex Margin Note, unknown author</div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
         </div>
     </main>
 
@@ -508,7 +342,7 @@
     <script src="/scripts/core.js"></script>
     <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
-    <script src="/scripts/parallax.js"></script>
+    <script src="/scripts/skills-utils.js"></script>
 
 </body>
 
