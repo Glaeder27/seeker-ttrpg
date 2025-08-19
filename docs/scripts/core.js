@@ -1,11 +1,11 @@
-/*v2.36 2025-08-19T21:05:10.202Z*/
+/*v2.36 2025-08-19T22:37:15.630Z*/
 
 // ─── Globals ───
 let tooltipDefinitions = {};
 let tagDefinitions = {};
 let categoryColors = {};
 
-window.applyTagIcons = function() {
+window.applyTagIcons = function () {
   document.querySelectorAll(".tag").forEach((tag) => {
     const tagName = tag.textContent.trim();
     const tagData = tagDefinitions[tagName];
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ─── Tooltip Container Factory ───
-  function createTooltipBox() {
+  window.createTooltipBox = function () {
     const tooltip = document.createElement("div");
     tooltip.classList.add("tooltip-box");
 
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(tooltip);
 
     return { tooltip, icon, title, description, header };
-  }
+  };
 
   // ─── Initialize standard glossary tooltips (.tooltip) ───
   function initializeTooltips() {
@@ -125,77 +125,79 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ─── Initialize tag tooltips (.tag) ───
-window.initializeTagTooltips = function(container = document) {
-  const tagElements = container.querySelectorAll(".tag");
-  if (!tagElements.length) return;
+  window.initializeTagTooltips = function (container = document) {
+    const tagElements = container.querySelectorAll(".tag");
+    if (!tagElements.length) return;
 
-  const { tooltip, icon, title, description } = createTooltipBox();
-  icon.style.display = "";
-  title.style.display = "";
+    const { tooltip, icon, title, description } = createTooltipBox();
+    icon.style.display = "";
+    title.style.display = "";
 
-  let hideTooltipTimeout = null;
+    let hideTooltipTimeout = null;
 
-  tagElements.forEach((tag) => {
-    tag.addEventListener("mouseenter", async () => {
-      if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
-      tag.classList.add("active-tag-tooltip");
+    tagElements.forEach((tag) => {
+      tag.addEventListener("mouseenter", async () => {
+        if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
+        tag.classList.add("active-tag-tooltip");
 
-      const tagKey = tag.textContent.trim();
-      const tagData = tagDefinitions[tagKey];
+        const tagKey = tag.textContent.trim();
+        const tagData = tagDefinitions[tagKey];
 
-      if (!tagData) {
+        if (!tagData) {
+          title.textContent = tagKey;
+          description.innerHTML = `No description available for <strong>${tagKey}</strong>.`;
+          return;
+        }
+
+        const category = tagData.category || "";
+        const color = categoryColors[category] || "#D4B55A";
+        tooltip.style.borderColor = color;
+        tooltip.style.setProperty("--tooltip-color", color);
+
         title.textContent = tagKey;
-        description.innerHTML = `No description available for <strong>${tagKey}</strong>.`;
-        return;
-      }
+        description.innerHTML = tagData.definition || "";
 
-      const category = tagData.category || "";
-      const color = categoryColors[category] || "#D4B55A";
-      tooltip.style.borderColor = color;
-      tooltip.style.setProperty("--tooltip-color", color);
+        try {
+          const response = await fetch(tagData.icon);
+          const svgText = await response.text();
+          icon.innerHTML = svgText;
+        } catch (error) {
+          icon.innerHTML = "";
+        }
 
-      title.textContent = tagKey;
-      description.innerHTML = tagData.definition || "";
+        const rect = tag.getBoundingClientRect();
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft =
+          window.pageXOffset || document.documentElement.scrollLeft;
 
-      try {
-        const response = await fetch(tagData.icon);
-        const svgText = await response.text();
-        icon.innerHTML = svgText;
-      } catch (error) {
-        icon.innerHTML = "";
-      }
+        tooltip.style.left = rect.left + scrollLeft + "px";
+        tooltip.style.top = rect.bottom + scrollTop + 10 + "px";
+        tooltip.classList.add("visible");
+        tooltip.style.pointerEvents = "auto";
+      });
 
-      const rect = tag.getBoundingClientRect();
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const scrollLeft =
-        window.pageXOffset || document.documentElement.scrollLeft;
-
-      tooltip.style.left = rect.left + scrollLeft + "px";
-      tooltip.style.top = rect.bottom + scrollTop + 10 + "px";
-      tooltip.classList.add("visible");
-      tooltip.style.pointerEvents = "auto";
+      tag.addEventListener("mouseleave", () => {
+        hideTooltipTimeout = setTimeout(() => {
+          tag.classList.remove("active-tag-tooltip");
+          tooltip.classList.remove("visible");
+          tooltip.style.pointerEvents = "none";
+        }, 150);
+      });
     });
 
-    tag.addEventListener("mouseleave", () => {
-      hideTooltipTimeout = setTimeout(() => {
-        tag.classList.remove("active-tag-tooltip");
-        tooltip.classList.remove("visible");
-        tooltip.style.pointerEvents = "none";
-      }, 150);
+    tooltip.addEventListener("mouseenter", () => {
+      if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
     });
-  });
 
-  tooltip.addEventListener("mouseenter", () => {
-    if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
-  });
-
-  tooltip.addEventListener("mouseleave", () => {
-    tooltip.classList.remove("visible");
-    tooltip.style.pointerEvents = "none";
-    document.querySelector(".active-tag-tooltip")?.classList.remove("active-tag-tooltip");
-  });
-};
+    tooltip.addEventListener("mouseleave", () => {
+      tooltip.classList.remove("visible");
+      tooltip.style.pointerEvents = "none";
+      document
+        .querySelector(".active-tag-tooltip")
+        ?.classList.remove("active-tag-tooltip");
+    });
+  };
 
   // ─── Load tooltip definitions ───
   fetch("/data/tooltips.json")

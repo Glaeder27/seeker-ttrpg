@@ -1,4 +1,4 @@
-/*v1.11 2025-08-19T21:05:41.283Z*/
+/*v1.11 2025-08-19T22:29:35.068Z*/
 
 let augmentationsData = [];
 
@@ -21,21 +21,48 @@ function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
   const newSkill = JSON.parse(JSON.stringify(baseSkill));
 
   assigned.forEach((aug) => {
+    // ─── Modifica damage-type ───
     if (aug["mod-damage-type"]) {
       newSkill.effect["damage-type"] = aug["mod-damage-type"];
     }
 
-    if (aug["add-affliction"]) {
-      newSkill.afflictions = [
-        ...(newSkill.afflictions || []),
-        ...aug["add-affliction"],
-      ];
+    // ─── Modifica damage-type-note ───
+    if (aug["mod-damage-type-note"]) {
+      newSkill.effect["damage-type-note"] = aug["mod-damage-type-note"];
     }
 
+    // ─── Somma action-cost ───
+    if (aug["mod-action-cost"]) {
+      const baseCost = Number(newSkill.effect.actionCost) || 0;
+      newSkill.effect.actionCost = baseCost + Number(aug["mod-action-cost"]);
+    }
+
+    // ─── Sostituisci target / area ───
+    if (aug["mod-target"]) {
+      newSkill.effect.target = aug["mod-target"];
+    }
+    if (aug["mod-area"]) {
+      newSkill.effect.area = aug["mod-area"];
+    }
+
+    // ─── Aggiunge tag ───
     if (aug["add-tags"]) {
       newSkill.tags = [
         ...new Set([...(newSkill.tags || []), ...aug["add-tags"]]),
       ];
+    }
+
+    // ─── Aggiunge afflictions direttamente nella lista core della skill ───
+    if (aug["add-affliction"]) {
+      // Aggiunge ogni afflizione come <li> alla skill core
+      const afflictionsHTML = aug["add-affliction"]
+        .map(
+          (a) => `<li>Add <span class="iconize">${a}</span> to the Target.</li>`
+        )
+        .join("");
+
+      // Appende i nuovi <li> direttamente al core
+      newSkill.effect.core += afflictionsHTML;
     }
   });
 
@@ -49,7 +76,9 @@ function renderSkill(skill) {
   return `
     <article class="skill" aria-labelledby="skill-${skill.id}">
       <header class="head">
-        <img class="head-icon" src="${skill.icon || "/assets/icons/default.png"}" alt="${skill.name} icon" />
+        <img class="head-icon" src="${
+          skill.icon || "/assets/icons/default.png"
+        }" alt="${skill.name} icon" />
         <div class="title-wrap" style="flex:1; display:flex; justify-content:space-between; align-items:baseline;">
           <div class="id">
             <h1 id="skill-${skill.id}" class="name">${skill.name}</h1>
@@ -64,26 +93,44 @@ function renderSkill(skill) {
       <p class="desc">${skill.description}</p>
 
       <section class="grid">
-        <div class="card" style="grid-column: span 7;">
+        <div class="card" style="grid-column: span 5;">
           <h3 class="box-title">Effect</h3>
-          <p class="effect-core">${replacePlaceholders(skill.effect.core, skill.effect)}</p>
+          <p class="effect-core"><ol>${replacePlaceholders(
+            skill.effect.core,
+            skill.effect
+          )}</ol></p>
           <dl class="meta">
             <dt>Action Cost</dt><dd>${skill.effect.actionCost}</dd>
-            <dt>Target / Range</dt><dd>${skill.effect.targetRange}</dd>
+            <dt>Target • Area</dt><dd>${skill.effect.target} • ${
+    skill.effect.area
+  }</dd>
           </dl>
           ${
             skill.afflictions && skill.afflictions.length > 0
               ? `<hr class="rule" />
                  <h3 class="box-title">Afflictions</h3>
-                 <ul>${skill.afflictions.map((a) => `<li>${a}</li>`).join("")}</ul>`
+                 <ul>${skill.afflictions
+                   .map((a) => `<li>${a}</li>`)
+                   .join("")}</ul>`
               : ""
           }
         </div>
 
-        <div class="card" style="grid-column: span 5;">
-          <h3 class="box-title">Augmentation Slots <span class="muted">(${skill.augmentations.slots} total)</span></h3>
+        <div class="card" style="grid-column: span 7;">
+          <h3 class="box-title">Augmentation Slots <span class="muted">(${
+            skill.augmentations.slots
+          } total)</span><button id="removeAllAugments" type="button">
+  <i class="fa-solid fa-trash"></i>
+  <span class="sr-only">Remove All Augmentations</span>
+</button></h3>
+          
           <div class="slots">
-            ${slotsArray.map((_, i) => `<span class="slot" data-slot="${i}" title="Click to assign augmentation"></span>`).join("")}
+            ${slotsArray
+              .map(
+                (_, i) =>
+                  `<span class="slot" data-slot="${i}" title="Click to assign augmentation"></span>`
+              )
+              .join("")}
           </div>
           <p class="compat-note">Compatibility is determined by matching <em>Tags</em>.</p>
           <hr class="rule" />
@@ -93,10 +140,6 @@ function renderSkill(skill) {
           </ul>
         </div>
 
-        <div class="card" style="grid-column: span 12;">
-          <h3 class="box-title">Narrative Uses</h3>
-          <ul>${skill.narrative.map((n) => `<li>${n}</li>`).join("")}</ul>
-        </div>
       </section>
     </article>
   `;
@@ -109,13 +152,23 @@ function renderAssignedList(container, list) {
     container.innerHTML = `<li class="muted">No augmentations assigned.</li>`;
     return;
   }
-  container.innerHTML = list.map((aug) => `<li><strong>${aug.name}</strong> — ${aug.effect}</li>`).join("");
+  container.innerHTML = list
+    .map((aug) => `<li><strong>${aug.name}</strong> — ${aug.effect}</li>`)
+    .join("");
 }
 
 // ─── Setup augmentation slots ───
-function setupAugmentationSlots(skill, container, initializeAugmentationTooltips, preAssignedBySlot) {
+function setupAugmentationSlots(
+  skill,
+  container,
+  initializeAugmentationTooltips,
+  preAssignedBySlot
+) {
   const slots = container.querySelectorAll(`[data-slot]`);
-  let assignedBySlot = Array.from({ length: slots.length }, (_, i) => preAssignedBySlot?.[i] || null);
+  let assignedBySlot = Array.from(
+    { length: slots.length },
+    (_, i) => preAssignedBySlot?.[i] || null
+  );
 
   slots.forEach((slot, i) => {
     const aug = assignedBySlot[i];
@@ -134,7 +187,7 @@ function setupAugmentationSlots(skill, container, initializeAugmentationTooltips
 
       slot.classList.add("ok");
     } else {
-    delete slot.dataset.augId; // rimuove se vuoto
+      delete slot.dataset.augId; // rimuove se vuoto
     }
   });
 
@@ -147,7 +200,14 @@ function setupAugmentationSlots(skill, container, initializeAugmentationTooltips
     const modifiedSkill = applyAugmentationsToSkill(baseSkill, assignedBySlot);
     container.innerHTML = renderSkill(modifiedSkill);
 
-    setupAugmentationSlots(baseSkill, container, initializeAugmentationTooltips, assignedBySlot);
+    if (window.runIconizer) runIconizer(container);
+
+    setupAugmentationSlots(
+      baseSkill,
+      container,
+      initializeAugmentationTooltips,
+      assignedBySlot
+    );
 
     if (window.applyTagIcons) window.applyTagIcons();
     if (window.initializeTagTooltips) window.initializeTagTooltips(container);
@@ -160,13 +220,18 @@ function setupAugmentationSlots(skill, container, initializeAugmentationTooltips
     const slotIndex = Number(slot.dataset.slot);
     slot.addEventListener("click", (e) => {
       e.stopPropagation();
-      document.querySelectorAll(".augmentation-picker").forEach((p) => p.remove());
+      document
+        .querySelectorAll(".augmentation-picker")
+        .forEach((p) => p.remove());
 
       const picker = document.createElement("div");
       picker.classList.add("augmentation-picker");
       picker.style.position = "absolute";
       picker.style.display = "grid";
-      picker.style.gridTemplateColumns = `repeat(${Math.min(compatibleAugmentations.length, 4)}, 1fr)`;
+      picker.style.gridTemplateColumns = `repeat(${Math.min(
+        compatibleAugmentations.length,
+        4
+      )}, 1fr)`;
       picker.style.gap = "6px";
       picker.style.background = "#1a1c22";
       picker.style.border = "1px solid #3a4150";
@@ -182,7 +247,8 @@ function setupAugmentationSlots(skill, container, initializeAugmentationTooltips
 
       compatibleAugmentations.forEach((aug) => {
         const isAssignedHere = assignedBySlot[slotIndex]?.id === aug.id;
-        const isAssignedOther = assignedFlat.some((a) => a.id === aug.id) && !isAssignedHere;
+        const isAssignedOther =
+          assignedFlat.some((a) => a.id === aug.id) && !isAssignedHere;
 
         const icon = document.createElement("img");
         icon.src = aug.icon || "/assets/icons/default.png";
@@ -197,7 +263,8 @@ function setupAugmentationSlots(skill, container, initializeAugmentationTooltips
         if (!isAssignedOther) {
           icon.addEventListener("click", (ev) => {
             ev.stopPropagation();
-            if (typeof forceHideAugTooltip === "function") forceHideAugTooltip();
+            if (typeof forceHideAugTooltip === "function")
+              forceHideAugTooltip();
             assignedBySlot[slotIndex] = isAssignedHere ? null : aug;
             picker.remove();
             rerenderSkill();
@@ -239,24 +306,39 @@ async function init() {
     selector.appendChild(opt);
   });
 
-  // Primo render della skill
-  container.innerHTML = renderSkill(skills[0]);
-
-  // Aggiorna tag subito dopo il render
-  if (window.applyTagIcons) window.applyTagIcons();
-  if (window.initializeTagTooltips) window.initializeTagTooltips(container);
-
-  // Setup slot augmentation
-  setupAugmentationSlots(skills[0], container, initializeAugmentationTooltips);
-
-  selector.addEventListener("change", (e) => {
-    const skill = skills[e.target.value];
+  // Funzione di render + setup
+  function renderAndSetup(skill, preAssignedBySlot) {
     container.innerHTML = renderSkill(skill);
 
+    if (window.runIconizer) runIconizer(container);
     if (window.applyTagIcons) window.applyTagIcons();
     if (window.initializeTagTooltips) window.initializeTagTooltips(container);
 
-    setupAugmentationSlots(skill, container, initializeAugmentationTooltips);
+    setupAugmentationSlots(
+      skill,
+      container,
+      initializeAugmentationTooltips,
+      preAssignedBySlot
+    );
+  }
+
+  // Primo render
+  renderAndSetup(skills[0]);
+
+  // --- listener selector ---
+  selector.addEventListener("change", (e) => {
+    const skill = skills[e.target.value];
+    renderAndSetup(skill);
+  });
+
+  // --- delegazione eventi per Remove All Augmentations ---
+  container.addEventListener("click", (e) => {
+    const btn = e.target.closest("#removeAllAugments");
+    if (!btn) return;
+
+    const skill = skills[selector.value];
+    const emptySlots = Array(skill.augmentations.slots).fill(null);
+    renderAndSetup(skill, emptySlots);
   });
 }
 

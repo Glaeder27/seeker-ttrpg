@@ -47,7 +47,7 @@
     {
       "name": "Magic",
       "definition": "Tags linked to supernatural forces and arcane effects.",
-      "color": "#6b5d8c"
+      "color": "#E1B300"
     },
     {
       "name": "Meta",
@@ -343,6 +343,16 @@
       "notes": "Core mechanical tag. Often used to determine legality of abilities."
     },
     {
+      "name": "Solar",
+      "icon": "/assets/icons/svg/tags/tag-solar.svg",
+      "category": "Magic",
+      "definition": "No description available.",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+    },
+    {
       "name": "Strike",
       "icon": "/assets/icons/svg/tags/tag-strike.svg",
       "category": "Combat",
@@ -360,19 +370,6 @@
       "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
       "definition": "Creates creatures or constructs to fight or assist you.",
-      "visibility": true,
-      "interactions": [
-        "Summons act on your turn or autonomously",
-        "May require maintenance or control"
-      ],
-      "examples": ["Spirit Beast", "Animated Turret"],
-      "notes": ""
-    },
-    {
-      "name": "Solar",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
-      "category": "Utility",
-      "definition": "No description available.",
       "visibility": true,
       "interactions": [
         "Summons act on your turn or autonomously",

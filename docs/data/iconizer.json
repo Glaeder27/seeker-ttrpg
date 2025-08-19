@@ -26,19 +26,19 @@
 
   "Hemorrhage": {
     "img": "/assets/icons/svg/damage/damage-hemorrhage.svg",
-    "title": "6"
+    "title": "Hemorrhage Damage"
   },
   "Contusion": {
-    "img": "/assets/icons/svg/dice/damage-contusion.svg",
-    "title": "6"
+    "img": "/assets/icons/svg/damage/damage-contusion.svg",
+    "title": "Contusion Damage"
   },
   "Decay": {
-    "img": "/assets/icons/svg/dice/damage-decay.svg",
-    "title": "6"
+    "img": "/assets/icons/svg/damage/damage-decay.svg",
+    "title": "Decay Damage"
   },
   "Exposure": {
-    "img": "/assets/icons/svg/dice/damage-exposure.svg",
-    "title": "6"
+    "img": "/assets/icons/svg/damage/damage-exposure.svg",
+    "title": "Exposure Damage"
   }
   
 }

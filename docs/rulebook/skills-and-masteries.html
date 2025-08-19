@@ -1,4 +1,4 @@
-<!-- v1.3 2025-08-19T21:00:12.261Z -->
+<!-- v1.3 2025-08-19T22:29:36.303Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -166,9 +166,10 @@
 
         dl.meta {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 30% 70%;
             gap: 10px;
-            margin: 0
+            margin: 0;
+            align-items: center;
         }
 
         dl.meta dt {
@@ -262,6 +263,29 @@
             outline: 2px solid var(--accent);
             border-radius: 4px;
         }
+
+        #removeAllAugments {
+            position: absolute;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: var(--pale-beige);
+            right: 0
+        }
+
+        #removeAllAugments .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
 
         @media (max-width:720px) {
             .grid {

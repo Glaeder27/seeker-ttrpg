@@ -1,4 +1,4 @@
-/*v3.38 2025-08-19T15:50:55.275Z*/
+/*v3.39 2025-08-19T22:55:04.350Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -422,6 +422,13 @@ p {
 .page-infobox {
     padding: 25px 10px 0 10px;
     margin: 0 auto;
+}
+
+.no-after::after {
+  content: none !important;
+}
+.no-before::before {
+  content: none !important;
 }
 
 /* Positions */
@@ -2753,12 +2760,13 @@ a.flip-card-link[href=""] {
     background-color: rgba(60, 60, 60, 0.7);
     border: 0px solid var(--ancient-gold, #B89B4B);
     border-style: solid;
-    border-width: 2px 0 1px 0;
-    border-radius: 10px;
+    border-width: 2px 0 0 0;
+    border-radius: .3rem; 
     color: var(--off-white, #F0F0F0);
     font-size: 0.9rem;
     line-height: 1.4;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+    filter: drop-shadow(0 0 12px black);
     pointer-events: none;
     opacity: 0;
     transform: translateY(4px);
@@ -2814,7 +2822,8 @@ a.flip-card-link[href=""] {
     text-transform: uppercase;
 }
 
-.tooltip-description {
+.tooltip-description,
+.aug-tooltip-description {
     color: var(--off-white, #F0F0F0);
     font-family: var(--font-main);
     font-size: 0.8rem;
@@ -2856,7 +2865,8 @@ a.flip-card-link[href=""] {
 }
 
 /* ───────── Tooltip Icon ───────── */
-.tooltip-icon {
+.tooltip-icon,
+.aug-tooltip-icon {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -2869,7 +2879,8 @@ a.flip-card-link[href=""] {
     pointer-events: none;
 }
 
-.tooltip-icon svg {
+.tooltip-icon svg,
+.aug-tooltip-icon svg {
     width: 100%;
     height: 100%;
     stroke: var(--bright-gold);

@@ -6,18 +6,20 @@
   "skills": [
     {
       "id": "solar-cleave",
-      "icon": "/assets/icons/svg/skills/skill-solar-cleave.svg",
+      "icon": "/assets/icons/webp/skills/skill-solar-cleave.webp",
       "name": "Solar Cleave",
       "category": "Combat",
       "tags": ["Attack", "Strike", "Solar"],
       "description": "You channel Solaria into your weapon, unleashing a radiant strike that sears the air and staggers foes.",
       "effect": {
-        "core": "Deal {{damage}} <span class=\"iconize\">{{damage-type}}</span> to the Target. <br>Add 1 <span class=\"iconize\">Blind</span> to the Target.",
+        "core": "<li>Deal {{damage}} <span class=\"iconize\">{{damage-type}}</span> {{damage-type-note}} to the Target.</li><li>Add 1 <span class=\"iconize\">Blind</span> to the Target.</li>",
         "damage": "2",
-        "damage-type": "Hermorrhage",
+        "damage-type": "Hemorrhage",
+        "damage-type-note": "",
         "actionCost": "2",
         "type": "Attack (Melee, single target)",
-        "targetRange": "Single • Melee"
+        "target": "Single",
+        "area": "Melee"
       },
       "afflictions": [],
       "augmentations": {

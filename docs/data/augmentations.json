@@ -1,31 +1,27 @@
 {
   "augmentations": [
     {
-      "id": "blaze",
-      "name": "Blaze",
-      "icon": "/assets/icons/svg/tags/tag-fire.svg",
+      "id": "fire-infusion",
+      "name": "Fire Infusion",
+      "icon": "/assets/icons/svg/augmentations/aug-fire-infusion.svg",
       "category": "Combat",
       "effect": "Convert all Damage to Fire.",
       "tags": ["Attack"],
       "add-tags": ["Fire"],
-      "add-affliction": ["Burn 1"],
-      "mod-damage-type": "Burn"
+      "add-affliction": ["1 Burn"],
+      "mod-damage-type": "Decay",
+      "mod-damage-type-note": "(Burn)"
     },
     {
       "id": "sweep",
       "name": "Sweep",
-      "icon": "/assets/icons/svg/skills/skill-solar-cleave.svg",
+      "icon": "/assets/icons/svg/augmentations/aug-sweep.svg",
       "category": "Combat",
       "tags": ["Attack"],
-      "effect": "Change target from 1 enemy → up to 3 enemies in a melee arc."
-    },
-    {
-      "id": "lunge",
-      "name": "Lunge",
-      "icon": "/assets/icons/svg/skills/skill-solar-cleave.svg",
-      "category": "Combat",
-      "tags": ["Strike"],
-      "effect": "Gain 1 Strife immediately before the strike."
+      "effect": "Change target from Single → up to 3 Targets in a 180 degree Arc. Add 1 Action Cost.",
+      "mod-action-cost": "1",
+      "mod-target": "Up to 3",
+      "mod-area": "Melee, 180° Arc"
     }
   ]
 }
