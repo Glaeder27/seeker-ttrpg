@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Seeker TTRPG • Health & Defense</title>
+    <title>Seeker TTRPG • Skills & Masteries</title>
 
     <meta name="description"
         content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
@@ -42,199 +42,188 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .defense-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: .1em;
-            margin-bottom: 2rem;
-            align-items: flex-start;
-            border: 1px solid var(--deep-charcoal);
-            border-radius: 0.5rem;
-            background-color: var(--background-dark-2);
-            padding: 1.75rem;
+        :root {
+            --bg: #0e0f12;
+            --panel: #14161b;
+            --ink: #e8ecf1;
+            --muted: #a9b1bb;
+            --accent: #f1c24c;
+            --chip: #222630;
+            --rule: #20242c;
+            --ok: #b8f2c8;
         }
 
-        .defense-icon {
-            background: var(--background-dark-1);
-            border-radius: 8px;
-            padding: .5em;
+        * {
+            box-sizing: border-box
         }
 
-        .defense-icon-outer {
-            background: linear-gradient(to right,
-                    rgba(var(--burnt-copper-rgb), 0.2),
-                    rgba(var(--ancient-gold-rgb), 0.2)),
-                url(/assets/textures/antique-gold-1.jpg);
-            border-radius: 10px;
-            padding: 3px;
-        }
-
-        .defense-icon img {
-            max-width: 128px;
-            height: auto;
-        }
-
-        .defense-inline-symbol {
-            display: inline;
-            align-items: center;
-            gap: 0.4em;
-            height: 1.2em;
-            vertical-align: middle;
-            cursor: var(--cursor-help);
-        }
-
-        .defense-header {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .defense-content h3 {
-            margin-top: 0;
-            font-size: 1.75rem;
-            color: var(--ancient-gold, #D4B55A);
-        }
-
-        .defense-intro h3 {
-            margin-top: 0;
-            font-size: 1.75rem;
-        }
-
-        .defense-content h4 {
-            margin-top: 1.5rem;
-            font-size: 1.2rem;
-            color: var(--ancient-gold, #D4B55A);
-        }
-
-        .flow-of-damage-block {
-            text-align: center;
-            max-width: 940px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin: 2rem auto;
-            font-family: var(--default-font, sans-serif);
-        }
-
-        .damage-flow-row {
-            display: flex;
-            max-width: 390px;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-            flex-direction: row;
-            gap: 1rem;
-        }
-
-        .damage-step {
-            aspect-ratio: 1;
-            width: 100px;
-            padding: 1rem;
-            background: var(--background-grey-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 1em;
-        }
-
-        .damage-step img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .arrow {
-            font-size: 2rem;
-            margin: 0.25rem 0;
-            color: var(--off-white, #f0f0f0);
-        }
-
-        .damage-sequence {
-            max-width: 700px;
-            margin: 2rem auto;
-            font-family: var(--default-font, sans-serif);
-        }
-
-        .damage-step-block {
-            border-left: 4px solid var(--ancient-gold, #D4B55A);
-            background: var(--background-grey-1);
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .damage-step-block h4 {
-            margin-top: 0;
-            font-size: 1.2rem;
-            color: var(--off-white, #F0F0F0);
-        }
-
-        .damage-step-block ul {
+        body {
             margin: 0;
-            padding-left: 1.25rem;
+            background: linear-gradient(180deg, #0c0d10, #111319);
+            color: var(--ink);
+            font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial, Apple Color Emoji, Segoe UI Emoji;
+            padding: 24px;
         }
 
-        .damage-step-block li {
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
+        .wrap {
+            max-width: 900px;
+            margin-inline: auto
         }
 
-        .defense-tag {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: var(--ancient-gold, #D4B55A);
+        .skill {
+            background: var(--panel);
+            border: 1px solid var(--rule);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .03);
         }
 
-        .damage-step.highlighted,
-        .damage-step-block.highlighted {
-            background-color: var(--background-dark-2, #fff9e528);
-            transition: background-color 0.2s ease;
-        }
-
-        .damage-step.icon-highlighted img {
-            filter: drop-shadow(0 0 20px rgba(var(--ancient-gold-rgb), 0.5));
-        }
-
-        /* Sidebar */
-        .def-symbol-sb {
-            display: inline;
-            align-items: center;
-            gap: 0.4em;
-            height: 1.3em;
-            vertical-align: middle;
-        }
-
-        .damage-flow-row-sb {
+        .head {
             display: flex;
-            max-width: 390px;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-            flex-direction: row;
-            gap: 1rem;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
-        .damage-step-sb {
-            aspect-ratio: 1;
-            padding: .1rem;
-            background: var(--background-grey-1);
+        .name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: .3px;
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .category {
+            font-size: .9rem;
+            color: var(--muted);
+            padding: .25rem .6rem;
+            border: 1px solid var(--rule);
+            border-radius: 999px;
+            background: var(--chip);
+        }
+
+        .tags {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 1em;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0 16px
         }
 
-        .damage-step-sb img {
-            width: 30px;
-            height: 30px;
+        .desc {
+            color: var(--muted);
+            margin: 4px 0 16px;
+            line-height: 1.6
         }
 
-        .arrow-sb {
-            font-size: 2rem;
-            margin: 0.25rem 0;
-            color: var(--off-white, #f0f0f0);
+        .grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .card {
+            background: #0f1116;
+            border: 1px solid var(--rule);
+            border-radius: 14px;
+            padding: 14px 14px 12px;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+            letter-spacing: .3px
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        dl.meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 0
+        }
+
+        dl.meta dt {
+            font-size: .75rem;
+            color: var(--muted)
+        }
+
+        dl.meta dd {
+            margin: 0;
+            font-weight: 600
+        }
+
+        ul {
+            margin: 8px 0 0 18px
+        }
+
+        .rule {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2a303b, transparent);
+            border: 0;
+            margin: 14px 0
+        }
+
+        .slots {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px
+        }
+
+        .slot {
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            border: 1px dashed #3a4150;
+            background: #121620;
+        }
+
+        .selector-wrap {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.selector-wrap label {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.skill-select {
+    background: var(--chip);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: var(--ink);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+        .compat-note {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: 6px
+        }
+
+        .ok {
+            color: var(--ok)
+        }
+
+        @media (max-width:720px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            dl.meta {
+                grid-template-columns: 1fr
+            }
         }
     </style>
 
@@ -253,28 +242,122 @@
         <div class="left-column">
             <header class="title">
                 <div class="title-container page-title">
-                    <span class="title-icon">L</span>
-                    <h1 class="expanded">Health & Defense</h1>
-                    <span class="title-icon rot90">L</span>
+                    <span class="title-icon rot90">p</span>
+                    <h1 class="expanded">Skills <span>&</span> Ma<span class="ligature-none">st</span>eries</h1>
+                    <span class="title-icon">p</span>
                 </div>
             </header>
-            <!-- ─────────────── MAIN CONTENT ─────────────── -->
-            <!-- 1 • Core Concept -->
-            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
-                <header class="section var-1">
-                    <div class="section-number">
-                        <p>Section I</p>
-                    </div>
-                    <div class="title-container">
-                        <span class="title-icon">i</span>
-                        <h2>Core Concept</h2>
-                        <span class="title-icon rot0">i</span>
-                    </div>
-                    <p class="subtitle">Placeholder
-                    </p>
-                </header>
-                <p></p>
-            </section>
+
+<!-- SKILL ───────────────────────────────────────────── -->
+<div class="wrap">
+  <div class="selector-wrap">
+    <label for="skillSelector">Select Skill:</label>
+    <select id="skillSelector" class="skill-select"></select>
+  </div>
+
+  <div id="skillContainer"></div>
+</div>
+
+<script>
+  async function loadSkills() {
+    const res = await fetch('/data/skills.json');
+    const data = await res.json();
+    return data.skills;
+  }
+
+  function renderSkill(skill) {
+    // Utility per array di slot
+    const slotsArray = Array(skill.augmentations.slots).fill(0);
+
+    return `
+    <article class="skill" aria-labelledby="skill-${skill.name.replace(/\s+/g, '-').toLowerCase()}">
+      <header class="head">
+        <img class="icon" src="${skill.icon || '/icons/default.png'}" alt="${skill.name} icon" />
+        <div class="title-wrap">
+          <h1 id="skill-${skill.name.replace(/\s+/g, '-').toLowerCase()}" class="name">${skill.name}</h1>
+          <span class="tag">${skill.category}</span> 
+        </div>
+      </header>
+
+      <div class="tags">
+        ${skill.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+      </div>
+
+      <p class="desc">${skill.description}</p>
+
+      <section class="grid">
+        <!-- Base Effect -->
+        <div class="card" style="grid-column: span 7;">
+          <h3>Effect (base)</h3>
+          <dl class="meta">
+            <dt>Action Cost</dt><dd>${skill.effect.actionCost}</dd>
+            <dt>Type</dt><dd>${skill.effect.type}</dd>
+            <dt>Target / Range</dt><dd>${skill.effect.targetRange}</dd>
+            ${skill.effect.onSuccess ? `<dt>On Success</dt><dd><strong>${skill.effect.onSuccess}</strong></dd>` : ""}
+          </dl>
+
+          ${skill.afflictions && skill.afflictions.length > 0 ? `
+            <hr class="rule" />
+            <h3>Afflictions</h3>
+            <ul>${skill.afflictions.map(a => `<li>${a}</li>`).join('')}</ul>
+          ` : ""}
+        </div>
+
+        <!-- Augmentations -->
+        <div class="card" style="grid-column: span 5;">
+          <h3>Augmentation Slots <span class="muted">(${skill.augmentations.slots} total)</span></h3>
+          <div class="slots">
+            ${slotsArray.map(() => `<span class="slot" title="Empty slot"></span>`).join('')}
+          </div>
+          <p class="compat-note">Compatibility is determined by matching <em>Tags</em> between Skill and Augmentations.</p>
+          <hr class="rule" />
+          <h3>Example Augmentations</h3>
+          <ul>
+            ${skill.augmentations.examples.map(ex => `<li>${ex}</li>`).join('')}
+          </ul>
+        </div>
+
+        <!-- Narrative -->
+        <div class="card" style="grid-column: span 12;">
+          <h3>Narrative Uses</h3>
+          <ul>
+            ${skill.narrative.map(n => `<li>${n}</li>`).join('')}
+          </ul>
+        </div>
+      </section>
+    </article>
+    `;
+  }
+
+  async function init() {
+    const skills = await loadSkills();
+    const selector = document.getElementById('skillSelector');
+    const container = document.getElementById('skillContainer');
+
+    // Popola il menù
+    skills.forEach((s, idx) => {
+      const opt = document.createElement('option');
+      opt.value = idx;
+      opt.textContent = s.name;
+      selector.appendChild(opt);
+    });
+
+    // Render default (prima skill)
+    container.innerHTML = renderSkill(skills[0]);
+
+    // Cambio selezione
+    selector.addEventListener('change', e => {
+      const skill = skills[e.target.value];
+      container.innerHTML = renderSkill(skill);
+    });
+  }
+
+  init();
+</script>
+
+<!-- ───────────────────────────────────────────── -->
+
+
 
         </div>
         <div class="right-column">
@@ -426,3 +509,7 @@
     <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
     <script src="/scripts/parallax.js"></script>
+
+</body>
+
+</html>
