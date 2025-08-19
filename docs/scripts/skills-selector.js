@@ -1,4 +1,4 @@
-/*v1.10 2025-08-19T20:22:17.390Z*/
+/*v1.11 2025-08-19T21:05:41.283Z*/
 
 let augmentationsData = [];
 
@@ -66,7 +66,7 @@ function renderSkill(skill) {
       <section class="grid">
         <div class="card" style="grid-column: span 7;">
           <h3 class="box-title">Effect</h3>
-          <p class="effect-core"><strong>${replacePlaceholders(skill.effect.core, skill.effect)}</strong></p>
+          <p class="effect-core">${replacePlaceholders(skill.effect.core, skill.effect)}</p>
           <dl class="meta">
             <dt>Action Cost</dt><dd>${skill.effect.actionCost}</dd>
             <dt>Target / Range</dt><dd>${skill.effect.targetRange}</dd>
@@ -150,7 +150,7 @@ function setupAugmentationSlots(skill, container, initializeAugmentationTooltips
     setupAugmentationSlots(baseSkill, container, initializeAugmentationTooltips, assignedBySlot);
 
     if (window.applyTagIcons) window.applyTagIcons();
-    if (window.initializeTagTooltips) window.initializeTagTooltips();
+    if (window.initializeTagTooltips) window.initializeTagTooltips(container);
 
     const assignedList = container.querySelector(`#assigned-${baseSkill.id}`);
     renderAssignedList(assignedList, assignedBySlot.filter(Boolean));
@@ -244,7 +244,7 @@ async function init() {
 
   // Aggiorna tag subito dopo il render
   if (window.applyTagIcons) window.applyTagIcons();
-  if (window.initializeTagTooltips) window.initializeTagTooltips();
+  if (window.initializeTagTooltips) window.initializeTagTooltips(container);
 
   // Setup slot augmentation
   setupAugmentationSlots(skills[0], container, initializeAugmentationTooltips);
@@ -254,7 +254,7 @@ async function init() {
     container.innerHTML = renderSkill(skill);
 
     if (window.applyTagIcons) window.applyTagIcons();
-    if (window.initializeTagTooltips) window.initializeTagTooltips();
+    if (window.initializeTagTooltips) window.initializeTagTooltips(container);
 
     setupAugmentationSlots(skill, container, initializeAugmentationTooltips);
   });

@@ -1,4 +1,4 @@
-/*v2.35 2025-08-19T20:01:17.776Z*/
+/*v2.36 2025-08-19T21:05:10.202Z*/
 
 // ─── Globals ───
 let tooltipDefinitions = {};
@@ -20,10 +20,6 @@ window.applyTagIcons = function() {
       }
     }
   });
-};
-
-window.initializeTagTooltips = function() {
-  // copia la logica già presente in core.js per inizializzare tooltip
 };
 
 // ─── Remove preload/fadeout classes when page is ready ───
@@ -129,80 +125,77 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ─── Initialize tag tooltips (.tag) ───
-  function initializeTagTooltips() {
-    const tagElements = document.querySelectorAll(".tag");
-    if (!tagElements.length) return;
+window.initializeTagTooltips = function(container = document) {
+  const tagElements = container.querySelectorAll(".tag");
+  if (!tagElements.length) return;
 
-    const { tooltip, icon, title, description } = createTooltipBox();
-    icon.style.display = "";
-    title.style.display = "";
+  const { tooltip, icon, title, description } = createTooltipBox();
+  icon.style.display = "";
+  title.style.display = "";
 
-    let hideTooltipTimeout = null;
+  let hideTooltipTimeout = null;
 
-    tagElements.forEach((tag) => {
-      tag.addEventListener("mouseenter", async () => {
-        if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
-        tag.classList.add("active-tag-tooltip");
-
-        const tagKey = tag.textContent.trim();
-        const tagData = tagDefinitions[tagKey];
-
-        if (!tagData) {
-          title.textContent = tagKey;
-          description.innerHTML = `No description available for <strong>${tagKey}</strong>.`;
-          return;
-        }
-
-        const category = tagData.category || "";
-        const color = categoryColors[category] || "#D4B55A";
-        tooltip.style.borderColor = color;
-        tooltip.style.setProperty("--tooltip-color", color);
-
-        title.textContent = tagKey;
-        description.innerHTML = tagData.definition || "";
-
-        // Load SVG from icon URL
-        try {
-          const response = await fetch(tagData.icon);
-          const svgText = await response.text();
-          icon.innerHTML = svgText;
-        } catch (error) {
-          icon.innerHTML = ""; // fallback in caso di errore
-        }
-
-        const rect = tag.getBoundingClientRect();
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft =
-          window.pageXOffset || document.documentElement.scrollLeft;
-
-        tooltip.style.left = rect.left + scrollLeft + "px";
-        tooltip.style.top = rect.bottom + scrollTop + 10 + "px";
-        tooltip.classList.add("visible");
-        tooltip.style.pointerEvents = "auto";
-      });
-
-      tag.addEventListener("mouseleave", () => {
-        hideTooltipTimeout = setTimeout(() => {
-          tag.classList.remove("active-tag-tooltip");
-          tooltip.classList.remove("visible");
-          tooltip.style.pointerEvents = "none";
-        }, 150);
-      });
-    });
-
-    tooltip.addEventListener("mouseenter", () => {
+  tagElements.forEach((tag) => {
+    tag.addEventListener("mouseenter", async () => {
       if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
+      tag.classList.add("active-tag-tooltip");
+
+      const tagKey = tag.textContent.trim();
+      const tagData = tagDefinitions[tagKey];
+
+      if (!tagData) {
+        title.textContent = tagKey;
+        description.innerHTML = `No description available for <strong>${tagKey}</strong>.`;
+        return;
+      }
+
+      const category = tagData.category || "";
+      const color = categoryColors[category] || "#D4B55A";
+      tooltip.style.borderColor = color;
+      tooltip.style.setProperty("--tooltip-color", color);
+
+      title.textContent = tagKey;
+      description.innerHTML = tagData.definition || "";
+
+      try {
+        const response = await fetch(tagData.icon);
+        const svgText = await response.text();
+        icon.innerHTML = svgText;
+      } catch (error) {
+        icon.innerHTML = "";
+      }
+
+      const rect = tag.getBoundingClientRect();
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
+
+      tooltip.style.left = rect.left + scrollLeft + "px";
+      tooltip.style.top = rect.bottom + scrollTop + 10 + "px";
+      tooltip.classList.add("visible");
+      tooltip.style.pointerEvents = "auto";
     });
 
-    tooltip.addEventListener("mouseleave", () => {
-      tooltip.classList.remove("visible");
-      tooltip.style.pointerEvents = "none";
-      document
-        .querySelector(".active-tag-tooltip")
-        ?.classList.remove("active-tag-tooltip");
+    tag.addEventListener("mouseleave", () => {
+      hideTooltipTimeout = setTimeout(() => {
+        tag.classList.remove("active-tag-tooltip");
+        tooltip.classList.remove("visible");
+        tooltip.style.pointerEvents = "none";
+      }, 150);
     });
-  }
+  });
+
+  tooltip.addEventListener("mouseenter", () => {
+    if (hideTooltipTimeout) clearTimeout(hideTooltipTimeout);
+  });
+
+  tooltip.addEventListener("mouseleave", () => {
+    tooltip.classList.remove("visible");
+    tooltip.style.pointerEvents = "none";
+    document.querySelector(".active-tag-tooltip")?.classList.remove("active-tag-tooltip");
+  });
+};
 
   // ─── Load tooltip definitions ───
   fetch("/data/tooltips.json")

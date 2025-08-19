@@ -255,6 +255,19 @@
       "notes": ""
     },
     {
+      "name": "Off-Guard",
+      "icon": "/assets/icons/svg/tags/tag-off-guard.svg",
+      "category": "Meta",
+      "definition": "Guard value is 0. This condition makes vulnerable to abilities that target Off-Guard targets.",
+      "visibility": true,
+      "interactions": [
+        "Can be dispelled or expire",
+        "May require concentration or cost"
+      ],
+      "examples": ["Burning", "Poisoned"],
+      "notes": ""
+    },
+    {
       "name": "Passive",
       "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Meta",
