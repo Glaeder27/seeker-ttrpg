@@ -1,0 +1,361 @@
+/*v3.36 2025-08-17T15:24:35.450Z*/
+
+:root {
+    --card: #0e0f12;
+    --ink: #e6e6e6;
+    --muted: #9aa3b2;
+    --accent: #f5c451;
+}
+
+.field-label {
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.aptitude-input-wrapper {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+}
+
+.aptitude-input-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: var(--icon-url);
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.aptitude-input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    box-sizing: border-box;
+    border-style: solid;
+    font-size: 2rem;
+    margin: 0;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-color: rgb(255 255 255 / 0.1);
+    background-color: rgb(0 0 0 / 0.3);
+    padding: .25rem .5rem;
+    appearance: textfield;
+    text-align: center;
+    z-index: 1;
+    width: 5rem;
+    height: 5rem;
+}
+
+/* BOXES */
+
+.box {
+    background: linear-gradient(180deg, rgba(var(--background-dark-1-rgb), .05), rgba(var(--background-dark-1-rgb), .02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: .5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    padding: 1.25rem;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+.card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.vertical-box {
+    cursor: var(--cursor-default);
+    font-family: var(--font-default);
+    color: var(--off-white);
+    line-height: inherit;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: .5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    padding: 1.25rem;
+    height: max-content;
+}
+
+.name-box {
+    display: flex;
+}
+
+.identity-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.allegiance-box,
+.aptitudes-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.allegiance-box {
+    justify-content: flex-start;
+}
+.aptitudes-box {
+    justify-content: space-between;
+}
+
+.aptitude-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: rgba(var(--background-dark-2-rgb), .4);
+    border-radius: .4rem;
+}
+
+/* LABELS */
+.vertical-box .stance {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    font-family: var(--font-main);
+    font-size: .8rem;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--ancient-gold, #d6b879);
+    letter-spacing: 1px;
+    text-align: center;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.title-grad {
+    background: linear-gradient(90deg, #fff, #f5e1b3 40%, #f5c451);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gold {
+    color: var(--accent)
+}
+
+.kicker {
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: .75rem
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.field {
+    display: flex;
+    gap: .5rem;
+    align-items: center
+}
+
+label,
+option {
+    font-family: var(--font-main) !important;
+}
+
+.field label {
+    min-width: 7rem;
+    color: var(--muted)
+}
+
+.pill {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: .5rem;
+    padding: .4rem .7rem
+}
+
+.btn {
+    border-radius: .9rem;
+    padding: .65rem .9rem;
+    font-weight: 600;
+}
+
+.btn-ghost {
+    border: 1px solid rgba(255, 255, 255, .12)
+}
+
+.btn-primary {
+    background: linear-gradient(180deg, #f5d88a, #f5c451);
+    color: #1a1200
+}
+
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem
+}
+
+.section h3 {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: .03em;
+    color: #fff
+}
+
+.rules h4 {
+    margin-top: 1.25rem;
+    font-weight: 700
+}
+
+.rules p,
+.rules li {
+    color: #cfd6e6
+}
+
+.rules code {
+    background: rgba(255, 255, 255, .06);
+    padding: .1rem .3rem;
+    border-radius: .35rem
+}
+
+/* SECTIONS */
+
+.section {
+    position: relative;
+    font-family: var(--font-antique);
+    font-size: 2.5em;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--ancient-gold, #d6b879);
+    padding: 30px 12px 10px 12px;
+    margin: 60px 0 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1px;
+    text-align: center;
+    margin-inline: none;
+}
+
+.section::before,
+.section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 8px;
+    height: 100%;
+}
+
+.section::before {
+    left: 0;
+    border-radius: 10px 0 0 10px;
+    background: linear-gradient(to top,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+    background-position: -240px;
+}
+
+.section::after {
+    right: 0;
+    border-radius: 0 10px 10px 0;
+    background: linear-gradient(to bottom,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+}
+
+/* INPUTS */
+
+input.input-box,
+select.input-box {
+    box-sizing: border-box;
+    border-style: solid;
+    font-size: 100%;
+    margin: 0;
+    width: 100%;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-color: rgb(255 255 255 / 0.1);
+    background-color: rgb(0 0 0 / 0.3);
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-main);
+}
+
+option {
+    border-color: rgb(255 255 255 / 0.1);
+    background-color: rgb(0 0 0 / 0.8);
+    border-radius: .5rem;
+}
+
+.aptitude-input {
+    font-family: var(--font-antique);
+    font-size: 4rem;
+    background: linear-gradient(to right,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 2px black) drop-shadow(0 0 10px black);
+}
+
+
+
+
+@media print {
+    .noprint {
+        display: none !important
+    }
+
+    body {
+        background: white;
+        color: black
+    }
+
+    .card {
+        border-color: #ddd;
+        box-shadow: none
+    }
+}
+
+/* IMAGES */
+#oathIcon img {
+    display: block;
+    max-width: 30vw;
+}
+.oath-symbol {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .2;
+}

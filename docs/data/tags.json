@@ -1,60 +1,65 @@
 {
-  "__version": "1.1",
+  "__version": "1.2",
   "__versionDate": "2025-08-12T19:00:00Z",
   "otherData": "...",
 
-  "categories": [
+"categories": [
     {
       "name": "Combat",
-      "definition": "Insert category description",
+      "definition": "Tags related to martial actions and conflict resolution.",
       "color": "#8B3A3A"
     },
     {
       "name": "Offensive",
-      "definition": "Insert category description",
+      "definition": "Tags that describe actions meant to harm or weaken opponents.",
       "color": "#8B3A3A"
     },
     {
       "name": "Gameplay",
-      "definition": "Gameplay feature",
+      "definition": "Tags that identify structural or mechanical features of play.",
       "color": "#D4B55A"
     },
     {
+      "name": "Debuff",
+      "definition": "Tags that apply negative effects or hinder an opponent.",
+      "color": "#8A3493"
+    },
+    {
       "name": "Defensive",
-      "definition": "Insert category description",
+      "definition": "Tags that mitigate harm, protect, or resist hostile actions.",
       "color": "#4A5E6A"
     },
     {
       "name": "Social",
-      "definition": "Insert category description",
+      "definition": "Tags tied to interaction, influence, and negotiation.",
       "color": "#a87c7c"
     },
     {
       "name": "General",
-      "definition": "Insert category description",
-      "color": "#666666"
+      "definition": "Tags of broad scope that do not fit specialized categories.",
+      "color": "#F0F0F0"
     },
     {
       "name": "Exploration",
-      "definition": "Insert category description",
+      "definition": "Tags that involve discovery, movement, and survival in the environment.",
       "color": "#7e8b63"
     },
     {
       "name": "Magic",
-      "definition": "Insert category description",
+      "definition": "Tags linked to supernatural forces and arcane effects.",
       "color": "#6b5d8c"
     },
     {
       "name": "Meta",
-      "definition": "Insert category description",
+      "definition": "Tags concerning rule structure, categories, or systemic layers of play.",
       "color": "#8a8a86"
     },
     {
       "name": "Utility",
-      "definition": "Insert category description",
+      "definition": "Tags that provide practical benefits or versatile functions outside combat.",
       "color": "#b6a78c"
     }
-  ],
+],
   "tags": [
     {
       "name": "Arcane",
@@ -84,9 +89,9 @@
     },
     {
       "name": "Attack",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
+      "icon": "/assets/icons/svg/tags/tag-attack.svg",
       "category": "Combat",
-      "definition": "A direct offensive action intended to harm a target.",
+      "definition": "An offensive action aimed at a target through weapons, unarmed force, or indirect effects.",
       "visibility": true,
       "interactions": [
         "Can trigger Maneuvers",
@@ -136,8 +141,8 @@
     },
     {
       "name": "Debuff",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
-      "category": "Utility",
+      "icon": "/assets/icons/svg/tags/tag-debuff.svg",
+      "category": "Debuff",
       "definition": "Applies penalties or hindrances to enemies.",
       "visibility": true,
       "interactions": [
@@ -179,9 +184,9 @@
     },
     {
       "name": "Fire",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
-      "category": "Elemental",
-      "definition": "Causes fire damage or ignition. May interact with flammable materials.",
+      "icon": "/assets/icons/svg/tags/tag-fire.svg",
+      "category": "General",
+      "definition": "An action that employs flame as its destructive element, causing burning, igniting, or spreading fire.",
       "visibility": true,
       "interactions": [
         "Affected by Fire Resistance",
@@ -225,9 +230,9 @@
     },
     {
       "name": "Movement",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
-      "category": "Utility",
-      "definition": "Changes your position (dash, teleport, disengage).",
+      "icon": "/assets/icons/svg/tags/tag-movement.svg",
+      "category": "General",
+      "definition": "An action that changes the user's position in space.",
       "visibility": true,
       "interactions": [
         "Triggers reaction from enemies",
@@ -263,9 +268,9 @@
       "notes": ""
     },
     {
-      "name": "Poison",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
-      "category": "Elemental",
+      "name": "Poisoned",
+      "icon": "/assets/icons/svg/tags/tag-poison.svg",
+      "category": "Debuff",
       "definition": "Applies toxic effects that deal damage over time.",
       "visibility": true,
       "interactions": [
@@ -277,9 +282,9 @@
     },
     {
       "name": "Ranged",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
+      "icon": "/assets/icons/svg/tags/tag-ranged.svg",
       "category": "Combat",
-      "definition": "An attack made from a distance, often requiring line of sight.",
+      "definition": "An action performed at a distance, requiring line of sight and limited by maximum range.",
       "visibility": true,
       "interactions": [
         "Affected by cover",
@@ -327,8 +332,8 @@
     {
       "name": "Strike",
       "icon": "/assets/icons/svg/tags/tag-strike.svg",
-      "category": "Offensive",
-      "definition": "A close-range melee attack. Must be within reach.",
+      "category": "Combat",
+      "definition": "A direct blow with weapons or bare hands against a target.",
       "visibility": true,
       "interactions": [
         "Often used in melee-focused abilities",
@@ -352,9 +357,9 @@
     },
     {
       "name": "Support",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
-      "category": "Utility",
-      "definition": "Assists allies through buffs, healing, or tactical coordination.",
+      "icon": "/assets/icons/svg/tags/tag-support.svg",
+      "category": "General",
+      "definition": "An action intended to benefit or assist another being.",
       "visibility": true,
       "interactions": [
         "Can increase Action Dice of allies",

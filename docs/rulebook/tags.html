@@ -51,20 +51,6 @@
             margin-bottom: 2rem;
         }
 
-        .tag-category h2 {
-            font-size: 1.8rem;
-            padding-bottom: 0.25rem;
-            background-color: var(--background-grey-1);
-            padding: 10px 10px 8px 12px;
-            border-radius: 10px;
-            text-transform: uppercase;
-            font-variant: small-caps;
-            font-family: var(--default-font);
-            color: var(--ancient-gold);
-            font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
         .tag-table {
             width: 100%;
             border-collapse: collapse;
@@ -106,9 +92,9 @@
                         <p>Section I</p>
                     </div>
                     <div class="title-container">
-                        <span class="title-icon">i</span>
+                        <span class="title-icon">R</span>
                         <h2>Core Concept</h2>
-                        <span class="title-icon rot0">i</span>
+                        <span class="title-icon rot0">R</span>
                     </div>
                     <p class="subtitle">Placeholder
                     </p>
@@ -137,9 +123,9 @@
                         <p>Section II</p>
                     </div>
                     <div class="title-container">
-                        <span class="title-icon">Q</span>
+                        <span class="title-icon">T</span>
                         <h2>Tag Mechanics</h2>
-                        <span class="title-icon rot90">Q</span>
+                        <span class="title-icon rot90">T</span>
                     </div>
                     <p class="subtitle">Placeholder
                     </p>
@@ -151,55 +137,55 @@
                 <p>Tags aren’t limited to Skills. They are a universal descriptor found across the entire game
                     engine.</p>
                 <p>You can find tags on:</p>
-                <ul>
-                    <li><strong class="highlight">Skills</strong> — Each action a character can perform has one or
+                <ul class="no-bullet">
+                    <li><strong class="highlight">1 • Skills</strong> — Each action a character can perform has one or
                         more tags that determine what
                         bonuses or synergies apply.</li>
 
-                    <li><strong class="highlight">Items</strong> — Some weapons, potions, or artifacts carry tags
+                    <li><strong class="highlight">2 • Items</strong> — Some weapons, potions, or artifacts carry tags
                         that affect how they interact with
-                        abilities or conditions (e.g., a <u>Fire</u> grenade).</li>
+                        abilities or conditions (e.g., a <span class="tag">Fire</span> grenade).</li>
 
-                    <li><strong class="highlight">Masteries</strong> — Many Masteries grant bonuses to specific tags
-                        (“+1 to <u>Strike</u> damage”) or
+                    <li><strong class="highlight">3 • Masteries</strong> — Many Masteries grant bonuses to specific tags
+                        (“+1 to <span class="tag">Strike</span> damage”) or
                         allow you to use a tag in new ways.</li>
 
-                    <li><strong class="highlight">Augmentations</strong> — These are add-ons to Skills that require
+                    <li><strong class="highlight">4 • Augmentations</strong> — These are add-ons to Skills that require
                         specific tags to function (“Can
-                        only augment <u>Ranged</u> abilities”).</li>
+                        only augment <span class="tag">Ranged</span> abilities”).</li>
 
-                    <li><strong class="highlight">Afflictions</strong> — Some status effects are tagged, so they can
+                    <li><strong class="highlight">5 • Afflictions</strong> — Some status effects are tagged, so they can
                         be targeted or resisted as a group
-                        (e.g., <u>Poisoned</u> might be a <u>Debuff</u>).</li>
+                        (e.g., <span class="tag">Poisoned</span> might be a <span class="tag">Debuff</span>).</li>
 
-                    <li><strong class="highlight">Effects</strong> — Persistent effects like auras, wards, and traps
+                    <li><strong class="highlight">6 • Effects</strong> — Persistent effects like auras, wards, and traps
                         can carry tags that determine who
                         they affect or how they trigger.</li>
                 </ul>
                 <p>This universal system keeps interactions consistent and predictable.</p>
-                <h3>How Tags are Used</h3>
+                <h3>Tags are Used to...</h3>
                 <p>Tags make the Seeker game engine both simple to learn and deep to master. Here's why they matter:
 
-                <h4>1 | To Clarify Rules</h4>
+                <h4>...Clarify Rules</h4>
                 <p>Instead of listing every exception, a tag communicates what something is and how it works. If an
-                    ability has the <u>Movement</u> tag, you instantly know it can interact with any mechanics that
+                    ability has the <span class="tag">Movement</span> tag, you instantly know it can interact with any mechanics that
                     care about movement—even if it’s magical, physical, or supernatural.</p>
 
-                <h4>2 | To Enable Conditional Logic</h4>
+                <h4>...Enable Conditional Logic</h4>
                 <p>You can design talents, items, and effects that only apply under specific circumstances—without
-                    hardcoding them to individual abilities. For example, a Talent that improves “all <u>Fire</u>
+                    hardcoding them to individual abilities. For example, a Talent that improves “all <span class="tag">Fire</span>
                     effects” applies to spells, traps, and weapons alike.</p>
 
-                <h4>3 | To Power Synergy</h4>
-                <p>A player who specializes in <u>Support</u> can build a character that boosts allies with any
+                <h4>...Power Synergy</h4>
+                <p>A player who specializes in <span class="tag">Support</span> can build a character that boosts allies with any
                     ability tagged that way—no matter the source. This fosters creativity and flexible builds.</p>
 
-                <h4>4 | To Simplify Game Design</h4>
+                <h4>...Simplify Game Design</h4>
                 <p>Instead of rewriting how every new ability interacts with the system, you define how a tag
                     works—and let the engine do the rest. This makes the game easier to expand and balance.</p>
 
-                <blockquote>Without tags, every mechanical interaction would need to be explained in full.
-                    With tags, you just define what a tag does—once—and let it ripple throughout the ruleset.
+                <blockquote><p>Without tags, every mechanical interaction would need to be explained in full.
+                    With tags, you just define what a tag does—once—and let it ripple throughout the ruleset.</p>
                 </blockquote>
 
                 <h3>Tag Based Interactions</h3>
@@ -213,49 +199,49 @@
                     <thead>
                         <tr>
                             <th class="left-align" style="min-width: 120px;">Interaction</th>
-                            <th>Example</th>
+                            <th class="align-left">Example</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Restriction</strong></td>
-                            <td><span style="color: var(--text-muted)">Can only be used with <span
-                                        class="tag">Strike</span> abilities.</span><br><br>Tags help constrain how
+                            <td><strong class="highlight">Restriction</strong></td>
+                            <td class="align-left" style="line-height: 2"><em>Example:</em> <span style="color: var(--text-muted)">"Can only be used with <span
+                                        class="tag">Strike</span> abilities."</span><br><br>Tags help constrain how
                                 and when effects can be used. This is essential for maintaining balance, guiding
                                 player expectations, and enabling meaningful specialization. If an ability only
-                                applies to <u>Ranged</u> effects, that rules out melee, support, or area-based
+                                applies to <span class="tag">Ranged</span> effects, that rules out melee, support, or area-based
                                 abilities without requiring lengthy explanations.</td>
                         </tr>
                         <tr>
-                            <td><strong>Enhancement</strong></td>
-                            <td><span style="color: var(--text-muted)">Your <span class="tag">Support</span> effects
-                                    grant +1 Healing.</span><br><br>Tags enable modular scaling and improvements. A
+                            <td><strong class="highlight">Enhancement</strong></td>
+                            <td class="align-left" style="line-height: 2"><em>Example:</em> <span style="color: var(--text-muted)">"Your <span class="tag">Support</span> effects
+                                    grant +1 Healing."</span><br><br>Tags enable modular scaling and improvements. A
                                 character that focuses on healing or buffing allies can benefit from any effect that
-                                carries the <u>Support</u> tag — regardless of its source. This allows players to
+                                carries the <span class="tag">Support</span> tag — regardless of its source. This allows players to
                                 customize their build around themes or tactical roles.</td>
                         </tr>
                         <tr>
-                            <td><strong>Triggering</strong></td>
-                            <td><span style="color: var(--text-muted)">When you use a <span class="tag">Movement</span>
-                                    action, gain +1 Guard.</span><br><br>Tags make
+                            <td><strong class="highlight">Triggering</strong></td>
+                            <td class="align-left" style="line-height: 2"><em>Example:</em> <span style="color: var(--text-muted)">"When you use a <span class="tag">Movement</span>
+                                    action, gain +1 Guard."</span><br><br>Tags make
                                 it easy to detect and respond to events during play. If a rule or talent cares about
-                                <u>Fire</u>, <u>Attack</u>, or <u>Reaction</u> tags, the moment such an effect is
+                                <span class="tag">Fire</span>, <span class="tag">Attack</span>, or <span class="tag">Reaction</span> tags, the moment such an effect is
                                 triggered, the condition is satisfied. This enables both reactive mechanics (like
                                 traps or counterattacks) and combo-building strategies.
                             </td>
                         </tr>
                         <tr>
-                            <td><strong>Modification</strong></td>
-                            <td><span style="color: var(--text-muted)">Reduce the Risk of all <span
-                                        class="tag">Fire</span> effects by 1.</span><br><br>Tags allow selective
+                            <td><strong class="highlight">Modification</strong></td>
+                            <td class="align-left" style="line-height: 2"><em>Example:</em> <span style="color: var(--text-muted)">"Reduce the Risk of all <span
+                                        class="tag">Fire</span> effects by 1."</span><br><br>Tags allow selective
                                 tuning of game mechanics without needing to redefine individual abilities. Designers
                                 can reduce, amplify, or reshape entire groups of effects through their shared tag,
                                 making balancing both simpler and more coherent.</td>
                         </tr>
                         <tr>
-                            <td><strong>Combo Enabler</strong></td>
-                            <td><span style="color: var(--text-muted)">Follow up any <span class="tag">Attack</span>
-                                    with a <span class="tag">Movement</span> action for free.</span><br><br>Tags
+                            <td><strong class="highlight">Combo Enabler</strong></td>
+                            <td class="align-left" style="line-height: 2"><em>Example:</em> <span style="color: var(--text-muted)">"Follow up any <span class="tag">Attack</span>
+                                    with a <span class="tag">Movement</span> action for free."</span><br><br>Tags
                                 define combo triggers and allow players to chain abilities together in fluid and
                                 creative ways. Rather than forcing a linear combo system, the game encourages
                                 emergent play by letting players find natural synergies between tags. This supports
@@ -263,7 +249,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <p> essence, tags act as universal rule hooks. Any mechanic can reference a tag to determine when it
+                <p>In essence, tags act as universal rule hooks. Any mechanic can reference a tag to determine when it
                     applies, to what it applies, or what it does. The result is a system that is not only flexible,
                     but also highly readable and extensible — both for players and game designers.</p>
             </section>
@@ -319,8 +305,7 @@
                                 const section = document.createElement('section');
                                 section.classList.add('tag-category');
 
-                                const header = document.createElement('h2');
-                                header.classList.add('table'); // se vuoi una classe specifica
+                                const header = document.createElement('h3');
                                 header.textContent = category;
                                 section.appendChild(header);
 
@@ -340,7 +325,7 @@
                                 thead.innerHTML = `
                     <tr>
                       <th style="width: 20%; text-align: left;">Tag</th>
-                      <th style="width: 80%;">Definition</th>
+                      <th style="width: 80%; text-align: left">Definition</th>
                     </tr>`;
                                 table.appendChild(thead);
 
@@ -350,10 +335,11 @@
                                     const row = document.createElement('tr');
 
                                     const nameCell = document.createElement('td');
-                                    nameCell.innerHTML = `<u style="font-weight: normal;">${tag.name}</u>`;
+                                    nameCell.innerHTML = `<span class="tag">${tag.name}</span>`;
                                     row.appendChild(nameCell);
 
                                     const defCell = document.createElement('td');
+                                    defCell.style.textAlign = "left";
                                     defCell.textContent = tag.definition;
                                     row.appendChild(defCell);
 
