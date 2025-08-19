@@ -1,0 +1,428 @@
+<!-- v1.1 2025-08-19T09:20:02.103Z -->
+
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Health & Defense</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script src="/scripts/config.js"></script>
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .defense-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: .1em;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+            border: 1px solid var(--deep-charcoal);
+            border-radius: 0.5rem;
+            background-color: var(--background-dark-2);
+            padding: 1.75rem;
+        }
+
+        .defense-icon {
+            background: var(--background-dark-1);
+            border-radius: 8px;
+            padding: .5em;
+        }
+
+        .defense-icon-outer {
+            background: linear-gradient(to right,
+                    rgba(var(--burnt-copper-rgb), 0.2),
+                    rgba(var(--ancient-gold-rgb), 0.2)),
+                url(/assets/textures/antique-gold-1.jpg);
+            border-radius: 10px;
+            padding: 3px;
+        }
+
+        .defense-icon img {
+            max-width: 128px;
+            height: auto;
+        }
+
+        .defense-inline-symbol {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.2em;
+            vertical-align: middle;
+            cursor: var(--cursor-help);
+        }
+
+        .defense-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .defense-content h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .defense-intro h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+
+        .defense-content h4 {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .flow-of-damage-block {
+            text-align: center;
+            max-width: 940px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            font-family: var(--default-font, sans-serif);
+        }
+
+        .damage-flow-row {
+            display: flex;
+            max-width: 390px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .damage-step {
+            aspect-ratio: 1;
+            width: 100px;
+            padding: 1rem;
+            background: var(--background-grey-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1em;
+        }
+
+        .damage-step img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            margin: 0.25rem 0;
+            color: var(--off-white, #f0f0f0);
+        }
+
+        .damage-sequence {
+            max-width: 700px;
+            margin: 2rem auto;
+            font-family: var(--default-font, sans-serif);
+        }
+
+        .damage-step-block {
+            border-left: 4px solid var(--ancient-gold, #D4B55A);
+            background: var(--background-grey-1);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .damage-step-block h4 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--off-white, #F0F0F0);
+        }
+
+        .damage-step-block ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .damage-step-block li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .defense-tag {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .damage-step.highlighted,
+        .damage-step-block.highlighted {
+            background-color: var(--background-dark-2, #fff9e528);
+            transition: background-color 0.2s ease;
+        }
+
+        .damage-step.icon-highlighted img {
+            filter: drop-shadow(0 0 20px rgba(var(--ancient-gold-rgb), 0.5));
+        }
+
+        /* Sidebar */
+        .def-symbol-sb {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.3em;
+            vertical-align: middle;
+        }
+
+        .damage-flow-row-sb {
+            display: flex;
+            max-width: 390px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .damage-step-sb {
+            aspect-ratio: 1;
+            padding: .1rem;
+            background: var(--background-grey-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1em;
+        }
+
+        .damage-step-sb img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .arrow-sb {
+            font-size: 2rem;
+            margin: 0.25rem 0;
+            color: var(--off-white, #f0f0f0);
+        }
+    </style>
+
+</head>
+
+<body id="health-and-defense" data-menu-src="/data/menu-rulebook.json">
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
+
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+
+    <main class="dual-column" type="rulebook">
+        <div class="left-column">
+            <header class="title">
+                <div class="title-container page-title">
+                    <span class="title-icon">L</span>
+                    <h1 class="expanded">Health & Defense</h1>
+                    <span class="title-icon rot90">L</span>
+                </div>
+            </header>
+            <!-- ─────────────── MAIN CONTENT ─────────────── -->
+            <!-- 1 • Core Concept -->
+            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
+                <header class="section var-1">
+                    <div class="section-number">
+                        <p>Section I</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon">i</span>
+                        <h2>Core Concept</h2>
+                        <span class="title-icon rot0">i</span>
+                    </div>
+                    <p class="subtitle">Placeholder
+                    </p>
+                </header>
+                <p></p>
+            </section>
+
+        </div>
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
+                        <h3 class="sidebar-section">TL;DR — Title</h3>
+                        <span class="collapsible-icon"></span>
+                    </div>
+
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
+                        <ul class="no-bullet">
+                            <li class="no-bullet"><strong class="tldr-title">1 • Defense Layers</strong>
+                                <div style="margin-left: 1em;">Characters in Seeker don't have a single HP pool—they use
+                                    three
+                                    defense layers: <img class="def-symbol-sb"
+                                        src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard"> Guard,
+                                    <img class="def-symbol-sb" src="/assets/icons/svg/health/icon-armor.svg" alt="Armor"
+                                        title="Armor"> Armor, and <img class="def-symbol-sb"
+                                        src="/assets/icons/svg/health/icon-health.svg" alt="Health" title="Health">
+                                    Health.<br>
+                                    <ul style="margin-top: .5em">
+                                        <li class="no-bullet"><img class="def-symbol-sb"
+                                                src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard">
+                                            is a <strong>tactical buffer</strong> that starts at 0 and must
+                                            be built up during combat.
+                                            It’s lost first and doesn’t persist outside battle.</li>
+
+                                        <li class="no-bullet"><img class="def-symbol-sb"
+                                                src="/assets/icons/svg/health/icon-armor.svg" alt="Armor" title="Armor">
+                                            is <strong>physical protection</strong> granted by gear.
+                                            Damage that bypasses or overflows Guard hits Armor next.</li>
+
+                                        <li class="no-bullet"><img class="def-symbol-sb"
+                                                src="/assets/icons/svg/health/icon-health.svg" alt="Health"
+                                                title="Health"> is your character’s <strong>core vitality</strong>.
+                                            If it drops to 0, the character dies.</li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="no-bullet" style="margin-top: 1.5em;"><strong class="tldr-title">2 • Damage
+                                    Flow</strong>
+                                <div style="margin-left: 1em;">
+                                    When taking damage, follow this sequence:
+                                </div>
+                                <div class="damage-flow-row-sb">
+                                    <div class="damage-step-sb guard-step-sb">
+                                        <img src="/assets/icons/svg/health/icon-guard.svg" alt="Guard" title="Guard">
+                                    </div>
+
+                                    <div class="arrow">→</div>
+
+                                    <div class="damage-step-sb armor-step-sb">
+                                        <img src="/assets/icons/svg/health/icon-armor.svg" alt="Armor" title="Armor">
+                                    </div>
+
+                                    <div class="arrow">→</div>
+
+                                    <div class="damage-step-sb health-step-sb">
+                                        <img src="/assets/icons/svg/health/icon-health.svg" alt="Health" title="Health">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="no-bullet" style="margin-top: 1.5em;">
+                                <strong class="tldr-title">3 • Character Health Value</strong>
+                                <ul class="no-bullet">
+                                    <li style="margin: .5em 0 0 0;" class="no-bullet">
+                                        <div class="equation-wrapper" style="display: flex; justify-content: center;">
+                                            <p style="font-size: 1.3em">
+                                                <img class="def-symbol-sb"
+                                                    src="/assets/icons/svg/health/icon-health.svg" alt="Health"
+                                                    title="Health"> Health = 2 ×<img class="def-symbol-sb"
+                                                    src="/assets/icons/svg/aptitudes/vigor-ico.svg" alt="Vigor"
+                                                    title="Vigor" style="height: 1.5em;"> Vigor
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                    </div>
+                </div>
+
+                <!-- Block 3: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+
+                <!-- Block 4: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
+    <script src="/scripts/version-check.js"></script>
+    <script src="/scripts/iconizer.js"></script>
+    <script src="/scripts/parallax.js"></script>

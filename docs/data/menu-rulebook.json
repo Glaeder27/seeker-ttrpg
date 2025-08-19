@@ -7,6 +7,9 @@
   "items": [
     { "label": "How to Play", "href": "/rulebook/joining-the-seekers" },
     { "label": "Twin Coil System", "href": "/rulebook/twin-coil-system" },
-    { "label": "Aptitudes", "href": "/rulebook/aptitudes" }
+    { "label": "Tags", "href": "/rulebook/tags" },
+    { "label": "Aptitudes", "href": "/rulebook/aptitudes" },
+    { "label": "Health & Defense", "href": "/rulebook/health-and-defense" },
+    { "label": "Character Growth", "href": "/rulebook/character-growth" }
   ]
 }
