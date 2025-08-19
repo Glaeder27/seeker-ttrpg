@@ -1,4 +1,4 @@
-/*v3.37 2025-08-19T12:57:19.883Z*/
+/*v3.38 2025-08-19T15:50:55.275Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2745,7 +2745,8 @@ a.flip-card-link[href=""] {
 =                 TOOLTIPS                    =
 =============================================*/
 
-.tooltip-box {
+.tooltip-box,
+.aug-tooltip-box {
     position: absolute;
     max-width: 320px;
     padding: 10px 14px;
@@ -2773,12 +2774,14 @@ a.flip-card-link[href=""] {
     cursor: var(--cursor-help);
 }
 
-.tooltip-box.visible {
+.tooltip-box.visible,
+.aug-tooltip-box.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.tooltip-box::before {
+.tooltip-box::before,
+.aug-tooltip-box::before {
     content: "▲";
     position: absolute;
     top: -17px;
@@ -2786,7 +2789,8 @@ a.flip-card-link[href=""] {
     color: var(--tooltip-color, #B89B4B);
 }
 
-.tooltip-header {
+.tooltip-header,
+.aug-tooltip-header {
     display: flex;
     align-items: center;
     gap: 0.5em;
@@ -2794,7 +2798,8 @@ a.flip-card-link[href=""] {
     border-bottom: 1px solid var(--background-dark-3);
 }
 
-.tooltip-title {
+.tooltip-title,
+.aug-tooltip-title {
     color: var(--off-white, #F0F0F0);
     font-size: 1rem;
     text-transform: uppercase;
@@ -2828,7 +2833,8 @@ a.flip-card-link[href=""] {
 }
 
 .global-tooltip,
-.tag-tooltip {
+.tag-tooltip,
+.aug-tooltip {
     position: fixed;
     background: linear-gradient(145deg, #2a2a2a, #3a3a3a);
     color: var(--off-white);

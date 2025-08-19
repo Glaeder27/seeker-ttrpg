@@ -1,9 +1,30 @@
-/*v2.34 2025-08-12T19:20:29.942Z*/
+/*v2.35 2025-08-19T20:01:17.776Z*/
 
 // ─── Globals ───
 let tooltipDefinitions = {};
 let tagDefinitions = {};
 let categoryColors = {};
+
+window.applyTagIcons = function() {
+  document.querySelectorAll(".tag").forEach((tag) => {
+    const tagName = tag.textContent.trim();
+    const tagData = tagDefinitions[tagName];
+    if (tagData?.icon) {
+      tag.style.setProperty("--tag-icon", `url("${tagData.icon}")`);
+    }
+    if (tagData?.category) {
+      const color = categoryColors[tagData.category];
+      if (color) {
+        tag.style.borderColor = color;
+        tag.style.color = color;
+      }
+    }
+  });
+};
+
+window.initializeTagTooltips = function() {
+  // copia la logica già presente in core.js per inizializzare tooltip
+};
 
 // ─── Remove preload/fadeout classes when page is ready ───
 window.addEventListener("pageshow", () => {

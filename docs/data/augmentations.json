@@ -5,8 +5,11 @@
       "name": "Blaze",
       "icon": "/assets/icons/svg/tags/tag-fire.svg",
       "category": "Combat",
+      "effect": "Convert all Damage to Fire.",
       "tags": ["Attack"],
-      "effect": "Convert Harm to Fire; apply Burn if target is compatible."
+      "add-tags": ["Fire"],
+      "add-affliction": ["Burn 1"],
+      "mod-damage-type": "Burn"
     },
     {
       "id": "sweep",

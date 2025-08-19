@@ -12,9 +12,9 @@
       "tags": ["Attack", "Strike", "Solar"],
       "description": "You channel Solaria into your weapon, unleashing a radiant strike that sears the air and staggers foes.",
       "effect": {
-        "core": "Deal 2 <span class=\"iconize\">Hemorrhage</span> Damage to the Target. <br>Add 1 <span class=\"iconize\">Blind</span> to the Target.",
+        "core": "Deal {{damage}} <span class=\"iconize\">{{damage-type}}</span> to the Target. <br>Add 1 <span class=\"iconize\">Blind</span> to the Target.",
         "damage": "2",
-        "damage-type": "2",
+        "damage-type": "Hermorrhage",
         "actionCost": "2",
         "type": "Attack (Melee, single target)",
         "targetRange": "Single • Melee"
