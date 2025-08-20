@@ -12,86 +12,20 @@
       "tags": ["Attack", "Strike", "Solar"],
       "description": "You channel Solaria into your weapon, unleashing a radiant strike that sears the air and staggers foes.",
       "effect": {
-        "core": "<li>Deal {{damage}} <span class=\"iconize\">{{damage-type}}</span> {{damage-type-note}} to the Target.</li><li>Add 1 <span class=\"iconize\">Blind</span> to the Target.</li>",
+        "core": "<li>Deal <b>{{damage}}</b> <span class=\"iconize\">{{damage-type}}</span> {{damage-type-note}} on Hit.</li><li>Inflict <b>{{affliction-count}}</b> <span class=\"iconize\">{{affliction}}</span> on Hit.</li>",
         "damage": "2",
         "damage-type": "Hemorrhage",
         "damage-type-note": "",
+        "affliction": "Blind",
+        "affliction-count": "1",
         "actionCost": "2",
         "type": "Attack (Melee, single target)",
         "target": "Single",
         "area": "Melee"
       },
-      "afflictions": [],
       "augmentations": {
-        "slots": 5,
-        "examples": [
-          "Blazing Edge — Convert Harm to Fire; apply Burn (per tag compatibility).",
-          "Crescent Sweep — Change target from 1 enemy → up to 3 enemies in a melee arc.",
-          "Lunge — Gain 1 hex of movement immediately before the strike."
-        ]
-      },
-      "narrative": [
-        "Ignite torches or briefly dispel mundane darkness with the radiant edge.",
-        "Shear ropes, branches, or brittle obstacles with a wide, empowered sweep."
-      ]
-    },
-
-    {
-      "id": "veil-of-sunlight",
-      "icon": "/icons/veil-of-sunlight.png",
-      "name": "Veil of Sunlight",
-      "category": "Mystic",
-      "tags": ["Solar", "Illusion", "Support"],
-      "description": "A shimmering veil of Solaria cloaks your allies, bending light to mislead enemies.",
-      "effect": {
-        "core": "All allies within 2 hexes gain Disadvantage on being targeted until the start of your next turn.",
-        "damage": "",
-        "damage-type": "",
-        "actionCost": "1 AD",
-        "type": "Mystic (Area, defensive)",
-        "targetRange": "Self + allies in 2 hex radius"
-      },
-      "augmentations": {
-        "slots": 3,
-        "examples": [
-          "Radiant Ward — Add 1 temporary Harm shield to protected allies.",
-          "Sun Mirage — Enemies must succeed on an extra check to identify protected targets.",
-          "Lingering Veil — Extend effect duration by 1 round."
-        ]
-      },
-      "narrative": [
-        "Momentarily dazzle or confuse a group of pursuers in blinding light.",
-        "Conceal the approach of allies during negotiations or ambushes."
-      ]
-    },
-
-    {
-      "id": "trailblazer",
-      "icon": "/icons/trailblazer.png",
-      "name": "Trailblazer",
-      "category": "Exploration",
-      "tags": ["Movement", "Navigation", "Teamwork"],
-      "description": "You clear the way forward, cutting through obstacles and finding safe paths.",
-      "effect": {
-        "core": "Reduce the movement cost of your party by 1 per hex for this turn, and ignore one hazardous terrain effect.",
-        "damage": "",
-        "damage-type": "",
-        "actionCost": "1 AD",
-        "type": "Exploration (Travel, utility)",
-        "targetRange": "Party / expedition group"
-      },
-      "augmentations": {
-        "slots": 4,
-        "examples": [
-          "Pathfinder’s Instinct — Reveal hidden paths or shortcuts on the hex map.",
-          "Clear Passage — Remove a single physical barrier (fallen tree, rubble, thorns).",
-          "Momentum — Gain +1 movement hex immediately after use."
-        ]
-      },
-      "narrative": [
-        "Hack a way through jungle undergrowth or tangled vines.",
-        "Lead pack animals safely across treacherous ground."
-      ]
+        "slots": 3
+      }
     }
   ]
 }

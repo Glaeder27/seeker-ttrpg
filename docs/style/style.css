@@ -1,4 +1,4 @@
-/*v3.39 2025-08-19T22:55:04.350Z*/
+/*v3.40 2025-08-20T15:55:03.852Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -2752,8 +2752,7 @@ a.flip-card-link[href=""] {
 =                 TOOLTIPS                    =
 =============================================*/
 
-.tooltip-box,
-.aug-tooltip-box {
+.tooltip-box {
     position: absolute;
     max-width: 320px;
     padding: 10px 14px;
@@ -2761,12 +2760,33 @@ a.flip-card-link[href=""] {
     border: 0px solid var(--ancient-gold, #B89B4B);
     border-style: solid;
     border-width: 2px 0 0 0;
-    border-radius: .3rem; 
+    border-radius: 0; 
     color: var(--off-white, #F0F0F0);
     font-size: 0.9rem;
     line-height: 1.4;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
-    filter: drop-shadow(0 0 12px black);
+    filter: drop-shadow(0 0 10px black);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.aug-tooltip-box {
+    position: absolute;
+    max-width: 320px;
+    padding: 10px 14px;
+    background-color: rgba(60, 60, 60, 0.7);
+    border: 0px solid var(--ancient-gold, #B89B4B);
+    border-style: solid;
+    border-radius: 0; 
+    color: var(--off-white, #F0F0F0);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+    filter: drop-shadow(0 0 10px black);
     pointer-events: none;
     opacity: 0;
     transform: translateY(4px);
@@ -2788,8 +2808,7 @@ a.flip-card-link[href=""] {
     transform: translateY(0);
 }
 
-.tooltip-box::before,
-.aug-tooltip-box::before {
+.tooltip-box::before {
     content: "▲";
     position: absolute;
     top: -17px;

@@ -5,19 +5,41 @@
       "name": "Fire Infusion",
       "icon": "/assets/icons/svg/augmentations/aug-fire-infusion.svg",
       "category": "Combat",
-      "effect": "Convert all Damage to Fire.",
-      "tags": ["Attack"],
+
+      "requires": ["Attack"],
+      "excludes": ["infusion"],
+
+      "effect": "Convert all Damage to Decay (Thermic • Heat). Deal 1 Burn on Hit.",
       "add-tags": ["Fire"],
-      "add-affliction": ["1 Burn"],
+      "add-affliction": ["<strong>1</strong> Burn"],
       "mod-damage-type": "Decay",
-      "mod-damage-type-note": "(Burn)"
+      "mod-damage-type-note": "(Thermic • Heat)"
+    },
+    {
+      "id": "frost-infusion",
+      "name": "Frost Infusion",
+      "icon": "/assets/icons/svg/augmentations/aug-frost-infusion.svg",
+      "category": "Combat",
+
+      "requires": ["Attack"],
+      "excludes": ["infusion"],
+
+      "effect": "Convert all Damage to Decay (Thermic • Cold).",
+      "add-tags": ["Frost"],
+      "add-affliction": ["1 Frostbite"],
+      "mod-damage-type": "Decay",
+      "mod-damage-type-note": "(Thermic • Cold)"
     },
     {
       "id": "sweep",
       "name": "Sweep",
       "icon": "/assets/icons/svg/augmentations/aug-sweep.svg",
       "category": "Combat",
-      "tags": ["Attack"],
+
+      "requires": ["Attack"],
+      "excludes": ["alter-area", "alter-taget"],
+
+      "add-tags": ["Area"],
       "effect": "Change target from Single → up to 3 Targets in a 180 degree Arc. Add 1 Action Cost.",
       "mod-action-cost": "1",
       "mod-target": "Up to 3",

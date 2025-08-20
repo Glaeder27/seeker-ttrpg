@@ -1,4 +1,4 @@
-/*v1.10 2025-08-19T20:18:16.281Z*/
+/*v1.11 2025-08-20T15:55:00.726Z*/
 
 // ─── Tooltip Aug globale unico ───
 let augTooltip = null;
@@ -8,6 +8,7 @@ function getAugTooltip() {
   if (!augTooltip) {
     const tooltip = document.createElement("div");
     tooltip.classList.add("aug-tooltip-box");
+    tooltip.classList.add("no-before");
     tooltip.style.pointerEvents = "none";
     tooltip.style.opacity = "0";
     tooltip.style.transition = "opacity 0.2s ease, transform 0.2s ease";
@@ -45,7 +46,14 @@ function showAugTooltip(el, data) {
   const { tooltip, icon, title, description } = getAugTooltip();
 
   title.textContent = data?.name || "Unknown";
-  description.textContent = data?.effect || data?.definition || "";
+  description.innerHTML = `
+    ${data?.effect || data?.definition || ""}
+    ${
+      el.dataset.warning
+        ? `<div class="aug-tooltip-warning" style="color:#f55; margin-top:4px; font-weight:bold;">${el.dataset.warning}</div>`
+        : ""
+    }
+  `;
   icon.innerHTML = data?.icon
     ? `<img src="${data.icon}" alt="${data.name}" style="width:24px;height:24px;">`
     : "";
@@ -57,6 +65,7 @@ function showAugTooltip(el, data) {
   tooltip.style.pointerEvents = "auto";
   tooltip.style.transform = "translateY(0)";
 }
+
 
 // ─── Nascondi tooltip ───
 function hideAugTooltip() {
