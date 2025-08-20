@@ -1,6 +1,7 @@
-/*v1.13 2025-08-20T15:55:01.486Z*/
+/*v1.16 2025-08-20T20:51:58.350Z*/
 
 let augmentationsData = [];
+let tagsData = [];
 
 // ─── Load data ───
 async function loadSkills() {
@@ -15,62 +16,92 @@ async function loadAugmentations() {
   augmentationsData = data.augmentations;
 }
 
-// ─── Applica gli effetti delle Aug alla skill di base ───
+async function loadTags() {
+  const res = await fetch("/data/tags.json");
+  const data = await res.json();
+  tagsData = data.tags;
+}
+
+// ─── Applica effetti delle augmentations alla skill ───
 function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
   const assigned = (assignedBySlot || []).filter(Boolean);
   const newSkill = JSON.parse(JSON.stringify(baseSkill));
 
   assigned.forEach((aug) => {
-    if (aug["mod-damage-type"]) {
+    if (aug["mod-damage-type"])
       newSkill.effect["damage-type"] = aug["mod-damage-type"];
-    }
-    if (aug["mod-damage-type-note"]) {
+    if (aug["mod-damage-type-note"])
       newSkill.effect["damage-type-note"] = aug["mod-damage-type-note"];
-    }
-    if (aug["mod-action-cost"]) {
-      const baseCost = Number(newSkill.effect.actionCost) || 0;
-      newSkill.effect.actionCost = baseCost + Number(aug["mod-action-cost"]);
-    }
-    if (aug["mod-target"]) {
-      newSkill.effect.target = aug["mod-target"];
-    }
-    if (aug["mod-area"]) {
-      newSkill.effect.area = aug["mod-area"];
-    }
-    if (aug["add-tags"]) {
+    if (aug["mod-action-cost"])
+      newSkill.effect.actionCost =
+        (Number(newSkill.effect.actionCost) || 0) +
+        Number(aug["mod-action-cost"]);
+    if (aug["mod-target"]) newSkill.effect.target = aug["mod-target"];
+    if (aug["mod-area"]) newSkill.effect.area = aug["mod-area"];
+    if (aug["add-tags"])
       newSkill.tags = [
         ...new Set([...(newSkill.tags || []), ...aug["add-tags"]]),
       ];
-    }
+  });
+
+  // --- Afflictions ---
+  let afflictions = {};
+  assigned.forEach((aug) => {
     if (aug["add-affliction"]) {
-      const afflictionsHTML = aug["add-affliction"]
-        .map(
-          (a) => `<li>Add <span class="iconize">${a}</span> to the Target.</li>`
-        )
-        .join("");
-      newSkill.effect.core += afflictionsHTML;
+      const value = Number(aug["add-affliction-value"]) || 1;
+      const affs = Array.isArray(aug["add-affliction"])
+        ? aug["add-affliction"]
+        : [aug["add-affliction"]];
+      affs.forEach((a) => {
+        afflictions[a] = (afflictions[a] || 0) + value;
+      });
+    }
+    if (aug["mod-affliction"]) {
+      const target = aug["mod-affliction"];
+      const modValue = Number(aug["mod-affliction-value"]) || 0;
+      afflictions[target] = (afflictions[target] || 0) + modValue;
     }
   });
 
+  let afflictionsHTML = "";
+  Object.entries(afflictions).forEach(([name, value]) => {
+    if (value !== 0) {
+      afflictionsHTML += `<li>Inflict <strong>${value}</strong> <span class="iconize">${name}</span> on Hit.</li>`;
+    }
+  });
+
+  // --- Specials ---
+  let specialsHTML = "";
+  assigned.forEach((aug) => {
+    if (aug["add-special"]) {
+      const name = aug["add-special"];
+      const value = aug["add-special-value"] ?? "";
+      const unit = aug["add-special-value-unit"] ?? "";
+      const condition = aug["add-special-condition"] ?? "";
+
+      specialsHTML += `<li>${name} <strong>${value}</strong> <span class="iconize">${unit}</span> ${condition}</li>`;
+    }
+  });
+
+  newSkill.effect.core += afflictionsHTML + specialsHTML;
+
   return newSkill;
 }
+
 
 // ─── Controlla conflitti tra augmentations selezionate ───
 function areAugmentationsCompatible(selectedAugmentations) {
   for (let i = 0; i < selectedAugmentations.length; i++) {
     for (let j = i + 1; j < selectedAugmentations.length; j++) {
-      const augA = selectedAugmentations[i];
-      const augB = selectedAugmentations[j];
-
-      const excludesA = augA.excludes || [];
-      const excludesB = augB.excludes || [];
-
-      // conflitto se condividono almeno un valore in excludes
-      const conflict =
-        excludesA.some((ex) => excludesB.includes(ex)) ||
-        excludesB.some((ex) => excludesA.includes(ex));
-
-      if (conflict) return false;
+      const a = selectedAugmentations[i];
+      const b = selectedAugmentations[j];
+      if (!a || !b) continue;
+      if (
+        (a.excludes || []).some((ex) => (b.excludes || []).includes(ex)) ||
+        (b.excludes || []).some((ex) => (a.excludes || []).includes(ex))
+      ) {
+        return false;
+      }
     }
   }
   return true;
@@ -78,80 +109,77 @@ function areAugmentationsCompatible(selectedAugmentations) {
 
 // ─── Render skill HTML ───
 function renderSkill(skill) {
+  // --- Mappa tag → categoria ---
+  const tagCategoryMap = {};
+  tagsData.forEach((t) => {
+    tagCategoryMap[t.name] = t.category;
+  });
+
+  // --- Ordina i tag della skill in base alla categoria ---
+  const sortedTags = (skill.tags || []).slice().sort((a, b) => {
+    const catA = tagCategoryMap[a] || "";
+    const catB = tagCategoryMap[b] || "";
+    return catA.localeCompare(catB); // puoi cambiare con ordine personalizzato
+  });
+
   const slotsArray = Array(skill.augmentations.slots).fill(null);
 
   return `
-    <article class="skill" aria-labelledby="skill-${skill.id}">
-      <header class="head">
-        <img class="head-icon" src="${
-          skill.icon || "/assets/icons/default.png"
-        }" alt="${skill.name} icon" />
-        <div class="title-wrap" style="flex:1; display:flex; justify-content:space-between; align-items:baseline;">
-          <div class="id">
-            <h1 id="skill-${skill.id}" class="name">${skill.name}</h1>
-            <div class="tags">
-              ${skill.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
-            </div>
-          </div>
-          <div class="category"><span class="bold">${
-            skill.category
-          }</span> <span class="normal">Skill</span></div>
-        </div>
-      </header>
-
-      <p class="desc">${skill.description}</p>
-
-      <section class="grid">
-        <div class="card" style="grid-column: span 5;">
-          <h3 class="box-title">Effect</h3>
-          <p class="effect-core"><ol>${replacePlaceholders(
-            skill.effect.core,
-            skill.effect
-          )}</ol></p>
-          <dl class="meta">
-            <dt>Action Cost</dt><dd>${skill.effect.actionCost}</dd>
-            <dt>Target • Area</dt><dd>${skill.effect.target} • ${
-    skill.effect.area
+<article class="skill" aria-labelledby="skill-${skill.id}">
+<header class="head">
+  <img class="head-icon" src="${
+    skill.icon || "/assets/icons/default.png"
+  }" alt="${skill.name} icon" />
+  <div class="title-wrap" style="flex:1; display:flex; justify-content:space-between; align-items:baseline;">
+    <div class="id">
+      <h1 id="skill-${skill.id}" class="name">${skill.name}</h1>
+      <div class="tags">${sortedTags
+        .map((t) => `<span class="tag">${t}</span>`)
+        .join("")}</div>
+    </div>
+    <div class="category"><span class="bold">${
+      skill.category
+    }</span> <span class="normal">Skill</span></div>
+  </div>
+</header>
+<section class="grid">
+  <div class="card" style="grid-column: span 5;">
+    <h3 class="box-title">Effect</h3>
+    <p class="desc">${skill.description || ""}</p>
+    <p class="effect-core"><ol>${replacePlaceholders(
+      skill.effect.core,
+      skill.effect
+    )}</ol></p>
+    <dl class="meta">
+      <dt>Action Cost</dt><dd>${skill.effect.actionCost || 0}</dd>
+      <dt>Target • Area</dt><dd>${skill.effect.target || "-"} • ${
+    skill.effect.area || "-"
   }</dd>
-          </dl>
-          ${
-            skill.afflictions && skill.afflictions.length > 0
-              ? `<hr class="rule" />
-                 <h3 class="box-title">Afflictions</h3>
-                 <ul>${skill.afflictions
-                   .map((a) => `<li>${a}</li>`)
-                   .join("")}</ul>`
-              : ""
-          }
-        </div>
-
-        <div class="card" style="grid-column: span 7;">
-          <h3 class="box-title">Augmentation Slots <span class="muted">(${
-            skill.augmentations.slots
-          } total)</span><button id="removeAllAugments" type="button">
-  <i class="fa-solid fa-trash"></i>
-  <span class="sr-only">Remove All Augmentations</span>
-</button></h3>
-          
-          <div class="slots">
-            ${slotsArray
-              .map(
-                (_, i) =>
-                  `<span class="slot" data-slot="${i}" title="Click to assign augmentation"></span>`
-              )
-              .join("")}
-          </div>
-          <p class="compat-note">Compatibility is determined by <em>requires</em> and <em>excludes</em>.</p>
-          <hr class="rule" />
-          <h3 class="box-title">Assigned Augmentations</h3>
-          <ul id="assigned-${skill.id}" class="assigned-list">
-            <li class="muted">No augmentations assigned.</li>
-          </ul>
-        </div>
-
-      </section>
-    </article>
-  `;
+    </dl>
+  </div>
+  <div class="card" style="grid-column: span 7;">
+    <h3 class="box-title">Augmentation Slots <span class="muted">(${
+      skill.augmentations.slots
+    } total)</span>
+      <button id="removeAllAugments" type="button"><i class="fa-solid fa-trash"></i><span class="sr-only">Remove All Augmentations</span></button>
+    </h3>
+    <div class="slots">
+      ${slotsArray
+        .map(
+          (_, i) =>
+            `<span class="slot" data-slot="${i}" title="Click to assign augmentation"></span>`
+        )
+        .join("")}
+    </div>
+    <p class="compat-note">Compatibility is determined by <em>requires</em> and <em>excludes</em>.</p>
+    <hr class="rule" />
+    <h3 class="box-title">Assigned Augmentations</h3>
+    <ul id="assigned-${skill.id}" class="assigned-list">
+      <li class="muted">No augmentations assigned.</li>
+    </ul>
+  </div>
+</section>
+</article>`;
 }
 
 // ─── Render assigned list ───
@@ -164,6 +192,34 @@ function renderAssignedList(container, list) {
   container.innerHTML = list
     .map((aug) => `<li><strong>${aug.name}</strong> — ${aug.effect}</li>`)
     .join("");
+}
+
+// ─── Controlla requirements delle augmentations assegnate ───
+function checkAssignedAugmentationsRequirements(
+  skill,
+  assignedBySlot,
+  container
+) {
+  const slots = container.querySelectorAll(`[data-slot]`);
+  const currentSkill = applyAugmentationsToSkill(skill, assignedBySlot);
+
+  slots.forEach((slot, i) => {
+    const img = slot.querySelector("img");
+    if (!img) return;
+    const aug = assignedBySlot[i];
+    img.classList.remove("invalid-slot");
+    delete img.dataset.warning;
+    if (!aug) return;
+
+    const requires = aug.requires || [];
+    const meets = requires.every((r) => currentSkill.tags.includes(r));
+    if (!meets) {
+      img.classList.add("invalid-slot");
+      img.dataset.warning = `Missing required tags: ${requires
+        .filter((r) => !currentSkill.tags.includes(r))
+        .join(", ")}`;
+    }
+  });
 }
 
 // ─── Setup augmentation slots ───
@@ -179,6 +235,23 @@ function setupAugmentationSlots(
     (_, i) => preAssignedBySlot?.[i] || null
   );
 
+  function rerenderSkill() {
+    const modifiedSkill = applyAugmentationsToSkill(skill, assignedBySlot);
+    container.innerHTML = renderSkill(modifiedSkill);
+    setupAugmentationSlots(
+      skill,
+      container,
+      initializeAugmentationTooltips,
+      assignedBySlot
+    );
+    checkAssignedAugmentationsRequirements(skill, assignedBySlot, container);
+    if (window.runIconizer) runIconizer(container);
+    if (window.applyTagIcons) window.applyTagIcons();
+    if (window.initializeTagTooltips) window.initializeTagTooltips(container);
+    const assignedList = container.querySelector(`#assigned-${skill.id}`);
+    renderAssignedList(assignedList, assignedBySlot.filter(Boolean));
+  }
+
   slots.forEach((slot, i) => {
     const aug = assignedBySlot[i];
     if (aug) {
@@ -191,82 +264,75 @@ function setupAugmentationSlots(
       img.style.height = "100%";
       img.style.objectFit = "contain";
       slot.appendChild(img);
-
       slot.dataset.augId = aug.id;
       slot.classList.add("ok");
     } else {
       delete slot.dataset.augId;
     }
-  });
 
-  // Filtra augmentations compatibili con la skill
-  const baseSkill = skill;
-  const compatibleAugmentations = augmentationsData.filter((aug) => {
-    const meetsRequirements = aug.requires.every((req) =>
-      baseSkill.tags.includes(req)
-    );
-    return meetsRequirements;
-  });
-
-  function rerenderSkill() {
-    const modifiedSkill = applyAugmentationsToSkill(baseSkill, assignedBySlot);
-    container.innerHTML = renderSkill(modifiedSkill);
-
-    if (window.runIconizer) runIconizer(container);
-
-    setupAugmentationSlots(
-      baseSkill,
-      container,
-      initializeAugmentationTooltips,
-      assignedBySlot
-    );
-
-    if (window.applyTagIcons) window.applyTagIcons();
-    if (window.initializeTagTooltips) window.initializeTagTooltips(container);
-
-    const assignedList = container.querySelector(`#assigned-${baseSkill.id}`);
-    renderAssignedList(assignedList, assignedBySlot.filter(Boolean));
-  }
-
-  slots.forEach((slot) => {
-    const slotIndex = Number(slot.dataset.slot);
     slot.addEventListener("click", (e) => {
       e.stopPropagation();
+      if (window.forceHideAugTooltipNow) window.forceHideAugTooltipNow();
       document
-        .querySelectorAll(".augmentation-picker")
+        .querySelectorAll(".augmentation-picker, .augmentation-overlay")
         .forEach((p) => p.remove());
 
+      // --- Overlay ---
+      const overlay = document.createElement("div");
+      overlay.classList.add("augmentation-overlay");
+      overlay.style.position = "fixed";
+      overlay.style.top = "0";
+      overlay.style.left = "0";
+      overlay.style.width = "100vw";
+      overlay.style.height = "100vh";
+      overlay.style.background = "rgba(0,0,0,0.5)";
+      overlay.style.backdropFilter = "blur(4px)";
+      overlay.style.display = "flex";
+      overlay.style.alignItems = "center";
+      overlay.style.justifyContent = "center";
+      overlay.style.zIndex = 9999;
+      document.body.appendChild(overlay);
+
+      // --- Picker ---
       const picker = document.createElement("div");
       picker.classList.add("augmentation-picker");
-      picker.style.position = "absolute";
       picker.style.display = "grid";
       picker.style.gridTemplateColumns = `repeat(${Math.min(
-        compatibleAugmentations.length,
-        4
+        augmentationsData.length,
+        10
       )}, 1fr)`;
       picker.style.gap = "6px";
-      picker.style.background = "#1a1c22";
-      picker.style.border = "1px solid #3a4150";
+      picker.style.background = "var(--background-dark-1)";
+      picker.style.border = "1px solid var(--pale-beige)";
+      picker.style.padding = "16px";
       picker.style.borderRadius = "8px";
-      picker.style.padding = "3px";
-      picker.style.zIndex = 1000;
+      picker.style.maxWidth = "90%";
+      picker.style.maxHeight = "80%";
+      picker.style.overflowY = "auto";
+      overlay.appendChild(picker);
 
-      const rect = slot.getBoundingClientRect();
-      picker.style.top = rect.top + window.scrollY + "px";
-      picker.style.left = rect.left + window.scrollX + "px";
+      const label = document.createElement("p");
+      label.textContent = "Choose Augmentation:";
+      label.style.gridColumn = `1 / -1`;
+      label.style.margin = "0 0 6px 0";
+      label.style.fontWeight = "normal";
+      picker.appendChild(label);
 
       const assignedFlat = assignedBySlot.filter(Boolean);
+      const currentSkill = applyAugmentationsToSkill(skill, assignedFlat);
 
-      compatibleAugmentations.forEach((aug) => {
-        const isAssignedHere = assignedBySlot[slotIndex]?.id === aug.id;
+      augmentationsData.forEach((aug) => {
+        const isAssignedHere = assignedBySlot[i]?.id === aug.id;
         const isAlreadyTaken =
           assignedFlat.some((a) => a.id === aug.id) && !isAssignedHere;
 
-        // Simuliamo come sarebbe la lista se scegliessi questa aug qui
-        const simulatedAssigned = [...assignedBySlot];
-        simulatedAssigned[slotIndex] = aug;
+        const requires = aug.requires || [];
+        const meetsRequires = requires.every((req) =>
+          currentSkill.tags.includes(req)
+        );
 
-        // Verifica compatibilità con gli altri assegnati
+        const simulatedAssigned = [...assignedBySlot];
+        simulatedAssigned[i] = aug;
         const wouldBeCompatible = areAugmentationsCompatible(
           simulatedAssigned.filter(Boolean)
         );
@@ -274,37 +340,37 @@ function setupAugmentationSlots(
         const icon = document.createElement("img");
         icon.src = aug.icon || "/assets/icons/default.png";
         icon.alt = aug.name;
-        icon.dataset.augId = aug.id;
         icon.title = aug.name;
+        icon.dataset.augId = aug.id;
         icon.style.width = "36px";
         icon.style.height = "36px";
+        icon.style.cursor = "pointer";
 
-        if (isAlreadyTaken || !wouldBeCompatible) {
+        // --- Mostra tooltip direttamente sulle icone del picker ---
+        icon.addEventListener("mouseenter", () => showAugTooltip(icon, aug));
+        icon.addEventListener("mouseleave", () => hideAugTooltip());
+
+        if (!meetsRequires || isAlreadyTaken || !wouldBeCompatible) {
           icon.classList.add("incompatible");
-
-          let reason = "";
-          if (isAlreadyTaken) {
-            reason = "Already assigned to another slot";
-          } else if (!wouldBeCompatible) {
-            const assignedNames = assignedFlat.map((a) => a.name).join(", ");
-            reason = `Incompatible with: ${assignedNames}`;
-          }
-
-          // memorizziamo la reason in dataset
-          icon.dataset.warning = reason;
+          icon.style.opacity = "0.5";
+          icon.style.border = "2px solid red";
+          icon.dataset.warning = !meetsRequires
+            ? `Missing required tags: ${requires
+                .filter((r) => !currentSkill.tags.includes(r))
+                .join(", ")}`
+            : isAlreadyTaken
+            ? "Already assigned to another slot"
+            : `Incompatible with: ${assignedFlat
+                .map((a) => a.name)
+                .join(", ")}`;
         } else {
-          icon.style.cursor = "var(--cursor-pointer)";
           icon.addEventListener("click", (ev) => {
             ev.stopPropagation();
-            if (typeof forceHideAugTooltip === "function")
-              forceHideAugTooltip();
-
-            const newAssigned = [...assignedBySlot];
-            newAssigned[slotIndex] = isAssignedHere ? null : aug;
-
-            if (areAugmentationsCompatible(newAssigned.filter(Boolean))) {
-              assignedBySlot = newAssigned;
-              picker.remove();
+            assignedBySlot[i] = isAssignedHere ? null : aug;
+            if (areAugmentationsCompatible(assignedBySlot.filter(Boolean))) {
+              if (window.forceHideAugTooltipNow)
+                window.forceHideAugTooltipNow();
+              overlay.remove();
               rerenderSkill();
             }
           });
@@ -313,15 +379,9 @@ function setupAugmentationSlots(
         picker.appendChild(icon);
       });
 
-      slot.appendChild(picker);
-
-      function onDocClick(evt) {
-        if (!picker.contains(evt.target) && evt.target !== slot) {
-          picker.remove();
-          document.removeEventListener("click", onDocClick);
-        }
-      }
-      document.addEventListener("click", onDocClick);
+      overlay.addEventListener("click", (ev) => {
+        if (ev.target === overlay) overlay.remove();
+      });
     });
   });
 
@@ -332,6 +392,7 @@ function setupAugmentationSlots(
 
 // ─── Init ───
 async function init() {
+  await loadTags();
   const skills = await loadSkills();
   await loadAugmentations();
 
@@ -346,8 +407,12 @@ async function init() {
   });
 
   function renderAndSetup(skill, preAssignedBySlot) {
-    container.innerHTML = renderSkill(skill);
-
+    if (window.forceHideAugTooltipNow) window.forceHideAugTooltipNow();
+    const modifiedSkill = applyAugmentationsToSkill(
+      skill,
+      preAssignedBySlot || []
+    );
+    container.innerHTML = renderSkill(modifiedSkill);
     if (window.runIconizer) runIconizer(container);
     if (window.applyTagIcons) window.applyTagIcons();
     if (window.initializeTagTooltips) window.initializeTagTooltips(container);
@@ -356,7 +421,7 @@ async function init() {
       skill,
       container,
       initializeAugmentationTooltips,
-      preAssignedBySlot
+      preAssignedBySlot || []
     );
   }
 
@@ -370,7 +435,6 @@ async function init() {
   container.addEventListener("click", (e) => {
     const btn = e.target.closest("#removeAllAugments");
     if (!btn) return;
-
     const skill = skills[selector.value];
     const emptySlots = Array(skill.augmentations.slots).fill(null);
     renderAndSetup(skill, emptySlots);

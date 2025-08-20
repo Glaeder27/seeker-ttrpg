@@ -21,7 +21,7 @@
         "actionCost": "2",
         "type": "Attack (Melee, single target)",
         "target": "Single",
-        "area": "Melee"
+        "area": "1 Unit"
       },
       "augmentations": {
         "slots": 3

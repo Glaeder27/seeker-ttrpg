@@ -1,4 +1,4 @@
-/*v1.4 2025-08-19T22:59:55.783Z*/
+/*v1.5 2025-08-20T16:18:11.616Z*/
 
 // ─── Iconizer global ───
 let iconizerReplacements = null;
@@ -34,8 +34,6 @@ function runIconizer(container = document) {
     });
   });
 
-  console.log("runIconizer: sostituiti gli elementi iconized");
-
   // inizializza i tooltip custom sugli iconized
   initializeIconizerTooltips(container);
 }
@@ -57,7 +55,6 @@ async function initializeIconizerTooltips(container = document) {
   if (!iconizerData) return;
 
   const iconizedElements = container.querySelectorAll("span.iconize img.iconized-text");
-  console.log("initializeIconizerTooltips: trovati", iconizedElements.length, "elementi");
   if (!iconizedElements.length) return;
 
   const { tooltip, icon, title, description, header } = createTooltipBox();

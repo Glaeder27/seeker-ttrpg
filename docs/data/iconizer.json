@@ -24,6 +24,32 @@
     "title": "6"
   },
 
+  "Blind": {
+    "img": "/assets/icons/svg/afflictions/affliction-blind.svg",
+    "title": "Blind"
+  },
+  "Burn": {
+    "img": "/assets/icons/svg/afflictions/affliction-burn.svg",
+    "title": "Burn"
+  },
+  "Breach": {
+    "img": "/assets/icons/svg/afflictions/affliction-breach.svg",
+    "title": "Breach"
+  },
+
+  "Health": {
+    "img": "/assets/icons/svg/health/icon-health.svg",
+    "title": "Health"
+  },
+  "Guard": {
+    "img": "/assets/icons/svg/health/icon-guard.svg",
+    "title": "Guard"
+  },
+  "Armor": {
+    "img": "/assets/icons/svg/health/icon-armor.svg",
+    "title": "Armor"
+  },
+
   "Hemorrhage": {
     "img": "/assets/icons/svg/damage/damage-hemorrhage.svg",
     "title": "Hemorrhage Damage"

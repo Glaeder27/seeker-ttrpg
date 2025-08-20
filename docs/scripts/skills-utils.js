@@ -1,4 +1,4 @@
-/*v1.11 2025-08-20T15:55:00.726Z*/
+/*v1.12 2025-08-20T17:43:50.629Z*/
 
 // ─── Tooltip Aug globale unico ───
 let augTooltip = null;
@@ -66,7 +66,6 @@ function showAugTooltip(el, data) {
   tooltip.style.transform = "translateY(0)";
 }
 
-
 // ─── Nascondi tooltip ───
 function hideAugTooltip() {
   const { tooltip } = getAugTooltip();
@@ -75,6 +74,15 @@ function hideAugTooltip() {
   tooltip.style.transform = "translateY(4px)";
 }
 
+// ─── Nascondi subito tooltip ───
+window.forceHideAugTooltipNow = function () {
+  augTooltipSuppress = true;
+  hideAugTooltip();
+  requestAnimationFrame(() => {
+    augTooltipSuppress = false;
+  });
+};
+
 // ─── Funzione globale per chiudere manualmente ───
 window.forceHideAugTooltip = hideAugTooltip;
 
@@ -82,6 +90,9 @@ window.forceHideAugTooltip = hideAugTooltip;
 function initializeAugmentationTooltips(augmentationsData) {
   const container = document.getElementById("skillContainer");
   if (!container) return;
+
+  if (container.dataset.augTooltipInit === "1") return;
+  container.dataset.augTooltipInit = "1";
 
   let hideTimeout = null;
 
@@ -96,7 +107,10 @@ function initializeAugmentationTooltips(augmentationsData) {
 
     const augId = el.dataset.augId;
     const augData = augmentationsData.find((a) => a.id == augId);
-    if (!augData) return;
+    if (!augData) {
+      hideAugTooltip(); // nascondi subito se non c’è match
+      return;
+    }
 
     showAugTooltip(el, augData);
   });

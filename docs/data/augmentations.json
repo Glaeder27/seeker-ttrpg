@@ -1,6 +1,30 @@
 {
   "augmentations": [
     {
+      "id": "blaze",
+      "name": "Blaze",
+      "icon": "/assets/icons/svg/augmentations/aug-blaze.svg",
+      "category": "Combat",
+
+      "requires": ["Attack", "Fire"],
+      "excludes": [],
+
+      "add-tags": ["Area"],
+      "effect": "<u>Inflict</u> 1 additional Burn each time you <u>Inflict</u> Burn with this Skill.",
+      "mod-affliction": "Burn",
+      "mod-affliction-value": "1"
+    },
+    {
+      "id": "breach",
+      "name": "Breach",
+      "icon": "/assets/icons/svg/augmentations/aug-breach.svg",
+      "category": "Combat",
+
+      "effect": "<u>Inflict</u> 1 Breach on Hit.",
+      "add-affliction": ["Breach"],
+      "add-affliction-value": "1"
+    },
+    {
       "id": "fire-infusion",
       "name": "Fire Infusion",
       "icon": "/assets/icons/svg/augmentations/aug-fire-infusion.svg",
@@ -9,11 +33,12 @@
       "requires": ["Attack"],
       "excludes": ["infusion"],
 
-      "effect": "Convert all Damage to Decay (Thermic • Heat). Deal 1 Burn on Hit.",
+      "effect": "<span class=\"effect-text\">Convert all Damage to Decay (Thermic • Heat). </span><span class=\"effect-text\">Deal 1 Burn on Hit.</span>", 
       "add-tags": ["Fire"],
-      "add-affliction": ["<strong>1</strong> Burn"],
+      "add-affliction": ["Burn"],
+      "add-affliction-value": "1",
       "mod-damage-type": "Decay",
-      "mod-damage-type-note": "(Thermic • Heat)"
+      "mod-damage-type-note": "(Thermic • <span class=\"damage-heat\">Heat</span>)"
     },
     {
       "id": "frost-infusion",
@@ -26,9 +51,40 @@
 
       "effect": "Convert all Damage to Decay (Thermic • Cold).",
       "add-tags": ["Frost"],
-      "add-affliction": ["1 Frostbite"],
+      "add-affliction": ["Frostbite"],
+      "add-affliction-value": "1",
       "mod-damage-type": "Decay",
       "mod-damage-type-note": "(Thermic • Cold)"
+    },
+    {
+      "id": "guard-up",
+      "name": "Guard Up",
+      "icon": "/assets/icons/svg/augmentations/aug-guard-up.svg",
+      "category": "Combat",
+
+      "requires": ["Attack"],
+      "excludes": ["berserk"],
+
+      "effect": "<u>Build</u> 1 Guard on Hit.",
+      "add-tags": ["Defense"],
+      "add-special": "Build",
+      "add-special-value": "1",
+      "add-special-value-unit": "Guard",
+      "add-special-condition": "on Hit."
+    },
+    {
+      "id": "leech",
+      "name": "Leech",
+      "icon": "/assets/icons/svg/augmentations/aug-leech.svg",
+      "category": "Combat",
+
+      "requires": ["Strike"],
+
+      "effect": "<span class=\"effect-text\">Enable <b>Leech</b>.</span> <span class=\"effect-text\">Leech 1 Health on Hit.</span>",
+      "add-special": "Leech",
+      "add-special-value": "1",
+      "add-special-value-unit": "Health",
+      "add-special-condition": "on Hit."
     },
     {
       "id": "sweep",
@@ -40,10 +96,19 @@
       "excludes": ["alter-area", "alter-taget"],
 
       "add-tags": ["Area"],
-      "effect": "Change target from Single → up to 3 Targets in a 180 degree Arc. Add 1 Action Cost.",
+      "effect": "<span class=\"effect-text\"><u>Change</u> Target from Single → Up to 3.</span> <span class=\"effect-text\"><u>Set</u> Area to 1 Unit, 180° Arc.</span><span class=\"effect-text\">Add 1 Action Cost.</span>",
       "mod-action-cost": "1",
-      "mod-target": "Up to 3",
-      "mod-area": "Melee, 180° Arc"
+      "mod-target": "<span style=\"font-weight: 200\">Up to</span> 3",
+      "mod-area": "1 Unit, 180° Arc"
+    },
+    {
+      "id": "swiftness",
+      "name": "Swiftness",
+      "icon": "/assets/icons/svg/augmentations/aug-swiftness.svg",
+      "category": "Combat",
+
+      "effect": "Remove 1 Action Cost.",
+      "mod-action-cost": "-1"
     }
   ]
 }

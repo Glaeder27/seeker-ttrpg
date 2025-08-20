@@ -2,8 +2,7 @@
   "__version": "1.2",
   "__versionDate": "2025-08-12T19:00:00Z",
   "otherData": "...",
-
-"categories": [
+  "categories": [
     {
       "name": "Combat",
       "definition": "Tags related to martial actions and conflict resolution.",
@@ -59,7 +58,8 @@
       "definition": "Tags that provide practical benefits or versatile functions outside combat.",
       "color": "#b6a78c"
     }
-],
+  ],
+  
   "tags": [
     {
       "name": "Arcane",
@@ -67,25 +67,19 @@
       "category": "Magic",
       "definition": "Relates to magic derived from study, runes, or eldritch sources.",
       "visibility": true,
-      "interactions": [
-        "Affected by Arcane Amplification",
-        "Often interacts with glyphs or rituals"
-      ],
-      "examples": ["Mana Bolt", "Rune Trap"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Area",
-      "icon": "/assets/icons/svg/tags/placeholder.svg",
+      "icon": "/assets/icons/svg/tags/tag-area.svg",
       "category": "Combat",
       "definition": "Affects multiple targets within a defined space.",
       "visibility": true,
-      "interactions": [
-        "Can trigger collateral effects",
-        "Modified by AoE talents"
-      ],
-      "examples": ["Fireball", "Shockwave"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Attack",
@@ -93,12 +87,9 @@
       "category": "Combat",
       "definition": "An offensive action aimed at a target through weapons, unarmed force, or indirect effects.",
       "visibility": true,
-      "interactions": [
-        "Can trigger Maneuvers",
-        "Affected by talents that boost damage"
-      ],
-      "examples": ["Sword Slash", "Pistol Shot"],
-      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Cold",
@@ -106,12 +97,9 @@
       "category": "Elemental",
       "definition": "Causes chilling, freezing, or slowing effects.",
       "visibility": true,
-      "interactions": [
-        "Can reduce enemy Movement",
-        "Affected by Cold Resistance"
-      ],
-      "examples": ["Frostbite", "Ice Lance"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Combat",
@@ -119,12 +107,9 @@
       "category": "Gameplay",
       "definition": "Direct engagement in battle — striking, defending, clashing with steel or spell, and enduring the violence of conflict.",
       "visibility": true,
-      "interactions": [
-        "Can trigger Maneuvers",
-        "Affected by talents that boost damage"
-      ],
-      "examples": ["Sword Slash", "Pistol Shot"],
-      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Control",
@@ -132,12 +117,9 @@
       "category": "Utility",
       "definition": "Alters battlefield conditions or restricts enemy actions.",
       "visibility": true,
-      "interactions": [
-        "Creates zones, barriers, or area effects",
-        "Limits enemy choices"
-      ],
-      "examples": ["Wall of Ice", "Choke Cloud"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Debuff",
@@ -145,12 +127,9 @@
       "category": "Debuff",
       "definition": "Applies penalties or hindrances to enemies.",
       "visibility": true,
-      "interactions": [
-        "Reduces Aptitudes or imposes Conditions",
-        "Can stack with other effects"
-      ],
-      "examples": ["Weaken", "Blinding Dust"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Defense",
@@ -158,9 +137,9 @@
       "category": "Defensive",
       "definition": "Enhances your resistance, armor, or ability to avoid harm.",
       "visibility": true,
-      "interactions": ["Stacks with cover", "May reduce incoming damage"],
-      "examples": ["Shield Stance", "Stoneform"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Divine",
@@ -168,9 +147,9 @@
       "category": "Magic",
       "definition": "Relates to sacred power, faith, or blessings.",
       "visibility": true,
-      "interactions": ["Affected by Willpower", "Often heals or repels Undead"],
-      "examples": ["Blessing", "Holy Smite"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Exploration",
@@ -180,7 +159,7 @@
       "visibility": true,
       "interactions": [],
       "examples": [],
-      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+      "notes": []
     },
     {
       "name": "Fire",
@@ -188,12 +167,9 @@
       "category": "General",
       "definition": "An action that employs flame as its destructive element, causing burning, igniting, or spreading fire.",
       "visibility": true,
-      "interactions": [
-        "Affected by Fire Resistance",
-        "Can ignite enemies or terrain"
-      ],
-      "examples": ["Flameburst", "Molotov"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Instant",
@@ -201,9 +177,9 @@
       "category": "Meta",
       "definition": "The effect resolves immediately, with no duration.",
       "visibility": true,
-      "interactions": ["Does not persist", "Cannot be interrupted"],
-      "examples": ["Quick Shot", "First Aid"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Lightning",
@@ -211,12 +187,9 @@
       "category": "Elemental",
       "definition": "Delivers electric shocks; may chain to other targets.",
       "visibility": true,
-      "interactions": [
-        "Can overload mechanical enemies",
-        "Often bypasses armor"
-      ],
-      "examples": ["Chain Spark", "Storm Jolt"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Loud",
@@ -224,9 +197,9 @@
       "category": "General",
       "definition": "Produces loud noise; may attract unwanted attention.",
       "visibility": true,
-      "interactions": ["None"],
-      "examples": ["Lightning Bolt", "Alarm"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Movement",
@@ -234,12 +207,9 @@
       "category": "General",
       "definition": "An action that changes the user's position in space.",
       "visibility": true,
-      "interactions": [
-        "Triggers reaction from enemies",
-        "Can be enhanced by potions"
-      ],
-      "examples": ["Phase Step", "Vault"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Ongoing",
@@ -247,12 +217,9 @@
       "category": "Meta",
       "definition": "The effect lasts over multiple turns or requires upkeep.",
       "visibility": true,
-      "interactions": [
-        "Can be dispelled or expire",
-        "May require concentration or cost"
-      ],
-      "examples": ["Burning", "Poisoned"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Off-Guard",
@@ -260,12 +227,9 @@
       "category": "Meta",
       "definition": "Guard value is 0. This condition makes vulnerable to abilities that target Off-Guard targets.",
       "visibility": true,
-      "interactions": [
-        "Can be dispelled or expire",
-        "May require concentration or cost"
-      ],
-      "examples": ["Burning", "Poisoned"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Passive",
@@ -273,12 +237,9 @@
       "category": "Meta",
       "definition": "Always active; does not require activation.",
       "visibility": true,
-      "interactions": [
-        "Always applies when relevant",
-        "May be suppressed by effects"
-      ],
-      "examples": ["Keen Senses", "Battle Hardened"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Poisoned",
@@ -286,12 +247,9 @@
       "category": "Debuff",
       "definition": "Applies toxic effects that deal damage over time.",
       "visibility": true,
-      "interactions": [
-        "Stacks with other poisons",
-        "Affected by Constitution and Detox talents"
-      ],
-      "examples": ["Venom Blade", "Toxic Mist"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Ranged",
@@ -299,12 +257,9 @@
       "category": "Combat",
       "definition": "An action performed at a distance, requiring line of sight and limited by maximum range.",
       "visibility": true,
-      "interactions": [
-        "Affected by cover",
-        "Triggers Opportunity Attacks when used too close"
-      ],
-      "examples": ["Arrow Shot", "Throwing Knife"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Reaction",
@@ -312,12 +267,9 @@
       "category": "Combat",
       "definition": "Can be used outside your turn in response to a trigger.",
       "visibility": true,
-      "interactions": [
-        "Usually limited to once per round",
-        "Requires a specific trigger"
-      ],
-      "examples": ["Counterattack", "Dodge Roll"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Risky",
@@ -325,12 +277,9 @@
       "category": "Meta",
       "definition": "Involves a higher number of Risk Dice or increased danger.",
       "visibility": true,
-      "interactions": [
-        "Increases chance of complications",
-        "Often has higher reward"
-      ],
-      "examples": ["Berserker Charge", "Explosive Shot"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Social",
@@ -340,7 +289,7 @@
       "visibility": true,
       "interactions": [],
       "examples": [],
-      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+      "notes": []
     },
     {
       "name": "Solar",
@@ -350,7 +299,7 @@
       "visibility": true,
       "interactions": [],
       "examples": [],
-      "notes": "Core mechanical tag. Often used to determine legality of abilities."
+      "notes": []
     },
     {
       "name": "Strike",
@@ -358,12 +307,9 @@
       "category": "Combat",
       "definition": "A direct blow with weapons or bare hands against a target.",
       "visibility": true,
-      "interactions": [
-        "Often used in melee-focused abilities",
-        "Can be blocked or parried"
-      ],
-      "examples": ["Spear Thrust", "Uppercut"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Summon",
@@ -371,12 +317,9 @@
       "category": "Utility",
       "definition": "Creates creatures or constructs to fight or assist you.",
       "visibility": true,
-      "interactions": [
-        "Summons act on your turn or autonomously",
-        "May require maintenance or control"
-      ],
-      "examples": ["Spirit Beast", "Animated Turret"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Support",
@@ -384,12 +327,9 @@
       "category": "General",
       "definition": "An action intended to benefit or assist another being.",
       "visibility": true,
-      "interactions": [
-        "Can increase Action Dice of allies",
-        "Triggers synergy with Leadership talents"
-      ],
-      "examples": ["Inspire", "Bandage"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Toxic",
@@ -397,12 +337,9 @@
       "category": "General",
       "definition": "Applies toxic effects that deal damage over time.",
       "visibility": true,
-      "interactions": [
-        "Stacks with other poisons",
-        "Affected by Constitution and Detox talents"
-      ],
-      "examples": ["Venom Blade", "Toxic Mist"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Triggered",
@@ -410,25 +347,19 @@
       "category": "Meta",
       "definition": "Activates only when a specific condition is met.",
       "visibility": true,
-      "interactions": [
-        "Must specify a clear trigger",
-        "Can be part of a chain reaction"
-      ],
-      "examples": ["Backlash", "Quick Reflex"],
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
-
     {
       "name": "Strength",
       "icon": "/assets/icons/svg/tags/tag-strength.svg",
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Weak",
@@ -436,11 +367,9 @@
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Mighty",
@@ -448,24 +377,19 @@
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
-
     {
       "name": "Agility",
       "icon": "/assets/icons/svg/tags/tag-agility.svg",
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Clumsy",
@@ -473,11 +397,9 @@
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Swift",
@@ -485,24 +407,19 @@
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
-
     {
       "name": "Vigor",
       "icon": "/assets/icons/svg/tags/tag-vigor.svg",
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Frail",
@@ -510,11 +427,9 @@
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     },
     {
       "name": "Resilient",
@@ -522,11 +437,9 @@
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
-      "interactions": [
-        ""
-      ],
-      "examples": "",
-      "notes": ""
+      "interactions": [],
+      "examples": [],
+      "notes": []
     }
   ]
 }
