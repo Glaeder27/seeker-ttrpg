@@ -240,11 +240,19 @@
     scrollbar-width: thin;
     scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
 }
-
-main.dual-column[type="rulebook"] .right-column {
-    position: sticky;
+@media (max-width: 720px) {
+    .right-column {
+        right: 0; 
+    }
+    main.dual-column[type="rulebook"] .right-column,
+    main.dual-column[type="lorebook"] .right-column {
+        right: 0;
+        position: relative;
+        width: 100%;
+    }
 }
 
+main.dual-column[type="rulebook"] .right-column,
 main.dual-column[type="lorebook"] .right-column {
     position: sticky;
 }
@@ -283,13 +291,12 @@ main.dual-column[type="lorebook"] .right-column .sidebar-wrapper {
         margin-left: auto;
         margin-right: auto;
         max-width: 800px;
-        padding: 2rem 1rem 0 1rem;
+        padding: 0 1rem 0 1rem;
     }
 
     .left-column,
     .right-column {
-        width: 100%;
-        max-width: 100%;
+        width: 96vw;
         margin: 0;
         padding: 0;
         grid-column: auto;
@@ -398,6 +405,21 @@ body.clean::before {
     body {
         overflow-x: hidden;
         height: 100dvh;
+        padding: 0;
+    }
+    body::after {
+        content: "";
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        border-top-left-radius: 20% 90%;
+        border-top-right-radius: 20% 90%; 
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        backdrop-filter: blur(2px);
+        bottom: 0;
+        width: 100%;
+        height: 4rem;
+        display: block;
     }
 }
 
@@ -721,6 +743,13 @@ body#home-page {
     .navbar-links-mobile a {
         font-size: 1.3rem;
         color: var(--ancient-gold, #D4B55A);
+        background: linear-gradient(to bottom,
+            rgba(var(--deep-charcoal-rgb), 0.2),
+            rgba(var(--brown-charcoal-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         text-decoration: none;
         font-weight: 500;
         letter-spacing: 1px;
@@ -1330,8 +1359,8 @@ p.card-description {
     z-index: 1001;
     color: #fff;
     border: none;
-    font-size: 1.2em;
-    border-radius: 10px;
+    font-size: 2em;
+    border-radius: 6px;
     transform: translate(0, 0);
     height: 3rem;
     width: 3rem;
@@ -1345,12 +1374,15 @@ p.card-description {
 
 .toggle-btn-container {
     background: var(--background-dark-1);
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
+    width: 88%;
+    height: 88%;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    inset: 0;
+    margin: auto;
 }
 
 .sidenav-toggle-btn:hover .toggle-btn-icon {
@@ -1458,6 +1490,13 @@ p.card-description {
     background-size: 100% 100%, 100% 100%, cover;
     border-right: 4px solid transparent;
     border-left: none;
+}
+@media (max-width: 768px) {
+    .sidenav {
+        top: 40%;
+        width:100%;
+        filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 1));
+    }
 }
 
 .sidenav.no-transition {
@@ -1640,7 +1679,6 @@ p.card-description {
         height: 55px;
         width: 60px;
         border-radius: 0.6rem;
-        box-shadow: 0 0 10px rgba(246, 203, 117, 0.4);
         backdrop-filter: blur(4px);
         color: var(--ancient-gold);
         font-size: 2.5rem;
@@ -2106,13 +2144,16 @@ h1.site-title {
 }
 
 .title h1.expanded {
-    padding: .7em 0 1em 0;
+    padding: .7em .2em 1em .2em;
 }
 
 @media (max-width: 767px) {
     .title .title-container h1 {
         width: 360px;
-        font-size: clamp(2.5rem, 20vw, 4rem);
+        font-size: clamp(2.5rem, 30vw, 50vw);
+    }
+    .title h1.expanded {
+        padding: .5em .25em 0.5em .25em;
     }
 }
 
@@ -2420,7 +2461,6 @@ table {
     border-collapse: collapse;
     margin: 1.5rem 0;
     background-color: rgba(var(--burnt-copper-rgb), 0.06);
-    border: 1px solid rgba(var(--ancient-gold-rgb), 0.15);
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
@@ -2437,12 +2477,11 @@ thead th {
     font-size: 0.8rem;
     letter-spacing: 0.05em;
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 td {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     vertical-align: top;
 }
 
@@ -2465,6 +2504,9 @@ td:first-child {
     border-top-left-radius: 6px;
 }
 
+thead th:first-child {
+    border-top-left-radius: 6px;
+}
 thead th:last-child {
     border-top-right-radius: 6px;
 }
@@ -2799,8 +2841,9 @@ a.flip-card-link[href=""] {
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted #a0a0a0;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
     cursor: var(--cursor-help);
+    line-height: 1.2;
 }
 
 .tooltip-box.visible,
@@ -2813,8 +2856,20 @@ a.flip-card-link[href=""] {
     content: "▲";
     position: absolute;
     top: -17px;
-    left: 12px;
+    left: var(--arrow-left, 12px);
     color: var(--tooltip-color, #B89B4B);
+}
+
+@media (max-width: 768px) {
+    .tooltip-box {
+        border-width: 0 0 2px 0;
+    }
+    .tooltip-box::before {
+    content: "▼";
+    top: unset;
+    bottom: -16px;
+    left: var(--arrow-left, 12px);
+    }
 }
 
 .tooltip-header,
@@ -3914,22 +3969,31 @@ details[open] .infobox-table {
 
 @media (max-width: 768px) {
     h2 {
-        font-size: clamp(1.5rem, 2rem, 3rem);
+        font-size: clamp(1.5rem, 2.5rem, 3rem);
         padding: 8px 10px;
         margin: auto;
         letter-spacing: normal;
     }
 
     h3 {
-        font-size: clamp(1.5rem, 2rem, 3rem);
+        font-size: clamp(1.5rem, 1.5rem, 2rem);
     }
 
     h4 {
-        font-size: clamp(1.5rem, 2rem, 3rem);
+        font-size: clamp(1.5rem, 1rem, 2rem);
     }
 
     .subtitle {
-        font-size: clamp(.7rem, 1rem, 1.5rem);
+        display: none;
+    }
+
+    .section-number {
+    padding: 4px 20px;
+    border-radius: 8px;
+    letter-spacing: 0; 
+    }
+    .section-number p {
+    font-size: .4em;
     }
 
     th,
@@ -4156,7 +4220,7 @@ i.fa-solid.fa-left-from-bracket::before {
 
     .fa-right-from-bracket,
     .fa-right-from-bracket {
-        font-size: 30px;
+        font-size: 36px;
     }
 }
 

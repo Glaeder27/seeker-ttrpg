@@ -27,11 +27,25 @@ function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
   const assigned = (assignedBySlot || []).filter(Boolean);
   const newSkill = JSON.parse(JSON.stringify(baseSkill));
 
+  // --- Modifiche base ---
   assigned.forEach((aug) => {
-    if (aug["mod-damage-type"])
-      newSkill.effect["damage-type"] = aug["mod-damage-type"];
-    if (aug["mod-damage-type-note"])
-      newSkill.effect["damage-type-note"] = aug["mod-damage-type-note"];
+  // modifica voci numeriche già esistenti
+  Object.keys(newSkill.effect)
+    .filter((k) => /^\d+$/.test(k))
+    .forEach((key) => {
+      const part = newSkill.effect[key];
+      if (aug["mod-damage-type"] && part["damage-type"]) {
+        part["damage-type"] = aug["mod-damage-type"];
+      }
+      if (aug["mod-damage-type-note"] && part["damage-type"]) {
+        part["damage-type-note"] = aug["mod-damage-type-note"];
+      }
+      if (aug["mod-affliction"] && part["affliction-type"] === aug["mod-affliction"]) {
+        const modValue = Number(aug["mod-affliction-value"]) || 0;
+        part["affliction-count"] = (part["affliction-count"] || 0) + modValue;
+      }
+    });
+
     if (aug["mod-action-cost"])
       newSkill.effect.actionCost =
         (Number(newSkill.effect.actionCost) || 0) +
@@ -63,31 +77,49 @@ function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
     }
   });
 
-  let afflictionsHTML = "";
+  // --- Determina prossimo indice numerico per la skill ---
+  let nextIndex =
+    Math.max(
+      0,
+      ...Object.keys(newSkill.effect)
+        .filter((k) => /^\d+$/.test(k))
+        .map(Number)
+    ) + 1;
+
+  // --- Inserisci afflictions come voci numeriche ---
   Object.entries(afflictions).forEach(([name, value]) => {
     if (value !== 0) {
-      afflictionsHTML += `<li>Inflict <strong>${value}</strong> <span class="iconize">${name}</span> on Hit.</li>`;
+      newSkill.effect[nextIndex++] = {
+        "action-type": "Inflict",
+        "affliction-count": value,
+        "affliction-type": name,
+        condition: "on Hit",
+      };
     }
   });
 
-  // --- Specials ---
-  let specialsHTML = "";
+  // --- Inserisci specials / HTML dalle augmentations ---
   assigned.forEach((aug) => {
-    if (aug["add-special"]) {
-      const name = aug["add-special"];
-      const value = aug["add-special-value"] ?? "";
-      const unit = aug["add-special-value-unit"] ?? "";
-      const condition = aug["add-special-condition"] ?? "";
-
-      specialsHTML += `<li>${name} <strong>${value}</strong> <span class="iconize">${unit}</span> ${condition}</li>`;
+  if (aug["add-special"]) {
+    const specialEntry = {
+      "action-type": aug["add-special"] ?? "",
+      "affliction-count": aug["add-special-value"] ?? "",
+      "affliction-type": aug["add-special-value-unit"] ?? "",
+      condition: aug["add-special-condition"] ?? "",
+    };
+    if (specialEntry["affliction-count"]) {
+      newSkill.effect[nextIndex++] = specialEntry;
     }
-  });
+  }
 
-  newSkill.effect.core += afflictionsHTML + specialsHTML;
+  if (aug.effect) {
+    if (!aug["add-special"]) {
+    }
+  }
+});
 
   return newSkill;
 }
-
 
 // ─── Controlla conflitti tra augmentations selezionate ───
 function areAugmentationsCompatible(selectedAugmentations) {
@@ -105,6 +137,66 @@ function areAugmentationsCompatible(selectedAugmentations) {
     }
   }
   return true;
+}
+
+function composeSkillCore(effect) {
+  const coreItems = [];
+
+  Object.keys(effect)
+    .filter((k) => /^\d+$/.test(k))
+    .sort((a, b) => Number(a) - Number(b))
+    .forEach((key) => {
+      const part = effect[key];
+      let li = "";
+
+      // Action-type
+      if (part["action-type"]) {
+        li += `<span class="tooltip">${part["action-type"]}</span> `;
+      }
+
+      // Damage
+      if (part["damage-count"]) {
+        li += `<b>${part["damage-count"]}</b> `;
+      }
+      if (part["damage-type"]) {
+        li += `<span class="iconize">${part["damage-type"]}</span> `;
+      }
+
+      // Affliction
+      if (part["affliction-count"]) {
+        li += `<b>${part["affliction-count"]}</b> `;
+      }
+      if (part["affliction-type"]) {
+        li += `<span class="iconize">${part["affliction-type"]}</span> `;
+      }
+
+      // Target
+      if (part.target) {
+        li += `<span class="tooltip">${part.target}</span> `;
+      }
+
+      // Area
+      if (part.area) {
+        li +=
+          part.area.replace(/Unit/g, `<span class="tooltip">Unit</span>`) + " ";
+      }
+
+      // Condition
+      if (part.condition) {
+        li += part.condition.replace(
+          /Hit/g,
+          `<span class="tooltip">Hit</span>`
+        );
+      }
+
+      if (part["custom-html"]) {
+        coreItems.push(part["custom-html"]);
+      } else {
+        coreItems.push(`<li>${li.trim()}</li>`);
+      }
+    });
+
+  return coreItems.join("");
 }
 
 // ─── Render skill HTML ───
@@ -146,10 +238,7 @@ function renderSkill(skill) {
   <div class="card" style="grid-column: span 5;">
     <h3 class="box-title">Effect</h3>
     <p class="desc">${skill.description || ""}</p>
-    <p class="effect-core"><ol>${replacePlaceholders(
-      skill.effect.core,
-      skill.effect
-    )}</ol></p>
+    <p class="effect-core"><ol>${composeSkillCore(skill.effect)}</ol></p>
     <dl class="meta">
       <dt>Action Cost</dt><dd>${skill.effect.actionCost || 0}</dd>
       <dt>Target • Area</dt><dd>${skill.effect.target || "-"} • ${
@@ -190,7 +279,7 @@ function renderAssignedList(container, list) {
     return;
   }
   container.innerHTML = list
-    .map((aug) => `<li><strong>${aug.name}</strong> — ${aug.effect}</li>`)
+    .map((aug) => `<li><strong>${aug.name}</strong> — ${aug.effect || ""}</li>`)
     .join("");
 }
 
@@ -248,6 +337,7 @@ function setupAugmentationSlots(
     if (window.runIconizer) runIconizer(container);
     if (window.applyTagIcons) window.applyTagIcons();
     if (window.initializeTagTooltips) window.initializeTagTooltips(container);
+    if (window.initializeTooltips) window.initializeTooltips(container);
     const assignedList = container.querySelector(`#assigned-${skill.id}`);
     renderAssignedList(assignedList, assignedBySlot.filter(Boolean));
   }
@@ -305,7 +395,6 @@ function setupAugmentationSlots(
       picker.style.background = "var(--background-dark-1)";
       picker.style.border = "1px solid var(--pale-beige)";
       picker.style.padding = "16px";
-      picker.style.borderRadius = "8px";
       picker.style.maxWidth = "90%";
       picker.style.maxHeight = "80%";
       picker.style.overflowY = "auto";
@@ -342,8 +431,8 @@ function setupAugmentationSlots(
         icon.alt = aug.name;
         icon.title = aug.name;
         icon.dataset.augId = aug.id;
-        icon.style.width = "36px";
-        icon.style.height = "36px";
+        icon.style.width = "60px";
+        icon.style.height = "60px";
         icon.style.cursor = "pointer";
 
         // --- Mostra tooltip direttamente sulle icone del picker ---
@@ -416,6 +505,7 @@ async function init() {
     if (window.runIconizer) runIconizer(container);
     if (window.applyTagIcons) window.applyTagIcons();
     if (window.initializeTagTooltips) window.initializeTagTooltips(container);
+    if (window.initializeTooltips) window.initializeTooltips(container);
 
     setupAugmentationSlots(
       skill,

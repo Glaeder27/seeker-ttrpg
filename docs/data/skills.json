@@ -12,17 +12,25 @@
       "tags": ["Attack", "Strike", "Solar"],
       "description": "You channel Solaria into your weapon, unleashing a radiant strike that sears the air and staggers foes.",
       "effect": {
-        "core": "<li>Deal <b>{{damage}}</b> <span class=\"iconize\">{{damage-type}}</span> {{damage-type-note}} on Hit.</li><li>Inflict <b>{{affliction-count}}</b> <span class=\"iconize\">{{affliction}}</span> on Hit.</li>",
-        "damage": "2",
+
+        "1": {
+        "action-type": "Deal",
+        "damage-count": "2",
         "damage-type": "Hemorrhage",
-        "damage-type-note": "",
-        "affliction": "Blind",
+        "condition": "on Hit"
+        },
+        "2": {
+        "action-type": "Inflict",
         "affliction-count": "1",
+        "affliction-type": "Blind",
+        "condition": "on Hit"
+        },
+
         "actionCost": "2",
-        "type": "Attack (Melee, single target)",
         "target": "Single",
         "area": "1 Unit"
       },
+
       "augmentations": {
         "slots": 3
       }

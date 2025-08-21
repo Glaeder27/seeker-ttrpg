@@ -4,127 +4,133 @@
   "otherData": "...",
 
   "aptStrength": {
-    "title": "Strength",
+    "trigger": "Strength",
     "icon": "/assets/icons/svg/tag/strength.svg",
     "type": "Aptitude",
     "description": "Raw physical power, brute force, and the capacity to lift, shove, strike, or break through obstacles using overwhelming strength and effort."
   },
   "aptAgility": {
-    "title": "Agility",
+    "trigger": "Agility",
     "icon": "/assets/icons/svg/tag/agility.svg",
     "type": "Aptitude",
     "description": "Quick reflexes, balance, speed, coordination, and precise control over fine motor movements — especially under pressure or in dynamic environments."
   },
   "aptVigor": {
-    "title": "Vigor",
+    "trigger": "Vigor",
     "icon": "/assets/icons/svg/tag/vigor.svg",
     "type": "Aptitude",
     "description": "Stamina, resilience, and physical durability — the ability to endure pain, resist harm, and keep going despite exhaustion, illness, or injury."
   },
   "aptPerception": {
-    "title": "Perception",
+    "trigger": "Perception",
     "icon": "/assets/icons/svg/tag/perception.svg",
     "type": "Aptitude",
     "description": "Awareness, observation skills, and the ability to notice details, detect hidden dangers, or sense subtle changes in the environment."
   },
   "aptIntellect": {
-    "title": "Intellect",
+    "trigger": "Intellect",
     "icon": "/assets/icons/svg/tag/intellect.svg",
     "type": "Aptitude",
     "description": "Logic, memory, reasoning, and the capacity to analyze information, solve problems, and understand complex or abstract concepts."
   },
   "aptAdaptability": {
-    "title": "Adaptability",
+    "trigger": "Adaptability",
     "icon": "/assets/icons/svg/tag/adaptability.svg",
     "type": "Aptitude",
     "description": "Improvisation, creativity under pressure, and the ability to react quickly and resourcefully to unexpected situations or unfamiliar tools."
   },
   "aptCharisma": {
-    "title": "Charisma",
+    "trigger": "Charisma",
     "icon": "/assets/icons/svg/tag/charisma.svg",
     "type": "Aptitude",
     "description": "Presence, personal magnetism, and the ability to influence others through charm, confidence, or emotional appeal — whether inspiring trust, commanding respect, or bending a crowd to your will."
   },
   "aptInsight": {
-    "title": "Insight",
+    "trigger": "Insight",
     "icon": "/assets/icons/svg/tag/insight.svg",
     "type": "Aptitude",
     "description": "Empathy, intuition, and social sensitivity — the ability to interpret tone, read subtle cues in body language, discern hidden motives, and grasp emotional undercurrents in conversations and situations."
   },
   "aptWillpower": {
-    "title": "Willpower",
+    "trigger": "Willpower",
     "icon": "/assets/icons/svg/tag/willpower.svg",
     "type": "Aptitude",
     "description": "Mental fortitude, discipline, and inner resolve — the strength to resist fear, withstand stress, endure manipulation, or remain focused under overwhelming pressure."
   },
   "actionDice": {
-    "title": "Action Dice",
+    "trigger": "Action Dice",
     "icon": "/assets/icons/svg/tag/action-dice.svg",
     "type": "Game Mechanic",
     "description": "These dice represent a character's <b>competence</b>, attributes, trained abilities, and any benefits derived from equipment or external assistance. They are rolled to determine the <b>success or failure</b> of an action."
   },
-  "riskDice": {
-    "title": "Risk Dice",
+  "deal": {
+    "trigger": "deal",
+    "icon": "/assets/icons/svg/tag/agility.svg",
+    "type": "Aptitude",
+    "description": "Quick reflexes, balance, speed, coordination, and precise control over fine motor movements — especially under pressure or in dynamic environments."
+  },
+  "risk dice": {
+    "trigger": "Risk Dice",
     "icon": "/assets/icons/svg/tag/risk-dice.svg",
     "type": "Game Mechanic",
     "description": "These dice signify the inherent difficulty of an action, its intrinsic danger, environmental threats, or the character's haste or fatigue. They are rolled to ascertain the <b>consequences</b> of an action."
   },
   "tagMovement": {
-    "title": "Movement",
+    "trigger": "Movement",
     "icon": "/assets/icons/svg/tag/movement.svg",
     "type": "Tag",
     "description": "This tag is assigned to abilities that involve changing position or manipulating physical space. Rules often interact with this tag to restrict or modify movement effects."
   },
   "tagConsumable": {
-    "title": "Consumable",
+    "trigger": "Consumable",
     "icon": "/assets/icons/svg/tag/consumable.svg",
     "type": "Tag",
     "description": "This tag is assigned to items that are used up or expended upon activation or after a certain number of uses. Once consumed, their effect is typically gone."
   },
   "pillarsOfPlay": {
-    "title": "Pillars of Play",
+    "trigger": "Pillars of Play",
     "icon": "/assets/icons/svg/tag/pillars.svg",
     "type": "Concept",
     "description": "The three pillars—Combat, Social, and Exploration—are the core areas of character growth. Advancing in a pillar unlocks abilities related to that theme."
   },
   "optional-rule": {
-    "title": "Optional Rule",
+    "trigger": "Optional Rule",
     "icon": "/assets/icons/svg/tag/optional.svg",
     "type": "Rule Type",
     "description": "An optional rule you may choose to enable for narrative or mechanical flavor."
   },
   "variant-rule": {
-    "title": "Variant Rule",
+    "trigger": "Variant Rule",
     "icon": "/assets/icons/svg/tag/variant.svg",
     "type": "Rule Type",
     "description": "A suggested variation on core mechanics, replacing or modifying the base rule."
   },
   "experimental-rule": {
-    "title": "Experimental Rule",
+    "trigger": "Experimental Rule",
     "icon": "/assets/icons/svg/tag/experimental.svg",
     "type": "Rule Type",
     "description": "A playtest feature under development, subject to change in future editions."
   },
   "optional": {
-    "title": "Optional",
+    "trigger": "Optional",
     "icon": "/assets/icons/svg/tag/optional.svg",
     "type": "Rule Type",
     "description": "An optional rule you may choose to enable for narrative or mechanical flavor."
   },
   "variant": {
-    "title": "Variant",
+    "trigger": "Variant",
     "icon": "/assets/icons/svg/tag/variant.svg",
     "type": "Rule Type",
     "description": "A suggested variation on core mechanics, replacing or modifying the base rule."
   },
   "experimental": {
-    "title": "Experimental",
+    "trigger": "Experimental",
     "icon": "/assets/icons/svg/tag/experimental.svg",
     "type": "Rule Type",
     "description": "A playtest feature under development, subject to change in future editions."
   },
   "tenochca": {
-    "title": "Tenochca",
+    "trigger": "Tenochca",
     "icon": "/assets/icons/svg/tag/experimental.svg",
     "type": "Rule Type",
     "description": "Tenochca (or Mexica, pronounced [meh-shee-kah]) was the name the Aztecs used for themselves. The term \"Aztec\" was coined much later by European scholars."

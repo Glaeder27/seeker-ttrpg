@@ -1,0 +1,807 @@
+<!-- v1.5 2025-08-20T20:51:59.452Z -->
+
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Skills</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script src="/scripts/config.js"></script>
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0e0f12;
+            --panel: #14161b;
+            --ink: #e8ecf1;
+            --muted: #a9b1bb;
+            --accent: #f1c24c;
+            --chip: #302d22;
+            --rule: #20242c;
+            --ok: #b8f2c8;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin-inline: auto
+        }
+
+        .skill {
+            background: var(--panel);
+            border: 1px solid var(--rule);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .03);
+        }
+
+        .head {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .head-icon {
+            max-width: 6rem;
+        }
+
+        .box-title {
+            color: var(--ancient-gold)
+        }
+
+        .box-title::after {
+            content: none;
+        }
+
+        .title-wrap {
+            position: relative;
+        }
+
+        .name {
+            font-family: var(--font-antique);
+            font-size: 3em;
+            font-weight: 500;
+            letter-spacing: .3px;
+            color: var(--off-white);
+            margin: 0;
+            padding: 0;
+        }
+
+        .category {
+            font-size: 1rem;
+            color: var(--pale-beige);
+            padding: .45rem 1rem;
+            border-radius: .3rem;
+            background: transparent;
+            text-transform: uppercase;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .category .bold {
+            font-weight: bold;
+            color: var(--ancient-gold)
+        }
+
+        .category .normal {
+            font-weight: normal;
+            color: var(--pale-beige)
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0 16px
+        }
+
+        .tag-styled-text {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1px 6px 1px 1px;
+            font-weight: 600;
+            vertical-align: middle;
+            text-decoration: none;
+        }
+
+        .desc {
+            color: var(--muted);
+            margin: 4px 0 16px;
+            line-height: 1.6
+        }
+
+        .grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .card {
+            background: #0f1116;
+            border: 1px solid var(--rule);
+            padding: 14px 14px 12px;
+        }
+
+        .card ol {
+            padding-left: 0;
+        }
+
+        .card ol li {
+            font-size: .9rem;
+            padding: .1rem .5rem;
+            margin-left: .2rem;
+            background: rgba(var(--background-dark-3-rgb), 0.3);
+            list-style-position: inside;
+            border-radius: 0 .5rem .5rem 0;
+
+        }
+
+        .card ol li::marker {
+            color: var(--ancient-gold);
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+            letter-spacing: .3px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--background-dark-3);
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        dl.meta {
+            display: grid;
+            grid-template-columns: 30% 70%;
+            gap: 10px;
+            margin: 0;
+            align-items: center;
+        }
+
+        dl.meta dt {
+            font-size: .75rem;
+            color: var(--muted)
+        }
+
+        dl.meta dd {
+            margin: 0;
+            font-weight: 600
+        }
+
+        ul {
+            margin: 8px 0 0 18px
+        }
+
+        .rule {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2a303b, transparent);
+            border: 0;
+            margin: 14px 0
+        }
+
+        .slots {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px
+        }
+
+        .slot {
+            width: 42px;
+            height: 42px;
+            border-radius: 6px;
+            border: 1px dashed #3a4150;
+            background: #121620;
+            cursor: var(--cursor-pointer)
+        }
+
+        .selector-wrap {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selector-wrap label {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .skill-select {
+            background: var(--chip);
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            padding: 6px 10px;
+            color: var(--ink);
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .effect-core {
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .assigned-list li {
+            margin-bottom: 4px;
+            font-size: .9rem;
+        }
+
+        .compat-note {
+            font-size: .8rem;
+            color: var(--muted);
+            margin-top: 6px
+        }
+
+        .ok {
+            color: var(--ok)
+        }
+
+        .augmentation-picker img:hover {
+            outline: 2px solid var(--accent);
+            border-radius: 4px;
+        }
+
+        #removeAllAugments {
+            position: absolute;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: var(--pale-beige);
+            right: 0
+        }
+
+        #removeAllAugments .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .augmentation-picker img,
+        .augmentation-picker img:hover {
+            cursor: var(--cursor-pointer);
+            user-select: none;
+        }
+
+        .augmentation-picker img.incompatible {
+            opacity: 0.4;
+            border: 2px solid red;
+            border-radius: 4px;
+            cursor: var(--cursor-not-allowed, not-allowed);
+            user-select: none;
+        }
+
+        .aug-tooltip-warning {
+            margin-top: 4px;
+            color: #c62828;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .invalid-slot {
+            opacity: 0.5;
+            border: 2px solid red;
+        }
+
+        .aug-tooltip-description .effect-text {
+            display: block;
+            margin-bottom: 0.5em;
+            line-height: 1.3;
+        }
+
+
+        /* Mobile adjustments */
+        @media (max-width: 720px) {
+            .wrap {
+                padding: 0 12px;
+            }
+
+            .skill {
+                padding: 16px;
+                border-radius: 12px;
+            }
+
+            .head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .head-icon {
+                max-width: 4rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .title-wrap {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .tags {
+                gap: 4px;
+                margin: 4px 0 8px;
+            }
+
+            .category {
+                position: static;
+                margin-top: 0.25rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr !important;
+                gap: 10px;
+            }
+
+            .card {
+                padding: 12px 10px;
+                grid-column: span 1 !important;
+            }
+
+            .card ol li {
+                font-size: 0.8rem;
+            }
+
+            .slots {
+                gap: 6px;
+            }
+
+            .slot {
+                width: 36px;
+                height: 36px;
+            }
+
+            .skill-select {
+                font-size: 0.9rem;
+                padding: 5px 8px;
+            }
+
+            .augmentation-picker {
+                grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)) !important;
+                gap: 4px !important;
+                padding: 12px !important;
+                max-height: 70vh;
+            }
+
+            .augmentation-picker img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .effect-core {
+                font-size: 0.85rem;
+            }
+
+            dl.meta {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .category .bold,
+            .category .normal {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body id="health-and-defense" data-menu-src="/data/menu-rulebook.json">
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
+
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+
+    <main class="dual-column" type="rulebook">
+        <div class="left-column">
+            <header class="title">
+                <div class="title-container page-title">
+                    <span class="title-icon rot90">p</span>
+                    <h1 class="expanded">Skills</h1>
+                    <span class="title-icon">p</span>
+                </div>
+            </header>
+
+            <!-- 1 • Core Concept -->
+            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
+                <header class="section var-1">
+                    <div class="section-number">
+                        <p>Section I</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">b</span>
+                        <h2>Core Concept</h2>
+                        <span class="title-icon right rot90">b</span>
+                    </div>
+                    <p class="subtitle">Freedom of Expression Beyond Archetypes</p>
+                </header>
+
+                <p>In Seeker, Skills are not predefined packages or rigid class abilities. They are the
+                    <strong><em>building blocks of personal expression</em></strong>, shaping both the tactical identity
+                    and the narrative voice of every character. Instead of following predetermined archetypes or fixed
+                    progression paths, each Seeker is free to assemble, adapt, and refine their Skill set in ways that
+                    reflect their own approach to survival, conflict, and discovery.
+                </p>
+                <p>This design moves away from the traditional model of character growth in role-playing games, where
+                    choices are often channeled into narrow tracks or archetypal roles. In Seeker, no two characters are
+                    bound to resemble one another unless their players wish it. A Skill can be honed into precision,
+                    bent into strange new uses, or left as a versatile tool among many — allowing Seekers to evolve
+                    organically, responding to the world and their own emerging story.</p>
+                <p>By emphasizing <strong>modularity</strong>, <strong>adaptability</strong>, and <strong>open-ended
+                        design</strong>, Skills embody the spirit of exploration at the heart of Seeker. They are the
+                    instruments through which players carve their own path, ensuring that progression is not a ladder to
+                    climb, but a map of endless directions.
+                </p>
+            </section>
+
+            <!-- 2 • Skill Anatomy -->
+            <section class="section-wrapper" id="section2" sidenav="2 • Skill Anatomy">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">a</span>
+                        <h2>Skill Anatomy</h2>
+                        <span class="title-icon right rot90">a</span>
+                    </div>
+                    <p class="subtitle">Freedom of Expression Beyond Archetypes</p>
+                </header>
+                <p>
+                    In <em>Seeker</em>, a Skill is never just a flat ability or a static number — it is a living
+                    framework that defines how a character exerts their will upon the world. Each Skill is built from
+                    several interlocking elements that combine clarity, flexibility, and narrative resonance. By
+                    understanding its anatomy, both players and game masters can see how every Skill is designed to
+                    grow, adapt, and express a Seeker’s unique journey.
+                </p>
+
+                <h4>Three Structural Layers</h4>
+                <p>Every Skill in Seeker is composed of three interconnected layers that work together to provide both
+                    reliability and room for growth. These layers give each Skill its identity while leaving space for
+                    personal customization and narrative depth.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="align-left">Layer</th>
+                            <th class="align-left">What it Represents</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Core Effect</td>
+                            <td class="align-left">The baseline action or benefit that the Skill always provides — the
+                                essential function
+                                that anchors its identity.</td>
+                        </tr>
+                        <tr>
+                            <td>Augmentations</td>
+                            <td class="align-left">Modular upgrades that refine, expand, or transform the Skill,
+                                offering new tactical
+                                choices, conditional triggers, or specialized mastery.</td>
+                        </tr>
+                        <tr>
+                            <td>Tags</td>
+                            <td class="align-left">Narrative descriptors that mark how the Skill interacts with the
+                                fiction — whether it
+                                manifests physically, socially, mystically, or in hybrid forms.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>How the Layers Work</h3>
+                <p>While each layer has its own role, their interaction is what makes a Skill dynamic. Core Effects
+                    ensure usability, Augmentations drive evolution, and Tags keep the Skill grounded in the fiction —
+                    together they form a flexible yet coherent system that adapts to every Seeker’s journey.</p>
+                <h4>Core Effect</h4>
+                <p>
+                    The Core Effect ensures that even a newly acquired Skill is immediately usable and meaningful in
+                    play. It defines the action’s reliable floor — the thing a Seeker can always fall back on.
+                </p>
+
+                <h4>Augmentations</h4>
+                <p>
+                    Augmentations represent growth and differentiation. They allow the same Skill to look very different
+                    from character to character, evolving in tune with playstyle and narrative arc. Some augmentations
+                    sharpen the Skill’s efficiency, others bend its use into unexpected domains, and still others unlock
+                    entirely new dimensions of play.
+                </p>
+
+                <h4>Tags</h4>
+                <p>
+                    Tags act as connective tissue between rules and fiction. They give context for rulings, help
+                    categorize interactions (e.g., when a mystical barrier blocks only “physical” Skills), and inspire
+                    narrative interpretation. Tags ensure that a Skill never exists in isolation but is always grounded
+                    in the world of <em>Seeker</em>.
+                </p>
+
+                <h3>Putting It Together</h3>
+                <p>
+                    This tripartite design ensures that Skills are not only mechanically balanced but also expressive
+                    storytelling tools. A Skill like <strong>Tracking</strong> may begin as a straightforward Core
+                    Effect — following footprints across unfamiliar terrain — but through Augmentations it can evolve
+                    into reading subtle signs of supernatural presence or anticipating an enemy’s movements in combat.
+                    Its Tags anchor it as both physical and inquisitive, shaping how other systems interact with it.
+                </p>
+
+                <h3>Consistency &amp; Expansion</h3>
+                <p>
+                    By maintaining this consistent anatomy, <em>Seeker</em> achieves two goals: clarity for players, who
+                    can easily parse any new Skill they encounter, and design space for creators, who can confidently
+                    expand the Skill library without breaking system cohesion. Whether a Skill is simple and universal
+                    (like climbing or persuasion) or esoteric and rare (like dreamwalking or blood-binding), it follows
+                    the same structural blueprint — making the system scalable, modular, and endlessly expandable.
+                </p>
+            </section>
+
+            <!-- 3 • Augmentations -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Augmentations">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section III</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">j</span>
+                        <h2>Augmentations</h2>
+                        <span class="title-icon right rot90">j</span>
+                    </div>
+                    <p class="subtitle">Freedom of Expression Beyond Archetypes</p>
+                </header>
+                <p>An Augmentation is a modular upgrade that expands or reshapes the way a Skill works. Unlike the core
+                    definition of the Skill — its Aptitude, its basic function, and its primary Tags — an Augmentation
+                    is something added later, as the Seeker grows. It represents specialization, mastery, or the
+                    discovery of a unique twist that makes a familiar technique entirely new.</p>
+                <p>Each Augmentation occupies a slot within the Skill and provides one or more effects. These effects
+                    can take many forms:</p>
+                <ul>
+                    <li><em class="highlight">Enhancements</em> that make the Skill more reliable or powerful.</li>
+
+                    <li><em class="highlight">Variants</em> that change its behavior, turning a defensive Skill into a
+                        counterattack or a ranged
+                        attack into an area effect.</li>
+
+                    <li><em class="highlight">Extensions</em> that add new Tags, interactions, or conditions, opening up
+                        further combinations with
+                        other Skills and Augmentations.
+                    </li>
+                </ul>
+                <p>Importantly, Augmentations don’t just “stack” as passive bonuses. They <strong
+                        class="highlight">alter the Skill’s identity</strong>:
+                    sometimes subtly, sometimes dramatically. A basic sword slash might gain bleeding properties, become
+                    infused with Solaria, or be redefined as a precise strike against a specific kind of foe.</p>
+
+                <p>In short, Skills are the foundation, while Augmentations are the architecture built on top — the
+                    flexible, evolving pieces that let Seekers adapt their abilities to their story, their playstyle,
+                    and the challenges of the New World.</p>
+
+                <h3>Applying an Augmentation — Step by Step</h3>
+
+                <p>When a Seeker gains an Augmentation, it must be applied to a specific Skill. This isn’t just a matter
+                    of attaching a bonus — it’s a structured process that ensures the new element fits the Skill’s
+                    identity, respects its internal logic, and doesn’t break the system’s balance.</p>
+
+                <p>The application of an Augmentation follows a simple but precise flow:</p>
+
+                <h4>I • Choose the Skill</h4>
+                <p>First, decide which Skill the Augmentation will modify. Each Skill has a limited number of
+                    Augmentation slots, and each slot may hold only one Augmentation at a time.</p>
+
+                <h4>II • Simulate the Result</h4>
+                <p>Before locking in the choice, you must check what the Skill would look like if this Augmentation were
+                    applied. This process is called <em>simulation</em>: the system temporarily combines the base Skill
+                    with all its
+                    currently assigned Augmentations — including the new one you are trying to add — and produces the
+                    resulting version of the Skill.</p>
+                <p>This simulated version is what determines whether the Augmentation is valid. If you are using the
+                    online
+                    tool, the simulation happens automatically. If you are playing on paper, it is strongly recommended
+                    that you reproduce the same process manually: apply the Augmentation to the Skill, check how it
+                    changes Tags, effects, or exclusions, and verify that no rules are broken before confirming the
+                    choice.</p>
+
+
+                <h4>III • Check Compatibility</h4>
+                <p>Not all Augmentations can coexist. Some explicitly exclude others (for example, two mutually
+                    exclusive upgrades), and others require that the Skill have certain Tags to make sense. These Tags
+                    might be added by the Skill itself or by other Augmentations.
+                    When checking a new Augmentation, you must verify that:</p>
+                <ol>
+                    <li>It <em class="highlight">doesn’t conflict</em> with any other Augmentation already assigned.
+                    </li>
+                    <li>Its <em class="highlight">required Tags are actually present</em> in the simulated Skill (after
+                        all current and new effects
+                        have been applied).</li>
+                    <li>And it’s <em class="highlight">not already assigned</em> elsewhere on the same Skill.</li>
+                </ol>
+                <h4>IV • Resolve Invalid States</h4>
+                <p>If adding the Augmentation would violate one of the system’s conditions, it simply cannot be applied.
+                </p>
+                <p>The system or tool will indicate why the choice is invalid: perhaps the Skill does not yet have the
+                    required Tags, or the new Augmentation conflicts with one already assigned. In these cases, you can
+                    either select a different Augmentation, or adjust the Skill’s build until the requirements are
+                    satisfied.</p>
+                <p>When playing on paper, it is particularly important to double-check the compatibility of all
+                    Augmentations before confirming them. This ensures that your Skill respects the rules and functions
+                    correctly during gameplay, avoiding inconsistencies or invalid combinations that could interfere
+                    with play.</p>
+
+
+                <h4>V • Confirm and Recalculate</h4>
+                <p>Once an Augmentation has passed all checks, it is formally assigned to the chosen slot. From this
+                    moment, its effects are integrated into the Skill — it may alter Tags, modify damage, add new
+                    conditions or effects, or even unlock entirely new options.</p>
+                <p>Each time an Augmentation is added, removed, or swapped, the Skill is recalculated from the ground
+                    up: all current Augmentations are reapplied in order, their effects are merged and aggregated (for
+                    example, multiple Augmentations adding the same Affliction will stack), and the Skill’s final Tags,
+                    effects, and properties are updated accordingly.</p>
+                <p>This dynamic rebuilding ensures that every Skill remains consistent, fully functional, and
+                    narratively coherent, providing a valid and playable expression of your character’s evolving growth.
+                </p>
+
+                <blockquote>
+                    <p>Immediately below, you will find an example of the <strong class="highlight">Skill
+                            Builder</strong> — the online tool that lets you
+                        apply Augmentations and calculate all of a Skill’s functionalities. This allows you to see
+                        firsthand how Seeker Skills evolve and interact, making the system tangible and easy to
+                        understand.</p>
+                </blockquote>
+
+
+            </section>
+
+            <!-- SKILL ─────────────────────────────────────────── -->
+            <div class="wrap">
+                <div class="selector-wrap">
+                    <label for="skillSelector">Select Skill:</label>
+                    <select id="skillSelector" class="skill-select"></select>
+                </div>
+
+                <div id="skillContainer"></div>
+            </div>
+
+            <script src="/scripts/skills-selector.js"></script>
+            <!-- ────────────────────────────────────────────────── -->
+
+        </div>
+
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
+                        <h3 class="section">TL;DR — Skills</h3>
+                        <span class="collapsible-icon-sb">▸</span>
+                    </div>
+
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
+                        <ul class="no-bullet">
+                            <li class="no-bullet"><strong class="tldr-title">1 • Placeholder</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Block 3: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+                <!-- Block 4: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
+    <script src="/scripts/version-check.js"></script>
+    <script src="/scripts/iconizer.js"></script>
+    <script src="/scripts/skills-utils.js"></script>
+
+</body>
+
+</html>
