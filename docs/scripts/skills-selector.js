@@ -419,63 +419,84 @@ function setupAugmentationSlots(
       const assignedFlat = assignedBySlot.filter(Boolean);
       const currentSkill = applyAugmentationsToSkill(skill, assignedFlat);
 
-      augmentationsData.forEach((aug) => {
-        const isAssignedHere = assignedBySlot[i]?.id === aug.id;
-        const isAlreadyTaken =
-          assignedFlat.some((a) => a.id === aug.id) && !isAssignedHere;
+      // Raggruppa augmentations per titolo
+const groupedAugmentations = augmentationsData
+  .filter(aug => aug.category === skill.category) // solo categoria corrente
+  .reduce((acc, aug) => {
+    const title = aug.title || "Other";
+    if (!acc[title]) acc[title] = [];
+    acc[title].push(aug);
+    return acc;
+  }, {});
 
-        const requires = aug.requires || [];
-        const meetsRequires = requires.every((req) =>
-          currentSkill.tags.includes(req)
-        );
+// Itera sui gruppi
+Object.entries(groupedAugmentations).forEach(([title, augGroup]) => {
+  // Titolo del gruppo
+  const groupLabel = document.createElement("p");
+  groupLabel.textContent = title;
+  groupLabel.classList.add("group-title");
+  groupLabel.style.gridColumn = "1 / -1"; // prende tutta la larghezza
+  groupLabel.style.margin = "0 0 6px 0";
+  groupLabel.style.fontWeight = "normal";
+  picker.appendChild(groupLabel);
 
-        const simulatedAssigned = [...assignedBySlot];
-        simulatedAssigned[i] = aug;
-        const wouldBeCompatible = areAugmentationsCompatible(
-          simulatedAssigned.filter(Boolean)
-        );
+  // Aggiungi icone delle augmentations del gruppo
+  augGroup.forEach((aug) => {
+    const isAssignedHere = assignedBySlot[i]?.id === aug.id;
+    const isAlreadyTaken =
+      assignedFlat.some((a) => a.id === aug.id) && !isAssignedHere;
 
-        const icon = document.createElement("img");
-        icon.src = aug.icon || "/assets/icons/default.png";
-        icon.alt = aug.name;
-        icon.title = aug.name;
-        icon.dataset.augId = aug.id;
-        icon.style.width = "60px";
-        icon.style.height = "60px";
-        icon.style.cursor = "pointer";
+    const requires = aug.requires || [];
+    const meetsRequires = requires.every((req) =>
+      currentSkill.tags.includes(req)
+    );
 
-        // --- Mostra tooltip direttamente sulle icone del picker ---
-        icon.addEventListener("mouseenter", () => showAugTooltip(icon, aug));
-        icon.addEventListener("mouseleave", () => hideAugTooltip());
+    const simulatedAssigned = [...assignedBySlot];
+    simulatedAssigned[i] = aug;
+    const wouldBeCompatible = areAugmentationsCompatible(
+      simulatedAssigned.filter(Boolean)
+    );
 
-        if (!meetsRequires || isAlreadyTaken || !wouldBeCompatible) {
-          icon.classList.add("incompatible");
-          icon.style.opacity = "0.5";
-          icon.style.border = "2px solid red";
-          icon.dataset.warning = !meetsRequires
-            ? `Missing required tags: ${requires
-                .filter((r) => !currentSkill.tags.includes(r))
-                .join(", ")}`
-            : isAlreadyTaken
-            ? "Already assigned to another slot"
-            : `Incompatible with: ${assignedFlat
-                .map((a) => a.name)
-                .join(", ")}`;
-        } else {
-          icon.addEventListener("click", (ev) => {
-            ev.stopPropagation();
-            assignedBySlot[i] = isAssignedHere ? null : aug;
-            if (areAugmentationsCompatible(assignedBySlot.filter(Boolean))) {
-              if (window.forceHideAugTooltipNow)
-                window.forceHideAugTooltipNow();
-              overlay.remove();
-              rerenderSkill();
-            }
-          });
+    const icon = document.createElement("img");
+    icon.src = aug.icon || "/assets/icons/default.png";
+    icon.alt = aug.name;
+    icon.title = aug.name;
+    icon.dataset.augId = aug.id;
+    icon.style.width = "60px";
+    icon.style.height = "60px";
+    icon.style.cursor = "pointer";
+
+    icon.addEventListener("mouseenter", () => showAugTooltip(icon, aug));
+    icon.addEventListener("mouseleave", () => hideAugTooltip());
+
+    if (!meetsRequires || isAlreadyTaken || !wouldBeCompatible) {
+      icon.classList.add("incompatible");
+      icon.style.opacity = "0.5";
+      icon.style.border = "2px solid red";
+      icon.dataset.warning = !meetsRequires
+        ? `Missing required tags: ${requires
+            .filter((r) => !currentSkill.tags.includes(r))
+            .join(", ")}`
+        : isAlreadyTaken
+        ? "Already assigned to another slot"
+        : `Incompatible with: ${assignedFlat
+            .map((a) => a.name)
+            .join(", ")}`;
+    } else {
+      icon.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        assignedBySlot[i] = isAssignedHere ? null : aug;
+        if (areAugmentationsCompatible(assignedBySlot.filter(Boolean))) {
+          if (window.forceHideAugTooltipNow) window.forceHideAugTooltipNow();
+          overlay.remove();
+          rerenderSkill();
         }
-
-        picker.appendChild(icon);
       });
+    }
+
+    picker.appendChild(icon);
+  });
+});
 
       overlay.addEventListener("click", (ev) => {
         if (ev.target === overlay) overlay.remove();

@@ -3,6 +3,7 @@
     {
       "id": "blaze",
       "name": "Blaze",
+      "title": "Modifiers",
       "icon": "/assets/icons/svg/augmentations/aug-blaze.svg",
       "category": "Combat",
 
@@ -17,6 +18,7 @@
     {
       "id": "breach",
       "name": "Breach",
+      "title": "Modifiers",
       "icon": "/assets/icons/svg/augmentations/aug-breach.svg",
       "category": "Combat",
 
@@ -27,6 +29,7 @@
     {
       "id": "fire-infusion",
       "name": "Fire Infusion",
+      "title": "Infusions",
       "icon": "/assets/icons/svg/augmentations/aug-fire-infusion.svg",
       "category": "Combat",
 
@@ -43,6 +46,7 @@
     {
       "id": "frost-infusion",
       "name": "Frost Infusion",
+      "title": "Infusions",
       "icon": "/assets/icons/svg/augmentations/aug-frost-infusion.svg",
       "category": "Combat",
 
@@ -59,6 +63,7 @@
     {
       "id": "guard-up",
       "name": "Guard Up",
+      "title": "Builders",
       "icon": "/assets/icons/svg/augmentations/aug-guard-up.svg",
       "category": "Combat",
 
@@ -75,6 +80,7 @@
     {
       "id": "leech",
       "name": "Leech",
+      "title": "Modifiers",
       "icon": "/assets/icons/svg/augmentations/aug-leech.svg",
       "category": "Combat",
 
@@ -89,6 +95,7 @@
     {
       "id": "sweep",
       "name": "Sweep",
+      "title": "Modifiers",
       "icon": "/assets/icons/svg/augmentations/aug-sweep.svg",
       "category": "Combat",
 
@@ -104,6 +111,7 @@
     {
       "id": "swiftness",
       "name": "Swiftness",
+      "title": "Modifiers",
       "icon": "/assets/icons/svg/augmentations/aug-swiftness.svg",
       "category": "Combat",
 
