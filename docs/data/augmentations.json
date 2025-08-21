@@ -36,7 +36,7 @@
       "requires": ["Attack"],
       "excludes": ["infusion"],
 
-      "effect": "<span class=\"effect-text\">Convert all Damage to Decay (Thermic • Heat). </span><span class=\"effect-text\">Deal 1 Burn on Hit.</span>", 
+      "effect": "<span class=\"effect-text\">Convert all Damage to Decay (Thermic • Heat). </span><span class=\"effect-text\"><u>Inflict</u> 1 Burn on Hit.</span>", 
       "add-tags": ["Fire"],
       "add-affliction": ["Burn"],
       "add-affliction-value": "1",
@@ -53,7 +53,7 @@
       "requires": ["Attack"],
       "excludes": ["infusion"],
 
-      "effect": "Convert all Damage to Decay (Thermic • Cold).",
+      "effect": "<span class=\"effect-text\">Convert all Damage to Decay (Thermic • Cold).</span><span class=\"effect-text\"><u>Inflict</u> 1 Frostbite on Hit.</span>",
       "add-tags": ["Frost"],
       "add-affliction": ["Frostbite"],
       "add-affliction-value": "1",

@@ -296,7 +296,7 @@
             position: absolute;
             background: transparent;
             border: none;
-            cursor: pointer;
+            cursor: var(--cursor-pointer);
             font-size: 1.2em;
             color: var(--pale-beige);
             right: 0
@@ -318,6 +318,9 @@
         .augmentation-picker img:hover {
             cursor: var(--cursor-pointer);
             user-select: none;
+            background: var(--background-dark-2);
+            border: 1px solid var(--deep-charcoal);
+            filter: drop-shadow(0 0 5px rgba(var(--deep-charcoal-rgb), 0.5));
         }
 
         .augmentation-picker img.incompatible {

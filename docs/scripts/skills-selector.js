@@ -436,7 +436,9 @@ Object.entries(groupedAugmentations).forEach(([title, augGroup]) => {
   groupLabel.textContent = title;
   groupLabel.classList.add("group-title");
   groupLabel.style.gridColumn = "1 / -1"; // prende tutta la larghezza
-  groupLabel.style.margin = "0 0 6px 0";
+  groupLabel.style.margin = "10px 0 0 0";
+  groupLabel.style.color = "var(--ancient-gold)";
+  groupLabel.style.borderBottom = "1px solid rgba(255, 255, 255, 0.2)";
   groupLabel.style.fontWeight = "normal";
   picker.appendChild(groupLabel);
 
@@ -464,7 +466,7 @@ Object.entries(groupedAugmentations).forEach(([title, augGroup]) => {
     icon.dataset.augId = aug.id;
     icon.style.width = "60px";
     icon.style.height = "60px";
-    icon.style.cursor = "pointer";
+    icon.style.cursor = "var(--cursor-pointer)"; 
 
     icon.addEventListener("mouseenter", () => showAugTooltip(icon, aug));
     icon.addEventListener("mouseleave", () => hideAugTooltip());
