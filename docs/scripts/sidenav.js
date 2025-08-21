@@ -22,10 +22,16 @@ function initializeMenu() {
   const sideMenu = document.getElementById("sidenav");
   const toggleButton = document.getElementById("toggle-menu");
   const toggleIcon = toggleButton.querySelector("i");
+  const overlay = document.getElementById("sidenav-overlay");
 
   // Read the state from localStorage
-  const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default to true
+  const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default true
   sideMenu.classList.toggle("collapsed", !menuVisible);
+
+  // Overlay iniziale solo se mobile e menu aperto
+  if (window.innerWidth <= 768 && menuVisible) {
+    overlay.classList.add("show");
+  }
 
   // Btn initial state
   if (menuVisible) {
@@ -55,6 +61,23 @@ function initializeMenu() {
     } else {
       toggleButton.classList.add("animate-close");
     }
+
+    // Mostra/nascondi overlay solo su mobile
+    if (window.innerWidth <= 768) {
+      if (isNowVisible) {
+        overlay.classList.add("show");
+      } else {
+        overlay.classList.remove("show");
+      }
+    }
+  });
+
+  // Chiudi menu cliccando l’overlay
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.add("collapsed");
+    overlay.classList.remove("show");
+    localStorage.setItem("menuVisible", false);
+    toggleIcon.className = "fa-solid golden fa-right-from-bracket";
   });
 
   // Highlight the link on page load (hash-based)
