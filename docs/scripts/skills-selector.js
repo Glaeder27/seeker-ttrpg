@@ -142,12 +142,21 @@ function areAugmentationsCompatible(selectedAugmentations) {
 function composeSkillCore(effect) {
   const coreItems = [];
 
+  if (effect.text) {
+    coreItems.push(effect.text);
+  }
+
   Object.keys(effect)
     .filter((k) => /^\d+$/.test(k))
     .sort((a, b) => Number(a) - Number(b))
     .forEach((key) => {
       const part = effect[key];
       let li = "";
+
+      // Text
+      if (part["text"]) {
+        li += part["text"] + " ";
+      }
 
       // Action-type
       if (part["action-type"]) {

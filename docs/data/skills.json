@@ -34,6 +34,48 @@
       "augmentations": {
         "slots": 3
       }
+    },
+
+    {
+    "id": "keen-eyes",
+    "name": "Keen Eyes",
+    "icon": "/assets/icons/svg/skills/skill-keen-eyes.svg",
+    "category": "Exploration",
+    "tags": ["Perception", "Observation", "Insight"],
+    "description": "Sharpen your senses to spot hidden objects, traps, or anomalies in the environment.",
+    "effect": {
+      "text": "<div class=\"effect-text\">Scan a 10 Unit Sphere centered on yourself for hidden items, clues, or threats.</div><div class=\"effect-text\">Gain +1 <span class=\"iconize\">Perception</span> while in the affected Area.</div>",
+      "actionCost": 5,
+      "target": "Self",
+      "area": "10 Unit Sphere",
+      "damage-type": null,
+      "damage-type-note": null
+    },
+    "augmentations": {
+      "slots": 3
     }
+  },
+
+  {
+  "id": "silver-tongue",
+  "name": "Silver Tongue",
+  "icon": "/assets/icons/svg/skills/skill-silver-tongue.svg",
+  "category": "Social",
+  "tags": ["Persuasion", "Deception", "Charm"],
+  "description": "Influence others with charisma and cunning, bending situations to your favor.",
+  "effect": {
+    "text": "<span class=\"effect-text\">Attempt to persuade, negotiate, or deceive NPCs.</span><span class=\"effect-text\">Gain bonus to social interactions based on your approach and insight.</span>",
+    "actionCost": 1,
+    "target": "One NPC",
+    "area": "Single Target",
+    "damage-type": null,
+    "damage-type-note": null
+  },
+  "augmentations": {
+    "slots": 3
+  }
+}
+
+
   ]
 }
