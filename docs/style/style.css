@@ -251,7 +251,7 @@
     border-radius: 10px;
     filter: drop-shadow(0 0 4px black);
     padding-top: 3rem;
-    top: 5rem;
+    top: 7rem;
 }
 
 @media (max-width: 720px) {
