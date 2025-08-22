@@ -1,0 +1,357 @@
+<!-- v1.0 2025-08-20T20:51:59.452Z -->
+
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Skills</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script src="/scripts/config.js"></script>
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Board vars --- */
+        .mastery-board {
+            --size: 130px;
+            /* larghezza esagono */
+            --h: calc(var(--size) * 1);
+            --b: 5px;
+            /* spessore bordo */
+            --gapv: calc(var(--h) * -0.2);
+            /* sovrapposizione verticale tra righe */
+            font-family: var(--font-main);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Righe */
+        .hex-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .hex-row+.hex-row {
+            margin-top: var(--gapv);
+        }
+
+        .hex {
+            --border: #555;
+            --fill: #121212;
+            position: relative;
+            width: var(--size);
+            height: var(--h);
+            padding: 0;
+            border: 0;
+            background: var(--border);
+            cursor: pointer;
+            /* Flat-top hex */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%,
+                    50% 100%, 0% 75%, 0% 25%);
+            display: grid;
+            place-items: center;
+            transition: transform .15s ease, filter .15s ease;
+             --border-gradient: conic-gradient(var(--category-locked) 0deg 360deg);
+        }
+
+        /* crea lo “spessore” del bordo rientrando l’interno */
+        .hex::before {
+            content: "";
+            position: absolute;
+            inset: var(--b);
+            background: var(--fill); /* fallback */
+            clip-path: inherit;
+            background-image: var(--icon-url);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            z-index: 1;
+        }
+        
+        .hex::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: var(--b);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            -webkit-mask: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            mask: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: var(--border-color, #555);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hex .slots {
+            position: absolute;
+            bottom: auto;
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .hex:hover {
+            filter: brightness(1.15);
+            transform: translateY(-1px);
+        }
+
+        /* Sovrapposizione orizzontale per far combaciare i lati verticali */
+        .hex+.hex {
+            margin-left: calc(var(--size) * 0.05);
+        }
+
+        /* Etichetta di esempio dentro lo slot (da rimuovere in produzione) */
+        .hex .label {
+            position: relative;
+            z-index: 1;
+            color: #ddd;
+            font-weight: 600;
+        }
+
+        .hex.core {
+            cursor: default; /* non cliccabile */
+            pointer-events: none; /* disabilita click */ 
+        }
+        .hex.core::after {
+            background-color: black;
+        }
+
+        /* Accessibilità focus */
+        .hex:focus-visible {
+            outline: 2px solid #fff5;
+            outline-offset: 2px;
+        }
+
+        /* Overlay nero semitrasparente */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Contenitore del picker */
+        .picker {
+            background: #1e1e1e;
+            padding: 1rem;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 64px);
+            gap: 0.75rem;
+            max-width: 80vw;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        /* Icone delle mastery */
+        .picker img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .picker img:hover {
+            transform: scale(1.1);
+            border-color: #fff;
+        }
+    </style>
+
+<body id="health-and-defense" data-menu-src="/data/menu-rulebook.json">
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <div id="sidenav-overlay"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script src="/scripts/navbar.js"></script>
+
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+
+    <main class="dual-column" type="rulebook">
+        <div class="left-column">
+            <header class="title">
+                <div class="title-container page-title">
+                    <span class="title-icon rot90">p</span>
+                    <h1 class="expanded">Skills</h1>
+                    <span class="title-icon">p</span>
+                </div>
+            </header>
+
+            <!-- 1 • Core Concept -->
+            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
+                <header class="section var-1">
+                    <div class="section-number">
+                        <p>Section I</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">b</span>
+                        <h2>Core Concept</h2>
+                        <span class="title-icon right rot90">b</span>
+                    </div>
+                    <p class="subtitle">Freedom of Expression Beyond Archetypes</p>
+                </header>
+
+            </section>
+
+            <div class="mastery-board">
+                <div class="hex-row top">
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                </div>
+
+                <div class="hex-row">
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                </div>
+
+                <div class="hex-row central">
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                    <div class="hex core"><span class="label"></span></div>
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                </div>
+
+                <div class="hex-row">
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                </div>
+
+                <div class="hex-row bottom">
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                    <button class="hex"><span class="label"></span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
+                        <h3 class="section">TL;DR — Skills</h3>
+                        <span class="collapsible-icon-sb">▸</span>
+                    </div>
+
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
+                        <ul class="no-bullet">
+                            <li class="no-bullet"><strong class="tldr-title">1 • Placeholder</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Block 3: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+                <!-- Block 4: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
+    <script src="/scripts/version-check.js"></script>
+    <script src="/scripts/iconizer.js"></script>
+    <script src="/scripts/mastery.js"></script>
+
+</body>
+
+</html>

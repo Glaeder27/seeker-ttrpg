@@ -47,6 +47,12 @@
     --stance-balanced: #5E7A78;
     --stance-mystic: #735A84;
 
+    /* Categories */
+    --category-combat: #853030;
+    --category-social: #837240;
+    --category-exploration: #3f6b7a;
+    --category-locked: #555;
+
     /* RGB Color Conversions */
     --bright-gold-rgb: 246, 203, 117;
     --ancient-gold-rgb: 212, 181, 90;
@@ -230,15 +236,22 @@
 .right-column {
     position: sticky;
     right: 2rem;
-    top: 5rem;
     align-self: start;
     height: calc(100vh - 5rem);
     overflow-y: auto;
     grid-column: 3;
-
-    /* Scrollbar custom */
     scrollbar-width: thin;
     scrollbar-color: var(--ancient-gold, #D4B55A) transparent;
+    background-image: url(/assets/textures/background-page-1.webp);
+    background-size: auto;
+    background-position: top left;
+    background-repeat: repeat;
+    background-color: rgba(var(--background-dark-1-rgb), .9);
+    background-blend-mode: darken;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 4px black);
+    padding-top: 3rem;
+    top: 5rem;
 }
 
 @media (max-width: 720px) {
@@ -2090,11 +2103,24 @@ h1.site-title {
 }
 
 .title {
+    position: relative;
     text-align: center;
     font-family: var(--font-antique);
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.title::before {
+    content: "";
+    background-color: black;
+    position: absolute;
+    opacity: 0.2;
+    top: 50%;
+    width: 1920px;
+    left: 50%;
+    height: 150px;
+    transform: translate(-50%, -45%);
 }
 
 .title .title-container,

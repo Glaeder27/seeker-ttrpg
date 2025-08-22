@@ -1,0 +1,30 @@
+{
+  "__version": "1.2",
+  "__versionDate": "2025-08-18T23:00:00Z",
+  "otherData": "...",
+
+  "masteries": [
+    {
+      "id": "test-mastery",
+      "icon": "/assets/icons/webp/skills/skill-solar-cleave.webp",
+      "name": "Test Mastery",
+      "category": "Combat",
+      "tags": ["Healer"],
+      "description": "You gain +1 to all your Heals.",
+      "effect": {
+
+        "1": {
+        "action-type": "Heal",
+        "bonus-count": "1",
+        "bonus-type": "Health",
+        "condition": "on Heal"
+        }
+      },
+      "slots": {
+        "combat": "1",
+        "exploration": "1",
+        "social": "0"
+        }
+    }
+  ]
+}
