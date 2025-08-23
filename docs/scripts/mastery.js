@@ -7,6 +7,11 @@ async function loadMasteries() {
   const data = await res.json();
   masteriesData = data.masteries;
   attachEvents();
+
+  // --- render recap appena caricate le masteries ---
+  const recapContainer = document.getElementById("masteryRecap");
+  const selected = getSelectedMasteriesFromBoard(gridContainer, masteriesData);
+  renderMasteryRecap(selected, recapContainer);
 }
 
 // --- Collega eventi ai bottoni già presenti ---
@@ -105,6 +110,7 @@ function openPicker(hex) {
   overlay.style.width = "100vw";
   overlay.style.height = "100vh";
   overlay.style.background = "rgba(0,0,0,0.5)";
+  overlay.style.backdropFilter = "blur(4px)";
   overlay.style.display = "flex";
   overlay.style.alignItems = "center";
   overlay.style.justifyContent = "center";
@@ -113,7 +119,7 @@ function openPicker(hex) {
   const picker = document.createElement("div");
   picker.classList.add("picker");
   picker.style.display = "grid";
-  picker.style.gridTemplateColumns = "repeat(auto-fit, minmax(60px, 1fr))";
+  picker.style.gridTemplateColumns = "repeat(8, 1fr)";
   picker.style.gap = "6px";
   picker.style.background = "var(--background-dark-1)";
   picker.style.border = "1px solid var(--pale-beige)";
@@ -122,6 +128,13 @@ function openPicker(hex) {
   picker.style.maxHeight = "80%";
   picker.style.overflowY = "auto";
   overlay.appendChild(picker);
+
+  const label = document.createElement("p");
+  label.textContent = "Choose Mastery:";
+  label.style.gridColumn = `1 / -1`;
+  label.style.margin = "0 0 6px 0";
+  label.style.fontWeight = "normal";
+  picker.appendChild(label);
 
   const assignedIds = Array.from(
     document.querySelectorAll(".hex[data-mastery-id]")
@@ -158,11 +171,22 @@ function openPicker(hex) {
       if (isTaken) {
         icon.style.opacity = "0.5";
         icon.style.border = "2px solid red";
-         icon.dataset.warning = "Already assigned to another slot";
+        icon.dataset.warning = "Already assigned to another slot";
+
+        icon.addEventListener("click", () => {
+          const assignedHex = document.querySelector(
+            `.hex[data-mastery-id="${m.id}"]`
+          );
+          if (assignedHex) {
+            clearMastery(assignedHex);
+          }
+          forceHideMasteryTooltipNow();
+          overlay.remove();
+        });
       } else {
         icon.addEventListener("click", () => {
           assignMastery(hex, m);
-          forceHideMasteryTooltipNow(); // <-- nasconde tooltip al click
+          forceHideMasteryTooltipNow();
           overlay.remove();
         });
       }
@@ -182,17 +206,55 @@ function openPicker(hex) {
   document.body.appendChild(overlay);
 }
 
+function showMasteryTooltip(el, data) {
+  if (masteryTooltipSuppress) return;
+  const { tooltip, icon, title, description } = getMasteryTooltip();
+
+  title.textContent = data?.name || "Unknown";
+  description.innerHTML = `
+    ${data?.description || ""}
+    ${
+      el.dataset.warning
+        ? `<div class="aug-tooltip-warning" style="color:#f55; margin-top:4px; font-weight:bold;">${el.dataset.warning}</div>`
+        : ""
+    }
+  `;
+
+  icon.innerHTML = data?.icon
+    ? `<img src="${data.icon}" alt="${data.name}" style="width:24px;height:24px;">`
+    : "";
+
+  const rect = el.getBoundingClientRect();
+  tooltip.style.left = rect.left + window.scrollX + "px";
+  tooltip.style.top = rect.bottom + window.scrollY + 8 + "px";
+  tooltip.style.opacity = "1";
+  tooltip.style.pointerEvents = "auto";
+  tooltip.style.transform = "translateY(0)";
+}
+
 // --- Assegna mastery a un esagono ---
 function assignMastery(hex, mastery) {
   hex.dataset.masteryId = mastery.id;
   hex.style.setProperty("--icon-url", `url(${mastery.icon})`);
 
+  const enterListener = () => showMasteryTooltip(hex, mastery);
+  const leaveListener = () => hideMasteryTooltip();
+
+  hex._tooltipEnter = enterListener;
+  hex._tooltipLeave = leaveListener;
+
+  hex.addEventListener("mouseenter", enterListener);
+  hex.addEventListener("mouseleave", leaveListener);
+
   const categoryColors = {
     Combat: "var(--category-combat)",
     Exploration: "var(--category-exploration)",
-    Social: "var(--category-social)"
+    Social: "var(--category-social)",
   };
-  hex.style.setProperty("--border-color", categoryColors[mastery.category] || "#555");
+  hex.style.setProperty(
+    "--border-color",
+    categoryColors[mastery.category] || "--category-locked"
+  );
 
   const oldSlots = hex.querySelector(".slots");
   if (oldSlots) oldSlots.remove();
@@ -203,55 +265,100 @@ function assignMastery(hex, mastery) {
   slotsContainer.style.gap = "2px";
   slotsContainer.style.justifyContent = "center";
 
-  const slotColors = {
-    combat: "var(--category-combat)",
-    exploration: "var(--category-exploration)",
-    social: "var(--category-social)"
-  };
-
-  const ns = "http://www.w3.org/2000/svg";
-
-  Object.entries(mastery.slots).forEach(([category, count]) => {
-    for (let i = 0; i < parseInt(count); i++) {
-      const wrapper = document.createElement("div");
-      wrapper.className = "dot-wrapper";
-      wrapper.style.width = "32px";
-      wrapper.style.height = "32px";
-
-      const svg = document.createElementNS(ns, "svg");
-      svg.setAttribute("width", "38");
-      svg.setAttribute("height", "38");
-      svg.setAttribute("viewBox", "0 0 120 120");
-
-      const defs = document.createElementNS(ns, "defs");
-      const filter = document.createElementNS(ns, "filter");
-      const filterId = `glow-${category}-${i}-${Date.now()}`;
-      filter.setAttribute("id", filterId);
-      filter.setAttribute("x", "-50%");
-      filter.setAttribute("y", "-50%");
-      filter.setAttribute("width", "200%");
-      filter.setAttribute("height", "200%");
-      const fe = document.createElementNS(ns, "feDropShadow");
-      fe.setAttribute("dx", "15");
-      fe.setAttribute("dy", "15");
-      fe.setAttribute("stdDeviation", "12");
-      fe.setAttribute("flood-color", "black");
-      filter.appendChild(fe);
-      defs.appendChild(filter);
-      svg.appendChild(defs);
-
-      const polyColor = document.createElementNS(ns, "polygon");
-      polyColor.setAttribute("points", "50,0 100,25 100,75 50,100 0,75 0,25");
-      polyColor.setAttribute("fill", slotColors[category] || "#555");
-      polyColor.setAttribute("filter", `url(#${filterId})`);
-      svg.appendChild(polyColor);
-
-      wrapper.appendChild(svg);
-      slotsContainer.appendChild(wrapper);
-    }
-  });
-
   hex.appendChild(slotsContainer);
+
+  const selected = getSelectedMasteriesFromBoard(gridContainer, masteriesData);
+  renderMasteryRecap(selected, recapContainer);
 }
+
+// --- Clear Mastery ---
+
+function clearMastery(hex) {
+  delete hex.dataset.masteryId;
+  hex.style.removeProperty("--icon-url");
+  hex.style.setProperty("--border-color", "var(--category-locked)");
+
+  const oldSlots = hex.querySelector(".slots");
+  if (oldSlots) oldSlots.remove();
+
+  if (hex._tooltipEnter) {
+    hex.removeEventListener("mouseenter", hex._tooltipEnter);
+    delete hex._tooltipEnter;
+  }
+  if (hex._tooltipLeave) {
+    hex.removeEventListener("mouseleave", hex._tooltipLeave);
+    delete hex._tooltipLeave;
+  }
+
+  const selected = getSelectedMasteriesFromBoard(gridContainer, masteriesData);
+  renderMasteryRecap(selected, recapContainer);
+}
+
+// --- Write Mastery Core text with enhanced formatting ---
+function composeMasteryCore(mastery) {
+  // Tags HTML
+  const tagsHtml = (mastery.tags || [])
+    .map((t) => `<span class="tag">${t}</span>`)
+    .join(" ");
+
+  // Struttura dell'elemento
+  return `
+    <li class="mastery-recap-item" style="margin-bottom: 12px;">
+      <div class="mastery-name" style="font-weight:bold; font-size:1.1em;">${
+        mastery.name
+      }</div>
+      <div class="mastery-tags" style="margin: 2px 0;">${tagsHtml}</div>
+      <div class="mastery-description" style="font-size:0.95em; color:var(--muted);">
+        ${mastery.description || ""}
+      </div>
+    </li>
+  `;
+}
+
+// --- Render Mastery recap ---
+function renderMasteryRecap(masteriesSelected, container) {
+  if (!container) return;
+
+  if (!masteriesSelected || masteriesSelected.length === 0) {
+    container.innerHTML = `
+    <div class="card mastery-recap">
+      <h3 class="box-title">Selected Masteries</h3>
+      <p class="muted">No Masteries selected yet.</p>
+      </div>
+  `;
+    return;
+  }
+
+  const items = masteriesSelected.map(composeMasteryCore).join("");
+
+  container.innerHTML = `
+    <div class="card mastery-recap">
+      <h3 class="box-title">Selected Masteries</h3>
+      <ul>
+        ${items}
+      </ul>
+    </div>
+  `;
+}
+
+// --- Get Masteries from Board ---
+function getSelectedMasteriesFromBoard(boardContainer, allMasteriesData) {
+  const selectedIds = Array.from(
+    boardContainer.querySelectorAll(".hex[data-mastery-id]")
+  )
+    .map((hex) => hex.dataset.masteryId)
+    .filter(Boolean);
+
+  // Recupera oggetti Mastery completi dai dati
+  return selectedIds.map((id) => allMasteriesData.find((m) => m.id === id));
+}
+
+// --- Update Recap ---
+const recapContainer = document.getElementById("masteryRecap");
+
+gridContainer.addEventListener("click", () => {
+  const selected = getSelectedMasteriesFromBoard(gridContainer, masteriesData);
+  renderMasteryRecap(selected, recapContainer);
+});
 
 loadMasteries();

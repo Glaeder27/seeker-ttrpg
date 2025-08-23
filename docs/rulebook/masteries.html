@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Seeker TTRPG • Skills</title>
+    <title>Seeker TTRPG • Masteries</title>
 
     <meta name="description"
         content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
@@ -42,20 +42,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- Board vars --- */
+        :root {
+            --bg: #0e0f12;
+            --panel: #1e1e1f;
+            --ink: #e8ecf1;
+            --muted: #a9b1bb;
+            --accent: #f1c24c;
+            --chip: #302d22;
+            --rule: #20242c;
+            --ok: #b8f2c8;
+        }
+
         .mastery-board {
             --size: 130px;
-            /* larghezza esagono */
             --h: calc(var(--size) * 1);
             --b: 5px;
-            /* spessore bordo */
             --gapv: calc(var(--h) * -0.2);
-            /* sovrapposizione verticale tra righe */
             font-family: var(--font-main);
 
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            border-radius: 16px;
+            padding: 22px;
         }
 
         /* Righe */
@@ -84,7 +94,7 @@
             display: grid;
             place-items: center;
             transition: transform .15s ease, filter .15s ease;
-             --border-gradient: conic-gradient(var(--category-locked) 0deg 360deg);
+            --border-gradient: conic-gradient(var(--category-locked) 0deg 360deg);
         }
 
         /* crea lo “spessore” del bordo rientrando l’interno */
@@ -92,7 +102,8 @@
             content: "";
             position: absolute;
             inset: var(--b);
-            background: var(--fill); /* fallback */
+            background: var(--fill);
+            /* fallback */
             clip-path: inherit;
             background-image: var(--icon-url);
             background-repeat: no-repeat;
@@ -100,7 +111,7 @@
             background-size: contain;
             z-index: 1;
         }
-        
+
         .hex::after {
             content: "";
             position: absolute;
@@ -109,7 +120,14 @@
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             -webkit-mask: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             mask: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: var(--border-color, #555);
+            background-image:
+                linear-gradient(to bottom,
+                    rgba(var(--border-color, var(--category-locked, 255, 255, 255)), .4),
+                    rgba(var(--border-color, var(--category-locked, 255, 255, 255)), .9)),
+                url(/assets/textures/antique-gold-1.jpg);
+            background-repeat: no-repeat;
+            background-size: var(--bg-size, 120%);
+            background-position: top center;
             z-index: 0;
             pointer-events: none;
         }
@@ -141,11 +159,19 @@
         }
 
         .hex.core {
-            cursor: default; /* non cliccabile */
-            pointer-events: none; /* disabilita click */ 
+            cursor: default;
+            /* non cliccabile */
+            pointer-events: none;
+            /* disabilita click */
+            opacity: 0;
         }
+
         .hex.core::after {
-            background-color: black;
+            opacity: 0;
+        }
+
+        .hex.core::after {
+            opacity: 0;
         }
 
         /* Accessibilità focus */
@@ -169,7 +195,6 @@
         .picker {
             background: #1e1e1e;
             padding: 1rem;
-            border-radius: 12px;
             display: grid;
             grid-template-columns: repeat(auto-fill, 64px);
             gap: 0.75rem;
@@ -195,7 +220,7 @@
         }
     </style>
 
-<body id="health-and-defense" data-menu-src="/data/menu-rulebook.json">
+<body id="masteries" data-menu-src="/data/menu-rulebook.json">
     <!-- SIDENAV -->
     <div id="sidenav-container"></div>
     <div id="sidenav-overlay"></div>
@@ -204,13 +229,13 @@
     <script src="/scripts/navbar.js"></script>
 
     <!-- MAIN CONTENT ───────────────────────────────────────────── -->
-
+    <div class="title-banner" data-img-src="/assets/images/banners/home-page.webp"></div>
     <main class="dual-column" type="rulebook">
         <div class="left-column">
             <header class="title">
                 <div class="title-container page-title">
                     <span class="title-icon rot90">p</span>
-                    <h1 class="expanded">Skills</h1>
+                    <h1 class="expanded ligature-none" style="padding: 0 .35em .75em .35em">Masteries</h1>
                     <span class="title-icon">p</span>
                 </div>
             </header>
@@ -226,46 +251,254 @@
                         <h2>Core Concept</h2>
                         <span class="title-icon right rot90">b</span>
                     </div>
-                    <p class="subtitle">Freedom of Expression Beyond Archetypes</p>
+                    <p class="subtitle">Personal Augmentations in a Shared Grid</p>
                 </header>
 
+                <p>Masteries are not simple bonuses or passive traits — they are
+                    <strong><em>character augmentations</em></strong>, shaping the way each Seeker interacts with the
+                    world and
+                    redefining the limits of their abilities. Where Skills provide the raw expression of talent,
+                    Masteries serve as
+                    the <em>framework of specialization</em>, a strategic layer that empowers players to bend or
+                    reinforce their
+                    playstyle.
+                </p>
+
+                <p>Each Seeker possesses a limited grid of hexagonal slots, a field of choices that reflects the tone of
+                    the
+                    campaign: sparse for grounded, realistic play, or expanded for more heroic, superhuman characters.
+                    Within this
+                    grid, Masteries are placed like tesserae, forming clusters of power, synergy, and identity. No two
+                    Seekers will
+                    ever arrange their grid in the same way, ensuring individuality at both the mechanical and narrative
+                    level.</p>
+
+                <p>To balance freedom with challenge, Masteries are bound by <strong>categorical anchors</strong> —
+                    Combat,
+                    Exploration, and Social — each carrying its own color identity and adjacency requirements. Some
+                    Masteries
+                    flourish only beside their kin, others demand a precise counterpart, and a few stand as wildcards,
+                    free to fit
+                    anywhere. This puzzle-like structure makes the act of building a character as much a game of
+                    <em>strategy and
+                        foresight</em> as one of imagination.</p>
+
+                <p>By combining <strong>modularity</strong>, <strong>constraint-driven creativity</strong>, and
+                    <strong>emergent synergy</strong>, Masteries embody Seeker’s core ethos: exploration not just of the
+                    New World,
+                    but of the self. They turn character growth into a living map, where every placement is both a
+                    choice and a
+                    discovery.
+                </p>
             </section>
 
-            <div class="mastery-board">
-                <div class="hex-row top">
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
+            <!-- 2 • Mastery Anatomy -->
+            <section class="section-wrapper" id="section2" sidenav="2 • Mastery Anatomy">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">a</span>
+                        <h2>Mastery Anatomy</h2>
+                        <span class="title-icon right rot90">a</span>
+                    </div>
+                    <p class="subtitle">Identity Through Spatial Constraints</p>
+                </header>
+
+                <p>
+                    In <em>Seeker</em>, Masteries are more than perks or upgrades. They are <strong>structural
+                        anchors</strong> that
+                    define a character’s long-term trajectory, placed within a limited-slot hex grid. Their anatomy
+                    balances freedom of
+                    expression with spatial and categorical constraints, ensuring that each build feels both unique and
+                    earned.
+                </p>
+
+                <h4>Five Structural Elements</h4>
+                <p>Every Mastery in Seeker is described using five interconnected elements that govern its identity and
+                    placement.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="align-left">Element</th>
+                            <th class="align-left">What it Represents</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Category</td>
+                            <td class="align-left">Its thematic domain: Combat, Exploration, or Social.</td>
+                        </tr>
+                        <tr>
+                            <td>Core Effect</td>
+                            <td class="align-left">The permanent benefit or defining function of the Mastery.</td>
+                        </tr>
+                        <tr>
+                            <td>Placement Requirements</td>
+                            <td class="align-left">Adjacency or positioning conditions on the hex board.</td>
+                        </tr>
+                        <tr>
+                            <td>Character Prerequisites</td>
+                            <td class="align-left">Requirements tied to the character’s state, aptitudes, or milestones.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tags</td>
+                            <td class="align-left">Descriptors that signal intent, role, or narrative resonance.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>How the Elements Work</h3>
+                <p>While each element serves a distinct function, it’s their interaction that makes a Mastery board
+                    dynamic: Categories frame identity, Placement & Adjacency shape connections, Slot Budget sets
+                    pacing, Character Prerequisites gate access, and Tags clarify intent — together they turn the grid
+                    into a coherent, evolving build space.</p>
+
+
+                <h4>Categories</h4>
+                <p>
+                    Categories provide the broad thematic axis — Combat (red), Exploration (blue), and Social (yellow).
+                    Each slot on the
+                    hex board exposes borders of one or more colors, and a Mastery may only be placed if at least one of
+                    its Categories
+                    matches an adjacent border.
+                </p>
+
+                <h4>Core Effect</h4>
+                <p>
+                    The Core Effect is the heart of the Mastery. Unlike Skills, which evolve through Augmentations, a
+                    Mastery’s effect
+                    is stable and defining, often shifting the strategic identity of the character in a lasting way.
+                </p>
+
+                <h4>Placement Requirements</h4>
+                <p>
+                    Placement rules create spatial tension on the board. Some Masteries demand adjacency to a specific
+                    Category
+                    (“Adjacent to two Exploration Masteries”), while others require proximity to a named Mastery
+                    (“Must touch Combat Adept”). A few rare Masteries act as wildcards, with no restrictions.
+                </p>
+
+                <h4>Character Prerequisites</h4>
+                <p>
+                    Beyond the board, some Masteries require that the Seeker themselves has reached certain thresholds.
+                    These may include
+                    minimum Aptitude scores, prior Tags, or narrative milestones such as earning faction allegiance.
+                    This ensures that
+                    progression feels <em>earned in the story</em>, not just slotted onto the grid.
+                </p>
+
+                <h4>Tags</h4>
+                <p>
+                    Tags are lightweight markers that clarify function and synergy. A Mastery with the <em>Healer</em>
+                    tag signals
+                    restorative play, while one tagged <em>Scout</em> leans toward mobility and reconnaissance. Tags
+                    help both rulings
+                    and narrative framing without introducing modular subsystems.
+                </p>
+
+                <h3>Putting It Together</h3>
+                <p>
+                    These five elements combine to make Masteries both expressive and bounded. The hex board imposes
+                    structural limits,
+                    Categories and Placement Requirements shape spatial logic, Character Prerequisites tie choices to
+                    in-world growth,
+                    and Tags give narrative texture. A progression like <strong>Combat Adept → Combat Master</strong> is
+                    not just an
+                    increase in numbers but a deliberate, spatially constrained evolution that feels as much part of the
+                    fiction as of
+                    the system.
+                </p>
+
+                <h3>Consistency &amp; Expansion</h3>
+                <p>
+                    By maintaining this consistent anatomy, <em>Seeker</em> ensures that new Masteries can be added
+                    without breaking
+                    coherence. Whether a Mastery is basic and broad or esoteric and specialized, it always follows the
+                    same blueprint —
+                    keeping the system modular, scalable, and narratively grounded.
+                </p>
+
+                <h3>The Mastery Board</h3>
+                <p>
+                    Masteries are placed on a <strong>hex grid</strong> with a fixed number of slots.
+                    Slot count acts as a difficulty/realism dial: <strong>more slots</strong> produce “super-heroic”
+                    breadth;
+                    <strong>fewer slots</strong> enforce grounded specialization. Each hex shows one or more colored
+                    borders:
+                    a Mastery can only be placed in a hex that touches a border matching at least one of its Categories.
+                </p>
+
+                <h4>Spatial Logic in Play</h4>
+                <ul>
+                    <li><strong>Color-gated placement:</strong> Category ↔ border color must match.</li>
+                    <li><strong>Adjacency validation:</strong> When placing a Mastery, its Placement Requirements must
+                        be met by
+                        neighboring hexes (by category count and/or specific Mastery IDs).</li>
+                    <li><strong>Multi-category Masteries:</strong> A Mastery with multiple Categories can satisfy
+                        multiple adjacency checks
+                        and can enter any slot whose border matches <em>any</em> of its Categories.</li>
+                    <li><strong>Wildcards:</strong> Some Masteries waive adjacency rules to enable flexible anchors for
+                        a build.</li>
+                </ul>
+
+                <h3>Design Goals</h3>
+                <p>
+                    The anatomy above ensures Masteries deliver <strong>identity</strong> and
+                    <strong>constraint</strong> at once.
+                    The color-gated grid prevents runaway combinations, while adjacency requirements create deliberate,
+                    spatially meaningful builds that feel earned rather than piled on.
+                </p>
+
+                <blockquote>
+                    <p>Immediately below, you will find an example of the <strong class="highlight">Mastery Board</strong> — the online tool that lets you place Masteries, explore adjacency rules, and experiment with build constraints. This allows you to see firsthand how Seeker Masteries interact on the grid, making the system tangible and easier to grasp.</p>
+                    <p><em>Note: This feature of the site is <strong style="color: rgb(190, 56, 56)">highly experimental</strong> and should be treated only as a working example of ongoing development.</em></p>
+                </blockquote>
+
+            <!-- MASTERY ─────────────────────────────────────────── -->
+            <div class="wrap">
+
+                <div class="mastery-board">
+                    <div class="hex-row top">
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                    </div>
+
+                    <div class="hex-row">
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                    </div>
+
+                    <div class="hex-row central">
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                        <div class="hex core"><span class="label"></span></div>
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                    </div>
+
+                    <div class="hex-row">
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                    </div>
+
+                    <div class="hex-row bottom">
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                        <button class="hex"><span class="label"></span></button>
+                    </div>
                 </div>
 
-                <div class="hex-row">
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                </div>
-
-                <div class="hex-row central">
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                    <div class="hex core"><span class="label"></span></div>
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                </div>
-
-                <div class="hex-row">
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                </div>
-
-                <div class="hex-row bottom">
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                    <button class="hex"><span class="label"></span></button>
-                </div>
+                <div id="masteryRecap"></div>
             </div>
+        </section>
         </div>
 
         <div class="right-column">
@@ -344,6 +577,16 @@
                 script.src = '/scripts/sidenav.js';
                 document.body.appendChild(script);
             });
+    </script>
+
+    <script>
+        const hexes = document.querySelectorAll(".hex");
+        let zoom = 1.0;
+
+        hexes.forEach((hex) => {
+            hex.style.setProperty("--bg-size", `${zoom * 135}%`);
+            zoom += 0.15;
+        });
     </script>
 
     <script src="/scripts/sidebar.js"></script>

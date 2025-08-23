@@ -22,6 +22,17 @@ window.applyTagIcons = function () {
   });
 };
 
+// ─── Select title banner image ───
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".title-banner").forEach(el => {
+    const src = el.getAttribute("data-img-src");
+    if (src) {
+      el.style.backgroundImage = `url(${src})`;
+    }
+  });
+});
+
+
 // ─── Remove preload/fadeout classes when page is ready ───
 window.addEventListener("pageshow", () => {
   document.documentElement.classList.remove("preload");
