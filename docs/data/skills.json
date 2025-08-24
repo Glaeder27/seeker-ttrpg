@@ -21,8 +21,8 @@
         },
         "2": {
         "action-type": "Inflict",
-        "affliction-count": "1",
-        "affliction-type": "Blind",
+        "ailment-count": "1",
+        "ailment-type": "Blind",
         "condition": "on Hit"
         },
 

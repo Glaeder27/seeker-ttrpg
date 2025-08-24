@@ -25,15 +25,15 @@
   },
 
   "Blind": {
-    "img": "/assets/icons/svg/afflictions/affliction-blind.svg",
+    "img": "/assets/icons/svg/ailments/ailment-blind.svg",
     "title": "Blind"
   },
   "Burn": {
-    "img": "/assets/icons/svg/afflictions/affliction-burn.svg",
+    "img": "/assets/icons/svg/ailments/ailment-burn.svg",
     "title": "Burn"
   },
   "Breach": {
-    "img": "/assets/icons/svg/afflictions/affliction-breach.svg",
+    "img": "/assets/icons/svg/ailments/ailment-breach.svg",
     "title": "Breach"
   },
 

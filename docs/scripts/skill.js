@@ -40,9 +40,9 @@ function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
       if (aug["mod-damage-type-note"] && part["damage-type"]) {
         part["damage-type-note"] = aug["mod-damage-type-note"];
       }
-      if (aug["mod-affliction"] && part["affliction-type"] === aug["mod-affliction"]) {
-        const modValue = Number(aug["mod-affliction-value"]) || 0;
-        part["affliction-count"] = (part["affliction-count"] || 0) + modValue;
+      if (aug["mod-ailment"] && part["ailment-type"] === aug["mod-ailment"]) {
+        const modValue = Number(aug["mod-ailment-value"]) || 0;
+        part["ailment-count"] = (part["ailment-count"] || 0) + modValue;
       }
     });
 
@@ -58,22 +58,22 @@ function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
       ];
   });
 
-  // --- Afflictions ---
-  let afflictions = {};
+  // --- Ailments ---
+  let ailments = {};
   assigned.forEach((aug) => {
-    if (aug["add-affliction"]) {
-      const value = Number(aug["add-affliction-value"]) || 1;
-      const affs = Array.isArray(aug["add-affliction"])
-        ? aug["add-affliction"]
-        : [aug["add-affliction"]];
+    if (aug["add-ailment"]) {
+      const value = Number(aug["add-ailment-value"]) || 1;
+      const affs = Array.isArray(aug["add-ailment"])
+        ? aug["add-ailment"]
+        : [aug["add-ailment"]];
       affs.forEach((a) => {
-        afflictions[a] = (afflictions[a] || 0) + value;
+        ailments[a] = (ailments[a] || 0) + value;
       });
     }
-    if (aug["mod-affliction"]) {
-      const target = aug["mod-affliction"];
-      const modValue = Number(aug["mod-affliction-value"]) || 0;
-      afflictions[target] = (afflictions[target] || 0) + modValue;
+    if (aug["mod-ailment"]) {
+      const target = aug["mod-ailment"];
+      const modValue = Number(aug["mod-ailment-value"]) || 0;
+      ailments[target] = (ailments[target] || 0) + modValue;
     }
   });
 
@@ -86,13 +86,13 @@ function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
         .map(Number)
     ) + 1;
 
-  // --- Inserisci afflictions come voci numeriche ---
-  Object.entries(afflictions).forEach(([name, value]) => {
+  // --- Inserisci ailments come voci numeriche ---
+  Object.entries(ailments).forEach(([name, value]) => {
     if (value !== 0) {
       newSkill.effect[nextIndex++] = {
         "action-type": "Inflict",
-        "affliction-count": value,
-        "affliction-type": name,
+        "ailment-count": value,
+        "ailment-type": name,
         condition: "on Hit",
       };
     }
@@ -103,11 +103,11 @@ function applyAugmentationsToSkill(baseSkill, assignedBySlot) {
   if (aug["add-special"]) {
     const specialEntry = {
       "action-type": aug["add-special"] ?? "",
-      "affliction-count": aug["add-special-value"] ?? "",
-      "affliction-type": aug["add-special-value-unit"] ?? "",
+      "ailment-count": aug["add-special-value"] ?? "",
+      "ailment-type": aug["add-special-value-unit"] ?? "",
       condition: aug["add-special-condition"] ?? "",
     };
-    if (specialEntry["affliction-count"]) {
+    if (specialEntry["ailment-count"]) {
       newSkill.effect[nextIndex++] = specialEntry;
     }
   }
@@ -171,12 +171,12 @@ function composeSkillCore(effect) {
         li += `<span class="iconize">${part["damage-type"]}</span> `;
       }
 
-      // Affliction
-      if (part["affliction-count"]) {
-        li += `<b>${part["affliction-count"]}</b> `;
+      // Ailment
+      if (part["ailment-count"]) {
+        li += `<b>${part["ailment-count"]}</b> `;
       }
-      if (part["affliction-type"]) {
-        li += `<span class="iconize">${part["affliction-type"]}</span> `;
+      if (part["ailment-type"]) {
+        li += `<span class="iconize">${part["ailment-type"]}</span> `;
       }
 
       // Target

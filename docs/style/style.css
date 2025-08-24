@@ -252,6 +252,7 @@
     filter: drop-shadow(0 0 8px rgba(20, 20, 20, .4));
     top: 7rem;
     border: 1px solid rgba(var(--ancient-gold-rgb), .3);
+    z-index: 2;
 }
 
 @media (max-width: 720px) {
@@ -1629,7 +1630,6 @@ p.card-description {
     margin-left: 5px;
     padding-left: 10px;
     border-left: 2px solid var(--ancient-gold);
-    border-image: url(/assets/textures/ancient-gold-3-h.jpg) 1 round;
 }
 
 /* Scrollbar Webkit */

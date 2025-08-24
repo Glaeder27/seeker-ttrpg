@@ -12,8 +12,8 @@
 
       "add-tags": ["Area"],
       "effect": "<u>Inflict</u> 1 additional Burn each time you <u>Inflict</u> Burn with this Skill.",
-      "mod-affliction": "Burn",
-      "mod-affliction-value": "1"
+      "mod-ailment": "Burn",
+      "mod-ailment-value": "1"
     },
     {
       "id": "breach",
@@ -23,8 +23,8 @@
       "category": "Combat",
 
       "effect": "<u>Inflict</u> 1 Breach on Hit.",
-      "add-affliction": ["Breach"],
-      "add-affliction-value": "1"
+      "add-ailment": ["Breach"],
+      "add-ailment-value": "1"
     },
     {
       "id": "fire-infusion",
@@ -38,8 +38,8 @@
 
       "effect": "<span class=\"effect-text\">Convert all Damage to Decay (Thermic • Heat). </span><span class=\"effect-text\"><u>Inflict</u> 1 Burn on Hit.</span>", 
       "add-tags": ["Fire"],
-      "add-affliction": ["Burn"],
-      "add-affliction-value": "1",
+      "add-ailment": ["Burn"],
+      "add-ailment-value": "1",
       "mod-damage-type": "Decay",
       "mod-damage-type-note": "(Thermic • <span class=\"damage-heat\">Heat</span>)"
     },
@@ -55,8 +55,8 @@
 
       "effect": "<span class=\"effect-text\">Convert all Damage to Decay (Thermic • Cold).</span><span class=\"effect-text\"><u>Inflict</u> 1 Frostbite on Hit.</span>",
       "add-tags": ["Frost"],
-      "add-affliction": ["Frostbite"],
-      "add-affliction-value": "1",
+      "add-ailment": ["Frostbite"],
+      "add-ailment-value": "1",
       "mod-damage-type": "Decay",
       "mod-damage-type-note": "(Thermic • Cold)"
     },
