@@ -4,7 +4,7 @@
 =            IMPORTS & VARIABLES              =
 =============================================*/
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Great+Vibes&family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Great+Vibes&family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Symbols:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     /* ── COLOR PALETTE ───────────────────────────────────────────── */
@@ -160,6 +160,13 @@
 }
 
 @font-face {
+    font-family: "Bainsley";
+    src: url("/assets/fonts/Bainsley.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Honey Script";
     src: url("/assets/fonts/HoneyScript-Light.ttf") format("truetype");
     font-weight: normal;
@@ -178,6 +185,11 @@
     src: url("/assets/fonts/1540-Mercator-Script.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoSymbols';
+  src: url('/assets/fonts/NotoSansSymbols-Regular.woff2') format('woff2');
 }
 
 .uppercase {
@@ -255,19 +267,6 @@
     z-index: 2;
 }
 
-@media (max-width: 720px) {
-    .right-column {
-        right: 0;
-    }
-
-    main.dual-column[type="rulebook"] .right-column,
-    main.dual-column[type="lorebook"] .right-column {
-        right: 0;
-        position: relative;
-        width: 100%;
-    }
-}
-
 main.dual-column[type="rulebook"] .right-column,
 main.dual-column[type="lorebook"] .right-column {
     position: sticky;
@@ -325,6 +324,15 @@ main.dual-column[type="lorebook"] .right-column .sidebar-wrapper {
     /* .right-column {
     display: none;
   } */
+}
+
+@media (max-width: 720px) {
+    .right-column {
+        left: 50%;
+        transform: translate(-50%, 0);
+        position: relative;
+        width: 100%;
+    }
 }
 
 /* ── GENERAL ─────────────── */
@@ -432,6 +440,7 @@ body.clean::before {
         border-top-right-radius: 20% 90%;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        -webkit-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px);
         bottom: 0;
         width: 100%;
@@ -565,13 +574,17 @@ li {
 ul.diamond li {
     list-style: none;
     text-indent: 0;
-    padding-left: .3em;
+    padding-left: 1em;
+    line-height: 1.6;
 }
 
-ul.diamond li::marker {
-    color: var(--ancient-gold);
-    content: "✦ ";
-    font-family: var(--font-main);
+ul.diamond li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--ancient-gold);
+  font-family: 'Bainsley', sans-serif;
+  line-height: 1.6;
 }
 
 /* ── LINKS ─────────────── */
@@ -691,21 +704,31 @@ body#home-page {
 /* MOBILE STYLES */
 @media (max-width: 768px) {
     .navbar-toggle {
-        position: fixed;
+        all: unset;
         display: block;
+        position: fixed;
         z-index: 8;
         bottom: 2rem;
         right: 2rem;
-        background: linear-gradient(to right, rgba(var(--burnt-copper-rgb), 0.3), rgba(var(--ancient-gold-rgb), 0.5));
         height: 55px;
         width: 60px;
         border: 2px solid var(--background-dark-3);
         border-radius: 0.6rem;
+        background: linear-gradient(to right,
+            rgba(var(--burnt-copper-rgb), 0.3),
+            rgba(var(--ancient-gold-rgb), 0.5)
+        );
+        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
+
+        cursor: pointer;
         color: var(--ancient-gold);
         font-size: 2.5rem;
         line-height: 1;
+        text-align: center;
+        -webkit-tap-highlight-color: transparent; /* rimuove highlight blu su iOS */
     }
+
 
     .main-navbar {
         display: none;
@@ -720,6 +743,7 @@ body#home-page {
         justify-content: center;
         align-items: flex-start;
         background: rgba(30, 30, 30, 0.9);
+        -webkit-backdrop-filter: blur(0px);
         backdrop-filter: blur(0px);
         opacity: 0;
         transition:
@@ -729,6 +753,10 @@ body#home-page {
         position: fixed;
         overflow: hidden;
         padding: 3rem;
+        
+        /*Safari fix*/
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
     }
 
     .navbar-links-mobile::before {
@@ -767,13 +795,13 @@ body#home-page {
     .navbar-links-mobile a {
         font-size: 1.3rem;
         color: var(--ancient-gold, #D4B55A);
-        background: linear-gradient(to bottom,
+        /*background: linear-gradient(to bottom,
                 rgba(var(--deep-charcoal-rgb), 0.2),
                 rgba(var(--brown-charcoal-rgb), 0.2)),
             url(/assets/textures/antique-gold-1.jpg);
         background-clip: text;
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;  Improve readability before approving this*/
         text-decoration: none;
         font-weight: 500;
         letter-spacing: 1px;
@@ -787,9 +815,10 @@ body#home-page {
     }
 
     .navbar-close {
+        all: unset;
         position: absolute;
         bottom: 1rem;
-        right: 2rem;
+        right: 2.5rem;
         font-size: 4.5rem;
         background: none;
         border: none;
@@ -808,6 +837,7 @@ body#home-page {
         transform: translateY(0);
         opacity: 1;
         animation: slideIn 0.4s forwards;
+        -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
         pointer-events: auto;
     }
@@ -893,6 +923,7 @@ body#home-page {
     }
     .banner-container-mobile {
         display: flex;
+        background: rgb(22, 23, 24);
     }
 }
 
@@ -964,8 +995,8 @@ body#home-page {
     /* border-radius: 10px; */
     border: 1px solid var(--deep-charcoal);
     filter: drop-shadow(0px 0px 3px black);
-    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
 @media (max-width: 767px) {
@@ -1082,6 +1113,11 @@ body#home-page {
         margin-bottom: .2rem;
     }
 }
+@media (min-width: 554px) {
+    .banner-mask {
+        padding-bottom: 5vh;
+    }
+}
 
 /* Seeker Logo */
 .logo-container {
@@ -1138,6 +1174,7 @@ body#home-page {
 .logo-container-mobile img.logo {
     height: 110%;
     object-fit: cover;
+    margin-top: -1rem;
 }
 
 /* ── CAROUSEL ─────────────── */
@@ -1406,8 +1443,6 @@ p.card-description {
 
 .toggle-btn-container {
     background: var(--background-dark-1);
-    width: 88%;
-    height: 88%;
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -1426,6 +1461,7 @@ p.card-description {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, .8);
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     opacity: 0;
     pointer-events: none;
@@ -1532,6 +1568,7 @@ p.card-description {
     overflow: hidden;
     transition: transform 0.6s ease;
     z-index: 1000;
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .5));
     border-radius: 0 1rem 1rem 0;
@@ -1733,6 +1770,7 @@ p.card-description {
         height: 55px;
         width: 60px;
         border-radius: 0.6rem;
+        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         color: var(--ancient-gold);
         font-size: 2.5rem;
@@ -2094,7 +2132,7 @@ h4 {
 }
 
 h1.site-title {
-    font-size: 20vw;
+    font-size: 18vw;
     line-height: 1;
     margin: -0.3em 0 0 0;
     font-family: var(--font-logo);
@@ -2122,16 +2160,16 @@ h1.site-title {
       align-items: center;
       justify-content: center;
       padding: 2vh 2vw;
-      gap: 1vh;
       position: absolute;
-      right: 50%;
-      transform: translate(100%, 0%);
-      top: 0;
+      right: 55%;
+      transform: translate(100%, -50%);
+      top: 40%;
 }
 
 @media (max-width: 767px) {
     h1.site-title {
-        font-size: clamp(6rem, 11rem, 12rem);
+        font-size: 3rem; /* fallback */
+        font-size: clamp(3rem, 38dvw, 12rem);
         padding-bottom: 0;
         padding-top: 0.3em;
         filter: drop-shadow(0 0 10px black);
@@ -2142,12 +2180,12 @@ h1.site-title {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding-bottom: 5vh;
-        gap: 10px;
+        padding-bottom: 2vh;
         position: relative;
         width: 100%;
         right: unset;
         transform: unset;
+        top: 0;
     }
 }
 
@@ -2209,6 +2247,9 @@ h1.site-title {
 .title-container.large {
     width: clamp(150px, calc(10vh + 35vw), 800px);
 }
+.site-title-wrapper .title-container {
+        width: clamp(150px, calc(10vh + 45vw), 1200px);
+}
 
 .title .title-container {
     letter-spacing: 0.3rem;
@@ -2220,7 +2261,10 @@ h1.site-title {
     .title-container {
         width: 100%;
         flex-direction: column;
-        height: 9rem;
+        height: 0;
+    }
+    .section .title-container {
+        height: 100%;
     }
     .title-banner {
         height: 200px;
@@ -2420,12 +2464,14 @@ h1.site-title {
 @media (max-width: 767px) {
     .section {
         margin-inline: unset;
-        width: 100vw;
+        width: calc(100% + 3rem);
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
         justify-self: center;
     }
 
     .section.top-site {
-        margin: 0 0 30px 0;
+        margin: 5rem -1.5rem 30px -1.5rem;
     }
 
     .section.top {
@@ -2725,6 +2771,7 @@ thead th:last-child {
             rgba(255, 255, 255, 0.03) 10px,
             transparent 10px,
             transparent 20px);
+    -webkit-backdrop-filter: grayscale(30%);
     backdrop-filter: grayscale(30%);
     min-height: 200px;
 }
@@ -2997,6 +3044,7 @@ a.flip-card-link[href=""] {
     transform: translateY(4px);
     transition: opacity 0.2s ease, transform 0.2s ease;
     z-index: 9999;
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 
@@ -3018,6 +3066,7 @@ a.flip-card-link[href=""] {
     transform: translateY(4px);
     transition: opacity 0.2s ease, transform 0.2s ease;
     z-index: 9999;
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 
@@ -3324,11 +3373,13 @@ a.flip-card-link[href=""] {
 @keyframes fadeInBackground {
     from {
         background-color: rgba(30, 30, 30, 0);
+        -webkit-backdrop-filter: blur(0px);
         backdrop-filter: blur(0px);
     }
 
     to {
         background-color: rgba(30, 30, 30, 0.9);
+        -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
     }
 }
@@ -3336,11 +3387,13 @@ a.flip-card-link[href=""] {
 @keyframes fadeOutBackground {
     from {
         background-color: rgba(30, 30, 30, 0.9);
+        -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
     }
 
     to {
         background-color: rgba(30, 30, 30, 0);
+        -webkit-backdrop-filter: blur(0px);
         backdrop-filter: blur(0px);
     }
 }

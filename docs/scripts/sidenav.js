@@ -25,7 +25,7 @@ function initializeMenu() {
   const overlay = document.getElementById("sidenav-overlay");
 
   // Read the state from localStorage
-  const menuVisible = localStorage.getItem("menuVisible") !== "false"; // default true
+  const menuVisible = localStorage.getItem("menuVisible") === "true"; // default false
   sideMenu.classList.toggle("collapsed", !menuVisible);
 
   // Overlay iniziale solo se mobile e menu aperto
