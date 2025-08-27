@@ -1,197 +1,145 @@
 # Solaria
 
-The Lost Science of the Sun
-
-Section I
+### The Lost Science of the Cosmic Sun
 
 ## What is Solaria
 
-Solaria is a form of cosmic energy discovered and harnessed by Mesoamerican
-civilizations, most
-notably the Tenochca, through a sophisticated system of engineering.
+Solaria is a form of cosmic energy discovered and harnessed by Mesoamerican civilizations, most notably the Tenochca (Aztecs), through a sophisticated system of engineering.
 
-It bears no resemblance to the supernatural in the traditional sense: it is a scientific interaction
-with solar
-energy, channeled and distributed through ritual structures such as pyramids, stelae, and solar
-calendars. The
-“magic” of the New World is, in truth, an occult but natural branch of physics.
+Originally, the Aztecs called it **Tonatiuh**, meaning “Movement of the Sun,” referring to the full spectrum of cosmic energy, including both bright (light, heat, illumination) and void (darkness, cold, entropy) forces. To conceal the existence of this energy, Seekers told Europeans that Tonatiuh was a deity worshiped by the natives.
 
-Anyone within the New World is exposed to the energy flows transmitted by this ancient network — and
-can learn to
-harness them.
-
-> “What you call sorcery is but the science of antiquity — a science our instruments are not yet
-> refined enough to discern.”
+> “What you call sorcery is but the science of antiquity — a science our instruments are not yet refined enough to discern.”
 >
-> — Paracelsus
->
-> Opera Omnia Apocrypha (attrib.)
->
+> — Paracelsus, *Opera Omnia Apocrypha (attrib.)*
 
-#### Nomenclature
+---
 
-This power goes by different names, depending on the culture interpreting it:
+## Nomenclature
 
-- Solaria — the more “scientific” European term, commonly used
-by Seekers
-- Tonalli — from Nahuatl: the vital energy radiated by the Sun
-- Xiuhtlalpan — from Nahuatl: “sacred field of energy,” used by
-the Aztecs
-- Æther Solis — a syncretic term favored by Renaissance
-alchemists
+* **Solaria** — European term derived from Tonatiuh; used as the primary name. Encompasses the full duality of cosmic energy.
+* **Tonatiuh** — Aztec term meaning “Movement of the Sun”; refers to the total cosmic energy including both bright and void aspects.
+* Other terms (e.g., **Xiuhtlalpan**, **Æther Solis**) appear in certain manuscripts but are secondary.
 
-### Why is Solaria active only in the New World
+---
 
-Solaria is accessible exclusively within a geospatial transmission network composed
-of ritually engineered structures — including pyramids, temples, stone calendars, cenotes, obelisks,
-and ceremonial complexes. These constructions act as amplifiers, transmitters, and stabilizers for
-an energy field derived from solar radiation and cosmic frequencies.
+## Duality of Energy: Bright and Void
 
-This network performs four primary functions:
+Solaria manifests as a dual energy system:
 
-- Celestial Alignment. The sites are precisely oriented with
-key astronomical events such as solstices, equinoxes, and stellar conjunctions, enabling
-resonance with solar and cosmic cycles.
-- Geomagnetic Anchoring. The network is built on natural
-telluric nodes, where Earth’s magnetic field is unusually strong or unstable, enhancing energy
-absorption and transmission.
-- Conductive Materials. The structures incorporate minerals
-such as basalt, obsidian, jade, or copper, which exhibit high conductivity and resonance
-properties, aiding storage and modulation of the energy field.
-- Ritual Geometry. The architecture follows specific geometric
-patterns derived from sacred numerology and fractal harmonics, stabilizing the field and
-preventing dissipation or decoherence.
+* **Bright** — associated with sunlight, heat, life, and illumination.
+* **Void** — associated with darkness, cold, entropy, and the cosmic vacuum.
 
-These factors combine to create a continuous transmission grid across the New World, forming
-large-scale active zones where Solaria is present, stable, and accessible.
+Being a cosmically pervasive energy, Solaria flows through all matter and phenomena: not only the Sun and planets, but also stars, galaxies, black holes, and dark matter. While Aztecs understood this as a single Tonatiuh, European alchemists and scholars (influenced by Christianity) separated it conceptually. Void energy was considered occult, negative, or demonic, so the Papal Inquisitors (counterparts to Seekers) were forbidden from using it.
 
-Europe and the Old World lack this network; without equivalent structures, alignments, or geomagnetic
-focal points, the energy field cannot manifest. Even if knowledge or artifacts are brought back,
-Solaria remains dormant — its activation depends on a functioning transmission infrastructure, not
-belief or ritual alone.
+---
 
-Section II
+## Why Solaria is active only in the New World
+
+Solaria flows through a continent-spanning energy network constructed by ancient civilizations. European scholars mistook the infrastructure for ceremonial architecture, but it is a **precision system of energy capture, storage, and transmission**.
+
+### Pyramid — Energy Capture
+
+Solar rays, planetary alignments, and starlight converge upon pyramid tops. **Bright energy** concentrates at temple apexes — the *Descent of the Sun Serpent*.
+
+### Cenote — Energy Storage
+
+Cenotes act as capacitors for Solaria. Energy manifests as radiant light or intense void currents; touching charged waters can be lethal.
+
+### Ley Lines — Transmission
+
+Energy flows through conductive sacred veins. Lines transmit both bright and void energy across the landscape, creating a continuous cosmic circuit.
+
+### Monuments — Distribution Nodes
+
+Obelisks and stelae act as field repeaters, stabilizing access to bright and void energy alike.
+
+---
 
 ## How Does Solaria Work
 
-Solaria behaves as both a physical energy field and an informational medium — meaning it not only
-exerts force or transmits power, but also stores and responds to encoded data, much like a primitive
-computer system embedded in the fabric of the world.
+Solaria is a continuous cosmic field that permeates all matter in the New World, similar to an electromagnetic field. To produce tangible effects, the field must be **modulated** according to precise patterns — formulas that disturb the field locally.
 
-The Mexica engineered a sophisticated system to interact with this energy. It functions through four
-interdependent mechanisms:
+### Modulation Mechanisms
 
-- Absorption of solar energy by sacred materials such as volcanic stone,
-obsidian, cenote water, and gold, which act as natural capacitors.
-- Modulation of the energy using ritual architecture, carved glyphs, and harmonic
-geometries that encode specific functions into the current.
-- Transmission through a continent-spanning network of resonant structures
-(pyramids, stelae, cenotes) forming an active circuit of power.
-- Activation through living conductors — practitioners whose bodies are
-inscribed with ritual markings (tattoos, paint,
-scarification) that allow them to interface with the field. These markings, combined with ritual
-gestures, vocalized
-tones, and encoded blood, turn the human body into a dynamic ritual node.
+1. **Reactive Materials** — Sacred substances such as obsidian, cenote water, and gold react to Solaria. Their sacredness originates from their natural responsiveness, enabling effects. They can be used as artifacts or incorporated into tattoos, body paint, or other inscriptions on practitioners to enhance or enable their ability to manipulate Solaria.
+2. **Spatial and Temporal Arrangement** — Moving reactive materials through space and time in specific patterns disturbs the field at targeted points, producing desired phenomena.
 
-These components function because Solaria is resonant: it responds to harmonic frequencies,
-geometric regularities, and symbolic structure. Sacred materials contain crystalline or magnetic
-properties that enhance this interaction. The structures themselves are built according to
-principles of sacred geometry and astronomical alignment, ensuring resonance with cosmic rhythms.
+#### Interfacing with Solaria
 
-Activation stimuli are essential: without them, the system remains dormant. These inputs must match
-Solaria’s “language” — structured and coherent patterns that function as keys. Improper or random
-input is simply ignored by the field.
+To “become part of the circuit” of Solaria and interact with the field, human conduits are required:
 
-| Stimulus | Mechanism |
-| --- | --- |
-| Sound | Chants, whistles, and drumbeats in harmonic frequencies resonate
-with the structures
-and materials, initiating local field shifts. |
-| Heat / Light | Solar rays or ritual fires cause certain minerals to enter an
-activated state,
-making them conductive or receptive to energy flows. |
-| Blood | The iron in blood acts as a biochemical catalyst, often
-completing a ritual
-“circuit” in glyphs or stone channels. |
-| Mental Intention | Brainwave patterns (especially under ritual focus) can
-synchronize with Solaria’s
-informational layer, triggering specific responses. |
+* **Mesoamerican Tradition: Tlāltikpak** — The Aztecs enhanced their natural biological affinity (due to blood rich in iron and reactive elements) by painting glyphs and cosmic geometries onto their skin with metallic pigments. These glyphs, often arranged along muscles and joints, acted as conductive circuits activated during rituals at energy nodes.
+* **European Tradition: Imprinta Sigillata** — Inspired by Aztec practices, European alchemists developed their own counterpart. Alchemical sigils etched or painted onto flesh with oxidized gold, verdigris copper, or burnished iron function as symbolic keys. Unlike the Aztec method, these require careful celestial alignment and personal sacrifice.
 
-### Scientific Hypotheses
-
-Scholars on both sides of the Atlantic have begun to study Solaria not as “magic,” but as a form of
-pre-modern science. The following are the main working theories proposed in academic circles:
-
-| Theory | Explanation |
-| --- | --- |
-| Symbolic Interface Theory | Solaria reacts to specific symbolic codes — words, gestures,
-diagrams — that
-function as access protocols to its functions. |
-| Cognitive Resonance Theory | The human mind, under focused intent, can harmonize with Solaria
-and issue
-“commands” by aligning with its frequency. |
-| Informational Field Theory | Solaria is an ambient, structured field that responds to
-organized patterns (sound,
-thought, geometry), much like a processor reading input. |
-| Environmental Symbiosis Theory | The system is designed to resonate with biological and natural
-elements — such as
-blood, stone, and sunlight — that reflect planetary cycles. |
-
-### Practical Use
-
-Solaria is not free-form magic. To harness it, characters must:
-
-- Be within an active field (near a Solaria node such as a temple or cenote).
-- Possess ritual components (masks, tattoos, obsidian tools, written glyphs).
-- Execute codified actions (chants, diagrams, offerings, visualizations).
-- Understand part of the symbolic or linguistic framework.
-
-Effects vary widely — from healing and perception alteration to matter manipulation — but each must
-be constructed from meaningful, codified elements.
+Blood remained central: Aztecs used sacrificial blood to distill and redistribute Solaria’s potency, while Europeans experimented with transfusions and alchemical distillations to mimic the effect.
 
 ### Who Can Use Solaria
 
-Access requires two conditions:
+Anyone within the active Solaria field generated by the ancient network and possessing reactive materials (either as artifacts or within their body) can use Solaria, provided they know the proper techniques.
 
-Location. The user must be within an active Solaria field, a
-widely distributed
-network ensuring most gameplay areas support magical use.
+---
 
-Circuit Integration. Only those ritually attuned can channel
-Solaria. This attunement involves the
-inscription of sigils, tattoos, or scarifications on the body, often using sacred inks or blood.
-These markings
-transform the user into a living conduit — a conscious node within the Solaria circuit — capable of
-interpreting, amplifying, and redirecting the energy through learned ritual patterns.
+## Effects of Solaria
 
-Solaria is learned and refined, not instinctual — a language to be decoded and mastered.
+These are the core building blocks of Solaria’s effects. Many practical uses involve **combinations** of two or more effects, either **in parallel** (occurring simultaneously) or **in series** (occurring sequentially), following principles similar to electrical circuits.
 
-### Energetic Integration: Tlltikpak  Imprinta Sigillata
+> When the field returns to equilibrium, a physical phenomenon occurs. Greater disturbances produce stronger effects.
 
-To interface with Solaria, individuals must undergo ritual inscription — a process by which the body
-becomes a conductive node in the planetary energy field. Two primary traditions exist: the Mesoamerican system
-(Tlāltikpak) and the European-alchemical method (Imprinta Sigillata). Both transform the
-practitioner into a living glyph, capable of encoding, modulating, and channeling Solaria’s energy.
+Core effects include:
 
-#### Mesoamerican Tradition: Tlltikpak
+* **Gravitation** — manipulation of gravitational forces for levitation, attraction, or propulsion.
+* **Flare** — instantaneous bursts of energy, light, or void explosions.
+* **Beam** — sustained energy rays or currents, luminous or void.
+* **Mutation** — permanent alteration of matter or living beings, enhancing or damaging.
+* **Resonance** — temporary disturbance of an object or being, weakening or confusing without permanent damage.
 
-(from Classical Nahuatl: “that which is upon the Earth”)
+**Color code & aesthetics:**
 
-Function:
-Tlāltikpak markings are sacred glyphs applied to the body through ink, scarification, or
-ceremonial paint. They serve as active glyphic circuits, linking the user to the solar network.
-Arranged in spirals or cardinal grids, they mirror the spatial logic of Solaria’s resonance
-patterns.
+* Bright phenomena: **yellow/golden**, accompanied by sparks, glowing filaments, flashes, and bursts of heat.
+* Void phenomena: **purple/blue-black**, with black sparks, ice crystals, violet lightning, greenish flashes, and cold gusts.
+* **Sight** — Radiant glare: golden flares or purple void pulses, sparks, glowing filaments, bursts of light.
+* **Touch** — Thermal / Cold bloom: warmth or chilling vacuum precedes activation.
+* **Sound** — Resonance: low hum or crackle of energized field.
+* **Smell** — Ionized air: sun-baked stone or ozone-rich vacuum.
 
-| Feature | Description |
-| --- | --- |
-| Design Motifs | Inspired by the Aztec calendar, xiuhtlapohualli (ritual year), and sacred day
-glyphs. |
-| Color Palette | Maya Blue (knowledge), Red Ochre (sacrifice), Jade Green (vitality). |
-| Geometric Placement | Glyphs follow muscular lines and joints — treating the body as sacred architecture. |
-| Activation Ritual | Applied during investiture rites at energy nodes (e.g. pyramids, cenotes, solstice
-temples). |
+**Warnings:** Incorrect or imprecise modulation can lead to catastrophic or lethal effects.
 
-🌀 Gameplay Mechanics:
-Tlāltikpak grant unique magical effects or passive enhancements. Certain incantations
-require specific glyph patterns to be present or recently refreshed.
+---
+
+## Aspects of Solaria
+
+| Aspect               | Domain                    | Effects                                | Symbolism                 | Element |
+| -------------------- | ------------------------- | -------------------------------------- | ------------------------- | ------- |
+| **Jaguar (Ocelotl)** | Agility, Perception       | Enhance movement, gravity manipulation | Sacred to Tezcatlipoca    | 🜂      |
+| **Serpent (Coatl)**  | Wisdom, Healing           | Cures illness, controls rivers         | Linked to Quetzalcoatl    | 🜄      |
+| **Ape (Simian)**     | Strength, Fury            | Massive strength, intimidation         | Mythic rage               | 🜃      |
+| **Eagle (Cuauhtli)** | Vision, Prophecy          | Flight, foresight, solar-light attacks | Emblem of Huitzilopochtli | 🜁      |
+| **Toad (Tepēztli)**  | Necromancy, Spirit Travel | Hallucinations, dreamwalking           | Liminal being             | 🜄      |
+| **Bat (Tzotz)**      | Fear, Shadow              | Sonic bursts, vanishings               | Linked to death gods      | 🜁      |
+| **Spider (Nahui)**   | Fate, Weaving             | Manipulates destiny                    | Creator symbol            | 🜃      |
+
+---
+
+## Mysteries of the Ancient Network
+
+1. **Nazca Lines — Energy Condensers**
+   Ritual condensers aligning celestial routes of Solaria.
+2. **Aztec Human Sacrifice — Bio-Calibration**
+   Human hearts recalibrated the network; blood collected for enhanced effects.
+3. **Cenotes — Vertical Antennae**
+   Sacred sinkholes acted as cosmic receivers.
+4. **Mesoamerican Calendars — Temporal Protocols**
+   Day-glyphs act as access codes.
+5. **Stepped Pyramids — Frequency Modulators**
+   Each tier corresponds to a resonant band.
+6. **Ritual Skulls and Masks — Bio-Interfaces**
+   Obsidian masks allow alignment with cosmic energies.
+7. **Nahuatl Glyphs — Programming Language**
+   Classical Nahuatl functions as the Solaria command system.
+
+---
+
+## Scientific Hypotheses
+
+* Over the centuries, various scientists risked uncovering Solaria despite the Seekers and Papacy erasing nearly all traces. The most striking case was **Nikola Tesla**, who, inspired by Spanish diaries describing pyramids channeling solar energy, developed his *World Wireless System*.
+* Through the **Imprinta Sigillata**, European alchemy advanced dramatically. By interfacing with Solaria, alchemists began to grasp the structure of matter itself. They reportedly discovered methods to **cure illnesses** and even to **transmute base metals into gold**.

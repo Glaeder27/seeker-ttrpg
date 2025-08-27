@@ -1,22 +1,55 @@
-/*v1.25 2025-08-13T21:35:10.393Z*/
+/*v1.26 2025-08-27T09:45:17.290Z*/
 
-const menuSrc = document.body.getAttribute("data-menu-src");
-if (menuSrc) {
-  fetch(menuSrc)
-    .then((res) => res.json())
-    .then((data) => {
-      populateStaticMenu(data);
-      generateChapterSections();
-      initializeMenu();
-      initializeScrollSpy();
+const menuSources = [
+  "/data/menu-lorebook.json",
+  "/data/menu-rulebook.json",
+];
 
-      const sidenav = document.getElementById("sidenav");
-      setTimeout(() => {
-        sidenav?.classList.remove("no-transition");
-      }, 100);
-    })
-    .catch((err) => console.error("Failed to load sidenav menu:", err));
-}
+Promise.all(
+  menuSources.map(src =>
+    fetch(src)
+      .then(res => res.json())
+      .catch(err => {
+        console.error("Failed to load menu:", src, err);
+        return null;
+      })
+  )
+).then(menus => {
+  const sideMenu = document.querySelector("#sidenav .sidenav-content");
+  if (!sideMenu) return;
+
+  sideMenu.innerHTML = ""; // svuoto per inserire tutto
+
+  // --- Static menus (Lorebook + Rulebook, entrambi sempre presenti)
+  menus.filter(Boolean).forEach(data => populateStaticMenu(data, sideMenu));
+
+  // --- Dynamic chapter section
+  const dynamicNav = document.createElement("h3");
+  dynamicNav.classList.add("menu-section");
+
+  const pageHeader = document.querySelector("header.title h1");
+  const chapterTitle = pageHeader
+    ? pageHeader.textContent.trim()
+    : "This Chapter";
+  dynamicNav.textContent = chapterTitle;
+
+  sideMenu.appendChild(dynamicNav);
+
+  const chapterList = document.createElement("ul");
+  chapterList.id = "chapter-sections";
+  sideMenu.appendChild(chapterList);
+
+  // --- Init features
+  generateChapterSections();
+  initializeMenu();
+  initializeScrollSpy();
+  initializeCollapsibles();
+
+  const sidenav = document.getElementById("sidenav");
+  setTimeout(() => {
+    sidenav?.classList.remove("no-transition");
+  }, 100);
+});
 
 function initializeMenu() {
   const sideMenu = document.getElementById("sidenav");
@@ -183,11 +216,8 @@ function initializeScrollSpy() {
   updateActiveLink();
 }
 
-function populateStaticMenu(data) {
-  const sideMenu = document.querySelector("#sidenav .sidenav-content");
+function populateStaticMenu(data, sideMenu) {
   if (!sideMenu || !data || !data.items) return;
-
-  sideMenu.innerHTML = "";
 
   const collapsibleItem = document.createElement("div");
   collapsibleItem.classList.add("collapsible-sidenav-item");
@@ -210,7 +240,7 @@ function populateStaticMenu(data) {
   collapsibleContent.classList.add("collapsible-sidenav-content");
 
   const ul = document.createElement("ul");
-  ul.id = "site-index";
+  ul.id = `site-index-${data.title.toLowerCase()}`;
 
   data.items.forEach((item) => {
     const li = document.createElement("li");
@@ -227,24 +257,6 @@ function populateStaticMenu(data) {
   collapsibleContent.appendChild(ul);
   collapsibleItem.appendChild(collapsibleContent);
   sideMenu.appendChild(collapsibleItem);
-
-  // ➤ Dynamic chapter section
-  const dynamicNav = document.createElement("h3");
-  dynamicNav.classList.add("menu-section");
-
-  const pageHeader = document.querySelector("header.title h1");
-  const chapterTitle = pageHeader
-    ? pageHeader.textContent.trim()
-    : "This Chapter";
-  dynamicNav.textContent = chapterTitle;
-
-  sideMenu.appendChild(dynamicNav);
-
-  const chapterList = document.createElement("ul");
-  chapterList.id = "chapter-sections";
-  sideMenu.appendChild(chapterList);
-
-  initializeCollapsibles();
 }
 
 function initializeCollapsibles() {

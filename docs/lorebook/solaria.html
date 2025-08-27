@@ -1,4 +1,4 @@
-<!-- v1.69 2025-08-12T19:18:31.272Z -->
+<!-- v1.70 2025-08-27T15:56:25.942Z -->
 <!--v1.0 2025-08-03T14:40:43.432Z-->
 
 <!DOCTYPE html>
@@ -66,24 +66,45 @@
             padding: .5rem 1rem;
         }
 
-        .element-air {
-            color: #9DA9B3;
+        .element {
             font-size: 2.5em;
+            font-family: var(--font-alchemy-symbols);
         }
-
-        .element-earth {
-            color: #8A7A4F;
-            font-size: 2.5em;
+        .air {
+            background: linear-gradient(to bottom,
+                rgba(191, 203, 212, 0.9),
+                rgba(191, 203, 212, 0.2)),
+                url(/assets/textures/metal-1.jpg);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .element-fire {
-            color: #b94e3c;
-            font-size: 2.5em;
+        .earth {
+            background: linear-gradient(to bottom,
+                rgba(138, 122, 79, 0.9),
+                rgba(138, 122, 79, 0.2)),
+                url(/assets/textures/metal-1.jpg);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .element-water {
-            color: #556E8B;
-            font-size: 2.5em;
+        .fire {
+            background: linear-gradient(to bottom,
+                rgba(185, 78, 60, 0.9),
+                rgba(185, 78, 60, 0.5)),
+                url(/assets/textures/metal-1.jpg);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .water {
+            background: linear-gradient(to bottom,
+                rgba(85, 110, 139, 0.9),
+                rgba(85, 110, 139, 0.5)),
+                url(/assets/textures/metal-1.jpg);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .solaria-diagram {
@@ -153,7 +174,7 @@
         }
 
         .card-content h4 {
-            margin-top: 0;
+            margin-top: 10px;
             font-family: var(--font-antique);
             color: var(--bright-gold);
             text-transform: uppercase;
@@ -167,6 +188,15 @@
             text-transform: uppercase;
             font-size: 1.6rem;
             margin: 0;
+            font-weight: 500;
+        }
+
+        .feature-card h3,
+        .feature-card h4,
+        .feature-card .card-description.short,
+        .feature-card .solaria-icon {
+            opacity: 1;
+            transition: all .3s ease;
         }
 
         .feature-card:hover h3,
@@ -209,76 +239,154 @@
     </style>
 </head>
 
-<body id="solaria" data-menu-src="/data/menu-rulebook.json">
+<body id="solaria" data-menu-src="/data/menu-lorebook.json">
     <!-- SIDENAV -->
     <div id="sidenav-container"></div>
-<div id="sidenav-overlay"></div>
+    <div id="sidenav-overlay"></div>
     <!-- NAVBAR -->
     <div id="navbar-top"></div>
     <script src="/scripts/navbar.js"></script>
 
     <!-- MAIN CONTENT ───────────────────────────────────────────── -->
     <div class="title-banner" data-img-src="/assets/images/banners/home-page.webp"></div>
-    <main class="dual-column" type="rulebook">
+    <main class="dual-column" type="lorebook">
         <div class="left-column">
             <header class="title">
-                <div class="title-container">
-                    <span class="title-icon">🜍</span>
-                    <h1>Solaria</h1>
-                    <span class="title-icon rot90">🜍</span>
+                <div class="title-container page-title expanded">
+                    <h1 style="padding: 0 0 .2em;">Solaria</h1>
                 </div>
-                <p class="subtitle">The Lost Science of the Sun</p>
             </header>
 
-
             <!-- ─────────────── MAIN CONTENT ─────────────── -->
-            <section class="section-wrapper" id="section1" sidenav="1 • What is Solaria?">
-                <div class="section-number">Section I</div>
-                <h2 class="section" id="solaria">
-                    What is Solaria?
-                    <span class="section-ornament">⸺ ☼ ⸺</span>
-                </h2>
-                <p><strong>Solaria</strong> is a form of cosmic energy discovered and harnessed by Mesoamerican
-                    civilizations, most
-                    notably the <span class="tooltip">Tenochca</span>, through a sophisticated system of engineering.
+            <!-- 1 • Core Concept -->
+            <section class="section-wrapper" id="section1" sidenav="1 • What is Solaria">
+                <header class="section var-1">
+                    <div class="section-number">
+                        <p>Section I</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">☉</span>
+                        <h2>What is Solaria?</h2>
+                        <span class="title-icon right rot90">☉</span>
+                    </div>
+                    <p class="subtitle">The Lost Science of the Sun</p>
+                </header>
+
+                <!-- Definition -->
+                <p><strong class="highlight">Solaria</strong> is a form of <strong><em>cosmic energy discovered and
+                            harnessed by Mesoamerican civilizations</em></strong>, most notably the <span
+                        class="tooltip">Tenochca</span>, through a sophisticated system of engineering.</p>
+
+                <p>Originally, the Aztecs called it <em>Tonatiuh</em>, meaning “Movement of the Sun” in <span
+                        class="tooltip">Nahuatl</span>, referring to the full spectrum of cosmic
+                    energy, including both bright (light, heat, illumination) and void (darkness, cold, entropy) forces.
+                    To conceal the
+                    existence of this energy, Seekers told Europeans that Tonatiuh was a deity worshiped by the natives.
                 </p>
-                <p>It bears no resemblance to the supernatural in the traditional sense: it is a scientific interaction
-                    with solar
-                    energy, channeled and distributed through ritual structures such as pyramids, stelae, and solar
-                    calendars. The
-                    “magic” of the New World is, in truth, an occult but natural branch of physics.</p>
-                <p>Anyone within the New World is exposed to the energy flows transmitted by this ancient network — and
-                    can learn to
-                    harness them.</p>
+
+                <!-- Paracelsus' quote -->
                 <blockquote>
                     <p>
                         “What you call sorcery is but the science of antiquity — a science our instruments are not yet
                         refined enough to discern.”</p>
-                    <p class="footer">— Paracelsus</p>
+                    <p class="footer">— <span class="tooltip">Paracelsus</span></p>
                     <p class="blockquote-attribution">Opera Omnia Apocrypha (attrib.)</p>
                 </blockquote>
+
+                <!-- Names -->
                 <h4>Nomenclature</h4>
                 <p>This power goes by different names, depending on the culture interpreting it:</p>
-                <ul>
-                    <li><strong class="highlight">Solaria</strong> — the more “scientific” European term, commonly used
-                        by Seekers</li>
-                    <li><strong class="highlight">Tonalli</strong> — from Nahuatl: the vital energy radiated by the Sun
+                <ul class="no-bullet">
+                    <li><strong class="highlight">Solaria</strong> — Latin term derived from a literal translation of
+                        the term Tonatiuh; used by European Seekers, Inquisitors, and scholars.</li>
+                    <li><strong class="highlight">Tonatiuh</strong> — Nahuatl term meaning “Movement of the Sun”; refers
+                        to the total cosmic energy including both bright and void aspects. Today, the term is recognized
+                        as the Aztec god of the day. This stems from a misinterpretation by the Buscadores: the Spanish
+                        thought that the Aztecs worshipped a deity, when in fact they worshipped solar energy itself.
                     </li>
-                    <li><strong class="highlight">Xiuhtlalpan</strong> — from Nahuatl: “sacred field of energy,” used by
-                        the Aztecs</li>
-                    <li><strong class="highlight">Æther Solis</strong> — a syncretic term favored by Renaissance
-                        alchemists</li>
                 </ul>
+                <p>Other terms (e.g., Xiuhtlalpan, Æther Solis, Tonalli) appear in certain manuscripts but are
+                    secondary.</p>
 
-                <h3>Why is Solaria active only in the New World?</h3>
+                    <!-- Duality -->
+                     <h4>Duality of Energy: Bright and Void</h4>
+
+<p>Solaria manifests as a dual energy system:</p>
+<ul class="no-bullet">
+<li><strong style="color: var(--solaria-bright)">Bright</strong> — associated with sunlight, heat, life, and illumination.</li>
+
+<li><strong style="color: var(--solaria-void)">Void</strong> — associated with darkness, cold, entropy, and the cosmic vacuum.</li>
+</ul>
+<p>Being a cosmically pervasive energy, Solaria flows through all matter and phenomena: not only the Sun and planets, but also stars, galaxies, black holes, and dark matter. While Aztecs understood this as a single Tonatiuh, European alchemists and scholars (influenced by Christianity) separated it conceptually. Void energy was considered occult, negative, even demonic, so the Papal Inquisitors were forbidden from using it.</p>
+            </section>
+
+            <!-- 2 • How Does Solaria Work -->
+            <section class="section-wrapper" id="section2" sidenav="2 • How Does Solaria Work">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">w</span>
+                        <h2 style="font-size: 3rem">How Does Solaria Work?</h2>
+                        <span class="title-icon right rot90">w</span>
+                    </div>
+                    <p class="subtitle">Placeholder</p>
+                </header>
+
                 <p>
-                    Solaria functions through a massive, continent-spanning transmission network constructed by the
+                    Solaria functions through a massive, <strong class="highlight">continent-spanning network</strong>
+                    constructed by the
                     ancient
-                    civilizations of the New World. This network, often mistaken by European scholars for mere
+                    civilizations of the New World. This system, often mistaken by European scholars for mere
                     ceremonial architecture,
-                    is in fact a precise system of energy harvesting, storage, and distribution — engineered to harness
+                    is in fact a precise system of energy capture, storage, and transmission — engineered to harness
                     solar power and
-                    render it accessible to those attuned to its frequency.
+                    render it accessible to those attuned to it.
+                </p>
+
+                <h3>The Tenochca Solar Network</h3>
+                <p>
+                    At the heart of this system are the great <strong class="highlight">pyramids</strong>, whose stepped
+                    geometry and
+                    mineral composition
+                    allow them to <em>capture and focus solar radiation</em>. During the day, especially at dawn and
+                    dusk when the global lighting is dim,
+                    one can witness radiant beams of concentrated light descending from the sky onto the apex of these
+                    structures — a
+                    spectacle known to local cultures as the “<em>Descent of the Sun Serpent</em>.” These visible
+                    phenomena are not
+                    symbolic, but physical: they mark the active transmission of solar energy into the network.
+                </p>
+                <p>
+                    From the pyramids, this energy is channeled into subterranean <strong
+                        class="highlight">cenotes</strong>, deep
+                    sinkholes whose
+                    mineral-rich waters serve as <em>natural capacitors</em>. These cenotes glow with blinding intensity
+                    when charged,
+                    their surfaces shimmering with contained power. The water becomes <strong>lethally
+                        energized</strong>: a single
+                    touch often results in immediate death, as if one had grasped a live wire. Accessing such sites is
+                    <em>strictly
+                        controlled</em> by local priesthoods and wardens, who maintain the balance between ritual
+                    sanctity and
+                    technological
+                    necessity.
+                </p>
+                <p>
+                    Once charged, the energy flows outward along <strong class="highlight">ley-lines</strong> —
+                    artificial veins embedded
+                    across the land
+                    using conductive materials such as obsidian, copper, and jade. These lines connect pyramids,
+                    cenotes, and other key
+                    sites in a geometric grid, allowing energy to travel vast distances without dissipation. At
+                    intervals along this
+                    grid stand <strong>stele</strong> and <strong>obelisk-nodes</strong>, which act as <em>field
+                        repeaters</em>
+                    they rebroadcast
+                    the signal, stabilize local fluctuations, and enable attuned individuals to tap into the Solarian
+                    current with
+                    precision and control.
                 </p>
                 <!-- —— Solaria Network Carousel —— -->
                 <div class="full-width">
@@ -291,11 +399,11 @@
                                     style="background-image: url('/assets/images/webp/templo-mayor-mosaic/templo-mayor-1.webp');">
                                     <div class="card-content">
                                         <div class="solaria-icon">
-                                            <img src="/assets/icons/svg/solaria/icon-pyramid.svg"
+                                            <img src="/assets/icons/webp/generic/icon-pyramid.webp"
                                                 alt="Pyramid: Energy Capture" title="Pyramid: Energy Capture"
                                                 class="solaria-icon" />
                                         </div>
-                                        <h3>Pyramid</h3>
+                                        <h3 class="card-title">Pyramid</h3>
                                         <h4>Energy Capture</h4>
                                         <p class="card-description short">Solar rays descend upon pyramid tops
                                             during celestial alignments.</p>
@@ -317,11 +425,11 @@
                                     style="background-image: url('/assets/images/webp/templo-mayor-mosaic/templo-mayor-2.webp');">
                                     <div class="card-content">
                                         <div class="solaria-icon">
-                                            <img src="/assets/icons/svg/solaria/icon-cenote.svg"
+                                            <img src="/assets/icons/webp/generic/icon-cenote.webp"
                                                 alt="Cenote: Energy Storage" title="Cenote: Energy Storage"
                                                 class="solaria-icon" />
                                         </div>
-                                        <h3>Cenote</h3>
+                                        <h3 class="card-title">Cenote</h3>
                                         <h4>Energy Storage</h4>
                                         <p class="card-description short">Cenotes act as luminous capacitors for
                                             stored solar energy.</p>
@@ -343,11 +451,11 @@
                                     style="background-image: url('/assets/images/webp/templo-mayor-mosaic/templo-mayor-3.webp');">
                                     <div class="card-content">
                                         <div class="solaria-icon">
-                                            <img src="/assets/icons/svg/solaria/icon-leyline.svg"
+                                            <img src="/assets/icons/webp/generic/icon-leyline.webp"
                                                 alt="Ley Lines: Transmitters" title="Ley Lines: Transmitters"
                                                 class="solaria-icon" />
                                         </div>
-                                        <h3>Ley Lines</h3>
+                                        <h3 class="card-title">Ley Lines</h3>
                                         <h4>Transmission</h4>
                                         <p class="card-description short">Energy is channeled through constructed
                                             solar veins.</p>
@@ -370,11 +478,11 @@
                                     style="background-image: url('/assets/images/webp/templo-mayor-mosaic/templo-mayor-4.webp');">
                                     <div class="card-content">
                                         <div class="solaria-icon">
-                                            <img src="/assets/icons/svg/solaria/icon-obelisk.svg"
+                                            <img src="/assets/icons/webp/generic/icon-monument.webp"
                                                 alt="Monuments: Distribution Nodes"
                                                 title="Monuments: Distribution Nodes" class="solaria-icon" />
                                         </div>
-                                        <h3>Monuments</h3>
+                                        <h3 class="card-title">Monuments</h3>
                                         <h4>Distribution Nodes</h4>
                                         <p class="card-description short">Transmitters grant localized access to the
                                             Solaria field.</p>
@@ -395,18 +503,18 @@
                                     style="background-image: url('/assets/images/webp/templo-mayor-mosaic/templo-mayor-5.webp');">
                                     <div class="card-content">
                                         <div class="solaria-icon">
-                                            <img src="/assets/icons/svg/solaria/icon-spellcasting.svg"
+                                            <img src="/assets/icons/webp/generic/icon-cast.webp"
                                                 alt="Users: Access & Manipulation" title="Users: Access & Manipulation"
                                                 class="solaria-icon" />
                                         </div>
-                                        <h3>Users</h3>
+                                        <h3 class="card-title">Users</h3>
                                         <h4>Access & Manipulation</h4>
                                         <p class="card-description short">Practitioners draw upon the field through
-                                            ritual inscriptions.</p>
+                                            reactive materials and formulae.</p>
                                         <p class="card-description full">
-                                            Once within a broadcast zone, initiates marked with glyphs or sigils can
+                                            Once within a broadcast zone, casters can
                                             access Solaria to invoke
-                                            phenomena, cast spells, or manipulate the world.
+                                            phenomena, cast spells, or manipulate the reality.
                                         </p>
                                     </div>
                                 </div>
@@ -417,44 +525,8 @@
                     </div>
                 </div>
                 <p>
-                    At the heart of this system are the great <strong>pyramids</strong>, whose stepped geometry and
-                    mineral composition
-                    allow them to <em>capture and focus solar radiation</em>. During the day, especially at dawn and
-                    dusk when the global lighting is dim,
-                    one can witness radiant beams of concentrated light descending from the sky onto the apex of these
-                    structures — a
-                    spectacle known to local cultures as the “<em>Descent of the Sun Serpent</em>.” These visible
-                    phenomena are not
-                    symbolic, but physical: they mark the active transmission of solar energy into the network.
-                </p>
-                <p>
-                    From the pyramids, this energy is channeled into subterranean <strong>cenotes</strong>, deep
-                    sinkholes whose
-                    mineral-rich waters serve as <em>natural capacitors</em>. These cenotes glow with blinding intensity
-                    when charged,
-                    their surfaces shimmering with contained power. The water becomes <strong>lethally
-                        energized</strong>: a single
-                    touch often results in immediate death, as if one had grasped a live wire. Accessing such sites is
-                    strictly
-                    controlled by local priesthoods and wardens, who maintain the balance between ritual sanctity and
-                    technological
-                    necessity.
-                </p>
-                <p>
-                    Once charged, the energy flows outward along <strong>ley-lines</strong> — artificial veins embedded
-                    across the land
-                    using conductive materials such as obsidian, copper, and jade. These lines connect pyramids,
-                    cenotes, and other key
-                    sites in a geometric grid, allowing energy to travel vast distances without dissipation. At
-                    intervals along this
-                    grid stand <strong>stele</strong> and <strong>obelisk-nodes</strong>, which act as field repeaters:
-                    they rebroadcast
-                    the signal, stabilize local fluctuations, and enable attuned individuals to tap into the Solarian
-                    current with
-                    precision and control.
-                </p>
-                <p>
-                    The Old World lacks this infrastructure entirely. Its megaliths, temples, and natural formations —
+                    <strong>The Old World lacks this infrastructure entirely</strong>. Its megaliths, temples, and
+                    natural formations —
                     while impressive
                     — were never designed for energetic transmission. Without pyramidic collectors, charged cenotes,
                     ley-lines, or
@@ -462,365 +534,133 @@
                     own: the field
                     requires a <em>living circuit</em> — a continuous, functional system rooted in the land itself.
                 </p>
-            </section>
 
-            <!-- Mysteries of Solaria: Ancient Technologies Reclaimed -->
-            <section class="section-wrapper" id="section2" sidenav="2 • How Does Solaria Work?">
-                <div class="section-number">Section II</div>
-                <h2 class="section" id="how-dows-solaria-work">
-                    How Does Solaria Work?
-                    <span class="section-ornament">⸺ ☼ ⸺</span>
-                </h2>
-                <p>
-                    Solaria behaves as both a physical energy field and an informational medium — meaning it not only
-                    exerts force or transmits power, but also stores and responds to encoded data, much like a primitive
-                    computer system embedded in the fabric of the world.
-                </p>
-
-                <p>
-                    The Mexica engineered a sophisticated system to interact with this energy. It functions through four
-                    interdependent mechanisms:
-                </p>
-
-                <ul>
-                    <li><strong>Absorption</strong> of solar energy by sacred materials such as volcanic stone,
-                        obsidian, cenote water, and gold, which act as natural capacitors.</li>
-                    <li><strong>Modulation</strong> of the energy using ritual architecture, carved glyphs, and harmonic
-                        geometries that encode specific functions into the current.</li>
-                    <li><strong>Transmission</strong> through a continent-spanning network of resonant structures
-                        (pyramids, stelae, cenotes) forming an active circuit of power.</li>
-                    <li><strong>Activation</strong> through <em>living conductors</em> — practitioners whose bodies are
-                        inscribed with ritual markings (tattoos, paint,
-                        scarification) that allow them to interface with the field. These markings, combined with ritual
-                        gestures, vocalized
-                        tones, and encoded blood, turn the human body into a dynamic ritual node.</li>
+                <!-- Modulation Mechanisms -->
+                <h3>Modulation Mechanisms</h3>
+                <p>To produce tangible effects, the field must be modulated according to precise patterns — formulas
+                    that disturb the field locally. Those patterns require:</p>
+                <ul class="diamond">
+                    <li><strong class="highlight">Reactive Materials</strong> — Sacred substances such as obsidian, cenote water, and gold react to
+                        Solaria. Their sacredness originates from their natural responsiveness, enabling effects. They
+                        can be used as artifacts or incorporated into tattoos, body paint, incisions and glyphs on
+                        practitioners to enhance or even enable their ability to manipulate Solaria.</li>
+                    <li><strong class="highlight">Spatial and Temporal Arrangement</strong> — Moving reactive materials through space and time in specific
+                        patterns disturbs the field at targeted points, producing desired phenomena.</li>
                 </ul>
 
-                <p>
-                    These components function because Solaria is <em>resonant</em>: it responds to harmonic frequencies,
-                    geometric regularities, and symbolic structure. Sacred materials contain crystalline or magnetic
-                    properties that enhance this interaction. The structures themselves are built according to
-                    principles of sacred geometry and astronomical alignment, ensuring resonance with cosmic rhythms.
-                </p>
-
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="align-left">Stimulus</th>
-                                <th class="align-left">Mechanism</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Sound</strong></td>
-                                <td class="align-left">Chants, whistles, and drumbeats in harmonic frequencies resonate
-                                    with the structures
-                                    and materials, initiating local field shifts.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Heat / Light</strong></td>
-                                <td class="align-left">Solar rays or ritual fires cause certain minerals to enter an
-                                    activated state,
-                                    making them conductive or receptive to energy flows.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Blood</strong></td>
-                                <td class="align-left">The iron in blood acts as a biochemical catalyst, often
-                                    completing a ritual
-                                    “circuit” in glyphs or stone channels.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Mental Intention</strong></td>
-                                <td class="align-left">Brainwave patterns (especially under ritual focus) can
-                                    synchronize with Solaria’s
-                                    informational layer, triggering specific responses.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Interfacing with Solaria -->
+                <h4>Interfacing with Solaria</h4>
+                <p>To become part of the circuit and interact with the field, practitioners use reactive materials on—and
+                <em>within</em>—the body.</p>
+                <p>Mesoamerican Tradition: Tlāltikpak — Glyphs drawn or etched along muscular lines and joints with mineral inks and
+                metallic paints (e.g., Maya Blue, red ochre, jade powders, gold/copper suspensions). These glyphic circuits couple the
+                body to Solaria’s resonance. New World physiology—blood rich in iron and other reactive elements—provides baseline
+                coupling, but major effects still require external artifacts and machines in sacred materials.</p>
+                
+                <p>European Tradition: Imprinta Sigillata — An alchemical counterpart developed after studying Tlāltikpak: fine-line sigils
+                and Hermetic diagrams inscribed with solar metals and infused blood (oxidized gold, verdigris copper, burnished iron).
+                Activation typically requires celestial alignment and personal sacrifice.</p>
+                
+                <div class="details">
+                <blockquote class="details"><h3>Ritual Blood Use</h3><p>Aztec priest-engineers historically distilled the blood of low-aptitude individuals to produce highly
+                reactive serum distributed to citizens to augment coupling with the field. Seekers emulate this via transfusions or ingestion for minor effects; major workings still depend on sacred artifacts and machinery.</p>
+                </blockquote>
+                <div class="img-container"><img class="details" src="/assets/historic/codex/codex-magliabechiano-folio-70.webp"></div>
                 </div>
 
-                <p>
-                    Activation stimuli are essential: without them, the system remains dormant. These inputs must match
-                    Solaria’s “language” — structured and coherent patterns that function as keys. Improper or random
-                    input is simply ignored by the field.
-                </p>
-
-                <h3>Scientific Hypotheses</h3>
-                <p>
-                    Scholars on both sides of the Atlantic have begun to study Solaria not as “magic,” but as a form of
-                    pre-modern science. The following are the main working theories proposed in academic circles:
-                </p>
-
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="align-left">Theory</th>
-                                <th class="align-left">Explanation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Symbolic Interface Theory</strong></td>
-                                <td class="align-left">Solaria reacts to specific symbolic codes — words, gestures,
-                                    diagrams — that
-                                    function as access protocols to its functions.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Cognitive Resonance Theory</strong></td>
-                                <td class="align-left">The human mind, under focused intent, can harmonize with Solaria
-                                    and issue
-                                    “commands” by aligning with its frequency.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Informational Field Theory</strong></td>
-                                <td class="align-left">Solaria is an ambient, structured field that responds to
-                                    organized patterns (sound,
-                                    thought, geometry), much like a processor reading input.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Environmental Symbiosis Theory</strong></td>
-                                <td class="align-left">The system is designed to resonate with biological and natural
-                                    elements — such as
-                                    blood, stone, and sunlight — that reflect planetary cycles.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Who Can Use Solaria?</h3>
-                <p>Solaria is not free-form magic and access requires two conditions:</p>
-                <p><strong class="highlight">Location</strong>. The user must be within an active Solaria field, a
-                    widely distributed
-                    network ensuring most gameplay areas support magical use.</p>
-                <p><strong class="highlight">Circuit Integration</strong>. Only those ritually attuned can channel
-                    Solaria. This attunement involves the
-                    inscription of sigils, tattoos, or scarifications on the body, often using sacred inks or blood.
-                    These markings
-                    transform the user into a living conduit — a conscious node within the Solaria circuit — capable of
-                    interpreting, amplifying, and redirecting the energy through learned ritual patterns.</p>
+                <!-- Who Can Use Solaria? -->
+                <h4>Who Can Use Solaria?</h4>
+                <p>Anyone within the active Solaria field generated by the ancient network and possessing reactive materials (either as artifacts or within their body) can use Solaria, provided they know the proper techniques.</p>
             </section>
 
-            <section class="section-wrapper" id="section3" sidenav="3 • Interfacing with Solaria">
-                <div class="section-number">Section III</div>
-                <h2 class="section" id="solaria">
-                    Interfacing with Solaria
-                    <span class="section-ornament">⸺ ☼ ⸺</span>
-                </h2>
-                <p>To interface with <strong>Solaria</strong>, individuals must undergo ritual inscription — a process
-                    by which the body
-                    becomes a conductive node in the planetary energy field. Two primary traditions exist: the
-                    Mesoamerican system
-                    (<em>Tlāltikpak</em>) and the European-alchemical method (<em>Imprinta Sigillata</em>). Both
-                    transform the
-                    practitioner into a living glyph, capable of encoding, modulating, and channeling Solaria’s energy.
-                </p>
+            <!-- 3 • What are Solarian Effects? -->
+            <section class="section-wrapper" id="section3" sidenav="3 • What are Solarian Effects?">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section III</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">w</span>
+                        <h2 style="font-size: 3rem">What are Solarian Effects?</h2>
+                        <span class="title-icon right rot90">w</span>
+                    </div>
+                    <p class="subtitle">Placeholder</p>
+                </header>
 
-                <h4>Mesoamerican Tradition: <i>Tlāltikpak</i></h4>
-                <p><em>(from Classical Nahuatl: “that which is upon the Earth”)</em></p>
-                <p><strong>Function:</strong><br>
-                    <em>Tlāltikpak</em> markings are sacred glyphs applied to the body through ink, scarification, or
-                    ceremonial paint. They serve as active glyphic circuits, linking the user to the solar network.
-                    Arranged in spirals or cardinal grids, they mirror the spatial logic of Solaria’s resonance
-                    patterns.
-                </p>
+                <p>After being disturbed by an individual interacting with it, the field tends to return to a state of equilibrium. In doing so, the energy passing through matter on its return journey generates a tangible physical phenomenon. Greater disturbances produce stronger effects.</p>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="align-left">Feature</th>
-                            <th class="align-left">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Design Motifs</td>
-                            <td class="align-left">Inspired by the Aztec calendar, <em>xiuhtlapohualli</em> (ritual year), and sacred day
-                                glyphs.</td>
-                        </tr>
-                        <tr>
-                            <td>Color Palette</td>
-                            <td class="align-left">Maya Blue (knowledge), Red Ochre (sacrifice), Jade Green (vitality).</td>
-                        </tr>
-                        <tr>
-                            <td>Geometric Placement</td>
-                            <td class="align-left">Glyphs follow muscular lines and joints — treating the body as sacred architecture.</td>
-                        </tr>
-                        <tr>
-                            <td>Activation Ritual</td>
-                            <td class="align-left">Applied during investiture rites at energy nodes (e.g. pyramids, cenotes, solstice
-                                temples).</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p>Core Solarian physical phenomena include:</p>
+                <ul class="diamond">
+                    <li><strong class="highlight">Gravitation</strong> — manipulation of gravitational forces for levitation, attraction, or propulsion.</li>
 
-                <h4>European Tradition: <i>Imprinta Sigillata</i></h4>
-                <p><em>(Latin: “sealed imprint” or <i>Sigillum Corporis</i>)</em></p>
-                <p><strong>Function:</strong><br>
-                    <em>Imprinta</em> are esoteric alchemical constructs — circuits of meaning etched into flesh using
-                    enchanted inks, solar metals, and infused blood. They encode the body with symbolic logic, allowing
-                    it
-                    to access Solaria in a manner akin to European magical frameworks.
-                </p>
+                    <li><strong class="highlight">Flare</strong> — instantaneous bursts of energy, light, or void explosions.</li>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="align-left">Feature</th>
-                            <th class="align-left">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Design Motifs</td>
-                            <td class="align-left">Classical alchemical symbols (🜔 Salt, 🜚 Gold, ☿ Mercury, 🜄 Water, 🜂 Fire) arranged
-                                in
-                                circuit-like diagrams.</td>
-                        </tr>
-                        <tr>
-                            <td>Style</td>
-                            <td class="align-left">Fine-line calligraphy, mandalas, and Hermetic charts integrated with human anatomy.</td>
-                        </tr>
-                        <tr>
-                            <td>Color Palette</td>
-                            <td class="align-left">Desaturated metallics: oxidized gold, verdigris copper, burnished iron.</td>
-                        </tr>
-                        <tr>
-                            <td>Activation Ritual</td>
-                            <td class="align-left">Only sanctioned alchemists or inquisitors may apply the sigils. Activation requires
-                                celestial alignment and personal sacrifice.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <li><strong class="highlight">Beam</strong> — sustained energy rays or currents, luminous or void.</li>
 
-                <h4>Duality & Convergence</h4>
-                <p>Though philosophically distinct, <em>Tlāltikpak</em> and <em>Imprinta</em> are interoperable systems.
-                    Both encode symbolic logic into the flesh to access the same field.</p>
+                    <li><strong class="highlight">Mutation</strong> — permanent alteration of matter or living beings, enhancing or damaging.</li>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="align-left">Relationship</th>
-                            <th class="align-left">Implication</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Symbolic Grammar</td>
-                            <td class="align-left">Two languages for the same “cosmic OS” — glyphic vs alchemical.</td>
-                        </tr>
-                        <tr>
-                            <td>Cultural Tension</td>
-                            <td class="align-left">Mesoamericans seek harmony and resonance; Europeans pursue control and decoding.</td>
-                        </tr>
-                        <tr>
-                            <td>Hybridization</td>
-                            <td class="align-left">Some Seekers combine both — becoming bridges or heretics, depending on context.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <li><strong class="highlight">Resonance</strong> — temporary disturbance of matter or living beings, weakening or confusing without permanent damage.</li>
+                </ul>
 
-                <h4>Ritual Body Modification & Solaria Access</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="align-left">Form</th>
-                            <th>Description</th>
-                            <th>In-World Significance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tattoos</td>
-                            <td>Permanent glyphic or symbolic markings.</td>
-                            <td>Grant passive abilities; required for advanced arts.</td>
-                        </tr>
-                        <tr>
-                            <td>Ceremonial Paint</td>
-                            <td>Temporary pigment applied before spells.</td>
-                            <td>May decay with use, requiring reapplication.</td>
-                        </tr>
-                        <tr>
-                            <td>Scarification</td>
-                            <td>Deep, sacred carvings that glow under activation.</td>
-                            <td>Often reserved for high initiates or battle-mages.</td>
-                        </tr>
-                        <tr>
-                            <td>Piercing/Bloodletting</td>
-                            <td>Incorporated into sigils as dynamic catalysts.</td>
-                            <td>Blood serves as a resonant element in many circuits.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p>These are the core building blocks of Solaria’s effects. Many practical uses involve combinations of two or more effects, either in <em class="highlight">parallel</em> (occurring simultaneously) or in <em class="highlight">series</em> (occurring sequentially), following principles similar to modern electrical circuits.</p>
 
-                <h4>Aesthetic Implementation</h4>
+                <h4>Color Code & Aesthetics</h4>
                 <p>
-                    Every use of <strong>Solaria</strong> leaves tangible, sensory traces in the world. It is a force of
-                    <em>heat</em>,
-                    <em>light</em>, and <em>resonance</em> — not subtle, not hidden. Where it flows, it bends the very
-                    air and matter
+                    Every use of <strong>Solaria</strong> leaves tangible, sensory traces in the world. It is a cosmic force — not subtle, not hidden. Where it flows, it bends the very air and matter
                     around it, announcing its presence in ways both wondrous and undeniable.
                 </p>
                 <table class="lore-table">
                     <thead>
                         <tr>
-                            <th class="align-left">Sense</th>
-                            <th>Manifestation</th>
-                            <th>Description</th>
+                            <th class="align-left" style="min-width: 160px">Feature</th>
+                            <th class="align-left"><strong style="color: var(--solaria-bright)">Bright</strong> Manifestation</th>
+                            <th class="align-left"><strong style="color: var(--solaria-void)">Void</strong> Manifestation</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>Dominant Colors</td>
+                            <td class="align-left">White, gold, yellow, orange</td>
+                            <td class="align-left">Purple, blue, black, teal</td>
+                        </tr>
+                        <tr>
                             <td>Sight</td>
-                            <td>Radiant Glare</td>
-                            <td>Glyphs ignite with pulses of sunlight — golden flares, corona halos, or burning sigils
-                                traced in the air or across the skin. The ambient light shifts subtly, like heat
-                                distortion in the air.</td>
+                            <td class="align-left">Incandescent sparks, glowing filaments, flashes</td>
+                            <td class="align-left">Faded sparks or ice crystals, crackling lightning, flashes</td>
                         </tr>
                         <tr>
                             <td>Touch</td>
-                            <td>Thermal Bloom</td>
-                            <td>A wave of heat precedes each invocation, like stepping into sunlight from the shade, or
-                                opening a door to a hot forge.</td>
+                            <td class="align-left">Waves of heat</td>
+                            <td class="align-left">Cold gusts</td>
                         </tr>
                         <tr>
                             <td>Sound</td>
-                            <td>Solar Crackle</td>
-                            <td>A low-frequency hum, the crackling of embers, or the sudden whoosh of heated air moving.
-                            </td>
+                            <td class="align-left">Low -frequency hum, embers’ crackle, sudden whoosh of heated air moving</td>
+                            <td class="align-left">Subsonic thrum, ice crackle</td>
                         </tr>
                         <tr>
                             <td>Smell</td>
-                            <td>Ionized Dust</td>
-                            <td>The air may carry the scent of sun-baked stone, charred herbs, or ozone after a
-                                lightning strike.</td>
+                            <td class="align-left">Sun-baked stone, charred herbs</td>
+                            <td class="align-left">Ozone‑rich vacuum</td>
                         </tr>
                     </tbody>
                 </table>
-
-                <h4>Consequences of Power</h4>
-                <p>
-                    <strong>Solaria is not subtle.</strong> Prolonged or excessive use can leave marks — on the body,
-                    the environment, and reality itself:
-                </p>
-                <ul>
-                    <li><strong>Ritual burn patterns</strong> may form on the caster's skin, symmetrical and deliberate
-                        like branded glyphs.</li>
-                    <li><strong>Ceremonial pigments</strong> may vaporize, smolder, or be consumed in golden smoke.</li>
-                    <li><strong>Scorched footprints</strong> or luminous handprints can remain for minutes or hours
-                        after a powerful act.</li>
-                    <li><strong>Sudden bursts of light</strong> — solar flashes — may briefly blind, disorient, or
-                        illuminate entire chambers.</li>
-                </ul>
             </section>
 
-            <section class="section-wrapper" id="section3" sidenav="A • Aspects of Solaria">
-                <div class="section-number">Appendix A</div>
-                <h2 class="section" id="how-dows-solaria-work">
-                    Aspects of Solaria
-                    <span class="section-ornament">⸺ ☼ ⸺</span>
-                </h2>
+            <!-- 4 • Aspects of Solaria -->
+            <section class="section-wrapper" id="section4" sidenav="4 • Aspects of Solaria">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section IV</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">g</span>
+                        <h2 style="font-size: 3rem">Aspects of Solaria</h2>
+                        <span class="title-icon right rot90">g</span>
+                    </div>
+                    <p class="subtitle">Placeholder</p>
+                </header>
+
                 <p>
                     Among those who have been altered by the <strong>Solaria field</strong>, patterns have emerged —
                     recurring bonds between the Seeker’s will and specific manifestations of primal force. These
@@ -837,7 +677,6 @@
                     rather influence how the Seeker channels magical energy, reacts to stimuli, and alters the world
                     through Solaria.
                 </p>
-                <h3>Known Aspects</h3>
                 <table class="aspect-elements-table">
                     <thead>
                         <tr>
@@ -854,49 +693,49 @@
                             <td>Agility, Perception, Stealth</td>
                             <td>Enhances movement, reflexes, night vision, camouflage, fear</td>
                             <td>Sacred to Tezcatlipoca; lord of the night and warriors</td>
-                            <td class="element-fire" title="Fire">🜂</td>
+                            <td class="element fire" title="Fire">d</td>
                         </tr>
                         <tr>
                             <td><strong>Serpent (Coatl)</strong></td>
                             <td>Wisdom, Healing, Transmutation</td>
                             <td>Cures illness, changes forms, controls poisons or rivers</td>
                             <td>Associated with Quetzalcoatl; symbol of rebirth and knowledge</td>
-                            <td class="element-water" title="Water">🜄</td>
+                            <td class="element water" title="Water">c</td>
                         </tr>
                         <tr>
                             <td><strong>Ape (Simian)</strong></td>
                             <td>Strength, Fury, Protection</td>
                             <td>Grants massive strength, shockwaves, intimidation</td>
                             <td>Mythic strength and primal rage (Afro-syncretic influence)</td>
-                            <td class="element-earth" title="Earth">🜃</td>
+                            <td class="element earth" title="Earth">b</td>
                         </tr>
                         <tr>
                             <td><strong>Eagle (Cuauhtli)</strong></td>
                             <td>Vision, Sky, Prophecy</td>
                             <td>Grants flight, wind control, foresight, sun-fire attacks</td>
                             <td>Emblem of Huitzilopochtli; solar warrior and divine messenger</td>
-                            <td class="element-air" title="Air">🜁</td>
+                            <td class="element air" title="Air">a</td>
                         </tr>
                         <tr>
                             <td><strong>Toad (Tepēztli)</strong></td>
                             <td>Hallucination, Spirit Travel, Necromancy</td>
                             <td>Induces visions, communicates with the dead, dreamwalking</td>
                             <td>Toad venom used in rituals; liminal being between worlds</td>
-                            <td class="element-water" title="Water">🜄</td>
+                            <td class="element water" title="Water">c</td>
                         </tr>
                         <tr>
                             <td><strong>Bat (Tzotz)</strong></td>
                             <td>Silence, Fear, Shadow</td>
                             <td>Manipulates darkness, sonic bursts, vanishings</td>
                             <td>Linked to death gods and night sacrifice</td>
-                            <td class="element-air" title="Air">🜁</td>
+                            <td class="element air" title="Air">a</td>
                         </tr>
                         <tr>
                             <td><strong>Spider (Nahui)</strong></td>
                             <td>Traps, Fate, Weaving</td>
                             <td>Binds enemies, manipulates destiny threads, knowledge</td>
                             <td>Symbol of creation myths and weaving of reality</td>
-                            <td class="element-earth" title="Earth">🜃</td>
+                            <td class="element earth" title="Earth">b</td>
                         </tr>
                     </tbody>
                 </table>
@@ -904,70 +743,6 @@
                     While every Seeker can learn to draw upon the Solaria field, those with a dominant Aspect find
                     their abilities shaped by deeper instincts — a buried code, awakened through ritual exposure and
                     irreversible mutation.
-                </p>
-            </section>
-
-            <!-- Mysteries of Solaria: Ancient Technologies Reclaimed -->
-            <section class="section-wrapper" id="section3" sidenav="3 • Mysteries of Solaria">
-                <h2 class="section" id="solaria-mysteries">
-                    Mysteries of the Ancient Network
-                    <span class="section-ornament">⸺ ☼ ⸺</span>
-                </h2>
-                <!-- Nazca Lines -->
-                <h3 class="subsection" id="nazca-lines">1. Nazca Lines</h3>
-                <h4>Energy Condensers</h4>
-                <p>
-                    The vast geoglyphs carved into the Peruvian desert are <strong>ritual condensers</strong>
-                    designed to align with celestial routes of Solaria. At specific solar positions, blood-ritual
-                    activations concentrate energy along the lines and channel it toward distant temples.
-                </p>
-                <!-- Aztec Human Sacrifice -->
-                <h3 class="subsection" id="aztec-sacrifice">2. Aztec Human Sacrifice</h3>
-                <h4>Bio-Calibration</h4>
-                <p>
-                    Human hearts acted as <strong>bio-nodes</strong> saturated with Solaria. Large-scale
-                    sacrifices recalibrated the network, stabilizing power flows after eclipses, droughts, or
-                    territorial shifts.
-                </p>
-                <!-- Cenotes -->
-                <h3 class="subsection" id="cenotes">3. Cenotes</h3>
-                <h4>Vertical Antennae</h4>
-                <p>
-                    Sacred sinkholes function as <strong>vertical antennas</strong> that draw cosmic charge
-                    into the ground water. Offerings—occasionally living—served as <em>catalysts</em>,
-                    enabling high-intensity rituals linked to weather control and healing.
-                </p>
-                <!-- Calendars -->
-                <h3 class="subsection" id="calendars">4. Mesoamerican Calendars</h3>
-                <h4>Temporal Protocols</h4>
-                <p>
-                    The <em>Tonalpohualli</em> and <em>Xiuhpohualli</em> are not mere calendars; they are
-                    <strong>temporal coding systems</strong>. Each day-glyph combination unlocks a distinct
-                    Solarian “protocol,” allowing practitioners to access specialized effects or visions.
-                </p>
-                <!-- Stepped Pyramids -->
-                <h3 class="subsection" id="pyramids">5. Stepped Pyramids</h3>
-                <h4>Frequency Modulators</h4>
-                <p>
-                    Every tier represents a discrete <strong>resonant band</strong>. Ascending a pyramid
-                    progressively modulates Solaria, with the summit acting as a high-gain transmitter that
-                    propagates ritual commands throughout the continental grid.
-                </p>
-                <!-- Ritual Skulls & Masks -->
-                <h3 class="subsection" id="skulls-masks">6. Ritual Skulls & Masks</h3>
-                <h4>Bio-Interfaces</h4>
-                <p>
-                    Gem-inlaid skulls and obsidian masks serve as <strong>frequency shifters</strong>,
-                    letting the wearer harmonize personal energy with deific or animalistic patterns stored
-                    in the network.
-                </p>
-                <!-- Nahuatl Language -->
-                <h3 class="subsection" id="nahuatl">7. Nahuatl Glyphs</h3>
-                <h4>Programming Language</h4>
-                <p>
-                    Classical Nahuatl forms the <strong>programming lexicon</strong> of Solaria. Words,
-                    glyphs, and tonal accents act as command strings that call specific routines in the
-                    energy field.
                 </p>
             </section>
         </div>
@@ -1146,6 +921,6 @@
 
     <script src="/scripts/sidebar.js"></script>
     <script src="/scripts/core.js"></script>
-<script src="/scripts/version-check.js"></script>
+    <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
 </body>

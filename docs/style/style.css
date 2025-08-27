@@ -1,4 +1,4 @@
-/*v3.41 2025-08-20T19:19:58.103Z*/
+/*v3.42 2025-08-27T15:07:07.032Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -28,6 +28,7 @@
     --light-brown: #916339;
 
     --light-paper: #938663;
+    --paper: #070500;
     --dark-paper: #373531;
 
     /* Backgrounds */
@@ -46,6 +47,10 @@
     --stance-inquisitive: #B89B4B;
     --stance-balanced: #5E7A78;
     --stance-mystic: #735A84;
+
+    /* Solaria */
+    --solaria-bright: #e4d8a1;
+    --solaria-void: #ba7de2;
 
     /* Categories */
     --category-combat: 133, 48, 48;
@@ -1325,6 +1330,23 @@ body#home-page {
     transition: all .3s ease;
 }
 
+.feature-card-inverted h3,
+.feature-card-inverted h4,
+.feature-card-inverted .card-description.short,
+.feature-card-inverted .carousel-icon {
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.feature-card-inverted:hover h3,
+.feature-card-inverted:hover h4,
+.feature-card-inverted:hover .card-description.short,
+.feature-card-inverted:hover .carousel-icon {
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+
 #home-page .card-content,
 #home-page .carousel-icon,
 #home-page .card-description,
@@ -1449,7 +1471,7 @@ p.card-description {
     justify-content: center;
     position: absolute;
     inset: 0;
-    margin: auto;
+    margin: 2px;
 }
 
 .sidenav-toggle-btn:hover .toggle-btn-icon {
@@ -1710,7 +1732,7 @@ p.card-description {
     text-decoration: none;
     transition: color 0.2s;
     display: block;
-    padding: .5rem;
+    padding: 0;
 }
 
 #site-index a {
@@ -1726,6 +1748,7 @@ p.card-description {
     border-left: 3px solid #fff;
     padding-left: 0.5rem;
     line-height: 2;
+    border-radius: .5rem;
 }
 
 #sidenav-content a.active {
@@ -2021,13 +2044,10 @@ h1 {
 
 h2 {
     font-family: var(--font-antique);
-    font-size: clamp(3rem, 6.5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem);
     line-height: 1.2;
     font-weight: 500;
     margin: 1rem auto;
-    /*text-transform: uppercase;
-    font-variant: small-caps;*/
-    /* testing without those */
     color: var(--ancient-gold, #d6b879);
     background: linear-gradient(to bottom,
             rgba(var(--deep-charcoal-rgb), 0.2),
@@ -3679,8 +3699,42 @@ blockquote.clean {
     margin: auto;
 }
 
+blockquote.details {
+    background-image: url(/assets/textures/paper-2.png);
+    background-color: var(--paper);
+    border: none;
+    font-family: var(--font-main);
+    font-style: italic;
+    font-weight: 300;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 1rem 0 0 1rem;
+}
+
 blockquote.clean p {
     font-size: 1rem;
+}
+
+blockquote.details::before{
+    content: none;
+}
+
+blockquote.details::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    top: 0;
+    background: linear-gradient(to right,
+            rgba(var(--burnt-copper-rgb), 0.2),
+            rgba(var(--ancient-gold-rgb), 0.2)),
+        url(/assets/textures/antique-gold-1.jpg);
+}
+blockquote.details::before{
+    left: 0;
+}
+blockquote.details::after{
+    right: 0;
 }
 
 blockquote h3 {
@@ -3688,10 +3742,59 @@ blockquote h3 {
     font-size: 1.3em;
     color: var(--ancient-gold, #D4B55A);
 }
+blockquote.details h3 {
+    border-bottom: none;
+    font-size: 1em;
+    color: var(--ancient-gold, #D4B55A);
+    margin: .5rem 0 0 0;
+    font-style: normal;
+}
+blockquote.details p {
+    margin-block-start: 0;
+    margin-block-end: 1em;
+    line-height: 1.5;
+    font-size: .9em;
+    font-style: normal;
+}
+
+blockquote.details h3::after {
+    content: none;
+}
+
+div.details {
+    display: grid;
+    grid-template-columns: minmax(65%, 2fr) minmax(35%, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+    position: relative;
+    left: -3rem;
+}
+
+div.details .img-container {
+    border-radius: .5rem;
+    background: linear-gradient(to right,
+            rgba(var(--burnt-copper-rgb), 0.2),
+            rgba(var(--ancient-gold-rgb), 0.2)),
+            url(/assets/textures/antique-gold-1.jpg);
+}
+
+div.details img.details {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 3px;
+    border-radius: .5rem;
+}
 
 @media (max-width: 767px) {
     blockquote.clean p {
         font-size: .9rem;
+    }
+    img.details {
+        display: none;
+    }
+    blockquote.details {
+        margin-inline: unset;
     }
 }
 

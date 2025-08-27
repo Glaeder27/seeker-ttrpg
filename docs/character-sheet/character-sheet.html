@@ -1,0 +1,127 @@
+<!-- v2.29 2025-08-27T20:48:00.185Z -->
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Character Sheet</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+    <meta name="last-modified" content="2025-07-19T12:04:00Z" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script src="/scripts/config.js"></script>
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/character-sheet/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="cs">
+    <div class="cs-wrapper">
+        <!-- Sidebar -->
+        <nav class="cs-sidebar">
+            <button class="cs-sidebar-button" data-section="identity" aria-selected="true">
+                <i data-lucide="user"></i>
+            </button>
+            <button class="cs-sidebar-button" data-section="combat">
+                <i data-lucide="swords"></i>
+            </button>
+            <button class="cs-sidebar-button" data-section="inventory">
+                <i data-lucide="package"></i>
+            </button>
+            <button class="cs-sidebar-button" data-section="powers">
+                <i data-lucide="sun"></i>
+            </button>
+            <button class="cs-sidebar-button" data-section="exploration">
+                <i data-lucide="map"></i>
+            </button>
+            <button class="cs-sidebar-button" data-section="notes">
+                <i data-lucide="book-open-text"></i>
+            </button>
+        </nav>
+
+        <!-- Fixed header -->
+        <div class="cs-main-column">
+            <aside class="cs-fixed">
+                <!-- Character Identity -->
+                <div class="cs-block-flex">
+                    <section class="cs-character-name">
+                        <div class="cs-character-inputs">
+                            <!-- Name -->
+                            <label for="character-name">Character Identity</label>
+                            <span class="character-name-wrapper">
+                                <span data-field="namePrefix" class="character-name-prefix"
+                                    id="namePrefix">Seeker</span>
+                                <input data-field="characterName" type="text" id="character-name"
+                                    placeholder="Enter your character's name..." />
+                            </span>
+                            <!-- Allegiance -->
+                            <div class="allegiance-box">
+                                <label>In service of the</label>
+                                <select data-field="oath" class="input-box" id="oath">
+                                    <option value="" disabled selected>Select your oath</option>
+                                    <option value="england">Crown of England</option>
+                                    <option value="spain">Crown of Spain</option>
+                                    <option value="papacy">Papacy</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Allegiance Symbol -->
+                        <div id="oathIcon" class="oath-symbol">
+                            <img id="oathImg" src="" alt="">
+                        </div>
+                    </section>
+                </div>
+                <!-- Aptitudes -->
+                <div class="aptitude-bar" id="aptitudeBar"></div>
+            </aside>
+
+            <main class="cs-content" id="sheetContent">
+                <!-- Dynamic -->
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Init Lucide icons
+        lucide.createIcons();
+    </script>
+
+    <script src="/scripts/core.js"></script>
+    <script src="/character-sheet/character-sheet.js"></script>
+    <script src="/scripts/version-check.js"></script>
+    <script src="/scripts/iconizer.js"></script>
+</body>
+
+</html>
