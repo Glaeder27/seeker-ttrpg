@@ -1,8 +1,14 @@
-/*v1.5 2025-08-04T14:08:18.460Z*/
+/*v1.6 2025-08-28T08:26:53.478Z*/
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCZu-da02W-5Q4gd5N7mhwx_UReEu8QSfE",
   authDomain: "seeker-ttrpg.firebaseapp.com",
+  databaseURL: "https://seeker-ttrpg-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "seeker-ttrpg",
   storageBucket: "seeker-ttrpg.firebasestorage.app",
   messagingSenderId: "762210490643",
@@ -10,9 +16,13 @@ const firebaseConfig = {
   measurementId: "G-F3HS8JCNLT"
 };
 
-// Inizializza Firebase
-firebase.initializeApp(firebaseConfig);
+// Inizializza l'app
+const app = initializeApp(firebaseConfig);
 
-// Definisci i servizi di Firebase come variabili globali
-const auth = firebase.auth();
-const db = firebase.firestore();
+// Servizi
+const auth = getAuth(app);
+const firestore = getFirestore(app);
+const realtimeDB = getDatabase(app);
+
+// Esporta (se usi moduli)
+export { app, auth, firestore, realtimeDB };

@@ -1,4 +1,5 @@
-/*v1.78 2025-08-04T14:33:45.677Z*/
+/*v1.79 2025-08-28T08:39:42.841Z*/
+import { auth } from "/scripts/config.js";
 
 fetch("/navbar.html")
   .then((res) => res.text())

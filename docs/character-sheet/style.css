@@ -1,4 +1,4 @@
-/*v1.0 2025-08-27T21:22:20.132Z*/
+/*v1.0 2025-08-27T21:22:43.794Z*/
 
 :root {
     --card: #0e0f12;
@@ -335,6 +335,7 @@ textarea.auto-resize::-webkit-scrollbar-thumb {
     box-sizing: border-box;
 
     /* rimuove frecce native */
+    appearance: textfield;
     -moz-appearance: textfield;
     -webkit-appearance: none;
 }
