@@ -1,4 +1,4 @@
-/*v1.1 2025-08-28T10:46:33.104Z*/
+/*v1.2 2025-08-28T15:14:36.544Z*/
 
 :root {
     --card: #161718;
@@ -32,6 +32,7 @@ p {
 :focus-visible {
     outline: none;
 }
+
 .character-sheet {
     padding-top: 4rem;
 }

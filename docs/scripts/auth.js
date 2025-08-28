@@ -1,4 +1,4 @@
-/*v1.10 2025-08-28T15:06:58.894Z*/
+/*v1.11 2025-08-28T15:15:57.279Z*/
 import { auth } from "./config.js";
 import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } 
     from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
@@ -25,7 +25,7 @@ onAuthStateChanged(auth, (user) => {
         document.body.style.display = "block"; // mostra la pagina se nascosta
     } else {
         console.log("Nessun utente loggato");
-        window.location.href = "/login.html";
+        window.location.href = "/auth.html";
     }
 });
 
@@ -44,7 +44,7 @@ if (logoutBtn) {
         try {
             await signOut(auth);
             console.log("Utente disconnesso");
-            window.location.href = "/login.html";
+            window.location.href = "/auth.html";
         } catch (err) {
             console.error("Errore durante logout:", err);
         }
