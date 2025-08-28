@@ -33,6 +33,16 @@
     <script src="/scripts/core.js"></script>
     <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
+
+    <style>
+        label {
+            font-family: var(--font-main);
+            color: var(--pale-beige);
+        }
+        select {
+            background: transparent;
+        }
+    </style>
 </head>
 
 <body class="clean" id="user-page">
@@ -43,11 +53,12 @@
     <main>
         <section class="central-column">
             <header class="title">
-                <div class="title-container">
+                <div class="welcome-container" id="pageTitle">
                     <span class="title-icon">🜍</span>
-                    <h1 id="pageTitle">Welcome to The Encampment, <span id="userName"></span>!</h1>
+                    <h2 class="welcome">Welcome to the Encampment,</h2>
                     <span class="title-icon rot90">🜍</span>
                 </div>
+                <h1><span id="userName"></span>!</h1>
             </header>
 
             <div id="notLoggedIn" class="message-box message-error" style="display: none;">
@@ -60,7 +71,7 @@
                 <form id="profileForm" class="profile-form">
                     
                     <div class="profile-section">
-                        <h2><i class="fa-solid fa-user"></i> Personal Details</h2>
+                        <h3><i class="fa-solid fa-user"></i> Personal Details</h3>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" placeholder="Your chosen name" required>
@@ -82,7 +93,7 @@
                     <hr>
 
                     <div class="profile-section">
-                        <h2><i class="fa-solid fa-ship"></i> Your Expedition</h2>
+                        <h3><i class="fa-solid fa-ship"></i> Your Expedition</h3>
                         <div class="form-group">
                             <label for="faction">Faction</label>
                             <select id="faction" required>
@@ -108,24 +119,6 @@
                                 <option value="intermediate">Intermediate</option>
                                 <option value="experienced">Experienced</option>
                             </select>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="profile-section">
-                        <h2><i class="fa-regular fa-clock"></i> Availability</h2>
-                        <div class="form-group">
-                            <label for="timezone">Timezone</label>
-                            <input type="text" id="timezone" placeholder="e.g. GMT+1, CET">
-                        </div>
-                        <div class="form-group">
-                            <label for="availability">Weekly Availability</label>
-                            <textarea id="availability" rows="3" placeholder="e.g. Monday evenings, weekends..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="preferredPlatform">Gaming Platform</label>
-                            <input type="text" id="preferredPlatform" placeholder="e.g. Discord, Roll20, Foundry">
                         </div>
                     </div>
                     
