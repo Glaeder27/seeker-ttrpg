@@ -1,4 +1,8 @@
-/*v2.3 2025-08-04T14:08:30.755Z*/
+/*v2.4 2025-08-28T09:19:28.383Z*/
+
+import { auth, firestore } from "./config.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { doc, getDoc, setDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // Ottieni riferimenti agli elementi HTML
 const userProfileDiv = document.getElementById('userProfile');
@@ -6,45 +10,31 @@ const notLoggedInP = document.getElementById('notLoggedIn');
 const profileForm = document.getElementById('profileForm');
 const pageTitleSpan = document.getElementById('userName');
 
-// Nuovi riferimenti per i campi del form
+// Campi form
 const nameInput = document.getElementById('name');
 const bioInput = document.getElementById('bio');
-const languagesInput = document.getElementById('languages');
-const socialLinkInput = document.getElementById('socialLink');
-const factionSelect = document.getElementById('faction');
-const preferredRoleInput = document.getElementById('preferredRole');
-const preferredPlaystyleInput = document.getElementById('preferredPlaystyle');
-const experienceSelect = document.getElementById('experience');
-const timezoneInput = document.getElementById('timezone');
-const availabilityInput = document.getElementById('availability');
-const preferredPlatformInput = document.getElementById('preferredPlatform');
-
+// ... altri campi
 const logoutButton = document.getElementById('logoutButton');
 
-// Ascolta i cambiamenti di stato dell'utente (login/logout)
-auth.onAuthStateChanged(user => {
+// Ascolta cambiamenti di stato utente
+onAuthStateChanged(auth, user => {
     if (user) {
-        // Utente loggato
         userProfileDiv.style.display = 'block';
         notLoggedInP.style.display = 'none';
 
-        // Carica i dati utente esistenti
         loadUserProfile(user.uid);
 
-        // Aggiungi un listener per salvare il profilo
         profileForm.addEventListener('submit', (e) => {
             e.preventDefault();
             saveUserProfile(user);
         });
 
-        // Aggiungi un listener per il pulsante di logout
         logoutButton.addEventListener('click', async () => {
-            await auth.signOut();
-            window.location.href = '/auth.html'; // Reindirizza alla pagina di login
+            await signOut(auth);
+            window.location.href = '/auth.html';
         });
 
     } else {
-        // Utente non loggato
         userProfileDiv.style.display = 'none';
         notLoggedInP.style.display = 'block';
     }
@@ -55,11 +45,11 @@ auth.onAuthStateChanged(user => {
  * @param {string} userId L'ID dell'utente autenticato.
  */
 async function loadUserProfile(userId) {
-    const userDocRef = db.collection('users').doc(userId);
+    const userDocRef = doc(firestore, 'users', userId);
     try {
-        const doc = await userDocRef.get();
-        if (doc.exists) {
-            const userData = doc.data();
+        const docSnap = await getDoc(userDocRef);
+        if (docSnap.exists()) {
+            const userData = docSnap.data();
             // Popola i campi del form con i dati esistenti
             pageTitleSpan.textContent = userData.name || 'Seeker';
             nameInput.value = userData.name || '';
@@ -104,9 +94,9 @@ async function saveUserProfile(user) {
     };
 
     // Salva i dati su Cloud Firestore
-    const userDocRef = db.collection('users').doc(userId);
+    const userDocRef = doc(firestore, 'users', userId);
     try {
-        await userDocRef.set(userData, { merge: true }); // 'merge: true' per non sovrascrivere l'intero documento
+        await setDoc(userDocRef, userData, { merge: true });
         pageTitleSpan.textContent = userData.name || 'Seeker';
         alert('Profile saved successfully!');
     } catch (error) {
