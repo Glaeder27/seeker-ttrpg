@@ -59,6 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
         field.addEventListener("input", saveSheet);
       });
 
+      const bioField = content.querySelector("#bio");
+      if (bioField) {
+        bioField.addEventListener("input", saveSheetSuperDebounced);
+      }
+
       // Se identity: inizializza nomi e icone
       if (section === "identity") initCharacterIdentity();
 
@@ -251,11 +256,11 @@ aptitudes.forEach((a) => {
 
   plus.addEventListener("click", () => {
     input.value = Math.min(parseInt(input.value) + 1, 5);
-    saveSheet();
+    saveSheetDebounced();
   });
   minus.addEventListener("click", () => {
     input.value = Math.max(parseInt(input.value) - 1, 1);
-    saveSheet();
+    saveSheetDebounced();
   });
 
   input.addEventListener("input", saveSheet);
@@ -307,6 +312,17 @@ function saveSheet() {
     localStorage.setItem("characterSheet", JSON.stringify(data)); // locale
     console.log("Scheda salvata localmente.");
   }
+}
+
+let saveTimeout = null;
+
+function saveSheetDebounced() {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(saveSheet, 500); // 500ms dopo l’ultimo input
+}
+function saveSheetSuperDebounced() {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(saveSheet, 2000); // 2000ms dopo l’ultimo input
 }
 
 // ==============================
