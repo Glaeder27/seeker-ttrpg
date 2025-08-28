@@ -241,6 +241,7 @@ aptitudes.forEach((a) => {
   input.value = 1;
   input.readOnly = true;
   input.dataset.field = a.name.toLowerCase();
+  input.dataset.category = "aptitudes";
   input.id = `apt-${a.name.toLowerCase()}`;
 
   const minus = document.createElement("button");
@@ -273,48 +274,33 @@ aptitudes.forEach((a) => {
 });
 
 // ==============================
-// Salvataggio dinamico della scheda
+// Salvataggio dinamico della scheda con categorie automatiche
 // ==============================
 function saveSheet() {
-  const data = { updatedAt: new Date().toISOString() };
+  const data = {
+    utils: { updatedAt: new Date().toISOString() }
+  };
 
-  // Identity
-  const characterNameInput = document.querySelector("#character-name");
-  const oathSelect = document.querySelector("#oath");
-  if (characterNameInput) data.characterName = characterNameInput.value;
-  if (oathSelect) data.oath = oathSelect.value;
-
-  // Aptitudes
-  data.aptitudes = {};
-  document
-    .querySelectorAll(".aptitude-input-wrapper input")
-    .forEach((input) => {
-      data.aptitudes[input.dataset.field] = parseInt(input.value);
-    });
-
-  // Altri campi dinamici (esclude gli input delle aptitudes)
-  document.querySelectorAll("[data-field]").forEach((field) => {
+  document.querySelectorAll("[data-field]").forEach(field => {
     const key = field.dataset.field;
     if (!key) return;
 
-    // Escludi gli input delle aptitudes
-    if (field.closest(".aptitude-input-wrapper")) return;
+    // Determina la categoria
+    const category = field.dataset.category || "root";
+    if (!data[category]) data[category] = {};
 
+    // Determina il valore
     let value;
-    if (
-      field.tagName === "INPUT" ||
-      field.tagName === "TEXTAREA" ||
-      field.tagName === "SELECT"
-    ) {
+    if (field.tagName === "INPUT" || field.tagName === "TEXTAREA" || field.tagName === "SELECT") {
       value = field.value;
     } else {
       value = field.textContent;
     }
 
-    if (value !== undefined) data[key] = value;
+    data[category][key] = value !== undefined ? value : null;
   });
 
-  // Salvataggio
+  // --- Salvataggio ---
   if (currentUserId) {
     saveCharacter(currentUserId, data); // Firebase
   } else {
