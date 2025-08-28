@@ -1,4 +1,4 @@
-/*v1.12 2025-08-28T15:40:36.579Z*/
+/*v1.12 2025-08-28T15:43:21.536Z*/
 import { auth } from "./config.js";
 import {
   onAuthStateChanged,
@@ -46,9 +46,11 @@ try {
 // ----------------------
 onAuthStateChanged(auth, (user) => {
   const isAuthPage = window.location.pathname.endsWith("/auth.html");
+  const loader = document.getElementById("loader");
 
   if (user) {
     console.log("Utente loggato:", user.email);
+    if (loader) loader.style.display = "none";
     document.body.style.display = "block"; // mostra pagina
     if (isAuthPage) window.location.href = "/user-page.html";
   } else {
@@ -56,6 +58,7 @@ onAuthStateChanged(auth, (user) => {
     if (!isAuthPage) {
       window.location.href = "/auth.html";
     } else {
+      if (loader) loader.style.display = "none";
       document.body.style.display = "block"; // mostra auth page
     }
   }

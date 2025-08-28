@@ -1,4 +1,4 @@
-<!-- v1.24 2025-08-28T08:56:14.984Z -->
+<!-- v1.25 2025-08-28T15:42:23.794Z -->
 
 <!DOCTYPE html>
 <html lang="it">
@@ -91,10 +91,20 @@
         .message.error {
             color: #dc3545;
         }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 
 <body class="bckg-2" id="auth">
+    <!-- Loader -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: rgba(255,255,255,0.8); z-index: 9999;">
+        <div class="spinner" style="border: 8px solid #f3f3f3; border-top: 8px solid #4CAF50; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;"></div>
+    </div>
+
     <!-- NAVBAR -->
     <div id="navbar-top" style="opacity: 1 !important"></div>
     <script type="module" src="/scripts/navbar.js"></script>
