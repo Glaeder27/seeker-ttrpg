@@ -1,4 +1,4 @@
-/*v1.8 2025-08-28T12:45:58.799Z*/
+/*v1.9 2025-08-28T13:35:36.049Z*/
 import { auth } from "./config.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } 
     from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
@@ -25,15 +25,18 @@ await setPersistence(auth, browserLocalPersistence)
 
 // --- Imposta Logout button ---
 const logoutBtn = document.getElementById("logoutBtn");
-logoutBtn.addEventListener("click", async () => {
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
     try {
-        await auth.signOut();
-        console.log("Utente disconnesso");
-        window.location.href = "/login.html";
+      await auth.signOut();
+      console.log("Utente disconnesso");
+      window.location.href = "/login.html";
     } catch (err) {
-        console.error("Errore durante logout:", err);
+      console.error("Errore durante logout:", err);
     }
-});
+  });
+}
 
 // --- Carica lingua e setup form ---
 await loadLanguage(LANG);
