@@ -1,0 +1,7 @@
+{
+  "weak_password": "La password è troppo debole (minimo 6 caratteri).",
+  "email_in_use": "Questa email è già in uso.",
+  "invalid_email": "L'indirizzo email non è valido.",
+  "user_not_found": "Email o password non validi.",
+  "login_error": "Errore. Riprova."
+}
