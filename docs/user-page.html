@@ -38,11 +38,21 @@
         label {
             font-family: var(--font-main);
             color: var(--pale-beige);
+            flex: 1 1 30%;
+        }
+        input[type="text"], input[type="url"], textarea {
+            background: transparent;
+            color: var(--off-white);
+            font-family: var(--font-main);
+            border-width: 0 0 1px 0;
+            border-style: solid;
+            border-color: var(--pale-beige);
+            flex: 1 1 100%;
         }
         select {
             background: transparent;
             font-family: var(--font-main);
-            color: var(--pale-beige);
+            color: var(--off-white);
             border: none;
             font-size: 1em;
         }
@@ -52,10 +62,20 @@
         .form-group {
             display: flex;
             gap: 1rem;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: .5rem;
         }
         div#pageTitle {
             display: flex;
             margin: 4rem 0 0;
+        }
+        form#profileForm {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
     </style>
 </head>
@@ -69,11 +89,13 @@
         <section class="central-column">
             <header class="title">
                 <div class="welcome-container" id="pageTitle">
-                    <span class="title-icon">e</span>
-                    <h3 class="welcome">Welcome to the Encampment,</h3>
-                    <span class="title-icon rot90">e</span>
-                </div>
+                <h3 class="welcome">Welcome to the Encampment,</h3>  
+                </div> 
+                <div class="username-container">
+                <span class="title-icon">e</span>
                 <h2><span id="userName"></span>!</h2>
+                <span class="title-icon rot90">e</span>
+                </div>
             </header>
 
             <div id="notLoggedIn" class="message-box message-error" style="display: none;">
@@ -86,7 +108,7 @@
                 <form id="profileForm" class="profile-form">
                     
                     <div class="profile-section">
-                        <h3><i class="fa-solid fa-user"></i> Personal Details</h3>
+                        <h3>Personal Details</h3>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" placeholder="Your chosen name" required>
@@ -113,10 +135,8 @@
                         </div>
                     </div>
 
-                    <hr>
-
                     <div class="profile-section">
-                        <h3><i class="fa-solid fa-ship"></i> Your Expedition</h3>
+                        <h3>Your Expedition</h3>
                         <div class="form-group">
                             <label for="faction">Faction</label>
                             <select id="faction" required>
