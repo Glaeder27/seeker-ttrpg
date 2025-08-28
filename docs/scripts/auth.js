@@ -1,6 +1,6 @@
-/*v1.9 2025-08-28T13:35:36.049Z*/
+/*v1.10 2025-08-28T15:06:58.894Z*/
 import { auth } from "./config.js";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } 
+import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } 
     from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 let messages = {};
@@ -18,24 +18,37 @@ async function loadLanguage(lang) {
     }
 }
 
+// --- Controllo sessione ---
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log("Utente ancora loggato:", user.email);
+        document.body.style.display = "block"; // mostra la pagina se nascosta
+    } else {
+        console.log("Nessun utente loggato");
+        window.location.href = "/login.html";
+    }
+});
+
 // --- Imposta persistence ---
-await setPersistence(auth, browserLocalPersistence)
-    .then(() => console.log("Persistenza login impostata su localStorage"))
-    .catch(err => console.error("Errore impostando persistenza login:", err));
+try {
+    await setPersistence(auth, browserLocalPersistence);
+    console.log("Persistenza login impostata su localStorage");
+} catch (err) {
+    console.error("Errore impostando persistenza login:", err);
+}
 
 // --- Imposta Logout button ---
 const logoutBtn = document.getElementById("logoutBtn");
-
 if (logoutBtn) {
-  logoutBtn.addEventListener("click", async () => {
-    try {
-      await auth.signOut();
-      console.log("Utente disconnesso");
-      window.location.href = "/login.html";
-    } catch (err) {
-      console.error("Errore durante logout:", err);
-    }
-  });
+    logoutBtn.addEventListener("click", async () => {
+        try {
+            await signOut(auth);
+            console.log("Utente disconnesso");
+            window.location.href = "/login.html";
+        } catch (err) {
+            console.error("Errore durante logout:", err);
+        }
+    });
 }
 
 // --- Carica lingua e setup form ---
@@ -57,63 +70,68 @@ function setupForms() {
     const switchToRegisterLink = document.getElementById('switchToRegister');
 
     // Switch form
-    switchToRegisterLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginForm.style.display = 'none';
-        registrationForm.style.display = 'block';
-        switchToRegisterLink.style.display = 'none';
-        switchToLoginLink.style.display = 'block';
-        formTitle.textContent = messages.register_title || 'Registrati';
-        messageDisplay.textContent = '';
-    });
+    if (switchToRegisterLink && switchToLoginLink) {
+        switchToRegisterLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            registrationForm.style.display = 'block';
+            switchToRegisterLink.style.display = 'none';
+            switchToLoginLink.style.display = 'block';
+            formTitle.textContent = messages.register_title || 'Registrati';
+            messageDisplay.textContent = '';
+        });
 
-    switchToLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginForm.style.display = 'block';
-        registrationForm.style.display = 'none';
-        switchToRegisterLink.style.display = 'block';
-        switchToLoginLink.style.display = 'none';
-        formTitle.textContent = messages.login_title || 'Accedi';
-        messageDisplay.textContent = '';
-    });
+        switchToLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'block';
+            registrationForm.style.display = 'none';
+            switchToRegisterLink.style.display = 'block';
+            switchToLoginLink.style.display = 'none';
+            formTitle.textContent = messages.login_title || 'Accedi';
+            messageDisplay.textContent = '';
+        });
+    }
 
     // Registration
-    registrationForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = regEmailInput.value;
-        const password = regPasswordInput.value;
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = regEmailInput.value;
+            const password = regPasswordInput.value;
 
-        messageDisplay.textContent = '';
-        messageDisplay.className = 'message';
+            messageDisplay.textContent = '';
+            messageDisplay.className = 'message';
 
-        try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            messageDisplay.textContent = messages.registration_success || 'Registration successful! You can log in now.';
-            messageDisplay.classList.add('success');
-        } catch (error) {
-            handleAuthError(error, messageDisplay);
-        }
-    });
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                messageDisplay.textContent = messages.registration_success || 'Registration successful! You can log in now.';
+                messageDisplay.classList.add('success');
+            } catch (error) {
+                handleAuthError(error, messageDisplay);
+            }
+        });
+    }
 
     // Login
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = loginEmailInput.value;
-        const password = loginPasswordInput.value;
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = loginEmailInput.value;
+            const password = loginPasswordInput.value;
 
-        messageDisplay.textContent = '';
-        messageDisplay.className = 'message';
+            messageDisplay.textContent = '';
+            messageDisplay.className = 'message';
 
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
-            messageDisplay.textContent = messages.login_success || 'Login successful!';
-            messageDisplay.classList.add('success');
-
-            window.location.href = '/user-page.html';
-        } catch (error) {
-            handleAuthError(error, messageDisplay);
-        }
-    });
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                messageDisplay.textContent = messages.login_success || 'Login successful!';
+                messageDisplay.classList.add('success');
+                window.location.href = '/user-page.html';
+            } catch (error) {
+                handleAuthError(error, messageDisplay);
+            }
+        });
+    }
 }
 
 // --- Gestione errori ---
