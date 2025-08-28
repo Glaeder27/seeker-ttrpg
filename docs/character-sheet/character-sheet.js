@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         field.addEventListener("input", saveSheet);
       });
 
-      const bioField = content.querySelector("#bio");
+      const bioField = content.querySelector("#biography");
       if (bioField) {
         bioField.addEventListener("input", saveSheetSuperDebounced);
       }
@@ -247,78 +247,158 @@ function resizeAllAutoTextareas(context = document) {
 }
 
 // ==============================
-// Aptitudes
+// Aptitudes con categorie + tags
 // ==============================
 const aptitudeBar = document.getElementById("aptitudeBar");
 
-const aptitudes = [
-  { name: "Strength", icon: "/assets/icons/svg/aptitudes/strength-ico.svg" },
-  { name: "Agility", icon: "/assets/icons/svg/aptitudes/agility-ico.svg" },
-  { name: "Vigor", icon: "/assets/icons/svg/aptitudes/vigor-ico.svg" },
-  {
-    name: "Perception",
-    icon: "/assets/icons/svg/aptitudes/perception-ico.svg",
-  },
-  { name: "Intellect", icon: "/assets/icons/svg/aptitudes/intellect-ico.svg" },
-  {
-    name: "Adaptability",
-    icon: "/assets/icons/svg/aptitudes/adaptability-ico.svg",
-  },
-  { name: "Charisma", icon: "/assets/icons/svg/aptitudes/charisma-ico.svg" },
-  { name: "Insight", icon: "/assets/icons/svg/aptitudes/insight-ico.svg" },
-  { name: "Willpower", icon: "/assets/icons/svg/aptitudes/willpower-ico.svg" },
-];
+const aptitudeCategories = {
+  Combat: [
+    { name: "Strength", icon: "/assets/icons/svg/aptitudes/strength-ico.svg" },
+    { name: "Agility", icon: "/assets/icons/svg/aptitudes/agility-ico.svg" },
+    { name: "Vigor", icon: "/assets/icons/svg/aptitudes/vigor-ico.svg" },
+  ],
+  Exploration: [
+    { name: "Perception", icon: "/assets/icons/svg/aptitudes/perception-ico.svg" },
+    { name: "Intellect", icon: "/assets/icons/svg/aptitudes/intellect-ico.svg" },
+    { name: "Adaptability", icon: "/assets/icons/svg/aptitudes/adaptability-ico.svg" },
+  ],
+  Social: [
+    { name: "Charisma", icon: "/assets/icons/svg/aptitudes/charisma-ico.svg" },
+    { name: "Insight", icon: "/assets/icons/svg/aptitudes/insight-ico.svg" },
+    { name: "Willpower", icon: "/assets/icons/svg/aptitudes/willpower-ico.svg" },
+  ],
+};
 
-aptitudes.forEach((a) => {
-  const box = document.createElement("div");
-  box.className = "aptitude-box";
+// Mappa dei tag (1 → negativo, 5 → positivo)
+const aptitudeTags = {
+  strength: { 1: "Weak", 5: "Mighty" },
+  agility: { 1: "Clumsy", 5: "Swift" },
+  vigor: { 1: "Frail", 5: "Resilient" },
+  perception: { 1: "Distracted", 5: "Vigilant" },
+  intellect: { 1: "Dull", 5: "Brilliant" },
+  adaptability: { 1: "Rigid", 5: "Versatile" },
+  charisma: { 1: "Uncouth", 5: "Magnetic" },
+  insight: { 1: "Naive", 5: "Discerning" },
+  willpower: { 1: "Volatile", 5: "Stoic" },
+};
 
-  const wrapper = document.createElement("div");
-  wrapper.className = "aptitude-input-wrapper";
-  wrapper.style.setProperty("--aptitude-icon", `url(${a.icon})`);
+// Funzione per aggiornare il tag
+function updateAptitudeTag(input, tagContainer) {
+  const aptitudeName = input.dataset.field;
+  const value = parseInt(input.value, 10);
+  const tags = aptitudeTags[aptitudeName];
 
-  const plus = document.createElement("button");
-  plus.type = "button";
-  plus.textContent = "+";
-  plus.className = "aptitude-btn";
+  tagContainer.innerHTML = ""; // pulisco
+  if (tags && (value === 1 || value === 5)) {
+    const span = document.createElement("span");
+    span.className = "tag";
+    span.textContent = tags[value];
+    tagContainer.appendChild(span);
+  }
 
-  const input = document.createElement("input");
-  input.type = "number";
-  input.min = 1;
-  input.max = 5;
-  input.value = 1;
-  input.readOnly = true;
-  input.dataset.field = a.name.toLowerCase();
-  input.dataset.category = "aptitudes";
-  input.id = `apt-${a.name.toLowerCase()}`;
+  // --- Riattiva tooltip su questo tag appena creato ---
+  if (window.applyTagIcons) applyTagIcons();
+  if (window.initializeTagTooltips) initializeTagTooltips(tagContainer);
+}
 
-  const minus = document.createElement("button");
-  minus.type = "button";
-  minus.textContent = "–";
-  minus.className = "aptitude-btn";
+// Funzione per aggiornare lo stile dei valori numerici
+function updateAptitudeValueStyle(input) {
+  const value = parseInt(input.value, 10);
 
-  plus.addEventListener("click", () => {
-    input.value = Math.min(parseInt(input.value) + 1, 5);
-    saveSheetDebounced();
+  if (value === 5) {
+    input.style.color = "var(--ancient-gold)";
+  } else if (value === 1) {
+    input.style.color = "var(--text-muted)";
+  } else {
+    input.style.color = "";
+    input.style.fontWeight = "";
+    input.style.fontSize = "";
+  }
+}
+
+// Costruzione dinamica UI
+Object.entries(aptitudeCategories).forEach(([categoryName, aptitudes]) => {
+  const categoryBox = document.createElement("div");
+  categoryBox.className = "aptitude-category " + categoryName.toLowerCase();
+
+  const title = document.createElement("h5");
+  title.textContent = categoryName;
+  categoryBox.appendChild(title);
+
+  const aptitudeGroup = document.createElement("div");
+  aptitudeGroup.className = "aptitude-group";
+
+  aptitudes.forEach((a) => {
+    const box = document.createElement("div");
+    box.className = "aptitude-box";
+
+    const aptitudeWrapper = document.createElement("div");
+    aptitudeWrapper.className = "aptitude-input-wrapper";
+    aptitudeWrapper.style.setProperty("--aptitude-icon", `url(${a.icon})`);
+
+    const plus = document.createElement("button");
+    plus.type = "button";
+    plus.textContent = "+";
+    plus.className = "aptitude-btn";
+
+    const input = document.createElement("input");
+    input.type = "number";
+    input.min = 1;
+    input.max = 5;
+    input.value = 1;
+    input.readOnly = true;
+    input.dataset.field = a.name.toLowerCase();
+    input.dataset.category = "aptitudes";
+    input.id = `apt-${a.name.toLowerCase()}`;
+
+    const minus = document.createElement("button");
+    minus.type = "button";
+    minus.textContent = "–";
+    minus.className = "aptitude-btn";
+
+    const label = document.createElement("div");
+    label.className = "aptitude-name";
+    label.textContent = a.name;
+
+    const tagContainer = document.createElement("div");
+    tagContainer.className = "aptitude-tag";
+
+    // Inizializza il tag
+    updateAptitudeTag(input, tagContainer);
+    updateAptitudeValueStyle(input);
+
+    plus.addEventListener("click", () => {
+      input.value = Math.min(parseInt(input.value) + 1, 5);
+      updateAptitudeTag(input, tagContainer);
+      updateAptitudeValueStyle(input);
+      saveSheetDebounced();
+    });
+    minus.addEventListener("click", () => {
+      input.value = Math.max(parseInt(input.value) - 1, 1);
+      updateAptitudeTag(input, tagContainer);
+      updateAptitudeValueStyle(input);
+      saveSheetDebounced();
+    });
+
+    input.addEventListener("input", () => {
+      updateAptitudeTag(input, tagContainer);
+      updateAptitudeValueStyle(input);
+      saveSheet();
+    });
+
+    aptitudeWrapper.appendChild(plus);
+    aptitudeWrapper.appendChild(input);
+    aptitudeWrapper.appendChild(minus);
+
+    box.appendChild(aptitudeWrapper);
+    box.appendChild(label);
+    box.appendChild(tagContainer);
+
+    aptitudeGroup.appendChild(box);
   });
-  minus.addEventListener("click", () => {
-    input.value = Math.max(parseInt(input.value) - 1, 1);
-    saveSheetDebounced();
-  });
 
-  input.addEventListener("input", saveSheet);
-
-  wrapper.appendChild(plus);
-  wrapper.appendChild(input);
-  wrapper.appendChild(minus);
-
-  const label = document.createElement("div");
-  label.className = "aptitude-name";
-  label.textContent = a.name;
-
-  box.appendChild(wrapper);
-  box.appendChild(label);
-  aptitudeBar.appendChild(box);
+  categoryBox.appendChild(aptitudeGroup);
+  aptitudeBar.appendChild(categoryBox);
 });
 
 // ==============================
@@ -402,6 +482,10 @@ auth.onAuthStateChanged(async (user) => {
           const key = input.dataset.field;
           if (data.aptitudes[key] !== undefined)
             input.value = data.aptitudes[key];
+
+          const tagContainer = input.closest(".aptitude-box").querySelector(".aptitude-tag");
+          updateAptitudeTag(input, tagContainer);
+          updateAptitudeValueStyle(input);
         });
     }
 
@@ -438,6 +522,10 @@ auth.onAuthStateChanged(async (user) => {
             const key = input.dataset.field;
             if (data.aptitudes[key] !== undefined)
               input.value = data.aptitudes[key];
+
+            const tagContainer = input.closest(".aptitude-box").querySelector(".aptitude-tag");
+            updateAptitudeTag(input, tagContainer);
+            updateAptitudeValueStyle(input);
           });
       }
 

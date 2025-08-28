@@ -1,4 +1,4 @@
-<!-- v2.35 2025-08-28T15:35:44.426Z -->
+<!-- v2.36 2025-08-28T20:51:14.524Z -->
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
 
@@ -70,7 +70,7 @@
                 <button class="cs-sidebar-button" data-section="notes">
                     <i data-lucide="book-open-text"></i>
                 </button>
-                <button id="saveButton" type="button" class="cs-sidebar-button"><i data-lucide="save"></i></button>
+                <button id="saveButton" type="button" class="cs-sidebar-button-static"><i data-lucide="save"></i></button>
             </nav>
 
             <!-- Fixed header -->
@@ -79,6 +79,10 @@
                     <!-- Character Identity -->
                     <div class="cs-block-flex">
                         <section class="cs-character-name">
+                            <!-- Character Picture -->
+                            <div id="characterPicture" class="character-picture">
+                                <img id="characterImg" src="" alt="">
+                            </div>
                             <div class="cs-character-inputs">
                                 <!-- Name -->
                                 <label for="character-name">Character Identity</label>

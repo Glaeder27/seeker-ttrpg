@@ -4,6 +4,11 @@
   "otherData": "...",
   "categories": [
     {
+      "name": "Aptitude",
+      "definition": "Tags related to martial actions and conflict resolution.",
+      "color": "#D0D0D0"
+    },
+    {
       "name": "Combat",
       "definition": "Tags related to martial actions and conflict resolution.",
       "color": "#8B3A3A"
@@ -92,6 +97,16 @@
       "notes": []
     },
     {
+      "name": "Brilliant",
+      "icon": "/assets/icons/svg/tags/tag-intellect.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
       "name": "Cold",
       "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Elemental",
@@ -162,6 +177,36 @@
       "notes": []
     },
     {
+      "name": "Dull",
+      "icon": "/assets/icons/svg/tags/tag-intellect.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
+      "name": "Discerning",
+      "icon": "/assets/icons/svg/tags/tag-insight.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
+      "name": "Distracted",
+      "icon": "/assets/icons/svg/tags/tag-perception.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
       "name": "Fire",
       "icon": "/assets/icons/svg/tags/tag-fire.svg",
       "category": "General",
@@ -202,10 +247,30 @@
       "notes": []
     },
     {
+      "name": "Magnetic",
+      "icon": "/assets/icons/svg/tags/tag-charisma.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
       "name": "Movement",
       "icon": "/assets/icons/svg/tags/tag-movement.svg",
       "category": "General",
       "definition": "An action that changes the user's position in space.",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
+      "name": "Naive",
+      "icon": "/assets/icons/svg/tags/tag-insight.svg",
+      "category": "Aptitude",
+      "definition": "",
       "visibility": true,
       "interactions": [],
       "examples": [],
@@ -302,6 +367,16 @@
       "notes": []
     },
     {
+      "name": "Stoic",
+      "icon": "/assets/icons/svg/tags/tag-willpower.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
       "name": "Strike",
       "icon": "/assets/icons/svg/tags/tag-strike.svg",
       "category": "Combat",
@@ -316,6 +391,16 @@
       "icon": "/assets/icons/svg/tags/placeholder.svg",
       "category": "Utility",
       "definition": "Creates creatures or constructs to fight or assist you.",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
+      "name": "Strength",
+      "icon": "/assets/icons/svg/tags/tag-strength.svg",
+      "category": "Aptitude",
+      "definition": "",
       "visibility": true,
       "interactions": [],
       "examples": [],
@@ -352,8 +437,28 @@
       "notes": []
     },
     {
-      "name": "Strength",
-      "icon": "/assets/icons/svg/tags/tag-strength.svg",
+      "name": "Uncouth",
+      "icon": "/assets/icons/svg/tags/tag-charisma.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
+      "name": "Vigilant",
+      "icon": "/assets/icons/svg/tags/tag-perception.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
+      "name": "Volatile",
+      "icon": "/assets/icons/svg/tags/tag-willpower.svg",
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
@@ -412,6 +517,16 @@
       "notes": []
     },
     {
+      "name": "Versatile",
+      "icon": "/assets/icons/svg/tags/tag-adaptability.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
       "name": "Vigor",
       "icon": "/assets/icons/svg/tags/tag-vigor.svg",
       "category": "Aptitude",
@@ -434,6 +549,16 @@
     {
       "name": "Resilient",
       "icon": "/assets/icons/svg/tags/tag-vigor.svg",
+      "category": "Aptitude",
+      "definition": "",
+      "visibility": true,
+      "interactions": [],
+      "examples": [],
+      "notes": []
+    },
+    {
+      "name": "Rigid",
+      "icon": "/assets/icons/svg/tags/tag-adaptability.svg",
       "category": "Aptitude",
       "definition": "",
       "visibility": true,
