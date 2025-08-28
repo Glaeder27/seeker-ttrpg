@@ -108,7 +108,11 @@
             left: 50%;
             height: 250px;
             transform: translate(-50%, -45%);
-        }     
+        }  
+        .bottom-buttons {
+            display: flex;
+            flex-direction: row;
+        }   
     </style>
 </head>
 
@@ -199,8 +203,10 @@
                         </div>
                     </div>
 
+                    <div class="bottom-buttons">
                     <button type="submit" class="button primary">Save Profile</button>
                     <button type="button" class="button secondary" id="logoutButton">Log Out</button>
+                </div>
                 </form>
 
             </div>
