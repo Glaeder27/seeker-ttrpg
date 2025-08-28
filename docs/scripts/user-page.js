@@ -1,10 +1,10 @@
-/*v2.5 2025-08-28T09:27:49.407Z*/
+/*v2.6 2025-08-28T14:15:10.397Z*/
 
 import { auth, firestore } from "/scripts/config.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { doc, getDoc, setDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-// Ottieni riferimenti agli elementi HTML
+// Riferimenti agli elementi HTML
 const userProfileDiv = document.getElementById('userProfile');
 const notLoggedInP = document.getElementById('notLoggedIn');
 const profileForm = document.getElementById('profileForm');
@@ -13,10 +13,16 @@ const pageTitleSpan = document.getElementById('userName');
 // Campi form
 const nameInput = document.getElementById('name');
 const bioInput = document.getElementById('bio');
-// ... altri campi
+const languagesInput = document.getElementById('languages');
+const socialLinkInput = document.getElementById('socialLink');
+const languageSelect = document.getElementById('language');
+const factionSelect = document.getElementById('faction');
+const preferredRoleInput = document.getElementById('preferredRole');
+const preferredPlaystyleInput = document.getElementById('preferredPlaystyle');
+const experienceSelect = document.getElementById('experience');
 const logoutButton = document.getElementById('logoutButton');
 
-// Ascolta cambiamenti di stato utente
+// Listener autenticazione
 onAuthStateChanged(auth, user => {
     if (user) {
         userProfileDiv.style.display = 'block';
@@ -41,8 +47,7 @@ onAuthStateChanged(auth, user => {
 });
 
 /**
- * Carica i dati del profilo utente da Firestore e li visualizza nel form.
- * @param {string} userId L'ID dell'utente autenticato.
+ * Carica i dati del profilo utente da Firestore
  */
 async function loadUserProfile(userId) {
     const userDocRef = doc(firestore, 'users', userId);
@@ -50,32 +55,27 @@ async function loadUserProfile(userId) {
         const docSnap = await getDoc(userDocRef);
         if (docSnap.exists()) {
             const userData = docSnap.data();
-            // Popola i campi del form con i dati esistenti
+            // Popola il form
             pageTitleSpan.textContent = userData.name || 'Seeker';
             nameInput.value = userData.name || '';
             bioInput.value = userData.bio || '';
             languagesInput.value = userData.languages || '';
             socialLinkInput.value = userData.socialLink || '';
+            languageSelect.value = userData.language || 'en';
             factionSelect.value = userData.faction || '';
             preferredRoleInput.value = userData.preferredRole || '';
             preferredPlaystyleInput.value = userData.preferredPlaystyle || '';
             experienceSelect.value = userData.experience || '';
-            timezoneInput.value = userData.timezone || '';
-            availabilityInput.value = userData.availability || '';
-            preferredPlatformInput.value = userData.preferredPlatform || '';
         } else {
-            // Se l'utente non ha ancora un profilo, imposta un name predefinito
             pageTitleSpan.textContent = 'Seeker';
         }
     } catch (error) {
         console.error("Error loading the profile:", error);
-        // Potresti mostrare un messaggio di errore all'utente
     }
 }
 
 /**
- * Salva i dati del profilo utente su Firestore.
- * @param {object} user L'oggetto utente di Firebase.
+ * Salva i dati del profilo utente su Firestore
  */
 async function saveUserProfile(user) {
     const userId = user.uid;
@@ -84,16 +84,13 @@ async function saveUserProfile(user) {
         bio: bioInput.value,
         languages: languagesInput.value,
         socialLink: socialLinkInput.value,
+        language: languageSelect.value,
         faction: factionSelect.value,
         preferredRole: preferredRoleInput.value,
         preferredPlaystyle: preferredPlaystyleInput.value,
-        experience: experienceSelect.value,
-        timezone: timezoneInput.value,
-        availability: availabilityInput.value,
-        preferredPlatform: preferredPlatformInput.value,
+        experience: experienceSelect.value
     };
 
-    // Salva i dati su Cloud Firestore
     const userDocRef = doc(firestore, 'users', userId);
     try {
         await setDoc(userDocRef, userData, { merge: true });
