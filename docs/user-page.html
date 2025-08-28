@@ -41,6 +41,16 @@
         }
         select {
             background: transparent;
+            font-family: var(--font-main);
+            color: var(--pale-beige);
+            border: none;
+            font-size: 1em;
+        }
+        option:disabled {
+            color: var(--text-muted);
+        }
+        .user-profile-wrapper {
+            width: 100%;
         }
     </style>
 </head>
@@ -66,7 +76,7 @@
                 <p><a href="/auth.html">Click here to log in or register.</a></p>
             </div>
 
-            <div id="userProfile" style="display: none;">
+            <div id="userProfile" style="display: none;" class="user-profile-wrapper">
                 
                 <form id="profileForm" class="profile-form">
                     
