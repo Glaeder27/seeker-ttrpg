@@ -47,6 +47,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".cs-sidebar-button");
   const content = document.getElementById("sheetContent");
 
+  // --- CARICAMENTO DATI LOCALI PER CAMPi FISSI (se non loggato) ---
+  if (!currentUserId) {
+    const savedData = localStorage.getItem("characterSheet");
+    if (savedData) {
+      const data = JSON.parse(savedData);
+
+      // Ripristina tutti i campi con data-field e data-category
+      document.querySelectorAll("[data-field]").forEach((field) => {
+        const key = field.dataset.field;
+        const category = field.dataset.category || "root";
+        if (data[category] && data[category][key] !== undefined) {
+          if (
+            field.tagName === "INPUT" ||
+            field.tagName === "TEXTAREA" ||
+            field.tagName === "SELECT"
+          ) {
+            field.value = data[category][key];
+          } else {
+            field.textContent = data[category][key];
+          }
+        }
+      });
+
+      // Aggiorna l'Identity display (prefix + bandiera)
+      if (data.identity && data.identity.oath) {
+        updateIdentityDisplay(data.identity.oath);
+      }
+    }
+  }
+
   async function loadSection(section) {
     const file = `character-sheet-${section}.html`;
     try {
@@ -81,14 +111,26 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data) {
         content.querySelectorAll("[data-field]").forEach((field) => {
           const key = field.dataset.field;
-          if (data[key] !== undefined) field.value = data[key];
+          const category = field.dataset.category || "root";
+          if (data[category] && data[category][key] !== undefined) {
+            if (
+              field.tagName === "INPUT" ||
+              field.tagName === "TEXTAREA" ||
+              field.tagName === "SELECT"
+            ) {
+              field.value = data[category][key];
+            } else {
+              field.textContent = data[category][key];
+            }
+          }
         });
 
-        if (section === "identity" && data.oath) {
+        // Identity specifico
+        if (section === "identity" && data.identity && data.identity.oath) {
           const oathSelect = document.querySelector("#oath");
           if (oathSelect) {
-            oathSelect.value = data.oath;
-            updateIdentityDisplay(data.oath);
+            oathSelect.value = data.identity.oath;
+            updateIdentityDisplay(data.identity.oath);
           }
         }
 
@@ -107,11 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Carica sezione di default
+  // --- Caricamento sezione di default ---
   const defaultBtn = document.querySelector(
     ".cs-sidebar-button[aria-selected='true']"
   );
-  if (defaultBtn) loadSection(defaultBtn.getAttribute("data-section"));
+  if (defaultBtn)
+    loadSection(defaultBtn.getAttribute("data-section"));
 });
 
 // ==============================
@@ -282,19 +325,21 @@ aptitudes.forEach((a) => {
 // Salvataggio dinamico della scheda con categorie automatiche
 // ==============================
 function saveSheet() {
+  // Oggetto dati iniziale
   const data = {
     utils: { updatedAt: new Date().toISOString() }
   };
 
+  // Seleziona **tutti i campi** con data-field in tutto il documento
   document.querySelectorAll("[data-field]").forEach(field => {
     const key = field.dataset.field;
     if (!key) return;
 
-    // Determina la categoria
+    // Categoria (identity, aptitudes, ecc.)
     const category = field.dataset.category || "root";
     if (!data[category]) data[category] = {};
 
-    // Determina il valore
+    // Valore del campo
     let value;
     if (field.tagName === "INPUT" || field.tagName === "TEXTAREA" || field.tagName === "SELECT") {
       value = field.value;
@@ -309,8 +354,8 @@ function saveSheet() {
   if (currentUserId) {
     saveCharacter(currentUserId, data); // Firebase
   } else {
-    localStorage.setItem("characterSheet", JSON.stringify(data)); // locale
-    console.log("Scheda salvata localmente.");
+    localStorage.setItem("characterSheet", JSON.stringify(data));
+    console.log("Scheda salvata localmente:", data);
   }
 }
 
@@ -403,3 +448,12 @@ auth.onAuthStateChanged(async (user) => {
     }
   }
 });
+
+// --- Save Button ---
+const saveBtn = document.getElementById("saveButton");
+if (saveBtn) {
+  saveBtn.addEventListener("click", () => {
+    saveSheet();
+    alert("Character saved!"); // feedback rapido
+  });
+}
