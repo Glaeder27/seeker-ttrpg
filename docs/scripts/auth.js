@@ -1,11 +1,12 @@
-/*v1.7 2025-08-28T12:42:20.639Z*/
+/*v1.8 2025-08-28T12:45:58.799Z*/
 import { auth } from "./config.js";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } 
+    from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 let messages = {};
 let LANG = 'en';
 
-// --- Carica file lingua ---
+// --- Carica lingua ---
 async function loadLanguage(lang) {
     try {
         const res = await fetch(`/data/languages/${lang}.json`);
@@ -17,7 +18,24 @@ async function loadLanguage(lang) {
     }
 }
 
-// --- Inizializza form dopo caricamento lingua ---
+// --- Imposta persistence ---
+await setPersistence(auth, browserLocalPersistence)
+    .then(() => console.log("Persistenza login impostata su localStorage"))
+    .catch(err => console.error("Errore impostando persistenza login:", err));
+
+// --- Imposta Logout button ---
+const logoutBtn = document.getElementById("logoutBtn");
+logoutBtn.addEventListener("click", async () => {
+    try {
+        await auth.signOut();
+        console.log("Utente disconnesso");
+        window.location.href = "/login.html";
+    } catch (err) {
+        console.error("Errore durante logout:", err);
+    }
+});
+
+// --- Carica lingua e setup form ---
 await loadLanguage(LANG);
 setupForms();
 
@@ -35,7 +53,7 @@ function setupForms() {
     const switchToLoginLink = document.getElementById('switchToLogin');
     const switchToRegisterLink = document.getElementById('switchToRegister');
 
-    // --- Switch form ---
+    // Switch form
     switchToRegisterLink.addEventListener('click', (e) => {
         e.preventDefault();
         loginForm.style.display = 'none';
@@ -56,7 +74,7 @@ function setupForms() {
         messageDisplay.textContent = '';
     });
 
-    // --- Registration ---
+    // Registration
     registrationForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = regEmailInput.value;
@@ -74,7 +92,7 @@ function setupForms() {
         }
     });
 
-    // --- Login ---
+    // Login
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = loginEmailInput.value;
@@ -95,7 +113,7 @@ function setupForms() {
     });
 }
 
-// --- Gestione errori autenticazione ---
+// --- Gestione errori ---
 function handleAuthError(error, displayElement) {
     let errorMessage = messages.login_error || "Error. Try again.";
 
