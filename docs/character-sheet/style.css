@@ -1,19 +1,20 @@
-/*v1.0 2025-08-27T21:22:43.794Z*/
+/*v1.1 2025-08-28T10:46:33.104Z*/
 
 :root {
-    --card: #0e0f12;
-    --ink: #e6e6e6;
-    --muted: #9aa3b2;
-    --accent: #f5c451;
-    --background-1: #0e0f12;
-    --background-2: #14161b;
+    --card: #161718;
+    --ink: #F0F0F0;
+    --muted: #bbbbbb;
+    --accent: #D4B55A;
+    --background-1: #1e1e1e;
+    --background-2: #292929;
+    --background-3: #3b3b3b;
 }
 
 /* === Base === */
 body.cs {
     margin: 0;
-    background: #0e0f12;
-    color: #e8ecf1;
+    background: var(--background-1);
+    color: var(--ink);
     font-family: var(--font-main), sans-serif;
 }
 
@@ -31,6 +32,9 @@ p {
 :focus-visible {
     outline: none;
 }
+.character-sheet {
+    padding-top: 4rem;
+}
 
 /* === Layout === */
 .cs-wrapper {
@@ -42,6 +46,7 @@ p {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     overflow: hidden;
+    background: var(--background-1);
 }
 .cs-main-column {
     display: flex;
@@ -76,23 +81,21 @@ p {
 
 .cs-sidebar-button:hover,
 .cs-sidebar-button[aria-selected="true"] {
-    background: #20242c;
-    color: #f1c24c;
+    background: var(--background-3);
+    color: var(--accent);
 }
 
 /* === Content === */
 .cs-content {
     width: 100%;
     flex: 1 1 auto;
-    padding: 2rem;
+    padding: 1.5rem;
     overflow-y: auto;
-    background: var(--background-1);
 }
 .cs-fixed {
     width: 100%;
     flex: 0 0 auto;
     padding: 1rem 1.5rem;
-    background: var(--background-1);
 }
 
 .cs-block-flex {
@@ -223,8 +226,8 @@ textarea#bio {
     padding: 1rem 1.5rem;
     cursor: pointer;
     font-weight: bold;
-    background: #20242c;
-    color: #f1c24c;
+    background: var(--background-3);
+    color: var(--accent);
     user-select: none;
 }
 
@@ -308,11 +311,11 @@ textarea.auto-resize::-webkit-scrollbar-thumb {
     background-image: var(--aptitude-icon);
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.15; /* trasparenza */
+    opacity: 0.25; /* trasparenza */
     pointer-events: none;
 }
 .aptitude-input-wrapper:hover::before {
-    opacity: 0.25;
+    opacity: 0.35;
 }
 
 .aptitude-input-wrapper input {

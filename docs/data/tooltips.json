@@ -63,6 +63,12 @@
     "type": "Game Mechanic",
     "description": "These dice represent a character's <b>competence</b>, attributes, trained abilities, and any benefits derived from equipment or external assistance. They are rolled to determine the <b>success or failure</b> of an action."
   },
+  "cs-identity": {
+    "trigger": "cs-identity",
+    "icon": "default",
+    "type": "Character Sheet",
+    "description": "<strong>Character Identity</strong><br><em>Name, allegiance, biography, and personal information.</em>"
+  },
   "deal": {
     "trigger": "deal",
     "icon": "/assets/icons/svg/tag/agility.svg",
