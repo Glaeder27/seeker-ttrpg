@@ -1,15 +1,15 @@
-/*v2.30 2025-08-28T08:23Z - character-sheet.js*/
+/*v2.31 2025-08-28T10:15Z - character-sheet.js*/
 
 // ==============================
 // Imports Firebase Realtime Database
 // ==============================
-import { realtimeDB } from "/scripts/config.js";
+import { auth, realtimeDB } from "/scripts/config.js";
 import { ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
 // ==============================
-// UID utente (da sostituire con auth.currentUser.uid)
+// UID utente
 // ==============================
-const userId = "demoUser123"; // esempio temporaneo
+let currentUserId = null;
 const db = realtimeDB;
 
 // ==============================
@@ -18,9 +18,9 @@ const db = realtimeDB;
 export async function saveCharacter(userId, characterData) {
   try {
     await set(ref(db, "characters/" + userId), characterData);
-    console.log("Scheda salvata!");
+    console.log("Scheda salvata su Firebase!");
   } catch (err) {
-    console.error("Errore salvataggio:", err);
+    console.error("Errore salvataggio Firebase:", err);
   }
 }
 
@@ -30,7 +30,7 @@ export async function loadCharacter(userId) {
     if (snapshot.exists()) return snapshot.val();
     return null;
   } catch (err) {
-    console.error("Errore caricamento:", err);
+    console.error("Errore caricamento Firebase:", err);
     return null;
   }
 }
@@ -208,7 +208,7 @@ function saveSheet() {
   // Identity
   const characterNameInput = document.querySelector("#character-name");
   const oathSelect = document.querySelector("#oath");
-  if (characterNameInput) data.name = characterNameInput.value;
+  if (characterNameInput) data.characterName = characterNameInput.value;
   if (oathSelect) data.oath = oathSelect.value;
 
   // Aptitudes
@@ -219,35 +219,73 @@ function saveSheet() {
 
   // Altri campi dinamici
   document.querySelectorAll("[data-field]").forEach(field => {
-    const key = field.dataset.field;
-    if (!data[key]) data[key] = field.value;
-  });
+  const key = field.dataset.field;
+  data[key] = field.value;
+});
 
-  saveCharacter(userId, data);
+  // Salvataggio
+  if (currentUserId) {
+    saveCharacter(currentUserId, data); // Firebase
+  } else {
+    localStorage.setItem("characterSheet", JSON.stringify(data)); // locale
+    console.log("Scheda salvata localmente.");
+  }
 }
 
 // ==============================
-// Caricamento dati all'avvio
+// Caricamento dati dopo login o da localStorage
 // ==============================
-window.addEventListener("DOMContentLoaded", async () => {
-  const data = await loadCharacter(userId);
-  if (!data) return;
+auth.onAuthStateChanged(async (user) => {
+  if (user) {
+    currentUserId = user.uid;
+    console.log("Utente loggato:", currentUserId);
 
-  const characterNameInput = document.querySelector("#character-name");
-  const oathSelect = document.querySelector("#oath");
-  if (data.name && characterNameInput) characterNameInput.value = data.name;
-  if (data.oath && oathSelect) oathSelect.value = data.oath;
+    // Carica dati da Firebase
+    const data = await loadCharacter(currentUserId);
+    if (!data) return;
 
-  if (data.aptitudes) {
-    document.querySelectorAll(".aptitude-input-wrapper input").forEach(input => {
-      const key = input.dataset.field;
-      if (data.aptitudes[key] !== undefined) input.value = data.aptitudes[key];
+    const characterNameInput = document.querySelector("#character-name");
+    const oathSelect = document.querySelector("#oath");
+    if (data.characterName && characterNameInput) characterNameInput.value = data.characterName;
+    if (data.oath && oathSelect) oathSelect.value = data.oath;
+
+    if (data.aptitudes) {
+      document.querySelectorAll(".aptitude-input-wrapper input").forEach(input => {
+        const key = input.dataset.field;
+        if (data.aptitudes[key] !== undefined) input.value = data.aptitudes[key];
+      });
+    }
+
+    document.querySelectorAll("[data-field]").forEach(field => {
+      const key = field.dataset.field;
+      if (data[key] !== undefined) field.value = data[key];
     });
-  }
 
-  // Sezioni dinamiche
-  document.querySelectorAll("[data-field]").forEach(field => {
-    const key = field.dataset.field;
-    if (data[key] !== undefined) field.value = data[key];
-  });
+  } else {
+    currentUserId = null;
+    console.log("Utente non loggato: carico dati locali.");
+
+    // Carica dati da localStorage
+    const savedData = localStorage.getItem("characterSheet");
+    if (savedData) {
+      const data = JSON.parse(savedData);
+
+      const characterNameInput = document.querySelector("#character-name");
+      const oathSelect = document.querySelector("#oath");
+      if (data.name && characterNameInput) characterNameInput.value = data.name;
+      if (data.oath && oathSelect) oathSelect.value = data.oath;
+
+      if (data.aptitudes) {
+        document.querySelectorAll(".aptitude-input-wrapper input").forEach(input => {
+          const key = input.dataset.field;
+          if (data.aptitudes[key] !== undefined) input.value = data.aptitudes[key];
+        });
+      }
+
+      document.querySelectorAll("[data-field]").forEach(field => {
+        const key = field.dataset.field;
+        if (data[key] !== undefined) field.value = data[key];
+      });
+    }
+  }
 });
