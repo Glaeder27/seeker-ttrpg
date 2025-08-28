@@ -3,13 +3,14 @@
 // ==============================
 // Imports Firebase Realtime Database
 // ==============================
-import { db } from "/scripts/config.js";
+import { realtimeDB } from "/scripts/config.js";
 import { ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
 // ==============================
 // UID utente (da sostituire con auth.currentUser.uid)
 // ==============================
 const userId = "demoUser123"; // esempio temporaneo
+const db = realtimeDB;
 
 // ==============================
 // Funzioni Database

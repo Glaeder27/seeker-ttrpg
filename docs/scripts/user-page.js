@@ -1,6 +1,6 @@
-/*v2.4 2025-08-28T09:19:28.383Z*/
+/*v2.5 2025-08-28T09:27:49.407Z*/
 
-import { auth, firestore } from "./config.js";
+import { auth, firestore } from "/scripts/config.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { doc, getDoc, setDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
