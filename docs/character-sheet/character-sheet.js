@@ -4,7 +4,12 @@
 // Imports Firebase Realtime Database
 // ==============================
 import { auth, realtimeDB } from "/scripts/config.js";
-import { ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+import {
+  ref,
+  set,
+  get,
+  child,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
 // ==============================
 // UID utente
@@ -43,63 +48,64 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("sheetContent");
 
   async function loadSection(section) {
-  const file = `character-sheet-${section}.html`;
-  try {
-    const res = await fetch(file);
-    const html = await res.text();
-    content.innerHTML = html;
+    const file = `character-sheet-${section}.html`;
+    try {
+      const res = await fetch(file);
+      const html = await res.text();
+      content.innerHTML = html;
 
-    // Listener su tutti i campi dinamici
-    content.querySelectorAll("[data-field]").forEach(field => {
-      field.addEventListener("input", saveSheet);
-    });
-
-    // Se identity: inizializza nomi e icone
-    if (section === "identity") initCharacterIdentity();
-
-    enableAutoResize(content);
-
-    // --- POPOLA DATI SALVATI SE PRESENTI ---
-    let data = null;
-    if (currentUserId) {
-      data = await loadCharacter(currentUserId);
-    } else {
-      const savedData = localStorage.getItem("characterSheet");
-      if (savedData) data = JSON.parse(savedData);
-    }
-
-    if (data) {
-      content.querySelectorAll("[data-field]").forEach(field => {
-        const key = field.dataset.field;
-        if (data[key] !== undefined) field.value = data[key];
+      // Listener su tutti i campi dinamici
+      content.querySelectorAll("[data-field]").forEach((field) => {
+        field.addEventListener("input", saveSheet);
       });
 
-      if (section === "identity" && data.oath) {
-        const oathSelect = document.querySelector("#oath");
-        if (oathSelect) {
-          oathSelect.value = data.oath;
-          updateIdentityDisplay(data.oath);
-        }
+      // Se identity: inizializza nomi e icone
+      if (section === "identity") initCharacterIdentity();
+
+      enableAutoResize(content);
+
+      // --- POPOLA DATI SALVATI SE PRESENTI ---
+      let data = null;
+      if (currentUserId) {
+        data = await loadCharacter(currentUserId);
+      } else {
+        const savedData = localStorage.getItem("characterSheet");
+        if (savedData) data = JSON.parse(savedData);
       }
 
-      requestAnimationFrame(() => resizeAllAutoTextareas(content));
+      if (data) {
+        content.querySelectorAll("[data-field]").forEach((field) => {
+          const key = field.dataset.field;
+          if (data[key] !== undefined) field.value = data[key];
+        });
+
+        if (section === "identity" && data.oath) {
+          const oathSelect = document.querySelector("#oath");
+          if (oathSelect) {
+            oathSelect.value = data.oath;
+            updateIdentityDisplay(data.oath);
+          }
+        }
+
+        requestAnimationFrame(() => resizeAllAutoTextareas(content));
+      }
+    } catch (err) {
+      content.innerHTML = `<p class="cs-error">Error loading section: ${err.message}</p>`;
     }
-
-  } catch (err) {
-    content.innerHTML = `<p class="cs-error">Error loading section: ${err.message}</p>`;
   }
-}
 
-  buttons.forEach(btn => {
+  buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      buttons.forEach(b => b.setAttribute("aria-selected", "false"));
+      buttons.forEach((b) => b.setAttribute("aria-selected", "false"));
       btn.setAttribute("aria-selected", "true");
       loadSection(btn.getAttribute("data-section"));
     });
   });
 
   // Carica sezione di default
-  const defaultBtn = document.querySelector(".cs-sidebar-button[aria-selected='true']");
+  const defaultBtn = document.querySelector(
+    ".cs-sidebar-button[aria-selected='true']"
+  );
   if (defaultBtn) loadSection(defaultBtn.getAttribute("data-section"));
 });
 
@@ -117,13 +123,13 @@ function initCharacterIdentity() {
   const iconMap = {
     england: "/assets/images/webp/allegiance/allegiance-crown-of-england.webp",
     spain: "/assets/images/webp/allegiance/allegiance-crown-of-spain.webp",
-    papacy: "/assets/images/webp/allegiance/allegiance-papacy.webp"
+    papacy: "/assets/images/webp/allegiance/allegiance-papacy.webp",
   };
 
   const prefixMap = {
     england: "Seeker",
     spain: "Buscador",
-    papacy: "Inquisitor"
+    papacy: "Inquisitor",
   };
 
   oathSelect.addEventListener("change", () => {
@@ -147,13 +153,13 @@ function updateIdentityDisplay(oathValue) {
   const iconMap = {
     england: "/assets/images/webp/allegiance/allegiance-crown-of-england.webp",
     spain: "/assets/images/webp/allegiance/allegiance-crown-of-spain.webp",
-    papacy: "/assets/images/webp/allegiance/allegiance-papacy.webp"
+    papacy: "/assets/images/webp/allegiance/allegiance-papacy.webp",
   };
 
   const prefixMap = {
     england: "Seeker",
     spain: "Buscador",
-    papacy: "Inquisitor"
+    papacy: "Inquisitor",
   };
 
   namePrefix.textContent = prefixMap[oathValue] || "";
@@ -170,7 +176,7 @@ function updateIdentityDisplay(oathValue) {
 // Auto-resize textarea
 // ==============================
 function enableAutoResize(context = document) {
-  context.querySelectorAll(".auto-resize").forEach(textarea => {
+  context.querySelectorAll(".auto-resize").forEach((textarea) => {
     const resize = () => {
       textarea.style.height = "auto";
       const scrollHeight = textarea.scrollHeight;
@@ -182,9 +188,13 @@ function enableAutoResize(context = document) {
   });
 }
 function resizeAllAutoTextareas(context = document) {
-  context.querySelectorAll(".auto-resize").forEach(textarea => {
+  context.querySelectorAll(".auto-resize").forEach((textarea) => {
     textarea.style.height = "auto";
-    textarea.style.height = Math.min(textarea.scrollHeight, parseInt(getComputedStyle(textarea).maxHeight) || 500) + "px";
+    textarea.style.height =
+      Math.min(
+        textarea.scrollHeight,
+        parseInt(getComputedStyle(textarea).maxHeight) || 500
+      ) + "px";
   });
 }
 
@@ -197,21 +207,27 @@ const aptitudes = [
   { name: "Strength", icon: "/assets/icons/svg/aptitudes/strength-ico.svg" },
   { name: "Agility", icon: "/assets/icons/svg/aptitudes/agility-ico.svg" },
   { name: "Vigor", icon: "/assets/icons/svg/aptitudes/vigor-ico.svg" },
-  { name: "Perception", icon: "/assets/icons/svg/aptitudes/perception-ico.svg" },
+  {
+    name: "Perception",
+    icon: "/assets/icons/svg/aptitudes/perception-ico.svg",
+  },
   { name: "Intellect", icon: "/assets/icons/svg/aptitudes/intellect-ico.svg" },
-  { name: "Adaptability", icon: "/assets/icons/svg/aptitudes/adaptability-ico.svg" },
+  {
+    name: "Adaptability",
+    icon: "/assets/icons/svg/aptitudes/adaptability-ico.svg",
+  },
   { name: "Charisma", icon: "/assets/icons/svg/aptitudes/charisma-ico.svg" },
   { name: "Insight", icon: "/assets/icons/svg/aptitudes/insight-ico.svg" },
-  { name: "Willpower", icon: "/assets/icons/svg/aptitudes/willpower-ico.svg" }
+  { name: "Willpower", icon: "/assets/icons/svg/aptitudes/willpower-ico.svg" },
 ];
 
-aptitudes.forEach(a => {
+aptitudes.forEach((a) => {
   const box = document.createElement("div");
   box.className = "aptitude-box";
 
   const wrapper = document.createElement("div");
   wrapper.className = "aptitude-input-wrapper";
-  wrapper.style.setProperty('--aptitude-icon', `url(${a.icon})`);
+  wrapper.style.setProperty("--aptitude-icon", `url(${a.icon})`);
 
   const plus = document.createElement("button");
   plus.type = "button";
@@ -233,11 +249,11 @@ aptitudes.forEach(a => {
   minus.className = "aptitude-btn";
 
   plus.addEventListener("click", () => {
-    input.value = Math.min(parseInt(input.value)+1, 5);
+    input.value = Math.min(parseInt(input.value) + 1, 5);
     saveSheet();
   });
   minus.addEventListener("click", () => {
-    input.value = Math.max(parseInt(input.value)-1, 1);
+    input.value = Math.max(parseInt(input.value) - 1, 1);
     saveSheet();
   });
 
@@ -270,17 +286,26 @@ function saveSheet() {
 
   // Aptitudes
   data.aptitudes = {};
-  document.querySelectorAll(".aptitude-input-wrapper input").forEach(input => {
-    data.aptitudes[input.dataset.field] = parseInt(input.value);
-  });
+  document
+    .querySelectorAll(".aptitude-input-wrapper input")
+    .forEach((input) => {
+      data.aptitudes[input.dataset.field] = parseInt(input.value);
+    });
 
-  // Altri campi dinamici
-  document.querySelectorAll("[data-field]").forEach(field => {
+  // Altri campi dinamici (esclude gli input delle aptitudes)
+  document.querySelectorAll("[data-field]").forEach((field) => {
     const key = field.dataset.field;
     if (!key) return;
 
+    // Escludi gli input delle aptitudes
+    if (field.closest(".aptitude-input-wrapper")) return;
+
     let value;
-    if (field.tagName === "INPUT" || field.tagName === "TEXTAREA" || field.tagName === "SELECT") {
+    if (
+      field.tagName === "INPUT" ||
+      field.tagName === "TEXTAREA" ||
+      field.tagName === "SELECT"
+    ) {
       value = field.value;
     } else {
       value = field.textContent;
@@ -314,30 +339,33 @@ auth.onAuthStateChanged(async (user) => {
     const oathSelect = document.querySelector("#oath");
 
     // Imposta i valori dei campi
-    if (data.characterName && characterNameInput) characterNameInput.value = data.characterName;
+    if (data.characterName && characterNameInput)
+      characterNameInput.value = data.characterName;
 
     // <-- Qui imposto l'allegiance salvata
     if (data.oath && oathSelect) {
       oathSelect.value = data.oath;
-      updateIdentityDisplay(data.oath);  // Aggiorna prefix e bandiera subito
+      updateIdentityDisplay(data.oath); // Aggiorna prefix e bandiera subito
     }
 
     if (data.aptitudes) {
-      document.querySelectorAll(".aptitude-input-wrapper input").forEach(input => {
-        const key = input.dataset.field;
-        if (data.aptitudes[key] !== undefined) input.value = data.aptitudes[key];
-      });
+      document
+        .querySelectorAll(".aptitude-input-wrapper input")
+        .forEach((input) => {
+          const key = input.dataset.field;
+          if (data.aptitudes[key] !== undefined)
+            input.value = data.aptitudes[key];
+        });
     }
 
-    document.querySelectorAll("[data-field]").forEach(field => {
+    document.querySelectorAll("[data-field]").forEach((field) => {
       const key = field.dataset.field;
       if (data[key] !== undefined) field.value = data[key];
     });
 
     requestAnimationFrame(() => {
-        resizeAllAutoTextareas();
+      resizeAllAutoTextareas();
     });
-
   } else {
     currentUserId = null;
     console.log("Utente non loggato: carico dati locali.");
@@ -353,17 +381,20 @@ auth.onAuthStateChanged(async (user) => {
       // <-- Anche qui imposto l'allegiance salvata
       if (data.oath && oathSelect) {
         oathSelect.value = data.oath;
-        updateIdentityDisplay(data.oath);  // Aggiorna prefix e bandiera subito
+        updateIdentityDisplay(data.oath); // Aggiorna prefix e bandiera subito
       }
 
       if (data.aptitudes) {
-        document.querySelectorAll(".aptitude-input-wrapper input").forEach(input => {
-          const key = input.dataset.field;
-          if (data.aptitudes[key] !== undefined) input.value = data.aptitudes[key];
-        });
+        document
+          .querySelectorAll(".aptitude-input-wrapper input")
+          .forEach((input) => {
+            const key = input.dataset.field;
+            if (data.aptitudes[key] !== undefined)
+              input.value = data.aptitudes[key];
+          });
       }
 
-      document.querySelectorAll("[data-field]").forEach(field => {
+      document.querySelectorAll("[data-field]").forEach((field) => {
         const key = field.dataset.field;
         if (data[key] !== undefined) field.value = data[key];
       });
