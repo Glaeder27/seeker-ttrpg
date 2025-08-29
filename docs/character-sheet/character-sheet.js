@@ -1,4 +1,4 @@
-/*v2.31 2025-08-28T10:15Z - character-sheet.js*/
+/*v2.33 2025-08-29T19:15Z - character-sheet.js (full script, image save/load fix)*/
 
 // ==============================
 // Imports Firebase Realtime Database
@@ -41,7 +41,7 @@ export async function loadCharacter(userId) {
 }
 
 // ==============================
-// DOMContentLoaded: gestione sidebar e sezioni dinamiche
+// DOMContentLoaded: gestione sidebar, sezioni dinamiche e immagine personaggio
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".cs-sidebar-button");
@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (savedData) {
       const data = JSON.parse(savedData);
 
-      // Ripristina tutti i campi con data-field e data-category
       document.querySelectorAll("[data-field]").forEach((field) => {
         const key = field.dataset.field;
         const category = field.dataset.category || "root";
@@ -70,9 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // Aggiorna l'Identity display (prefix + bandiera)
       if (data.identity && data.identity.oath) {
         updateIdentityDisplay(data.identity.oath);
+      }
+
+      // --- Ripristina immagine personaggio se salvata ---
+      if (data.characterImage) {
+        const characterImg = document.getElementById("characterImg");
+        if (characterImg) characterImg.src = data.characterImage;
       }
     }
   }
@@ -84,20 +88,66 @@ document.addEventListener("DOMContentLoaded", () => {
       const html = await res.text();
       content.innerHTML = html;
 
-      // Listener su tutti i campi dinamici
       content.querySelectorAll("[data-field]").forEach((field) => {
+        if (field.tagName === "TEXTAREA") return;
         field.addEventListener("input", saveSheet);
+      })
+
+      content.querySelectorAll("textarea[data-field]").forEach((textarea) => {
+        textarea.addEventListener("input", saveSheetSuperDebounced);
       });
 
-      const bioField = content.querySelector("#biography");
-      if (bioField) {
-        bioField.addEventListener("input", saveSheetSuperDebounced);
+      if (section === "identity") {
+        initCharacterIdentity();
+
+        // --- Gestione caricamento immagine personaggio ---
+        const uploadInput = document.getElementById("uploadCharacterImg");
+        const pictureBox = document.getElementById("characterPicture");
+        const characterImg = document.getElementById("characterImg");
+
+        if (uploadInput && pictureBox && characterImg) {
+          pictureBox.addEventListener("click", () => uploadInput.click());
+
+          uploadInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const maxSize = 1024 * 1024;
+            const maxWidth = 500;
+            const maxHeight = 500;
+
+            if (file.size > maxSize) {
+              alert("Image too large. Max 1MB.");
+              uploadInput.value = "";
+              return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              const img = new Image();
+              img.onload = () => {
+                if (img.width > maxWidth || img.height > maxHeight) {
+                  alert(`Image too large. Max ${maxWidth}x${maxHeight}px`);
+                  uploadInput.value = "";
+                  return;
+                }
+
+                // Imposta src e data-field
+                characterImg.src = event.target.result;
+                characterImg.dataset.field = "characterImage";
+
+                // Salva tutta la scheda
+                saveSheet();
+              };
+              img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+          });
+        }
       }
 
-      // Se identity: inizializza nomi e icone
-      if (section === "identity") initCharacterIdentity();
-
       enableAutoResize(content);
+      enableAutoResize(document);
 
       // --- POPOLA DATI SALVATI SE PRESENTI ---
       let data = null;
@@ -125,13 +175,18 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        // Identity specifico
         if (section === "identity" && data.identity && data.identity.oath) {
           const oathSelect = document.querySelector("#oath");
           if (oathSelect) {
             oathSelect.value = data.identity.oath;
             updateIdentityDisplay(data.identity.oath);
           }
+        }
+
+        // --- Restore immagine se presente ---
+        if (section === "identity" && data.identity?.characterImage) {
+          const characterImg = document.getElementById("characterImg");
+          if (characterImg) characterImg.src = data.identity.characterImage;
         }
 
         requestAnimationFrame(() => resizeAllAutoTextareas(content));
@@ -149,13 +204,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Caricamento sezione di default ---
   const defaultBtn = document.querySelector(
     ".cs-sidebar-button[aria-selected='true']"
   );
-  if (defaultBtn)
-    loadSection(defaultBtn.getAttribute("data-section"));
+  if (defaultBtn) loadSection(defaultBtn.getAttribute("data-section"));
 });
+
+// ==============================
+// Funzione ausiliaria per salvare solo un campo
+// ==============================
+function saveSheetField(fieldName, value) {
+  let data = {};
+  if (currentUserId) {
+    loadCharacter(currentUserId).then((loaded) => {
+      data = loaded || {};
+      if (!data.identity) data.identity = {};
+      data.identity[fieldName] = value;
+      saveCharacter(currentUserId, data);
+    });
+  } else {
+    const saved = localStorage.getItem("characterSheet");
+    data = saved ? JSON.parse(saved) : {};
+    if (!data.identity) data.identity = {};
+    data.identity[fieldName] = value;
+    localStorage.setItem("characterSheet", JSON.stringify(data));
+  }
+}
 
 // ==============================
 // Character Identity
@@ -227,9 +301,7 @@ function enableAutoResize(context = document) {
   context.querySelectorAll(".auto-resize").forEach((textarea) => {
     const resize = () => {
       textarea.style.height = "auto";
-      const scrollHeight = textarea.scrollHeight;
-      const maxHeight = parseInt(getComputedStyle(textarea).maxHeight) || 500;
-      textarea.style.height = Math.min(scrollHeight, maxHeight) + "px";
+      textarea.style.height = textarea.scrollHeight + "px";
     };
     resize();
     textarea.addEventListener("input", resize);
@@ -258,14 +330,26 @@ const aptitudeCategories = {
     { name: "Vigor", icon: "/assets/icons/svg/aptitudes/vigor-ico.svg" },
   ],
   Exploration: [
-    { name: "Perception", icon: "/assets/icons/svg/aptitudes/perception-ico.svg" },
-    { name: "Intellect", icon: "/assets/icons/svg/aptitudes/intellect-ico.svg" },
-    { name: "Adaptability", icon: "/assets/icons/svg/aptitudes/adaptability-ico.svg" },
+    {
+      name: "Perception",
+      icon: "/assets/icons/svg/aptitudes/perception-ico.svg",
+    },
+    {
+      name: "Intellect",
+      icon: "/assets/icons/svg/aptitudes/intellect-ico.svg",
+    },
+    {
+      name: "Adaptability",
+      icon: "/assets/icons/svg/aptitudes/adaptability-ico.svg",
+    },
   ],
   Social: [
     { name: "Charisma", icon: "/assets/icons/svg/aptitudes/charisma-ico.svg" },
     { name: "Insight", icon: "/assets/icons/svg/aptitudes/insight-ico.svg" },
-    { name: "Willpower", icon: "/assets/icons/svg/aptitudes/willpower-ico.svg" },
+    {
+      name: "Willpower",
+      icon: "/assets/icons/svg/aptitudes/willpower-ico.svg",
+    },
   ],
 };
 
@@ -407,22 +491,29 @@ Object.entries(aptitudeCategories).forEach(([categoryName, aptitudes]) => {
 function saveSheet() {
   // Oggetto dati iniziale
   const data = {
-    utils: { updatedAt: new Date().toISOString() }
+    utils: { updatedAt: new Date().toISOString() },
   };
 
   // Seleziona **tutti i campi** con data-field in tutto il documento
-  document.querySelectorAll("[data-field]").forEach(field => {
+  document.querySelectorAll("[data-field]").forEach((field) => {
     const key = field.dataset.field;
     if (!key) return;
 
-    // Categoria (identity, aptitudes, ecc.)
     const category = field.dataset.category || "root";
     if (!data[category]) data[category] = {};
 
-    // Valore del campo
     let value;
-    if (field.tagName === "INPUT" || field.tagName === "TEXTAREA" || field.tagName === "SELECT") {
+    if (
+      field.tagName === "INPUT" ||
+      field.tagName === "TEXTAREA" ||
+      field.tagName === "SELECT"
+    ) {
       value = field.value;
+    } else if (
+      field.tagName === "IMG" &&
+      field.dataset.field === "characterImage"
+    ) {
+      value = field.src;
     } else {
       value = field.textContent;
     }
@@ -483,7 +574,9 @@ auth.onAuthStateChanged(async (user) => {
           if (data.aptitudes[key] !== undefined)
             input.value = data.aptitudes[key];
 
-          const tagContainer = input.closest(".aptitude-box").querySelector(".aptitude-tag");
+          const tagContainer = input
+            .closest(".aptitude-box")
+            .querySelector(".aptitude-tag");
           updateAptitudeTag(input, tagContainer);
           updateAptitudeValueStyle(input);
         });
@@ -523,7 +616,9 @@ auth.onAuthStateChanged(async (user) => {
             if (data.aptitudes[key] !== undefined)
               input.value = data.aptitudes[key];
 
-            const tagContainer = input.closest(".aptitude-box").querySelector(".aptitude-tag");
+            const tagContainer = input
+              .closest(".aptitude-box")
+              .querySelector(".aptitude-tag");
             updateAptitudeTag(input, tagContainer);
             updateAptitudeValueStyle(input);
           });
