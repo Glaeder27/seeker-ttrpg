@@ -1,0 +1,185 @@
+<!-- v1.1 2025-08-30T19:39:51.941Z -->
+
+<!DOCTYPE html>
+<html lang="en" data-env="github" class="preload">
+
+<head>
+    <!-- Charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Seeker TTRPG • Combat</title>
+
+    <meta name="description"
+        content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
+
+    <meta name="author" content="Alonso de Luna" />
+
+    <!-- Favicon (opzionale) -->
+    <link rel="icon" href="/assets/icons/ico/favicon.ico" type="image/ico" />
+
+    <!-- Open Graph per link preview -->
+    <meta property="og:title" content="Seeker TTRPG" />
+    <meta property="og:description"
+        content="Explore a haunted New World in the Age of Discovery, where supernatural entities awaken with conquest." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:url" content="https://www.seekerttrpg.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script type="module" src="/scripts/config.js"></script>
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+    </style>
+
+<body id="masteries" data-menu-src="/data/menu-rulebook.json">
+    <!-- SIDENAV -->
+    <div id="sidenav-container"></div>
+    <div id="sidenav-overlay"></div>
+    <!-- NAVBAR -->
+    <div id="navbar-top"></div>
+    <script type="module" src="/scripts/navbar.js"></script>
+
+    <!-- MAIN CONTENT ───────────────────────────────────────────── -->
+    <div class="title-banner" data-img-src="/assets/images/banners/home-page.webp"></div>
+    <main class="dual-column" type="rulebook">
+        <div class="left-column">
+            <header class="title">
+                <div class="title-container page-title">
+                    <span class="title-icon rot90">C</span>
+                    <h1 class="expanded ligature-none" style="padding: 0 .35em .75em .35em">Combat</h1>
+                    <span class="title-icon">C</span>
+                </div>
+            </header>
+
+            <!-- 1 • Core Concept -->
+            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
+                <header class="section var-1">
+                    <div class="section-number">
+                        <p>Section I</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">b</span>
+                        <h2>Core Concept</h2>
+                        <span class="title-icon right rot90">b</span>
+                    </div>
+                    <p class="subtitle">Personal Augmentations in a Shared Grid</p>
+                </header>
+                <p>
+                    In <em>Seeker</em>, combat is a structured interplay of turns, Stances, and strategic interventions.
+                    Each participant acts according to clearly defined rules, but the system is designed to encourage
+                    interaction beyond the individual turn: combatants can interrupt an opponent’s action, enhance an
+                    ally’s ability, modify the outcome of a pending effect, or trigger environmental or status-driven
+                    conditions at almost any moment.</p>
+                <p>Combat revolves around <strong>Stances</strong>, which determine not only the number of Actions
+                    available and the Tags that can be used, but also the order in which participants act. The
+                    battlefield is divided into <strong>Units</strong>, providing a flexible spatial framework for
+                    movement, range, and positioning, while environmental effects and Difficult Terrain further shape
+                    tactical decisions.</p>
+                <p>Active defense ensures that every Attack must be met with a counter, and the Escalate mechanic
+                    introduces a dynamic layer of risk and resource management. Together, these elements create a system
+                    that rewards foresight, timing, and creative use of abilities, transforming each encounter into a
+                    puzzle of strategy and adaptability.
+                </p>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <aside class="sidebar-wrapper">
+                <!-- Block 1: Quick Glossary Search -->
+                <div class="sidebar-block">
+                    <h3>Quick Glossary</h3>
+                    <input type="text" id="glossary-search" class="glossary-input" placeholder="Search term…" />
+                    <div id="glossary-result" class="glossary-result">Type a term to see its definition.</div>
+                </div>
+                <!-- Block 2: TL;DR -->
+                <div class="sidebar-block collapsible-item-sb">
+                    <div class="collapsible-header-sb" style="padding: 0">
+                        <h3 class="section">TL;DR — Skills</h3>
+                        <span class="collapsible-icon-sb">▸</span>
+                    </div>
+
+                    <div class="collapsible-content-sb" style="padding: 0 5px">
+                        <ul class="no-bullet">
+                            <li class="no-bullet"><strong class="tldr-title">1 • Placeholder</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Block 3: Player & GM Resources -->
+                <div class="sidebar-block">
+                    <h3>Player & GM Resources</h3>
+                    <a class="sidebar-link" href="#">GM Cheat Sheet</a>
+                    <a class="sidebar-link" href="#">Quickstart Rules</a>
+                </div>
+                <!-- Block 4: From the Archives Carousel -->
+                <div class="sidebar-block">
+                    <h3>From the Archives</h3>
+                    <div class="archives-carousel-fade">
+                        <div class="archive-item show">
+                            "They did not fear our steel, but the smoke that rose from southern ruins."
+                            <div class="archive-author">— Letter from Inquisitor M. Varela, 1493</div>
+                        </div>
+                        <div class="archive-item">
+                            "On the ninth night, the jungle sang back to us. Our torches would not stay lit."
+                            <div class="archive-author">— Journal of Captain J. Strode</div>
+                        </div>
+                        <div class="archive-item">
+                            "Blood on the pyramid steps opened a wound in the sky; we glimpsed something vast."
+                            <div class="archive-author">— Testimony of Seeker L. de Rojas</div>
+                        </div>
+                        <div class="archive-item">
+                            "The stone idols breathe. Some say they dream. Pray they never awaken."
+                            <div class="archive-author">— Codex Margin Note, unknown author</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-bottom"></div>
+    <script>
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer-bottom").innerHTML = html;
+            });
+    </script>
+
+    <!-- SCRIPTS ────────────────────────────────────────────────── -->
+    <script>
+        fetch('/sidenav.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidenav-container').innerHTML = html;
+
+                const script = document.createElement('script');
+                script.src = '/scripts/sidenav.js';
+                document.body.appendChild(script);
+            });
+    </script>
+
+    <script src="/scripts/sidebar.js"></script>
+    <script src="/scripts/core.js"></script>
+    <script src="/scripts/version-check.js"></script>
+    <script src="/scripts/iconizer.js"></script>
+
+</body>
+
+</html>
