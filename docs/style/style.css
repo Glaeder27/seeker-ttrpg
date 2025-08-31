@@ -1,4 +1,4 @@
-/*v3.42 2025-08-27T15:07:07.032Z*/
+/*v3.43 2025-08-31T18:54:31.824Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -1254,6 +1254,25 @@ body#home-page {
     pointer-events: none;
 }
 
+.carousel-arrow-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    pointer-events: none;
+}
+
+.carousel-arrow-right svg {
+    width: 100%;
+    height: 100%;
+    fill: #aaa;
+}
+.arrow-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.5rem;
+    margin: 0.5rem 0 1rem 0;
+}
+
 .carousel-arrow:hover {
     color: var(--bright-gold);
 }
@@ -1295,6 +1314,11 @@ body#home-page {
 
 .feature-card.small {
     height: 300px;
+    width: 250px;
+    background-position: top;
+}
+.feature-card.square {
+    height: 250px;
     width: 250px;
     background-position: top;
 }
@@ -1435,6 +1459,135 @@ p.card-description {
     text-transform: uppercase;
     font-size: 1.4rem;
     margin: 1.5rem 1rem 0;
+}
+
+/* —— FLOWCHART ————————————— */
+.flowchart-card {
+    display: flex;
+    position: relative;
+    flex: 0 0 200px;
+    height: 200px;
+    width: 200px;
+    border-radius: .5rem;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    justify-content: flex-end;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    justify-self: center;
+}
+
+.flowchart-card-wrapper {
+    position: relative;
+    border-radius: 1rem;
+    padding: 3px;
+    background: linear-gradient(to right, rgba(var(--deep-charcoal-rgb), 0.2), rgba(var(--brown-charcoal-rgb), 0.2)), url(/assets/textures/antique-gold-1.jpg);
+    display: inline-block;
+    filter: drop-shadow(2px 0px 5px black);
+    width: 206px;
+    height: 206px;
+    justify-self: center;
+}
+.flowchart-card-wrapper::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 10rem;
+    background: linear-gradient(to right, rgba(var(--deep-charcoal-rgb), 0.2), rgba(var(--brown-charcoal-rgb), 0.2)), url(/assets/textures/antique-gold-1.jpg);
+}
+
+.flow-row:last-child .flowchart-card-wrapper::after {
+  display: none;
+}
+
+.flowchart-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.flow-row {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.flowchart-card h3,
+.flowchart-card h4,
+.flowchart-card .card-description.short,
+.flowchart-card .carousel-icon {
+    margin: .2rem 0 .2rem 0;
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.flowchart-card h3,
+.flowchart-card h4 {
+    font-family: var(--font-main);
+    font-weight: bold;
+    font-size: .9em;
+}
+.flowchart-card .card-number {
+    font-size: 1.2em;
+    margin-top: 1rem;
+    color: var(--off-white);
+}
+.flowchart-card h3::after {
+    content: none;
+}
+
+.flowchart-card .carousel-icon {
+    display: block;
+    margin: .5rem 0 .2rem 0;
+    height: 100px;
+    width: 100px;
+}
+.flowchart-card .carousel-icon img {
+    height: 100px;
+    width: 100px;
+}
+
+.flowchart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.flowchart-card.square {
+  background: var(--background-dark-1);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  width: 200px;
+}
+
+.flow-arrow {
+  font-size: 2rem;
+  color: var(--ancient-gold);
+  justify-self: center;
 }
 
 /* ── SIDENAV ─────────────── */

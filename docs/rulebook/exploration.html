@@ -1,4 +1,4 @@
-<!-- v1.1 2025-08-30T19:39:54.716Z -->
+<!-- v1.2 2025-08-31T18:19:05.601Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Seeker TTRPG • Combat</title>
+    <title>Seeker TTRPG • Exploration</title>
 
     <meta name="description"
         content="Seeker is a tabletop role‑playing game set in an alternate Age of Discovery, where colonial ambition awakens forgotten entities and fractured ley‑lines. As a Seeker/Buscador—explorer, scholar, heretic—you cross an ocean into lands that observe you as intently as you chart them." />
@@ -45,7 +45,7 @@
 
     </style>
 
-<body id="masteries" data-menu-src="/data/menu-rulebook.json">
+<body id="exploration" data-menu-src="/data/menu-rulebook.json">
     <!-- SIDENAV -->
     <div id="sidenav-container"></div>
     <div id="sidenav-overlay"></div>
@@ -60,27 +60,607 @@
             <header class="title">
                 <div class="title-container page-title">
                     <span class="title-icon rot90">C</span>
-                    <h1 class="expanded ligature-none" style="padding: 0 .35em .75em .35em">Combat</h1>
+                    <h1 class="expanded ligature-none" style="padding: 0 .35em .75em .35em">Exploration</h1>
                     <span class="title-icon">C</span>
                 </div>
             </header>
 
-            <!-- 1 • Core Concept -->
-            <section class="section-wrapper" id="section1" sidenav="1 • Core Concept">
+            <!-- 1 • Exploration System -->
+            <section class="section-wrapper" id="section1" sidenav="1 • Exploration System">
                 <header class="section var-1">
                     <div class="section-number">
                         <p>Section I</p>
                     </div>
                     <div class="title-container">
                         <span class="title-icon left">b</span>
-                        <h2>Core Concept</h2>
+                        <h2>Exploration System</h2>
                         <span class="title-icon right rot90">b</span>
                     </div>
-                    <p class="subtitle">Personal Augmentations in a Shared Grid</p>
+                    <p class="subtitle">Procedural Hex-based Exploration</p>
                 </header>
-                <p>
+                <p>Exploration in <em>Seeker</em> is not a passive journey, but a structured game of discovery where
+                    each
+                    step into the unknown reshapes the map. Instead of moving across a pre-drawn landscape, the Seekers
+                    reveal
+                    one hex at a time, building the New World as they advance. This procedural system ensures that no
+                    expedition
+                    is ever the same, and that each choice carries weight and consequence.</p>
 
-                     </p>
+                <p>The exploration is a contest of intent between the Archivist and the Seekers. The Archivist
+                    introduces
+                    uncertainty and hardship by generating the terrain, anomalies, and dangers of each new hex. The
+                    Seekers,
+                    through their skills, masteries, and resources, attempt to mitigate risks, exploit opportunities,
+                    and
+                    transform a hostile land into one they can traverse and survive. Every revealed hex becomes a
+                    strategic
+                    battleground between adversity and adaptation.</p>
+
+                <p>This process balances randomness and agency. Dice rolls inject unpredictability, shaping dangers,
+                    features,
+                    and events; but the Seekers’ decisions—whether to press forward, scout, or retreat—determine how
+                    harshly
+                    those results impact their journey. The challenge is not simply to endure, but to manage resources,
+                    exploit
+                    discoveries, and anticipate what lies beyond the next edge of the map.</p>
+
+                <p>At its heart, exploration is a cycle of risk and reward. The Seekers must accept hardship, seize rare
+                    opportunities, and endure unexpected dangers. Boldness is rewarded, caution preserves survival, and
+                    every
+                    hex revealed is another fragment of a living world influenced by Solaria’s presence. This system
+                    transforms
+                    travel into a tense, evolving narrative where the landscape itself is both adversary and treasure.
+                </p>
+
+            </section>
+
+            <!-- 2 • Hex Structure -->
+            <section class="section-wrapper" id="section2" sidenav="2 • Hex Structure">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">a</span>
+                        <h2>Hex Structure</h2>
+                        <span class="title-icon right rot90">a</span>
+                    </div>
+                    <p class="subtitle">Pieces of a Puzzling Map</p>
+                </header>
+                <p>An <em>Hex</em> is the fundamental unit of exploration in <em>Seeker</em>. Each hex represents a
+                    stretch of
+                    territory large enough to contain multiple landmarks, resources, and dangers, yet small enough to be
+                    crossed
+                    within a single stage of the journey. When Seekers reveal a new hex, they are not uncovering every
+                    detail of
+                    the land, but establishing the broad strokes that define its character. These structural elements
+                    give the
+                    Archivist and the players a common framework to generate terrain, populate it with features, and
+                    shape the
+                    challenges of travel.</p>
+                <h3>Hex Categories</h3>
+                <ul class="diamond">
+                    <li><strong>Primary Hexes</strong> — Fully detailed; meaningful encounters or challenges.</li>
+                    <li><strong>Secondary Hexes</strong> — Simplified; passage or narrative pacing.</li>
+                </ul>
+
+                <h3>Hex Features</h3>
+                <p>The following components define the identity of each hex and guide how it will impact
+                    the expedition.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="align-left">Layer</th>
+                            <th class="align-left">What it Represents</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Biome</td>
+                            <td class="align-left">The foundation of a Hex. Biomes describe the terrain and
+                                ecology—dense jungles, barren highlands, shifting dunes. Biomes dictate movement
+                                difficulty, available resources, and possible encounters. They are the canvas upon which
+                                all other features are painted.</td>
+                        </tr>
+                        <tr>
+                            <td>Weather</td>
+                            <td class="align-left">The climate within a Hex can be as dangerous as its creatures.
+                                Torrential rains flood trails, dry winds parch supplies, or sudden storms scatter
+                                parties. Weather affects travel pace, resource consumption, and can even spawn new
+                                <u>Dangers</u> or <u>Anomalies</u>.</td>
+                        </tr>
+                        <tr>
+                            <td>Landmarks</td>
+                            <td class="align-left">Visible markers within the Hex. A jagged obsidian spire, a ruined
+                                temple half-swallowed by vines, or a colossal tree can serve as orientation points,
+                                narrative anchors, or adventure hooks. Landmarks are what make each Hex distinct and
+                                memorable.</td>
+                        </tr>
+                        <tr>
+                            <td>Obstacles</td>
+                            <td class="align-left">Physical or environmental barriers that complicate progress—raging
+                                rivers, steep cliffs, labyrinthine mangroves, or cursed mists. Obstacles often require
+                                Skills, teamwork, or resource expenditure to overcome, and they slow or redirect the
+                                Seekers’ path.</td>
+                        </tr>
+                        <tr>
+                            <td>Dangers</td>
+                            <td class="align-left">Threats lurking in the Hex. These may be hostile creatures, natural
+                                hazards, or Solaria-driven phenomena. Unlike Obstacles, Dangers are active—they pursue,
+                                attack, or escalate if ignored. Facing a Danger always risks Morale, Supplies, or lives.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Anomalies</td>
+                            <td class="align-left">Manifestations of Solaria’s corruption or blessing. Reality bends:
+                                shadows move against the sun, stone bleeds light, time falters. Anomalies embody the
+                                strangeness of the New World, and at least one in four Primary Hexes should contain them
+                                to reinforce its uncanny nature.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Secondary Hexes contain only the Biome and the Weather, and are otherwise empty of mechanical
+                    characteristics (unless
+                    the Archivist chooses to escalate them into Primary Hexes during play).</p>
+            </section>
+
+            <!-- 3 • Hex Creation Procedure -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Hex Creation Procedure">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section III</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">e</span>
+                        <h2>Hex Creation Procedure</h2>
+                        <span class="title-icon right rot90">e</span>
+                    </div>
+                    <p class="subtitle">Step-by-Step Generation and Seekers’ Influence</p>
+                </header>
+
+                <p>
+                    Use this loop whenever the party reveals a <em>Primary Hex</em>. The Archivist frames the Hex,
+                    generates its hidden
+                    characteristics, and presents signals in fiction; the Seekers respond by scouting, spending
+                    resources, or accepting
+                    hardship. The outcome fixes travel time, risks, and rewards for that Hex. <em>Secondary Hexes</em>
+                    skip most details
+                    unless the Archivist escalates them to Primary during play.
+                </p>
+
+                <section class="flowchart-grid" style="margin: 2rem 0 4rem 0;">
+
+                    <!-- STEP 1 -->
+                    <div class="flow-row">
+                        <div class="flowchart-card-wrapper">
+                            <div class="flowchart-card square">
+                                <div class="card-content">
+                                    <h3 class="card-number">1</h3>
+                                    <h3>Set the Frame</h3>
+                                    <div class="carousel-icon">
+                                        <img src="/assets/icons/webp/generic/icon-leyline.webp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-description">
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Set the Frame</h4>
+
+                            <p>Choose the <em>Biome</em> to preserve geographic coherence. Note if this Hex is Primary
+                                or Secondary.
+                                If Secondary, decide whether to <em>escalate</em> to Primary due to story pressure,
+                                time, or player
+                                interest.</p>
+                        </div>
+                    </div>
+                    <!-- ARROW -->
+                    <div class="flow-row">
+                        <div class="flow-arrow">↓</div>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="flow-row">
+                        <div class="flowchart-card-wrapper">
+                            <div class="flowchart-card square">
+                                <div class="card-content">
+                                    <h3 class="card-number">2</h3>
+                                    <h3>Assess Modifiers</h3>
+                                    <div class="carousel-icon">
+                                        <img src="/assets/icons/webp/generic/icon-elements.webp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-description">
+                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Assess Modifiers</h4>
+                                <p>Check journey context: distance from last rest, injuries, burdens, prior Weather
+                                carrying over, and Luck
+                                availability.
+                                If the party has <strong>0 Luck</strong>, the Archivist may use the <em>Bad Luck</em>
+                                column on generation
+                                tables.</p>
+                        </div>
+                    </div>
+                    <!-- ARROW -->
+                    <div class="flow-row">
+                        <div class="flow-arrow">↓</div>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="flow-row">
+                        <div class="flowchart-card-wrapper">
+                            <div class="flowchart-card square">
+                                <div class="card-content">
+                                    <h3 class="card-number">3</h3>
+                                    <h3>Generate Features</h3>
+                                    <div class="carousel-icon">
+                                        <img src="/assets/icons/webp/generic/icon-dice.webp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-description">
+                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Generate Hidden Characteristics</h4>
+                                <p>Roll for <em>Obstacles</em>, <em>Resources</em>, <em>Dangers</em>, <em>Anomalies</em>,
+                                <em>Special</em>, and
+                                <em>Weather</em>.
+                                Keep results concealed unless a Skill/Mastery explicitly reveals them.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- ARROW -->
+                    <div class="flow-row">
+                        <div class="flow-arrow">↓</div>
+                    </div>
+
+                    <!-- STEP 4 -->
+                    <div class="flow-row">
+                        <div class="flowchart-card-wrapper">
+                            <div class="flowchart-card square">
+                                <div class="card-content">
+                                    <h3 class="card-number">4</h3>
+                                    <h3>Present Signals</h3>
+                                    <div class="carousel-icon">
+                                        <img src="/assets/icons/webp/generic/icon-spyglass.webp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-description">
+                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Present Fictional Signals</h4>
+                                <p>Offer what is naturally perceivable at first glance or from a distance (e.g., storm on
+                                the horizon, river noise,
+                                smoke, forbidding silhouettes). These are <em>clues</em>, not full reveals.</p>
+                        </div>
+                    </div>
+                    <!-- ARROW -->
+                    <div class="flow-row">
+                        <div class="flow-arrow">↓</div>
+                    </div>
+
+                    <!-- STEP 5 -->
+                    <div class="flow-row">
+                        <div class="flowchart-card-wrapper">
+                            <div class="flowchart-card square">
+                                <div class="card-content">
+                                    <h3 class="card-number">5</h3>
+                                    <h3>Influence Results</h3>
+                                    <div class="carousel-icon">
+                                        <img src="/assets/icons/webp/generic/icon-compass.webp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-description">
+                             <h4><span style="color: var(--off-white); font-weight: 300;">Seekers:</span> Influence Results</h4>
+                                <p>Before committing to the crossing, Seekers may spend <em>Supplies, Morale,</em> or
+                                <em>Luck</em> through Skills/Masteries
+                                to alter, reveal, or prepare for features. Costs are defined by each Skill/Mastery and
+                                may increase with journey
+                                length, harsh biomes, or current Weather.</p>
+                        </div>
+                    </div>
+                    <!-- ARROW -->
+                    <div class="flow-row">
+                        <div class="flow-arrow">↓</div>
+                    </div>
+
+                    <!-- STEP 6 -->
+                    <div class="flow-row">
+                        <div class="flowchart-card-wrapper">
+                            <div class="flowchart-card square">
+                                <div class="card-content">
+                                    <h3 class="card-number">6</h3>
+                                    <h3>Finalize Hex</h3>
+                                    <div class="carousel-icon">
+                                        <img src="/assets/icons/webp/generic/icon-puzzle.webp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-description">
+                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Finalize Hex and Lock In Results</h4>
+                                <p>Apply changes, lock in which characteristics are active or latent, and determine
+                                <em>travel time</em>
+                                (Primary: at least 1 day; Secondary: Archivist’s pacing). Note any triggers (e.g., “the
+                                Danger engages on camp,”
+                                “Obstacle tests happen at the ford,” “Anomaly pulses at noon”).</p>
+                        </div>
+                    </div>
+                    <!-- ARROW -->
+                    <div class="flow-row">
+                        <div class="flow-arrow">↓</div>
+                    </div>
+
+                    <!-- STEP 7 -->
+                    <div class="flow-row">
+                        <div class="flowchart-card-wrapper">
+                            <div class="flowchart-card square">
+                                <div class="card-content">
+                                    <h3 class="card-number">7</h3>
+                                    <h3>Resolve Passage</h3>
+                                    <div class="carousel-icon">
+                                        <img src="/assets/icons/webp/generic/icon-parchment.webp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-description">
+                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Resolve Passage and Aftermath</h4>
+                            <p>Run any required tests/encounters, apply resource changes, Starvation/Despair if
+                                relevant, and check the
+                                <em>Resource Flow</em> rewards (e.g., accepting hardship → +1 Luck). Decide whether to
+                                <em>lock</em> the Hex
+                                (via Skills/Masteries/time) or leave it mutable for future resets.
+                            </p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <h3>Seekers’ Operations</h3>
+                <ul>
+                    <li><strong>Scout / Reveal:</strong> Learn one hidden characteristic (or narrow it) before
+                        committing to action.</li>
+                    <li><strong>Soften an Obstacle:</strong> Convert a hard barrier into a slower path or a one-use
+                        crossing.</li>
+                    <li><strong>Redirect a Danger:</strong> Delay, lure away, or change the trigger window of a threat.
+                    </li>
+                    <li><strong>Exploit a Resource:</strong> Improve yield or reduce the time/effort to harvest.</li>
+                    <li><strong>Distort Fate (Luck):</strong> Reroll, flip, or downgrade one negative result; cannot be
+                        used if Luck is 0.</li>
+                    <li><strong>Stabilize / Lockwork:</strong> Lay markers, maps, or sigils that help lock the Hex for
+                        future visits.</li>
+                </ul>
+
+                <h3>Knowledge & Revelation</h3>
+                <p>
+                    Archivist rolls remain hidden by default. Weather and obvious terrain are perceptible; everything
+                    else requires scouting,
+                    trial, or specific abilities. Some results may be <em>latent</em> (only trigger on camp/search),
+                    supporting tension without
+                    overloading the moment of entry.
+                </p>
+
+                <blockquote>
+                    <h4>Game Example — Jungle River, Heavy Rain</h4>
+                    <p>The party leaves known trails and reveals a <em>Primary Hex</em>.
+                        The Archivist chooses <em>Biome: Jungle</em> and rolls in secret:
+                        <em>Obstacle:</em> flooded river with unstable banks;
+                        <em>Resource:</em> high-canopy fruit and clean rain catch;
+                        <em>Danger:</em> jaguar pair stalking the shore;
+                        <em>Anomaly:</em> shadows that drift counter to the sun;
+                        <em>Special:</em> obsidian waystone etched with solar glyphs;
+                        <em>Weather:</em> heavy rain.
+                    </p>
+                    <p>At a glance the Seekers hear roaring water and see mist above the canopy—clear clues of a major
+                        crossing and bad weather.
+                        The Navigator spends <em>Morale</em> to <em>Scout</em>, revealing the river as the primary
+                        Obstacle. The Tinkerer expends
+                        <em>Supplies</em> to rig a rope-span, <em>softening</em> the crossing to a slower but safer
+                        ford. The party decides to
+                        <em>accept</em> the jaguars unchanged to conserve resources, immediately gaining <strong>+1
+                            Luck</strong> (Accepting Hardship).
+                    </p>
+                    <p>Crossing takes the baseline 1 day (Primary Hex), extended by rain to a grueling pace but without
+                        extra mishaps thanks to the
+                        rope-span. Near dusk the jaguars test the group—quick, tense exchange; the Seekers fend them off
+                        with minimal expenditure,
+                        earning <strong>+1 Morale</strong> (Triumph Over Danger). They harvest canopy fruit,
+                        replenishing <strong>Supplies</strong>.
+                        With daylight fading, they choose <em>not</em> to lock the Hex; on a future return, this area
+                        may reset under new rains,
+                        new tracks… or stranger shadows.</p>
+                </blockquote>
+            </section>
+
+
+            <!-- 4 • Hex Travel Rules -->
+            <section class="section-wrapper" id="section4" sidenav="4 • Hex Travel Rules">
+                <header class="section var-4">
+                    <div class="section-number">
+                        <p>Section IV</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">d</span>
+                        <h2>Hex Travel Rules</h2>
+                        <span class="title-icon right rot90">d</span>
+                    </div>
+                    <p class="subtitle">Travel Time, Locking, and Resources</p>
+                </header>
+
+                <h4>Hex Generation</h4>
+                <p>Archivist rolls characteristics once; these determine dangers, anomalies, obstacles, structures, and
+                    Weather. No further rolls are needed.</p>
+
+                <h4>Travel Time</h4>
+                <ul>
+                    <li><strong>Primary Hex:</strong> At least 1 day to cross; obstacles or harsh conditions may
+                        increase travel time or resource cost.</li>
+                    <li><strong>Secondary Hex:</strong> Time determined by Archivist.</li>
+                </ul>
+
+                <h4>Locking Hexes</h4>
+                <p>The New World is mutable and unstable. Unless Seekers take deliberate actions to “lock” a Hex, it
+                    resets once abandoned.</p>
+                <ul>
+                    <li>Locking requires time, Skills, or Masteries (e.g., <em>Cartography</em>, <em>Surveying</em>).
+                    </li>
+                    <li>Locked Hexes remain consistent on revisit.</li>
+                    <li>Unlocked Hexes may shift features or biome.</li>
+                    <li>Multiple Hexes can be locked if resources allow.</li>
+                </ul>
+
+                <h4>Supplies and Attrition</h4>
+                <ul>
+                    <li><strong>Without Supplies:</strong> Each day, every Seeker gains 1 Starvation token. Eating
+                        removes 1 token per day.</li>
+                    <li><strong>Without Morale:</strong> Each day, every Seeker gains 1 Despair token. Spending 1 Morale
+                        removes 1 Despair token from all.</li>
+                    <li><strong>Without Luck:</strong> Archivist may apply Bad Luck column for amplified negative
+                        effects.</li>
+                </ul>
+
+                <h4>Resource Recovery</h4>
+                <p>Resources can be restored via rest, camp, or special items/abilities.</p>
+            </section>
+
+            <!-- 6 • Exploration Resources -->
+            <section class="section-wrapper" id="section6" sidenav="6 • Exploration Resources">
+                <header class="section var-1">
+                    <div class="section-number">
+                        <p>Section VI</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">f</span>
+                        <h2>Exploration Resources</h2>
+                        <span class="title-icon right rot90">f</span>
+                    </div>
+                    <p class="subtitle">Shared Pools and Management</p>
+                </header>
+
+                <ul>
+                    <li><strong>Supplies:</strong> Food, tools, and gear.</li>
+                    <li><strong>Morale:</strong> Spiritual strength and drive.</li>
+                    <li><strong>Luck:</strong> Strange turns of fate or inexplicable survivals.</li>
+                </ul>
+
+                <p>Skills and Masteries can modify resource efficiency or map accuracy. Depleted resources cannot be
+                    used until replenished. Mismanagement leaves Seekers vulnerable to the Archivist’s generated
+                    hazards.</p>
+            </section>
+
+            <!-- 7 • The New World vs. the Seekers -->
+            <section class="section-wrapper" id="section7" sidenav="7 • The New World vs. the Seekers">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section VII</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">g</span>
+                        <h2>The New World vs. the Seekers</h2>
+                        <span class="title-icon right rot90">g</span>
+                    </div>
+                    <p class="subtitle">Archivist Challenges and Seekers’ Choices</p>
+                </header>
+
+                <ul>
+                    <li><strong>Archivist’s Results:</strong> Always generate challenges, scarcity, or obstacles.</li>
+                    <li><strong>Seekers’ Modifications:</strong> Favorable changes at the cost of shared resources.</li>
+                </ul>
+
+                <p>This tension forces strategic decisions: spend resources to shape the environment or conserve them
+                    and face the threats as generated.</p>
+            </section>
+
+            <!-- 8 • Maps and Progressive Discovery -->
+            <section class="section-wrapper" id="section8" sidenav="8 • Maps and Progressive Discovery">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section VIII</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">h</span>
+                        <h2>Maps and Progressive Discovery</h2>
+                        <span class="title-icon right rot90">h</span>
+                    </div>
+                    <p class="subtitle">Fog of War and Perception</p>
+                </header>
+
+                <ul>
+                    <li><strong>Archivist’s Map (True Map):</strong> Complete and accurate; only Archivist has access.
+                    </li>
+                    <li><strong>Seekers’ Map (Perceived Map):</strong> Player-drawn, reflects limited perception,
+                        possible errors, or illusions.</li>
+                </ul>
+
+                <h4>Fog of War</h4>
+                <p>Unvisited Hexes remain unknown. Players only see the current Hex and visible features at a distance.
+                </p>
+
+                <h4>Mismatched Maps</h4>
+                <ul>
+                    <li>Generates tension and surprise.</li>
+                    <li>Represents mutable and anomalous world.</li>
+                    <li>Encourages strategic decision-making on trusting maps or local information.</li>
+                </ul>
+
+                <h4>Correcting the Map</h4>
+                <p>Skills or Masteries like <em>Cartography</em>, <em>Navigation</em>, or <em>Astronomy</em> can reduce
+                    errors. Local maps, charts, or codices may reveal new Hexes or correct existing ones.</p>
+            </section>
+
+            <!-- 9 • Anomalies and Specials -->
+            <section class="section-wrapper" id="section9" sidenav="9 • Anomalies and Specials">
+                <header class="section var-4">
+                    <div class="section-number">
+                        <p>Section IX</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">i</span>
+                        <h2>Anomalies and Specials</h2>
+                        <span class="title-icon right rot90">i</span>
+                    </div>
+                    <p class="subtitle">Strange phenomena and unique discoveries that shape the New World.</p>
+                </header>
+
+                <p><strong>Anomalies</strong> represent the influence of Solaria: reality twisted by solar energy,
+                    obsidian spires, unnatural storms, or living shadows. At least <strong>one hex in every four Primary
+                        Hexes</strong> should contain an Anomaly to maintain the sense of a world transformed by strange
+                    forces.</p>
+
+                <p><strong>Specials</strong> are unique discoveries: ruins, sacred sites, indigenous settlements, or
+                    long-forgotten relics. Specials give texture and narrative hooks to the exploration.</p>
+            </section>
+
+            <!-- 10 • Resource Flow: Risk and Reward -->
+            <section class="section-wrapper" id="section10" sidenav="10 • Resource Flow: Risk and Reward">
+                <header class="section var-5">
+                    <div class="section-number">
+                        <p>Section X</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">j</span>
+                        <h2>Resource Flow: Risk and Reward</h2>
+                        <span class="title-icon right rot90">j</span>
+                    </div>
+                    <p class="subtitle">Balancing exploration risk with the party’s resilience and resources.</p>
+                </header>
+
+                <p>Exploration should never feel like pure attrition. The system rewards bold choices:</p>
+
+                <ul>
+                    <li><strong>Accepting Hardship:</strong> If the Seekers accept a negative result without altering
+                        it, they gain +1 Luck (representing resilience and fate’s acknowledgment).</li>
+                    <li><strong>Resource Discovery:</strong> Finding Resources replenishes Supplies.</li>
+                    <li><strong>Triumph Over Danger:</strong> Surviving a Danger without major expenditure restores +1
+                        Morale.</li>
+                </ul>
+
+                <p>This cycle ensures the Seekers can continue deeper into the New World, but only if they balance risk
+                    and reward.</p>
             </section>
         </div>
 
@@ -164,6 +744,7 @@
 
     <script src="/scripts/sidebar.js"></script>
     <script src="/scripts/core.js"></script>
+    <script src="/scripts/carousel.js"></script>
     <script src="/scripts/version-check.js"></script>
     <script src="/scripts/iconizer.js"></script>
 
