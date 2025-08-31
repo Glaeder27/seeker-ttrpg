@@ -1,4 +1,4 @@
-/*v3.43 2025-08-31T18:54:31.824Z*/
+/*v3.44 2025-08-31T21:54:33.925Z*/
 
 /*=============================================
 =            IMPORTS & VARIABLES              =
@@ -589,7 +589,7 @@ ul.diamond li::before {
   left: 0;
   color: var(--ancient-gold);
   font-family: 'Bainsley', sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* ── LINKS ─────────────── */
@@ -1465,9 +1465,9 @@ p.card-description {
 .flowchart-card {
     display: flex;
     position: relative;
-    flex: 0 0 200px;
-    height: 200px;
-    width: 200px;
+    flex: 0 0 170px;
+    height: 170px;
+    width: 170px;
     border-radius: .5rem;
     background-size: cover;
     background-position: center;
@@ -1487,8 +1487,8 @@ p.card-description {
     background: linear-gradient(to right, rgba(var(--deep-charcoal-rgb), 0.2), rgba(var(--brown-charcoal-rgb), 0.2)), url(/assets/textures/antique-gold-1.jpg);
     display: inline-block;
     filter: drop-shadow(2px 0px 5px black);
-    width: 206px;
-    height: 206px;
+    width: 176px;
+    height: 176px;
     justify-self: center;
 }
 .flowchart-card-wrapper::after {
@@ -1509,7 +1509,7 @@ p.card-description {
 .flowchart-grid {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -1548,12 +1548,12 @@ p.card-description {
 .flowchart-card .carousel-icon {
     display: block;
     margin: .5rem 0 .2rem 0;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
 }
 .flowchart-card .carousel-icon img {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 .flowchart-wrapper {
@@ -1581,7 +1581,7 @@ p.card-description {
   padding: 1rem;
   border-radius: 1rem;
   text-align: center;
-  width: 200px;
+  width: 170px;
 }
 
 .flow-arrow {
@@ -2868,6 +2868,7 @@ table {
     font-family: var(--font-main);
     font-size: 0.85rem;
     color: var(--off-white);
+    line-height: 1.5;
 }
 
 thead th {

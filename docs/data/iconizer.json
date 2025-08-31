@@ -50,6 +50,19 @@
     "title": "Armor"
   },
 
+  "Supplies": {
+    "img": "/assets/icons/svg/exploration-resources/icon-supplies.svg",
+    "title": "Supplies"
+  },
+  "Morale": {
+    "img": "/assets/icons/svg/exploration-resources/icon-morale.svg",
+    "title": "Morale"
+  },
+  "Luck": {
+    "img": "/assets/icons/svg/exploration-resources/icon-luck.svg",
+    "title": "Luck"
+  },
+
   "Hemorrhage": {
     "img": "/assets/icons/svg/damage/damage-hemorrhage.svg",
     "title": "Hemorrhage Damage"

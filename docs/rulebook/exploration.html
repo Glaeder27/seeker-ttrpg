@@ -1,4 +1,4 @@
-<!-- v1.2 2025-08-31T18:19:05.601Z -->
+<!-- v1.3 2025-08-31T21:54:32.985Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -42,7 +42,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        .resource-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: .1em;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+            border: 1px solid var(--deep-charcoal);
+            border-radius: 0.5rem;
+            background-color: var(--background-dark-2);
+            padding: 1.75rem;
+        }
 
+        .resource-icon {
+            background: var(--background-dark-1);
+            border-radius: 8px;
+            padding: .5em;
+        }
+
+        .resource-icon-outer {
+            background: linear-gradient(to right,
+                    rgba(var(--burnt-copper-rgb), 0.2),
+                    rgba(var(--ancient-gold-rgb), 0.2)),
+                url(/assets/textures/antique-gold-1.jpg);
+            border-radius: 10px;
+            padding: 3px;
+        }
+
+        .resource-icon img {
+            max-width: 128px;
+            height: auto;
+        }
+
+        .resource-inline-symbol {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.2em;
+            vertical-align: middle;
+            cursor: var(--cursor-help);
+        }
+
+        .resource-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .resource-content h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .resource-intro h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+
+        .resource-content h4 {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--ancient-gold, #D4B55A);
+        }
+
+        .flow-of-damage-block {
+            text-align: center;
+            max-width: 940px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto;
+            font-family: var(--default-font, sans-serif);
+        }
     </style>
 
 <body id="exploration" data-menu-src="/data/menu-rulebook.json">
@@ -111,14 +183,317 @@
                     transforms
                     travel into a tense, evolving narrative where the landscape itself is both adversary and treasure.
                 </p>
-
             </section>
-
-            <!-- 2 • Hex Structure -->
-            <section class="section-wrapper" id="section2" sidenav="2 • Hex Structure">
+            <!-- 2 • Roles in Exploration -->
+            <section class="section-wrapper" id="section2" sidenav="2 • Roles in Exploration">
                 <header class="section var-2">
                     <div class="section-number">
                         <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">b</span>
+                        <h2>Roles in Exploration</h2>
+                        <span class="title-icon right rot90">b</span>
+                    </div>
+                    <p class="subtitle">Division of Duties and Leadership in Exploration</p>
+                </header>
+
+                <p>Before embarking on an expedition, each Seeker must decide whether to take on a specific role within
+                    the party. These roles represent historical functions within real expeditions and grant access to
+                    Skills and Masteries that only those roles can employ. The choice of roles defines how the
+                    expedition is organized, where leadership lies, and how resources are managed during the journey.
+                </p>
+
+                <h3>Assignment Rules</h3>
+                <p>The following rules define how roles are assigned within the group:</p>
+                <ul class="diamond">
+                    <li>Each Seeker may take at most one role.</li>
+                    <li>It is not mandatory to cover all available roles.</li>
+                    <li>At least one Seeker must be assigned as <strong>Captain</strong>.</li>
+                </ul>
+
+                <h3>Procedure</h3>
+                <p>At the start of the expedition, the party decides collectively who fills which role. This decision is
+                    locked for the duration of the journey: roles may only be reassigned once the expedition is
+                    concluded and the Seekers return to a safe haven.</p>
+                <blockquote>
+                    <p>Before setting out into unknown territory, the group assigns Roles. Isabel chooses Captain, Diego
+                        takes Scout, while Rodrigo assumes the role of Quartermaster.</p>
+
+                    <p>During exploration, Diego uses his Scout Skill to automatically learn what <u>Danger</u> lies in
+                        the next hex. Later, Rodrigo’s Quartermaster Mastery increases the <u>Supplies</u> found when
+                        harvesting by +1. At the expedition’s end, Isabel’s Captain Mastery restores 3 <u>Morale</u>
+                        spent during the journey (equal to her Charisma score).</p>
+                </blockquote>
+
+                <h3>Roles</h3>
+                <p>The following roles provide different
+                    ways of interacting with the world:</p>
+                <ul class="no-bullet">
+                    <li><strong class="highlight">Captain | Capitán</strong> — The leader of the expedition. Responsible
+                        for discipline, morale, and
+                        the ultimate direction of the journey. The Captain embodies authority and vision.</li>
+                    <li><strong class="highlight">Quartermaster | Furriel</strong> — Oversees supplies, provisions, and
+                        the fair distribution of
+                        resources. Keeps the group alive by preventing scarcity and mismanagement.</li>
+                    <li><strong class="highlight">Scout | Explorador</strong> — Guides the party through unknown
+                        terrain, identifying dangers and paths
+                        ahead. The Scout represents keen senses and survival instincts.</li>
+                    <li><strong class="highlight">Chaplain | Capellán</strong> Provides spiritual guidance and a moral
+                        compass. The Chaplain can
+                        inspire hope, faith, or fear, depending on the beliefs carried into the wilderness.</li>
+                    <li><strong class="highlight">Chronicler | Cronista</strong> — Records the events of the expedition,
+                        maps lands, and preserves
+                        knowledge for posterity. Their presence ensures discoveries are not lost to memory.</li>
+                    <li><strong class="highlight">Navigator | Navegante</strong> — Master of the stars, maps, and
+                        instruments. The Navigator ensures
+                        the group knows where it stands and how to reach its destination.</li>
+                    <li><strong class="highlight">Artillerist | Artillero</strong> — Maintains and commands the
+                        expedition’s weapons, from arquebuses
+                        to cannons. The Artillerist embodies firepower and intimidation.</li>
+                    <li><strong class="highlight">Interpreter | Interprete</strong> — Bridges languages and cultures,
+                        allowing parley or deception. The
+                        Interpreter is often the thin line between diplomacy and conflict.</li>
+                </ul>
+            </section>
+
+            <!-- 3 • Resources -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Exploration Resources">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section III</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">f</span>
+                        <h2>Resources</h2>
+                        <span class="title-icon right rot90">f</span>
+                    </div>
+                    <p class="subtitle">Shared Pools and Management</p>
+                </header>
+
+                <p>
+                    Exploration is a collective endeavor. The group shares and manages key resources that
+                    measure both physical supplies and intangible resilience. Skills and Masteries can
+                    affect how efficiently these resources are spent or recovered, but their scarcity
+                    always defines the rhythm of an expedition.
+                </p>
+
+                <!-- Supplies -->
+                <div class="resource-wrapper">
+                    <div class="resource-header">
+                        <div class="resource-icon-outer">
+                            <div class="resource-icon">
+                                <img src="/assets/icons/webp/exploration-resources/icon-supplies.webp" alt="Supplies Icon"
+                                    width="128" height="128">
+                            </div>
+                        </div>
+                        <div class="resource-intro">
+                            <h3 sidenav-2="3.1 | Supplies">Supplies</h3>
+                            <p>
+                                Supplies (<span class="iconize">Supplies</span>) represent
+                                the stock of food, water, fuel, and other consumables your expedition carries. They
+                                measure
+                                the group’s ability to survive in hostile environments, sustain long journeys, and face
+                                the
+                                unknown with preparation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="resource-content">
+                        <h4>How It Works</h4>
+                        <p>
+                            <span class="iconize">Supplies</span> is tracked as a shared party resource. The starting
+                            value
+                            depends on your preparation, chosen Equipment, and certain Masteries. Supplies are consumed
+                            during travel, resting, or when specific abilities require expendable goods. Running out of
+                            <span class="iconize">Supplies</span> exposes the group to hunger, thirst, fatigue, and
+                            other
+                            escalating hardships.
+                        </p>
+
+                        <h4>When It Applies</h4>
+                        <p>
+                            Any extended expedition, overland journey, or dangerous environment requires
+                            <span class="iconize">Supplies</span>. They are spent daily for basic survival and may also
+                            be consumed to boost certain actions, such as treating wounds, preparing equipment, or
+                            enduring extreme conditions. If <span class="iconize">Supplies</span>
+                            reaches 0, the group suffers penalties to Health recovery, Morale, and effectiveness
+                            in exploration.
+                        </p>
+
+                        <h4>How to Interact With It</h4>
+                        <p>
+                            You can restore <span class="iconize">Supplies</span>
+                            by resupplying in settlements, scavenging in the wild, or trading with other groups.
+                            Some Skills or Masteries allow you to stretch existing stocks further, improvise
+                            substitutes,
+                            or prevent spoilage. Wise management of
+                            <span class="iconize">Supplies</span> often means the difference between reaching your
+                            destination or collapsing along the way.
+                        </p>
+
+                        <blockquote>
+                            <p>
+                                <span class="iconize">Supplies</span> is more than just gear and rations—it’s the
+                                expedition’s lifeblood. Every meal consumed is a step deeper into the wilderness,
+                                and every shortage sharpens the tension of survival.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Morale -->
+                <div class="resource-wrapper">
+                    <div class="resource-header">
+                        <div class="resource-icon-outer">
+                            <div class="resource-icon">
+                                <img src="/assets/icons/webp/exploration-resources/icon-morale.webp" alt="Morale Icon" width="128"
+                                    height="128">
+                            </div>
+                        </div>
+                        <div class="resource-intro">
+                            <h3 sidenav-2="3.2 | Morale">Morale</h3>
+                            <p>
+                                Morale (<span class="iconize">Morale</span>) reflects
+                                the group’s determination, cohesion, and mental resilience in the face of hardship.
+                                It measures not only courage and loyalty, but also the trust binding Seekers together
+                                during perilous journeys.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="resource-content">
+                        <h4>How It Works</h4>
+                        <p>
+                            <span class="iconize">Morale</span> is tracked as a shared party resource. It rises or falls
+                            depending on victories, losses, stress, and interpersonal dynamics. Certain Skills,
+                            Masteries, or Leadership actions can raise
+                            <span class="iconize">Morale</span>, while fear, betrayal, or repeated failure may drain it.
+                        </p>
+
+                        <h4>When It Applies</h4>
+                        <p>
+                            <span class="iconize">Morale</span> comes into play when facing prolonged hardship,
+                            terrifying enemies, or stressful negotiations. High
+                            <span class="iconize">Morale</span> boosts cooperation and resistance to despair,
+                            while low values may cause hesitation, poor discipline, or outright collapse of unity.
+                        </p>
+
+                        <h4>How to Interact With It</h4>
+                        <p>
+                            Morale can be restored by achieving victories, sharing spoils, celebrating, or reinforcing
+                            bonds of loyalty. Characters with strong social or inspirational abilities can rally the
+                            group,
+                            while some Skills or Masteries help mitigate fear or restore confidence. Conversely,
+                            reckless
+                            actions, cruelty, or neglect can erode
+                            <span class="iconize">Morale</span> rapidly.
+                        </p>
+
+                        <blockquote>
+                            <p>
+                                <span class="iconize">Morale</span> is the invisible thread that keeps a band of Seekers
+                                moving forward. Steel and supplies may fail—but as long as spirits endure, the
+                                expedition still has a chance.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Luck -->
+                <div class="resource-wrapper">
+                    <div class="resource-header">
+                        <div class="resource-icon-outer">
+                            <div class="resource-icon">
+                                <img src="/assets/icons/webp/exploration-resources/icon-luck.webp" alt="Luck Icon" width="128"
+                                    height="128">
+                            </div>
+                        </div>
+                        <div class="resource-intro">
+                            <h3 sidenav-2="3.3 | Luck">Luck</h3>
+                            <p>
+                                Luck (<span class="iconize">Luck</span>)
+                                embodies fate’s favor, uncanny coincidences, and the inexplicable survivals
+                                that often decide whether a Seeker’s story ends in glory or tragedy.
+                                It is less about skill or willpower, and more about being in the right
+                                place at the right time—or spared from disaster by chance.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="resource-content">
+                        <h4>How It Works</h4>
+                        <p>
+                            <span class="iconize">Luck</span> is tracked as a shared expedition resource.
+                            It can be spent to avert catastrophe, bend outcomes in the Seekers’ favor,
+                            or survive events that would otherwise prove fatal. When depleted, the Archivist
+                            may draw from the <em>Bad Luck</em> column to intensify hazards, misfortune,
+                            or narrative twists.
+                        </p>
+
+                        <h4>When It Applies</h4>
+                        <p>
+                            <span class="iconize">Luck</span> intervenes in extreme situations: sudden ambushes,
+                            deadly traps, natural disasters, or sheer chance that could make or break an expedition.
+                            It does not replace strategy or preparation, but cushions the impact of the
+                            unforeseeable.
+                        </p>
+
+                        <h4>How to Interact With It</h4>
+                        <p>
+                            Luck can be restored rarely—through sacred rituals, blessings, divine omens,
+                            or rare artifacts said to carry fate’s blessing. Some Masteries allow
+                            Seekers to “push” fortune in their favor, though every use risks
+                            drawing fate’s attention. Reckless overreliance on
+                            <span class="iconize">Luck</span> can quickly drain it, leaving the group at the
+                            mercy of cruel destiny.
+                        </p>
+
+                        <blockquote>
+                            <p>
+                                <span class="iconize">Luck</span> is fickle. It may save a Seeker from a fatal blow,
+                                or doom them by absence. Wise expeditions treat Luck as the rarest resource of all.
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+
+
+
+                <h4>Supplies and Attrition</h4>
+                <p>
+                    When resources run out, Seekers begin to suffer direct consequences:
+                </p>
+                <ul>
+                    <li><strong>Without Supplies:</strong> Each day, every Seeker gains 1 <em>Starvation</em> token.
+                        Eating removes 1 token per day.</li>
+                    <li><strong>Without Morale:</strong> Each day, every Seeker gains 1 <em>Despair</em> token. Spending
+                        1 Morale removes 1 Despair token from all.</li>
+                    <li><strong>Without Luck:</strong> The Archivist may apply the <em>Bad Luck</em> column, amplifying
+                        negative effects.</li>
+                </ul>
+
+                <h4>Resource Recovery</h4>
+                <p>
+                    Depleted resources cannot be used until replenished. Recovery is possible through:
+                </p>
+                <ul>
+                    <li><strong>Rest:</strong> A full rest phase can restore portions of Morale or Luck.</li>
+                    <li><strong>Camp:</strong> Establishing a camp allows for resupply, reduced attrition, and partial
+                        recovery of resources.</li>
+                    <li><strong>Special Items & Abilities:</strong> Some treasures, rituals, or Masteries can instantly
+                        restore or enhance resources.</li>
+                </ul>
+
+                <p>
+                    Mismanagement of resources leaves Seekers vulnerable, forcing harsher decisions and
+                    exposing them to the Archivist’s generated hazards.
+                </p>
+            </section>
+
+            <!-- 3 • Hex Structure -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Hex Structure">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section III</p>
                     </div>
                     <div class="title-container">
                         <span class="title-icon left">a</span>
@@ -139,10 +514,14 @@
                     shape the
                     challenges of travel.</p>
                 <h3>Hex Categories</h3>
+                <p>In Seeker, explored territory is divided into two different types of Hexes, each serving a distinct
+                    role in pacing and encounter design:</p>
+
                 <ul class="diamond">
                     <li><strong>Primary Hexes</strong> — Fully detailed; meaningful encounters or challenges.</li>
                     <li><strong>Secondary Hexes</strong> — Simplified; passage or narrative pacing.</li>
                 </ul>
+
 
                 <h3>Hex Features</h3>
                 <p>The following components define the identity of each hex and guide how it will impact
@@ -168,7 +547,8 @@
                             <td class="align-left">The climate within a Hex can be as dangerous as its creatures.
                                 Torrential rains flood trails, dry winds parch supplies, or sudden storms scatter
                                 parties. Weather affects travel pace, resource consumption, and can even spawn new
-                                <u>Dangers</u> or <u>Anomalies</u>.</td>
+                                <u>Dangers</u> or <u>Anomalies</u>.
+                            </td>
                         </tr>
                         <tr>
                             <td>Landmarks</td>
@@ -238,7 +618,7 @@
                             <div class="flowchart-card square">
                                 <div class="card-content">
                                     <h3 class="card-number">1</h3>
-                                    <h3>Set the Frame</h3>
+                                    <h3>Set the <br>Frame</h3>
                                     <div class="carousel-icon">
                                         <img src="/assets/icons/webp/generic/icon-leyline.webp" />
                                     </div>
@@ -246,13 +626,14 @@
                             </div>
                         </div>
                         <div class="flow-description">
-                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Set the Frame</h4>
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Set the Frame
+                            </h4>
 
                             <p>Choose the <em>Biome</em> to preserve geographic coherence. Note if this Hex is Primary
                                 or Secondary.
                                 If Secondary, decide whether to <em>escalate</em> to Primary due to story pressure,
                                 time, or player
-                                interest.</p>
+                                interest, otherwise skip to step 6.</p>
                         </div>
                     </div>
                     <!-- ARROW -->
@@ -266,7 +647,7 @@
                             <div class="flowchart-card square">
                                 <div class="card-content">
                                     <h3 class="card-number">2</h3>
-                                    <h3>Assess Modifiers</h3>
+                                    <h3>Assess <br>Modifiers</h3>
                                     <div class="carousel-icon">
                                         <img src="/assets/icons/webp/generic/icon-elements.webp" />
                                     </div>
@@ -274,8 +655,9 @@
                             </div>
                         </div>
                         <div class="flow-description">
-                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Assess Modifiers</h4>
-                                <p>Check journey context: distance from last rest, injuries, burdens, prior Weather
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Assess
+                                Modifiers</h4>
+                            <p>Check journey context: distance from last rest, injuries, burdens, prior Weather
                                 carrying over, and Luck
                                 availability.
                                 If the party has <strong>0 Luck</strong>, the Archivist may use the <em>Bad Luck</em>
@@ -302,8 +684,9 @@
                             </div>
                         </div>
                         <div class="flow-description">
-                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Generate Hidden Characteristics</h4>
-                                <p>Roll for <em>Obstacles</em>, <em>Resources</em>, <em>Dangers</em>, <em>Anomalies</em>,
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Generate
+                                Hidden Features</h4>
+                            <p>Roll for <em>Obstacles</em>, <em>Resources</em>, <em>Dangers</em>, <em>Anomalies</em>,
                                 <em>Special</em>, and
                                 <em>Weather</em>.
                                 Keep results concealed unless a Skill/Mastery explicitly reveals them.
@@ -321,7 +704,7 @@
                             <div class="flowchart-card square">
                                 <div class="card-content">
                                     <h3 class="card-number">4</h3>
-                                    <h3>Present Signals</h3>
+                                    <h3>Present <br>Signals</h3>
                                     <div class="carousel-icon">
                                         <img src="/assets/icons/webp/generic/icon-spyglass.webp" />
                                     </div>
@@ -329,8 +712,9 @@
                             </div>
                         </div>
                         <div class="flow-description">
-                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Present Fictional Signals</h4>
-                                <p>Offer what is naturally perceivable at first glance or from a distance (e.g., storm on
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Present
+                                Fictional Signals</h4>
+                            <p>Offer what is naturally perceivable at first glance or from a distance (e.g., storm on
                                 the horizon, river noise,
                                 smoke, forbidding silhouettes). These are <em>clues</em>, not full reveals.</p>
                         </div>
@@ -346,7 +730,7 @@
                             <div class="flowchart-card square">
                                 <div class="card-content">
                                     <h3 class="card-number">5</h3>
-                                    <h3>Influence Results</h3>
+                                    <h3>Influence <br>Results</h3>
                                     <div class="carousel-icon">
                                         <img src="/assets/icons/webp/generic/icon-compass.webp" />
                                     </div>
@@ -354,12 +738,14 @@
                             </div>
                         </div>
                         <div class="flow-description">
-                             <h4><span style="color: var(--off-white); font-weight: 300;">Seekers:</span> Influence Results</h4>
-                                <p>Before committing to the crossing, Seekers may spend <em>Supplies, Morale,</em> or
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Seekers:</span> Influence
+                                Results</h4>
+                            <p>Before committing to the crossing, Seekers may spend <em>Supplies, Morale,</em> or
                                 <em>Luck</em> through Skills/Masteries
                                 to alter, reveal, or prepare for features. Costs are defined by each Skill/Mastery and
                                 may increase with journey
-                                length, harsh biomes, or current Weather.</p>
+                                length, harsh biomes, or current Weather.
+                            </p>
                         </div>
                     </div>
                     <!-- ARROW -->
@@ -373,7 +759,7 @@
                             <div class="flowchart-card square">
                                 <div class="card-content">
                                     <h3 class="card-number">6</h3>
-                                    <h3>Finalize Hex</h3>
+                                    <h3>Finalize <br>Hex</h3>
                                     <div class="carousel-icon">
                                         <img src="/assets/icons/webp/generic/icon-puzzle.webp" />
                                     </div>
@@ -381,12 +767,14 @@
                             </div>
                         </div>
                         <div class="flow-description">
-                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Finalize Hex and Lock In Results</h4>
-                                <p>Apply changes, lock in which characteristics are active or latent, and determine
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Finalize Hex
+                                and Lock In Results</h4>
+                            <p>Apply changes, lock in which characteristics are active or latent, and determine
                                 <em>travel time</em>
                                 (Primary: at least 1 day; Secondary: Archivist’s pacing). Note any triggers (e.g., “the
                                 Danger engages on camp,”
-                                “Obstacle tests happen at the ford,” “Anomaly pulses at noon”).</p>
+                                “Obstacle tests happen at the ford,” “Anomaly pulses at noon”).
+                            </p>
                         </div>
                     </div>
                     <!-- ARROW -->
@@ -400,7 +788,7 @@
                             <div class="flowchart-card square">
                                 <div class="card-content">
                                     <h3 class="card-number">7</h3>
-                                    <h3>Resolve Passage</h3>
+                                    <h3>Resolve <br>Passage</h3>
                                     <div class="carousel-icon">
                                         <img src="/assets/icons/webp/generic/icon-parchment.webp" />
                                     </div>
@@ -408,7 +796,8 @@
                             </div>
                         </div>
                         <div class="flow-description">
-                             <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Resolve Passage and Aftermath</h4>
+                            <h4><span style="color: var(--off-white); font-weight: 300;">Archivist:</span> Resolve
+                                Passage and Aftermath</h4>
                             <p>Run any required tests/encounters, apply resource changes, Starvation/Despair if
                                 relevant, and check the
                                 <em>Resource Flow</em> rewards (e.g., accepting hardship → +1 Luck). Decide whether to
@@ -420,8 +809,27 @@
 
                 </section>
 
+                <h3>Knowledge & Revelation</h3>
+                <p>
+                    Archivist rolls and decisions remain hidden by default. Weather and obvious terrain are perceptible;
+                    everything
+                    else requires scouting,
+                    trial, or specific abilities. Some results may be <em>latent</em> (only trigger on camp/search),
+                    supporting tension without
+                    overloading the moment of entry.
+                </p>
+
                 <h3>Seekers’ Operations</h3>
-                <ul>
+                <p>
+                    When venturing into unknown territory, Seekers rely on their <em>Exploration Skills</em> and
+                    <em>Masteries</em>
+                    to shape the outcome of each Hex. The following are not direct actions to be chosen, but rather
+                    the common types of effects such abilities can produce. This overview is meant to illustrate how
+                    Seekers
+                    typically influence the landscape, threats, and opportunities of exploration.
+                </p>
+
+                <ul class="diamond">
                     <li><strong>Scout / Reveal:</strong> Learn one hidden characteristic (or narrow it) before
                         committing to action.</li>
                     <li><strong>Soften an Obstacle:</strong> Convert a hard barrier into a slower path or a one-use
@@ -434,15 +842,6 @@
                     <li><strong>Stabilize / Lockwork:</strong> Lay markers, maps, or sigils that help lock the Hex for
                         future visits.</li>
                 </ul>
-
-                <h3>Knowledge & Revelation</h3>
-                <p>
-                    Archivist rolls remain hidden by default. Weather and obvious terrain are perceptible; everything
-                    else requires scouting,
-                    trial, or specific abilities. Some results may be <em>latent</em> (only trigger on camp/search),
-                    supporting tension without
-                    overloading the moment of entry.
-                </p>
 
                 <blockquote>
                     <h4>Game Example — Jungle River, Heavy Rain</h4>
@@ -527,30 +926,6 @@
                 <p>Resources can be restored via rest, camp, or special items/abilities.</p>
             </section>
 
-            <!-- 6 • Exploration Resources -->
-            <section class="section-wrapper" id="section6" sidenav="6 • Exploration Resources">
-                <header class="section var-1">
-                    <div class="section-number">
-                        <p>Section VI</p>
-                    </div>
-                    <div class="title-container">
-                        <span class="title-icon left">f</span>
-                        <h2>Exploration Resources</h2>
-                        <span class="title-icon right rot90">f</span>
-                    </div>
-                    <p class="subtitle">Shared Pools and Management</p>
-                </header>
-
-                <ul>
-                    <li><strong>Supplies:</strong> Food, tools, and gear.</li>
-                    <li><strong>Morale:</strong> Spiritual strength and drive.</li>
-                    <li><strong>Luck:</strong> Strange turns of fate or inexplicable survivals.</li>
-                </ul>
-
-                <p>Skills and Masteries can modify resource efficiency or map accuracy. Depleted resources cannot be
-                    used until replenished. Mismanagement leaves Seekers vulnerable to the Archivist’s generated
-                    hazards.</p>
-            </section>
 
             <!-- 7 • The New World vs. the Seekers -->
             <section class="section-wrapper" id="section7" sidenav="7 • The New World vs. the Seekers">
