@@ -1,4 +1,4 @@
-<!-- v1.1 2025-08-30T19:39:51.941Z -->
+<!-- v1.2 2025-09-02T21:09:20.304Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -42,7 +42,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        .stances {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
 
+        .stances-desc h4 {
+            margin: 0;
+            line-height: 1;
+        }
+
+        .aggressive {
+            color: var(--stance-aggressive);
+        }
+
+        .defensive {
+            color: var(--stance-defensive);
+        }
+
+        .balanced {
+            color: var(--stance-balanced);
+        }
+
+        .mystic {
+            color: var(--stance-mystic);
+        }
+
+        .inquisitive {
+            color: var(--stance-inquisitive);
+        }
+
+        .tactic {
+            color: var(--stance-tactic);
+        }
+
+        .evasive {
+            color: var(--stance-evasive);
+        }
+
+        .actions p {
+            margin: 0;
+        }
     </style>
 
 <body id="masteries" data-menu-src="/data/menu-rulebook.json">
@@ -95,6 +137,223 @@
                     puzzle of strategy and adaptability.
                 </p>
             </section>
+
+            <!-- 2 • Stances -->
+            <section class="section-wrapper" id="section2" sidenav="2 • Stances">
+                <header class="section var-2">
+                    <div class="section-number">
+                        <p>Section II</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">b</span>
+                        <h2>Stances</h2>
+                        <span class="title-icon right rot90">b</span>
+                    </div>
+                    <p class="subtitle">Personal Augmentations in a Shared Grid</p>
+                </header>
+                <p>
+                    At the start of a round, each combatant secretly selects a combat <strong>Stance</strong> by placing
+                    a card face-down. Standard Stances include Aggressive, Defensive, Evasive, Inquisitive, Mystic,
+                    Balanced, and Tactic. </p>
+                <p>Each Stance defines the number of available <strong>Actions</strong>, the allowed
+                    <strong>Tags</strong>, and the turn priority relative to other Stances.
+                </p>
+
+                <!-- Stance List -->
+                <ul class="no-bullet">
+                    <li>
+                        <div class="stances">
+                            <div class="stances-img"><img src="/assets/icons/webp/stances/icon-aggressive.webp"
+                                    alt="Morale Icon" width="64" height="64"></div>
+                            <div class="stances-desc">
+                                <h4 class="aggressive">Aggressive</h4>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Actions</span> • <span class="aggressive"
+                                            style="font-weight: bold;">5</span></p>
+                                </div>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Allowed Tags • <span
+                                                class="tag">Attack</span> <span class="tag">Maneuvre</span></p>
+                                </div>
+                                <p>The Aggressive Stance is chosen by those who seize initiative and press the attack
+                                    without hesitation. Acting before most opponents, an Aggressive combatant channels
+                                    momentum into raw offense, often striking first to disrupt enemy plans. This stance
+                                    favors direct assaults, rapid advances, and the decisive use of overwhelming force.
+                                    Its strength lies in dictating the pace of battle and punishing hesitation, but it
+                                    leaves little room for restraint or defense.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stances">
+                            <div class="stances-img"><img src="/assets/icons/webp/stances/icon-defensive.webp"
+                                    alt="Morale Icon" width="64" height="64"></div>
+                            <div class="stances-desc">
+                                <h4 class="defensive">Defensive</h4>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Actions</span> • <span class="defensive"
+                                            style="font-weight: bold;">5</span></p>
+                                </div>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Allowed Tags • <span
+                                                class="tag">Defense</span> <span class="tag">Shield</span> <span
+                                                class="tag">Maneuvre</span></p>
+                                </div>
+                                <p>The Defensive Stance embodies caution, resilience, and patience. Combatants who adopt
+                                    it act later than others, deliberately allowing threats to reveal themselves before
+                                    committing to action. In return, they gain superior protection and the ability to
+                                    weather assaults that would overwhelm the reckless. This stance is well suited for
+                                    guardians, shield-bearers, or those who prioritize survival over speed, anchoring
+                                    their allies with stability and endurance.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stances">
+                            <div class="stances-img"><img src="/assets/icons/webp/stances/icon-balanced.webp"
+                                    alt="Morale Icon" width="64" height="64"></div>
+                            <div class="stances-desc">
+                                <h4 class="balanced">Balanced</h4>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Actions</span> • <span class="balanced"
+                                            style="font-weight: bold;">3</span></p>
+                                </div>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Allowed Tags • Any</p>
+                                </div>
+                                <p>The Balanced Stance represents composure and equilibrium. Neither the fastest nor the
+                                    slowest, it provides a steady rhythm of action and reaction. Combatants in this
+                                    stance maintain flexibility, able to blend offense and defense as the situation
+                                    demands. While it lacks the extremes of other stances, its strength lies in
+                                    reliability and adaptability—always ready, never overcommitted, a foundation upon
+                                    which more specialized tactics can pivot.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stances">
+                            <div class="stances-img"><img src="/assets/icons/webp/stances/icon-mystic.webp"
+                                    alt="Morale Icon" width="64" height="64"></div>
+                            <div class="stances-desc">
+                                <h4 class="mystic">Mystic</h4>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Actions</span> • <span class="mystic"
+                                            style="font-weight: bold;">5</span></p>
+                                </div>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Allowed Tags • <span
+                                                class="tag">Magic</span> <span class="tag">Solarian</span></p>
+                                </div>
+                                <p>The Mystic Stance channels the strange rhythms of Solaria. Combatants in this stance
+                                    act outside the conventional order of battle, often later than most, as they gather
+                                    and release energy in deliberate patterns. Their focus is on weaving arcane effects,
+                                    bending the flow of combat, and unlocking powers beyond steel and shield. This
+                                    stance offers unpredictability and potent utility, but demands patience and
+                                    vulnerability before its full force is revealed.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stances">
+                            <div class="stances-img"><img src="/assets/icons/webp/stances/icon-inquisitive.webp"
+                                    alt="Morale Icon" width="64" height="64"></div>
+                            <div class="stances-desc">
+                                <h4 class="inquisitive">Inquisitive</h4>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Actions</span> • <span class="inquisitive"
+                                            style="font-weight: bold;">5</span></p>
+                                </div>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Allowed Tags • <span
+                                                class="tag">Investigation</span> <span class="tag">Academic</span></p>
+                                </div>
+                                <p>The Inquisitive Stance is defined by alertness and adaptability. Those who adopt it
+                                    act early, observing the field and probing for weaknesses before committing to
+                                    decisive actions. They are well positioned to read the enemy’s intent, respond to
+                                    sudden shifts, and exploit emerging opportunities. This stance favors versatility,
+                                    granting access to tactics that hinge on perception, investigation, or exploiting
+                                    fleeting vulnerabilities.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stances">
+                            <div class="stances-img"><img src="/assets/icons/webp/stances/icon-tactic.webp"
+                                    alt="Morale Icon" width="64" height="64"></div>
+                            <div class="stances-desc">
+                                <h4 class="tactic">Tactic</h4>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Actions</span> • <span class="tactic"
+                                            style="font-weight: bold;">5</span></p>
+                                </div>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Allowed Tags • <span
+                                                class="tag">Support</span> <span class="tag">Maneuvre</span></p>
+                                </div>
+                                <p></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stances">
+                            <div class="stances-img"><img src="/assets/icons/webp/stances/icon-evasive.webp"
+                                    alt="Morale Icon" width="64" height="64"></div>
+                            <div class="stances-desc">
+                                <h4 class="evasive">Evasive</h4>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Actions</span> • <span class="evasive"
+                                            style="font-weight: bold;">5</span></p>
+                                </div>
+                                <div class="actions">
+                                    <p><span style="color: var(--text-muted)">Allowed Tags • <span
+                                                class="tag">Movement</span> <span class="tag">Retreat</span></p>
+                                </div>
+                                <p>The Evasive Stance is the art of slipping through danger rather than contesting it
+                                    directly. Combatants who take this stance move with speed and unpredictability,
+                                    acting swiftly to reposition or disengage. Their focus is on denying the enemy clean
+                                    opportunities to strike, forcing opponents into wasted effort and broken lines.
+                                    Though its offensive potential is limited, this stance excels at survival,
+                                    infiltration, and tactical withdrawal.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <p>Once all Stances are revealed, the **Archivist** calls them in order. Ties between combatants who
+                    chose the same Stance are resolved through Agility, mutual agreement, or dice rolls.</p>
+
+                <h3>Special Stances</h3>
+
+                <p>Some abilities and Masteries grant special Stances, such as Berserker or Pathfinder. Special Stances
+                    define whether they act before or after a standard Stance and may modify usable Tags or available
+                    Actions, adding flexibility and tactical options.</p>
+
+                <h4>Surprise Stance</h4>
+
+                <p>The Surprise Stance applies to combatants caught off guard, whether ambushed, roused from sleep, or
+                    attacked by an unexpected enemy. Characters in Surprise Stance act last in the first round and may
+                    not perform Actions, but are allowed to use passive abilities and Masteries. After the first round,
+                    they may select a new Stance.</p>
+
+            </section>
+
+            <!-- 3 • Turn Structure -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Turn Structure">
+                <header class="section var-3">
+                    <div class="section-number">
+                        <p>Section III</p>
+                    </div>
+                    <div class="title-container">
+                        <span class="title-icon left">b</span>
+                        <h2>Turn Structure</h2>
+                        <span class="title-icon right rot90">b</span>
+                    </div>
+                    <p class="subtitle">Personal Augmentations in a Shared Grid</p>
+                </header>
+                <p>
+                    At the start of a round, each combatant secretly selects a combat <strong>Stance</strong> by placing a card face-down. Standard Stances include Aggressive, Defensive, Evasive, Inquisitive, Mystic, Balanced, and Tactic. </p>
+                    <p>Each Stance defines the number of available <strong>Actions</strong>, the allowed <strong>Tags</strong>, and the turn priority relative to other Stances.
+                </p>
         </div>
 
         <div class="right-column">

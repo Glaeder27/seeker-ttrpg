@@ -1,4 +1,4 @@
-<!-- v1.3 2025-08-31T21:54:32.985Z -->
+<!-- v1.4 2025-09-02T14:43:23.191Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -115,6 +115,12 @@
             margin: 2rem auto;
             font-family: var(--default-font, sans-serif);
         }
+        .attrition {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
     </style>
 
 <body id="exploration" data-menu-src="/data/menu-rulebook.json">
@@ -230,28 +236,28 @@
                 <p>The following roles provide different
                     ways of interacting with the world:</p>
                 <ul class="no-bullet">
-                    <li><strong class="highlight">Captain | Capitán</strong> — The leader of the expedition. Responsible
+                    <li><strong class="highlight">Captain <span style="color: var(--off-white)">•</span> Capitán</strong> — The leader of the expedition. Responsible
                         for discipline, morale, and
                         the ultimate direction of the journey. The Captain embodies authority and vision.</li>
-                    <li><strong class="highlight">Quartermaster | Furriel</strong> — Oversees supplies, provisions, and
+                    <li><strong class="highlight">Quartermaster <span style="color: var(--off-white)">•</span> Furriel</strong> — Oversees supplies, provisions, and
                         the fair distribution of
                         resources. Keeps the group alive by preventing scarcity and mismanagement.</li>
-                    <li><strong class="highlight">Scout | Explorador</strong> — Guides the party through unknown
+                    <li><strong class="highlight">Scout <span style="color: var(--off-white)">•</span> Explorador</strong> — Guides the party through unknown
                         terrain, identifying dangers and paths
                         ahead. The Scout represents keen senses and survival instincts.</li>
-                    <li><strong class="highlight">Chaplain | Capellán</strong> Provides spiritual guidance and a moral
+                    <li><strong class="highlight">Chaplain <span style="color: var(--off-white)">•</span> Capellán</strong> Provides spiritual guidance and a moral
                         compass. The Chaplain can
                         inspire hope, faith, or fear, depending on the beliefs carried into the wilderness.</li>
-                    <li><strong class="highlight">Chronicler | Cronista</strong> — Records the events of the expedition,
+                    <li><strong class="highlight">Chronicler <span style="color: var(--off-white)">•</span> Cronista</strong> — Records the events of the expedition,
                         maps lands, and preserves
                         knowledge for posterity. Their presence ensures discoveries are not lost to memory.</li>
-                    <li><strong class="highlight">Navigator | Navegante</strong> — Master of the stars, maps, and
+                    <li><strong class="highlight">Navigator <span style="color: var(--off-white)">•</span> Navegante</strong> — Master of the stars, maps, and
                         instruments. The Navigator ensures
                         the group knows where it stands and how to reach its destination.</li>
-                    <li><strong class="highlight">Artillerist | Artillero</strong> — Maintains and commands the
+                    <li><strong class="highlight">Artillerist <span style="color: var(--off-white)">•</span> Artillero</strong> — Maintains and commands the
                         expedition’s weapons, from arquebuses
                         to cannons. The Artillerist embodies firepower and intimidation.</li>
-                    <li><strong class="highlight">Interpreter | Interprete</strong> — Bridges languages and cultures,
+                    <li><strong class="highlight">Interpreter <span style="color: var(--off-white)">•</span> Interprete</strong> — Bridges languages and cultures,
                         allowing parley or deception. The
                         Interpreter is often the thin line between diplomacy and conflict.</li>
                 </ul>
@@ -458,35 +464,44 @@
 
 
 
-                <h4>Supplies and Attrition</h4>
-                <p>
-                    When resources run out, Seekers begin to suffer direct consequences:
-                </p>
-                <ul>
-                    <li><strong>Without Supplies:</strong> Each day, every Seeker gains 1 <em>Starvation</em> token.
-                        Eating removes 1 token per day.</li>
-                    <li><strong>Without Morale:</strong> Each day, every Seeker gains 1 <em>Despair</em> token. Spending
-                        1 Morale removes 1 Despair token from all.</li>
-                    <li><strong>Without Luck:</strong> The Archivist may apply the <em>Bad Luck</em> column, amplifying
-                        negative effects.</li>
-                </ul>
+                <h3>Supplies and Attrition</h3>
+<p>
+    Exploration constantly drains the expedition’s provisions and stamina. 
+    Food, equipment, and mental resilience are finite—and when they run out, the 
+    consequences are dire. Three key resources—Supplies, Morale, and Luck—determine 
+    whether Seekers endure the wilds or succumb to them.
+</p>
+<ul class="no-bullet">
+    <li><div class="attrition">
+        <div class="attrition-img"><img src="/assets/icons/svg/exploration-resources/icon-no-supplies.svg" alt="Morale Icon" width="64" height="64"></div>
+    <div class="attrition-desc"><strong>Without Supplies.</strong> Each day without food or provisions, every Seeker 
+        gains 1 <span class="tag">Starvation</span> token. Eating removes 1 token per day, but prolonged hunger 
+        quickly becomes fatal.</div></div></li>
+    <li><div class="attrition">
+        <div class="attrition-img"><img src="/assets/icons/svg/exploration-resources/icon-no-morale.svg" alt="Morale Icon" width="64" height="64"></div>
+    <div class="attrition-desc"><strong>Without Morale.</strong> An expedition stripped of hope and camaraderie falters. 
+        Each day without Morale, every Seeker gains 1 <span class="tag">Despair</span> token. Spending 1 Morale 
+        restores unity, removing 1 Despair token from all Seekers.</div></div></li>
+    <li><div class="attrition">
+        <div class="attrition-img"><img src="/assets/icons/svg/exploration-resources/icon-no-luck.svg" alt="Morale Icon" width="64" height="64"></div>
+    <div class="attrition-desc"><strong>Without Luck.</strong> When fortune abandons the expedition, the Archivist may 
+        escalate failures by invoking the <em>Bad Luck</em> column, turning minor setbacks 
+        into devastating turns of fate.</div></div></li>
+</ul>
 
-                <h4>Resource Recovery</h4>
-                <p>
-                    Depleted resources cannot be used until replenished. Recovery is possible through:
-                </p>
-                <ul>
-                    <li><strong>Rest:</strong> A full rest phase can restore portions of Morale or Luck.</li>
-                    <li><strong>Camp:</strong> Establishing a camp allows for resupply, reduced attrition, and partial
-                        recovery of resources.</li>
-                    <li><strong>Special Items & Abilities:</strong> Some treasures, rituals, or Masteries can instantly
-                        restore or enhance resources.</li>
-                </ul>
-
-                <p>
-                    Mismanagement of resources leaves Seekers vulnerable, forcing harsher decisions and
-                    exposing them to the Archivist’s generated hazards.
-                </p>
+<h4>Resource Recovery</h4>
+<p>
+    Lost resources cannot be restored simply by resting or waiting; they must be actively sought in the wilderness. 
+    Seekers who dedicate time to searching an explored Hex may attempt to recover Supplies, but success is never 
+    assured. At best, the expedition secures just enough to offset its losses; at worst, the attempt draws the 
+    attention of hidden dangers. 
+</p>
+<p>
+    The Quartermaster plays a crucial role in this process. Through specialized Skills and Masteries, they can guide 
+    the expedition more efficiently, improving the chances of finding what is needed and reducing the risks involved. 
+    Even so, recovery is uncertain, and survival depends on whether the Seekers can balance their dwindling reserves 
+    with the perils of the land.
+</p>
             </section>
 
             <!-- 3 • Hex Structure -->
@@ -584,17 +599,42 @@
                 <p>Secondary Hexes contain only the Biome and the Weather, and are otherwise empty of mechanical
                     characteristics (unless
                     the Archivist chooses to escalate them into Primary Hexes during play).</p>
+
+                    <h3>The New World vs. the Seekers</h3>
+                    <p>
+    The Archivist’s role is not to hand out safe havens or effortless rewards. Each result they 
+    generate should lean toward scarcity, obstacles, or looming threats. An unexplored Hex is not 
+    a blank canvas of opportunity but a landscape that actively resists the Seekers’ progress. 
+    Dangerous terrain, hostile weather, dwindling forage, or hidden enemies all emerge through 
+    the Archivist’s rolls, ensuring that exploration is never trivial. 
+</p>
+<p>
+    Once the Archivist has revealed what lies ahead, the Seekers may intervene to soften or reshape 
+    those outcomes. This comes at a cost: altering a threat, bypassing a scarcity, or easing a hazard 
+    requires spending precious expedition resources. Supplies, Morale, or even time itself can be 
+    consumed in the effort. Such interventions grant agency to the players, allowing them to mitigate 
+    the dangers before them, but force difficult choices: is it wiser to preserve the expedition’s 
+    reserves and face the challenge unaltered, or to invest now in survival at the risk of future 
+    scarcity? 
+</p>
+<p>
+    This dynamic keeps exploration tense and strategic. The Archivist establishes the adversity, 
+    while the Seekers decide how much they are willing to sacrifice to bend the wilderness in their 
+    favor. The balance between enduring hardships and expending resources defines the rhythm and 
+    drama of the journey.
+</p>
+
             </section>
 
-            <!-- 3 • Hex Creation Procedure -->
-            <section class="section-wrapper" id="section3" sidenav="3 • Hex Creation Procedure">
+            <!-- 3 • Hex Creation -->
+            <section class="section-wrapper" id="section3" sidenav="3 • Hex Creation">
                 <header class="section var-3">
                     <div class="section-number">
                         <p>Section III</p>
                     </div>
                     <div class="title-container">
                         <span class="title-icon left">e</span>
-                        <h2>Hex Creation Procedure</h2>
+                        <h2>Hex Creation</h2>
                         <span class="title-icon right rot90">e</span>
                     </div>
                     <p class="subtitle">Step-by-Step Generation and Seekers’ Influence</p>
@@ -876,78 +916,55 @@
             </section>
 
 
-            <!-- 4 • Hex Travel Rules -->
-            <section class="section-wrapper" id="section4" sidenav="4 • Hex Travel Rules">
+            <!-- 4 • Hex Travel -->
+            <section class="section-wrapper" id="section4" sidenav="4 • Hex Travel">
                 <header class="section var-4">
                     <div class="section-number">
                         <p>Section IV</p>
                     </div>
                     <div class="title-container">
                         <span class="title-icon left">d</span>
-                        <h2>Hex Travel Rules</h2>
+                        <h2>Hex Travel</h2>
                         <span class="title-icon right rot90">d</span>
                     </div>
                     <p class="subtitle">Travel Time, Locking, and Resources</p>
                 </header>
 
-                <h4>Hex Generation</h4>
-                <p>Archivist rolls characteristics once; these determine dangers, anomalies, obstacles, structures, and
-                    Weather. No further rolls are needed.</p>
+                <p>
+    Venturing into the New World is more than simply moving from one point to another. 
+    The wilderness is vast, treacherous, and mutable: each day of travel tests the expedition’s 
+    endurance, supplies, and resolve. This chapter explains how Seekers measure progress through 
+    Hexes, what it means to secure territory against instability, and how the expedition manages 
+    vital resources—Supplies, Morale, and Luck—without which survival becomes increasingly uncertain.
+</p>
 
-                <h4>Travel Time</h4>
-                <ul>
-                    <li><strong>Primary Hex:</strong> At least 1 day to cross; obstacles or harsh conditions may
-                        increase travel time or resource cost.</li>
-                    <li><strong>Secondary Hex:</strong> Time determined by Archivist.</li>
-                </ul>
+<h3>Travel Time</h3>
+<p>
+    Time in the wilderness flows differently—jungles swallow days, mountains turn hours into nights, and storms erase all sense of progress. Each Hex demands its own measure of time.
+</p>
+<ul class="diamond">
+    <li><strong>Primary Hex:</strong> Crossing takes at least <strong class="highlight">one full day</strong>. Difficult terrain, 
+        hostile environments, or environmental hazards may extend travel time and increase 
+        resource consumption.</li>
+    <li><strong>Secondary Hex:</strong> For less detailed areas or regions outside the immediate 
+        focus of play, the Archivist determines how long travel requires. This allows the journey 
+        to remain narratively paced without unnecessary detail.</li>
+</ul>
 
-                <h4>Locking Hexes</h4>
-                <p>The New World is mutable and unstable. Unless Seekers take deliberate actions to “lock” a Hex, it
-                    resets once abandoned.</p>
-                <ul>
-                    <li>Locking requires time, Skills, or Masteries (e.g., <em>Cartography</em>, <em>Surveying</em>).
-                    </li>
-                    <li>Locked Hexes remain consistent on revisit.</li>
-                    <li>Unlocked Hexes may shift features or biome.</li>
-                    <li>Multiple Hexes can be locked if resources allow.</li>
-                </ul>
-
-                <h4>Supplies and Attrition</h4>
-                <ul>
-                    <li><strong>Without Supplies:</strong> Each day, every Seeker gains 1 Starvation token. Eating
-                        removes 1 token per day.</li>
-                    <li><strong>Without Morale:</strong> Each day, every Seeker gains 1 Despair token. Spending 1 Morale
-                        removes 1 Despair token from all.</li>
-                    <li><strong>Without Luck:</strong> Archivist may apply Bad Luck column for amplified negative
-                        effects.</li>
-                </ul>
-
-                <h4>Resource Recovery</h4>
-                <p>Resources can be restored via rest, camp, or special items/abilities.</p>
-            </section>
-
-
-            <!-- 7 • The New World vs. the Seekers -->
-            <section class="section-wrapper" id="section7" sidenav="7 • The New World vs. the Seekers">
-                <header class="section var-2">
-                    <div class="section-number">
-                        <p>Section VII</p>
-                    </div>
-                    <div class="title-container">
-                        <span class="title-icon left">g</span>
-                        <h2>The New World vs. the Seekers</h2>
-                        <span class="title-icon right rot90">g</span>
-                    </div>
-                    <p class="subtitle">Archivist Challenges and Seekers’ Choices</p>
-                </header>
-
-                <ul>
-                    <li><strong>Archivist’s Results:</strong> Always generate challenges, scarcity, or obstacles.</li>
-                    <li><strong>Seekers’ Modifications:</strong> Favorable changes at the cost of shared resources.</li>
-                </ul>
-
-                <p>This tension forces strategic decisions: spend resources to shape the environment or conserve them
-                    and face the threats as generated.</p>
+<h3>Locking Hexes</h3>
+<p>
+    The New World is unstable, its landscapes mutable under the influence of Solaria. Unless Seekers deliberately take
+    action to <em>lock</em> a Hex, everything they have uncovered within it will eventually dissolve back into the
+    wilderness. <span class="highlight">An unlocked Hex does not preserve its features</span>: landmarks may vanish, ruins may no longer be found, and
+    discovered sites must be rolled again upon the next visit. Only the biome itself remains consistent. 
+</p>
+<p>
+    To prevent this instability, Seekers can spend time and resources to <strong class="highlight">Stabilize a Hex</strong>. This process usually requires
+    expertise—such as the use of <em>Cartography</em>, <em>Surveying</em>, or dedicated Masteries—and represents the
+    effort of fixing maps, erecting markers, or ritually binding the terrain. Once locked, a Hex becomes a reliable
+    anchor: its features, terrain, and landmarks will remain the same whenever the expedition returns.</p>
+    <p>Multiple Hexes may be locked during the game, provided the Seekers have the means to secure them.</p>
+</p>
             </section>
 
             <!-- 8 • Maps and Progressive Discovery -->
