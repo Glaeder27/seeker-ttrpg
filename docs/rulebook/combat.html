@@ -1,4 +1,4 @@
-<!-- v1.3 2025-09-04T12:10:23.524Z -->
+<!-- v1.4 2025-09-15T17:13:55.382Z -->
 
 <!DOCTYPE html>
 <html lang="en" data-env="github" class="preload">
@@ -84,6 +84,14 @@
 
         .actions p {
             margin: 0;
+        }
+        .mvoement-inline-symbol {
+            display: inline;
+            align-items: center;
+            gap: 0.4em;
+            height: 1.2em;
+            vertical-align: middle;
+            cursor: var(--cursor-help);
         }
     </style>
 
@@ -356,10 +364,30 @@
                     </div>
                     <p class="subtitle">Personal Augmentations in a Shared Grid</p>
                 </header>
-                <h3>Movement</h3>
-<p>Every combatant may move up to their full Stride value in Units during their turn. This movement represents repositioning on the battlefield, closing distance with enemies, or retreating to safety. Movement can occur at any time within the turn and is not restricted to a single phase. Whether advancing before striking or withdrawing after an exchange, mobility is a constant element of combat.</p>
-
-<h4>Breaking Up Movement</h4>
+<p>The battlefield in Seeker is not measured in precise meters or feet but in Units, an abstract representation of distance and position. A Unit provides a common language for movement, reach, and range. Depending on the desired tone of the game, a Unit can be interpreted as a meter for a gritty, grounded campaign, or stretched to three or four meters for a more epic, cinematic style. This flexibility allows the system to remain mechanically consistent while adapting to different levels of realism.</p>
+<h3>Stride</h3>
+<p>
+Each combatant has a Stride, representing how far (in Units) they can move during a single Turn. 
+<div class="rule-highlight-box">
+                    <h4>Calculating Your Health</h4>
+                    <p>
+                        Your character’s starting <img class="movement-inline-symbol"
+                            src="/assets/icons/svg/health/icon-health.svg" alt="Stride" title="Stride"> is equal to:
+                    </p>
+                    <div class="equation-wrapper" style="display: flex; justify-content: center;">
+                        <p class="centered-equation">
+                            <strong><img class="movement-inline-symbol" src="/assets/icons/svg/health/icon-health.svg"
+                                    alt="Stride" title="Stride" style="height: 2rem;"> Stride = 5 +<img
+                                    class="movement-inline-symbol" src="/assets/icons/svg/aptitudes/agility-ico.svg"
+                                    alt="Agility" title="Agility" style="height: 2rem;"> Agility</strong>
+                        </p>
+                    </div>
+                    <p>
+                        This value may be modified by Masteries, Items, enviromental effects, or Skills as development progresses.
+                    </p>
+                </div>
+                
+                <h4>Breaking Up Movement</h4>
 <p>Movement is not required to be continuous. A combatant may divide their Stride into several segments, inserting Actions between them. For instance, one might advance 2 Units, unleash an attack, and then continue their movement to reposition 4 more Units away. This allows for feints, hit-and-run tactics, and fluid repositioning in response to unfolding events.</p>
             </section>
 
